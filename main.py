@@ -11,34 +11,40 @@ regal_counter = 0
 # Configurable
 use_regal = True
 use_aug = True
-both_required = True
-count_to_regal = 2
+both_required = False
+count_to_regal = 1
 
+
+# wand
+# prefixes = ["per 10 Intelligence"]
+# suffixes = [" "]
 
 # reservation
-prefixes = ["Pulsing", "Powerful", "Introspection"]
-suffixes = ["of the Philosopher", "of the Gorilla", "of the Heavens"]
+# prefixes = ["Pulsing", "Powerful", "Introspection"]
+# suffixes = ["of the Philosopher", "of the Gorilla", "of the Heavens"]
 
 # spell damage
-# prefixes = ["Glowing", "Powerful"]
-# suffixes = ["of Expertise", "the Meteor", "of the Prodigy"]
+prefixes = ["Powerful", "Glowing"]
+suffixes = ["the Meteor", "of the Prodigy"]
 
 # suffixes = ["(4-5) to Intelligence", "(6-8) to Intelligence"]
 # suffixes = ["Gain an Endurance, Frenzy or Power charge when you Block"]
 # suffixes = [" of Energy Shield when you Block"]
 
 # 3 screens
-alt_orb_position = [2064, 361]
-item_position =[2352, 620]
-aug_orb_position = [2213, 453]
-scour_orb_position = [2477, 688]
-regal_orb_position = [2486, 368]
-transmute_orb_position = [1986, 381]
+# alt_orb_position = [2064, 361]
+# item_position =[2352, 620]
+# aug_orb_position = [2213, 453]
+# scour_orb_position = [2477, 688]
+# regal_orb_position = [2486, 368]
+# transmute_orb_position = [1986, 381]
 # 2 screens
-# alt_orb_position = [163, 299]
-# item_position =[357, 471]
-# aug_orb_position = [262, 347]
-# scour_orb_position = [474, 523]
+alt_orb_position = [2071, 289]
+item_position =[2263, 477]
+aug_orb_position = [2176, 346]
+scour_orb_position = [2373, 519]
+regal_orb_position = [2378, 287]
+transmute_orb_position = [2016, 279]
 
 
 # ###############################################################
@@ -90,10 +96,6 @@ def alt_spam():
         time.sleep(0.15)
 
         cpd = capture_clipboard().lower()
-        if cpd == previous_cpd:
-            counter += 1
-            time.sleep(0.5)
-            continue
 
         previous_cpd = cpd
         match_found = False
@@ -107,7 +109,7 @@ def alt_spam():
             if ('suffix' not in cpd or 'prefix' not in cpd) and use_aug:
                 use_aug_orb()
             if use_regal:
-                check_regal()
+                check_regal(cpd)
             else:
                 return
 
@@ -122,11 +124,10 @@ def alt_spam():
         else:
             match_found = any_of_list_in_string(cpd, prefixes) or any_of_list_in_string(cpd, suffixes)
         if match_found:
-            print("Match after augment (prefix)")
             pyautogui.keyUp('shift')
 
             if use_regal:
-                check_regal()
+                check_regal(cpd)
             else:
                 return
 
@@ -135,9 +136,7 @@ def alt_spam():
     exit()
 
 
-def check_regal():
-    cpd = capture_clipboard().lower()
-
+def check_regal(cpd):
     prefixes_match = count_patterns_in_string(cpd, prefixes)
     suffixes_match = count_patterns_in_string(cpd, suffixes)
     if use_regal and (prefixes_match + suffixes_match) >= count_to_regal:
