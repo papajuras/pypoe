@@ -1,0 +1,16 @@
+[project]
+name = "pypoe"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "keyboard>=0.13.5",
+    "pyautogui>=0.9.54",
+    "pynput>=1.8.2",
+    "pyperclip>=1.11.0",
+]
+
+[tool.uv]
+python-preference = "only-managed"
+override-dependencies = [
+    "python3-xlib; sys_platform == 'never'"
+]
