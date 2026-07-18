@@ -3,6 +3,7 @@ name = "pypoe"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
+    "nicegui>=2.14.0",
     "keyboard>=0.13.5",
     "pyautogui>=0.9.54",
     "pynput>=1.8.2",

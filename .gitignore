@@ -1,0 +1,7 @@
+ignore/
+tmp/
+__pycache__/
+*.pyc
+.venv/
+.idea/
+.opencode/

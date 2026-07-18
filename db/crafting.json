@@ -1,0 +1,24 @@
+{
+  "Default": {
+    "prefixes": [
+      " "
+    ],
+    "suffixes": [
+      " "
+    ]
+  },
+  "test": {
+    "prefixes": [
+      " "
+    ],
+    "suffixes": [
+      "of the Gods",
+      "of the Titan",
+      "of the Leviathan"
+    ],
+    "item_type": "2H Sword",
+    "use_regal": false,
+    "exalt_after_regal": false
+  },
+  "_selected": "test"
+}
