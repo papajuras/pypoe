@@ -20,6 +20,7 @@ from db.config import (
     put_profile_settings,
     set_meta,
 )
+from flipper.ui import FlipperPanel
 
 pyautogui.FAILSAFE = False
 pyautogui.PAUSE = 0.05
@@ -360,89 +361,106 @@ ui.dark_mode().enable()
 
 _reload_affixes(item_type)
 
-with ui.card().classes("w-full max-w-4xl mx-auto mt-8 p-6"):
-    with ui.column().classes("gap-5"):
-        ui.label("PoE Crafting Macro").classes("text-h5 text-weight-bold")
+with ui.row().classes("w-full h-screen max-w-7xl mx-auto gap-4 p-4"):
+    with ui.card().classes("w-[49%] p-4 overflow-y-auto"):
+        with ui.column().classes("gap-5"):
+            ui.label("PoE Crafting Macro").classes("text-h5 text-weight-bold")
 
-        with ui.row().classes("items-center gap-4"):
-            ui.label("Profile:").classes("text-weight-medium")
-            with ui.row().classes("items-center gap-2"):
-                profile_select = ui.select(
-                    profile_names,
-                    value=profile_name,
-                    on_change=update_profile,
-                ).classes("min-w-[200px]")
-                ui.button(icon="delete", on_click=show_delete_confirmation).props("flat dense")
-                ui.button(icon="auto_awesome", on_click=show_builder).props("flat dense")
-            ui.label("").classes("flex-1")
-            ui.label("Screens:").classes("text-weight-medium")
-            ui.select(
-                list(SCREEN_MODES.keys()),
-                value=screen_mode,
-                on_change=lambda e: _set_screen_mode(e.value),
-            ).classes("min-w-[120px]")
+            with ui.row().classes("items-center gap-4"):
+                ui.label("Profile:").classes("text-weight-medium")
+                with ui.row().classes("items-center gap-2"):
+                    profile_select = ui.select(
+                        profile_names,
+                        value=profile_name,
+                        on_change=update_profile,
+                    ).classes("min-w-[200px]")
+                    ui.button(icon="delete", on_click=show_delete_confirmation).props("flat dense")
+                    ui.button(icon="auto_awesome", on_click=show_builder).props("flat dense")
+                ui.label("").classes("flex-1")
+                ui.label("Screens:").classes("text-weight-medium")
+                ui.select(
+                    list(SCREEN_MODES.keys()),
+                    value=screen_mode,
+                    on_change=lambda e: _set_screen_mode(e.value),
+                ).classes("min-w-[120px]")
 
-        with ui.card().classes("w-full p-4 border border-grey-6"):
-            ui.label("Orb behaviour (saved instantly)").classes("text-weight-medium text-caption text-grey-5")
-            with ui.column().classes("gap-3 mt-2"):
-                with ui.row().classes("items-center gap-4"):
-                    regal_switch = ui.switch("Regal", value=settings.use_regal, on_change=save_orb_settings)
-                    exalt_switch = ui.switch("Exalt on failed regal", value=settings.exalt_after_regal, on_change=save_orb_settings)
+            with ui.card().classes("w-full p-4 border border-grey-6"):
+                ui.label("Orb behaviour (saved instantly)").classes("text-weight-medium text-caption text-grey-5")
+                with ui.column().classes("gap-3 mt-2"):
+                    with ui.row().classes("items-center gap-4"):
+                        regal_switch = ui.switch("Regal", value=settings.use_regal, on_change=save_orb_settings)
+                        exalt_switch = ui.switch("Exalt on failed regal", value=settings.exalt_after_regal, on_change=save_orb_settings)
 
-        with ui.row().classes("items-center gap-4 w-full"):
-            ui.label("Item type:").classes("text-weight-medium")
-            item_type_select = ui.select(
-                get_item_type_names(),
-                value=item_type,
-                on_change=lambda e: _change_item_type(e.value),
-            ).classes("min-w-[180px]")
+            with ui.row().classes("items-center gap-4 w-full"):
+                ui.label("Item type:").classes("text-weight-medium")
+                item_type_select = ui.select(
+                    get_item_type_names(),
+                    value=item_type,
+                    on_change=lambda e: _change_item_type(e.value),
+                ).classes("min-w-[180px]")
 
-        with ui.row().classes("gap-4 w-full"):
-            with ui.card().classes("flex-1 p-3 overflow-hidden"):
-                ui.label("Prefixes").classes("text-weight-medium text-caption text-grey-5")
-                prefix_select = ui.select(
-                    label="Search and select...",
-                    options=_build_options(_sort_affixes(all_prefixes)),
-                    multiple=True,
-                    with_input=True,
-                    on_change=lambda e: _on_side_select("prefix", e.value),
-                ).classes("w-full")
+            with ui.row().classes("gap-4 w-full"):
+                with ui.card().classes("flex-1 p-3 overflow-hidden"):
+                    ui.label("Prefixes").classes("text-weight-medium text-caption text-grey-5")
+                    prefix_select = ui.select(
+                        label="Search...",
+                        options=_build_options(_sort_affixes(all_prefixes)),
+                        multiple=True,
+                        with_input=True,
+                        on_change=lambda e: _on_side_select("prefix", e.value),
+                    ).classes("w-full").props('hide-selected')
 
-            with ui.card().classes("flex-1 p-3 overflow-hidden"):
-                ui.label("Suffixes").classes("text-weight-medium text-caption text-grey-5")
-                suffix_select = ui.select(
-                    label="Search and select...",
-                    options=_build_options(_sort_affixes(all_suffixes)),
-                    multiple=True,
-                    with_input=True,
-                    on_change=lambda e: _on_side_select("suffix", e.value),
-                ).classes("w-full")
+                with ui.card().classes("flex-1 p-3 overflow-hidden"):
+                    ui.label("Suffixes").classes("text-weight-medium text-caption text-grey-5")
+                    suffix_select = ui.select(
+                        label="Search...",
+                        options=_build_options(_sort_affixes(all_suffixes)),
+                        multiple=True,
+                        with_input=True,
+                        on_change=lambda e: _on_side_select("suffix", e.value),
+                    ).classes("w-full").props('hide-selected')
 
-        with ui.card().classes("w-full p-2"):
-            ui.label("Selected:").classes("text-caption text-grey-5")
-            with ui.row().classes("gap-2 w-full"):
-                sel_p_container = ui.column().classes("gap-1 flex-1")
-                sel_s_container = ui.column().classes("gap-1 flex-1")
+            with ui.card().classes("w-full p-2"):
+                ui.label("Selected:").classes("text-caption text-grey-5")
+                with ui.row().classes("gap-2 w-full"):
+                    sel_p_container = ui.column().classes("gap-1 flex-1")
+                    sel_s_container = ui.column().classes("gap-1 flex-1")
 
-        with ui.row().classes("gap-4"):
-            start_btn = ui.button("Start", icon="play_arrow", on_click=start).props("unelevated color=positive")
-            stop_btn = ui.button("Stop", icon="stop", on_click=stop).props("unelevated color=negative disable")
+            with ui.row().classes("gap-4"):
+                start_btn = ui.button("Start", icon="play_arrow", on_click=start).props("unelevated color=positive")
+                stop_btn = ui.button("Stop", icon="stop", on_click=stop).props("unelevated color=negative disable")
 
-        status_label = ui.label(f"Ready — {screen_mode}").classes("text-caption")
+            status_label = ui.label(f"Ready — {screen_mode}").classes("text-caption")
 
-        ui.separator()
-        with ui.row().classes("items-center gap-4"):
-            with ui.column().classes("text-caption text-grey-7 gap-1"):
-                ui.label("ESC → Stop spamming")
-                ui.label("Ctrl + K → Inspect item under mouse")
-                ui.label("Ctrl + L → Delete beasts")
-            ui.label("").classes("flex-1")
-            ui.button("Debug match arrays", icon="bug_report", on_click=_show_debug).props("flat dense text-grey-6")
-        debug_label = ui.label("").classes("text-caption text-grey-6 font-mono")
+            ui.separator()
+            with ui.row().classes("items-center gap-4"):
+                with ui.column().classes("text-caption text-grey-7 gap-1"):
+                    ui.label("ESC → Stop spamming")
+                    ui.label("Ctrl + K → Inspect item under mouse")
+                    ui.label("Ctrl + L → Delete beasts")
+                ui.label("").classes("flex-1")
+                ui.button("Debug match arrays", icon="bug_report", on_click=_show_debug).props("flat dense text-grey-6")
+            debug_label = ui.label("").classes("text-caption text-grey-6 font-mono")
 
+    with ui.card().classes("w-[49%] p-4 overflow-y-auto"):
+        FlipperPanel()
+
+for p in cfg.get("prefixes", []):
+    for a in all_prefixes:
+        if _save_text(a["mod_id"], prefix_entries) == p or a["name"] == p:
+            selected_prefixes.append(a["mod_id"])
+            break
+for s in cfg.get("suffixes", []):
+    for a in all_suffixes:
+        if _save_text(a["mod_id"], suffix_entries) == s or a["name"] == s:
+            selected_suffixes.append(a["mod_id"])
+            break
+prefix_select.value = selected_prefixes[:]
+suffix_select.value = selected_suffixes[:]
+_rebuild_selected_chips()
 
 listener = keyboard.Listener(on_press=on_press, on_release=on_release)
 listener.daemon = True
 listener.start()
 
-ui.run(title="PoE Crafting Macro")
+ui.run(title="PoE Crafting Macro", native=True)

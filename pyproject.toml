@@ -8,6 +8,11 @@ dependencies = [
     "pyautogui>=0.9.54",
     "pynput>=1.8.2",
     "pyperclip>=1.11.0",
+    "requests>=2.32.0",
+    "websockets>=14.0",
+    "pywebview>=5.1",
+    "PySide6>=6.8",
+    "qtpy>=2.4",
 ]
 
 [tool.uv]

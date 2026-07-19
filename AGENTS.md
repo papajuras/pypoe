@@ -13,45 +13,57 @@ Automates orb usage with configurable stop criteria.
 - Hotkeys: Ctrl+J to start spam, ESC to stop
 - Debug button shows current prefix/suffix match arrays
 
-### 2. poe.ninja flipping monitoring (TODO)
-### 3. PoE Trade flipping monitoring (TODO)
+### 2. PoE Trade flipping (flipper/)
+Flipping opportunity monitor with automated price fetching.
+- Flips defined by source (buy) + target (sell) trade queries, multiplier, cost
+- TradeClient with strict rate limiting (stagger + buffer, parses X-Rate-Limit-* headers)
+- PriceFetcher scans DB hourly for stale flips, fetches live prices via worker thread
+- Source: average of 5 cheapest divine listings. Target: cheapest single divine listing.
+- Liquid/illiquid split, sortable by cost/profit/profit%, auto-refresh every 3s
+- SQLite store with schema migrations, price history table, 60-day auto-prune
+- Native window mode (pywebview + PySide6)
 
 ## Tech stack
 - Python 3.13, uv for package management
 - NiceGUI for UI (Quasar/Material Design)
 - pyautogui / pynput / keyboard for automation
 - JSON-backed config store (db/crafting.json)
+- SQLite via stdlib, requests, websockets for PoE Trade API
 
 ## Project structure
-- `main.py` — NiceGUI web UI entry point
+- `main.py` — NiceGUI web UI entry point (split layout: crafting left, flipper right)
 - `crafting/` — core crafting module
   - `session.py` — CraftingSession orchestrator, Positions/Settings dataclasses
   - `actions.py` — low-level mouse/keyboard orb/item automation
   - `matching.py` — prefix/suffix matching utilities
+- `flipper/` — flipping module
+  - `client.py` — TradeClient with rate limiting, search/fetch/live API
+  - `store.py` — Flip dataclass, Store (SQLite), price/history, migrations
+  - `pricer.py` — PriceFetcher with scanner + worker threads
+  - `ui.py` — FlipperPanel: sortable tables, profit calc, form, auto-refresh
 - `db/` — data layer
   - `config.py` — JSON config store with per-profile settings (auto-save, migration)
-  - `affixes.py` — RePoE affix data (mods.json + stat_translations.json, cached daily), item type filtering, builder search
-  - `crafting.json` — persisted config (prefixes, suffixes, item_type, orb settings, metadata)
-  - `cache/` — downloaded RePoE data (mods.json, stat_translations.json)
+  - `affixes.py` — RePoE affix data (mods.json + stat_translations.json, cached daily)
+  - `schema.py` — versioned SQLite schema migrations
+  - `crafting.json` — persisted crafting config
+  - `cache/` — downloaded RePoE data
+  - `flips.db` — flips, prices, price_history
 - `tmp/exalts/` — clipboard dumps from exalt orb results
 - `test_life_block.py` — influenced mod matching tests
 
-## Current state (save 2026-07-18)
+## Current state (save 2026-07-19)
 
 ### What works
-- Main UI has affix browser with filterable multi-select dropdowns and item type per profile
-- Influenced mods (Shaper/Elder/Crusader/Warlord/Hunter/Redeemer) detected and tagged via spawn weight analysis
-- Game-exact display text from RePoE stat_translations.json, with values filled in
-- Search text saved to profile uses game wording (text after last stat placeholder) for substring matching against item clipboard
-- 1H/2H weapon distinction handled via `one_hand_weapon`/`two_hand_weapon` exclusion tags
-- Creation modal: name + item type, then edit affixes in main UI
-- Config auto-saves on every change to db/crafting.json
-- Selected profile and screen mode persist across restarts
-- Aug is always on (removed toggle)
-- Regal/Exalt orb behaviour configurable
-- CraftingSession orchestrates alt-spam with aug/regal/exalt flow
-- Transmute after regal/exalt failure: sets `_needs_transmute` flag
-- Exalt clipboard dumps saved to `tmp/exalts/`
+- Full crafting macro with affix browser, influence detection, 2/3 screen modes
+- TradeClient with proactive rate limiting (stagger, lock on 429, multi-tier policy parsing)
+- Flip CRUD with name, source/target query JSON (curl extract), multiplier, cost
+- PriceFetcher: hourly rescan, per-flip refresh button, average-of-5-source / cheapest-target
+- Liquid/illiquid split tables, sortable columns (cost/profit/profit%), green/red coloring
+- Auto-refresh every 3s (pauses during form editing)
+- Native window via pywebview + PySide6
+- Schema migrations (V1: flips, V2: prices + history + indexes)
+- 60-day price history auto-prune
+- Rate limit test verified against live PoE Trade API
 
 ### Removed
 - `profiles.py` (seed data — JSON is the only source of truth)
@@ -59,12 +71,18 @@ Automates orb usage with configurable stop criteria.
 - Old free-text prefix/suffix chip input (replaced by affix browser)
 - `seed_from_profiles` function
 
+### ⚠️ Hard rules
+- **NEVER delete or clear db/flips.db** — contains real data
+- **NEVER delete or clear db/crafting.json** — contains real crafting profiles
+- **NEVER clear data just because schema changed** — use schema.py migrations instead
+
 ### Known issues / TODOs
 - Need to test full regal/exalt flow in-game
-- Flipping monitoring (poe.ninja + PoE Trade) not started yet
+- poe.ninja price integration not started
+- Live trade WebSocket not wired
 
 ### How to run
 ```
 ./run.sh    # or: uv run python main.py
 ```
-Server starts on http://localhost:8080
+Server starts on http://localhost:8080 (native window with pywebview)
