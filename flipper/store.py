@@ -31,8 +31,14 @@ def _extract_query(raw: str) -> tuple[str, str]:
 class Flip:
     name: str = ""
     league: str = "Mirage"
+    source_type: str = "query"
     source_queries: list[str] = field(default_factory=list)
+    source_ninja_item: str = ""
+    source_ninja_type: str = "DivinationCard"
+    target_type: str = "query"
     target_queries: list[str] = field(default_factory=list)
+    target_ninja_item: str = ""
+    target_ninja_type: str = "DivinationCard"
     multiplier: float = 1.0
     cost: int = 0
     id: str = field(default_factory=lambda: uuid.uuid4().hex[:12])
@@ -52,8 +58,14 @@ class Store:
                 {
                     "name": flip.name,
                     "league": flip.league,
+                    "source_type": flip.source_type,
                     "source_queries": flip.source_queries,
+                    "source_ninja_item": flip.source_ninja_item,
+                    "source_ninja_type": flip.source_ninja_type,
+                    "target_type": flip.target_type,
                     "target_queries": flip.target_queries,
+                    "target_ninja_item": flip.target_ninja_item,
+                    "target_ninja_type": flip.target_ninja_type,
                     "multiplier": flip.multiplier,
                     "cost": flip.cost,
                 }
@@ -68,8 +80,14 @@ class Store:
             id=row[0],
             name=data.get("name", "Unnamed"),
             league=data.get("league", "Mirage"),
+            source_type=data.get("source_type", "query"),
             source_queries=data.get("source_queries") or data.get("source_urls", []),
+            source_ninja_item=data.get("source_ninja_item", ""),
+            source_ninja_type=data.get("source_ninja_type", "DivinationCard"),
+            target_type=data.get("target_type", "query"),
             target_queries=data.get("target_queries") or data.get("target_urls", []),
+            target_ninja_item=data.get("target_ninja_item", ""),
+            target_ninja_type=data.get("target_ninja_type", "DivinationCard"),
             multiplier=data["multiplier"],
             cost=data.get("cost", 0),
             created_at=float(row[2]),

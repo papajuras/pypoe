@@ -24,7 +24,8 @@ class TradeClient:
             {"User-Agent": user_agent, "Accept": "application/json"}
         )
         self._delay = 0.0
-        self._last = 0.0
+        self._min_gap = 1.0
+        self._last = time.time()
         self._lock = 0.0
 
     # ── rate limit ──────────────────────────────────────────────
@@ -48,6 +49,7 @@ class TradeClient:
                     delays.append(b / a)
         if delays:
             self._delay = max(self._delay, max(delays) + BUFFER)
+            self._min_gap = 0.0
 
     def _enforce(self):
         now = time.time()
@@ -57,9 +59,10 @@ class TradeClient:
             time.sleep(sleep)
             self._lock = 0
 
+        gap = max(self._delay, self._min_gap)
         since_last = now - self._last
-        if since_last < self._delay:
-            sleep = self._delay - since_last
+        if since_last < gap:
+            sleep = gap - since_last
             logger.info("Staggering, sleeping %.2fs", sleep)
             time.sleep(sleep)
 
@@ -107,7 +110,7 @@ class TradeClient:
         self._parse_rate_headers(resp)
         if resp.status_code == 429:
             self._handle_429(resp)
-            return self._post(url, body)
+            resp.raise_for_status()
         self._last = time.time()
         resp.raise_for_status()
         return resp.json()
@@ -118,7 +121,7 @@ class TradeClient:
         self._parse_rate_headers(resp)
         if resp.status_code == 429:
             self._handle_429(resp)
-            return self._get(url)
+            resp.raise_for_status()
         self._last = time.time()
         resp.raise_for_status()
         return resp.json()

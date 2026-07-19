@@ -7,6 +7,7 @@ from queue import Queue, Empty as QueueEmpty
 from threading import Thread
 
 from .client import TradeClient
+from .ninja import NinjaClient
 from .store import Store, _extract_query
 
 logger = logging.getLogger(__name__)
@@ -18,6 +19,7 @@ class PriceFetcher:
     def __init__(self, client: TradeClient, store: Store):
         self._client = client
         self._store = store
+        self._ninja = NinjaClient()
         self._queue: Queue[str] = Queue()
         self._running = True
 
@@ -64,25 +66,48 @@ class PriceFetcher:
         if not flip:
             return
 
-        src_avg, src_cnt = self._fetch_source(flip.source_queries)
-        tgt_avg, tgt_cnt = self._fetch_target(flip.target_queries)
+        league = flip.league
+        src_avg, src_cnt = self._fetch_source(flip, league)
+        tgt_avg, tgt_cnt = self._fetch_target(flip, league)
         self._store.save_price(flip_id, src_avg, src_cnt, tgt_avg, tgt_cnt)
         logger.info(
             "Priced %s: src=%.1f (%d)  tgt=%.1f (%d)",
             flip.name or flip_id, src_avg, src_cnt, tgt_avg, tgt_cnt,
         )
 
-    # ── source: average of cheapest 5 ──────────────────────────
+    def _fetch_source(self, flip, league: str) -> tuple[float, int]:
+        if flip.source_type == "ninja":
+            return self._ninja_price(flip.source_ninja_item, flip.source_ninja_type, league)
+        return self._fetch_source_trade(flip.source_queries)
 
-    def _fetch_source(self, queries: list[str]) -> tuple[float, int]:
+    def _fetch_target(self, flip, league: str) -> tuple[float, int]:
+        if flip.target_type == "ninja":
+            return self._ninja_price(flip.target_ninja_item, flip.target_ninja_type, league)
+        return self._fetch_target_trade(flip.target_queries)
+
+    # ── ninja pricing ──────────────────────────────────────────
+
+    def _ninja_price(self, item_name: str, item_type: str, league: str) -> tuple[float, int]:
+        data = self._ninja.overview(item_type, league)
+        divine = self._ninja.divine_rate(league)
+        for line in data.get("lines", []):
+            if line["id"] == item_name:
+                val = line.get("primaryValue", 0) / divine if divine else 0
+                cnt = 1 if val > 0 else 0
+                return val, cnt
+        return 0.0, 0
+
+    # ── trade source: average of cheapest 5 ────────────────────
+
+    def _fetch_source_trade(self, queries: list[str]) -> tuple[float, int]:
         prices = self._collect_divine_prices(queries)
         if not prices:
             return 0.0, 0
         return sum(prices) / len(prices), len(prices)
 
-    # ── target: cheapest single listing ────────────────────────
+    # ── trade target: cheapest single listing ──────────────────
 
-    def _fetch_target(self, queries: list[str]) -> tuple[float, int]:
+    def _fetch_target_trade(self, queries: list[str]) -> tuple[float, int]:
         prices = self._collect_divine_prices(queries)
         if not prices:
             return 0.0, 0
