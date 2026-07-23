@@ -14,7 +14,7 @@ from flipper.pricer import PriceFetcher
 
 class FakeClient:
     def __init__(self):
-        self.league = "Mirage"
+        self.league = "Standard"
 
     def search(self, query) -> dict:
         time.sleep(0.05)
@@ -43,6 +43,12 @@ class FakeStore:
 
     def stale_flip_ids(self, *args):
         return []
+
+    def oldest_unpriced(self, *args):
+        return []
+
+    def put(self, flip: Flip):
+        self.flips[flip.id] = flip
 
 
 class TestPriceFetcher(unittest.TestCase):
@@ -134,6 +140,74 @@ class TestPriceFetcher(unittest.TestCase):
         pricer.stop()
 
         self.assertEqual(store.save_calls, ["flip_0"])
+
+    def test_dedup_enqueued_flips(self):
+        """Duplicate enqueues of same flip ID are only processed once."""
+        store = FakeStore(2)
+        pricer = PriceFetcher(FakeClient(), store)
+
+        for _ in range(5):
+            pricer.enqueue("flip_0")
+        for _ in range(3):
+            pricer.enqueue("flip_1")
+
+        time.sleep(1.0)
+        pricer.stop()
+
+        self.assertEqual(len(store.save_calls), 2)
+        self.assertIn("flip_0", store.save_calls)
+        self.assertIn("flip_1", store.save_calls)
+
+    def test_front_of_queue_moves_ahead(self):
+        """enqueue(front=True) positions the flip before previously-queued flips."""
+        store = FakeStore(5)
+        pricer = PriceFetcher(FakeClient(), store)
+
+        pricer.enqueue("a")
+        pricer.enqueue("b")
+        pricer.enqueue("c")
+        self.assertEqual(list(pricer._pending), ["a", "b", "c"])
+
+        pricer.enqueue("b", front=True)
+        self.assertEqual(list(pricer._pending), ["b", "a", "c"])
+
+        pricer.enqueue("d", front=True)
+        self.assertEqual(list(pricer._pending), ["d", "b", "a", "c"])
+
+        pricer.enqueue("a", front=True)
+        self.assertEqual(list(pricer._pending), ["a", "d", "b", "c"])
+
+        pricer.enqueue("e")
+        self.assertEqual(list(pricer._pending), ["a", "d", "b", "c", "e"])
+
+        pricer.stop()
+
+    def test_skips_flip_with_disabled_quality(self):
+        """Flip with Q27 skipped when flipper_quality_27 is disabled."""
+        from db.config import set_meta
+        set_meta("flipper_quality_27", False)
+        store = FakeStore(1)
+        # Override with a quality-named flip
+        store.flips["flip_0"] = Flip(name="royal plate 27 split",
+                                     source_queries=["{}"], target_queries=["{}"])
+        pricer = PriceFetcher(FakeClient(), store)
+        pricer.enqueue("flip_0")
+        time.sleep(0.3)
+        pricer.stop()
+        self.assertEqual(len(store.save_calls), 0)
+
+    def test_prices_flip_with_enabled_quality(self):
+        """Flip with Q27 is priced when flipper_quality_27 is enabled."""
+        from db.config import set_meta
+        set_meta("flipper_quality_27", True)
+        store = FakeStore(1)
+        store.flips["flip_0"] = Flip(name="royal plate 27 split",
+                                     source_queries=["{}"], target_queries=["{}"])
+        pricer = PriceFetcher(FakeClient(), store)
+        pricer.enqueue("flip_0")
+        time.sleep(0.3)
+        pricer.stop()
+        self.assertEqual(len(store.save_calls), 1)
 
 
 if __name__ == "__main__":

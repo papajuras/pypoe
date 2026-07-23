@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import threading
+import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 from nicegui import ui
 
 from db.config import get_meta, set_meta
+from config import read_league
 
 from .client import TradeClient
 from .ninja import NinjaClient
@@ -16,16 +20,12 @@ _pricer: PriceFetcher = None  # type: ignore[assignment]
 _ninja: NinjaClient = None  # type: ignore[assignment]
 
 
-def _league() -> str:
-    return str(get_meta("flipper_league", "Mirage"))
-
-
 def _init_pricer():
     global _pricer, _ninja
     if _pricer is not None:
         return
-    client = TradeClient("OAuth pypoe/0.1.0 (flipper)", league=_league())
     poesessid = Path("ignore/POESESSID").read_text().strip()
+    client = TradeClient("OAuth pypoe/0.1.0 (flipper)")
     client.session.cookies.set("POESESSID", poesessid, domain="www.pathofexile.com")
     _ninja = NinjaClient()
     _pricer = PriceFetcher(client, store)
@@ -45,6 +45,7 @@ class FlipperPanel:
         self._sort_by = "profit"
         self._sort_asc = False
         self._form_open = False
+        self._solver_status = ""
         self._container = ui.column().classes("w-full gap-3")
         with self._container:
             self._build()
@@ -63,9 +64,36 @@ class FlipperPanel:
         with ui.row().classes("items-center gap-4 w-full"):
             ui.label("Flipper").classes("text-h5 text-weight-bold")
             ui.button("New flip", icon="add", on_click=self._create).props("unelevated color=positive")
+            self._queue_label = ui.label(f"queue: {_pricer.queue_size}").classes("text-caption text-grey-7")
+            for q in (30, 29, 28, 27):
+                enabled = get_meta(f"flipper_quality_{q}", True)
+                ui.checkbox(text=f"Q{q}", value=enabled,
+                            on_change=lambda e, q=q: set_meta(f"flipper_quality_{q}", e.value)
+                ).props("dense")
             ui.label("").classes("flex-1")
-            ui.label("League:").classes("text-weight-medium")
-            ui.input(value=_league(), on_change=self._set_league).classes("w-32")
+
+
+        rate_limits = _pricer._client.rate_limits
+        with ui.row().classes("items-center gap-2 text-caption"):
+            if rate_limits:
+                for entry in rate_limits:
+                    color = "text-positive" if entry["pct"] < 50 else "text-warning" if entry["pct"] < 80 else "text-negative"
+                    ui.label(entry["label"]).classes(f"cursor-help {color}").tooltip(entry["tooltip"])
+            else:
+                ui.label("Waiting for API data...").classes("text-caption text-grey-5")
+            if _pricer._client._sync._backoff_until > time.time():
+                remaining = int(_pricer._client._sync._backoff_until - time.time())
+                ui.label(f"🔒 Backoff {remaining}s").classes("text-negative text-caption font-weight-bold")
+
+        if _pricer._cloudflare_blocked:
+            with ui.row().classes("items-center gap-2 w-full bg-yellow-2 p-3 rounded border border-yellow-6"):
+                ui.label("🔒 Cloudflare challenge detected").classes("text-weight-bold text-yellow-9")
+                if self._solver_status:
+                    ui.label(self._solver_status).classes("text-caption text-grey-7")
+                else:
+                    ui.button("Solve with browser", icon="open_in_new", on_click=self._open_solver).props("unelevated dense")
+                cf_input = ui.input(placeholder="cf_clearance cookie").classes("w-48 font-mono")
+                ui.button("Apply & resume", icon="check", on_click=lambda: _pricer.resume_after_cloudflare(cf_input.value)).props("unelevated color=positive dense")
 
         flips = store.list()
         if not flips:
@@ -77,14 +105,39 @@ class FlipperPanel:
             p = store.get_price(f.id)
             rows.append(self._row_data(f, p))
 
-        liquid = [r for r in rows if r["liquid"]]
-        illiquid = [r for r in rows if not r["liquid"]]
+        liquid_en = [r for r in rows if r["liquid"] and r["flip"].enabled]
+        liquid_dis = [r for r in rows if r["liquid"] and not r["flip"].enabled]
+        illiquid_en = [r for r in rows if not r["liquid"] and r["flip"].enabled]
+        illiquid_dis = [r for r in rows if not r["liquid"] and not r["flip"].enabled]
 
-        if liquid:
-            self._sort_rows(liquid)
-            self._build_section("Liquid", liquid)
-        if illiquid:
-            self._build_section("Illiquid", illiquid)
+        if liquid_en:
+            self._sort_rows(liquid_en)
+            self._build_section("Liquid", liquid_en)
+        if illiquid_en:
+            self._sort_rows(illiquid_en)
+            self._build_section("Illiquid", illiquid_en)
+        disabled = liquid_dis + illiquid_dis
+        if disabled:
+            self._sort_rows(disabled)
+            self._build_section("Disabled", disabled, muted=True)
+
+    def _toggle(self, flip, value):
+        flip.enabled = value
+        store.put(flip)
+        self._rebuild()
+
+    def _open_solver(self):
+        self._solver_status = "Opening browser..."
+        poesessid = Path("ignore/POESESSID").read_text().strip()
+        threading.Thread(target=self._solver_thread, args=(poesessid,), daemon=True).start()
+
+    def _solver_thread(self, poesessid):
+        try:
+            _pricer._client.solve_challenge()
+            _pricer.resume_after_cloudflare("")
+            self._solver_status = ""
+        except Exception:
+            self._solver_status = "Timed out — paste cookie manually"
 
     def _row_data(self, f: Flip, p: dict | None) -> dict:
         cost = None
@@ -109,20 +162,23 @@ class FlipperPanel:
             "profit": profit,
             "pct": profit_pct,
             "liquid": liquid,
+            "fetched_at": p.get("fetched_at") if p else None,
         }
 
     def _sort_rows(self, rows: list[dict]):
         key = self._sort_by
         rows.sort(key=lambda r: (r.get(key) is None, r.get(key) or 0), reverse=not self._sort_asc)
 
-    def _build_section(self, title: str, rows: list[dict]):
-        ui.label(title).classes("text-weight-bold text-caption mt-4")
+    def _build_section(self, title: str, rows: list[dict], muted: bool = False):
+        cls = "text-grey-5" if muted else ""
+        ui.label(title).classes(f"text-weight-bold text-caption mt-4 {cls}")
         self._build_header()
         for r in rows:
             self._build_row(r)
 
     def _build_header(self):
         with ui.row().classes("items-center gap-2 w-full text-weight-bold text-caption"):
+            ui.label("").classes("w-[30px]")
             ui.label("Name").classes("w-[200px]")
             for col in COLS[1:]:
                 text = col["label"]
@@ -134,7 +190,22 @@ class FlipperPanel:
     def _build_row(self, r: dict):
         f = r["flip"]
         name = f.name or "[Unnamed]"
-        with ui.row().classes("items-center gap-2 w-full"):
+        row_cls = "text-grey-5" if not f.enabled else ""
+        freshness = None
+        fa = r.get("fetched_at")
+        if fa:
+            try:
+                dt = datetime.strptime(fa, "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
+                age_h = (datetime.now(timezone.utc) - dt).total_seconds() / 3600
+                t = min(age_h / 4.0, 1.0)
+                hue = int(120 * (1 - t))
+                freshness = (hue, age_h)
+            except ValueError:
+                pass
+        with ui.row().classes(f"items-center gap-2 w-full {row_cls}"):
+            if f.notes:
+                ui.tooltip(f.notes)
+            ui.checkbox(value=f.enabled, on_change=lambda e, f=f: self._toggle(f, e.value)).props("dense").classes("w-[30px]")
             with ui.row().classes("items-center gap-1 w-[200px]"):
                 ui.label(name).classes("font-mono text-caption")
                 if f.source_type == "ninja" or f.target_type == "ninja":
@@ -142,7 +213,14 @@ class FlipperPanel:
             ui.label(self._fmt_cost(r)).classes("w-[70px] font-mono text-caption")
             ui.label(self._fmt_profit(r)).classes(f"w-[70px] font-mono text-caption {self._profit_class(r)}")
             ui.label(self._fmt_pct(r)).classes(f"w-[70px] font-mono text-caption {self._profit_class(r)}")
-            ui.button(icon="refresh", on_click=lambda f=f: _pricer.enqueue(f.id)).props("flat dense size=sm")
+            if freshness:
+                hue, age_h = freshness
+                btn = ui.button(icon="refresh", on_click=lambda f=f: _pricer.enqueue(f.id, front=True)).props("dense size=sm")
+                btn.style(f"background: hsl({hue}, 55%, 40%) !important; color: white !important;")
+                with btn:
+                    ui.tooltip(f"{age_h:.1f}h old")
+            else:
+                ui.button(icon="refresh", on_click=lambda f=f: _pricer.enqueue(f.id, front=True)).props("flat dense size=sm")
             ui.button(icon="edit", on_click=lambda f=f: self._edit(f)).props("flat dense size=sm")
             ui.button(icon="delete", on_click=lambda f=f: self._delete(f)).props("flat dense size=sm text-negative")
 
@@ -182,10 +260,6 @@ class FlipperPanel:
             return "text-grey-6"
         return "text-positive" if r["profit"] >= 0 else "text-negative"
 
-    def _set_league(self, e):
-        set_meta("flipper_league", e.value.strip())
-        _pricer.set_league(e.value.strip())
-
     def _create(self):
         self._editing = None
         self._show_form(Flip())
@@ -194,7 +268,7 @@ class FlipperPanel:
         self._editing = flip
         draft = Flip(
             name=flip.name,
-            league=flip.league,
+
             source_type=flip.source_type,
             source_queries=list(flip.source_queries),
             source_ninja_item=flip.source_ninja_item,
@@ -205,6 +279,8 @@ class FlipperPanel:
             target_ninja_type=flip.target_ninja_type,
             multiplier=flip.multiplier,
             cost=flip.cost,
+            enabled=flip.enabled,
+            notes=flip.notes,
         )
         self._show_form(draft)
 
@@ -214,7 +290,7 @@ class FlipperPanel:
 
     def _show_form(self, draft: Flip):
         self._form_open = True
-        all_items = _ninja.item_options(_league())
+        all_items = _ninja.item_options(read_league())
         ninja_types = ["DivinationCard", "Currency"]
 
         def _ninja_opts(filter_type: str) -> dict[str, str]:
@@ -250,6 +326,7 @@ class FlipperPanel:
             ui.label("New flip" if self._editing is None else "Edit flip").classes("text-h6")
             name_input = ui.input("Flip name", value=draft.name).classes("w-full")
             name_error = ui.label("Name is required").classes("text-negative text-caption").set_visibility(False)
+            notes_input = ui.textarea("Notes", value=draft.notes).classes("w-full").props("rows=2")
 
             with ui.row().classes("items-center gap-4 w-full"):
                 with ui.column().classes("flex-1"):
@@ -345,6 +422,7 @@ class FlipperPanel:
                 name_error.set_visibility(False)
                 draft.multiplier = multiplier.value
                 draft.cost = int(cost_input.value or 0)
+                draft.notes = notes_input.value.strip()
                 if draft.source_type == "query":
                     src = [_extract_query(i.value) for i in src_inputs if i.value.strip()]
                     draft.source_queries = [q for q, _ in src]
@@ -365,6 +443,7 @@ class FlipperPanel:
                     draft.id = self._editing.id
                     draft.created_at = self._editing.created_at
                 store.put(draft)
+                _pricer.enqueue(draft.id)
                 _close()
                 self._rebuild()
 
