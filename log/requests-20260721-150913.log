@@ -1,0 +1,157 @@
+15:09:13.869  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:13.870  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639343.870
+15:09:13.870  RESP  POST /api/trade/search/Standard → 429  0.000s  delay=0.000 min_gap=1.000 last=1784639353.870
+15:09:13.870  BODY  req=(none)
+15:09:13.870  BODY  resp=
+15:09:13.870  !! 429 ! headers={'Server': 'cloudflare'}  state_delay=0.000 state_min_gap=1.000 state_last=1784639353.870
+15:09:13.870  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:13.870  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639343.871
+15:09:13.870  PARSE Account 1:5:60 → 1.500s/req pen=60s (used=0)  delay 0.000→2.500  min_gap→0  max_usage=0%
+15:09:13.870  RAW   X-Rate-Limit-Rules: Account
+15:09:13.870  RAW   X-Rate-Limit-Account: 1:5:60
+15:09:13.870  RESP  POST /api/trade/search/Standard → 429  0.000s  delay=2.500 min_gap=0.000 last=1784639353.871
+15:09:13.870  BODY  req=(none)
+15:09:13.870  BODY  resp=
+15:09:13.870  !! 429 ! headers={'X-Rate-Limit-Rules': 'Account', 'X-Rate-Limit-Account': '1:5:60'}  state_delay=2.500 state_min_gap=0.000 state_last=1784639353.871
+15:09:13.870  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:13.871  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639353.871
+15:09:13.871  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:14.871  PARSE Account 1:1:1 → 0.300s/req pen=1s (used=0)  delay 0.000→1.300  min_gap→0  max_usage=0%
+15:09:14.871  RAW   X-Rate-Limit-Rules: Account
+15:09:14.871  RAW   X-Rate-Limit-Account: 1:1:1
+15:09:14.871  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=1.300 min_gap=0.000 last=1784639354.871
+15:09:14.871  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:14.871  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639354.871
+15:09:14.871  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:14.871  PARSE Account 3:5:60 → 0.500s/req pen=60s (used=0)  delay 0.000→1.500  min_gap→0  max_usage=0%
+15:09:14.871  RAW   X-Rate-Limit-Rules: Account
+15:09:14.871  RAW   X-Rate-Limit-Account: 3:5:60
+15:09:14.871  RESP  POST /api/trade/search/Standard → 200  0.000s  delay=1.500 min_gap=0.000 last=1784639354.872
+15:09:14.871  PRE   GET /api/trade/fetch/a  delay=1.500 min_gap=0.000 last=1784639354.872
+15:09:14.871  ENF   delay=1.500 min_gap=0.000 jitter=0.000 gap=1.500 since_last=0.000 sleep=1.500
+15:09:14.871  PARSE Account 3:5:60 → 0.500s/req pen=60s (used=0)  delay 1.500→1.500  min_gap→0  max_usage=0%
+15:09:14.871  RAW   X-Rate-Limit-Rules: Account
+15:09:14.871  RAW   X-Rate-Limit-Account: 3:5:60
+15:09:14.871  RESP  GET /api/trade/fetch/a → 200  0.000s  delay=1.500 min_gap=0.000 last=1784639354.872
+15:09:14.871  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:14.872  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=990.000
+15:09:14.872  RESP  POST /api/trade/search/Standard → 200  0.000s  delay=0.000 min_gap=1.000 last=1000.000
+15:09:14.872  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1000.000
+15:09:14.872  ENF   delay=0.000 min_gap=1.000 jitter=2.000 gap=3.000 since_last=0.000 sleep=3.000
+15:09:14.872  RESP  POST /api/trade/search/Standard → 200  3.000s  delay=0.000 min_gap=1.000 last=1003.000
+15:09:14.872  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1003.000
+15:09:14.872  ENF   delay=0.000 min_gap=1.000 jitter=2.000 gap=3.000 since_last=0.000 sleep=3.000
+15:09:14.872  PARSE Account 3:5:60 → 0.500s/req pen=60s (used=0)  delay 0.000→1.500  min_gap→0  max_usage=0%
+15:09:14.872  RAW   X-Rate-Limit-Rules: Account
+15:09:14.872  RAW   X-Rate-Limit-Account: 3:5:60
+15:09:14.872  RESP  POST /api/trade/search/Standard → 200  3.000s  delay=1.500 min_gap=0.000 last=1006.000
+15:09:14.872  PRE   POST /api/trade/search/Standard  delay=1.500 min_gap=0.000 last=1006.000
+15:09:14.872  ENF   delay=1.500 min_gap=0.000 jitter=2.000 gap=3.500 since_last=0.000 sleep=3.500
+15:09:14.872  PARSE Account 3:5:60 → 0.500s/req pen=60s (used=0)  delay 1.500→1.500  min_gap→0  max_usage=0%
+15:09:14.872  RAW   X-Rate-Limit-Rules: Account
+15:09:14.872  RAW   X-Rate-Limit-Account: 3:5:60
+15:09:14.872  RESP  POST /api/trade/search/Standard → 200  3.500s  delay=1.500 min_gap=0.000 last=1009.500
+15:09:14.872  PRE   POST /api/trade/search/Standard  delay=1.500 min_gap=0.000 last=1009.500
+15:09:14.872  ENF   delay=1.500 min_gap=0.000 jitter=2.000 gap=3.500 since_last=0.000 sleep=3.500
+15:09:14.872  PARSE Ip 60:300:1800 → 1.500s/req pen=1800s (used=0)  delay 1.500→2.500  min_gap→0  max_usage=0%
+15:09:14.872  RAW   X-Rate-Limit-Rules: Ip
+15:09:14.872  RAW   X-Rate-Limit-Ip: 60:300:1800
+15:09:14.872  RESP  POST /api/trade/search/Standard → 200  3.500s  delay=2.500 min_gap=0.000 last=1013.000
+15:09:14.872  PRE   POST /api/trade/search/Standard  delay=2.500 min_gap=0.000 last=1013.000
+15:09:14.872  ENF   delay=2.500 min_gap=0.000 jitter=2.000 gap=4.500 since_last=0.000 sleep=4.500
+15:09:14.872  PARSE Ip 60:300:1800 → 1.500s/req pen=1800s (used=0)  delay 2.500→2.500  min_gap→0  max_usage=0%
+15:09:14.872  RAW   X-Rate-Limit-Rules: Ip
+15:09:14.872  RAW   X-Rate-Limit-Ip: 60:300:1800
+15:09:14.872  RESP  POST /api/trade/search/Standard → 200  4.500s  delay=2.500 min_gap=0.000 last=1017.500
+15:09:14.872  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:14.872  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639354.873
+15:09:14.872  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:15.872  PARSE Ip 60:300:1800 → 6.250s/req pen=1800s (used=30)  delay 0.000→7.250  min_gap→0  max_usage=50%
+15:09:15.872  RAW   X-Rate-Limit-Rules: Ip
+15:09:15.872  RAW   X-Rate-Limit-Ip: 60:300:1800
+15:09:15.872  RAW   X-Rate-Limit-Ip-State: 30:300:0
+15:09:15.872  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=7.250 min_gap=0.000 last=1784639355.873
+15:09:15.872  PRE   POST /api/trade/search/Standard  delay=7.250 min_gap=0.000 last=1784639355.873
+15:09:15.872  ENF   delay=7.250 min_gap=0.000 jitter=0.000 gap=7.250 since_last=0.000 sleep=7.250
+15:09:23.122  PARSE Ip 60:300:1800 → 2.875s/req pen=1800s (used=3)  delay 7.250→3.875  min_gap→0  max_usage=5%
+15:09:23.122  RAW   X-Rate-Limit-Rules: Ip
+15:09:23.122  RAW   X-Rate-Limit-Ip: 60:300:1800
+15:09:23.122  RAW   X-Rate-Limit-Ip-State: 3:300:0
+15:09:23.123  RESP  POST /api/trade/search/Standard → 200  7.250s  delay=3.875 min_gap=0.000 last=1784639363.123
+15:09:23.123  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:23.123  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639363.123
+15:09:23.123  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:24.123  PARSE Ip 60:300:1800 → 1.500s/req pen=1800s (used=0)  delay 0.000→2.500  min_gap→0  max_usage=0%
+15:09:24.123  RAW   X-Rate-Limit-Rules: Ip
+15:09:24.123  RAW   X-Rate-Limit-Ip: 60:300:1800
+15:09:24.123  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=2.500 min_gap=0.000 last=1784639364.123
+15:09:24.123  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:24.123  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639364.123
+15:09:24.123  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:24.123  RESP  POST /api/trade/search/Standard → 200  0.000s  delay=0.000 min_gap=1.000 last=1784639364.124
+15:09:24.123  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639364.124
+15:09:24.123  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:24.123  RESP  POST /api/trade/search/Standard → 200  0.000s  delay=0.000 min_gap=1.000 last=1784639364.124
+15:09:24.124  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:24.124  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639364.124
+15:09:24.124  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:25.124  PARSE Account 3:5:60 → 0.500s/req pen=60s (used=0)  delay 0.000→1.500  min_gap→0  max_usage=0%
+15:09:25.124  RAW   X-Rate-Limit-Rules: Account
+15:09:25.124  RAW   X-Rate-Limit-Account: 3:5:60
+15:09:25.124  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=1.500 min_gap=0.000 last=1784639365.124
+15:09:25.124  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:25.124  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639365.124
+15:09:25.124  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:26.124  PARSE Ip 60:300:1800 → 9.250s/req pen=1800s (used=54)  delay 0.000→10.250  min_gap→0  max_usage=90%
+15:09:26.124  BACK  set 200s backoff at 90% usage
+15:09:26.124  RAW   X-Rate-Limit-Rules: Ip
+15:09:26.124  RAW   X-Rate-Limit-Ip: 60:300:1800
+15:09:26.124  RAW   X-Rate-Limit-Ip-State: 54:300:0
+15:09:26.124  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=10.250 min_gap=0.000 last=1784639366.125
+15:09:26.124  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:26.124  LOCK  sleep=9999.000
+15:09:26.125  ENF   delay=0.010 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:26.125  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:26.125  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639366.125
+15:09:26.125  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:27.125  PARSE Ip 60:300:1800 → 3.250s/req pen=1800s (used=6)  delay 0.000→4.250  min_gap→0  max_usage=10%
+15:09:27.125  RAW   X-Rate-Limit-Rules: Ip
+15:09:27.125  RAW   X-Rate-Limit-Ip: 60:300:1800
+15:09:27.125  RAW   X-Rate-Limit-Ip-State: 6:300:0
+15:09:27.125  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=4.250 min_gap=0.000 last=1784639367.126
+15:09:27.125  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:27.125  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639367.126
+15:09:27.125  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:28.125  PARSE Account 3:5:60 → 0.500s/req pen=60s (used=0)  delay 0.000→1.500  min_gap→0  max_usage=0%
+15:09:28.125  RAW   X-Rate-Limit-Rules: Account
+15:09:28.125  RAW   X-Rate-Limit-Account: 3:5:60
+15:09:28.125  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=1.500 min_gap=0.000 last=1784639368.126
+15:09:28.126  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:28.126  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639368.126
+15:09:28.126  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:29.126  PARSE Ip 8:10:60 → 0.375s/req pen=60s (used=0); Ip 15:60:120 → 1.200s/req pen=120s (used=0); Ip 60:300:1800 → 1.500s/req pen=1800s (used=0)  delay 0.000→2.500  min_gap→0  max_usage=0%
+15:09:29.126  RAW   X-Rate-Limit-Rules: Ip
+15:09:29.126  RAW   X-Rate-Limit-Ip: 8:10:60,15:60:120,60:300:1800
+15:09:29.126  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=2.500 min_gap=0.000 last=1784639369.126
+15:09:29.126  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:29.126  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639369.126
+15:09:29.126  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:30.126  PARSE Account 3:5:60 → 2.500s/req pen=60s (used=2); Ip 15:60:120 → 3.200s/req pen=120s (used=3)  delay 0.000→4.200  min_gap→0  max_usage=20%
+15:09:30.126  RAW   X-Rate-Limit-Rules: Account,Ip
+15:09:30.126  RAW   X-Rate-Limit-Account: 3:5:60
+15:09:30.126  RAW   X-Rate-Limit-Account-State: 2:5:0
+15:09:30.126  RAW   X-Rate-Limit-Ip: 15:60:120
+15:09:30.126  RAW   X-Rate-Limit-Ip-State: 3:60:0
+15:09:30.126  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=4.200 min_gap=0.000 last=1784639370.127
+15:09:30.126  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:30.126  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639370.127
+15:09:30.126  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:31.126  PARSE Account 3:5:60 → 0.500s/req pen=60s (used=0); Ip 60:300:1800 → 1.500s/req pen=1800s (used=0)  delay 0.000→2.500  min_gap→0  max_usage=0%
+15:09:31.126  RAW   X-Rate-Limit-Rules: Account,Ip
+15:09:31.126  RAW   X-Rate-Limit-Account: 3:5:60
+15:09:31.127  RAW   X-Rate-Limit-Ip: 60:300:1800
+15:09:31.127  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=2.500 min_gap=0.000 last=1784639371.127
+15:09:31.127  INIT  user_agent=test/0.1.0 delay=0.0 min_gap=1.0
+15:09:31.127  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784639371.127
+15:09:31.127  ENF   delay=0.000 min_gap=1.000 jitter=0.000 gap=1.000 since_last=0.000 sleep=1.000
+15:09:32.127  RESP  POST /api/trade/search/Standard → 200  1.000s  delay=0.000 min_gap=1.000 last=1784639372.127

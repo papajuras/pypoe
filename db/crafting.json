@@ -5,20 +5,27 @@
     ],
     "suffixes": [
       " "
-    ]
+    ],
+    "item_type": "Ring",
+    "use_regal": false,
+    "exalt_after_regal": false
   },
   "test": {
     "prefixes": [
       " "
     ],
     "suffixes": [
-      "of the Gods",
-      "of the Titan",
-      "of the Leviathan"
+      "of the Lizard",
+      "of the Hydra",
+      "of Ryslatha"
     ],
     "item_type": "2H Sword",
     "use_regal": false,
     "exalt_after_regal": false
   },
-  "_selected": "test"
+  "_selected": "test",
+  "_flipper_quality_27": true,
+  "_flipper_quality_28": true,
+  "_flipper_quality_29": true,
+  "_flipper_quality_30": true
 }

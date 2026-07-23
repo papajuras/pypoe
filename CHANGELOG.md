@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.2.0] - 2026-07-23
+
+### Added
+
+- **Stale section** — Flips with no price data or data older than 4 hours
+  are grouped in a muted "Stale" section at the bottom of the flip panel
+- **Rate limit persistence** — Rate limit labels persist across API calls
+  keyed by tier (e.g. `ip/10s`, `ip/60s`, `ip/300s`), never flicker or grow
+- **Last sleep indicator** — Most recent enforced API cooldown shown in
+  the rate limit header row
+- **Actions column cleanup** — Header label no longer wraps to next line
+
+### Changed
+
+- **Project structure** — Source code moved to `src/pypoe/` layout with
+  `main.py` as the root entry point; `crafting/`, `db/`, `flipper/`,
+  `config.py`, `tray.py`, `window.py` live under `src/pypoe/`
+- **Api jitter halved** — Rate limiting jitter reduced from 2–5s to 1.0–2.5s
+  for faster throughput
+
+### Fixed
+
+- **White screen on startup** — Native window now renders correctly with
+  the restructured project layout
+
 ## [0.1.0] - 2026-07-23
 
 ### Added

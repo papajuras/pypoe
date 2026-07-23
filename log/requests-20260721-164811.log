@@ -1,0 +1,1056 @@
+16:48:11.536  INIT  user_agent=OAuth pypoe/0.1.0 (flipper) delay=0.0 min_gap=1.0
+16:48:11.538  PRE   POST /api/trade/search/Standard  delay=0.000 min_gap=1.000 last=1784645291.536
+16:48:11.538  ENF   delay=0.000 min_gap=1.000 jitter=4.304 gap=5.304 since_last=0.002 sleep=5.302
+16:48:17.163  PARSE Account 3:5:60 → 2.500s/req pen=60s (used=2); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 2.800s/req pen=120s (used=2); Ip 60:300:1800 → 3.875s/req pen=1800s (used=11)  delay 0.000→4.875  min_gap→0  max_usage=18%
+16:48:17.163  RAW   content-type: application/json
+16:48:17.163  RAW   x-rate-limit-policy: trade-search-request-limit
+16:48:17.163  RAW   x-rate-limit-rules: Account,Ip
+16:48:17.164  RAW   x-rate-limit-account: 3:5:60
+16:48:17.164  RAW   x-rate-limit-account-state: 2:5:0
+16:48:17.164  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:48:17.164  RAW   x-rate-limit-ip-state: 2:10:0,2:60:0,11:300:0
+16:48:17.164  RAW   cf-cache-status: DYNAMIC
+16:48:17.164  RAW   cf-ray: a1eb017168116368-WAW
+16:48:17.164  RESP  POST /api/trade/search/Standard → 200  5.625s  delay=4.875 min_gap=0.000 last=1784645297.164
+16:48:17.164  PRE   GET /api/trade/fetch/a68d37a44ea07709d0d17a2eb1d9ecae8fffe1fa328266a2acea7bbe70e1abfc%2C5b19ad542021d678a7210bb7900edbcf334374ddd87a9ee63f179055b7089019%2Cc65bf7ca23c0797f36f4d13af634fa12775a148736e99e8a0ce3a0ba4849ff3b%2Cefc1579c9862b03a7bddae0145fcce67584ebf4a77f43612037a1a50141d9a2f%2C379530ea5c43fa6367cb7753ec432e91a48f42adecb7c8abf0b4a5442d140ee2  delay=4.875 min_gap=0.000 last=1784645297.164
+16:48:17.164  ENF   delay=4.875 min_gap=0.000 jitter=2.369 gap=7.244 since_last=0.000 sleep=7.244
+16:48:24.683  PARSE Account 6:4:10 → 0.667s/req pen=10s (used=2); Ip 12:4:60 → 0.250s/req pen=60s (used=2); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 4.875→1.667  min_gap→0  max_usage=0%
+16:48:24.683  RAW   content-type: application/json
+16:48:24.683  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:48:24.683  RAW   x-rate-limit-rules: Account,Ip
+16:48:24.683  RAW   x-rate-limit-account: 6:4:10
+16:48:24.683  RAW   x-rate-limit-account-state: 2:4:0
+16:48:24.683  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:48:24.683  RAW   x-rate-limit-ip-state: 2:4:0,2:12:0
+16:48:24.683  RAW   cf-cache-status: DYNAMIC
+16:48:24.683  RAW   cf-ray: a1eb01a09c4d6368-WAW
+16:48:24.683  RESP  GET /api/trade/fetch/a68d37a44ea07709d0d17a2eb1d9ecae8fffe1fa328266a2acea7bbe70e1abfc%2C5b19ad542021d678a7210bb7900edbcf334374ddd87a9ee63f179055b7089019%2Cc65bf7ca23c0797f36f4d13af634fa12775a148736e99e8a0ce3a0ba4849ff3b%2Cefc1579c9862b03a7bddae0145fcce67584ebf4a77f43612037a1a50141d9a2f%2C379530ea5c43fa6367cb7753ec432e91a48f42adecb7c8abf0b4a5442d140ee2 → 200  7.519s  delay=1.667 min_gap=0.000 last=1784645304.684
+16:48:24.683  PRE   POST /api/trade/search/Standard  delay=1.667 min_gap=0.000 last=1784645304.684
+16:48:24.684  ENF   delay=1.667 min_gap=0.000 jitter=2.515 gap=4.182 since_last=0.000 sleep=4.182
+16:48:29.147  PARSE Account 3:5:60 → 2.500s/req pen=60s (used=2); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 3.600s/req pen=120s (used=4); Ip 60:300:1800 → 4.125s/req pen=1800s (used=13)  delay 1.667→5.125  min_gap→0  max_usage=27%
+16:48:29.148  RAW   content-type: application/json
+16:48:29.148  RAW   x-rate-limit-policy: trade-search-request-limit
+16:48:29.148  RAW   x-rate-limit-rules: Account,Ip
+16:48:29.148  RAW   x-rate-limit-account: 3:5:60
+16:48:29.148  RAW   x-rate-limit-account-state: 2:5:0
+16:48:29.148  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:48:29.148  RAW   x-rate-limit-ip-state: 2:10:0,4:60:0,13:300:0
+16:48:29.148  RAW   cf-cache-status: DYNAMIC
+16:48:29.148  RAW   cf-ray: a1eb01bc78ee6368-WAW
+16:48:29.148  RESP  POST /api/trade/search/Standard → 200  4.464s  delay=5.125 min_gap=0.000 last=1784645309.148
+16:48:29.148  PRE   GET /api/trade/fetch/2c244467a2f9bbc1fe8044d6dac03a0ca9fb1d991f428d601658a76478903346%2Ceea966629ad153df419746417d0e4630a7be3868138b3d27c949875475570cf7%2Cca8635f64d5f687a51b21b5175dfa23c1a0f5e724a19a3872563d33de32ff1bb%2C351d93d772230997ecd7407a0da3f456cf8bfa69685eee25df214740d092812d%2Cdf5d934381d2d37e864c050a35e5861fdf8c8b8e2c418a041e1dc0230d09d6a6  delay=5.125 min_gap=0.000 last=1784645309.148
+16:48:29.148  ENF   delay=5.125 min_gap=0.000 jitter=3.641 gap=8.766 since_last=0.000 sleep=8.766
+16:48:38.185  PARSE Account 6:4:10 → 0.667s/req pen=10s (used=2); Ip 12:4:60 → 0.250s/req pen=60s (used=2); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 5.125→1.667  min_gap→0  max_usage=0%
+16:48:38.185  RAW   content-type: application/json
+16:48:38.185  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:48:38.185  RAW   x-rate-limit-rules: Account,Ip
+16:48:38.185  RAW   x-rate-limit-account: 6:4:10
+16:48:38.185  RAW   x-rate-limit-account-state: 2:4:0
+16:48:38.185  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:48:38.185  RAW   x-rate-limit-ip-state: 2:4:0,2:12:0
+16:48:38.185  RAW   cf-cache-status: DYNAMIC
+16:48:38.185  RAW   cf-ray: a1eb01f50a036368-WAW
+16:48:38.185  RESP  GET /api/trade/fetch/2c244467a2f9bbc1fe8044d6dac03a0ca9fb1d991f428d601658a76478903346%2Ceea966629ad153df419746417d0e4630a7be3868138b3d27c949875475570cf7%2Cca8635f64d5f687a51b21b5175dfa23c1a0f5e724a19a3872563d33de32ff1bb%2C351d93d772230997ecd7407a0da3f456cf8bfa69685eee25df214740d092812d%2Cdf5d934381d2d37e864c050a35e5861fdf8c8b8e2c418a041e1dc0230d09d6a6 → 200  9.037s  delay=1.667 min_gap=0.000 last=1784645318.185
+16:48:38.211  PRE   POST /api/trade/search/Standard  delay=1.667 min_gap=0.000 last=1784645318.185
+16:48:38.211  ENF   delay=1.667 min_gap=0.000 jitter=4.144 gap=5.811 since_last=0.027 sleep=5.784
+16:48:44.272  PARSE Account 3:5:60 → 2.500s/req pen=60s (used=2); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 4.375s/req pen=1800s (used=15)  delay 1.667→5.400  min_gap→0  max_usage=40%
+16:48:44.272  RAW   content-type: application/json
+16:48:44.272  RAW   x-rate-limit-policy: trade-search-request-limit
+16:48:44.272  RAW   x-rate-limit-rules: Account,Ip
+16:48:44.272  RAW   x-rate-limit-account: 3:5:60
+16:48:44.272  RAW   x-rate-limit-account-state: 2:5:0
+16:48:44.272  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:48:44.272  RAW   x-rate-limit-ip-state: 2:10:0,6:60:0,15:300:0
+16:48:44.272  RAW   cf-cache-status: DYNAMIC
+16:48:44.272  RAW   cf-ray: a1eb021b0ee06368-WAW
+16:48:44.272  RESP  POST /api/trade/search/Standard → 200  6.061s  delay=5.400 min_gap=0.000 last=1784645324.273
+16:48:44.272  PRE   GET /api/trade/fetch/a68d37a44ea07709d0d17a2eb1d9ecae8fffe1fa328266a2acea7bbe70e1abfc%2C5b19ad542021d678a7210bb7900edbcf334374ddd87a9ee63f179055b7089019%2C379530ea5c43fa6367cb7753ec432e91a48f42adecb7c8abf0b4a5442d140ee2%2Cc65bf7ca23c0797f36f4d13af634fa12775a148736e99e8a0ce3a0ba4849ff3b%2C89c8c36d16f71620960f0334654349a205c0b416ca80be9d3c90a8a4b0e1cbe5  delay=5.400 min_gap=0.000 last=1784645324.273
+16:48:44.272  ENF   delay=5.400 min_gap=0.000 jitter=4.559 gap=9.959 since_last=0.000 sleep=9.959
+16:48:54.500  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 5.400→1.516  min_gap→0  max_usage=0%
+16:48:54.500  RAW   content-type: application/json
+16:48:54.500  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:48:54.500  RAW   x-rate-limit-rules: Account,Ip
+16:48:54.500  RAW   x-rate-limit-account: 6:4:10
+16:48:54.500  RAW   x-rate-limit-account-state: 1:4:0
+16:48:54.500  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:48:54.500  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:48:54.500  RAW   cf-cache-status: DYNAMIC
+16:48:54.500  RAW   cf-ray: a1eb025afec96368-WAW
+16:48:54.500  RESP  GET /api/trade/fetch/a68d37a44ea07709d0d17a2eb1d9ecae8fffe1fa328266a2acea7bbe70e1abfc%2C5b19ad542021d678a7210bb7900edbcf334374ddd87a9ee63f179055b7089019%2C379530ea5c43fa6367cb7753ec432e91a48f42adecb7c8abf0b4a5442d140ee2%2Cc65bf7ca23c0797f36f4d13af634fa12775a148736e99e8a0ce3a0ba4849ff3b%2C89c8c36d16f71620960f0334654349a205c0b416ca80be9d3c90a8a4b0e1cbe5 → 200  10.227s  delay=1.516 min_gap=0.000 last=1784645334.500
+16:48:54.500  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645334.501
+16:48:54.500  ENF   delay=1.516 min_gap=0.000 jitter=2.738 gap=4.254 since_last=0.000 sleep=4.254
+16:48:59.033  PARSE Account 3:5:60 → 2.500s/req pen=60s (used=2); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.200s/req pen=120s (used=8); Ip 60:300:1800 → 4.625s/req pen=1800s (used=17)  delay 1.516→6.200  min_gap→0  max_usage=53%
+16:48:59.033  RAW   content-type: application/json
+16:48:59.033  RAW   x-rate-limit-policy: trade-search-request-limit
+16:48:59.033  RAW   x-rate-limit-rules: Account,Ip
+16:48:59.033  RAW   x-rate-limit-account: 3:5:60
+16:48:59.033  RAW   x-rate-limit-account-state: 2:5:0
+16:48:59.033  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:48:59.033  RAW   x-rate-limit-ip-state: 2:10:0,8:60:0,17:300:0
+16:48:59.033  RAW   cf-cache-status: DYNAMIC
+16:48:59.033  RAW   cf-ray: a1eb02774a9c6368-WAW
+16:48:59.033  RESP  POST /api/trade/search/Standard → 200  4.533s  delay=6.200 min_gap=0.000 last=1784645339.034
+16:48:59.033  PRE   GET /api/trade/fetch/2c244467a2f9bbc1fe8044d6dac03a0ca9fb1d991f428d601658a76478903346%2C6d2040dc5e2229d68fdcd2b43fc1fbd78f46c7136ff2b80b1a56da2908e4e16e%2C23837e984ce863868ae028982e3022a56e152036627499899094ad7a478a5080%2C23ae2cf245dc7669f1ddc5f199eb1e6eb8907abd21f89c4c995138d416a81b33%2C02ed028d512cc9346fd3d868329bb8ba4aa7cf416de42ae4b546734ce5f279fa  delay=6.200 min_gap=0.000 last=1784645339.034
+16:48:59.033  ENF   delay=6.200 min_gap=0.000 jitter=4.679 gap=10.879 since_last=0.000 sleep=10.879
+16:49:10.175  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 6.200→1.516  min_gap→0  max_usage=0%
+16:49:10.175  RAW   content-type: application/json
+16:49:10.175  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:49:10.176  RAW   x-rate-limit-rules: Account,Ip
+16:49:10.176  RAW   x-rate-limit-account: 6:4:10
+16:49:10.176  RAW   x-rate-limit-account-state: 1:4:0
+16:49:10.176  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:49:10.176  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:49:10.176  RAW   cf-cache-status: DYNAMIC
+16:49:10.176  RAW   cf-ray: a1eb02bcf9496368-WAW
+16:49:10.176  RESP  GET /api/trade/fetch/2c244467a2f9bbc1fe8044d6dac03a0ca9fb1d991f428d601658a76478903346%2C6d2040dc5e2229d68fdcd2b43fc1fbd78f46c7136ff2b80b1a56da2908e4e16e%2C23837e984ce863868ae028982e3022a56e152036627499899094ad7a478a5080%2C23ae2cf245dc7669f1ddc5f199eb1e6eb8907abd21f89c4c995138d416a81b33%2C02ed028d512cc9346fd3d868329bb8ba4aa7cf416de42ae4b546734ce5f279fa → 200  11.142s  delay=1.516 min_gap=0.000 last=1784645350.176
+16:49:10.203  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645350.176
+16:49:10.203  ENF   delay=1.516 min_gap=0.000 jitter=3.299 gap=4.814 since_last=0.027 sleep=4.787
+16:49:15.274  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 3.875s/req pen=1800s (used=11)  delay 1.516→5.400  min_gap→0  max_usage=40%
+16:49:15.274  RAW   content-type: application/json
+16:49:15.274  RAW   x-rate-limit-policy: trade-search-request-limit
+16:49:15.274  RAW   x-rate-limit-rules: Account,Ip
+16:49:15.274  RAW   x-rate-limit-account: 3:5:60
+16:49:15.274  RAW   x-rate-limit-account-state: 1:5:0
+16:49:15.274  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:49:15.274  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,11:300:0
+16:49:15.274  RAW   cf-cache-status: DYNAMIC
+16:49:15.274  RAW   cf-ray: a1eb02dcb9d76368-WAW
+16:49:15.274  RESP  POST /api/trade/search/Standard → 200  5.071s  delay=5.400 min_gap=0.000 last=1784645355.274
+16:49:15.274  PRE   GET /api/trade/fetch/7f9ee6fd40b19b0c73ce31132cdfd55361c9186d96976f76e49556b966913d5c%2Cc639595f3ab6e3cf3df89796979b5998fdfb6fef58db72525468beb4437add92%2C872870360fd88bdb1f45d5c0776eb7e9c51e2ada6b9d24825be5fdd507b63680%2Ca7435d7e76fbd06aec4ed05d2e2af78f215f880ae2498a7c68b50930eba209e9%2C0d09cdd4363b155575b4e1c3bd88a542789e505aa4ee139cef6932c73d703421  delay=5.400 min_gap=0.000 last=1784645355.274
+16:49:15.274  ENF   delay=5.400 min_gap=0.000 jitter=3.257 gap=8.657 since_last=0.000 sleep=8.657
+16:49:24.196  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 5.400→1.516  min_gap→0  max_usage=0%
+16:49:24.196  RAW   content-type: application/json
+16:49:24.196  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:49:24.196  RAW   x-rate-limit-rules: Account,Ip
+16:49:24.196  RAW   x-rate-limit-account: 6:4:10
+16:49:24.196  RAW   x-rate-limit-account-state: 1:4:0
+16:49:24.196  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:49:24.196  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:49:24.196  RAW   cf-cache-status: DYNAMIC
+16:49:24.196  RAW   cf-ray: a1eb031498356368-WAW
+16:49:24.196  RESP  GET /api/trade/fetch/7f9ee6fd40b19b0c73ce31132cdfd55361c9186d96976f76e49556b966913d5c%2Cc639595f3ab6e3cf3df89796979b5998fdfb6fef58db72525468beb4437add92%2C872870360fd88bdb1f45d5c0776eb7e9c51e2ada6b9d24825be5fdd507b63680%2Ca7435d7e76fbd06aec4ed05d2e2af78f215f880ae2498a7c68b50930eba209e9%2C0d09cdd4363b155575b4e1c3bd88a542789e505aa4ee139cef6932c73d703421 → 200  8.922s  delay=1.516 min_gap=0.000 last=1784645364.196
+16:49:24.196  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645364.196
+16:49:24.196  ENF   delay=1.516 min_gap=0.000 jitter=2.565 gap=4.081 since_last=0.000 sleep=4.081
+16:49:28.554  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.200s/req pen=120s (used=8); Ip 60:300:1800 → 4.125s/req pen=1800s (used=13)  delay 1.516→6.200  min_gap→0  max_usage=53%
+16:49:28.554  RAW   content-type: application/json
+16:49:28.554  RAW   x-rate-limit-policy: trade-search-request-limit
+16:49:28.554  RAW   x-rate-limit-rules: Account,Ip
+16:49:28.554  RAW   x-rate-limit-account: 3:5:60
+16:49:28.554  RAW   x-rate-limit-account-state: 1:5:0
+16:49:28.554  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:49:28.554  RAW   x-rate-limit-ip-state: 2:10:0,8:60:0,13:300:0
+16:49:28.554  RAW   cf-cache-status: DYNAMIC
+16:49:28.554  RAW   cf-ray: a1eb032fcbeb6368-WAW
+16:49:28.554  RESP  POST /api/trade/search/Standard → 200  4.358s  delay=6.200 min_gap=0.000 last=1784645368.555
+16:49:28.554  PRE   GET /api/trade/fetch/02ed028d512cc9346fd3d868329bb8ba4aa7cf416de42ae4b546734ce5f279fa%2Cf42ff2deaa114d0b4f628ceeaa2276c92ea21314790b8f4a13b2328097ea024a%2Ca90818948bc60a53a1cf9e048c667ea8ccc2914f6ac4837992b35b0b77f11324%2Ce7996139a89f72be7ba54b959f2b9cb0eea2e7a9e2c0d864818c0a47a300c563%2C715f10c05dbbfdde758b3fce932e19278880355114b6aa65ddad3a7ec6e192a0  delay=6.200 min_gap=0.000 last=1784645368.555
+16:49:28.555  ENF   delay=6.200 min_gap=0.000 jitter=3.870 gap=10.070 since_last=0.000 sleep=10.070
+16:49:38.897  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 6.200→1.516  min_gap→0  max_usage=0%
+16:49:38.897  RAW   content-type: application/json
+16:49:38.897  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:49:38.897  RAW   x-rate-limit-rules: Account,Ip
+16:49:38.897  RAW   x-rate-limit-account: 6:4:10
+16:49:38.897  RAW   x-rate-limit-account-state: 1:4:0
+16:49:38.897  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:49:38.897  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:49:38.897  RAW   cf-cache-status: DYNAMIC
+16:49:38.897  RAW   cf-ray: a1eb037078386368-WAW
+16:49:38.897  RESP  GET /api/trade/fetch/02ed028d512cc9346fd3d868329bb8ba4aa7cf416de42ae4b546734ce5f279fa%2Cf42ff2deaa114d0b4f628ceeaa2276c92ea21314790b8f4a13b2328097ea024a%2Ca90818948bc60a53a1cf9e048c667ea8ccc2914f6ac4837992b35b0b77f11324%2Ce7996139a89f72be7ba54b959f2b9cb0eea2e7a9e2c0d864818c0a47a300c563%2C715f10c05dbbfdde758b3fce932e19278880355114b6aa65ddad3a7ec6e192a0 → 200  10.342s  delay=1.516 min_gap=0.000 last=1784645378.897
+16:49:38.922  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645378.897
+16:49:38.922  ENF   delay=1.516 min_gap=0.000 jitter=4.539 gap=6.054 since_last=0.026 sleep=6.029
+16:49:45.230  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 4.375s/req pen=1800s (used=15)  delay 1.516→5.400  min_gap→0  max_usage=40%
+16:49:45.230  RAW   content-type: application/json
+16:49:45.230  RAW   x-rate-limit-policy: trade-search-request-limit
+16:49:45.230  RAW   x-rate-limit-rules: Account,Ip
+16:49:45.230  RAW   x-rate-limit-account: 3:5:60
+16:49:45.230  RAW   x-rate-limit-account-state: 1:5:0
+16:49:45.230  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:49:45.230  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,15:300:0
+16:49:45.230  RAW   cf-cache-status: DYNAMIC
+16:49:45.230  RAW   cf-ray: a1eb0397f9596368-WAW
+16:49:45.230  RESP  POST /api/trade/search/Standard → 200  6.308s  delay=5.400 min_gap=0.000 last=1784645385.231
+16:49:45.230  PRE   GET /api/trade/fetch/8c1a5a1e4d12a1d88549e2521c0d29248c41c5795aa119441073f0f0ac3f236e%2Ccbbde2c018a67fe4c44ecbd16eaaa9fb3f538c927420e68a029f38d41e8b70ee%2C7ddd6471ce0031bb263963292b3354a78769fc0e089236bcf13fce9aca832dd1%2Cde3a34f618ff6a6509feb8c107680c64fd0e397fb6f5b2628babd93094489712%2C0823da12b3a8213e6cf69ec4f747b2e77f7133515135c74e0d7336ee45e1edf9  delay=5.400 min_gap=0.000 last=1784645385.231
+16:49:45.230  ENF   delay=5.400 min_gap=0.000 jitter=3.462 gap=8.862 since_last=0.000 sleep=8.862
+16:49:54.360  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 5.400→1.516  min_gap→0  max_usage=0%
+16:49:54.360  RAW   content-type: application/json
+16:49:54.360  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:49:54.360  RAW   x-rate-limit-rules: Account,Ip
+16:49:54.360  RAW   x-rate-limit-account: 6:4:10
+16:49:54.360  RAW   x-rate-limit-account-state: 1:4:0
+16:49:54.360  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:49:54.360  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:49:54.360  RAW   cf-cache-status: DYNAMIC
+16:49:54.360  RAW   cf-ray: a1eb03d11c9b6368-WAW
+16:49:54.360  RESP  GET /api/trade/fetch/8c1a5a1e4d12a1d88549e2521c0d29248c41c5795aa119441073f0f0ac3f236e%2Ccbbde2c018a67fe4c44ecbd16eaaa9fb3f538c927420e68a029f38d41e8b70ee%2C7ddd6471ce0031bb263963292b3354a78769fc0e089236bcf13fce9aca832dd1%2Cde3a34f618ff6a6509feb8c107680c64fd0e397fb6f5b2628babd93094489712%2C0823da12b3a8213e6cf69ec4f747b2e77f7133515135c74e0d7336ee45e1edf9 → 200  9.130s  delay=1.516 min_gap=0.000 last=1784645394.361
+16:49:54.360  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645394.361
+16:49:54.360  ENF   delay=1.516 min_gap=0.000 jitter=3.194 gap=4.709 since_last=0.000 sleep=4.709
+16:49:59.347  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.200s/req pen=120s (used=8); Ip 60:300:1800 → 4.625s/req pen=1800s (used=17)  delay 1.516→6.200  min_gap→0  max_usage=53%
+16:49:59.347  RAW   content-type: application/json
+16:49:59.347  RAW   x-rate-limit-policy: trade-search-request-limit
+16:49:59.347  RAW   x-rate-limit-rules: Account,Ip
+16:49:59.347  RAW   x-rate-limit-account: 3:5:60
+16:49:59.347  RAW   x-rate-limit-account-state: 1:5:0
+16:49:59.347  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:49:59.347  RAW   x-rate-limit-ip-state: 2:10:0,8:60:0,17:300:0
+16:49:59.347  RAW   cf-cache-status: DYNAMIC
+16:49:59.347  RAW   cf-ray: a1eb03f03e936368-WAW
+16:49:59.347  RESP  POST /api/trade/search/Standard → 200  4.987s  delay=6.200 min_gap=0.000 last=1784645399.348
+16:49:59.347  PRE   GET /api/trade/fetch/94efe02d13e7554ef3312a199c4e2e5583af09f3d140ede9fa00153de359b754%2Cbcead71b56baca02ebf04270a000312a9162823c5fcf31f2e541f380c5187981%2C834e3eb6dc305746cdd8379b202158d55eed164b0ce5f911a17688775c174c5a%2Cac544fc5ad803a7c41e6e6de7a2a4a791def16b5c03cd18873be9ceb811f8d1e%2C46e2c1de255dee270f9b2d8f26005305ede70867bd3e33c8dfc9008ee63b3a7d  delay=6.200 min_gap=0.000 last=1784645399.348
+16:49:59.347  ENF   delay=6.200 min_gap=0.000 jitter=3.726 gap=9.926 since_last=0.000 sleep=9.926
+16:50:09.536  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 6.200→1.516  min_gap→0  max_usage=0%
+16:50:09.536  RAW   content-type: application/json
+16:50:09.536  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:50:09.536  RAW   x-rate-limit-rules: Account,Ip
+16:50:09.536  RAW   x-rate-limit-account: 6:4:10
+16:50:09.536  RAW   x-rate-limit-account-state: 1:4:0
+16:50:09.536  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:50:09.536  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:50:09.536  RAW   cf-cache-status: DYNAMIC
+16:50:09.536  RAW   cf-ray: a1eb042ff9566368-WAW
+16:50:09.536  RESP  GET /api/trade/fetch/94efe02d13e7554ef3312a199c4e2e5583af09f3d140ede9fa00153de359b754%2Cbcead71b56baca02ebf04270a000312a9162823c5fcf31f2e541f380c5187981%2C834e3eb6dc305746cdd8379b202158d55eed164b0ce5f911a17688775c174c5a%2Cac544fc5ad803a7c41e6e6de7a2a4a791def16b5c03cd18873be9ceb811f8d1e%2C46e2c1de255dee270f9b2d8f26005305ede70867bd3e33c8dfc9008ee63b3a7d → 200  10.189s  delay=1.516 min_gap=0.000 last=1784645409.537
+16:50:09.562  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645409.537
+16:50:09.563  ENF   delay=1.516 min_gap=0.000 jitter=2.389 gap=3.905 since_last=0.026 sleep=3.879
+16:50:13.725  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.600s/req pen=120s (used=9); Ip 60:300:1800 → 4.750s/req pen=1800s (used=18)  delay 1.516→6.600  min_gap→0  max_usage=60%
+16:50:13.725  RAW   content-type: application/json
+16:50:13.725  RAW   x-rate-limit-policy: trade-search-request-limit
+16:50:13.725  RAW   x-rate-limit-rules: Account,Ip
+16:50:13.725  RAW   x-rate-limit-account: 3:5:60
+16:50:13.725  RAW   x-rate-limit-account-state: 1:5:0
+16:50:13.725  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:50:13.725  RAW   x-rate-limit-ip-state: 2:10:0,9:60:0,18:300:0
+16:50:13.725  RAW   cf-cache-status: DYNAMIC
+16:50:13.725  RAW   cf-ray: a1eb044a09e96368-WAW
+16:50:13.725  RESP  POST /api/trade/search/Standard → 200  4.162s  delay=6.600 min_gap=0.000 last=1784645413.726
+16:50:13.725  PRE   GET /api/trade/fetch/4612ffa5afc0e34a9cd153ed6885a1ab1b33728c128e5edd4f0028c5d02dfce6%2C3d9da963c90aed9d943982916ba618dcae670f28311bfcbff3330db9b21acca8%2C2b223eacd33d9319cba840cf175cddedf173f28bd5d37f2b5b30299ea774f926%2Cbaa1e87f17d714d746fe66edfadca0faadf421f4d8214bb014e6a360d4466ce1%2Cd1b9e76f4b6fd51f56caeba877b891b7b6f7ddbbe318dfaab6b23662faa97976  delay=6.600 min_gap=0.000 last=1784645413.726
+16:50:13.725  ENF   delay=6.600 min_gap=0.000 jitter=3.066 gap=9.666 since_last=0.000 sleep=9.666
+16:50:23.659  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 6.600→1.516  min_gap→0  max_usage=0%
+16:50:23.659  RAW   content-type: application/json
+16:50:23.659  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:50:23.659  RAW   x-rate-limit-rules: Account,Ip
+16:50:23.659  RAW   x-rate-limit-account: 6:4:10
+16:50:23.659  RAW   x-rate-limit-account-state: 1:4:0
+16:50:23.659  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:50:23.659  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:50:23.659  RAW   cf-cache-status: DYNAMIC
+16:50:23.659  RAW   cf-ray: a1eb048839f56368-WAW
+16:50:23.659  RESP  GET /api/trade/fetch/4612ffa5afc0e34a9cd153ed6885a1ab1b33728c128e5edd4f0028c5d02dfce6%2C3d9da963c90aed9d943982916ba618dcae670f28311bfcbff3330db9b21acca8%2C2b223eacd33d9319cba840cf175cddedf173f28bd5d37f2b5b30299ea774f926%2Cbaa1e87f17d714d746fe66edfadca0faadf421f4d8214bb014e6a360d4466ce1%2Cd1b9e76f4b6fd51f56caeba877b891b7b6f7ddbbe318dfaab6b23662faa97976 → 200  9.933s  delay=1.516 min_gap=0.000 last=1784645423.660
+16:50:23.659  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645423.660
+16:50:23.659  ENF   delay=1.516 min_gap=0.000 jitter=2.247 gap=3.763 since_last=0.000 sleep=3.762
+16:50:27.700  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.200s/req pen=120s (used=8); Ip 60:300:1800 → 5.000s/req pen=1800s (used=20)  delay 1.516→6.200  min_gap→0  max_usage=53%
+16:50:27.700  RAW   content-type: application/json
+16:50:27.700  RAW   x-rate-limit-policy: trade-search-request-limit
+16:50:27.700  RAW   x-rate-limit-rules: Account,Ip
+16:50:27.700  RAW   x-rate-limit-account: 3:5:60
+16:50:27.700  RAW   x-rate-limit-account-state: 1:5:0
+16:50:27.700  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:50:27.700  RAW   x-rate-limit-ip-state: 2:10:0,8:60:0,20:300:0
+16:50:27.700  RAW   cf-cache-status: DYNAMIC
+16:50:27.700  RAW   cf-ray: a1eb04a16ab16368-WAW
+16:50:27.700  RESP  POST /api/trade/search/Standard → 200  4.040s  delay=6.200 min_gap=0.000 last=1784645427.700
+16:50:27.700  PRE   GET /api/trade/fetch/46ac35e7556696fd65bc3e18445d9bec50c07f43c13046e53809052c9ba75e47%2C164b7c712bcbfcbae2778dad2b4076b5d8a94a54e821b570ddb68044dd6931c0%2C7997d163d6e0145df69fb5338eed1dd2902bbdc2cfa887e101ed7af00a1c1bd3%2C12fe482fc5ca1bab7b8a14f57571a27133bd3ec360d567d27fe31cee05d05976%2Ccd7251aa2f2504516277f9dc387a39af8f17f0f37937cc314ba64bc9e46085c5  delay=6.200 min_gap=0.000 last=1784645427.700
+16:50:27.700  ENF   delay=6.200 min_gap=0.000 jitter=4.448 gap=10.648 since_last=0.000 sleep=10.648
+16:50:38.614  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 6.200→1.516  min_gap→0  max_usage=0%
+16:50:38.614  RAW   content-type: application/json
+16:50:38.614  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:50:38.614  RAW   x-rate-limit-rules: Account,Ip
+16:50:38.614  RAW   x-rate-limit-account: 6:4:10
+16:50:38.614  RAW   x-rate-limit-account-state: 1:4:0
+16:50:38.614  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:50:38.614  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:50:38.614  RAW   cf-cache-status: DYNAMIC
+16:50:38.614  RAW   cf-ray: a1eb04e5bf936368-WAW
+16:50:38.614  RESP  GET /api/trade/fetch/46ac35e7556696fd65bc3e18445d9bec50c07f43c13046e53809052c9ba75e47%2C164b7c712bcbfcbae2778dad2b4076b5d8a94a54e821b570ddb68044dd6931c0%2C7997d163d6e0145df69fb5338eed1dd2902bbdc2cfa887e101ed7af00a1c1bd3%2C12fe482fc5ca1bab7b8a14f57571a27133bd3ec360d567d27fe31cee05d05976%2Ccd7251aa2f2504516277f9dc387a39af8f17f0f37937cc314ba64bc9e46085c5 → 200  10.914s  delay=1.516 min_gap=0.000 last=1784645438.615
+16:50:38.636  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645438.615
+16:50:38.636  ENF   delay=1.516 min_gap=0.000 jitter=4.492 gap=6.007 since_last=0.022 sleep=5.985
+16:50:44.944  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.600s/req pen=120s (used=9); Ip 60:300:1800 → 5.250s/req pen=1800s (used=22)  delay 1.516→6.600  min_gap→0  max_usage=60%
+16:50:44.944  RAW   content-type: application/json
+16:50:44.944  RAW   x-rate-limit-policy: trade-search-request-limit
+16:50:44.944  RAW   x-rate-limit-rules: Account,Ip
+16:50:44.944  RAW   x-rate-limit-account: 3:5:60
+16:50:44.944  RAW   x-rate-limit-account-state: 1:5:0
+16:50:44.944  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:50:44.944  RAW   x-rate-limit-ip-state: 2:10:0,9:60:0,22:300:0
+16:50:44.944  RAW   cf-cache-status: DYNAMIC
+16:50:44.944  RAW   cf-ray: a1eb050ceef36368-WAW
+16:50:44.944  RESP  POST /api/trade/search/Standard → 200  6.308s  delay=6.600 min_gap=0.000 last=1784645444.945
+16:50:44.944  PRE   GET /api/trade/fetch/b9e6cf3264ebb89bc1679186286a289141d77e2acf7ca82efb2663094eda37ce%2Cd44eae1942853a9fda5cb7a891638051418c46a71af2cd98abcc1375a2075c14%2C907e0c5d0cd9a5ea384c8170812ae633f477f3fa7bd7a4c8683b20a01754cfe0%2C66e4d2868643be30c2bd21af10d0e1448417aec9547f12fcbe4948ea795f680d%2Cf9aab5a43984b3d5d7edfe8610cd1387dcdb89eab499d388a0fc6cce05cab61f  delay=6.600 min_gap=0.000 last=1784645444.945
+16:50:44.944  ENF   delay=6.600 min_gap=0.000 jitter=3.966 gap=10.566 since_last=0.000 sleep=10.566
+16:50:55.774  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 6.600→1.516  min_gap→0  max_usage=0%
+16:50:55.774  RAW   content-type: application/json
+16:50:55.774  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:50:55.774  RAW   x-rate-limit-rules: Account,Ip
+16:50:55.774  RAW   x-rate-limit-account: 6:4:10
+16:50:55.774  RAW   x-rate-limit-account-state: 1:4:0
+16:50:55.775  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:50:55.775  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:50:55.775  RAW   cf-cache-status: DYNAMIC
+16:50:55.775  RAW   cf-ray: a1eb0550fabc6368-WAW
+16:50:55.775  RESP  GET /api/trade/fetch/b9e6cf3264ebb89bc1679186286a289141d77e2acf7ca82efb2663094eda37ce%2Cd44eae1942853a9fda5cb7a891638051418c46a71af2cd98abcc1375a2075c14%2C907e0c5d0cd9a5ea384c8170812ae633f477f3fa7bd7a4c8683b20a01754cfe0%2C66e4d2868643be30c2bd21af10d0e1448417aec9547f12fcbe4948ea795f680d%2Cf9aab5a43984b3d5d7edfe8610cd1387dcdb89eab499d388a0fc6cce05cab61f → 200  10.830s  delay=1.516 min_gap=0.000 last=1784645455.775
+16:50:55.775  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645455.775
+16:50:55.775  ENF   delay=1.516 min_gap=0.000 jitter=2.279 gap=3.794 since_last=0.000 sleep=3.794
+16:50:59.848  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.200s/req pen=120s (used=8); Ip 60:300:1800 → 5.500s/req pen=1800s (used=24)  delay 1.516→6.500  min_gap→0  max_usage=53%
+16:50:59.848  RAW   content-type: application/json
+16:50:59.848  RAW   x-rate-limit-policy: trade-search-request-limit
+16:50:59.848  RAW   x-rate-limit-rules: Account,Ip
+16:50:59.848  RAW   x-rate-limit-account: 3:5:60
+16:50:59.848  RAW   x-rate-limit-account-state: 1:5:0
+16:50:59.848  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:50:59.848  RAW   x-rate-limit-ip-state: 2:10:0,8:60:0,24:300:0
+16:50:59.848  RAW   cf-cache-status: DYNAMIC
+16:50:59.848  RAW   cf-ray: a1eb056a5cde6368-WAW
+16:50:59.848  RESP  POST /api/trade/search/Standard → 200  4.073s  delay=6.500 min_gap=0.000 last=1784645459.849
+16:50:59.848  PRE   GET /api/trade/fetch/3396d52e9009926023f468259cb39e3b8b9aaa557ef6f9ef11a94c2f67518261%2Cb8fee0f3c7470c8a700496d18e096fbe3ec577c94ac254e2bcab9025982356cf%2C69145f270eab2d1b2fc36b9b9e00a7ad44a814f3c338ec5c09f6ea058767d7c1%2C91f35ca2c16b53ef55837b01881f320b75392e1168a43b83a507bf8fec4f78dd%2C4718a07d6ed4b7a59a390d34a3cc92b34409571ce96bdf3843e4b4af8e723b96  delay=6.500 min_gap=0.000 last=1784645459.849
+16:50:59.848  ENF   delay=6.500 min_gap=0.000 jitter=3.083 gap=9.583 since_last=0.000 sleep=9.583
+16:51:09.697  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 6.500→1.516  min_gap→0  max_usage=0%
+16:51:09.697  RAW   content-type: application/json
+16:51:09.697  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:51:09.697  RAW   x-rate-limit-rules: Account,Ip
+16:51:09.697  RAW   x-rate-limit-account: 6:4:10
+16:51:09.697  RAW   x-rate-limit-account-state: 1:4:0
+16:51:09.697  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:51:09.697  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:51:09.697  RAW   cf-cache-status: DYNAMIC
+16:51:09.697  RAW   cf-ray: a1eb05a7fb5e6368-WAW
+16:51:09.697  RESP  GET /api/trade/fetch/3396d52e9009926023f468259cb39e3b8b9aaa557ef6f9ef11a94c2f67518261%2Cb8fee0f3c7470c8a700496d18e096fbe3ec577c94ac254e2bcab9025982356cf%2C69145f270eab2d1b2fc36b9b9e00a7ad44a814f3c338ec5c09f6ea058767d7c1%2C91f35ca2c16b53ef55837b01881f320b75392e1168a43b83a507bf8fec4f78dd%2C4718a07d6ed4b7a59a390d34a3cc92b34409571ce96bdf3843e4b4af8e723b96 → 200  9.848s  delay=1.516 min_gap=0.000 last=1784645469.698
+16:51:09.722  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645469.698
+16:51:09.722  ENF   delay=1.516 min_gap=0.000 jitter=4.873 gap=6.389 since_last=0.025 sleep=6.364
+16:51:16.369  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 5.750s/req pen=1800s (used=26)  delay 1.516→6.750  min_gap→0  max_usage=43%
+16:51:16.370  RAW   content-type: application/json
+16:51:16.370  RAW   x-rate-limit-policy: trade-search-request-limit
+16:51:16.370  RAW   x-rate-limit-rules: Account,Ip
+16:51:16.370  RAW   x-rate-limit-account: 3:5:60
+16:51:16.370  RAW   x-rate-limit-account-state: 1:5:0
+16:51:16.370  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:51:16.370  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,26:300:0
+16:51:16.370  RAW   cf-cache-status: DYNAMIC
+16:51:16.370  RAW   cf-ray: a1eb05d19fe86368-WAW
+16:51:16.370  RESP  POST /api/trade/search/Standard → 200  6.648s  delay=6.750 min_gap=0.000 last=1784645476.370
+16:51:16.370  PRE   GET /api/trade/fetch/69430e2ee003621edbd1a59e6994f544518dc9c1e5f27e18f65f3daef41a2b11%2Cb9164d499f217358bc8f7f72c2e3f87389f552b54602395cb01a52365257fdfe%2C4285869a7a10029865a07d69cff19f2aa2fd0022fd3635ad5f87f89dcb24a0cb%2Ce5cead4dcc2da764e88b86cdb5f3f3db6dcb7e4ef84b24524624ed36ec403f35%2Ca67918518f69db5849396f9911cbe5d1dd8dac5e14d102a679f795fffda09526  delay=6.750 min_gap=0.000 last=1784645476.370
+16:51:16.370  ENF   delay=6.750 min_gap=0.000 jitter=4.635 gap=11.385 since_last=0.000 sleep=11.385
+16:51:28.020  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 6.750→1.516  min_gap→0  max_usage=0%
+16:51:28.020  RAW   content-type: application/json
+16:51:28.020  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:51:28.020  RAW   x-rate-limit-rules: Account,Ip
+16:51:28.020  RAW   x-rate-limit-account: 6:4:10
+16:51:28.020  RAW   x-rate-limit-account-state: 1:4:0
+16:51:28.020  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:51:28.020  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:51:28.020  RAW   cf-cache-status: DYNAMIC
+16:51:28.020  RAW   cf-ray: a1eb061a8cc26368-WAW
+16:51:28.020  RESP  GET /api/trade/fetch/69430e2ee003621edbd1a59e6994f544518dc9c1e5f27e18f65f3daef41a2b11%2Cb9164d499f217358bc8f7f72c2e3f87389f552b54602395cb01a52365257fdfe%2C4285869a7a10029865a07d69cff19f2aa2fd0022fd3635ad5f87f89dcb24a0cb%2Ce5cead4dcc2da764e88b86cdb5f3f3db6dcb7e4ef84b24524624ed36ec403f35%2Ca67918518f69db5849396f9911cbe5d1dd8dac5e14d102a679f795fffda09526 → 200  11.651s  delay=1.516 min_gap=0.000 last=1784645488.021
+16:51:28.021  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645488.021
+16:51:28.021  ENF   delay=1.516 min_gap=0.000 jitter=2.847 gap=4.363 since_last=0.000 sleep=4.363
+16:51:32.664  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.000s/req pen=1800s (used=28)  delay 1.516→7.000  min_gap→0  max_usage=47%
+16:51:32.664  RAW   content-type: application/json
+16:51:32.664  RAW   x-rate-limit-policy: trade-search-request-limit
+16:51:32.664  RAW   x-rate-limit-rules: Account,Ip
+16:51:32.664  RAW   x-rate-limit-account: 3:5:60
+16:51:32.664  RAW   x-rate-limit-account-state: 1:5:0
+16:51:32.664  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:51:32.664  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,28:300:0
+16:51:32.664  RAW   cf-cache-status: DYNAMIC
+16:51:32.664  RAW   cf-ray: a1eb06376c9b6368-WAW
+16:51:32.664  RESP  POST /api/trade/search/Standard → 200  4.643s  delay=7.000 min_gap=0.000 last=1784645492.664
+16:51:32.664  PRE   GET /api/trade/fetch/06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2Cc4e78f4885dca6ed982284507ef85d8f79a508cc1e800714d11a08f37e0070c3%2Ca59fd69d164712097041444c8f4ecd912f16201c7ae62e616816bbd2d44a6597%2Cbf35e43290b89f64c6d88412e4eddad20a17af54a61d7acd865a72c3d4cf72c3%2Cb1e361c6211bc4a9c951085fdd42581f6806f27c0cb8ce3c74a3b0b3bbe142e5  delay=7.000 min_gap=0.000 last=1784645492.665
+16:51:32.664  ENF   delay=7.000 min_gap=0.000 jitter=3.761 gap=10.761 since_last=0.000 sleep=10.761
+16:51:43.697  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.000→1.516  min_gap→0  max_usage=0%
+16:51:43.697  RAW   content-type: application/json
+16:51:43.697  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:51:43.697  RAW   x-rate-limit-rules: Account,Ip
+16:51:43.697  RAW   x-rate-limit-account: 6:4:10
+16:51:43.697  RAW   x-rate-limit-account-state: 1:4:0
+16:51:43.697  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:51:43.697  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:51:43.697  RAW   cf-cache-status: DYNAMIC
+16:51:43.697  RAW   cf-ray: a1eb067c7e6f6368-WAW
+16:51:43.697  RESP  GET /api/trade/fetch/06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2Cc4e78f4885dca6ed982284507ef85d8f79a508cc1e800714d11a08f37e0070c3%2Ca59fd69d164712097041444c8f4ecd912f16201c7ae62e616816bbd2d44a6597%2Cbf35e43290b89f64c6d88412e4eddad20a17af54a61d7acd865a72c3d4cf72c3%2Cb1e361c6211bc4a9c951085fdd42581f6806f27c0cb8ce3c74a3b0b3bbe142e5 → 200  11.033s  delay=1.516 min_gap=0.000 last=1784645503.698
+16:51:43.761  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645503.698
+16:51:43.761  ENF   delay=1.516 min_gap=0.000 jitter=4.134 gap=5.650 since_last=0.063 sleep=5.586
+16:51:49.624  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.250s/req pen=1800s (used=30)  delay 1.516→7.250  min_gap→0  max_usage=50%
+16:51:49.624  RAW   content-type: application/json
+16:51:49.624  RAW   x-rate-limit-policy: trade-search-request-limit
+16:51:49.624  RAW   x-rate-limit-rules: Account,Ip
+16:51:49.624  RAW   x-rate-limit-account: 3:5:60
+16:51:49.624  RAW   x-rate-limit-account-state: 1:5:0
+16:51:49.624  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:51:49.624  RAW   x-rate-limit-ip-state: 2:10:0,6:60:0,30:300:0
+16:51:49.624  RAW   cf-cache-status: DYNAMIC
+16:51:49.624  RAW   cf-ray: a1eb06a178b66368-WAW
+16:51:49.624  RESP  POST /api/trade/search/Standard → 200  5.863s  delay=7.250 min_gap=0.000 last=1784645509.625
+16:51:49.624  PRE   GET /api/trade/fetch/4285869a7a10029865a07d69cff19f2aa2fd0022fd3635ad5f87f89dcb24a0cb%2Cb9164d499f217358bc8f7f72c2e3f87389f552b54602395cb01a52365257fdfe%2Cf472b92b0e09c9024cda5dfde116cef39c4456c270c9fed284366a883780a1f7%2C06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2Cec317331a21cd96af4ed3a250b92c7437be8c2ac918085552a497d0d25a79895  delay=7.250 min_gap=0.000 last=1784645509.625
+16:51:49.624  ENF   delay=7.250 min_gap=0.000 jitter=4.630 gap=11.880 since_last=0.000 sleep=11.880
+16:52:01.771  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.250→1.516  min_gap→0  max_usage=0%
+16:52:01.771  RAW   content-type: application/json
+16:52:01.771  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:52:01.771  RAW   x-rate-limit-rules: Account,Ip
+16:52:01.771  RAW   x-rate-limit-account: 6:4:10
+16:52:01.771  RAW   x-rate-limit-account-state: 1:4:0
+16:52:01.771  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:52:01.771  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:52:01.771  RAW   cf-cache-status: DYNAMIC
+16:52:01.771  RAW   cf-ray: a1eb06ed79d96368-WAW
+16:52:01.771  RESP  GET /api/trade/fetch/4285869a7a10029865a07d69cff19f2aa2fd0022fd3635ad5f87f89dcb24a0cb%2Cb9164d499f217358bc8f7f72c2e3f87389f552b54602395cb01a52365257fdfe%2Cf472b92b0e09c9024cda5dfde116cef39c4456c270c9fed284366a883780a1f7%2C06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2Cec317331a21cd96af4ed3a250b92c7437be8c2ac918085552a497d0d25a79895 → 200  12.147s  delay=1.516 min_gap=0.000 last=1784645521.772
+16:52:01.771  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645521.772
+16:52:01.771  ENF   delay=1.516 min_gap=0.000 jitter=2.260 gap=3.776 since_last=0.000 sleep=3.776
+16:52:05.855  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.500s/req pen=1800s (used=32)  delay 1.516→7.500  min_gap→0  max_usage=53%
+16:52:05.855  RAW   content-type: application/json
+16:52:05.855  RAW   x-rate-limit-policy: trade-search-request-limit
+16:52:05.855  RAW   x-rate-limit-rules: Account,Ip
+16:52:05.855  RAW   x-rate-limit-account: 3:5:60
+16:52:05.855  RAW   x-rate-limit-account-state: 1:5:0
+16:52:05.855  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:52:05.855  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,32:300:0
+16:52:05.855  RAW   cf-cache-status: DYNAMIC
+16:52:05.855  RAW   cf-ray: a1eb0706b84c6368-WAW
+16:52:05.855  RESP  POST /api/trade/search/Standard → 200  4.084s  delay=7.500 min_gap=0.000 last=1784645525.856
+16:52:05.855  PRE   GET /api/trade/fetch/06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2C4a3ad75d619b954492d8d09b2ad777ed76092fcccb6084ab42913de88e6ea186%2C25de835f1cab17cc55f9a34ae959075b0bb07d6bf92f6b84cd11578df246c4fb%2Cb1e361c6211bc4a9c951085fdd42581f6806f27c0cb8ce3c74a3b0b3bbe142e5%2C3fc4c405c99f5c4ae9283e9d5e83ef5573b998c6d20abdc088817cabf03c81b5  delay=7.500 min_gap=0.000 last=1784645525.856
+16:52:05.855  ENF   delay=7.500 min_gap=0.000 jitter=2.668 gap=10.168 since_last=0.000 sleep=10.168
+16:52:16.299  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.500→1.516  min_gap→0  max_usage=0%
+16:52:16.300  RAW   content-type: application/json
+16:52:16.300  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:52:16.300  RAW   x-rate-limit-rules: Account,Ip
+16:52:16.300  RAW   x-rate-limit-account: 6:4:10
+16:52:16.300  RAW   x-rate-limit-account-state: 1:4:0
+16:52:16.300  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:52:16.300  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:52:16.300  RAW   cf-cache-status: DYNAMIC
+16:52:16.300  RAW   cf-ray: a1eb074839676368-WAW
+16:52:16.300  RESP  GET /api/trade/fetch/06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2C4a3ad75d619b954492d8d09b2ad777ed76092fcccb6084ab42913de88e6ea186%2C25de835f1cab17cc55f9a34ae959075b0bb07d6bf92f6b84cd11578df246c4fb%2Cb1e361c6211bc4a9c951085fdd42581f6806f27c0cb8ce3c74a3b0b3bbe142e5%2C3fc4c405c99f5c4ae9283e9d5e83ef5573b998c6d20abdc088817cabf03c81b5 → 200  10.444s  delay=1.516 min_gap=0.000 last=1784645536.300
+16:52:16.322  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645536.300
+16:52:16.322  ENF   delay=1.516 min_gap=0.000 jitter=4.772 gap=6.287 since_last=0.023 sleep=6.264
+16:52:22.867  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.750s/req pen=1800s (used=34)  delay 1.516→7.750  min_gap→0  max_usage=57%
+16:52:22.867  RAW   content-type: application/json
+16:52:22.867  RAW   x-rate-limit-policy: trade-search-request-limit
+16:52:22.867  RAW   x-rate-limit-rules: Account,Ip
+16:52:22.867  RAW   x-rate-limit-account: 3:5:60
+16:52:22.868  RAW   x-rate-limit-account-state: 1:5:0
+16:52:22.868  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:52:22.868  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,34:300:0
+16:52:22.868  RAW   cf-cache-status: DYNAMIC
+16:52:22.868  RAW   cf-ray: a1eb07713dfa6368-WAW
+16:52:22.868  RESP  POST /api/trade/search/Standard → 200  6.545s  delay=7.750 min_gap=0.000 last=1784645542.868
+16:52:22.868  PRE   GET /api/trade/fetch/06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2Cec317331a21cd96af4ed3a250b92c7437be8c2ac918085552a497d0d25a79895%2Cb1e361c6211bc4a9c951085fdd42581f6806f27c0cb8ce3c74a3b0b3bbe142e5%2Cc3561e585ba831ad5959ae33de80d37525ce5410206fc89b1adc72db4c61cc33%2C4a3ad75d619b954492d8d09b2ad777ed76092fcccb6084ab42913de88e6ea186  delay=7.750 min_gap=0.000 last=1784645542.868
+16:52:22.868  ENF   delay=7.750 min_gap=0.000 jitter=4.604 gap=12.354 since_last=0.000 sleep=12.354
+16:52:35.487  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.445s/req pen=60s (used=1)  delay 7.750→1.500  min_gap→0  max_usage=0%
+16:52:35.487  RAW   content-type: application/json
+16:52:35.487  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:52:35.487  RAW   x-rate-limit-rules: Account,Ip
+16:52:35.487  RAW   x-rate-limit-account: 6:4:10
+16:52:35.487  RAW   x-rate-limit-account-state: 1:4:0
+16:52:35.487  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:52:35.487  RAW   x-rate-limit-ip-state: 1:4:0,1:12:0
+16:52:35.487  RAW   cf-cache-status: DYNAMIC
+16:52:35.487  RAW   cf-ray: a1eb07c02a756368-WAW
+16:52:35.487  RESP  GET /api/trade/fetch/06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2Cec317331a21cd96af4ed3a250b92c7437be8c2ac918085552a497d0d25a79895%2Cb1e361c6211bc4a9c951085fdd42581f6806f27c0cb8ce3c74a3b0b3bbe142e5%2Cc3561e585ba831ad5959ae33de80d37525ce5410206fc89b1adc72db4c61cc33%2C4a3ad75d619b954492d8d09b2ad777ed76092fcccb6084ab42913de88e6ea186 → 200  12.619s  delay=1.500 min_gap=0.000 last=1784645555.487
+16:52:35.487  PRE   POST /api/trade/search/Standard  delay=1.500 min_gap=0.000 last=1784645555.487
+16:52:35.487  ENF   delay=1.500 min_gap=0.000 jitter=3.982 gap=5.482 since_last=0.000 sleep=5.481
+16:52:41.246  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 7.000s/req pen=1800s (used=36)  delay 1.500→8.000  min_gap→0  max_usage=60%
+16:52:41.246  RAW   content-type: application/json
+16:52:41.246  RAW   x-rate-limit-policy: trade-search-request-limit
+16:52:41.246  RAW   x-rate-limit-rules: Account,Ip
+16:52:41.246  RAW   x-rate-limit-account: 3:5:60
+16:52:41.246  RAW   x-rate-limit-account-state: 1:5:0
+16:52:41.246  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:52:41.246  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,36:300:0
+16:52:41.246  RAW   cf-cache-status: DYNAMIC
+16:52:41.246  RAW   cf-ray: a1eb07e419ad6368-WAW
+16:52:41.246  RESP  POST /api/trade/search/Standard → 200  5.759s  delay=8.000 min_gap=0.000 last=1784645561.247
+16:52:41.246  PRE   GET /api/trade/fetch/06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2C4a3ad75d619b954492d8d09b2ad777ed76092fcccb6084ab42913de88e6ea186%2Cb1e361c6211bc4a9c951085fdd42581f6806f27c0cb8ce3c74a3b0b3bbe142e5%2C3fc4c405c99f5c4ae9283e9d5e83ef5573b998c6d20abdc088817cabf03c81b5%2C92b6f5850aaa462cf47eac7d327687bd690bd33147f991c611f1505113d6de66  delay=8.000 min_gap=0.000 last=1784645561.247
+16:52:41.246  ENF   delay=8.000 min_gap=0.000 jitter=4.025 gap=12.025 since_last=0.000 sleep=12.025
+16:52:53.542  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.445s/req pen=60s (used=1)  delay 8.000→1.500  min_gap→0  max_usage=0%
+16:52:53.542  RAW   content-type: application/json
+16:52:53.542  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:52:53.542  RAW   x-rate-limit-rules: Account,Ip
+16:52:53.542  RAW   x-rate-limit-account: 6:4:10
+16:52:53.542  RAW   x-rate-limit-account-state: 1:4:0
+16:52:53.542  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:52:53.542  RAW   x-rate-limit-ip-state: 1:4:0,1:12:0
+16:52:53.542  RAW   cf-cache-status: DYNAMIC
+16:52:53.542  RAW   cf-ray: a1eb0830f8f66368-WAW
+16:52:53.542  RESP  GET /api/trade/fetch/06b09b3782807013d8f973dd20ef73e25f59c2b1c0d37f18eef7c74ad49669c3%2C4a3ad75d619b954492d8d09b2ad777ed76092fcccb6084ab42913de88e6ea186%2Cb1e361c6211bc4a9c951085fdd42581f6806f27c0cb8ce3c74a3b0b3bbe142e5%2C3fc4c405c99f5c4ae9283e9d5e83ef5573b998c6d20abdc088817cabf03c81b5%2C92b6f5850aaa462cf47eac7d327687bd690bd33147f991c611f1505113d6de66 → 200  12.296s  delay=1.500 min_gap=0.000 last=1784645573.543
+16:52:53.569  PRE   POST /api/trade/search/Standard  delay=1.500 min_gap=0.000 last=1784645573.543
+16:52:53.569  ENF   delay=1.500 min_gap=0.000 jitter=3.196 gap=4.696 since_last=0.026 sleep=4.669
+16:52:58.518  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 7.250s/req pen=1800s (used=38)  delay 1.500→8.250  min_gap→0  max_usage=63%
+16:52:58.518  RAW   content-type: application/json
+16:52:58.518  RAW   x-rate-limit-policy: trade-search-request-limit
+16:52:58.518  RAW   x-rate-limit-rules: Account,Ip
+16:52:58.518  RAW   x-rate-limit-account: 3:5:60
+16:52:58.518  RAW   x-rate-limit-account-state: 1:5:0
+16:52:58.518  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:52:58.518  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,38:300:0
+16:52:58.518  RAW   cf-cache-status: DYNAMIC
+16:52:58.518  RAW   cf-ray: a1eb0850080d6368-WAW
+16:52:58.518  RESP  POST /api/trade/search/Standard → 200  4.949s  delay=8.250 min_gap=0.000 last=1784645578.518
+16:52:58.518  PRE   GET /api/trade/fetch/aef1091face8d267d4c900bf326846e462d03cf58ee54db8c5993ad8a7697821%2C033d070274497b7dadd764ba77eedd7af87cf092fbe8db193bca120b0235e86b%2C6833a3eac745f51cfedb36aee94ff3ffd0aac13b5bb86220c40fab1e26e94856%2Cd6460a186227c134e64368f4088d230cb13187130d938a9a3a7758f771a4900b%2C06d5cc7cc5f98dde24c86753f30fe65099b73913b46bb0f1794b92c2be577877  delay=8.250 min_gap=0.000 last=1784645578.518
+16:52:58.518  ENF   delay=8.250 min_gap=0.000 jitter=2.737 gap=10.987 since_last=0.000 sleep=10.987
+16:53:09.776  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 8.250→1.516  min_gap→0  max_usage=0%
+16:53:09.776  RAW   content-type: application/json
+16:53:09.776  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:53:09.776  RAW   x-rate-limit-rules: Account,Ip
+16:53:09.776  RAW   x-rate-limit-account: 6:4:10
+16:53:09.776  RAW   x-rate-limit-account-state: 1:4:0
+16:53:09.776  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:53:09.776  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:53:09.776  RAW   cf-cache-status: DYNAMIC
+16:53:09.776  RAW   cf-ray: a1eb08967ddf6368-WAW
+16:53:09.776  RESP  GET /api/trade/fetch/aef1091face8d267d4c900bf326846e462d03cf58ee54db8c5993ad8a7697821%2C033d070274497b7dadd764ba77eedd7af87cf092fbe8db193bca120b0235e86b%2C6833a3eac745f51cfedb36aee94ff3ffd0aac13b5bb86220c40fab1e26e94856%2Cd6460a186227c134e64368f4088d230cb13187130d938a9a3a7758f771a4900b%2C06d5cc7cc5f98dde24c86753f30fe65099b73913b46bb0f1794b92c2be577877 → 200  11.258s  delay=1.516 min_gap=0.000 last=1784645589.776
+16:53:09.776  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645589.776
+16:53:09.776  ENF   delay=1.516 min_gap=0.000 jitter=4.635 gap=6.150 since_last=0.000 sleep=6.150
+16:53:16.204  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.000s/req pen=120s (used=5); Ip 60:300:1800 → 6.500s/req pen=1800s (used=32)  delay 1.516→7.500  min_gap→0  max_usage=53%
+16:53:16.204  RAW   content-type: application/json
+16:53:16.204  RAW   x-rate-limit-policy: trade-search-request-limit
+16:53:16.204  RAW   x-rate-limit-rules: Account,Ip
+16:53:16.204  RAW   x-rate-limit-account: 3:5:60
+16:53:16.204  RAW   x-rate-limit-account-state: 1:5:0
+16:53:16.204  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:53:16.204  RAW   x-rate-limit-ip-state: 1:10:0,5:60:0,32:300:0
+16:53:16.204  RAW   cf-cache-status: DYNAMIC
+16:53:16.204  RAW   cf-ray: a1eb08be9e1f6368-WAW
+16:53:16.204  RESP  POST /api/trade/search/Standard → 200  6.428s  delay=7.500 min_gap=0.000 last=1784645596.204
+16:53:16.204  PRE   GET /api/trade/fetch/87339a4ca0990d51aa44e3d6daf103f92aced152930fa519859885258c299cc7%2C756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2C60c87adaecb245c61b654a4668b2f71904e3b3d8ef997fbbf45372241f3d3aae%2Cf15089384dbb0b50304a146d709946b4060b5c8e6c8c7eb51d24284c7d811672%2Ca19c06473324b212f243e698bf3a32c5aa010c8c78766f262f650b3ac5cd7d9a  delay=7.500 min_gap=0.000 last=1784645596.204
+16:53:16.204  ENF   delay=7.500 min_gap=0.000 jitter=2.638 gap=10.138 since_last=0.000 sleep=10.138
+16:53:26.608  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.445s/req pen=60s (used=1)  delay 7.500→1.500  min_gap→0  max_usage=0%
+16:53:26.608  RAW   content-type: application/json
+16:53:26.608  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:53:26.608  RAW   x-rate-limit-rules: Account,Ip
+16:53:26.608  RAW   x-rate-limit-account: 6:4:10
+16:53:26.608  RAW   x-rate-limit-account-state: 1:4:0
+16:53:26.608  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:53:26.608  RAW   x-rate-limit-ip-state: 1:4:0,1:12:0
+16:53:26.608  RAW   cf-cache-status: DYNAMIC
+16:53:26.608  RAW   cf-ray: a1eb08ffa99e6368-WAW
+16:53:26.608  RESP  GET /api/trade/fetch/87339a4ca0990d51aa44e3d6daf103f92aced152930fa519859885258c299cc7%2C756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2C60c87adaecb245c61b654a4668b2f71904e3b3d8ef997fbbf45372241f3d3aae%2Cf15089384dbb0b50304a146d709946b4060b5c8e6c8c7eb51d24284c7d811672%2Ca19c06473324b212f243e698bf3a32c5aa010c8c78766f262f650b3ac5cd7d9a → 200  10.404s  delay=1.500 min_gap=0.000 last=1784645606.609
+16:53:26.635  PRE   POST /api/trade/search/Standard  delay=1.500 min_gap=0.000 last=1784645606.609
+16:53:26.635  ENF   delay=1.500 min_gap=0.000 jitter=3.599 gap=5.099 since_last=0.026 sleep=5.073
+16:53:31.992  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.750s/req pen=1800s (used=34)  delay 1.500→7.750  min_gap→0  max_usage=57%
+16:53:31.992  RAW   content-type: application/json
+16:53:31.992  RAW   x-rate-limit-policy: trade-search-request-limit
+16:53:31.992  RAW   x-rate-limit-rules: Account,Ip
+16:53:31.992  RAW   x-rate-limit-account: 3:5:60
+16:53:31.992  RAW   x-rate-limit-account-state: 1:5:0
+16:53:31.992  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:53:31.992  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,34:300:0
+16:53:31.992  RAW   cf-cache-status: DYNAMIC
+16:53:31.992  RAW   cf-ray: a1eb09213f166368-WAW
+16:53:31.992  RESP  POST /api/trade/search/Standard → 200  5.357s  delay=7.750 min_gap=0.000 last=1784645611.993
+16:53:31.992  PRE   GET /api/trade/fetch/4612ffa5afc0e34a9cd153ed6885a1ab1b33728c128e5edd4f0028c5d02dfce6%2C3d9da963c90aed9d943982916ba618dcae670f28311bfcbff3330db9b21acca8%2C2b223eacd33d9319cba840cf175cddedf173f28bd5d37f2b5b30299ea774f926%2Cd1b9e76f4b6fd51f56caeba877b891b7b6f7ddbbe318dfaab6b23662faa97976%2Cbaa1e87f17d714d746fe66edfadca0faadf421f4d8214bb014e6a360d4466ce1  delay=7.750 min_gap=0.000 last=1784645611.993
+16:53:31.992  ENF   delay=7.750 min_gap=0.000 jitter=3.741 gap=11.491 since_last=0.000 sleep=11.491
+16:53:43.753  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.445s/req pen=60s (used=1)  delay 7.750→1.500  min_gap→0  max_usage=0%
+16:53:43.753  RAW   content-type: application/json
+16:53:43.753  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:53:43.753  RAW   x-rate-limit-rules: Account,Ip
+16:53:43.753  RAW   x-rate-limit-account: 6:4:10
+16:53:43.753  RAW   x-rate-limit-account-state: 1:4:0
+16:53:43.753  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:53:43.753  RAW   x-rate-limit-ip-state: 1:4:0,1:12:0
+16:53:43.753  RAW   cf-cache-status: DYNAMIC
+16:53:43.753  RAW   cf-ray: a1eb096acb276368-WAW
+16:53:43.753  RESP  GET /api/trade/fetch/4612ffa5afc0e34a9cd153ed6885a1ab1b33728c128e5edd4f0028c5d02dfce6%2C3d9da963c90aed9d943982916ba618dcae670f28311bfcbff3330db9b21acca8%2C2b223eacd33d9319cba840cf175cddedf173f28bd5d37f2b5b30299ea774f926%2Cd1b9e76f4b6fd51f56caeba877b891b7b6f7ddbbe318dfaab6b23662faa97976%2Cbaa1e87f17d714d746fe66edfadca0faadf421f4d8214bb014e6a360d4466ce1 → 200  11.760s  delay=1.500 min_gap=0.000 last=1784645623.753
+16:53:43.753  PRE   POST /api/trade/search/Standard  delay=1.500 min_gap=0.000 last=1784645623.753
+16:53:43.753  ENF   delay=1.500 min_gap=0.000 jitter=3.574 gap=5.074 since_last=0.000 sleep=5.074
+16:53:49.102  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 7.000s/req pen=1800s (used=36)  delay 1.500→8.000  min_gap→0  max_usage=60%
+16:53:49.102  RAW   content-type: application/json
+16:53:49.102  RAW   x-rate-limit-policy: trade-search-request-limit
+16:53:49.102  RAW   x-rate-limit-rules: Account,Ip
+16:53:49.102  RAW   x-rate-limit-account: 3:5:60
+16:53:49.102  RAW   x-rate-limit-account-state: 1:5:0
+16:53:49.102  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:53:49.102  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,36:300:0
+16:53:49.102  RAW   cf-cache-status: DYNAMIC
+16:53:49.102  RAW   cf-ray: a1eb098c3f946368-WAW
+16:53:49.102  RESP  POST /api/trade/search/Standard → 200  5.349s  delay=8.000 min_gap=0.000 last=1784645629.103
+16:53:49.102  PRE   GET /api/trade/fetch/46ac35e7556696fd65bc3e18445d9bec50c07f43c13046e53809052c9ba75e47%2C164b7c712bcbfcbae2778dad2b4076b5d8a94a54e821b570ddb68044dd6931c0%2C7997d163d6e0145df69fb5338eed1dd2902bbdc2cfa887e101ed7af00a1c1bd3%2C12fe482fc5ca1bab7b8a14f57571a27133bd3ec360d567d27fe31cee05d05976%2Ccd7251aa2f2504516277f9dc387a39af8f17f0f37937cc314ba64bc9e46085c5  delay=8.000 min_gap=0.000 last=1784645629.103
+16:53:49.102  ENF   delay=8.000 min_gap=0.000 jitter=4.368 gap=12.368 since_last=0.000 sleep=12.368
+16:54:01.734  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.445s/req pen=60s (used=1)  delay 8.000→1.500  min_gap→0  max_usage=0%
+16:54:01.735  RAW   content-type: application/json
+16:54:01.735  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:54:01.735  RAW   x-rate-limit-rules: Account,Ip
+16:54:01.735  RAW   x-rate-limit-account: 6:4:10
+16:54:01.735  RAW   x-rate-limit-account-state: 1:4:0
+16:54:01.735  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:54:01.735  RAW   x-rate-limit-ip-state: 1:4:0,1:12:0
+16:54:01.735  RAW   cf-cache-status: DYNAMIC
+16:54:01.735  RAW   cf-ray: a1eb09db3dd16368-WAW
+16:54:01.735  RESP  GET /api/trade/fetch/46ac35e7556696fd65bc3e18445d9bec50c07f43c13046e53809052c9ba75e47%2C164b7c712bcbfcbae2778dad2b4076b5d8a94a54e821b570ddb68044dd6931c0%2C7997d163d6e0145df69fb5338eed1dd2902bbdc2cfa887e101ed7af00a1c1bd3%2C12fe482fc5ca1bab7b8a14f57571a27133bd3ec360d567d27fe31cee05d05976%2Ccd7251aa2f2504516277f9dc387a39af8f17f0f37937cc314ba64bc9e46085c5 → 200  12.632s  delay=1.500 min_gap=0.000 last=1784645641.735
+16:54:01.761  PRE   POST /api/trade/search/Standard  delay=1.500 min_gap=0.000 last=1784645641.735
+16:54:01.762  ENF   delay=1.500 min_gap=0.000 jitter=4.591 gap=6.091 since_last=0.027 sleep=6.064
+16:54:08.106  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.250s/req pen=1800s (used=30)  delay 1.500→7.250  min_gap→0  max_usage=50%
+16:54:08.106  RAW   content-type: application/json
+16:54:08.106  RAW   x-rate-limit-policy: trade-search-request-limit
+16:54:08.106  RAW   x-rate-limit-rules: Account,Ip
+16:54:08.106  RAW   x-rate-limit-account: 3:5:60
+16:54:08.106  RAW   x-rate-limit-account-state: 1:5:0
+16:54:08.106  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:54:08.106  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,30:300:0
+16:54:08.106  RAW   cf-cache-status: DYNAMIC
+16:54:08.106  RAW   cf-ray: a1eb0a02fe856368-WAW
+16:54:08.106  RESP  POST /api/trade/search/Standard → 200  6.344s  delay=7.250 min_gap=0.000 last=1784645648.107
+16:54:08.106  PRE   GET /api/trade/fetch/6833a3eac745f51cfedb36aee94ff3ffd0aac13b5bb86220c40fab1e26e94856%2Cbf711f3fdf7fe9995c01b480ba40d043ea8b938e8d6a244a36371901aa6f25fc%2C53b7f72e5b2ca3948565de43be399e6096374230124d4afeb1670c01de33b9d1%2C6ef183203ebc4ba455132e333b40f7ccf5aa6e2435e8c4141385eabf27a8dd7c%2Cf9ad9772b10aece7001cd4abb138702c8dec46b92fe00bcddc790efe77bc38fc  delay=7.250 min_gap=0.000 last=1784645648.107
+16:54:08.106  ENF   delay=7.250 min_gap=0.000 jitter=2.873 gap=10.123 since_last=0.000 sleep=10.123
+16:54:18.504  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.250→1.516  min_gap→0  max_usage=0%
+16:54:18.504  RAW   content-type: application/json
+16:54:18.504  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:54:18.504  RAW   x-rate-limit-rules: Account,Ip
+16:54:18.504  RAW   x-rate-limit-account: 6:4:10
+16:54:18.504  RAW   x-rate-limit-account-state: 1:4:0
+16:54:18.504  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:54:18.504  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:54:18.504  RAW   cf-cache-status: DYNAMIC
+16:54:18.504  RAW   cf-ray: a1eb0a43fefc6368-WAW
+16:54:18.504  RESP  GET /api/trade/fetch/6833a3eac745f51cfedb36aee94ff3ffd0aac13b5bb86220c40fab1e26e94856%2Cbf711f3fdf7fe9995c01b480ba40d043ea8b938e8d6a244a36371901aa6f25fc%2C53b7f72e5b2ca3948565de43be399e6096374230124d4afeb1670c01de33b9d1%2C6ef183203ebc4ba455132e333b40f7ccf5aa6e2435e8c4141385eabf27a8dd7c%2Cf9ad9772b10aece7001cd4abb138702c8dec46b92fe00bcddc790efe77bc38fc → 200  10.398s  delay=1.516 min_gap=0.000 last=1784645658.505
+16:54:18.504  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645658.505
+16:54:18.504  ENF   delay=1.516 min_gap=0.000 jitter=4.185 gap=5.701 since_last=0.000 sleep=5.701
+16:54:24.527  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.500s/req pen=1800s (used=32)  delay 1.516→7.500  min_gap→0  max_usage=53%
+16:54:24.527  RAW   content-type: application/json
+16:54:24.527  RAW   x-rate-limit-policy: trade-search-request-limit
+16:54:24.527  RAW   x-rate-limit-rules: Account,Ip
+16:54:24.527  RAW   x-rate-limit-account: 3:5:60
+16:54:24.527  RAW   x-rate-limit-account-state: 1:5:0
+16:54:24.527  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:54:24.527  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,32:300:0
+16:54:24.527  RAW   cf-cache-status: DYNAMIC
+16:54:24.527  RAW   cf-ray: a1eb0a695f636368-WAW
+16:54:24.527  RESP  POST /api/trade/search/Standard → 200  6.022s  delay=7.500 min_gap=0.000 last=1784645664.528
+16:54:24.527  PRE   GET /api/trade/fetch/87339a4ca0990d51aa44e3d6daf103f92aced152930fa519859885258c299cc7%2C756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2Cf15089384dbb0b50304a146d709946b4060b5c8e6c8c7eb51d24284c7d811672%2C3d819699501335dbd26f71e4d7dd6991a24e7124bed594ef5dec07d9f5301190%2C60c87adaecb245c61b654a4668b2f71904e3b3d8ef997fbbf45372241f3d3aae  delay=7.500 min_gap=0.000 last=1784645664.528
+16:54:24.527  ENF   delay=7.500 min_gap=0.000 jitter=2.727 gap=10.227 since_last=0.000 sleep=10.227
+16:54:35.020  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.500→1.516  min_gap→0  max_usage=0%
+16:54:35.020  RAW   content-type: application/json
+16:54:35.020  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:54:35.020  RAW   x-rate-limit-rules: Account,Ip
+16:54:35.020  RAW   x-rate-limit-account: 6:4:10
+16:54:35.020  RAW   x-rate-limit-account-state: 1:4:0
+16:54:35.020  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:54:35.020  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:54:35.020  RAW   cf-cache-status: DYNAMIC
+16:54:35.020  RAW   cf-ray: a1eb0aab4eab6368-WAW
+16:54:35.020  RESP  GET /api/trade/fetch/87339a4ca0990d51aa44e3d6daf103f92aced152930fa519859885258c299cc7%2C756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2Cf15089384dbb0b50304a146d709946b4060b5c8e6c8c7eb51d24284c7d811672%2C3d819699501335dbd26f71e4d7dd6991a24e7124bed594ef5dec07d9f5301190%2C60c87adaecb245c61b654a4668b2f71904e3b3d8ef997fbbf45372241f3d3aae → 200  10.493s  delay=1.516 min_gap=0.000 last=1784645675.021
+16:54:35.047  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645675.021
+16:54:35.047  ENF   delay=1.516 min_gap=0.000 jitter=4.425 gap=5.941 since_last=0.027 sleep=5.914
+16:54:41.252  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.750s/req pen=1800s (used=34)  delay 1.516→7.750  min_gap→0  max_usage=57%
+16:54:41.252  RAW   content-type: application/json
+16:54:41.252  RAW   x-rate-limit-policy: trade-search-request-limit
+16:54:41.252  RAW   x-rate-limit-rules: Account,Ip
+16:54:41.252  RAW   x-rate-limit-account: 3:5:60
+16:54:41.252  RAW   x-rate-limit-account-state: 1:5:0
+16:54:41.252  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:54:41.252  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,34:300:0
+16:54:41.252  RAW   cf-cache-status: DYNAMIC
+16:54:41.252  RAW   cf-ray: a1eb0ad20e136368-WAW
+16:54:41.252  RESP  POST /api/trade/search/Standard → 200  6.205s  delay=7.750 min_gap=0.000 last=1784645681.252
+16:54:41.252  PRE   GET /api/trade/fetch/bf711f3fdf7fe9995c01b480ba40d043ea8b938e8d6a244a36371901aa6f25fc%2C53b7f72e5b2ca3948565de43be399e6096374230124d4afeb1670c01de33b9d1%2Cb2b00b81ba32684cc0d540da861a259f9e996dc7cc6c101999d7b26082944dc0%2C756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2C3d819699501335dbd26f71e4d7dd6991a24e7124bed594ef5dec07d9f5301190  delay=7.750 min_gap=0.000 last=1784645681.252
+16:54:41.252  ENF   delay=7.750 min_gap=0.000 jitter=2.546 gap=10.296 since_last=0.000 sleep=10.296
+16:54:51.826  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.750→1.516  min_gap→0  max_usage=0%
+16:54:51.826  RAW   content-type: application/json
+16:54:51.826  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:54:51.826  RAW   x-rate-limit-rules: Account,Ip
+16:54:51.826  RAW   x-rate-limit-account: 6:4:10
+16:54:51.826  RAW   x-rate-limit-account-state: 1:4:0
+16:54:51.826  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:54:51.826  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:54:51.826  RAW   cf-cache-status: DYNAMIC
+16:54:51.826  RAW   cf-ray: a1eb0b143f286368-WAW
+16:54:51.826  RESP  GET /api/trade/fetch/bf711f3fdf7fe9995c01b480ba40d043ea8b938e8d6a244a36371901aa6f25fc%2C53b7f72e5b2ca3948565de43be399e6096374230124d4afeb1670c01de33b9d1%2Cb2b00b81ba32684cc0d540da861a259f9e996dc7cc6c101999d7b26082944dc0%2C756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2C3d819699501335dbd26f71e4d7dd6991a24e7124bed594ef5dec07d9f5301190 → 200  10.574s  delay=1.516 min_gap=0.000 last=1784645691.827
+16:54:51.826  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645691.827
+16:54:51.826  ENF   delay=1.516 min_gap=0.000 jitter=4.029 gap=5.544 since_last=0.000 sleep=5.544
+16:54:57.648  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 7.000s/req pen=1800s (used=36)  delay 1.516→8.000  min_gap→0  max_usage=60%
+16:54:57.648  RAW   content-type: application/json
+16:54:57.648  RAW   x-rate-limit-policy: trade-search-request-limit
+16:54:57.648  RAW   x-rate-limit-rules: Account,Ip
+16:54:57.648  RAW   x-rate-limit-account: 3:5:60
+16:54:57.648  RAW   x-rate-limit-account-state: 1:5:0
+16:54:57.648  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:54:57.648  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,36:300:0
+16:54:57.648  RAW   cf-cache-status: DYNAMIC
+16:54:57.648  RAW   cf-ray: a1eb0b38998e6368-WAW
+16:54:57.648  RESP  POST /api/trade/search/Standard → 200  5.821s  delay=8.000 min_gap=0.000 last=1784645697.648
+16:54:57.648  PRE   GET /api/trade/fetch/756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2C7c4c23adaa48a6eb732c816275c0b179f840bc9747130228e7470a54e6f3fb50%2C3d819699501335dbd26f71e4d7dd6991a24e7124bed594ef5dec07d9f5301190%2C4e66b880a6f06b2a7cdee876892d97c0cddf01e074313113dd64da549f2cab63%2C60c87adaecb245c61b654a4668b2f71904e3b3d8ef997fbbf45372241f3d3aae  delay=8.000 min_gap=0.000 last=1784645697.648
+16:54:57.648  ENF   delay=8.000 min_gap=0.000 jitter=3.042 gap=11.042 since_last=0.000 sleep=11.042
+16:55:08.963  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 8.000→1.516  min_gap→0  max_usage=0%
+16:55:08.963  RAW   content-type: application/json
+16:55:08.963  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:55:08.963  RAW   x-rate-limit-rules: Account,Ip
+16:55:08.963  RAW   x-rate-limit-account: 6:4:10
+16:55:08.963  RAW   x-rate-limit-account-state: 1:4:0
+16:55:08.963  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:55:08.963  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:55:08.963  RAW   cf-cache-status: DYNAMIC
+16:55:08.963  RAW   cf-ray: a1eb0b7f58736368-WAW
+16:55:08.963  RESP  GET /api/trade/fetch/756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2C7c4c23adaa48a6eb732c816275c0b179f840bc9747130228e7470a54e6f3fb50%2C3d819699501335dbd26f71e4d7dd6991a24e7124bed594ef5dec07d9f5301190%2C4e66b880a6f06b2a7cdee876892d97c0cddf01e074313113dd64da549f2cab63%2C60c87adaecb245c61b654a4668b2f71904e3b3d8ef997fbbf45372241f3d3aae → 200  11.315s  delay=1.516 min_gap=0.000 last=1784645708.964
+16:55:08.990  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645708.964
+16:55:08.990  ENF   delay=1.516 min_gap=0.000 jitter=4.819 gap=6.335 since_last=0.027 sleep=6.308
+16:55:15.587  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.250s/req pen=1800s (used=30)  delay 1.516→7.250  min_gap→0  max_usage=50%
+16:55:15.587  RAW   content-type: application/json
+16:55:15.587  RAW   x-rate-limit-policy: trade-search-request-limit
+16:55:15.588  RAW   x-rate-limit-rules: Account,Ip
+16:55:15.588  RAW   x-rate-limit-account: 3:5:60
+16:55:15.588  RAW   x-rate-limit-account-state: 1:5:0
+16:55:15.588  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:55:15.588  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,30:300:0
+16:55:15.588  RAW   cf-cache-status: DYNAMIC
+16:55:15.588  RAW   cf-ray: a1eb0ba8a89c6368-WAW
+16:55:15.588  RESP  POST /api/trade/search/Standard → 200  6.598s  delay=7.250 min_gap=0.000 last=1784645715.588
+16:55:15.588  PRE   GET /api/trade/fetch/88332afbc02f1b1671c7a6d9dc57bb87684ed632e4b134a5df80c52c2499e45c%2Cc9c27fdace4ccb147a53add018ed680bf88f5e00a7a0b98564d51b1dce4dd574%2C679b38b7d56ab76096a7af63060d5cf5293d2f613eba203758245d30de409f7b%2Cc1c4550f7917ab34e532409c1e6ecf5ddce3e8fd1b2254fd6420f5a9de8f10fe%2Cedad0a86d817628dc0284024ab1a61ae38e7e6dd7832737b528bfda06fac22f6  delay=7.250 min_gap=0.000 last=1784645715.588
+16:55:15.588  ENF   delay=7.250 min_gap=0.000 jitter=3.613 gap=10.863 since_last=0.000 sleep=10.863
+16:55:26.720  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.250→1.516  min_gap→0  max_usage=0%
+16:55:26.720  RAW   content-type: application/json
+16:55:26.721  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:55:26.721  RAW   x-rate-limit-rules: Account,Ip
+16:55:26.721  RAW   x-rate-limit-account: 6:4:10
+16:55:26.721  RAW   x-rate-limit-account-state: 1:4:0
+16:55:26.721  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:55:26.721  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:55:26.721  RAW   cf-cache-status: DYNAMIC
+16:55:26.721  RAW   cf-ray: a1eb0bee5a0d6368-WAW
+16:55:26.721  RESP  GET /api/trade/fetch/88332afbc02f1b1671c7a6d9dc57bb87684ed632e4b134a5df80c52c2499e45c%2Cc9c27fdace4ccb147a53add018ed680bf88f5e00a7a0b98564d51b1dce4dd574%2C679b38b7d56ab76096a7af63060d5cf5293d2f613eba203758245d30de409f7b%2Cc1c4550f7917ab34e532409c1e6ecf5ddce3e8fd1b2254fd6420f5a9de8f10fe%2Cedad0a86d817628dc0284024ab1a61ae38e7e6dd7832737b528bfda06fac22f6 → 200  11.133s  delay=1.516 min_gap=0.000 last=1784645726.721
+16:55:26.721  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645726.721
+16:55:26.721  ENF   delay=1.516 min_gap=0.000 jitter=2.378 gap=3.893 since_last=0.000 sleep=3.893
+16:55:30.910  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.500s/req pen=1800s (used=32)  delay 1.516→7.500  min_gap→0  max_usage=53%
+16:55:30.910  RAW   content-type: application/json
+16:55:30.910  RAW   x-rate-limit-policy: trade-search-request-limit
+16:55:30.910  RAW   x-rate-limit-rules: Account,Ip
+16:55:30.910  RAW   x-rate-limit-account: 3:5:60
+16:55:30.910  RAW   x-rate-limit-account-state: 1:5:0
+16:55:30.910  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:55:30.910  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,32:300:0
+16:55:30.910  RAW   cf-cache-status: DYNAMIC
+16:55:30.910  RAW   cf-ray: a1eb0c086f366368-WAW
+16:55:30.910  RESP  POST /api/trade/search/Standard → 200  4.189s  delay=7.500 min_gap=0.000 last=1784645730.911
+16:55:30.910  PRE   GET /api/trade/fetch/b07b24e30122912d8ae30e038986f08b4b67f22e0a92b45668e375f0da290af7%2Ca60d3c62e5228f59b07c90a828cd609271f1b704c97bbc86a724bf911a3ce5e1%2C6020d5f48250a65a7f514d2ab1a51b46ececde07e749a8abfb71b02cc5a4692c%2C5831c3ff142fea52a7404254c92d648d7dde33f5f8c032e686ec3a86e18f8fa1%2Ce14354777ac695197afa24c8b6372467674cd3ebc5f8a73938d23388c79d6dd9  delay=7.500 min_gap=0.000 last=1784645730.911
+16:55:30.910  ENF   delay=7.500 min_gap=0.000 jitter=4.191 gap=11.691 since_last=0.000 sleep=11.691
+16:55:42.874  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.500→1.516  min_gap→0  max_usage=0%
+16:55:42.875  RAW   content-type: application/json
+16:55:42.875  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:55:42.875  RAW   x-rate-limit-rules: Account,Ip
+16:55:42.875  RAW   x-rate-limit-account: 6:4:10
+16:55:42.875  RAW   x-rate-limit-account-state: 1:4:0
+16:55:42.875  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:55:42.875  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:55:42.875  RAW   cf-cache-status: DYNAMIC
+16:55:42.875  RAW   cf-ray: a1eb0c534be86368-WAW
+16:55:42.875  RESP  GET /api/trade/fetch/b07b24e30122912d8ae30e038986f08b4b67f22e0a92b45668e375f0da290af7%2Ca60d3c62e5228f59b07c90a828cd609271f1b704c97bbc86a724bf911a3ce5e1%2C6020d5f48250a65a7f514d2ab1a51b46ececde07e749a8abfb71b02cc5a4692c%2C5831c3ff142fea52a7404254c92d648d7dde33f5f8c032e686ec3a86e18f8fa1%2Ce14354777ac695197afa24c8b6372467674cd3ebc5f8a73938d23388c79d6dd9 → 200  11.964s  delay=1.516 min_gap=0.000 last=1784645742.875
+16:55:42.875  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645742.875
+16:55:42.875  ENF   delay=1.516 min_gap=0.000 jitter=4.165 gap=5.681 since_last=0.000 sleep=5.681
+16:55:48.846  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.750s/req pen=1800s (used=34)  delay 1.516→7.750  min_gap→0  max_usage=57%
+16:55:48.846  RAW   content-type: application/json
+16:55:48.846  RAW   x-rate-limit-policy: trade-search-request-limit
+16:55:48.846  RAW   x-rate-limit-rules: Account,Ip
+16:55:48.846  RAW   x-rate-limit-account: 3:5:60
+16:55:48.846  RAW   x-rate-limit-account-state: 1:5:0
+16:55:48.846  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:55:48.846  RAW   x-rate-limit-ip-state: 2:10:0,6:60:0,34:300:0
+16:55:48.846  RAW   cf-cache-status: DYNAMIC
+16:55:48.846  RAW   cf-ray: a1eb0c788e766368-WAW
+16:55:48.846  RESP  POST /api/trade/search/Standard → 200  5.971s  delay=7.750 min_gap=0.000 last=1784645748.847
+16:55:48.846  PRE   GET /api/trade/fetch/926a00afcf2ddb9eb78a6ef74c8043d32c85600f3dae6ad7210211661da61141%2Cedad0a86d817628dc0284024ab1a61ae38e7e6dd7832737b528bfda06fac22f6%2Cf1545062e35a7456a1a8ef4ebb3ba01bf7b9def3d6c85b52f9c9550d7dddd0f6%2C246f82dc9d4618642b4f2315385d8f4f8daddd5e4cf089350ebf49ee91f10303%2C29c29ccc0e13726906991b6649695168058ae34f7994f115827df0dafe6251c2  delay=7.750 min_gap=0.000 last=1784645748.847
+16:55:48.846  ENF   delay=7.750 min_gap=0.000 jitter=4.599 gap=12.349 since_last=0.000 sleep=12.349
+16:56:01.506  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.750→1.516  min_gap→0  max_usage=0%
+16:56:01.506  RAW   content-type: application/json
+16:56:01.506  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:56:01.506  RAW   x-rate-limit-rules: Account,Ip
+16:56:01.506  RAW   x-rate-limit-account: 6:4:10
+16:56:01.506  RAW   x-rate-limit-account-state: 1:4:0
+16:56:01.506  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:56:01.506  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:56:01.506  RAW   cf-cache-status: DYNAMIC
+16:56:01.506  RAW   cf-ray: a1eb0cc78b9a6368-WAW
+16:56:01.506  RESP  GET /api/trade/fetch/926a00afcf2ddb9eb78a6ef74c8043d32c85600f3dae6ad7210211661da61141%2Cedad0a86d817628dc0284024ab1a61ae38e7e6dd7832737b528bfda06fac22f6%2Cf1545062e35a7456a1a8ef4ebb3ba01bf7b9def3d6c85b52f9c9550d7dddd0f6%2C246f82dc9d4618642b4f2315385d8f4f8daddd5e4cf089350ebf49ee91f10303%2C29c29ccc0e13726906991b6649695168058ae34f7994f115827df0dafe6251c2 → 200  12.660s  delay=1.516 min_gap=0.000 last=1784645761.507
+16:56:01.533  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645761.507
+16:56:01.533  ENF   delay=1.516 min_gap=0.000 jitter=2.673 gap=4.189 since_last=0.027 sleep=4.162
+16:56:05.981  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.125s/req pen=1800s (used=29)  delay 1.516→7.125  min_gap→0  max_usage=48%
+16:56:05.982  RAW   content-type: application/json
+16:56:05.982  RAW   x-rate-limit-policy: trade-search-request-limit
+16:56:05.982  RAW   x-rate-limit-rules: Account,Ip
+16:56:05.982  RAW   x-rate-limit-account: 3:5:60
+16:56:05.982  RAW   x-rate-limit-account-state: 1:5:0
+16:56:05.982  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:56:05.982  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,29:300:0
+16:56:05.982  RAW   cf-cache-status: DYNAMIC
+16:56:05.982  RAW   cf-ray: a1eb0ce3af0a6368-WAW
+16:56:05.982  RESP  POST /api/trade/search/Standard → 200  4.448s  delay=7.125 min_gap=0.000 last=1784645765.982
+16:56:05.982  PRE   GET /api/trade/fetch/c1c4550f7917ab34e532409c1e6ecf5ddce3e8fd1b2254fd6420f5a9de8f10fe%2C9a846f50520beeb871c5ff4c0e2dc546099f54eda78a8b243f550beb2e0c2405%2Cd697a175fd87bb04f9a9740847431b2a7f1a207db29e4aa221ed6c57f80d58f7%2C6109bb6c6ced1b0e45ecc66f84c8d008d2cde7ba83d80d3e5fc3c6ca6a7638f7%2C891a5992023fe007209f0ca64fd5289283a1ffe5c089e4a2cfad95bc3ca339ba  delay=7.125 min_gap=0.000 last=1784645765.982
+16:56:05.982  ENF   delay=7.125 min_gap=0.000 jitter=2.128 gap=9.253 since_last=0.000 sleep=9.253
+16:56:15.508  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.125→1.516  min_gap→0  max_usage=0%
+16:56:15.508  RAW   content-type: application/json
+16:56:15.508  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:56:15.508  RAW   x-rate-limit-rules: Account,Ip
+16:56:15.508  RAW   x-rate-limit-account: 6:4:10
+16:56:15.508  RAW   x-rate-limit-account-state: 1:4:0
+16:56:15.508  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:56:15.508  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:56:15.508  RAW   cf-cache-status: DYNAMIC
+16:56:15.508  RAW   cf-ray: a1eb0d1f4f336368-WAW
+16:56:15.508  RESP  GET /api/trade/fetch/c1c4550f7917ab34e532409c1e6ecf5ddce3e8fd1b2254fd6420f5a9de8f10fe%2C9a846f50520beeb871c5ff4c0e2dc546099f54eda78a8b243f550beb2e0c2405%2Cd697a175fd87bb04f9a9740847431b2a7f1a207db29e4aa221ed6c57f80d58f7%2C6109bb6c6ced1b0e45ecc66f84c8d008d2cde7ba83d80d3e5fc3c6ca6a7638f7%2C891a5992023fe007209f0ca64fd5289283a1ffe5c089e4a2cfad95bc3ca339ba → 200  9.527s  delay=1.516 min_gap=0.000 last=1784645775.509
+16:56:15.509  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645775.509
+16:56:15.509  ENF   delay=1.516 min_gap=0.000 jitter=2.303 gap=3.819 since_last=0.000 sleep=3.819
+16:56:19.618  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.375s/req pen=1800s (used=31)  delay 1.516→7.375  min_gap→0  max_usage=52%
+16:56:19.618  RAW   content-type: application/json
+16:56:19.618  RAW   x-rate-limit-policy: trade-search-request-limit
+16:56:19.618  RAW   x-rate-limit-rules: Account,Ip
+16:56:19.618  RAW   x-rate-limit-account: 3:5:60
+16:56:19.618  RAW   x-rate-limit-account-state: 1:5:0
+16:56:19.618  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:56:19.618  RAW   x-rate-limit-ip-state: 2:10:0,7:60:0,31:300:0
+16:56:19.618  RAW   cf-cache-status: DYNAMIC
+16:56:19.618  RAW   cf-ray: a1eb0d38d8a66368-WAW
+16:56:19.618  RESP  POST /api/trade/search/Standard → 200  4.109s  delay=7.375 min_gap=0.000 last=1784645779.618
+16:56:19.618  PRE   GET /api/trade/fetch/b07b24e30122912d8ae30e038986f08b4b67f22e0a92b45668e375f0da290af7%2Ca60d3c62e5228f59b07c90a828cd609271f1b704c97bbc86a724bf911a3ce5e1%2C6020d5f48250a65a7f514d2ab1a51b46ececde07e749a8abfb71b02cc5a4692c%2C5831c3ff142fea52a7404254c92d648d7dde33f5f8c032e686ec3a86e18f8fa1%2Ce14354777ac695197afa24c8b6372467674cd3ebc5f8a73938d23388c79d6dd9  delay=7.375 min_gap=0.000 last=1784645779.618
+16:56:19.618  ENF   delay=7.375 min_gap=0.000 jitter=2.662 gap=10.037 since_last=0.000 sleep=10.037
+16:56:29.924  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.375→1.516  min_gap→0  max_usage=0%
+16:56:29.924  RAW   content-type: application/json
+16:56:29.925  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:56:29.925  RAW   x-rate-limit-rules: Account,Ip
+16:56:29.925  RAW   x-rate-limit-account: 6:4:10
+16:56:29.925  RAW   x-rate-limit-account-state: 1:4:0
+16:56:29.925  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:56:29.925  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:56:29.925  RAW   cf-cache-status: DYNAMIC
+16:56:29.925  RAW   cf-ray: a1eb0d796de46368-WAW
+16:56:29.925  RESP  GET /api/trade/fetch/b07b24e30122912d8ae30e038986f08b4b67f22e0a92b45668e375f0da290af7%2Ca60d3c62e5228f59b07c90a828cd609271f1b704c97bbc86a724bf911a3ce5e1%2C6020d5f48250a65a7f514d2ab1a51b46ececde07e749a8abfb71b02cc5a4692c%2C5831c3ff142fea52a7404254c92d648d7dde33f5f8c032e686ec3a86e18f8fa1%2Ce14354777ac695197afa24c8b6372467674cd3ebc5f8a73938d23388c79d6dd9 → 200  10.306s  delay=1.516 min_gap=0.000 last=1784645789.925
+16:56:29.925  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645789.925
+16:56:29.925  ENF   delay=1.516 min_gap=0.000 jitter=2.519 gap=4.035 since_last=0.000 sleep=4.035
+16:56:34.235  PARSE Account 3:5:60 → 2.500s/req pen=60s (used=2); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.625s/req pen=1800s (used=33)  delay 1.516→7.625  min_gap→0  max_usage=55%
+16:56:34.235  RAW   content-type: application/json
+16:56:34.235  RAW   x-rate-limit-policy: trade-search-request-limit
+16:56:34.235  RAW   x-rate-limit-rules: Account,Ip
+16:56:34.235  RAW   x-rate-limit-account: 3:5:60
+16:56:34.235  RAW   x-rate-limit-account-state: 2:5:0
+16:56:34.235  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:56:34.235  RAW   x-rate-limit-ip-state: 2:10:0,7:60:0,33:300:0
+16:56:34.235  RAW   cf-cache-status: DYNAMIC
+16:56:34.235  RAW   cf-ray: a1eb0d944a566368-WAW
+16:56:34.235  RESP  POST /api/trade/search/Standard → 200  4.310s  delay=7.625 min_gap=0.000 last=1784645794.236
+16:56:34.235  PRE   GET /api/trade/fetch/f1545062e35a7456a1a8ef4ebb3ba01bf7b9def3d6c85b52f9c9550d7dddd0f6%2C246f82dc9d4618642b4f2315385d8f4f8daddd5e4cf089350ebf49ee91f10303%2Caf2a34fa76187ac163cfeacad5a4b274327ba6027c637161248842f162e94ec9%2Ca2271da15e96db00c9fb7e5ee8618e977967217b888f5f4990e2158ed052f81d%2C66be352ef795f94c75c2dd55aad8fc5dec6ca7351c5ee0234559c143243233f0  delay=7.625 min_gap=0.000 last=1784645794.236
+16:56:34.235  ENF   delay=7.625 min_gap=0.000 jitter=3.528 gap=11.153 since_last=0.000 sleep=11.153
+16:56:45.656  PARSE Account 6:4:10 → 0.667s/req pen=10s (used=2); Ip 12:4:60 → 0.250s/req pen=60s (used=2); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.625→1.667  min_gap→0  max_usage=0%
+16:56:45.657  RAW   content-type: application/json
+16:56:45.657  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:56:45.657  RAW   x-rate-limit-rules: Account,Ip
+16:56:45.657  RAW   x-rate-limit-account: 6:4:10
+16:56:45.657  RAW   x-rate-limit-account-state: 2:4:0
+16:56:45.657  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:56:45.657  RAW   x-rate-limit-ip-state: 2:4:0,2:12:0
+16:56:45.657  RAW   cf-cache-status: DYNAMIC
+16:56:45.657  RAW   cf-ray: a1eb0ddbbaaf6368-WAW
+16:56:45.657  RESP  GET /api/trade/fetch/f1545062e35a7456a1a8ef4ebb3ba01bf7b9def3d6c85b52f9c9550d7dddd0f6%2C246f82dc9d4618642b4f2315385d8f4f8daddd5e4cf089350ebf49ee91f10303%2Caf2a34fa76187ac163cfeacad5a4b274327ba6027c637161248842f162e94ec9%2Ca2271da15e96db00c9fb7e5ee8618e977967217b888f5f4990e2158ed052f81d%2C66be352ef795f94c75c2dd55aad8fc5dec6ca7351c5ee0234559c143243233f0 → 200  11.421s  delay=1.667 min_gap=0.000 last=1784645805.657
+16:56:45.682  PRE   POST /api/trade/search/Standard  delay=1.667 min_gap=0.000 last=1784645805.657
+16:56:45.682  ENF   delay=1.667 min_gap=0.000 jitter=4.823 gap=6.489 since_last=0.025 sleep=6.464
+16:56:52.424  PARSE Account 3:5:60 → 2.500s/req pen=60s (used=2); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.875s/req pen=1800s (used=35)  delay 1.667→7.875  min_gap→0  max_usage=58%
+16:56:52.425  RAW   content-type: application/json
+16:56:52.425  RAW   x-rate-limit-policy: trade-search-request-limit
+16:56:52.425  RAW   x-rate-limit-rules: Account,Ip
+16:56:52.425  RAW   x-rate-limit-account: 3:5:60
+16:56:52.425  RAW   x-rate-limit-account-state: 2:5:0
+16:56:52.425  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:56:52.425  RAW   x-rate-limit-ip-state: 2:10:0,7:60:0,35:300:0
+16:56:52.425  RAW   cf-cache-status: DYNAMIC
+16:56:52.425  RAW   cf-ray: a1eb0e05fa946368-WAW
+16:56:52.425  RESP  POST /api/trade/search/Standard → 200  6.742s  delay=7.875 min_gap=0.000 last=1784645812.425
+16:56:52.425  PRE   GET /api/trade/fetch/4fa5fe884d8484a50abb13ead9ff525dcb087c5f9547b9084f70bee5da747e97%2C9528bf9b70b22e4ee48d5097c140d605f68208ff8ccd5a39d0bc11336d4b664f%2Cb6b2e33d4a5c9297a6599f18edf8bc10d07fec6b1160987f0f9f9d1c56b117e2%2C82b0d4664c9e04cddfbe5fc4f97089054aa75f069f3bddeee661ed0ecda3161b%2Cdeb3ac8990dc0e3c1745c9c5d181c41f3da207a98f4535501d64352ec92c0b29  delay=7.875 min_gap=0.000 last=1784645812.425
+16:56:52.425  ENF   delay=7.875 min_gap=0.000 jitter=3.656 gap=11.531 since_last=0.000 sleep=11.531
+16:57:04.221  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.875→1.516  min_gap→0  max_usage=0%
+16:57:04.221  RAW   content-type: application/json
+16:57:04.221  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:57:04.221  RAW   x-rate-limit-rules: Account,Ip
+16:57:04.221  RAW   x-rate-limit-account: 6:4:10
+16:57:04.221  RAW   x-rate-limit-account-state: 1:4:0
+16:57:04.221  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:57:04.221  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:57:04.221  RAW   cf-cache-status: DYNAMIC
+16:57:04.221  RAW   cf-ray: a1eb0e4fcb676368-WAW
+16:57:04.221  RESP  GET /api/trade/fetch/4fa5fe884d8484a50abb13ead9ff525dcb087c5f9547b9084f70bee5da747e97%2C9528bf9b70b22e4ee48d5097c140d605f68208ff8ccd5a39d0bc11336d4b664f%2Cb6b2e33d4a5c9297a6599f18edf8bc10d07fec6b1160987f0f9f9d1c56b117e2%2C82b0d4664c9e04cddfbe5fc4f97089054aa75f069f3bddeee661ed0ecda3161b%2Cdeb3ac8990dc0e3c1745c9c5d181c41f3da207a98f4535501d64352ec92c0b29 → 200  11.796s  delay=1.516 min_gap=0.000 last=1784645824.221
+16:57:04.221  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645824.221
+16:57:04.221  ENF   delay=1.516 min_gap=0.000 jitter=3.811 gap=5.326 since_last=0.000 sleep=5.326
+16:57:09.829  PARSE Account 3:5:60 → 2.500s/req pen=60s (used=2); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.250s/req pen=1800s (used=30)  delay 1.516→7.250  min_gap→0  max_usage=50%
+16:57:09.829  RAW   content-type: application/json
+16:57:09.829  RAW   x-rate-limit-policy: trade-search-request-limit
+16:57:09.829  RAW   x-rate-limit-rules: Account,Ip
+16:57:09.829  RAW   x-rate-limit-account: 3:5:60
+16:57:09.829  RAW   x-rate-limit-account-state: 2:5:0
+16:57:09.829  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:57:09.829  RAW   x-rate-limit-ip-state: 2:10:0,7:60:0,30:300:0
+16:57:09.829  RAW   cf-cache-status: DYNAMIC
+16:57:09.829  RAW   cf-ray: a1eb0e72be456368-WAW
+16:57:09.829  RESP  POST /api/trade/search/Standard → 200  5.608s  delay=7.250 min_gap=0.000 last=1784645829.830
+16:57:09.829  PRE   GET /api/trade/fetch/a60d3c62e5228f59b07c90a828cd609271f1b704c97bbc86a724bf911a3ce5e1%2Cb07b24e30122912d8ae30e038986f08b4b67f22e0a92b45668e375f0da290af7%2C6020d5f48250a65a7f514d2ab1a51b46ececde07e749a8abfb71b02cc5a4692c%2C5831c3ff142fea52a7404254c92d648d7dde33f5f8c032e686ec3a86e18f8fa1%2Ce14354777ac695197afa24c8b6372467674cd3ebc5f8a73938d23388c79d6dd9  delay=7.250 min_gap=0.000 last=1784645829.830
+16:57:09.829  ENF   delay=7.250 min_gap=0.000 jitter=3.535 gap=10.785 since_last=0.000 sleep=10.785
+16:57:20.882  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.250→1.516  min_gap→0  max_usage=0%
+16:57:20.883  RAW   content-type: application/json
+16:57:20.883  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:57:20.883  RAW   x-rate-limit-rules: Account,Ip
+16:57:20.883  RAW   x-rate-limit-account: 6:4:10
+16:57:20.883  RAW   x-rate-limit-account-state: 1:4:0
+16:57:20.883  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:57:20.883  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:57:20.883  RAW   cf-cache-status: DYNAMIC
+16:57:20.883  RAW   cf-ray: a1eb0eb7ed136368-WAW
+16:57:20.883  RESP  GET /api/trade/fetch/a60d3c62e5228f59b07c90a828cd609271f1b704c97bbc86a724bf911a3ce5e1%2Cb07b24e30122912d8ae30e038986f08b4b67f22e0a92b45668e375f0da290af7%2C6020d5f48250a65a7f514d2ab1a51b46ececde07e749a8abfb71b02cc5a4692c%2C5831c3ff142fea52a7404254c92d648d7dde33f5f8c032e686ec3a86e18f8fa1%2Ce14354777ac695197afa24c8b6372467674cd3ebc5f8a73938d23388c79d6dd9 → 200  11.053s  delay=1.516 min_gap=0.000 last=1784645840.883
+16:57:20.883  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645840.883
+16:57:20.883  ENF   delay=1.516 min_gap=0.000 jitter=4.912 gap=6.428 since_last=0.000 sleep=6.428
+16:57:27.587  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.200s/req pen=120s (used=8); Ip 60:300:1800 → 6.500s/req pen=1800s (used=32)  delay 1.516→7.500  min_gap→0  max_usage=53%
+16:57:27.587  RAW   content-type: application/json
+16:57:27.587  RAW   x-rate-limit-policy: trade-search-request-limit
+16:57:27.587  RAW   x-rate-limit-rules: Account,Ip
+16:57:27.587  RAW   x-rate-limit-account: 3:5:60
+16:57:27.587  RAW   x-rate-limit-account-state: 1:5:0
+16:57:27.587  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:57:27.587  RAW   x-rate-limit-ip-state: 2:10:0,8:60:0,32:300:0
+16:57:27.588  RAW   cf-cache-status: DYNAMIC
+16:57:27.588  RAW   cf-ray: a1eb0ee1beaf6368-WAW
+16:57:27.588  RESP  POST /api/trade/search/Standard → 200  6.705s  delay=7.500 min_gap=0.000 last=1784645847.588
+16:57:27.588  PRE   GET /api/trade/fetch/983b2c4cf8c68116f6e0fc8972ff0769df8c639e13fcc61bceace3f64f1b6d60%2Ca81a1258cd50774c4beebee4b14340666a774ad6c5fbd0bf402ebbc205316d86%2Cd28b6951edf2e13516fa81ec515f58a2e6de09a5aa6c7a0724e8d5365dadd2d7%2C0e76374648a57adb1b80939cb7620cd903226000883d98f5dbf3398a40d82021%2C91cb46d2f40b3d239d36a896a6b065aa313a68ad0bff4f564ca9f5c9780be47d  delay=7.500 min_gap=0.000 last=1784645847.588
+16:57:27.588  ENF   delay=7.500 min_gap=0.000 jitter=2.433 gap=9.933 since_last=0.000 sleep=9.933
+16:57:37.788  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.500→1.516  min_gap→0  max_usage=0%
+16:57:37.788  RAW   content-type: application/json
+16:57:37.788  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:57:37.788  RAW   x-rate-limit-rules: Account,Ip
+16:57:37.788  RAW   x-rate-limit-account: 6:4:10
+16:57:37.788  RAW   x-rate-limit-account-state: 1:4:0
+16:57:37.788  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:57:37.788  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:57:37.788  RAW   cf-cache-status: DYNAMIC
+16:57:37.788  RAW   cf-ray: a1eb0f218b566368-WAW
+16:57:37.788  RESP  GET /api/trade/fetch/983b2c4cf8c68116f6e0fc8972ff0769df8c639e13fcc61bceace3f64f1b6d60%2Ca81a1258cd50774c4beebee4b14340666a774ad6c5fbd0bf402ebbc205316d86%2Cd28b6951edf2e13516fa81ec515f58a2e6de09a5aa6c7a0724e8d5365dadd2d7%2C0e76374648a57adb1b80939cb7620cd903226000883d98f5dbf3398a40d82021%2C91cb46d2f40b3d239d36a896a6b065aa313a68ad0bff4f564ca9f5c9780be47d → 200  10.200s  delay=1.516 min_gap=0.000 last=1784645857.788
+16:57:37.814  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645857.788
+16:57:37.814  ENF   delay=1.516 min_gap=0.000 jitter=4.096 gap=5.612 since_last=0.027 sleep=5.585
+16:57:43.678  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.200s/req pen=120s (used=8); Ip 60:300:1800 → 6.750s/req pen=1800s (used=34)  delay 1.516→7.750  min_gap→0  max_usage=57%
+16:57:43.679  RAW   content-type: application/json
+16:57:43.679  RAW   x-rate-limit-policy: trade-search-request-limit
+16:57:43.679  RAW   x-rate-limit-rules: Account,Ip
+16:57:43.679  RAW   x-rate-limit-account: 3:5:60
+16:57:43.679  RAW   x-rate-limit-account-state: 1:5:0
+16:57:43.679  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:57:43.679  RAW   x-rate-limit-ip-state: 2:10:0,8:60:0,34:300:0
+16:57:43.679  RAW   cf-cache-status: DYNAMIC
+16:57:43.679  RAW   cf-ray: a1eb0f464c7c6368-WAW
+16:57:43.679  RESP  POST /api/trade/search/Standard → 200  5.864s  delay=7.750 min_gap=0.000 last=1784645863.679
+16:57:43.679  PRE   GET /api/trade/fetch/6833a3eac745f51cfedb36aee94ff3ffd0aac13b5bb86220c40fab1e26e94856%2C53b7f72e5b2ca3948565de43be399e6096374230124d4afeb1670c01de33b9d1%2Cbf711f3fdf7fe9995c01b480ba40d043ea8b938e8d6a244a36371901aa6f25fc%2C6ef183203ebc4ba455132e333b40f7ccf5aa6e2435e8c4141385eabf27a8dd7c%2Cf9ad9772b10aece7001cd4abb138702c8dec46b92fe00bcddc790efe77bc38fc  delay=7.750 min_gap=0.000 last=1784645863.679
+16:57:43.679  ENF   delay=7.750 min_gap=0.000 jitter=2.301 gap=10.051 since_last=0.000 sleep=10.051
+16:57:53.995  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.750→1.516  min_gap→0  max_usage=0%
+16:57:53.995  RAW   content-type: application/json
+16:57:53.995  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:57:53.995  RAW   x-rate-limit-rules: Account,Ip
+16:57:53.995  RAW   x-rate-limit-account: 6:4:10
+16:57:53.995  RAW   x-rate-limit-account-state: 1:4:0
+16:57:53.995  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:57:53.995  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:57:53.995  RAW   cf-cache-status: DYNAMIC
+16:57:53.995  RAW   cf-ray: a1eb0f86dbf56368-WAW
+16:57:53.995  RESP  GET /api/trade/fetch/6833a3eac745f51cfedb36aee94ff3ffd0aac13b5bb86220c40fab1e26e94856%2C53b7f72e5b2ca3948565de43be399e6096374230124d4afeb1670c01de33b9d1%2Cbf711f3fdf7fe9995c01b480ba40d043ea8b938e8d6a244a36371901aa6f25fc%2C6ef183203ebc4ba455132e333b40f7ccf5aa6e2435e8c4141385eabf27a8dd7c%2Cf9ad9772b10aece7001cd4abb138702c8dec46b92fe00bcddc790efe77bc38fc → 200  10.316s  delay=1.516 min_gap=0.000 last=1784645873.996
+16:57:53.996  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645873.996
+16:57:53.996  ENF   delay=1.516 min_gap=0.000 jitter=3.643 gap=5.159 since_last=0.000 sleep=5.159
+16:57:59.430  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 5.200s/req pen=120s (used=8); Ip 60:300:1800 → 7.000s/req pen=1800s (used=36)  delay 1.516→8.000  min_gap→0  max_usage=60%
+16:57:59.430  RAW   content-type: application/json
+16:57:59.430  RAW   x-rate-limit-policy: trade-search-request-limit
+16:57:59.430  RAW   x-rate-limit-rules: Account,Ip
+16:57:59.430  RAW   x-rate-limit-account: 3:5:60
+16:57:59.430  RAW   x-rate-limit-account-state: 1:5:0
+16:57:59.430  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:57:59.430  RAW   x-rate-limit-ip-state: 2:10:0,8:60:0,36:300:0
+16:57:59.430  RAW   cf-cache-status: DYNAMIC
+16:57:59.430  RAW   cf-ray: a1eb0fa8cd416368-WAW
+16:57:59.430  RESP  POST /api/trade/search/Standard → 200  5.434s  delay=8.000 min_gap=0.000 last=1784645879.430
+16:57:59.430  PRE   GET /api/trade/fetch/87339a4ca0990d51aa44e3d6daf103f92aced152930fa519859885258c299cc7%2C756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2C60c87adaecb245c61b654a4668b2f71904e3b3d8ef997fbbf45372241f3d3aae%2C340cd8e561196d2e5e3bddc72c0ac71bc3bf3fddac30ca9592fe5da3fa87a949%2Ca19c06473324b212f243e698bf3a32c5aa010c8c78766f262f650b3ac5cd7d9a  delay=8.000 min_gap=0.000 last=1784645879.430
+16:57:59.430  ENF   delay=8.000 min_gap=0.000 jitter=2.831 gap=10.831 since_last=0.000 sleep=10.831
+16:58:10.525  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 8.000→1.516  min_gap→0  max_usage=0%
+16:58:10.525  RAW   content-type: application/json
+16:58:10.525  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:58:10.525  RAW   x-rate-limit-rules: Account,Ip
+16:58:10.525  RAW   x-rate-limit-account: 6:4:10
+16:58:10.525  RAW   x-rate-limit-account-state: 1:4:0
+16:58:10.525  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:58:10.525  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:58:10.525  RAW   cf-cache-status: DYNAMIC
+16:58:10.525  RAW   cf-ray: a1eb0fee2b506368-WAW
+16:58:10.525  RESP  GET /api/trade/fetch/87339a4ca0990d51aa44e3d6daf103f92aced152930fa519859885258c299cc7%2C756a43bfbbfac3baccb253489fa0d424c5057ad29635b8b8daa32f1e4b646a22%2C60c87adaecb245c61b654a4668b2f71904e3b3d8ef997fbbf45372241f3d3aae%2C340cd8e561196d2e5e3bddc72c0ac71bc3bf3fddac30ca9592fe5da3fa87a949%2Ca19c06473324b212f243e698bf3a32c5aa010c8c78766f262f650b3ac5cd7d9a → 200  11.095s  delay=1.516 min_gap=0.000 last=1784645890.526
+16:58:10.551  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645890.526
+16:58:10.551  ENF   delay=1.516 min_gap=0.000 jitter=4.080 gap=5.595 since_last=0.026 sleep=5.570
+16:58:16.404  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.375s/req pen=1800s (used=31)  delay 1.516→7.375  min_gap→0  max_usage=52%
+16:58:16.404  RAW   content-type: application/json
+16:58:16.404  RAW   x-rate-limit-policy: trade-search-request-limit
+16:58:16.404  RAW   x-rate-limit-rules: Account,Ip
+16:58:16.404  RAW   x-rate-limit-account: 3:5:60
+16:58:16.404  RAW   x-rate-limit-account-state: 1:5:0
+16:58:16.404  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:58:16.404  RAW   x-rate-limit-ip-state: 2:10:0,6:60:0,31:300:0
+16:58:16.404  RAW   cf-cache-status: DYNAMIC
+16:58:16.404  RAW   cf-ray: a1eb1012c9336368-WAW
+16:58:16.404  RESP  POST /api/trade/search/Standard → 200  5.853s  delay=7.375 min_gap=0.000 last=1784645896.404
+16:58:16.404  PRE   GET /api/trade/fetch/20b486a157b4b46b593975770d76a6636e05ce151a0618e7b048840bb88e11ae%2C687902972681420041bf0186061af6105a06272bf589f0de1cb97d2f36164989%2Cb1f2937caa5c77ff35dc7786372cafbf364d39121f8aa8b1c0b6ef13bdefa341%2C8a379f8b14d9ace6ff5be4d11cf32e17c4b327fe503952cb5e6428845f21555d%2Cefabb63a3866c39778d5c0ee67be68da1c626e97b75318819472de4f43592d73  delay=7.375 min_gap=0.000 last=1784645896.404
+16:58:16.404  ENF   delay=7.375 min_gap=0.000 jitter=4.923 gap=12.298 since_last=0.000 sleep=12.298
+16:58:29.084  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.375→1.516  min_gap→0  max_usage=0%
+16:58:29.084  RAW   content-type: application/json
+16:58:29.084  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:58:29.084  RAW   x-rate-limit-rules: Account,Ip
+16:58:29.084  RAW   x-rate-limit-account: 6:4:10
+16:58:29.084  RAW   x-rate-limit-account-state: 1:4:0
+16:58:29.084  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:58:29.084  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:58:29.084  RAW   cf-cache-status: DYNAMIC
+16:58:29.084  RAW   cf-ray: a1eb106169ba6368-WAW
+16:58:29.084  RESP  GET /api/trade/fetch/20b486a157b4b46b593975770d76a6636e05ce151a0618e7b048840bb88e11ae%2C687902972681420041bf0186061af6105a06272bf589f0de1cb97d2f36164989%2Cb1f2937caa5c77ff35dc7786372cafbf364d39121f8aa8b1c0b6ef13bdefa341%2C8a379f8b14d9ace6ff5be4d11cf32e17c4b327fe503952cb5e6428845f21555d%2Cefabb63a3866c39778d5c0ee67be68da1c626e97b75318819472de4f43592d73 → 200  12.680s  delay=1.516 min_gap=0.000 last=1784645909.084
+16:58:29.084  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645909.084
+16:58:29.084  ENF   delay=1.516 min_gap=0.000 jitter=3.177 gap=4.692 since_last=0.000 sleep=4.692
+16:58:34.066  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 1.094s/req pen=60s (used=2); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.625s/req pen=1800s (used=33)  delay 1.516→7.625  min_gap→0  max_usage=55%
+16:58:34.066  RAW   content-type: application/json
+16:58:34.066  RAW   x-rate-limit-policy: trade-search-request-limit
+16:58:34.066  RAW   x-rate-limit-rules: Account,Ip
+16:58:34.066  RAW   x-rate-limit-account: 3:5:60
+16:58:34.066  RAW   x-rate-limit-account-state: 1:5:0
+16:58:34.066  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:58:34.066  RAW   x-rate-limit-ip-state: 2:10:0,6:60:0,33:300:0
+16:58:34.066  RAW   cf-cache-status: DYNAMIC
+16:58:34.066  RAW   cf-ray: a1eb10812e626368-WAW
+16:58:34.066  RESP  POST /api/trade/search/Standard → 200  4.982s  delay=7.625 min_gap=0.000 last=1784645914.066
+16:58:34.066  PRE   GET /api/trade/fetch/b07b24e30122912d8ae30e038986f08b4b67f22e0a92b45668e375f0da290af7%2Ca60d3c62e5228f59b07c90a828cd609271f1b704c97bbc86a724bf911a3ce5e1%2C5831c3ff142fea52a7404254c92d648d7dde33f5f8c032e686ec3a86e18f8fa1%2C6020d5f48250a65a7f514d2ab1a51b46ececde07e749a8abfb71b02cc5a4692c%2Ce14354777ac695197afa24c8b6372467674cd3ebc5f8a73938d23388c79d6dd9  delay=7.625 min_gap=0.000 last=1784645914.066
+16:58:34.066  ENF   delay=7.625 min_gap=0.000 jitter=3.726 gap=11.351 since_last=0.000 sleep=11.351
+16:58:45.689  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.625→1.516  min_gap→0  max_usage=0%
+16:58:45.689  RAW   content-type: application/json
+16:58:45.689  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:58:45.689  RAW   x-rate-limit-rules: Account,Ip
+16:58:45.689  RAW   x-rate-limit-account: 6:4:10
+16:58:45.689  RAW   x-rate-limit-account-state: 1:4:0
+16:58:45.689  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:58:45.689  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:58:45.689  RAW   cf-cache-status: DYNAMIC
+16:58:45.689  RAW   cf-ray: a1eb10c9ecb26368-WAW
+16:58:45.689  RESP  GET /api/trade/fetch/b07b24e30122912d8ae30e038986f08b4b67f22e0a92b45668e375f0da290af7%2Ca60d3c62e5228f59b07c90a828cd609271f1b704c97bbc86a724bf911a3ce5e1%2C5831c3ff142fea52a7404254c92d648d7dde33f5f8c032e686ec3a86e18f8fa1%2C6020d5f48250a65a7f514d2ab1a51b46ececde07e749a8abfb71b02cc5a4692c%2Ce14354777ac695197afa24c8b6372467674cd3ebc5f8a73938d23388c79d6dd9 → 200  11.622s  delay=1.516 min_gap=0.000 last=1784645925.689
+16:58:45.689  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645925.689
+16:58:45.689  ENF   delay=1.516 min_gap=0.000 jitter=3.332 gap=4.848 since_last=0.000 sleep=4.848
+16:58:50.819  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.400s/req pen=120s (used=6); Ip 60:300:1800 → 6.875s/req pen=1800s (used=35)  delay 1.516→7.875  min_gap→0  max_usage=58%
+16:58:50.819  RAW   content-type: application/json
+16:58:50.819  RAW   x-rate-limit-policy: trade-search-request-limit
+16:58:50.819  RAW   x-rate-limit-rules: Account,Ip
+16:58:50.819  RAW   x-rate-limit-account: 3:5:60
+16:58:50.819  RAW   x-rate-limit-account-state: 1:5:0
+16:58:50.819  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:58:50.819  RAW   x-rate-limit-ip-state: 1:10:0,6:60:0,35:300:0
+16:58:50.819  RAW   cf-cache-status: DYNAMIC
+16:58:50.819  RAW   cf-ray: a1eb10e9ee826368-WAW
+16:58:50.819  RESP  POST /api/trade/search/Standard → 200  5.130s  delay=7.875 min_gap=0.000 last=1784645930.820
+16:58:50.819  PRE   GET /api/trade/fetch/fa0955f4647ca5dce613b34fdf952d5f9a98b2604ca4f551e2c81245d4ae64f3%2Ce087f8dea73e3561859beeaab11ea647705742d6a077ea7401d042564a0955bf%2Cf0af1ebf8e84c02d23e00310c60b68e8be103cb175d1e59ed5e65122fbdd0432%2Ca54bf19cb27484743f501a321b3f240a8e8ecf22000a772e657057a1316b5921%2Cbeabefb79a00999ba8f64d085c891b81b1fc032cd841a3144266945983af3aab  delay=7.875 min_gap=0.000 last=1784645930.820
+16:58:50.819  ENF   delay=7.875 min_gap=0.000 jitter=3.223 gap=11.098 since_last=0.000 sleep=11.098
+16:59:02.191  PARSE Account 6:4:10 → 0.500s/req pen=10s (used=1); Ip 12:4:60 → 0.208s/req pen=60s (used=1); Ip 16:12:60 → 0.516s/req pen=60s (used=2)  delay 7.875→1.516  min_gap→0  max_usage=0%
+16:59:02.191  RAW   content-type: application/json
+16:59:02.191  RAW   x-rate-limit-policy: trade-fetch-request-limit
+16:59:02.191  RAW   x-rate-limit-rules: Account,Ip
+16:59:02.191  RAW   x-rate-limit-account: 6:4:10
+16:59:02.191  RAW   x-rate-limit-account-state: 1:4:0
+16:59:02.191  RAW   x-rate-limit-ip: 12:4:60,16:12:60
+16:59:02.191  RAW   x-rate-limit-ip-state: 1:4:0,2:12:0
+16:59:02.191  RAW   cf-cache-status: DYNAMIC
+16:59:02.191  RAW   cf-ray: a1eb11310c5a6368-WAW
+16:59:02.191  RESP  GET /api/trade/fetch/fa0955f4647ca5dce613b34fdf952d5f9a98b2604ca4f551e2c81245d4ae64f3%2Ce087f8dea73e3561859beeaab11ea647705742d6a077ea7401d042564a0955bf%2Cf0af1ebf8e84c02d23e00310c60b68e8be103cb175d1e59ed5e65122fbdd0432%2Ca54bf19cb27484743f501a321b3f240a8e8ecf22000a772e657057a1316b5921%2Cbeabefb79a00999ba8f64d085c891b81b1fc032cd841a3144266945983af3aab → 200  11.372s  delay=1.516 min_gap=0.000 last=1784645942.192
+16:59:02.212  PRE   POST /api/trade/search/Standard  delay=1.516 min_gap=0.000 last=1784645942.192
+16:59:02.212  ENF   delay=1.516 min_gap=0.000 jitter=2.162 gap=3.677 since_last=0.021 sleep=3.657
+16:59:06.149  PARSE Account 3:5:60 → 1.667s/req pen=60s (used=1); Ip 8:10:60 → 0.859s/req pen=60s (used=1); Ip 15:60:120 → 4.800s/req pen=120s (used=7); Ip 60:300:1800 → 6.250s/req pen=1800s (used=30)  delay 1.516→7.250  min_gap→0  max_usage=50%
+16:59:06.150  RAW   content-type: application/json
+16:59:06.150  RAW   x-rate-limit-policy: trade-search-request-limit
+16:59:06.150  RAW   x-rate-limit-rules: Account,Ip
+16:59:06.150  RAW   x-rate-limit-account: 3:5:60
+16:59:06.150  RAW   x-rate-limit-account-state: 1:5:0
+16:59:06.150  RAW   x-rate-limit-ip: 8:10:60,15:60:120,60:300:1800
+16:59:06.150  RAW   x-rate-limit-ip-state: 1:10:0,7:60:0,30:300:0
+16:59:06.150  RAW   cf-cache-status: DYNAMIC
+16:59:06.150  RAW   cf-ray: a1eb1149bf306368-WAW
+16:59:06.150  RESP  POST /api/trade/search/Standard → 200  3.938s  delay=7.250 min_gap=0.000 last=1784645946.150
+16:59:06.150  PRE   GET /api/trade/fetch/c1c4550f7917ab34e532409c1e6ecf5ddce3e8fd1b2254fd6420f5a9de8f10fe%2C9a846f50520beeb871c5ff4c0e2dc546099f54eda78a8b243f550beb2e0c2405%2Cd697a175fd87bb04f9a9740847431b2a7f1a207db29e4aa221ed6c57f80d58f7%2C891a5992023fe007209f0ca64fd5289283a1ffe5c089e4a2cfad95bc3ca339ba%2C6109bb6c6ced1b0e45ecc66f84c8d008d2cde7ba83d80d3e5fc3c6ca6a7638f7  delay=7.250 min_gap=0.000 last=1784645946.150
+16:59:06.150  ENF   delay=7.250 min_gap=0.000 jitter=2.513 gap=9.763 since_last=0.000 sleep=9.763

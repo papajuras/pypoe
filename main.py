@@ -1,18 +1,23 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
+
 import re
+import os
 import threading
 
 import pyautogui
 from nicegui import ui
 from pynput import keyboard
 
-from crafting import CraftingSession, Positions, Settings, capture_clipboard
-from db.affixes import (
+from pypoe.crafting import CraftingSession, Positions, Settings, capture_clipboard
+from pypoe.db.affixes import (
     download as download_affixes,
     get_item_type_names,
     is_cached,
     load_affixes,
 )
-from db.config import (
+from pypoe.db.config import (
     delete_profile,
     get_meta,
     get_profile_settings,
@@ -20,7 +25,8 @@ from db.config import (
     put_profile_settings,
     set_meta,
 )
-from flipper.ui import FlipperPanel
+from pypoe.flipper.ui import FlipperPanel
+from pypoe.tray import create as create_tray, stop as stop_tray, update_tooltip
 
 pyautogui.FAILSAFE = False
 pyautogui.PAUSE = 0.05
@@ -463,4 +469,89 @@ listener = keyboard.Listener(on_press=on_press, on_release=on_release)
 listener.daemon = True
 listener.start()
 
-ui.run(title="PoE Crafting Macro", native=True)
+def main():
+    import os
+    import signal
+    import time
+
+    from nicegui import core
+    IS_FIRST = not core.app.is_started
+    if IS_FIRST:
+        _real_stop_and_exit = core.stop_and_exit
+        core.stop_and_exit = lambda: None
+
+        signal.signal(signal.SIGINT, lambda *_: os._exit(0))
+
+        def _find_free_port() -> int:
+            import socket
+            s = socket.socket()
+            s.bind(("", 0))
+            port = s.getsockname()[1]
+            s.close()
+            return port
+
+        PORT = _find_free_port()
+        _window_proc = [None]
+
+        import logging as _logging
+        _tray_log = _logging.getLogger("tray")
+        _tray_log.setLevel(_logging.DEBUG)
+        from pathlib import Path as _Path
+        _Path("log").mkdir(exist_ok=True)
+        _h = _logging.FileHandler("log/tray.log", mode="w")
+        _h.setFormatter(_logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+        _tray_log.addHandler(_h)
+
+        def _tray_show():
+            _p = lambda *a, **kw: print(*a, file=__import__("sys").stderr, flush=True, **kw)
+            _p("tray: Show clicked")
+            try:
+                from nicegui.native import WindowProxy
+                _p("tray: WindowProxy restoring...")
+                WindowProxy().show()
+                WindowProxy().restore()
+                _p("tray: WindowProxy OK")
+            except Exception as e:
+                _p("tray: WindowProxy failed:", e)
+                import traceback
+                traceback.print_exc(file=__import__("sys").stderr)
+            proc = _window_proc[0]
+            _p("tray: existing proc=%s alive=%s" % (proc, proc and proc.is_alive()))
+            if proc and not proc.is_alive():
+                _p("tray: proc dead, clearing")
+                _window_proc[0] = None
+            if not _window_proc[0]:
+                _p("tray: spawning subprocess on port %d" % PORT)
+                import multiprocessing as mp
+                from pypoe.window import open_window
+                p = mp.get_context("spawn").Process(target=open_window, args=(PORT,), daemon=True)
+                p.start()
+                _p("tray: subprocess started pid=%s" % p.pid)
+                _window_proc[0] = p
+
+        def _tray_quit():
+            _real_stop_and_exit()
+
+        threading.Thread(target=create_tray, args=(_tray_quit, _tray_show), daemon=True).start()
+
+        def _poll_queue():
+            while True:
+                try:
+                    from pypoe.flipper.ui import _pricer
+                    q = _pricer.queue_size if _pricer else "?"
+                    update_tooltip(f"PoE Crafting Macro — queue: {q}")
+                except Exception:
+                    pass
+                time.sleep(2)
+
+        threading.Thread(target=_poll_queue, daemon=True).start()
+
+    ui.run(port=PORT if IS_FIRST else None, native=True, reload=False)
+
+    if IS_FIRST:
+        while True:
+            time.sleep(60)
+
+
+if __name__ == "__main__":
+    main()

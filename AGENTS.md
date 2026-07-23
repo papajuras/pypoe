@@ -88,7 +88,7 @@ Flipping opportunity monitor with automated price fetching.
 ### Known issues / TODOs
 - Need to test full regal/exalt flow in-game
 - Live trade WebSocket not wired
-- 160 flip generation not yet implemented (body armours 84→86 + helmets 80→84, qualities 30/29/28/27, split/nonsplit)
+- 40 flips from generator (10 bases × 4 qualities), no split variants (split beasts removed in new league), multiplier 0.5 for all, cost 1
 - poe.ninja item_options could add more categories (BaseType, Unique, etc.)
 
 ### How to run
