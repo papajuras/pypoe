@@ -44,7 +44,7 @@ class FakeStore:
     def stale_flip_ids(self, *args):
         return []
 
-    def oldest_unpriced(self, *args):
+    def oldest_unpriced(self, *args, **kwargs):
         return []
 
     def put(self, flip: Flip):

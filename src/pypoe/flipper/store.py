@@ -179,18 +179,46 @@ class Store:
                 result.append(rid)
         return result
 
-    def oldest_unpriced(self, limit: int) -> list[str]:
+    def oldest_unpriced(self, limit: int, min_age: float = 0.0) -> list[str]:
         import logging
         _log = logging.getLogger(__name__)
+        from pypoe.db.config import get_meta
+        disabled = {q for q in (27, 28, 29, 30) if not get_meta(f"flipper_quality_{q}", True)}
+        cutoff = time.time() - min_age if min_age > 0 else 0
+
         rows = self._conn.execute(
-            "SELECT id, CAST(updated_at AS REAL) FROM flips ORDER BY CAST(updated_at AS REAL) ASC LIMIT ?",
-            (limit,),
+            "SELECT id, data, CAST(updated_at AS REAL) FROM flips"
         ).fetchall()
-        fids = [r[0] for r in rows]
+
+        candidates = []
+        for rid, rdata, updated_at in rows:
+            if cutoff > 0 and updated_at >= cutoff:
+                continue
+            if disabled:
+                name = json.loads(rdata).get("name", "")
+                for q in disabled:
+                    if f" {q} " in f" {name} ":
+                        break
+                else:
+                    candidates.append((updated_at, rid))
+            else:
+                candidates.append((updated_at, rid))
+
+        candidates.sort(key=lambda x: x[0])
+        fids = [rid for _, rid in candidates[:limit]]
         if fids:
-            _log.info("oldest_unpriced: %d flips (oldest=%.0f newest_in_batch=%.0f)",
-                      len(fids), rows[0][1], rows[-1][1])
+            _log.info("oldest_unpriced: %d flips (oldest=%.0f)", len(fids), candidates[0][0])
         return fids
+
+    def clear_prices(self):
+        import logging
+        _log = logging.getLogger(__name__)
+        self._conn.execute("DELETE FROM prices")
+        self._conn.execute("DELETE FROM price_history")
+        affected = self._conn.execute("SELECT COUNT(*) FROM flips").fetchone()[0]
+        self._conn.execute("UPDATE flips SET updated_at = 0")
+        self._conn.commit()
+        _log.info("clear_prices: wiped prices/history, reset updated_at for %d flips", affected)
 
     def _prune_history(self):
         self._conn.execute(

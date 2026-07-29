@@ -6,3 +6,6 @@ __pycache__/
 .idea/
 .opencode/
 *.AppImage
+pc-NO-FREE-*.conf
+log/*.log
+log/requests-*.log

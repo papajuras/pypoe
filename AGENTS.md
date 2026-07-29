@@ -17,7 +17,7 @@ Automates orb usage with configurable stop criteria.
 Flipping opportunity monitor with automated price fetching.
 - Flips defined by source (buy) + target (sell) trade queries, multiplier, cost
 - TradeClient with strict rate limiting (stagger + buffer, parses X-Rate-Limit-* headers)
-- PriceFetcher scans DB hourly for stale flips, fetches live prices via worker thread
+- PriceFetcher scans DB every 120s for oldest-unpriced flips (3h min age), fetches live prices via worker thread
 - Source: average of 5 cheapest divine listings. Target: cheapest single divine listing.
 - Liquid/illiquid split, sortable by cost/profit/profit%, auto-refresh every 3s
 - poe.ninja integration: items priced via ninja API (DivinationCard, Currency) with ETag cache
@@ -43,8 +43,8 @@ Flipping opportunity monitor with automated price fetching.
   - `pricer.py` — PriceFetcher with scanner + worker threads
   - `ninja.py` — NinjaClient with ETag cache for poe.ninja API
   - `ui.py` — FlipperPanel: sortable tables, profit calc, form, auto-refresh
-  - `test_throttle.py` — 12 tests for rate limiting logic
-  - `test_pricer.py` — 6 tests for sequential queue processing
+  - `test_throttle.py` — 17 tests for rate limiting logic
+  - `test_pricer.py` — 10 tests for sequential queue processing
 - `db/` — data layer
   - `config.py` — JSON config store with per-profile settings (auto-save, migration)
   - `affixes.py` — RePoE affix data (mods.json + stat_translations.json, cached daily)
@@ -53,16 +53,18 @@ Flipping opportunity monitor with automated price fetching.
   - `crafting.json` — persisted crafting config
   - `cache/` — downloaded RePoE data
   - `flips.db` — flips, prices, price_history
+- `bin/` — scripts
+  - `cleanup-vpn.sh` — undo VPN namespace, veth, iptables (run after crash/SIGKILL)
 - `tmp/` — clipboard dumps, test output
 - `test_life_block.py` — influenced mod matching tests
 
-## Current state (save 2026-07-19)
+## Current state (save 2026-07-28)
 
 ### What works
 - Full crafting macro with affix browser, influence detection, 2/3 screen modes
 - TradeClient with proactive rate limiting (stagger, 1s min gap before headers, multi-tier, 429 exits immediately)
-- Flip CRUD with name, league, source/target type (query or ninja), multiplier (4-digit), cost
-- PriceFetcher: hourly rescan, per-flip refresh button, single-threaded sequential queue
+- Flip CRUD with name, source/target type (query or ninja), multiplier (4-digit), cost
+- PriceFetcher: scanner every 120s queues 10 oldest-unpriced flips, 3-hour minimum age (manual refresh overrides)
 - Source: average of 5 cheapest divine listings. Target: cheapest single divine listing.
 - poe.ninja: NinjaClient with ETag + stale-while-revalidate cache, Currency/DivinationCard types
 - Liquid/illiquid split tables, sortable columns (cost/profit/profit%), green/red coloring
@@ -70,8 +72,9 @@ Flipping opportunity monitor with automated price fetching.
 - Native window via pywebview + PySide6
 - Schema migrations (V1: flips, V2: prices + history + indexes)
 - 60-day price history auto-prune
-- Rate limit test verified against live PoE Trade API (12 unit tests passing)
-- Pricer queue tests: 5 flips queued simultaneously processed sequentially with 0.200s gaps (6 tests passing)
+- 17 throttle tests, 10 pricer tests passing (1 pre-existing mock path error in throttle)
+- VPN netns isolation verified: host traffic uses normal gateway, only pypoe PID goes through WireGuard tunnel — separate IP, separate rate limit bucket
+- `bin/cleanup-vpn.sh`: sudo-friendly script to undo all VPN artifacts after crash/SIGKILL
 - db/tool.py: list, search, dump flips from CLI
 
 ### Removed
@@ -90,6 +93,7 @@ Flipping opportunity monitor with automated price fetching.
 - Live trade WebSocket not wired
 - 40 flips from generator (10 bases × 4 qualities), no split variants (split beasts removed in new league), multiplier 0.5 for all, cost 1
 - poe.ninja item_options could add more categories (BaseType, Unique, etc.)
+- 1 pre-existing throttle test error: `patch('flipper.client.time', ...)` path doesn't resolve with `src/` layout
 
 ### How to run
 ```
@@ -97,8 +101,10 @@ Flipping opportunity monitor with automated price fetching.
 ```
 Server starts on http://localhost:8080 (native window with pywebview)
 
+`run.sh` creates a **WireGuard VPN network namespace** (`pypoe-vpn`, veth pair, NAT masquerade) and launches `main.py --tray-only` inside it. This forces all PoE Trade API traffic through the VPN to avoid rate-limit bans. Runs as root via sudo; cleanup trap handles crash recovery (iptables, netns, ip_forward).
+
 ### Run tests
 ```
-uv run python -m flipper.test_throttle
-uv run python -m flipper.test_pricer
+PYTHONPATH=src uv run python -m pypoe.flipper.test_throttle
+PYTHONPATH=src uv run python -m pypoe.flipper.test_pricer
 ```

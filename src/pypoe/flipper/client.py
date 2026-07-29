@@ -31,8 +31,10 @@ _audit_handler = None
 
 def _setup_audit():
     global _audit_handler
-    if _audit_handler is not None:
+    if _audit_handler is not None and _audit_handler.stream is not None:
         return
+    if _audit_handler is not None:
+        _audit_logger.removeHandler(_audit_handler)
     Path("log").mkdir(exist_ok=True)
     ts = time.strftime("%Y%m%d-%H%M%S")
     fh = logging.FileHandler(f"log/requests-{ts}.log", mode="w")
@@ -43,6 +45,8 @@ def _setup_audit():
 
 
 def _audit(msg: str, *args):
+    if _audit_handler is not None and _audit_handler.stream is None:
+        _setup_audit()
     _audit_logger.info(msg, *args)
 
 

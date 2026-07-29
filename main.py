@@ -474,6 +474,8 @@ def main():
     import signal
     import time
 
+    TRAY_ONLY = "--tray-only" in sys.argv
+
     from nicegui import core
     IS_FIRST = not core.app.is_started
     if IS_FIRST:
@@ -505,16 +507,17 @@ def main():
         def _tray_show():
             _p = lambda *a, **kw: print(*a, file=__import__("sys").stderr, flush=True, **kw)
             _p("tray: Show clicked")
-            try:
-                from nicegui.native import WindowProxy
-                _p("tray: WindowProxy restoring...")
-                WindowProxy().show()
-                WindowProxy().restore()
-                _p("tray: WindowProxy OK")
-            except Exception as e:
-                _p("tray: WindowProxy failed:", e)
-                import traceback
-                traceback.print_exc(file=__import__("sys").stderr)
+            if not TRAY_ONLY:
+                try:
+                    from nicegui.native import WindowProxy
+                    _p("tray: WindowProxy restoring...")
+                    WindowProxy().show()
+                    WindowProxy().restore()
+                    _p("tray: WindowProxy OK")
+                except Exception as e:
+                    _p("tray: WindowProxy failed:", e)
+                    import traceback
+                    traceback.print_exc(file=__import__("sys").stderr)
             proc = _window_proc[0]
             _p("tray: existing proc=%s alive=%s" % (proc, proc and proc.is_alive()))
             if proc and not proc.is_alive():
@@ -546,7 +549,7 @@ def main():
 
         threading.Thread(target=_poll_queue, daemon=True).start()
 
-    ui.run(port=PORT if IS_FIRST else None, native=True, reload=False)
+    ui.run(port=PORT if IS_FIRST else None, native=not TRAY_ONLY, show=not TRAY_ONLY, reload=False)
 
     if IS_FIRST:
         while True:

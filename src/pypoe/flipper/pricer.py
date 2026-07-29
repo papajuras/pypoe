@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import time
 from collections import OrderedDict
+from logging.handlers import RotatingFileHandler
 from threading import Event, Lock, Thread
 
 import requests
@@ -17,6 +19,24 @@ from .store import Store, _extract_query
 logger = logging.getLogger(__name__)
 SCAN_INTERVAL = 120
 TARGET_QUEUE = 10
+MIN_AGE = 3 * 3600  # skip flips priced in the last 3 hours
+
+_LOG_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "log")
+_LOG_FILE = os.path.join(_LOG_DIR, "flipper.log")
+
+
+def _setup_file_logging():
+    os.makedirs(_LOG_DIR, exist_ok=True)
+    root = logging.getLogger("pypoe.flipper")
+    if any(h.baseFilename == _LOG_FILE for h in root.handlers if isinstance(h, RotatingFileHandler)):
+        return
+    root.setLevel(logging.INFO)
+    h = RotatingFileHandler(_LOG_FILE, maxBytes=1_000_000, backupCount=3)
+    h.setFormatter(logging.Formatter(
+        "%(asctime)s [%(levelname)-7s] %(name)s: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    ))
+    root.addHandler(h)
 
 
 def _quality_allowed(name: str) -> bool:
@@ -32,6 +52,8 @@ class PriceFetcher:
     def __init__(self, client: TradeClient, store: Store):
         self._client = client
         self._store = store
+        _setup_file_logging()
+        logger.info("initialised")
         self._ninja = NinjaClient()
         self._pending: OrderedDict[str, None] = OrderedDict()
         self._lock = Lock()
@@ -79,10 +101,12 @@ class PriceFetcher:
             try:
                 needed = TARGET_QUEUE - self.queue_size
                 if needed > 0:
-                    fids = self._store.oldest_unpriced(needed)
+                    fids = self._store.oldest_unpriced(needed, min_age=MIN_AGE)
                     for fid in fids:
                         self.enqueue(fid)
                     logger.info("scan: queued %d, queue now %d", len(fids), self.queue_size)
+                else:
+                    logger.debug("scan: queue saturated (needed=%d), skipping", needed)
             except Exception:
                 logger.exception("scan error")
             time.sleep(SCAN_INTERVAL)
@@ -108,6 +132,7 @@ class PriceFetcher:
                 continue
 
             try:
+                logger.info("worker: processing %s (queue left=%d)", flip_id, self.queue_size)
                 self._fetch_prices(flip_id)
             except requests.exceptions.HTTPError as e:
                 if (e.response is not None and e.response.status_code == 429
@@ -122,9 +147,17 @@ class PriceFetcher:
 
     def _fetch_prices(self, flip_id: str):
         flip = self._store.get(flip_id)
-        if not flip or not flip.enabled or not _quality_allowed(flip.name):
+        if not flip:
+            logger.warning("skip: %s not found in store", flip_id)
+            return
+        if not flip.enabled:
+            logger.info("skip: %s disabled", flip.name or flip_id)
+            return
+        if not _quality_allowed(flip.name):
+            logger.info("skip: %s quality-blocked", flip.name or flip_id)
             return
 
+        logger.info("fetch: %s src=%s tgt=%s", flip.name or flip_id, flip.source_type, flip.target_type)
         league = read_league()
         src_avg, src_cnt = self._fetch_source(flip, league)
         tgt_avg, tgt_cnt = self._fetch_target(flip, league)
@@ -182,20 +215,27 @@ class PriceFetcher:
             try:
                 q = json.loads(_extract_query(raw)[0])
             except json.JSONDecodeError:
+                logger.warning("collect: JSON decode error for query hash")
                 continue
 
             result = self._client.search(q)
             total = result.get("total", 0)
+            logger.debug("collect: search total=%d for query %s", total, raw[:60])
             if total < 10:
+                logger.info("collect: too few results (%d<10), skipping", total)
                 return []
 
             ids: list[str] = result.get("result", [])[:5]
             if not ids:
+                logger.debug("collect: no result IDs from search")
                 continue
 
             items = self._client.fetch(ids).get("result", [])
+            divine_count = 0
             for item in items:
                 price = item.get("listing", {}).get("price", {})
                 if price.get("currency") == "divine":
                     all_prices.append(float(price["amount"]))
+                    divine_count += 1
+            logger.debug("collect: %d divine listings from %d items", divine_count, len(items))
         return all_prices

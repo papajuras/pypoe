@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import logging
 import threading
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 from nicegui import ui
+
+logger = logging.getLogger(__name__)
 
 from pypoe.db.config import get_meta, set_meta
 from pypoe.config import read_league
@@ -46,24 +49,12 @@ class FlipperPanel:
         self._sort_asc = False
         self._form_open = False
         self._solver_status = ""
-        self._container = ui.column().classes("w-full gap-3")
-        with self._container:
-            self._build()
-        ui.timer(3, self._tick)
-
-    def _tick(self):
-        if not self._form_open:
-            self._rebuild()
-
-    def _rebuild(self):
-        self._container.clear()
-        with self._container:
-            self._build()
-
-    def _build(self):
+        self._section_collapsed: dict[str, bool] = {}
+        # ── static toolbar (never rebuilt) ──
         with ui.row().classes("items-center gap-4 w-full"):
-            ui.label("Flipper").classes("text-h5 text-weight-bold")
+            ui.label(f"Flipper — {read_league()}").classes("text-h5 text-weight-bold")
             ui.button("New flip", icon="add", on_click=self._create).props("unelevated color=positive")
+            ui.button(icon="delete_sweep", on_click=self._wipe_prices).props("flat dense size=sm").tooltip("Wipe prices for new league")
             self._queue_label = ui.label(f"queue: {_pricer.queue_size}").classes("text-caption text-grey-7")
             for q in (30, 29, 28, 27):
                 enabled = get_meta(f"flipper_quality_{q}", True)
@@ -71,8 +62,23 @@ class FlipperPanel:
                             on_change=lambda e, q=q: set_meta(f"flipper_quality_{q}", e.value)
                 ).props("dense")
             ui.label("").classes("flex-1")
+        self._container = ui.column().classes("w-full gap-3")
+        with self._container:
+            self._build()
+        ui.timer(3, self._tick)
 
+    def _tick(self):
+        self._queue_label.set_text(f"queue: {_pricer.queue_size}")
+        if not self._form_open:
+            self._rebuild()
 
+    def _rebuild(self):
+        self._queue_label.set_text(f"queue: {_pricer.queue_size}")
+        self._container.clear()
+        with self._container:
+            self._build()
+
+    def _build(self):
         rate_limits = _pricer._client.rate_limits
         with ui.row().classes("items-center gap-2 text-caption"):
             if rate_limits:
@@ -112,18 +118,24 @@ class FlipperPanel:
         liquid = [r for r in fresh_en if r["liquid"]]
         illiquid = [r for r in fresh_en if not r["liquid"]]
 
-        if liquid:
-            self._sort_rows(liquid)
-            self._build_section("Liquid", liquid)
+        liquid_profitable = [r for r in liquid if r["profit"] is not None and r["profit"] >= 0]
+        liquid_not = [r for r in liquid if r["profit"] is None or r["profit"] < 0]
+
+        if liquid_profitable:
+            self._sort_rows(liquid_profitable)
+            self._build_section(f"Liquid — {read_league()}", liquid_profitable)
+        if liquid_not:
+            self._sort_rows(liquid_not)
+            self._build_section("Liquid (not profitable)", liquid_not, collapsed=True)
         if illiquid:
             self._sort_rows(illiquid)
-            self._build_section("Illiquid", illiquid)
+            self._build_section("Illiquid", illiquid, collapsed=True)
         if stale_en:
             self._sort_rows(stale_en)
-            self._build_section("Stale", stale_en, muted=True)
+            self._build_section("Stale", stale_en, muted=True, collapsed=True)
         if disabled:
             self._sort_rows(disabled)
-            self._build_section("Disabled", disabled, muted=True)
+            self._build_section("Disabled", disabled, muted=True, collapsed=True)
 
     def _toggle(self, flip, value):
         flip.enabled = value
@@ -186,12 +198,27 @@ class FlipperPanel:
         key = self._sort_by
         rows.sort(key=lambda r: (r.get(key) is None, r.get(key) or 0), reverse=not self._sort_asc)
 
-    def _build_section(self, title: str, rows: list[dict], muted: bool = False):
-        cls = "text-grey-5" if muted else ""
-        ui.label(title).classes(f"text-weight-bold text-caption mt-4 {cls}")
-        self._build_header()
-        for r in rows:
-            self._build_row(r)
+    def _wipe_prices(self):
+        logger.info("Wiping all prices for new league")
+        store.clear_prices()
+        self._rebuild()
+
+    def _toggle_section(self, key: str):
+        self._section_collapsed[key] = not self._section_collapsed.get(key, False)
+        self._rebuild()
+
+    def _build_section(self, title: str, rows: list[dict], muted: bool = False, collapsed: bool = False):
+        collapsed = self._section_collapsed.get(title, collapsed)
+        with ui.column().classes("w-full gap-0"):
+            with ui.row().classes("items-center w-full cursor-pointer text-weight-bold text-caption").on(
+                "click", lambda t=title: self._toggle_section(t)
+            ):
+                ui.icon("expand_more" if not collapsed else "chevron_right").classes("text-grey-7")
+                ui.label(title)
+            if not collapsed:
+                self._build_header()
+                for r in rows:
+                    self._build_row(r)
 
     def _build_header(self):
         with ui.row().classes("items-center gap-2 w-full text-weight-bold text-caption"):
@@ -339,7 +366,7 @@ class FlipperPanel:
             sel.value = None
             sel.update()
 
-        with ui.dialog() as dialog, ui.card().classes("p-6 min-w-[600px] max-w-[800px]"):
+        with ui.dialog(on_close=lambda: setattr(self, '_form_open', False)) as dialog, ui.card().classes("p-6 min-w-[600px] max-w-[800px]"):
             ui.label("New flip" if self._editing is None else "Edit flip").classes("text-h6")
             name_input = ui.input("Flip name", value=draft.name).classes("w-full")
             name_error = ui.label("Name is required").classes("text-negative text-caption").set_visibility(False)

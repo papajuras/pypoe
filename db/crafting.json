@@ -23,9 +23,10 @@
     "use_regal": false,
     "exalt_after_regal": false
   },
-  "_selected": "test",
+  "_selected": "Default",
   "_flipper_quality_27": true,
   "_flipper_quality_28": true,
   "_flipper_quality_29": true,
-  "_flipper_quality_30": true
+  "_flipper_quality_30": true,
+  "_screen_mode": "2 screens"
 }
