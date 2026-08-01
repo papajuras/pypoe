@@ -40,6 +40,61 @@ ITEM_TYPES: dict[str, list[str]] = {
     "2H Mace": ["2h_mace", "mace", "two_hand_weapon"],
     "Warstaff": ["warstaff", "two_hand_weapon"],
     "Focus": ["focus"],
+    "Cluster Jewel (Large)": ["expansion_jewel_large"],
+    "Cluster Jewel (Medium)": ["expansion_jewel_medium"],
+    "Cluster Jewel (Small)": ["expansion_jewel_small"],
+}
+
+CLUSTER_IMPLICIT_TYPES: dict[str, str] = {
+    "Maximum Life": "affliction_maximum_life",
+    "Maximum Mana": "affliction_maximum_mana",
+    "Maximum Energy Shield": "affliction_maximum_energy_shield",
+    "Armour": "affliction_armour",
+    "Evasion": "affliction_evasion",
+    "Fire Resistance": "affliction_fire_resistance",
+    "Cold Resistance": "affliction_cold_resistance",
+    "Lightning Resistance": "affliction_lightning_resistance",
+    "Chaos Resistance": "affliction_chaos_resistance",
+    "Spell Damage": "affliction_spell_damage",
+    "Fire Damage": "affliction_fire_damage",
+    "Cold Damage": "affliction_cold_damage",
+    "Lightning Damage": "affliction_lightning_damage",
+    "Chaos Damage": "affliction_chaos_damage",
+    "Physical Damage": "affliction_physical_damage",
+    "Elemental Damage": "affliction_elemental_damage",
+    "Area Damage": "affliction_area_damage",
+    "Projectile Damage": "affliction_projectile_damage",
+    "Bow Damage": "affliction_bow_damage",
+    "Wand Damage": "affliction_wand_damage",
+    "Minion Damage": "affliction_minion_damage",
+    "Totem Damage": "affliction_totem_damage",
+    "Trap and Mine Damage": "affliction_trap_and_mine_damage",
+    "Brand Damage": "affliction_brand_damage",
+    "Channelling Skill Damage": "affliction_channelling_skill_damage",
+    "Attack Damage": "affliction_attack_damage_",
+    "Damage with Herald Skills": "affliction_damage_while_you_have_a_herald",
+    "Axe and Sword Damage": "affliction_axe_and_sword_damage",
+    "Mace and Staff Damage": "affliction_mace_and_staff_damage",
+    "Dagger and Claw Damage": "affliction_dagger_and_claw_damage",
+    "Two-Handed Melee Damage": "affliction_damage_with_two_handed_melee_weapons",
+    "Dual Wielding Attack Damage": "affliction_attack_damage_while_dual_wielding_",
+    "Attack Damage with Shields": "affliction_attack_damage_while_holding_a_shield",
+    "Critical Strike Chance": "affliction_critical_chance",
+    "Damage over Time Multiplier": "affliction_damage_over_time_multiplier",
+    "Physical DoT Multiplier": "affliction_physical_damage_over_time_multiplier",
+    "Cold DoT Multiplier": "affliction_cold_damage_over_time_multiplier",
+    "Fire DoT Multiplier": "affliction_fire_damage_over_time_multiplier",
+    "Chaos DoT Multiplier": "affliction_chaos_damage_over_time_multiplier",
+    "Effect of Non-Damaging Ailments": "affliction_effect_of_non-damaging_ailments",
+    "Chance to Block": "affliction_chance_to_block",
+    "Chance to Dodge Attacks": "affliction_chance_to_dodge_attacks",
+    "Flask Duration": "affliction_flask_duration",
+    "Life/Mana Recovery from Flasks": "affliction_life_and_mana_recovery_from_flasks",
+    "Reservation Efficiency": "affliction_reservation_efficiency_small",
+    "Curse Effect": "affliction_curse_effect_small",
+    "Warcry Buff Effect": "affliction_warcry_buff_effect",
+    "Minion Life": "affliction_minion_life",
+    "Minion Damage with Heralds": "affliction_minion_damage_while_you_have_a_herald",
 }
 
 
@@ -90,6 +145,10 @@ def get_item_type_names() -> list[str]:
     return list(ITEM_TYPES.keys())
 
 
+def get_cluster_implicit_types() -> list[str]:
+    return sorted(CLUSTER_IMPLICIT_TYPES.keys(), key=str.lower)
+
+
 INFLUENCE_MAP = {
     "elder": "ELDER",
     "shaper": "SHAPER",
@@ -100,19 +159,48 @@ INFLUENCE_MAP = {
 }
 
 
+def _assign_tiers(entries: list[dict]) -> None:
+    import re
+    groups: dict[tuple, list[dict]] = {}
+    for e in entries:
+        key = tuple(e["stat_ids"])
+        groups.setdefault(key, []).append(e)
+    for g in groups.values():
+        g.sort(key=lambda e: -max(
+            (float(n) for s in e.get("stats", []) for n in re.findall(r"\d+", s)),
+            default=0
+        ))
+        for i, e in enumerate(g, 1):
+            e["tier"] = i
+
+
 def _name_slug(name: str) -> str:
     return name.lower().strip()
 
 
-def load_affixes(item_type_name: str) -> tuple[list[dict], list[dict]]:
+def save_text_for(entry: dict) -> str:
+    """Return the string to store/match against item text for an affix entry."""
+    if entry.get("influence"):
+        return entry.get("search_text", entry.get("game_text", ""))
+    if any("notable" in sid for sid in entry.get("stat_ids", [])):
+        return entry.get("game_text", entry["name"])
+    return entry["name"]
+
+
+def load_affixes(item_type_name: str, cluster_implicit_type: str = "") -> tuple[list[dict], list[dict]]:
     mods = _read_mods()
     tags = ITEM_TYPES.get(item_type_name, [item_type_name.lower().replace(" ", "_")])
+    is_cluster = item_type_name.startswith("Cluster Jewel")
+    implicit_tag = CLUSTER_IMPLICIT_TYPES.get(cluster_implicit_type, "")
 
     prefixes = []
     suffixes = []
 
     for mod_id, m in mods.items():
-        if m.get("domain") != "item":
+        if is_cluster:
+            if m.get("domain") != "affliction_jewel":
+                continue
+        elif m.get("domain") != "item":
             continue
         if m.get("generation_type") not in ("prefix", "suffix"):
             continue
@@ -121,15 +209,19 @@ def load_affixes(item_type_name: str) -> tuple[list[dict], list[dict]]:
             continue
 
         sw = m.get("spawn_weights", [])
-        if not _matches_item(sw, tags):
+        if is_cluster:
+            if not _matches_affliction_jewel(sw, tags, implicit_tag):
+                continue
+        elif not _matches_item(sw, tags):
             continue
 
-        stat_lines = [_format_stat(s["id"], s["min"], s["max"]) for s in m.get("stats", [])[:3]]
-        stat_ids = [s["id"] for s in m.get("stats", [])]
+        raw_stats = m.get("stats", [])
+        stat_lines = [_format_stat(s["id"], s["min"], s["max"]) for s in raw_stats[:3]]
+        stat_ids = [s["id"] for s in raw_stats]
 
         influence = _get_influence(sw, tags)
-        raw_stats = m.get("stats", [])
-        if influence:
+        use_game_text = influence or is_cluster
+        if use_game_text:
             display_text = format_display_text(raw_stats) if raw_stats else ", ".join(stat_lines[:2])
             search_text = get_search_text(stat_ids) or ", ".join(stat_lines[:2])
         else:
@@ -152,10 +244,30 @@ def load_affixes(item_type_name: str) -> tuple[list[dict], list[dict]]:
         else:
             suffixes.append(entry)
 
+    _assign_tiers(prefixes)
+    _assign_tiers(suffixes)
     prefixes.sort(key=lambda x: _name_slug(x["name"]))
     suffixes.sort(key=lambda x: _name_slug(x["name"]))
 
     return prefixes, suffixes
+
+
+def _matches_affliction_jewel(spawn_weights: list[dict], tags: list[str], implicit_tag: str) -> bool:
+    if not spawn_weights:
+        return False
+    has_expansion = any(sw["tag"].startswith("expansion_jewel") and sw["weight"] > 0 for sw in spawn_weights)
+    has_default = any(sw["tag"] == "default" and sw["weight"] > 0 for sw in spawn_weights)
+    if has_expansion:
+        for sw in spawn_weights:
+            if sw["weight"] > 0 and (sw["tag"] in tags or sw["tag"] == "default"):
+                return True
+    if has_default:
+        return True
+    if implicit_tag:
+        for sw in spawn_weights:
+            if sw["tag"] == implicit_tag and sw["weight"] > 0:
+                return True
+    return False
 
 
 def _matches_item(spawn_weights: list[dict], tags: list[str]) -> bool:
@@ -194,8 +306,8 @@ def _get_influence(spawn_weights: list[dict], tags: list[str]) -> str | None:
     return None
 
 
-def search_affixes(item_type_name: str, query: str) -> tuple[list[dict], list[dict]]:
-    prefixes, suffixes = load_affixes(item_type_name)
+def search_affixes(item_type_name: str, query: str, cluster_implicit_type: str = "") -> tuple[list[dict], list[dict]]:
+    prefixes, suffixes = load_affixes(item_type_name, cluster_implicit_type)
     q = query.lower().strip()
     if not q:
         return prefixes, suffixes

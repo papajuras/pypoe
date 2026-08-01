@@ -68,15 +68,21 @@ class FlipperPanel:
         ui.timer(3, self._tick)
 
     def _tick(self):
-        self._queue_label.set_text(f"queue: {_pricer.queue_size}")
-        if not self._form_open:
-            self._rebuild()
+        try:
+            self._queue_label.set_text(f"queue: {_pricer.queue_size}")
+            if not self._form_open:
+                self._rebuild()
+        except RuntimeError:
+            pass
 
     def _rebuild(self):
-        self._queue_label.set_text(f"queue: {_pricer.queue_size}")
-        self._container.clear()
-        with self._container:
-            self._build()
+        try:
+            self._queue_label.set_text(f"queue: {_pricer.queue_size}")
+            self._container.clear()
+            with self._container:
+                self._build()
+        except RuntimeError:
+            pass
 
     def _build(self):
         rate_limits = _pricer._client.rate_limits

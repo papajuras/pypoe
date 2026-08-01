@@ -7,6 +7,7 @@ DEFAULT_SETTINGS = {
     "prefixes": [],
     "suffixes": [],
     "item_type": "Ring",
+    "cluster_implicit_type": "",
     "use_regal": False,
     "exalt_after_regal": False,
 }

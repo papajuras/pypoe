@@ -14,8 +14,12 @@ from pypoe.crafting import CraftingSession, Positions, Settings, capture_clipboa
 from pypoe.db.affixes import (
     download as download_affixes,
     get_item_type_names,
+    get_cluster_implicit_types,
     is_cached,
     load_affixes,
+    save_text_for,
+    search_affixes,
+    format_display_text,
 )
 from pypoe.db.config import (
     delete_profile,
@@ -84,6 +88,9 @@ settings = Settings(
     exalt_after_regal=cfg["exalt_after_regal"],
 )
 item_type = cfg.get("item_type", "Ring")
+cluster_implicit_type: str = cfg.get("cluster_implicit_type", "") or get_cluster_implicit_types()[0]
+implicit_type_container = None
+cluster_implicit_type_select = None
 selected_prefixes: list[str] = []
 selected_suffixes: list[str] = []
 prefix_entries: dict[str, dict] = {}
@@ -105,32 +112,35 @@ def _sort_affixes(affixes: list[dict]) -> list[dict]:
     return sorted(affixes, key=_sort_key)
 
 
-def _fmt(name: str, game_text: str, influence: str | None = None) -> str:
+def _fmt(name: str, game_text: str, influence: str | None = None, tier: int = 0) -> str:
     tag = f"[{influence}] " if influence else ""
-    return f"{tag}{name} — {game_text}" if game_text else f"{tag}{name}"
+    label = f"T{tier} {name}" if tier else name
+    return f"{tag}{label} — {game_text}" if game_text else f"{tag}{label}"
 
 
 def _build_options(affixes: list[dict]) -> dict[str, str]:
-    return {a["mod_id"]: _fmt(a["name"], a.get("game_text", ""), a.get("influence")) for a in affixes}
+    return {a["mod_id"]: _fmt(a["name"], a.get("game_text", ""), a.get("influence"), a.get("tier", 0)) for a in affixes}
 
 
 def _chip_label(mid: str, entries: dict[str, dict]) -> str:
     e = entries.get(mid)
     if not e:
         return mid
-    return e.get("game_text", "") if e.get("influence") else e["name"]
+    if e.get("influence"):
+        return e.get("game_text", "")
+    return e.get("game_text", e["name"]) if e["name"] == "Notable" else e["name"]
 
 
 def _save_text(mid: str, entries: dict[str, dict]) -> str:
     e = entries.get(mid)
     if not e:
         return mid
-    return e.get("search_text", e.get("game_text", "")) if e.get("influence") else e["name"]
+    return save_text_for(e)
 
 
 def _reload_affixes(it: str) -> None:
     global all_prefixes, all_suffixes, prefix_entries, suffix_entries
-    all_prefixes, all_suffixes = load_affixes(it)
+    all_prefixes, all_suffixes = load_affixes(it, cluster_implicit_type)
     prefix_entries = {a["mod_id"]: a for a in all_prefixes}
     suffix_entries = {a["mod_id"]: a for a in all_suffixes}
 
@@ -139,13 +149,13 @@ def _rebuild_selected_chips() -> None:
     sel_p_container.clear()
     with sel_p_container:
         for mid in selected_prefixes:
-            ui.chip(_chip_label(mid, prefix_entries), icon="filter_alt").props("removable").on("click:remove",
-                lambda mid=mid: _remove_selected("prefix", mid))
+            ui.chip(_chip_label(mid, prefix_entries), icon="filter_alt").props("removable").on_value_change(
+                lambda e, mid=mid: _remove_selected("prefix", mid) if e.value is False else None)
     sel_s_container.clear()
     with sel_s_container:
         for mid in selected_suffixes:
-            ui.chip(_chip_label(mid, suffix_entries), icon="filter_alt").props("removable").on("click:remove",
-                lambda mid=mid: _remove_selected("suffix", mid))
+            ui.chip(_chip_label(mid, suffix_entries), icon="filter_alt").props("removable").on_value_change(
+                lambda e, mid=mid: _remove_selected("suffix", mid) if e.value is False else None)
 
 
 def _remove_selected(side: str, mid: str) -> None:
@@ -164,6 +174,7 @@ def _save_current_settings() -> None:
         "prefixes": [_save_text(mid, prefix_entries) for mid in selected_prefixes],
         "suffixes": [_save_text(mid, suffix_entries) for mid in selected_suffixes],
         "item_type": item_type,
+        "cluster_implicit_type": cluster_implicit_type,
         "use_regal": settings.use_regal,
         "exalt_after_regal": settings.exalt_after_regal,
     })
@@ -177,9 +188,34 @@ def _set_screen_mode(mode: str):
 
 
 def _change_item_type(it: str) -> None:
-    global item_type
+    global item_type, cluster_implicit_type
     item_type = it
+    is_cluster = it.startswith("Cluster Jewel")
+    if is_cluster and not cluster_implicit_type:
+        cluster_implicit_type = get_cluster_implicit_types()[0]
+    elif not is_cluster:
+        cluster_implicit_type = ""
+    if implicit_type_container:
+        implicit_type_container.set_visibility(is_cluster)
+    if is_cluster and cluster_implicit_type_select:
+        cluster_implicit_type_select.value = cluster_implicit_type
     _reload_affixes(it)
+    prefix_select.options = _build_options(_sort_affixes(all_prefixes))
+    suffix_select.options = _build_options(_sort_affixes(all_suffixes))
+    prefix_select.value = []
+    suffix_select.value = []
+    selected_prefixes.clear()
+    selected_suffixes.clear()
+    prefix_select.update()
+    suffix_select.update()
+    _rebuild_selected_chips()
+    _save_current_settings()
+
+
+def _change_cluster_implicit(value: str) -> None:
+    global cluster_implicit_type
+    cluster_implicit_type = value
+    _reload_affixes(item_type)
     prefix_select.options = _build_options(_sort_affixes(all_prefixes))
     suffix_select.options = _build_options(_sort_affixes(all_suffixes))
     prefix_select.value = []
@@ -262,6 +298,7 @@ def update_profile(name_or_event):
     set_meta("selected", name)
     cfg = _load_profile(name)
     item_type = cfg.get("item_type", "Ring")
+    cluster_implicit_type = cfg.get("cluster_implicit_type", "") or get_cluster_implicit_types()[0]
     settings.use_regal = cfg["use_regal"]
     settings.exalt_after_regal = cfg["exalt_after_regal"]
     regal_switch.value = settings.use_regal
@@ -285,6 +322,11 @@ def update_profile(name_or_event):
     prefix_select.value = selected_prefixes[:]
     suffix_select.value = selected_suffixes[:]
     item_type_select.value = item_type
+    is_cluster = item_type.startswith("Cluster Jewel")
+    if implicit_type_container:
+        implicit_type_container.set_visibility(is_cluster)
+    if is_cluster and cluster_implicit_type_select and cluster_implicit_type:
+        cluster_implicit_type_select.value = cluster_implicit_type
     _rebuild_selected_chips()
 
 
@@ -353,6 +395,13 @@ def _create_profile(name: str, it: str, dialog):
     dialog.close()
 
 
+def _delete_beasts():
+    global session
+    status_label.set_text("Deleting beasts...")
+    session = CraftingSession(prefixes=[" "], suffixes=[" "], positions=positions)
+    threading.Thread(target=session.delete_beasts_loop, daemon=True).start()
+
+
 def _show_debug():
     prefixes = [_save_text(mid, prefix_entries) for mid in selected_prefixes] or [" "]
     suffixes = [_save_text(mid, suffix_entries) for mid in selected_suffixes] or [" "]
@@ -389,6 +438,7 @@ with ui.row().classes("w-full h-screen max-w-7xl mx-auto gap-4 p-4"):
                     value=screen_mode,
                     on_change=lambda e: _set_screen_mode(e.value),
                 ).classes("min-w-[120px]")
+                ui.button(icon="pets", on_click=_delete_beasts).props("flat dense").tooltip("Delete beasts (Ctrl+L)")
 
             with ui.card().classes("w-full p-4 border border-grey-6"):
                 ui.label("Orb behaviour (saved instantly)").classes("text-weight-medium text-caption text-grey-5")
@@ -404,6 +454,15 @@ with ui.row().classes("w-full h-screen max-w-7xl mx-auto gap-4 p-4"):
                     value=item_type,
                     on_change=lambda e: _change_item_type(e.value),
                 ).classes("min-w-[180px]")
+                implicit_type_container = ui.row().classes("items-center gap-2")
+                implicit_type_container.set_visibility(item_type.startswith("Cluster Jewel"))
+                with implicit_type_container:
+                    ui.label("Implicit:").classes("text-weight-medium")
+                    cluster_implicit_type_select = ui.select(
+                        get_cluster_implicit_types(),
+                        value=cluster_implicit_type,
+                        on_change=lambda e: _change_cluster_implicit(e.value),
+                    ).classes("min-w-[180px]")
 
             with ui.row().classes("gap-4 w-full"):
                 with ui.card().classes("flex-1 p-3 overflow-hidden"):

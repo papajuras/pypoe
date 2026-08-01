@@ -1,0 +1,4 @@
+2026-08-01 05:01:03,101 INFO open_window started, waiting for port 52697
+2026-08-01 05:01:03,101 INFO server ready on port 52697
+2026-08-01 05:01:03,101 INFO creating webview window
+2026-08-01 05:01:03,101 INFO starting webview

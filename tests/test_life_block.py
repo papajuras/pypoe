@@ -12,9 +12,9 @@ display = f'[{mod["influence"]}] {mod["name"]} — {mod["game_text"]}'
 print(f"Dropdown: {display}")
 
 item_text = "Recover 5(3-5)% of Life when you Block".lower()
-assert mod["game_text"].lower() in item_text, (
+assert mod["search_text"].lower() in item_text, (
     f"Test 1 FAILED\n"
-    f"  search_text: {mod['game_text']!r}\n"
+    f"  search_text: {mod['search_text']!r}\n"
     f"  item_text:   {item_text!r}"
 )
 print("Test 1 PASS")
@@ -28,9 +28,9 @@ display = f'[{mod["influence"]}] {mod["name"]} — {mod["game_text"]}'
 print(f"Dropdown: {display}")
 
 item_text = "Adds (1-2) to (3-4) Cold Damage to Attacks with this Weapon per 10 Dexterity".lower()
-assert mod["game_text"].lower() in item_text, (
+assert mod["search_text"].lower() in item_text, (
     f"Test 2 FAILED\n"
-    f"  search_text: {mod['game_text']!r}\n"
+    f"  search_text: {mod['search_text']!r}\n"
     f"  item_text:   {item_text!r}"
 )
 print("Test 2 PASS")

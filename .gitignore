@@ -7,5 +7,5 @@ __pycache__/
 .opencode/
 *.AppImage
 pc-NO-FREE-*.conf
-log/*.log
+log/*.log*
 log/requests-*.log
