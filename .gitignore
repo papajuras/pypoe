@@ -6,6 +6,11 @@ __pycache__/
 .idea/
 .opencode/
 *.AppImage
-pc-NO-FREE-*.conf
 log/*.log*
 log/requests-*.log
+gatherer/log/
+
+# module data dirs (runtime state — preserved across deploys)
+app/pypoe/data/
+gatherer/gatherer/data/
+gatherer/.venv/

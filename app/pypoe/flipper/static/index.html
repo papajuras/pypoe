@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pypoe</title>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: ui-monospace, monospace; font-size: 13px; background: #1a1a2e; color: #e0e0e0; }
+  .green { color: #4ade80; }
+  .red { color: #f87171; }
+  .muted { color: #64748b; }
+  .stale { opacity: 0.5; }
+  .btn { padding: 4px 10px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
+  .btn-refresh { background: #334155; color: #e0e0e0; }
+  .btn-delete { background: #450a0a; color: #fca5a5; }
+  .btn:disabled { opacity: 0.4; cursor: default; }
+  .pill { padding: 1px 6px; border-radius: 3px; font-size: 11px; }
+  .pill-ninja { background: #6b21a8; color: white; }
+  .pill-an { margin: 0 6px; background: #155e75; color: #cffafe; font-size: 11px; display: inline-block; width: 44px; text-align: center; padding: 1px 0; }
+  .pill-link { display: inline-block; padding: 0 5px; border-radius: 3px; font-size: 10px; text-decoration: none; }
+  .pill-src { background: #0e3a5f; color: #7dd3fc; }
+  .pill-tgt { background: #3f2d0e; color: #fcd34d; }
+  .pill-link:hover { filter: brightness(1.4); }
+  .toolbar { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #0f3460; margin-bottom: 12px; }
+  .section-header { cursor: pointer; padding: 6px 0; font-size: 12px; font-weight: 600; border-bottom: 1px solid #1e3a5f; margin-top: 12px; }
+  .flip-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px solid #0a1628; }
+  .col-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .col-num { width: 70px; text-align: right; font-variant-numeric: tabular-nums; }
+  .col-pct { width: 88px; text-align: right; font-variant-numeric: tabular-nums; }
+  .col-links { width: 90px; display: flex; gap: 3px; flex-wrap: wrap; align-items: center; }
+  .col-actions { width: 92px; display: flex; gap: 4px; justify-content: flex-end; }
+  .analysis-popover { position: fixed; z-index: 50; min-width: 220px; background: #0b1526; border: 1px solid #1e3a5f; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.5); padding: 8px 10px; font-size: 12px; }
+  .ap-title { font-weight: 700; color: #e0e0e0; margin-bottom: 6px; }
+  .ap-table { border-collapse: collapse; width: 100%; }
+  .ap-table th { text-align: right; color: #64748b; font-weight: 600; padding: 2px 4px; }
+  .ap-table th:first-child, .ap-table td:first-child { text-align: left; color: #94a3b8; }
+  .ap-table td { text-align: right; padding: 2px 4px; font-variant-numeric: tabular-nums; }
+  .ap-table .pos { color: #4ade80; }
+  .ap-table .neg { color: #f87171; }
+  .ap-table .mid { color: #fbbf24; }
+  .ap-muted { color: #64748b; }
+  .ap-simple { margin-top: 8px; padding-top: 6px; border-top: 1px solid #1e3a5f; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; }
+  .ap-score-num { font-size: 18px; font-weight: 700; }
+  .ap-turnover { margin-top: 4px; text-align: right; }
+  .tab { padding: 6px 16px; cursor: pointer; border-bottom: 2px solid transparent; font-weight: 600; }
+  .tab.active { border-bottom-color: #4ade80; color: #4ade80; }
+  .affix-list { max-height: 360px; overflow-y: auto; border: 1px solid #1e3a5f; border-radius: 4px; padding: 4px; }
+  .affix-item { display: flex; align-items: flex-start; gap: 6px; padding: 3px 4px; cursor: pointer; border-radius: 3px; }
+  .affix-item:hover { background: #1e3a5f; }
+  .affix-item.sel { background: #14532d; }
+  .influence { color: #c084fc; font-size: 11px; }
+  .spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid #64748b; border-top-color: #e0e0e0; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+  .field-label { width: 110px; color: #94a3b8; }
+  select, input[type=text], input[type=search], input[type=number] { background: #0f172a; color: #e0e0e0; border: 1px solid #334155; border-radius: 4px; padding: 4px 6px; }
+  select { min-width: 140px; }
+  .btn-start { background: #166534; color: #bbf7d0; }
+  .btn-stop { background: #7f1d1d; color: #fecaca; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div style="max-width: 960px; margin: 0 auto; padding: 16px;">
+
+    <!-- Tab bar -->
+    <div style="display:flex; gap: 4px; border-bottom: 1px solid #0f3460;">
+      <div class="tab" :class="{ active: tab === 'crafting' }" @click="tab = 'crafting'">Crafting</div>
+      <div class="tab" :class="{ active: tab === 'flipper' }" @click="tab = 'flipper'">Flipper</div>
+      <div class="tab" :class="{ active: tab === 'journal' }" @click="tab = 'journal'">Journal</div>
+    </div>
+
+    <!-- ── CRAFTING ─────────────────────────────────────────── -->
+    <div v-show="tab === 'crafting'">
+
+      <!-- Profile row -->
+      <div class="row">
+        <span class="field-label">Profile:</span>
+        <select v-model="profile" @change="selectProfile">
+          <option v-for="p in state.profiles" :key="p" :value="p">{{ p }}</option>
+        </select>
+        <button class="btn btn-delete" @click="deleteProfile">Delete</button>
+        <button class="btn btn-refresh" @click="newProfileOpen = true">New</button>
+        <span class="field-label" style="margin-left:16px;">Screens:</span>
+        <select v-model="screenMode" @change="setScreenMode">
+          <option v-for="m in state.screen_modes" :key="m" :value="m">{{ m }}</option>
+        </select>
+        <button class="btn btn-refresh" @click="deleteBeasts" style="margin-left:auto;">Delete beasts</button>
+      </div>
+
+      <!-- New profile dialog -->
+      <div v-if="newProfileOpen" style="border:1px solid #334155; border-radius:6px; padding:10px; margin:8px 0;">
+        <div class="row">
+          <span class="field-label">Name:</span>
+          <input type="text" v-model="newProfileName">
+          <span class="field-label">Type:</span>
+          <select v-model="newProfileType">
+            <option v-for="t in state.item_types" :key="t" :value="t">{{ t }}</option>
+          </select>
+        </div>
+        <div class="row">
+          <button class="btn btn-start" @click="createProfile">Create</button>
+          <button class="btn btn-refresh" @click="newProfileOpen = false">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Orb behaviour -->
+      <div class="row">
+        <span class="field-label">Orbs:</span>
+        <label style="cursor:pointer;"><input type="checkbox" :checked="state.use_regal" @change="setOrb('use_regal', $event.target.checked)"> Regal</label>
+        <label style="cursor:pointer;"><input type="checkbox" :checked="state.exalt_after_regal" @change="setOrb('exalt_after_regal', $event.target.checked)"> Exalt on failed regal</label>
+      </div>
+
+      <!-- Item type -->
+      <div class="row">
+        <span class="field-label">Item type:</span>
+        <select v-model="itemType" @change="itemTypeChanged">
+          <option v-for="t in state.item_types" :key="t" :value="t">{{ t }}</option>
+        </select>
+        <template v-if="isCluster">
+          <span class="field-label">Implicit:</span>
+          <select v-model="clusterImplicit" @change="affixes = null; loadAffixes()">
+            <option v-for="c in state.cluster_types" :key="c" :value="c">{{ c }}</option>
+          </select>
+        </template>
+      </div>
+
+      <!-- Affix browser -->
+      <div class="row" style="align-items: stretch;">
+        <div style="flex:1;">
+          <div style="font-weight:600; color:#94a3b8; margin-bottom:4px;">Prefixes</div>
+          <div v-if="selectedAffixes('prefix').length" class="affix-list" style="margin-bottom:6px;">
+            <div style="font-weight:600; color:#fbbf24;">Selected ({{ selectedAffixes('prefix').length }})</div>
+            <div v-for="a in selectedAffixes('prefix')" :key="'s' + a.mod_id" class="affix-item sel">
+              <span>
+                <span v-if="a.influence" class="influence">[{{ a.influence }}] </span>{{ a.name }}
+                <span v-if="a.game_text" class="muted"> — {{ a.game_text }}</span>
+              </span>
+              <button class="btn btn-delete" style="margin-left:auto; padding:0 4px;" @click="togglePrefix(a.mod_id)">✕</button>
+            </div>
+          </div>
+          <input type="search" v-model="prefixQuery" placeholder="Search..." style="width:100%; margin-bottom:4px;">
+          <div class="affix-list">
+            <div v-for="a in filteredAffixes('prefix')" :key="a.mod_id" class="affix-item" :class="{ sel: prefixSel.includes(a.mod_id) }" @click="togglePrefix(a.mod_id)">
+              <input type="checkbox" :checked="prefixSel.includes(a.mod_id)" @click.stop @change="togglePrefix(a.mod_id)">
+              <span>
+                <span v-if="a.influence" class="influence">[{{ a.influence }}] </span>{{ a.name }}
+                <span v-if="a.game_text" class="muted"> — {{ a.game_text }}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:600; color:#94a3b8; margin-bottom:4px;">Suffixes</div>
+          <div v-if="selectedAffixes('suffix').length" class="affix-list" style="margin-bottom:6px;">
+            <div style="font-weight:600; color:#fbbf24;">Selected ({{ selectedAffixes('suffix').length }})</div>
+            <div v-for="a in selectedAffixes('suffix')" :key="'s' + a.mod_id" class="affix-item sel">
+              <span>
+                <span v-if="a.influence" class="influence">[{{ a.influence }}] </span>{{ a.name }}
+                <span v-if="a.game_text" class="muted"> — {{ a.game_text }}</span>
+              </span>
+              <button class="btn btn-delete" style="margin-left:auto; padding:0 4px;" @click="toggleSuffix(a.mod_id)">✕</button>
+            </div>
+          </div>
+          <input type="search" v-model="suffixQuery" placeholder="Search..." style="width:100%; margin-bottom:4px;">
+          <div class="affix-list">
+            <div v-for="a in filteredAffixes('suffix')" :key="a.mod_id" class="affix-item" :class="{ sel: suffixSel.includes(a.mod_id) }" @click="toggleSuffix(a.mod_id)">
+              <input type="checkbox" :checked="suffixSel.includes(a.mod_id)" @click.stop @change="toggleSuffix(a.mod_id)">
+              <span>
+                <span v-if="a.influence" class="influence">[{{ a.influence }}] </span>{{ a.name }}
+                <span v-if="a.game_text" class="muted"> — {{ a.game_text }}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Start / stop -->
+      <div class="row" style="margin-top:12px;">
+        <button class="btn btn-start" @click="runCrafting" :disabled="state.running">Run</button>
+        <button class="btn btn-stop" @click="stopSpam" :disabled="!state.running">Stop</button>
+        <span>{{ state.running ? 'Spamming... ESC to stop' : 'Ready' }} — {{ screenMode }}</span>
+      </div>
+
+      <!-- Debug -->
+      <div class="row">
+        <button class="btn btn-refresh" @click="loadDebug">Debug match arrays</button>
+        <span class="muted" v-if="debugMsg">{{ debugMsg }}</span>
+      </div>
+
+      <!-- Hotkey help -->
+      <div class="muted" style="margin-top:10px; font-size:11px; line-height:1.6;">
+        ESC → Stop spamming<br>
+        Ctrl+J → Start spam<br>
+        Ctrl+K → Inspect item under mouse<br>
+        Ctrl+L → Delete beasts
+      </div>
+    </div>
+
+    <!-- ── FLIPPER ──────────────────────────────────────────── -->
+    <div v-show="tab === 'flipper'">
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <span style="font-size: 18px; font-weight: 700;">Flipper — {{ league }}</span>
+        <span class="muted" style="flex:1;">queue: {{ queueSize }}</span>
+        <span class="muted" :title="'next gatherer price scan'">next refresh in {{ Math.ceil(nextScanIn) }}s</span>
+        <template v-for="q in qualities" :key="q">
+          <label style="cursor:pointer; font-size:12px;">
+            <input type="checkbox" :checked="qualityEnabled(q)" @change="toggleQuality(q)" style="margin-right:2px;">
+            Q{{ q }}
+          </label>
+        </template>
+        <span v-if="errorMsg" style="color:#fbbf24;">{{ errorMsg }}</span>
+        <button class="btn btn-refresh" @click="refreshAll" title="Fetch all flips">Fetch all</button>
+      </div>
+
+      <!-- Rate-limit metrics -->
+      <div class="row" style="margin:0 0 8px 0;">
+        <template v-for="rl in rateLimits" :key="rl.tooltip">
+          <span class="pill" :style="ratePillStyle(rl.pct)" :title="rl.tooltip">{{ rl.label }}</span>
+        </template>
+        <span v-if="backoffRemaining > 0" class="pill" style="background:#7f1d1d; color:#fecaca;" :title="'Backoff: ' + Math.ceil(backoffRemaining) + 's remaining'">&#128274; Backoff {{ Math.ceil(backoffRemaining) }}s</span>
+        <span v-if="dbSize != null" class="pill" style="background:#1e3a5f; color:#93c5fd;" title="gatherer flips.db physical size (main + WAL)">DB {{ fmtBytes(dbSize) }}</span>
+        <span v-if="rateLimits.length === 0 && !errorMsg" class="muted">Waiting for API data...</span>
+      </div>
+
+      <!-- Sections -->
+      <template v-for="section in sections" :key="section.key">
+        <div v-if="section.rows.length" class="section-header" @click="toggleSection(section.key)">
+          {{ section.collapsed ? '\u25B8' : '\u25BC' }} {{ section.title }}
+        </div>
+        <template v-if="!section.collapsed">
+          <div class="flip-row muted" style="font-weight:600;">
+            <div class="col-name">Name</div>
+            <div class="col-links">Links</div>
+            <div class="col-num" @click="sort('cost')" style="cursor:pointer;">Cost {{ sortLabel('cost') }}</div>
+            <div class="col-num" @click="sort('profit')" style="cursor:pointer;">Profit {{ sortLabel('profit') }}</div>
+            <div class="col-pct" @click="sort('pct')" style="cursor:pointer;">Profit% {{ sortLabel('pct') }}</div>
+            <div class="col-actions">Act</div>
+          </div>
+          <template v-for="row in section.rows" :key="row.flip.id">
+            <div class="flip-row" :class="{ stale: row.stale }">
+              <div class="col-name">
+                <input type="checkbox" :checked="row.flip.fast" @change="toggleFast(row.flip, $event.target.checked)" style="margin-right:4px;">
+                <span class="pill pill-an" @mouseenter="analysisHover(row.flip.id, $event)" @mouseleave="analysisUnhover">{{ analysisText(analysis[row.flip.id]) }}</span>
+                <span :title="row.flip.notes">{{ row.flip.name }}</span>
+                <span class="muted" style="font-size:11px; margin-left:6px;" :title="'last refreshed ' + (fetchedAge(row.flip) || 'never')">{{ fetchedAge(row.flip) }}</span>
+                <span v-if="row.flip.source_type==='ninja'||row.flip.target_type==='ninja'" class="pill pill-ninja">ninja</span>
+              </div>
+              <div class="col-links">
+                <a v-for="(sid, i) in (row.flip.source_search_ids || [])" :key="'s'+i" class="pill pill-link pill-src"
+                   :href="tradeUrl(sid)" target="_blank" rel="noopener" :title="'Source ' + (i+1) + ' — open trade search'">S{{ i+1 }}</a>
+                <a v-for="(tid, i) in (row.flip.target_search_ids || [])" :key="'t'+i" class="pill pill-link pill-tgt"
+                   :href="tradeUrl(tid)" target="_blank" rel="noopener" :title="'Target ' + (i+1) + ' — open trade search'">T{{ i+1 }}</a>
+              </div>
+              <div class="col-num">{{ fmtCost(row) }}</div>
+              <div class="col-num" :class="profitClass(row)">{{ fmtProfit(row) }}</div>
+              <div class="col-pct" :class="profitClass(row)">{{ fmtPct(row) }}</div>
+              <div class="col-actions">
+                <button v-if="isRefreshing(row.flip)" class="btn btn-refresh" disabled title="Refreshing..."><span class="spinner"></span></button>
+                <button v-else class="btn btn-refresh" @click="refreshFlip(row.flip)" :style="refreshColor(row.ageH)">R</button>
+                <button class="btn btn-delete" @click="deleteFlip(row.flip)">D</button>
+                <button v-if="journalDefFor(row.flip)" class="btn btn-start" @click="startJournalFlip(row.flip)"
+                        title="Create journal entry for this flip">J</button>
+              </div>
+            </div>
+          </template>
+        </template>
+      </template>
+
+      <div v-if="allFlips.length === 0" class="muted" style="margin-top: 24px; text-align:center;">
+        No flips. Run the generator to seed data.
+      </div>
+
+    </div>
+
+    <!-- ── JOURNAL ─────────────────────────────────────────── -->
+    <div v-show="tab === 'journal'">
+
+      <div class="toolbar">
+        <span style="font-size: 18px; font-weight: 700;">Journal</span>
+        <span class="muted" style="flex:1;">{{ journalLeague }}</span>
+        <span :class="netClass(journalBalance)" style="font-weight:700;" :title="'Open trades counted as loss'">Balance: {{ journalBalance != null ? (journalBalance >= 0 ? '+' : '') + journalBalance.toFixed(1) + 'd' : '0d' }}</span>
+        <span v-if="journalMsg" style="color:#fbbf24;">{{ journalMsg }}</span>
+        <span v-for="f in ['open','sold','all']" :key="f" class="pill"
+              :style="journalFilter === f ? 'background:#166534; color:#bbf7d0; cursor:pointer;' : 'background:#334155; color:#e0e0e0; cursor:pointer;'"
+              @click="journalFilter = f">{{ f }}</span>
+        <button class="btn btn-refresh" @click="loadJournal">Refresh</button>
+      </div>
+
+      <!-- Add form -->
+      <div class="row" style="align-items:flex-start; flex-wrap:wrap;">
+        <div style="flex:1; min-width:260px;">
+          <div class="field-label">Definition:</div>
+          <input type="search" v-model="defQuery" placeholder="search base or quality (e.g. royal 28)" style="width:100%;">
+          <div v-if="filteredDefs.length && !defPicked" class="affix-list" style="max-height:220px; margin-top:4px;">
+            <div v-for="d in filteredDefs" :key="d.label" class="affix-item" @click="pickDef(d)">
+              {{ d.label }} <span class="muted" style="margin-left:auto;">{{ d.group }}</span>
+            </div>
+          </div>
+          <div v-else-if="defPicked" class="affix-item sel" style="margin-top:4px;">
+            {{ defPicked.label }} <span class="muted" style="margin-left:auto;">{{ defPicked.group }}</span>
+            <button class="btn btn-delete" @click="defPicked = null; defQuery = ''">x</button>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Cost (d):</div>
+          <input type="number" step="0.1" v-model.number="jCost" style="width:90px;">
+        </div>
+        <div>
+          <div class="field-label">Income (d):</div>
+          <input type="number" step="0.1" v-model.number="jIncome" placeholder="empty = unsold" style="width:110px;">
+        </div>
+        <div>
+          <div class="field-label">&nbsp;</div>
+          <button class="btn btn-start" @click="addJournal">Add</button>
+        </div>
+      </div>
+
+      <!-- Records -->
+      <div v-if="filteredRecords.length" class="flip-row muted" style="font-weight:600; margin-top:12px;">
+        <div class="col-name">Definition</div>
+        <div class="col-num">Cost</div>
+        <div class="col-num">Income</div>
+        <div class="col-num">Net</div>
+        <div class="col-num" style="width:60px;">Status</div>
+        <div class="col-actions" style="width:120px;">Act</div>
+      </div>
+      <div v-for="r in filteredRecords" :key="r.id" class="flip-row">
+        <div class="col-name">{{ r.base }} <span class="muted">Q{{ r.quality }}</span>
+          <span class="muted" v-if="r.league">({{ r.league }})</span>
+          <span class="muted" v-if="r.note" :title="r.note">&#9432;</span>
+        </div>
+        <div class="col-num">
+          <template v-if="editingId === r.id">
+            <input type="number" step="0.1" v-model.number="editCost" placeholder="0" style="width:70px;">
+          </template>
+          <template v-else>{{ r.cost != null ? r.cost.toFixed(1) : '—' }}</template>
+        </div>
+        <div class="col-num">
+          <template v-if="editingId === r.id">
+            <input type="number" step="0.1" v-model.number="editIncome" placeholder="empty = unsold" style="width:70px;">
+          </template>
+          <template v-else>{{ r.income != null ? r.income.toFixed(1) : '—' }}</template>
+        </div>
+        <div class="col-num" :class="netClass(r.net)">{{ r.net != null ? (r.net >= 0 ? '+' : '') + r.net.toFixed(1) : '—' }}</div>
+        <div class="col-num">
+          <span class="pill" :style="r.sold_at ? 'background:#166534; color:#bbf7d0;' : 'background:#78350f; color:#fde68a;'">
+            {{ r.sold_at ? 'sold' : 'open' }}
+          </span>
+        </div>
+        <div class="col-actions" style="width:120px;">
+          <template v-if="editingId === r.id">
+            <button class="btn btn-start" @click="saveJournal(r)">Save</button>
+            <button class="btn btn-refresh" @click="editingId = null">x</button>
+          </template>
+          <template v-else>
+            <button class="btn btn-refresh" @click="startEdit(r)" title="Fill income when sold">E</button>
+            <button class="btn btn-delete" @click="deleteJournal(r)">D</button>
+          </template>
+        </div>
+      </div>
+      <div v-if="!filteredRecords.length" class="muted" style="margin-top:24px; text-align:center;">No journal entries.</div>
+
+    </div>
+
+  </div>
+
+  <div v-if="analysisPopover.show" ref="apEl" class="analysis-popover"
+       :style="{ top: analysisPopover.top + 'px', left: analysisPopover.left + 'px' }"
+       @mouseenter="analysisPin" @mouseleave="analysisUnhover">
+    <template v-if="apState(analysisPopover.flipId)">
+      <div class="ap-title">{{ apState(analysisPopover.flipId).name }}</div>
+      <table class="ap-table">
+        <tr><th>horizon</th><th>sell</th><th>drop</th><th>stagnate</th><th>conf</th></tr>
+        <tr v-for="T in ['1', '3', '7']" :key="T">
+          <td>{{ T }}d</td>
+          <td :class="apClass(apState(analysisPopover.flipId).horizons[T].p_sell)">{{ apPct(apState(analysisPopover.flipId).horizons[T].p_sell) }}</td>
+          <td :class="apClass(apState(analysisPopover.flipId).horizons[T].p_drop, true)">{{ apPct(apState(analysisPopover.flipId).horizons[T].p_drop) }}</td>
+          <td :class="apClass(apState(analysisPopover.flipId).horizons[T].p_stagnation)">{{ apPct(apState(analysisPopover.flipId).horizons[T].p_stagnation) }}</td>
+          <td class="ap-muted">{{ apState(analysisPopover.flipId).horizons[T].confidence }}</td>
+        </tr>
+      </table>
+    </template>
+    <div v-else class="ap-muted">{{ apStatusText(analysisPopover.flipId) }}</div>
+    <div v-if="apSimple(analysisPopover.flipId)" class="ap-simple" :class="apScoreClass(apSimple(analysisPopover.flipId).score)">
+      <span>{{ apCategoryName(apSimple(analysisPopover.flipId).category) }}</span>
+      <span class="ap-score-num">{{ apSimple(analysisPopover.flipId).score }}</span>
+    </div>
+    <div v-if="apTurnover(analysisPopover.flipId) != null" class="ap-muted ap-turnover">clear: {{ apTurnover(analysisPopover.flipId) }}/day</div>
+  </div>
+</div>
+
+<script>
+const POLL = 3000;
+const ANALYSIS_POLL = 60000;
+const BFF = 'http://127.0.0.1:8765';
+
+const { createApp, ref, reactive, computed, watch, onMounted, onUnmounted, nextTick } = Vue;
+
+createApp({
+  setup() {
+    const tab = ref('flipper');
+
+    // ── crafting state ──
+    const state = reactive({
+      profiles: [], item_types: [], cluster_types: [], screen_modes: [],
+      profile: '', screen_mode: '', item_type: 'Ring', cluster_implicit_type: '',
+      use_regal: false, exalt_after_regal: false, prefixes: [], suffixes: [], running: false,
+    });
+    const profile = ref('');
+    const screenMode = ref('');
+    const itemType = ref('Ring');
+    const clusterImplicit = ref('');
+    const prefixSel = ref([]);
+    const suffixSel = ref([]);
+    const prefixQuery = ref('');
+    const suffixQuery = ref('');
+    const affixes = ref(null);
+    const debugMsg = ref('');
+    const newProfileOpen = ref(false);
+    const newProfileName = ref('');
+    const newProfileType = ref('Ring');
+
+    const isCluster = computed(() => String(itemType.value).startsWith('Cluster Jewel'));
+
+    async function loadCraftingState() {
+      try {
+        const resp = await fetch(BFF + '/api/crafting/state');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const s = await resp.json();
+        Object.assign(state, s);
+        profile.value = s.profile;
+        screenMode.value = s.screen_mode;
+        itemType.value = s.item_type;
+        clusterImplicit.value = s.cluster_implicit_type || '';
+        prefixSel.value = s.prefixes || [];
+        suffixSel.value = s.suffixes || [];
+        loadAffixes();
+      } catch (e) {
+        debugMsg.value = 'crafting state error';
+      }
+    }
+
+    async function loadAffixes() {
+      const q = new URLSearchParams({ item_type: itemType.value });
+      if (isCluster.value && clusterImplicit.value) q.set('cluster', clusterImplicit.value);
+      const resp = await fetch(BFF + '/api/crafting/affixes?' + q.toString());
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      affixes.value = await resp.json();
+    }
+
+    function filteredAffixes(side) {
+      if (!affixes.value) return [];
+      const arr = affixes.value[side + 'es'] || [];
+      const q = (side === 'prefix' ? prefixQuery.value : suffixQuery.value).toLowerCase();
+      if (!q) return arr;
+      return arr.filter(a => (a.name + ' ' + (a.influence || '') + ' ' + (a.game_text || '')).toLowerCase().includes(q));
+    }
+
+    function togglePrefix(mid) {
+      const i = prefixSel.value.indexOf(mid);
+      if (i >= 0) prefixSel.value.splice(i, 1); else prefixSel.value.push(mid);
+    }
+    function toggleSuffix(mid) {
+      const i = suffixSel.value.indexOf(mid);
+      if (i >= 0) suffixSel.value.splice(i, 1); else suffixSel.value.push(mid);
+    }
+
+    function selectedAffixes(side) {
+      if (!affixes.value) return [];
+      const sel = side === 'prefix' ? prefixSel.value : suffixSel.value;
+      const arr = affixes.value[side + 'es'] || [];
+      const byId = new Map(arr.map(a => [a.mod_id, a]));
+      return sel.map(mid => byId.get(mid)).filter(Boolean);
+    }
+
+    async function selectProfile() {
+      await fetch(BFF + '/api/crafting/profile', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: profile.value }),
+      });
+      loadCraftingState();
+    }
+
+    async function deleteProfile() {
+      if (!confirm('Delete profile ' + profile.value + '?')) return;
+      await fetch(BFF + '/api/crafting/profiles/' + encodeURIComponent(profile.value), { method: 'DELETE' });
+      loadCraftingState();
+    }
+
+    async function createProfile() {
+      const name = newProfileName.value.trim();
+      if (!name) return;
+      await fetch(BFF + '/api/crafting/profiles', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, item_type: newProfileType.value }),
+      });
+      newProfileOpen.value = false;
+      newProfileName.value = '';
+      loadCraftingState();
+    }
+
+    async function itemTypeChanged() {
+      clusterImplicit.value = isCluster.value && !clusterImplicit.value ? (state.cluster_types[0] || '') : '';
+      affixes.value = null;
+      loadAffixes();
+    }
+
+    function setOrb(key, val) {
+      state[key] = val;
+    }
+
+    async function setScreenMode() {
+      const headers = { 'Content-Type': 'application/json' };
+      await fetch(BFF + '/api/crafting/screen-mode', {
+        method: 'POST', headers, body: JSON.stringify({ mode: screenMode.value }),
+      });
+    }
+
+    async function runCrafting() {
+      const headers = { 'Content-Type': 'application/json' };
+      await fetch(BFF + '/api/crafting/profile', {
+        method: 'POST', headers, body: JSON.stringify({ name: profile.value }),
+      });
+      await fetch(BFF + '/api/crafting/settings', {
+        method: 'POST', headers, body: JSON.stringify({
+          item_type: itemType.value,
+          cluster_implicit_type: clusterImplicit.value,
+          use_regal: state.use_regal,
+          exalt_after_regal: state.exalt_after_regal,
+          prefixes: prefixSel.value,
+          suffixes: suffixSel.value,
+        }),
+      });
+      await fetch(BFF + '/api/crafting/screen-mode', {
+        method: 'POST', headers, body: JSON.stringify({ mode: screenMode.value }),
+      });
+      await loadCraftingState();
+      await fetch(BFF + '/api/crafting/start', { method: 'POST' });
+      await loadCraftingState();
+    }
+    async function stopSpam() { await fetch(BFF + '/api/crafting/stop', { method: 'POST' }); loadCraftingState(); }
+    let lastDeleteClick = 0;
+    async function deleteBeasts() {
+      const now = Date.now();
+      if (now - lastDeleteClick < 1000) return;
+      lastDeleteClick = now;
+      await fetch(BFF + '/api/crafting/delete-beasts', { method: 'POST' });
+    }
+    async function loadDebug() {
+      const resp = await fetch(BFF + '/api/crafting/debug');
+      if (!resp.ok) return;
+      const d = await resp.json();
+      debugMsg.value = 'prefixes: ' + JSON.stringify(d.prefixes) + '  suffixes: ' + JSON.stringify(d.suffixes);
+    }
+
+    // ── flipper ──
+    const flips = ref([]);
+    const prices = reactive({});
+    const lastFetch = ref(0);
+    const queueSize = ref(0);
+    const league = ref('...');
+
+    function tradeUrl(searchId) {
+      return 'https://www.pathofexile.com/trade/search/' + encodeURIComponent(league.value) + '/' + encodeURIComponent(searchId);
+    }
+    const errorMsg = ref('');
+    const sortKey = ref('profit');
+    const sortAsc = ref(false);
+    const collapsed = reactive({});
+    const qualityChecks = reactive({ 27: true, 28: true, 29: true, 30: true });
+    const rateLimits = ref([]);
+    const backoffRemaining = ref(0);
+    const nextScanIn = ref(0);
+    const dbSize = ref(null);
+    const optimisticRefreshing = ref(new Set());
+    const serverRefreshing = ref(new Set());
+    const analysis = reactive({});
+    const analysisPopover = reactive({ show: false, top: 0, left: 0, flipId: null, pinned: false });
+    const apEl = ref(null);
+    let analysisHideTimer = null;
+
+    async function loadAnalysis(flip, force) {
+      const id = flip.id;
+      if (!force && analysis[id] && !analysis[id]._loading) return;
+      analysis[id] = { ...(analysis[id] || {}), _loading: true };
+      try {
+        const resp = await fetch(BFF + '/api/analysis?flip_id=' + encodeURIComponent(id));
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        analysis[id] = await resp.json();
+      } catch (e) {
+        analysis[id] = { ...(analysis[id] || {}), _loading: false, _error: true };
+      }
+    }
+
+    function loadAllAnalysis(force) {
+      for (const f of flips.value) loadAnalysis(f, force);
+    }
+
+    function analysisPin() {
+      analysisPopover.pinned = true;
+      if (analysisHideTimer) { clearTimeout(analysisHideTimer); analysisHideTimer = null; }
+    }
+
+    function analysisHover(flipId, ev) {
+      analysisPin();
+      const el = ev.currentTarget.getBoundingClientRect();
+      analysisPopover.show = true;
+      analysisPopover.pinned = false;
+      analysisPopover.flipId = flipId;
+      analysisPopover.left = el.right + 8;
+      analysisPopover.top = el.top - 4;
+      nextTick(() => {
+        if (!apEl.value) return;
+        const r = apEl.value.getBoundingClientRect();
+        if (analysisPopover.left + r.width > innerWidth) analysisPopover.left = el.left - r.width - 8;
+        if (analysisPopover.top + r.height > innerHeight) analysisPopover.top = innerHeight - r.height - 8;
+        if (analysisPopover.top < 0) analysisPopover.top = 0;
+      });
+    }
+
+    function analysisUnhover() {
+      analysisPopover.pinned = false;
+      if (analysisHideTimer) clearTimeout(analysisHideTimer);
+      analysisHideTimer = setTimeout(() => { analysisPopover.show = false; }, 150);
+    }
+
+    function apState(flipId) {
+      const a = flipId != null ? analysis[flipId] : null;
+      return a && !a._loading && !a._error && a.status !== 'insufficient_data' && a.horizons ? a : null;
+    }
+
+    function apStatusText(flipId) {
+      const a = flipId != null ? analysis[flipId] : null;
+      if (!a) return 'analysis pending…';
+      if (a._loading) return 'loading…';
+      if (a._error) return 'analysis unavailable';
+      return 'insufficient snapshot data yet';
+    }
+
+    function apPct(p) { return p == null ? '—' : (p * 100).toFixed(1) + '%'; }
+
+    function apClass(p, invert) {
+      if (p == null) return '';
+      const hi = invert ? p < 0.5 : p >= 0.5;
+      return hi ? 'pos' : (p >= 0.2 ? 'mid' : 'neg');
+    }
+
+    function apSimple(flipId) {
+      const s = flipId != null && analysis[flipId] ? analysis[flipId].simple : null;
+      return s && s.status === 'ok' && s.score != null ? s : null;
+    }
+
+    const AP_CATEGORIES = { drying_up: '\u{1F525} Hot', bidding_up: '\u2668\uFE0F Warm', clearing: '\u{1F32C}\uFE0F Cool', flooding: '\u2744\uFE0F Cold' };
+    function apCategoryName(cat) { return AP_CATEGORIES[cat] || cat; }
+
+    function apTurnover(flipId) {
+      const s = apSimple(flipId);
+      return s && s.turnover != null ? s.turnover : null;
+    }
+
+    function apScoreClass(score) { return score >= 7 ? 'pos' : score >= 5 ? 'mid' : 'neg'; }
+
+    function isRefreshing(flip) {
+      const id = flip.id;
+      return optimisticRefreshing.value.has(id) || serverRefreshing.value.has(id);
+    }
+
+    async function loadStatus() {
+      try {
+        const resp = await fetch(BFF + '/api/status');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const m = await resp.json();
+        rateLimits.value = m.rate_limits || [];
+        backoffRemaining.value = m.backoff_remaining || 0;
+        nextScanIn.value = m.next_scan_in || 0;
+        queueSize.value = m.queue_size || 0;
+        dbSize.value = m.db_size || null;
+      } catch (e) { /* gatherer unreachable — keep last known */ }
+    }
+
+    async function loadSettings() {
+      try {
+        const resp = await fetch(BFF + '/api/settings');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const s = await resp.json();
+        for (const q of [27, 28, 29, 30]) {
+          const v = s['flipper_quality_' + q];
+          if (typeof v === 'boolean') qualityChecks[q] = v;
+        }
+      } catch (e) { /* gatherer unreachable — keep last known */ }
+    }
+
+    async function fetchFlips() {
+      try {
+        const url = BFF + '/api/flips?since=' + lastFetch.value;
+        const resp = await fetch(url, { headers: { 'Accept-Encoding': 'gzip' } });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        if (data.flips) {
+          for (const item of data.flips) {
+            const idx = flips.value.findIndex(f => f.id === item.id);
+            if (idx >= 0) flips.value[idx] = item; else flips.value.push(item);
+            if (item.price) prices[item.id] = item.price;
+          }
+        }
+        if (data.server_time) lastFetch.value = data.server_time;
+        queueSize.value = data.queue_size || 0;
+        league.value = data.league || '...';
+        serverRefreshing.value = new Set(data.refreshing || []);
+        optimisticRefreshing.value = new Set();
+        errorMsg.value = '';
+      } catch (e) {
+        errorMsg.value = 'API down — retrying...';
+      }
+    }
+
+    const allFlips = computed(() => flips.value);
+
+    async function refreshAll() {
+      try {
+        const resp = await fetch(BFF + '/api/flips/refresh-all', { method: 'POST' });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        flips.value = data.flips || [];
+        if (data.server_time) lastFetch.value = data.server_time;
+        queueSize.value = data.queue_size || 0;
+        league.value = data.league || '...';
+        for (const f of flips.value) {
+          if (f.price) prices[f.id] = f.price;
+        }
+        loadAllAnalysis(true);
+        errorMsg.value = '';
+      } catch (e) {
+        errorMsg.value = 'Fetch all failed';
+      }
+    }
+
+    const rowData = computed(() => {
+      return allFlips.value.map(flip => {
+        const p = prices[flip.id];
+        let cost = null, profit = null, pct = null, liquid = false, ageH = null, stale = true;
+        if (p && p.source_avg > 0 && p.target_avg > 0) {
+          cost = p.source_avg + (flip.cost || 0);
+          const rev = p.target_avg * (flip.multiplier || 1);
+          profit = rev - cost;
+          pct = cost > 0 ? (profit / cost * 100) : null;
+          liquid = true;
+        }
+        if (p && p.fetched_at) {
+          const dt = new Date(p.fetched_at + 'Z');
+          ageH = (Date.now() - dt.getTime()) / 3600000;
+          stale = ageH > 28;
+        }
+        return { flip, cost, profit, pct, liquid, ageH, stale, hasData: !!p };
+      });
+    });
+
+    const sections = computed(() => {
+      const rows = rowData.value;
+      const fresh = rows.filter(r => r.flip.enabled && !r.stale);
+      const staleRows = rows.filter(r => r.flip.enabled && r.stale);
+      const disabled = rows.filter(r => !r.flip.enabled);
+      const profitable = fresh
+        .filter(r => r.liquid && r.profit != null && r.profit >= 0);
+      const notProfitable = fresh.filter(r => !r.liquid || r.profit == null || r.profit < 0);
+
+      const sortFn = key => {
+        const asc = sortAsc.value;
+        return (a, b) => {
+          const va = a[key], vb = b[key];
+          const na = va == null, nb = vb == null;
+          if (na && nb) return 0;
+          if (na) return 1;
+          if (nb) return -1;
+          return asc ? va - vb : vb - va;
+        };
+      };
+
+      return [
+        { key: 'profitable', title: `Profitable \u2014 ${league.value}`, rows: [...profitable].sort(sortFn(sortKey.value)), collapsed: collapsed['profitable'] || false },
+        { key: 'not_profitable', title: 'Not profitable', rows: [...notProfitable].sort(sortFn(sortKey.value)), collapsed: collapsed['not_profitable'] !== false },
+        { key: 'stale', title: 'Stale', rows: [...staleRows].sort(sortFn(sortKey.value)), collapsed: collapsed['stale'] !== false },
+        { key: 'disabled', title: 'Disabled', rows: [...disabled].sort(sortFn(sortKey.value)), collapsed: collapsed['disabled'] !== false },
+      ];
+    });
+
+    async function refreshFlip(flip) {
+      const id = flip.id;
+      if (isRefreshing(flip)) return;
+      optimisticRefreshing.value.add(id);
+      try {
+        const resp = await fetch(BFF + '/api/flips/' + encodeURIComponent(id) + '/refresh', { method: 'POST' });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      } catch (e) {
+        optimisticRefreshing.value.delete(id);
+        errorMsg.value = 'Refresh failed';
+      }
+    }
+
+    async function toggleFast(flip, val) {
+      flip.fast = val;
+      try {
+        const id = flip.id;
+        const resp = await fetch(BFF + '/api/flips/' + encodeURIComponent(id) + '/fast', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fast: val }),
+        });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      } catch (e) {
+        flip.fast = !val;
+        errorMsg.value = 'Toggle failed';
+      }
+    }
+
+    async function deleteFlip(flip) {
+      const id = flip.id;
+      if (!confirm('Delete ' + (flip.name || 'flip') + '?')) return;
+      try {
+        const resp = await fetch(BFF + '/api/flips/' + encodeURIComponent(id), { method: 'DELETE' });
+        if (resp.ok) {
+          const idx = flips.value.findIndex(f => f.id === flip.id);
+          if (idx >= 0) flips.value.splice(idx, 1);
+          delete prices[flip.id];
+          optimisticRefreshing.value.delete(id);
+          serverRefreshing.value.delete(id);
+        }
+      } catch (e) {
+        errorMsg.value = 'Delete failed';
+      }
+    }
+
+    function sort(k) {
+      if (sortKey.value === k) sortAsc.value = !sortAsc.value;
+      else { sortKey.value = k; sortAsc.value = false; }
+    }
+    function sortLabel(k) { return sortKey.value === k ? (sortAsc.value ? '\u2191' : '\u2193') : ''; }
+    function toggleSection(k) { collapsed[k] = !collapsed[k]; }
+    function qualityEnabled(q) { return qualityChecks[q]; }
+    function toggleQuality(q) {
+      qualityChecks[q] = !qualityChecks[q];
+      fetch(BFF + '/api/settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ['flipper_quality_' + q]: qualityChecks[q] }),
+      }).catch(() => {});
+    }
+
+    function fmtCost(r) { return r.hasData && r.liquid ? r.cost.toFixed(1) + 'd' : r.hasData ? '\u2014' : '\u2014'; }
+    function fmtProfit(r) { return r.hasData && r.liquid && r.profit != null ? (r.profit >= 0 ? '+' : '') + r.profit.toFixed(1) + 'd' : r.hasData ? '\u2014' : '\u2014'; }
+    function fmtPct(r) { return r.hasData && r.liquid && r.pct != null ? (r.pct >= 0 ? '+' : '') + r.pct.toFixed(0) + '%' : r.hasData ? '\u2014' : '\u2014'; }
+    function profitClass(r) { return r.liquid && r.profit != null ? (r.profit >= 0 ? 'green' : 'red') : 'muted'; }
+
+    function analysisText(a) {
+      if (!a) return '\u{1F4CA}';
+      if (a._loading) return '\u23F3';
+      if (a.status === 'insufficient_data' || a._error) return '\u2014';
+      const h = a.horizons || {};
+      const r = h['7'];
+      if (r) return (r.p_sell * 100).toFixed(1) + '%';
+      return '\u2014';
+    }
+    function ratePillStyle(pct) {
+      if (pct >= 80) return 'background:#7f1d1d; color:#fecaca;';
+      if (pct >= 50) return 'background:#78350f; color:#fde68a;';
+      return 'background:#14532d; color:#bbf7d0;';
+    }
+    function fmtBytes(n) {
+      if (n == null) return '\u2014';
+      if (n >= 1 << 30) return (n / (1 << 30)).toFixed(1) + ' GB';
+      if (n >= 1 << 20) return (n / (1 << 20)).toFixed(1) + ' MB';
+      if (n >= 1 << 10) return (n / (1 << 10)).toFixed(0) + ' KB';
+      return n + ' B';
+    }
+    function refreshColor(ageH) {
+      if (ageH == null) return '';
+      const t = Math.min(ageH / 28, 1);
+      return `background: hsl(${120 * (1 - t)}, 55%, 40%); color: white;`;
+    }
+    function ageText(ageH) {
+      if (ageH == null) return '';
+      if (ageH < 1 / 60) return Math.round(ageH * 3600) + 's';
+      if (ageH < 1) return Math.round(ageH * 60) + 'm';
+      return ageH.toFixed(1) + 'h';
+    }
+    function fetchedAge(flip) {
+      const p = prices[flip.id];
+      if (!p || !p.fetched_at) return '';
+      const dt = new Date(p.fetched_at + 'Z');
+      return ageText((Date.now() - dt.getTime()) / 3600000);
+    }
+
+    let timer, statusTimer, countdownTimer, analysisTimer;
+    watch(tab, t => {
+      if (t === 'crafting') loadCraftingState();
+      if (t === 'journal') loadJournal();
+    });
+    onMounted(() => {
+      loadSettings();
+      loadStatus();
+      refreshAll().then(() => loadAllAnalysis(true));
+      timer = setInterval(fetchFlips, POLL);
+      statusTimer = setInterval(loadStatus, 2000);
+      analysisTimer = setInterval(() => loadAllAnalysis(true), ANALYSIS_POLL);
+      countdownTimer = setInterval(() => {
+        if (nextScanIn.value > 0) nextScanIn.value -= 1;
+      }, 1000);
+    });
+    onUnmounted(() => {
+      clearInterval(timer);
+      clearInterval(statusTimer);
+      clearInterval(analysisTimer);
+      clearInterval(countdownTimer);
+    });
+
+    // ── journal ──
+    const journalRecords = ref([]);
+    const journalDefs = ref([]);
+    const journalLeague = ref('');
+    const journalFilter = ref('all');
+    const defQuery = ref('');
+    const defPicked = ref(null);
+    const jCost = ref(null);
+    const jIncome = ref(null);
+    const editingId = ref(null);
+    const editCost = ref(null);
+    const editIncome = ref(null);
+    const journalMsg = ref('');
+
+    function journalFail(msg) { journalMsg.value = msg; setTimeout(() => { journalMsg.value = ''; }, 4000); }
+
+    async function loadJournal() {
+      try {
+        const resp = await fetch(BFF + '/api/journal');
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        journalRecords.value = data.records || [];
+        journalDefs.value = data.definitions || [];
+        journalLeague.value = data.league || '';
+      } catch (e) { journalFail('Failed to load journal'); }
+    }
+
+    const filteredDefs = computed(() => {
+      const q = defQuery.value.toLowerCase();
+      const list = !q ? journalDefs.value
+        : journalDefs.value.filter(d => d.label.toLowerCase().includes(q) || d.group.toLowerCase().includes(q));
+      return list.slice(0, 60);
+    });
+
+    const filteredRecords = computed(() => {
+      const f = journalFilter.value;
+      return journalRecords.value.filter(r => f === 'all' || (f === 'sold') === !!r.sold_at);
+    });
+
+    const journalBalance = computed(() => {
+      let total = 0;
+      for (const r of filteredRecords.value) {
+        const cost = r.cost ?? 0;
+        total += r.income != null ? r.income - cost : -cost;
+      }
+      return total;
+    });
+
+    function pickDef(d) { defPicked.value = d; defQuery.value = d.label; }
+
+    function journalDefFor(flip) {
+      if (!journalDefs.value.length) return null;
+      return journalDefs.value.find(d => d.label === flip.name) || null;
+    }
+
+    async function startJournalFlip(flip) {
+      tab.value = 'journal';
+      if (!journalDefs.value.length) await loadJournal();
+      const d = journalDefFor(flip);
+      if (d) {
+        defPicked.value = d;
+        defQuery.value = d.label;
+        const p = prices[flip.id];
+        jCost.value = p && p.source_avg > 0 ? p.source_avg : null;
+      }
+    }
+
+    async function addJournal() {
+      if (!defPicked.value) return;
+      const payload = {
+        base: defPicked.value.base,
+        quality: defPicked.value.quality,
+        cost: jCost.value,
+        income: jIncome.value,
+      };
+      try {
+        const resp = await fetch(BFF + '/api/journal', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      } catch (e) { journalFail('Add failed'); return; }
+      defPicked.value = null; defQuery.value = '';
+      jCost.value = null; jIncome.value = null;
+      loadJournal();
+    }
+
+    function startEdit(r) { editingId.value = r.id; editCost.value = r.cost; editIncome.value = r.income; }
+
+    async function saveJournal(r) {
+      const payload = { cost: editCost.value, income: editIncome.value };
+      try {
+        const resp = await fetch(BFF + '/api/journal/' + r.id, {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      } catch (e) { journalFail('Save failed'); return; }
+      editingId.value = null;
+      loadJournal();
+    }
+
+    async function deleteJournal(r) {
+      if (!confirm('Delete journal entry ' + r.base + ' Q' + r.quality + '?')) return;
+      try {
+        const resp = await fetch(BFF + '/api/journal/' + r.id, { method: 'DELETE' });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      } catch (e) { journalFail('Delete failed'); return; }
+      loadJournal();
+    }
+
+    function netClass(n) { return n == null ? 'muted' : (n >= 0 ? 'green' : 'red'); }
+
+    return {
+      tab,
+      state, profile, screenMode, itemType, clusterImplicit, isCluster,
+      prefixSel, suffixSel, prefixQuery, suffixQuery, affixes, debugMsg,
+      newProfileOpen, newProfileName, newProfileType,
+      filteredAffixes, togglePrefix, toggleSuffix,
+      selectProfile, deleteProfile, createProfile, itemTypeChanged, setOrb, setScreenMode,
+      runCrafting, stopSpam, deleteBeasts, loadDebug,
+      selectedAffixes,
+      allFlips, sections, queueSize, league, tradeUrl, errorMsg, qualities: [30, 29, 28, 27],
+      rateLimits, backoffRemaining, nextScanIn, dbSize, fmtBytes, ratePillStyle, fetchedAge, ageText,
+      sort, sortLabel, toggleSection, qualityEnabled, toggleQuality,
+      refreshFlip, deleteFlip, refreshAll, isRefreshing, toggleFast, fmtCost, fmtProfit, fmtPct, profitClass, refreshColor,
+      loadAnalysis, analysisText, analysis,
+      analysisHover, analysisUnhover, analysisPopover, apEl, apState, apStatusText, apPct, apClass, apSimple, apCategoryName, apTurnover, apScoreClass,
+      journalRecords, journalDefs, journalLeague, journalFilter, filteredDefs, filteredRecords,
+      defQuery, defPicked, jCost, jIncome, editingId, editCost, editIncome, journalMsg,
+      loadJournal, pickDef, addJournal, startEdit, saveJournal, deleteJournal, netClass,
+      journalDefFor, startJournalFlip,
+      journalBalance,
+    };
+  }
+}).mount('#app');
+</script>
+</body>
+</html>
