@@ -1,0 +1,84 @@
+{
+  "Default": {
+    "prefixes": [
+      " "
+    ],
+    "suffixes": [
+      " "
+    ],
+    "item_type": "Ring",
+    "use_regal": false,
+    "exalt_after_regal": false
+  },
+  "test": {
+    "prefixes": [
+      " "
+    ],
+    "suffixes": [
+      "of the Lizard",
+      "of the Hydra",
+      "of Ryslatha"
+    ],
+    "item_type": "2H Sword",
+    "use_regal": false,
+    "exalt_after_regal": false
+  },
+  "_selected": "zenith sword shaper",
+  "_flipper_quality_27": false,
+  "_flipper_quality_28": true,
+  "_flipper_quality_29": true,
+  "_flipper_quality_30": true,
+  "_screen_mode": "3 screens",
+  "shieldcrush cluster": {
+    "prefixes": [
+      "Powerful",
+      "Sanguine"
+    ],
+    "suffixes": [
+      "of the Earthquake",
+      "of Eviction",
+      "of the Kaleidoscope"
+    ],
+    "item_type": "Cluster Jewel (Large)",
+    "cluster_implicit_type": "Physical Damage",
+    "use_regal": false,
+    "exalt_after_regal": false
+  },
+  "zenith cluster": {
+    "prefixes": [
+      "1 Added Passive Skill is Feed the Fury",
+      "1 Added Passive Skill is Martial Mastery"
+    ],
+    "suffixes": [
+      "1 Added Passive Skill is Martial Prowess"
+    ],
+    "item_type": "Cluster Jewel (Large)",
+    "cluster_implicit_type": "Two-Handed Melee Damage",
+    "use_regal": false,
+    "exalt_after_regal": false
+  },
+  "zenith sword elder": {
+    "prefixes": [
+      "Endurance Charge on Melee Stun"
+    ],
+    "suffixes": [
+      " "
+    ],
+    "item_type": "2H Sword",
+    "cluster_implicit_type": "",
+    "use_regal": false,
+    "exalt_after_regal": false
+  },
+  "zenith sword shaper": {
+    "prefixes": [
+      "% more Attack Damage"
+    ],
+    "suffixes": [
+      " "
+    ],
+    "item_type": "2H Sword",
+    "cluster_implicit_type": "Area Damage",
+    "use_regal": false,
+    "exalt_after_regal": false
+  }
+}

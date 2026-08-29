@@ -27,19 +27,19 @@ ITEM_TYPES: dict[str, list[str]] = {
     "Helmet": ["helmet"],
     "Body Armour": ["body_armour", "str_armour", "dex_armour", "int_armour", "str_dex_armour", "str_int_armour",
                      "dex_int_armour", "str_dex_int_armour"],
-    "Wand": ["wand", "one_hand_weapon"],
-    "Sceptre": ["sceptre", "one_hand_weapon"],
-    "Staff": ["staff", "two_hand_weapon"],
-    "Bow": ["bow", "two_hand_weapon"],
-    "Dagger/Rune Dagger": ["dagger", "rune_dagger", "one_hand_weapon"],
-    "Claw": ["claw", "one_hand_weapon"],
-    "1H Sword": ["sword", "rapier", "one_hand_weapon"],
-    "2H Sword": ["2h_sword", "sword", "two_hand_weapon"],
-    "1H Axe": ["axe", "one_hand_weapon"],
-    "2H Axe": ["2h_axe", "axe", "two_hand_weapon"],
-    "1H Mace": ["mace", "one_hand_weapon"],
-    "2H Mace": ["2h_mace", "mace", "two_hand_weapon"],
-    "Warstaff": ["warstaff", "two_hand_weapon"],
+    "Wand": ["wand", "one_hand_weapon", "weapon"],
+    "Sceptre": ["sceptre", "one_hand_weapon", "weapon"],
+    "Staff": ["staff", "two_hand_weapon", "weapon"],
+    "Bow": ["bow", "two_hand_weapon", "weapon"],
+    "Dagger/Rune Dagger": ["dagger", "rune_dagger", "one_hand_weapon", "weapon"],
+    "Claw": ["claw", "one_hand_weapon", "weapon"],
+    "1H Sword": ["sword", "rapier", "one_hand_weapon", "weapon"],
+    "2H Sword": ["2h_sword", "sword", "two_hand_weapon", "weapon"],
+    "1H Axe": ["axe", "one_hand_weapon", "weapon"],
+    "2H Axe": ["2h_axe", "axe", "two_hand_weapon", "weapon"],
+    "1H Mace": ["mace", "one_hand_weapon", "weapon"],
+    "2H Mace": ["2h_mace", "mace", "two_hand_weapon", "weapon"],
+    "Warstaff": ["warstaff", "two_hand_weapon", "weapon"],
     "Focus": ["focus"],
     "Cluster Jewel (Large)": ["expansion_jewel_large"],
     "Cluster Jewel (Medium)": ["expansion_jewel_medium"],
@@ -139,7 +139,10 @@ def download(force: bool = False) -> bool:
 
 
 def is_cached() -> bool:
-    return CACHE_FILE.exists() and TRANSLATIONS_FILE.exists()
+    return (
+        CACHE_FILE.exists() and CACHE_FILE.stat().st_size > 0
+        and TRANSLATIONS_FILE.exists() and TRANSLATIONS_FILE.stat().st_size > 0
+    )
 
 
 def get_item_type_names() -> list[str]:

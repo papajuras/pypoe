@@ -1,6 +1,6 @@
 """Market analysis — P(sell ≤ T) / P(pricedrop ≤ T) / P(stagnation | T) per flip.
 
-Public entry: analyze_flip(flip_id, name, fast, flips).
+Public entry: analyze_flip(flip_id, name, flips).
 
 Pipeline:
     mirror.snapshots() → engine.classify_events() → engine.exposure()
@@ -44,8 +44,7 @@ def _build_pool(flips: list[dict]) -> None:
     flip_keys: dict[str, tuple[str, ...]] = {}
     for f in flips:
         flip_id = f["id"]
-        tier = "high" if f.get("fast") else "low"
-        flip_keys[flip_id] = (item_type_of(f["name"]), tier)
+        flip_keys[flip_id] = (item_type_of(f["name"]), "high")
         rows = mirror.snapshots(flip_id)
         events = engine.classify_events(flip_id, rows, now_ms)
         if events:
@@ -64,7 +63,6 @@ def _get_pool(flips: list[dict]) -> tuple[dict[str, list], dict[str, tuple[str, 
 def analyze_flip(
     flip_id: str,
     name: str,
-    fast: bool,
     flips: list[dict] | None = None,
 ) -> dict[int, HorizonResult] | None:
     """P(sell ≤ T) etc. for one flip. None when there's insufficient snapshot data.
@@ -78,7 +76,7 @@ def analyze_flip(
         return None
 
     item_type = item_type_of(name)
-    tier = "high" if fast else "low"
+    tier = "high"
 
     if flips is None:
         flips = []
@@ -157,7 +155,7 @@ def _demo():
     )
     m._connect().commit()
 
-    res = analyze_flip("f1", "royal plate 29", True, flips=[{"id": "f1", "name": "royal plate 29", "fast": True}])
+    res = analyze_flip("f1", "royal plate 29", flips=[{"id": "f1", "name": "royal plate 29"}])
     assert res is not None, "expected a result from 8 snapshots"
     assert set(res) == {1, 3, 7}
     for r in res.values():

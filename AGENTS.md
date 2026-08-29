@@ -8,6 +8,9 @@ Personal utility for Path of Exile crafting and economy monitoring.
   do. Prefer the smallest edit that answers the question.
 
 ## Behavioral contract
+- Don't assume intent. If a request is ambiguous or has several plausible
+  readings, ask before doing anything — never pick one silently. One question
+  beats redoing wrong work.
 - Fail fast, report. If something can't be done in the current mode, or the
   result is missing/uncertain, say so immediately — don't improvise substitutes.
 - Shortest feedback loop: do the smallest thing that answers the question, then
@@ -18,6 +21,13 @@ Personal utility for Path of Exile crafting and economy monitoring.
   than papering over it. When uncertain, say "I don't know" and check.
 - Ask before expanding scope. If a request implies more work than stated,
   confirm the direction first instead of guessing.
+- **NO long `sleep` commands. Think 10 times before sleeping at all:
+  do we really need it?** A wait is almost always the wrong tool — poll with a
+  short bounded loop, check state once more, or just report and let the next
+  command verify. If a sleep is genuinely unavoidable, the command MUST carry
+  a comment stating the goal and what exactly we expect to observe afterwards
+  (e.g. `# waiting for deploy health check; expect HTTP 200 within 10s`).
+  Sleeping blindly on the user's time is not acceptable.
 
 
 ## Features

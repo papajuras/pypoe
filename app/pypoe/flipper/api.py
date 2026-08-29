@@ -107,6 +107,18 @@ class APIHandler(BaseHTTPRequestHandler):
             self._proxy_get(path, params)
         elif path == "/api/settings":
             self._proxy_get(path, params)
+        elif path == "/api/ninja/cycles":
+            self._proxy_ninja_cycles()
+        elif path == "/api/ninja/weapons":
+            from pypoe import ninja_weapons
+            data = ninja_weapons.scan()  # watchdog owns pulling
+            self._reply_json(200, data) if data is not None else \
+                self._reply_json(503, {"error": "no ninja cycles available"})
+        elif path.startswith("/api/ninja/") and path.endswith("/files"):
+            self._proxy_ninja_files(path[len("/api/ninja/"):-len("/files")])
+        elif path.startswith("/api/ninja/") and path.endswith("/file"):
+            self._proxy_ninja_file(path[len("/api/ninja/"):-len("/file")],
+                                   params.get("path", [""])[0])
         elif path == "/api/crafting/state":
             self._reply_json(200, controller.current_state())
         elif path == "/api/crafting/profiles":
@@ -115,6 +127,8 @@ class APIHandler(BaseHTTPRequestHandler):
             self._handle_get_affixes(params)
         elif path == "/api/crafting/debug":
             self._reply_json(200, controller.debug())
+        elif path == "/api/crafting/counters":
+            self._reply_json(200, controller.counters())
         elif path == "/api/journal":
             self._reply_json(200, {
                 "records": journal_store.list_all(),
@@ -134,9 +148,13 @@ class APIHandler(BaseHTTPRequestHandler):
         if path.startswith("/api/flips/") and path.endswith("/refresh"):
             flip_id = path[len("/api/flips/"):-len("/refresh")]
             self._proxy_post(path, flip_id)
-        elif path.startswith("/api/flips/") and path.endswith("/fast"):
-            flip_id = path[len("/api/flips/"):-len("/fast")]
-            self._proxy_set_fast(flip_id, body)
+        elif path.startswith("/api/flips/") and path.endswith("/enabled"):
+            flip_id = path[len("/api/flips/"):-len("/enabled")]
+            self._proxy_set_enabled(flip_id, body)
+        elif "/sources/" in path and path.endswith("/priced"):
+            flip_id = path[len("/api/flips/"):].split("/sources/")[0]
+            idx = int(path.split("/sources/")[1][:-len("/priced")])
+            self._proxy_set_source_priced(flip_id, idx, body)
         elif path == "/api/flips/refresh-all":
             self._handle_refresh_all()
         elif path == "/api/crafting/start":
@@ -251,6 +269,42 @@ class APIHandler(BaseHTTPRequestHandler):
         else:
             self._reply_json(404, {"error": "not found"})
 
+    def _proxy_ninja_cycles(self):
+        try:
+            self._reply_json(200, _gatherer.ninja_cycles())
+        except Exception:
+            logger.exception("gatherer proxy failed for ninja cycles")
+            self._reply_json(502, {"error": "gatherer unreachable"})
+
+    def _proxy_ninja_files(self, cycle: str):
+        try:
+            self._reply_json(200, _gatherer.ninja_files(cycle))
+        except Exception:
+            logger.exception("gatherer proxy failed for ninja files %s", cycle)
+            self._reply_json(502, {"error": "gatherer unreachable"})
+
+    def _proxy_ninja_file(self, cycle: str, rel: str):
+        if not rel:
+            self._reply_json(400, {"error": "missing path parameter"})
+            return
+        try:
+            data = _gatherer.ninja_file(cycle, rel)
+        except Exception:
+            logger.exception("gatherer proxy failed for ninja file %s/%s", cycle, rel)
+            self._reply_json(502, {"error": "gatherer unreachable"})
+            return
+        ct = "application/json" if rel.endswith(".json") else \
+            "application/x-protobuf" if rel.endswith(".pb") else \
+            "application/octet-stream"
+        body = gzip.compress(data)
+        self.send_response(200)
+        self._cors()
+        self.send_header("Content-Type", ct)
+        self.send_header("Content-Encoding", "gzip")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def _handle_refresh_all(self):
         """Full refetch + cache rebuild (drops flips deleted on the gatherer)."""
         try:
@@ -286,17 +340,35 @@ class APIHandler(BaseHTTPRequestHandler):
                 }
         self._reply_json(202, data)
 
-    def _proxy_set_fast(self, flip_id: str, body: dict):
-        fast = bool(body.get("fast", True))
+    def _proxy_set_enabled(self, flip_id: str, body: dict):
+        enabled = bool(body.get("enabled", True))
         try:
-            data = _gatherer.set_fast(flip_id, fast)
+            data = _gatherer.set_enabled(flip_id, enabled)
         except Exception:
-            logger.exception("gatherer proxy failed for fast toggle %s", flip_id)
+            logger.exception("gatherer proxy failed for enabled toggle %s", flip_id)
             self._reply_json(502, {"error": "gatherer unreachable"})
             return
         with _cache_lock:
             if flip_id in _flip_cache:
-                _flip_cache[flip_id]["fast"] = fast
+                _flip_cache[flip_id]["enabled"] = enabled
+        self._reply_json(200, data)
+
+    def _proxy_set_source_priced(self, flip_id: str, idx: int, body: dict):
+        priced = bool(body.get("priced", True))
+        try:
+            data = _gatherer.set_source_priced(flip_id, idx, priced)
+        except Exception:
+            logger.exception("gatherer proxy failed for priced toggle %s", flip_id)
+            self._reply_json(502, {"error": "gatherer unreachable"})
+            return
+        with _cache_lock:
+            cached = _flip_cache.get(flip_id)
+            if cached is not None:
+                flags = list(cached.get("source_priced") or [])
+                while len(flags) <= idx:
+                    flags.append(True)
+                flags[idx] = priced
+                cached["source_priced"] = flags
         self._reply_json(200, data)
 
     def _proxy_delete(self, path: str, flip_id: str):
@@ -335,7 +407,7 @@ class APIHandler(BaseHTTPRequestHandler):
         from pypoe.analysis.simple import analyze as simple_analyze
 
         simple = simple_analyze(mirror.snapshots(flip_id))
-        result = analyze_flip(flip["id"], flip.get("name", ""), bool(flip.get("fast")), flips)
+        result = analyze_flip(flip["id"], flip.get("name", ""), flips)
         if result is None:
             self._reply_json(200, {"status": "insufficient_data", "simple": simple})
         else:
@@ -359,14 +431,14 @@ def _sync_loop():
     while True:
         try:
             _pull_flips()
-        except Exception:
-            logger.exception("sync: flips pull failed")
+        except Exception as e:
+            logger.warning("sync: flips pull failed: %s", type(e).__name__)
         with _cache_lock:
             if not _settings_cache:
                 try:
                     _pull_settings()
-                except Exception:
-                    logger.exception("sync: settings pull failed")
+                except Exception as e:
+                    logger.warning("sync: settings pull failed: %s", type(e).__name__)
         time.sleep(_SYNC_INTERVAL)
 
 
@@ -457,6 +529,8 @@ def _history_loop():
 
 
 def start_api(port: int = 8765) -> None:
+    from pypoe import ninja_weapons
+    ninja_weapons.start_watchdog()
     threading.Thread(target=_sync_loop, daemon=True).start()
     threading.Thread(target=_history_loop, daemon=True).start()
     server = HTTPServer(("127.0.0.1", port), APIHandler)

@@ -4,13 +4,28 @@ __pycache__/
 *.pyc
 .venv/
 .idea/
-.opencode/
 *.AppImage
 log/*.log*
 log/requests-*.log
 gatherer/log/
 
 # module data dirs (runtime state — preserved across deploys)
-app/pypoe/data/
+app/pypoe/data/*
 gatherer/gatherer/data/
 gatherer/.venv/
+
+# journal stays in git — tiny, valuable, manual
+!app/pypoe/data/journal.db
+
+# crafting profiles stay in git too
+!app/pypoe/data/crafting.json
+
+# pob: vendored PoB CE checkout + its venv
+pob/pob-ce/
+pob/.venv/
+pob/checkpoints/
+
+ninja_data/
+
+# santa-maria benchmark session logs (gate diagnostic artifacts)
+santa-maria/gate_sessions/
