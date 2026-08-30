@@ -1,0 +1,224 @@
+Mam jednak 4 rzeczy, które jeszcze bym poprawił
+
+Nie są to już duże problemy architektoniczne. Raczej rzeczy, które warto doprecyzować teraz, zanim zaczniemy projektować API.
+
+1. SCALES nadal jest trochę zbyt niejednoznaczne
+
+Masz teraz:
+
+SCALES
+ENABLES
+SHARES_STAT
+CONVERTS_TO
+APPLIES_TO
+GAINED_AS
+...
+
+Problem polega na tym, że SCALES może oznaczać kilka różnych rzeczy.
+
+Na przykład:
+
+Strength → Attack Damage
+
+to nie jest to samo co:
+
+% Increased Fire Damage → Ignite Damage
+
+i nie jest to samo co:
+
+Ignite → Damage while enemy is ignited
+
+Nie twierdzę, że teraz trzeba rozwiązać cały ontology problem.
+
+Ale przed schema designem warto ustalić:
+
+czy relation types opisują naturę związku, czy konkretną mechaniczną operację?
+
+Bo od tego będzie zależało, czy SCALES będzie wystarczająco precyzyjne.
+
+Na razie zostawiłbym to jako open question, zamiast teraz komplikować model.
+
+2. archetype/payoff jako node jest świetnym pomysłem, ale trzeba pilnować granicy "źródło vs konstrukcja"
+
+To:
+
+"build archetypes/payoffs"
+
+jest bardzo użyteczne dla cluster query.
+
+Natomiast archetype nie jest tym samym rodzajem rzeczy co:
+
+unique
+skill
+mechanic
+passive
+
+Archetype będzie raczej derived knowledge.
+
+I to jest OK.
+
+Wręcz powiedziałbym, że powinno to być jawne:
+
+SOURCE NODE
+DERIVED NODE
+
+albo odpowiednik provenance.
+
+Bo:
+
+Wardloop requires A+B+C
+
+ma zupełnie inną epistemiczną naturę niż:
+
+Unique X grants Y
+
+Ten pierwszy jest konstrukcją wiedzy KB, drugi pochodzi bezpośrednio z game data.
+
+To wiąże się też z Waszym świetnym wcześniejszym wymaganiem, żeby model nie mylił faktów z interpretacją. Tutaj warto to utrzymać także na poziomie node/edge.
+
+3. get_topology() może się okazać zbyt prymitywne
+
+Na papierze:
+
+get_topology(node_id)
+
+jest bardzo sensowne.
+
+Ale jest jedno ryzyko.
+
+Jeżeli zwróci:
+
+neighbor_id + relation_type
+
+to LLM może nadal robić coś w rodzaju:
+
+get_topology(A)
+get_node_details(B)
+get_topology(B)
+get_node_details(C)
+...
+
+czyli wracamy do części problemu, który chcieliśmy wyeliminować.
+
+Może się okazać, że topology tool powinien zwracać nie tylko:
+
+B — SCALES
+
+ale np.:
+
+B — SCALES
+short_label
+mechanical category
+why potentially relevant
+
+bez pełnego payloadu.
+
+Czyli lightweight semantic topology, a nie tylko adjacency list.
+
+Nie zmieniałbym tego jeszcze w specyfikację — ale koniecznie przetestowałbym to na realnych promptach.
+
+4. Największa rzecz, której nadal trochę brakuje: "discovery"
+
+Macie obecnie bardzo dobre narzędzia dla:
+
+znam node
+→ explore
+
+znam stat A/B
+→ path
+
+znam payoff
+→ requirements
+
+Ale generator czasami będzie miał pytanie typu:
+
+„Daj mi interesujące rzeczy związane z ignite.”
+
+czyli niekoniecznie zna początkowy node.
+
+To może być osobna funkcja:
+
+find_mechanics(...)
+
+albo jakiś discovery mechanism.
+
+I właśnie dlatego bardzo dobrze, że dokument nadal mówi:
+
+"draft direction, not a settled contract"
+
+Nie finalizowałbym API przed przeprowadzeniem kilku prawdziwych generation queries.
+
+Najważniejsze: teraz nie widzę już dużego błędu kierunkowego
+
+Po tej wersji architektura zaczyna wyglądać logicznie:
+
+              RAW DATA
+                  │
+         ┌────────┴────────┐
+         ▼                 ▼
+       RePoE              PoB
+         │                 │
+         └────────┬────────┘
+                  ▼
+       STRUCTURED KNOWLEDGE
+                  │
+                  ▼
+        TYPED RELATION GRAPH
+          │       │       │
+          │       │       └─ negative edges
+          │       └───────── cluster requirements
+          └───────────────── stat paths
+                  │
+                  ▼
+              TOOL API
+                  │
+                  ▼
+                 LLM
+                  │
+                  ▼
+          candidate ideas
+
+I co ważne, nie próbujecie już zmuszać jednego mechanizmu do robienia wszystkiego.
+
+Macie:
+
+path problem → find_stat_paths
+
+conjunction problem → requirements/cluster query
+
+local exploration → topology/details
+
+hard contradiction → negative edges
+
+To jest dużo bardziej dojrzałe niż pierwsza wersja.
+
+Co bym zrobił teraz
+
+Nie pisałbym jeszcze schema.
+
+Wziąłbym 10–20 realistycznych pytań, które generator faktycznie może zadawać, np.:
+
+"Give me an ignite build idea."
+"How could Strength become useful for an attack build?"
+"What can scale an unusual source of flat chaos damage?"
+"Find mechanics that require being ignited."
+"Can these two mechanics coexist?"
+"What enables this payoff?"
+
+I dla każdego ręcznie prześledził:
+
+LLM question
+    ↓
+which tool?
+    ↓
+what parameters?
+    ↓
+what must DB know?
+    ↓
+what response is sufficient?
+
+Dopiero z tego finalizowałbym funkcje.
+
+Bo obecny dokument ma już właściwie architekturę. Teraz trzeba sprawdzić, czy proponowane API faktycznie wystarcza do generowania build ideas, zamiast ponownie projektować je „z głowy”.
+
+I tak — Alberon's Test + Iron Will Test + Cluster Test + Fail-Fast Test to już bardzo sensowny pierwszy zestaw acceptance tests
