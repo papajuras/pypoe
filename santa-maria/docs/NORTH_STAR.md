@@ -59,11 +59,20 @@ relational tables (nodes + edges, queried via CTEs) rather than a
 dedicated graph database, unless that later proves necessary.
 
 **Nodes** represent distinct entities — mechanics, specific uniques,
-keystones, tags, and (see below) build archetypes/payoffs:
+keystones, tags, and (see below) build archetypes/payoffs. Nodes carry
+an explicit `origin`, so the source-vs-interpretation distinction from
+Purpose holds at the node level too, not just conceptually:
 
 ```
-node_id | type (mechanic/item/passive/archetype/...) | payload (stats, conditions, tags)
+node_id | type (mechanic/item/passive/archetype/...) | origin (source/derived) | payload (stats, conditions, tags)
 ```
+
+A unique/skill/passive node is `source` — it comes directly from game
+data. An archetype/payoff node (e.g. Wardloop, see cluster gating
+below) is always `derived` — it's a construction of the KB, built from
+noticing that a set of source nodes co-occur meaningfully, not a fact
+extracted from the game itself. This distinction must survive into
+query responses, not just storage.
 
 **Edges** represent typed, explicit interactions between nodes — this
 is the core of the KB, not a secondary index:
@@ -177,6 +186,15 @@ treated as fixed:
   once, so the LLM sees "this payoff needs A AND B AND C" in a single
   call rather than reconstructing it from repeated 1-hop calls.
 
+**Known gap: discovery.** All four functions above need a starting
+node or a pair of known stats. But a generator will sometimes ask
+something like "give me interesting things related to ignite" without
+knowing a starting node_id at all — entry by concept/tag, not by ID.
+No current function covers this. A candidate (`find_by_tag(tag)` or
+similar) needs to be added, but — same as the rest of this
+interface — only after checking it against real example queries, not
+designed from first principles now.
+
 API principles:
 
 - **Evidence-oriented** — response distinguishes DB-supported fact
@@ -212,6 +230,19 @@ API principles:
 Function names and exact shapes above are a starting hypothesis to
 test against this process — not the output of it yet.
 
+**Concrete next action:** take 10–20 realistic generator questions
+(e.g. "give me an ignite build idea", "how could Strength become
+useful for an attack build", "find mechanics that require being
+ignited", "can these two mechanics coexist", "what enables this
+payoff") and manually trace, per question: which tool → what
+parameters → what must the DB know → what response is sufficient.
+Finalize the interface from that, not from further up-front design.
+This is also where to check a live risk with `get_topology`: a bare
+neighbor-id + relation-type response might still force the LLM back
+into manual multi-call exploration for cases that deserve a single
+richer call — worth confirming against real questions before deciding
+whether the response needs more than an adjacency list.
+
 ## First validation targets
 
 - **The Ignite Test** — can the KB reliably keep lexically similar,
@@ -235,8 +266,10 @@ test against this process — not the output of it yet.
 1. KB contains real, source-backed mechanical information
 2. mechanics aren't represented via text similarity
 3. relationships — sequential (stat bridging) and conjunctive (cluster
-   gating) alike — are explicitly mapped, not reconstructed inside the
-   LLM's own reasoning
+   gating) alike — are resolved deterministically by the database,
+   whether that means a stored edge from ingestion or a value computed
+   at query time (e.g. `find_stat_paths` running a CTE over stored
+   edges) — never reconstructed ad hoc inside the LLM's own reasoning
 4. the LLM can navigate without exceeding context windows
 5. candidate ideas trace back to DB-supported facts
 6. the generator produces ideas that would be hard to get reliably
@@ -260,6 +293,14 @@ test against this process — not the output of it yet.
    edges during the build step.
 6. **Provenance model** — how conflicts between RePoE / PoB / derived
    facts get represented. Deliberately undefined until needed.
+7. **`SCALES` may be too coarse.** Strength→Attack Damage (a
+   conversion), `% increased fire damage`→ignite damage (a formula
+   multiplier), and ignite→damage-while-ignited (unlocking a
+   conditional effect) are mechanically different operations currently
+   collapsed into one relation type. Whether relation types should
+   describe the *nature* of a relationship or the specific *mechanical
+   operation* needs an answer before schema design — left open rather
+   than solved now.
 
 ## Anti-goals
 

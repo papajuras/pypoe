@@ -29,3 +29,12 @@ ninja_data/
 
 # santa-maria benchmark session logs (gate diagnostic artifacts)
 santa-maria/gate_sessions/
+
+# santa-maria: RePoE + PoB data exports (mirror of repoe-fork.github.io)
+santa-maria/data/
+santa-maria/cache/
+
+# regenerated idempotently by tools/run.sh
+santa-maria/docs/data_inventory.md
+santa-maria/docs/phase2_raw_snapshot.md
+santa-maria/docs/phase3_raw_validation.md
