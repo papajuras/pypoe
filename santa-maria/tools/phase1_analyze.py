@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Exhaustive per-file analysis of every downloaded JSON file.
 
-Input:  santa-maria/data/  (produced by tools/download.py)
+Input:  santa-maria/data/  (produced by tools/phase1_download.py)
 Output: santa-maria/cache/analysis.json, cache/stat_conversion_context.json
 
 Every file is scanned in full: ALL records, ALL fields, ALL nested objects,
@@ -448,7 +448,7 @@ def analyze_file(relpath, vocab):
 def load_vocab():
     if VOCAB_CACHE.exists():
         return set(json.load(open(VOCAB_CACHE)))
-    from vocab import collect_ids
+    from phase1_vocab import collect_ids
     return collect_ids()
 
 

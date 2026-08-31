@@ -36,5 +36,3 @@ santa-maria/cache/
 
 # regenerated idempotently by tools/run.sh
 santa-maria/docs/data_inventory.md
-santa-maria/docs/phase2_raw_snapshot.md
-santa-maria/docs/phase3_raw_validation.md

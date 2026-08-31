@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the stat-id vocabulary and the exhaustive conversion/scaling-pattern scan.
 
-Input:  santa-maria/data/  (produced by tools/download.py)
+Input:  santa-maria/data/  (produced by tools/phase1_download.py)
 Output: santa-maria/cache/stat_vocab.json, santa-maria/cache/conversion_hits.json
 
 Vocabulary = observed/union stat-id vocabulary: the union of stat identifiers

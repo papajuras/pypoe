@@ -28,7 +28,7 @@ def vocab():
     p = CACHE / 'stat_vocab.json'
     if p.exists():
         return set(json.load(open(p)))
-    from vocab import collect_ids
+    from phase1_vocab import collect_ids
     return collect_ids()
 
 def stat_resolution(sid, mods_stats, voc):

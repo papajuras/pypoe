@@ -2,7 +2,7 @@
 """Automated Phase-1 self-audit. Prints PASS/FAIL per checklist item.
 
 Reads the caches + data on disk; exits non-zero if anything FAILs. Run as the
-last step of tools/run.sh.
+last step of tools/phase1_run.sh.
 """
 import json, os, re, sys
 from pathlib import Path

@@ -1,0 +1,554 @@
+{
+  "contract": "phase4_extraction_rules",
+  "contract_version": "4D.3",
+  "node_schema": {
+    "columns": [
+      "node_id",
+      "type",
+      "origin",
+      "payload"
+    ],
+    "origin": "source",
+    "rule": "Every Phase 4 node has origin = source. Derived nodes MUST NOT be produced."
+  },
+  "global_rules": {
+    "no_new_node_types": true,
+    "no_edges_in_this_phase": true,
+    "no_mechanical_or_conversion_analysis": true,
+    "retention_guarantee": "Information not represented as a node is never dropped. It is retained in: (a) another node's payload, (b) provenance/evidence, (c) lookup/index data, or (d) the raw snapshot (raw_records.db). Lookup/evidence data required for deterministic resolution remains available.",
+    "schema_is_north_star": "node_id | type | origin | payload (not extended or replaced)",
+    "origin_definition": "origin = source refers to the node's IDENTITY / source record: the node is extracted from a source entity present in the game data. A payload MAY contain computed enrichment fields (e.g. Stat.observed_in, UniqueItem.resolved_targets, ModifierGroup member aggregates); those fields are provenance-tagged as enrichment and never change origin. Producing such enrichment is NOT producing a derived NODE.",
+    "deduplication_general": "node_id must be unique; where the source yields identical ids, see the per-type dedup rule."
+  },
+  "node_types": {
+    "Stat": {
+      "source": "repoe/stats.json (record_key = stat id); observed union additionally scanned from: mods.json stats[].id, passive_skill_trees/* passives.stats keys, gems.json constant_stats / per_level_stats ids, gems.json stat_conversions VALUES.",
+      "record_identification": "One Stat node per stat id. Canonical set = stats.json record_keys. Observed-only set = ids found at the stat positions above that are NOT in stats.json (verified: currently 0; the rule is deterministic and may be non-empty after re-download).",
+      "inclusion": "All canonical ids; all observed-only ids. legacy/dummy/observed-only ids are included and FLAGGED, never dropped.",
+      "exclusion": "NOT stat ids: gems.json stat_text multi-line keys (display concatenations; 15,914 multi-line occurrences, 0 in stats.json) and gems.json stat_conversions KEYS (gem-local alias names). Both stay in the Gem payload.",
+      "node_id": "stat:<stat_id>",
+      "payload": {
+        "stat_id": "the stat id string",
+        "is_local": "bool (stats.json)",
+        "is_aliased": "bool (stats.json)",
+        "alias": {
+          "when_in_off_hand": "string|null",
+          "when_in_main_hand": "string|null"
+        },
+        "flags": [
+          "legacy",
+          "dummy",
+          "observed_only",
+          "alias"
+        ],
+        "observed_in": [
+          "mods",
+          "passives",
+          "gems",
+          "stats_json"
+        ]
+      },
+      "provenance": "raw_records('repoe/stats.json', <stat_id>, repoe@<commit>) for canonical; raw_records(<source_file>, <record_key>, <version>) for observed-only.",
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/stats.json (canonical)",
+          "mods.json / passive_skill_trees/* / gems.json (observed stat positions)"
+        ],
+        "required_for_resolution_or_evidence": [
+          "stat_translations.json (display text; T3 keystone bridge)",
+          "stat_value_handlers.json (T3 magnitude scaling)"
+        ],
+        "optional_candidate_source": []
+      },
+      "extraction_rule": "Deterministic: for each stats.json record_key create a node; then scan the four stat positions, add any id not already present as observed_only.",
+      "dedup": "stat_id string is unique (no dedup needed).",
+      "unresolved_handling": "n/a"
+    },
+    "Modifier": {
+      "source": "repoe/mods.json (one record per mod key; 40,354).",
+      "record_identification": "One Modifier node per mods.json record_key.",
+      "inclusion": "ALL records (every generation_type and domain). Modifier is an exact source entity / mechanic carrier; storage is exhaustive, exposure/filtering is query-time.",
+      "exclusion": "None at extraction.",
+      "node_id": "mod:<record_key>",
+      "payload": {
+        "record_key": "mods.json key",
+        "generation_type": "string",
+        "domain": "string",
+        "text": "string|null",
+        "name": "string",
+        "required_level": "int|null",
+        "is_essence_only": "bool",
+        "gold_value": "int|null",
+        "groups": [
+          "mod group strings"
+        ],
+        "spawn_weights": [
+          {
+            "tag": "string",
+            "weight": "int"
+          }
+        ],
+        "implicit_tags": [
+          "string"
+        ],
+        "adds_tags": [
+          "string"
+        ],
+        "stats": [
+          {
+            "id": "stat_id",
+            "min": "number|null",
+            "max": "number|null"
+          }
+        ],
+        "grants_effects": [
+          {
+            "granted_effect_id": "string",
+            "level": "int"
+          }
+        ]
+      },
+      "provenance": "raw_records('repoe/mods.json', <record_key>, repoe@<commit>).",
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/mods.json"
+        ],
+        "required_for_resolution_or_evidence": [],
+        "optional_candidate_source": [
+          "mods_by_base.json",
+          "mod_types.json",
+          "crafting_bench_options.json",
+          "essences.json",
+          "fossils.json",
+          "PoB ModItem.json",
+          "PoB ModScalability.json",
+          "buffs.json"
+        ]
+      },
+      "extraction_rule": "Deterministic: 1 node per record; payload copied from the parsed record verbatim.",
+      "dedup": "record_key is unique.",
+      "unresolved_handling": "n/a"
+    },
+    "ModifierGroup": {
+      "source": "distinct values of the source field repoe/mods.json groups[] (7,325) and pob/ModItemExclusive.json group (4,180) — TWO separate vocabularies, kept in separate namespaces.",
+      "record_identification": "One node per distinct group string within its source vocabulary. The group string IS the source-origin entity: it is a literal value of the source field, exactly as a stat id is a literal value of stats.json.",
+      "inclusion": "All distinct groups from both vocabularies. This is a source-origin vocabulary node (its semantic reading is 4C-pending); it is NOT a replacement for Modifier.",
+      "exclusion": "Group occurrences are not separate nodes (membership lives on Modifier nodes).",
+      "node_id": "modgroup:<group>  (repoe vocabulary) | modgroup_pob:<group>  (pob vocabulary)",
+      "payload": {
+        "group": "group string (identity)",
+        "source_vocab": "repoe_groups | pob_group",
+        "enrichment_note": "the following fields are COMPUTED from member Modifier payloads; they are enrichment, not source fields, and do not alter origin",
+        "domains": "sorted unique domains observed for members, lexicographic ascending",
+        "generation_types": "sorted unique generation types observed for members, lexicographic ascending",
+        "member_count": "int - count of member Modifier nodes",
+        "representative_text": "text of the representative member (see enrichment_rules); null if that text is null"
+      },
+      "provenance": "The group string is observed directly in raw_records('repoe/mods.json', <member_mod>, ...).groups[] and raw_records('pob/ModItemExclusive.json', <member_mod>, ...).group (source occurrences). Enrichment provenance = the member Modifier nodes (each with its own provenance). origin = source.",
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/mods.json groups[]",
+          "pob/ModItemExclusive.json group"
+        ],
+        "required_for_resolution_or_evidence": [],
+        "optional_candidate_source": []
+      },
+      "extraction_rule": "Deterministic: union distinct group strings per vocabulary; compute enrichment (domains, generation_types, member_count, representative_text) from Modifier payloads exactly per enrichment_rules (tier = trailing record_key integer; Elevated precedence; tie-break lexicographically smallest record_key; sorted arrays).",
+      "dedup": "dedup within vocabulary by group string; RePoE and PoB groups are NEVER merged.",
+      "unresolved_handling": "n/a",
+      "enrichment_rules": {
+        "tier_definition": "tier of a member Modifier = the trailing integer of its record_key (0 if none). In RePoE numbering the LARGEST trailing integer is the STRONGEST roll (e.g. IncreasedLife12 = +(175-189) > IncreasedLife1 = +(10-24)).",
+        "elevated_precedence": "members whose name contains 'Elevated' (elevated influence mods; 247 present, signalled in the name field) form a distinct stronger class and take precedence over non-elevated members for representative selection.",
+        "representative_member_selection": "1) if any Elevated member exists, restrict to Elevated members; else all members. 2) within that set, choose the member with the LARGEST trailing-integer tier. 3) tie-break: lexicographically smallest record_key.",
+        "representative_text_rule": "representative_text = the representative member's text field (null if that text is null).",
+        "array_ordering": "domains and generation_types are deduplicated and sorted lexicographically ascending (deterministic).",
+        "member_count_rule": "member_count = number of member Modifier nodes in the group."
+      }
+    },
+    "UniqueItem": {
+      "source": "repoe/uniques.json (one record per numeric record_key; 1,556). No stats in this file; stats are reached via the unique_item_resolver (below).",
+      "record_identification": "One node per uniques.json record_key. Alternate-art, renamed and base versions are SEPARATE records/nodes (linked via payload).",
+      "inclusion": "ALL 1,556 records. Unresolved/unmatched uniques are never discarded.",
+      "exclusion": "None.",
+      "node_id": "unique:<uniques_record_key>",
+      "payload": {
+        "record_key": "uniques.json key (string)",
+        "id": "name (display property, NOT identity)",
+        "name": "name",
+        "item_class": "string",
+        "inventory_width": "int",
+        "inventory_height": "int",
+        "is_alternate_art": "bool",
+        "visual_identity": {
+          "id": "string",
+          "dds_file": "string"
+        },
+        "base_version": "string|null",
+        "renamed_version": "string|null",
+        "resolved_targets": [
+          {
+            "target_type": "Modifier|Passive",
+            "target_key": "string",
+            "method": "int 1|2|3|4",
+            "validated": "bool (always false at extraction; confirmation is a later phase)",
+            "status": "string"
+          }
+        ],
+        "resolution_status": "resolved | partial_or_indirect | unresolved_by_current_resolver | no_source_text_for_current_method | genuinely_absent_confirmed",
+        "resolution_evidence": {
+          "per_association": [
+            {
+              "method": "int",
+              "matched_text": "string|null",
+              "candidate_keys": [
+                "string"
+              ],
+              "validated": "bool"
+            }
+          ],
+          "notes": "string"
+        }
+      },
+      "provenance": "raw_records('repoe/uniques.json', <record_key>, repoe@<commit>); each resolved target carries its own provenance.",
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/uniques.json"
+        ],
+        "required_for_resolution_or_evidence": [
+          "unique_item_resolver (methods 1-4)",
+          "pob/Uniques/*.json (method-2 evidence)",
+          "pob/ModItemExclusive.json (resolver chain / method-2 evidence)",
+          "pob/QueryMods.json (resolver chain)",
+          "pob/TradeSiteStats.json (resolver chain)",
+          "pob/ModCache.json (resolver chain)",
+          "stat_translations.json (T3 bridge)"
+        ],
+        "optional_candidate_source": []
+      },
+      "extraction_rule": "Deterministic node creation from uniques.json; resolved_targets + resolution_status/evidence populated by the resolver function (below). If the resolver cannot run for a record, resolution_status defaults to 'unresolved_by_current_resolver' (empty resolved_targets is NOT absence).",
+      "dedup": "record_key is unique.",
+      "unresolved_handling": "Empty resolved_targets is not proof of absence. Status distinguishes unresolved-by-resolver / no-source-text / genuinely-absent-confirmed (evidence-backed only)."
+    },
+    "Passive": {
+      "source": "repoe/passive_skill_trees/*.json (7 trees; a tree is a single-file record; entity unit = one entry of its passives map, keyed by hash string).",
+      "record_identification": "One node per distinct passive id field. The same passive id appears in multiple trees.",
+      "inclusion": "ALL passive entries (regular, notable, keystone, jewel-socket, ascendancy-start, multiple-choice). No size-based exclusion; exposure is query-time.",
+      "exclusion": "Tree scaffolding (art/groups/roots/title) is not a node (tree provenance).",
+      "node_id": "passive:<passive_id>",
+      "payload": {
+        "id": "string — passive id (identity); identical across all variants by construction",
+        "name": "string — identical across variants for a given id",
+        "conflict": "bool — false when every tree's record for this id is byte-identical (after parse); true otherwise",
+        "shared": "object — when conflict=false: the full common record fields {name, kind_flags, flavour_text, icon, reminder_text, skill_points, stats, hash:int}. When conflict=true: ONLY the fields identical across ALL variants (intersection; at minimum {name}); differing fields are NOT present here",
+        "variants": "array|null — null when conflict=false. When conflict=true: one entry per source tree containing the id, FULL lossless per-tree records: [{\"tree\": \"repoe/passive_skill_trees/<file>.json\", \"hash\": int, \"record\": {id, name, kind_flags, flavour_text, icon, reminder_text, skill_points, stats}}]",
+        "trees": "[{\"file\": \"tree file\", \"hash\": \"int\"}] — union of source trees where the id occurs (both branches)"
+      },
+      "provenance": "raw_records('repoe/passive_skill_trees/<file>', '', repoe@<commit>), entry passives.<hash>.",
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/passive_skill_trees/*.json"
+        ],
+        "required_for_resolution_or_evidence": [
+          "stat_translations.json (T3 keystone bridge)"
+        ],
+        "optional_candidate_source": [
+          "repoe/cluster_jewel_notables.json",
+          "repoe/cluster_jewels.json",
+          "pob/TimelessJewelData/LegionPassives.json",
+          "pob/TattooPassives.json",
+          "pob/ClusterJewels.json"
+        ]
+      },
+      "extraction_rule": "Deterministic: iterate all trees' passives, group by id. If all per-tree records for the id are identical: merge (conflict=false, shared = the record, trees[] union). Otherwise: conflict=true, shared = intersection of fields equal across ALL variants, variants = one full per-tree record per source tree (no canonical pick, no reconciliation).",
+      "dedup": "merge by id only when payloads are identical; otherwise conflict flag + variants retained.",
+      "unresolved_handling": "n/a (conflict case handled deterministically)"
+    },
+    "Gem": {
+      "source": "repoe/gems.json (one record per gem record_key; 1,458).",
+      "record_identification": "One node per gems.json record_key (variant records like AbsolutionAltX are separate).",
+      "inclusion": "ALL 1,458.",
+      "exclusion": "per_level stat lines are NOT nodes (retained in payload).",
+      "node_id": "gem:<record_key>",
+      "payload": {
+        "record_key": "gems.json key",
+        "active_skill": {
+          "id": "string",
+          "types": [
+            "string"
+          ],
+          "display_name": "string",
+          "description": "string|null"
+        },
+        "base_item": {
+          "id": "Metadata path",
+          "release_state": "string",
+          "max_level": "int|null"
+        },
+        "is_support": "bool",
+        "color": "string",
+        "tags": [
+          "string"
+        ],
+        "per_level": {
+          "<level>": {
+            "required_level": "int",
+            "costs": {},
+            "stats": [
+              {
+                "id": "string|null",
+                "type": "string|null",
+                "value": "number|null"
+              }
+            ],
+            "stat_text": {
+              "<stat_text_key>": "string"
+            }
+          }
+        },
+        "static": {},
+        "stat_conversions": {
+          "<gem_local_stat_id>": "<canonical_stat_id>"
+        },
+        "quest_reward": "bool|string|null"
+      },
+      "provenance": "raw_records('repoe/gems.json', <record_key>, repoe@<commit>).",
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/gems.json"
+        ],
+        "required_for_resolution_or_evidence": [],
+        "optional_candidate_source": [
+          "repoe/active_skill_types.json",
+          "pob/SkillStatMap.json",
+          "pob/Gems.json",
+          "pob/Skills/*",
+          "pob/StatDescriptions/*"
+        ]
+      },
+      "extraction_rule": "Deterministic: 1 node per record; payload copied verbatim (stat_text keys with literal \\n preserved; null slots preserved).",
+      "dedup": "record_key unique.",
+      "unresolved_handling": "n/a"
+    },
+    "Tag": {
+      "source": "tag vocabulary observed in mods.json (spawn_weights[].tag 499, implicit_tags[] 58, adds_tags[] 52); tags.json/tag_details.json are OPTIONAL candidate sources for inheritance enrichment only",
+      "record_identification": "One node per distinct tag string.",
+      "inclusion": "All distinct observed tags.",
+      "exclusion": "Tag occurrences/weights are not nodes (Modifier payload).",
+      "node_id": "tag:<tag>",
+      "payload": {
+        "tag": "string",
+        "used_as": [
+          "spawn_weights",
+          "implicit_tags",
+          "adds_tags"
+        ],
+        "observed_count": "int",
+        "inherits_from": "string|null - null when the candidate inheritance source (tags.json / tag_details.json) is unavailable; inheritance enrichment is optional and NEVER prevents Tag extraction"
+      },
+      "provenance": "observed from mods.json (origin=source); tags.json candidate.",
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/mods.json (spawn_weights[].tag, implicit_tags[], adds_tags[])"
+        ],
+        "required_for_resolution_or_evidence": [],
+        "optional_candidate_source": [
+          "repoe/tags.json",
+          "repoe/tag_details.json"
+        ]
+      },
+      "extraction_rule": "Deterministic: union of distinct tag strings across the three mods.json fields (spawn_weights[].tag, implicit_tags[], adds_tags[]). Tag nodes are extracted SOLELY from mods.json; inherits_from is null unless a candidate inheritance source (tags.json / tag_details.json) is present and resolved. Absence of an inheritance source never prevents Tag extraction.",
+      "dedup": "by tag string.",
+      "unresolved_handling": "n/a"
+    },
+    "ItemClass": {
+      "source": "uniques.json item_class (22 values) + base_items/* item_class (both REQUIRED; full observed vocabulary from both). repoe/item_classes.json is an optional candidate source for metadata only.",
+      "record_identification": "One node per distinct item_class string.",
+      "inclusion": "All distinct values currently observed.",
+      "exclusion": "None.",
+      "node_id": "item_class:<class>",
+      "payload": {
+        "item_class": "string",
+        "observed_from": [
+          "uniques",
+          "base_items"
+        ]
+      },
+      "provenance": "observed from uniques.json / base_items (origin=source); item_classes.json candidate.",
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/uniques.json item_class",
+          "repoe/base_items/* item_class"
+        ],
+        "required_for_resolution_or_evidence": [],
+        "optional_candidate_source": [
+          "repoe/item_classes.json"
+        ]
+      },
+      "extraction_rule": "Deterministic: union of distinct item_class values.",
+      "dedup": "by string.",
+      "unresolved_handling": "n/a"
+    }
+  },
+  "deferred_node_types": {
+    "Buff": {
+      "reason": "requires repo/e buffs.json targeted profiling (candidate supporting source); grants_effects[].granted_effect_id (701 distinct) is retained in Modifier payload in the meantime.",
+      "extractable_now": false,
+      "lookup_dependencies": {
+        "required_for_extraction": [
+          "repoe/buffs.json (missing — must be profiled before extraction)"
+        ],
+        "required_for_resolution_or_evidence": [],
+        "optional_candidate_source": []
+      }
+    }
+  },
+  "unique_item_resolver": {
+    "kind": "deterministic lookup function, NOT a node type; results stored in UniqueItem payload fields.",
+    "methods": [
+      {
+        "method": 1,
+        "name": "visual_identity.id -> modifier key",
+        "rule": "mods.json record_key contains uniques.visual_identity.id",
+        "target_type": "Modifier",
+        "deterministic_matching": true,
+        "semantically_validated": false,
+        "status_on_match": "resolved (direct naming match passing the filter)"
+      },
+      {
+        "method": 2,
+        "name": "normalized effect/display-text matching",
+        "rule": "normalize (strip non-alphanumeric) each PoB Uniques effect line; match 24-char window against normalized mods.json text / ModItemExclusive text",
+        "target_type": "Modifier",
+        "evidence": [
+          "matched_text",
+          "candidate_keys",
+          "method",
+          "validated"
+        ],
+        "note": "The MATCHING PROCEDURE is deterministic. Deterministic matching is NOT semantic validation: a method-2 match is a candidate association only and must not be treated as a confirmed mechanical relation. validated=false at extraction; a method-2 association only reaches status 'resolved' after explicit validation/confirmation in a later phase.",
+        "deterministic_matching": true,
+        "semantically_validated": false
+      },
+      {
+        "method": 3,
+        "name": "replica -> base-unique resolution",
+        "rule": "replica key '...x' resolves via the base unique's ('...' without x) modifier set where applicable",
+        "target_type": "Modifier",
+        "deterministic_matching": true,
+        "semantically_validated": false,
+        "status_on_match": "resolved (base-modifier set shared by the replica)"
+      },
+      {
+        "method": 4,
+        "name": "passive-grant resolution",
+        "rule": "granted-mechanic key (e.g. JewelExpansionNaturesPatience) matched against mods.json keys and passive ids; target_type = the source the matched key actually lives in (verified: JewelExpansion* keys are mods.json records)",
+        "target_type": "Modifier or Passive (from the matched source)",
+        "deterministic_matching": true,
+        "semantically_validated": false,
+        "status_on_match": "resolved"
+      }
+    ],
+    "status_values": [
+      "resolved",
+      "partial_or_indirect",
+      "unresolved_by_current_resolver",
+      "no_source_text_for_current_method",
+      "genuinely_absent_confirmed"
+    ],
+    "status_rules": {
+      "empty_resolved_targets_is_not_absence": true,
+      "no_match_is_not_absence": true,
+      "no_display_text_is_not_absence": true,
+      "genuinely_absent_confirmed_requires_evidence": "evidence-backed absence from the structured mods/passive representation (e.g. retired content); NOT merely a failed lookup",
+      "methods_not_equated": "methods 1-4 have unequal evidential strength; per-association method is recorded",
+      "sweep_880_is_candidate_only": "the 880 are association-level text matches, not semantically validated resolution; methods 3-4 were not systematically applied in the sweep",
+      "method_2_candidates_not_auto_confirmed": "a method-2 match is a candidate association; it does not by itself make the node 'resolved'. Node resolution_status = 'resolved' only with >=1 confirmed (validated) association, or a method-1/3/4 match as specified above; an unvalidated method-2-only resolution keeps the node at 'partial_or_indirect'"
+    },
+    "general_rule": "Extraction performs deterministic MATCHING only; it NEVER performs semantic validation. No resolver-produced association is automatically a confirmed mechanical relation. 'validated' is always false at extraction; confirmation is a later-phase action."
+  },
+  "lookup_and_evidence": {
+    "stat_translations.json": {
+      "retention": "raw snapshot + lookup/evidence (role 3/4)",
+      "required_for": [
+        "Stat display",
+        "T3 keystone<->conversion bridge (strong_casting <-> additive_spell_damage_..._at_%_value has NO structural link; bridge is translation text)",
+        "stat_value_handlers index_handlers chain"
+      ]
+    },
+    "stat_value_handlers.json": {
+      "retention": "raw snapshot + lookup (role 4)",
+      "required_for": [
+        "T3 magnitude/completeness scaling (permyriad etc.)"
+      ]
+    },
+    "pob/ModItemExclusive.json": {
+      "retention": "raw snapshot + lookup/evidence (role 3/4)",
+      "required_for": [
+        "resolution method 2 text evidence (tradeHashes/1 field)",
+        "trade-hash -> trade-stat-id lookup"
+      ]
+    },
+    "pob/QueryMods.json": {
+      "retention": "raw snapshot + lookup (role 4)",
+      "required_for": [
+        "tradeMod.id mapping"
+      ]
+    },
+    "pob/TradeSiteStats.json": {
+      "retention": "raw snapshot + lookup (role 4)",
+      "required_for": [
+        "explicit.stat_<hash> -> text"
+      ]
+    },
+    "pob/ModCache.json": {
+      "retention": "raw snapshot + lookup (role 4)",
+      "required_for": [
+        "display-text cache"
+      ]
+    },
+    "pob/Uniques/*.json": {
+      "retention": "raw snapshot + evidence (role 3)",
+      "required_for": [
+        "resolution method 2"
+      ]
+    },
+    "stats_by_file.json": {
+      "retention": "raw snapshot + provenance index (role 4)",
+      "required_for": [
+        "coverage audits"
+      ]
+    },
+    "materialization": "role-4 lookups are materialized during 4C/4D as derived lookup tables or used query-time over raw_records.db (not nodes)"
+  },
+  "not_a_node_retention": {
+    "TradeSiteStats entries": "raw snapshot (role 5) + query-time lookup (role 4)",
+    "QueryMods slot maps": "raw snapshot (role 5) + query-time lookup (role 4)",
+    "ModCache entries": "raw snapshot (role 5) + query-time lookup (role 4)",
+    "ModItemExclusive records": "raw snapshot (role 5) + evidence for resolver method 2 (role 3)",
+    "PoB Uniques text blocks": "raw snapshot (role 5) + evidence for resolver method 2 (role 3)",
+    "stat_translations": "raw snapshot (role 5) + lookup/evidence (roles 3/4) - REQUIRED",
+    "stat_value_handlers": "raw snapshot (role 5) + lookup (role 4) - REQUIRED",
+    "stats_by_file": "raw snapshot (role 5) + provenance index (role 4)",
+    "tree scaffolding": "raw snapshot (role 5) + tree provenance (role 3)",
+    "data-formats schemas": "safely discardable after extraction (repo documentation)",
+    "gems per_level lines": "Gem node payload (role 2)",
+    "gems stat_conversions": "Gem node payload (role 2) + T1 alias lookup",
+    "spawn_weights occurrences": "Modifier node payload (role 2)",
+    "legacy/dummy stats": "Stat node payload flags (role 2)",
+    "candidate unlisted sources (Mod* family, buffs, tags, item_classes, base_items)": "raw snapshot (role 5); 4C decides load-bearing"
+  },
+  "missing_dependencies_identified": [
+    {
+      "for": "Buff node type",
+      "missing": "repoe/buffs.json targeted profiling (candidate supporting source)"
+    },
+    {
+      "for": "T3 keystone<->conversion bridge",
+      "missing": "stat_translations must be retained as lookup/evidence (it is, in raw_records.db); a derived stat-alias/equivalence map is a Phase 5 concern, not required for extraction"
+    },
+    {
+      "for": "Tag inheritance / ItemClass metadata",
+      "missing": "tags.json / tag_details.json / item_classes.json targeted profiling (candidate)"
+    }
+  ]
+}

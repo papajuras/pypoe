@@ -11,9 +11,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-import analyze
-import download
-import vocab
+import phase1_analyze as analyze
+import phase1_download as download
+import phase1_vocab as vocab
 
 
 def test_vocab_multi_pattern():

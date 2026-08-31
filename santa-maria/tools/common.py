@@ -4,7 +4,7 @@ import re
 _STAT_HASH = re.compile(r'(?:explicit\.)?stat_\d+$')
 
 # Conversion/scaling substring patterns. ORDER MATTERS: a stat id is bucketed
-# under the FIRST pattern that matches, so vocab.py (bucketing) and report.py
+# under the FIRST pattern that matches, so phase1_vocab.py (bucketing) and phase1_report.py
 # (appendix table) must iterate in exactly this order.
 CONVERSION_PATTERNS = [
     '_+%', 'per_', 'local_', 'of_', 'and_', 'while_', 'if_', 'on_hit', 'when_',
@@ -14,9 +14,9 @@ CONVERSION_PATTERNS = [
 
 # Exhaustive per-file conversion/scaling scan vocabulary: union of
 # CONVERSION_PATTERNS and the keyword patterns previously hard-coded in
-# analyze.py (applies_to, gained_as, converted_to, as_extra, to_add_as,
+# phase1_analyze.py (applies_to, gained_as, converted_to, as_extra, to_add_as,
 # permyriad, inverse, specialcase, scal, variant, royale). Deduplicated,
-# order preserved. Used by analyze.py (scan) and report.py (rendering).
+# order preserved. Used by phase1_analyze.py (scan) and phase1_report.py (rendering).
 SCAN_PATTERNS = [
     'applies_to', 'gained_as', 'converted_to', 'as_extra', 'to_add_as',
     'permyriad', 'inverse', 'specialcase', 'scal', 'variant', 'royale',
@@ -56,7 +56,7 @@ KEY_CLASSES = {
 #     record repeats the same ~dozen keys in every instance and never trips
 #     this), OR
 #   - all its keys are numeric (level maps `1..40`, hash maps, id maps).
-# Collapse is render-only; analyze.py still records every raw path.
+# Collapse is render-only; phase1_analyze.py still records every raw path.
 KEYED_MIN_KEYS = 10
 KEYED_MAX_FIELDS = 64
 KEYED_RATIO = 0.3

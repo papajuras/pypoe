@@ -8,29 +8,29 @@ report.
 
 ```
 santa-maria/data/   (gitignored mirror, as-is files)
-   ▲  download.py   (fetches git trees from GitHub API itself — no /tmp dumps)
+   ▲  phase1_download.py   (fetches git trees from GitHub API itself — no /tmp dumps)
 santa-maria/cache/  (gitignored intermediates)
-   ▲  vocab.py      → cache/stat_vocab.json, cache/conversion_hits.json
-   ▲  analyze.py    → cache/analysis.json   (EXHAUSTIVE per-file scan)
-   ▲  investigate.py → cache/investigations.json  (traces + resolution rates)
+   ▲  phase1_vocab.py      → cache/stat_vocab.json, cache/conversion_hits.json
+   ▲  phase1_analyze.py    → cache/analysis.json   (EXHAUSTIVE per-file scan)
+   ▲  phase1_investigate.py → cache/investigations.json  (traces + resolution rates)
 santa-maria/docs/data_inventory.md   (generated, gitignored)
-   ▲  report.py     (renders from cache/ + data/ for JSON-Schemas)
-   ▲  audit.py      (PHASE 1 SELF-AUDIT; non-zero exit on FAIL)
+   ▲  phase1_report.py     (renders from cache/ + data/ for JSON-Schemas)
+   ▲  phase1_audit.py      (PHASE 1 SELF-AUDIT; non-zero exit on FAIL)
 ```
 
 ## Run
 
 ```sh
-santa-maria/tools/run.sh            # all steps
-santa-maria/tools/run.sh report     # any single step: download|vocab|analyze|investigate|report|audit
+santa-maria/tools/phase1_run.sh            # all steps
+santa-maria/tools/phase1_run.sh report     # any single step: download|vocab|analyze|investigate|report|audit
 ```
 
-Re-runnable: `download.py` skips already-downloaded (non-empty) files and
+Re-runnable: `phase1_download.py` skips already-downloaded (non-empty) files and
 rebuilds `data/manifest.json` (path → [size, sha1]).
 
 ## Snapshot integrity
 
-- The download scope is **enforced in code** (`download.py` `scope_filter`):
+- The download scope is **enforced in code** (`phase1_download.py` `scope_filter`):
   `.json` only, no `.min.json`, RePoE `data/` additionally excludes the 9
   language dirs and `Metadata/Terrain/`. The RePoE git `data/` tree at the
   recorded commit is taken as the authoritative equivalent of the published
@@ -73,15 +73,15 @@ rebuilds `data/manifest.json` (path → [size, sha1]).
   per-candidate chain with explicit-vs-heuristic labels), Iron Will, Avatar
   of Fire, the exhaustive unique visual-id → mods linkage rate, and the PoB
   unique-mod pipeline, each reconstructed from the actual data
-  (`investigate.py`).
+  (`phase1_investigate.py`).
 
 ## Tests
 
 ```sh
-python3 santa-maria/tools/tests/test_tools.py
+python3 santa-maria/tools/tests/test_phase1.py
 ```
 
-## Scope (filters in download.py)
+## Scope (filters in phase1_download.py)
 
 - English only — the 9 language dirs are excluded
 - `Metadata/Terrain/` (procedural tile graphs) excluded
@@ -91,9 +91,9 @@ python3 santa-maria/tools/tests/test_tools.py
 ## Notes
 
 - `common.py` holds `CONVERSION_PATTERNS` (order matters for the stat-id
-  bucketing in `vocab.py`/the appendix) and `SCAN_PATTERNS` (exhaustive
+  bucketing in `phase1_vocab.py`/the appendix) and `SCAN_PATTERNS` (exhaustive
   per-file scan), `REF_CLASSES`/`KEY_CLASSES` (cross-reference taxonomy), and
   the keyed-map heuristic constants.
 - `docs/data_inventory.md` is regenerated idempotently and **gitignored**.
-- The report and audit must agree: `audit.py` exits 1 if any checklist item
+- The report and audit must agree: `phase1_audit.py` exits 1 if any checklist item
   FAILs.
