@@ -174,6 +174,17 @@ def test_neighbour_determinism():
     print('ok: neighbour determinism')
 
 
+def test_gem_static_stats_reachability():
+    g = api.GraphDB()
+    r = g.get_neighbour(1, {'start': 'gem:HeavyStrikeAltY',
+                            'edge_types': ['gem_grants_stat']})
+    assert _reachable(r, 'stat:active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value'), \
+        'Heavy Strike of Trarthus must expose its 150% Arcane Might static stat'
+    assert _reachable(r, 'stat:chance_to_deal_double_damage_%_per_10_intelligence'), \
+        'Heavy Strike of Trarthus must expose its per-10-Intelligence double damage static stat'
+    print('ok: gem static.stats reachable via gem_grants_stat')
+
+
 if __name__ == '__main__':
     test_start_seed_filter_and_determinism()
     test_start_seed_rejection()
@@ -183,4 +194,5 @@ if __name__ == '__main__':
     test_discovery_example_4_unholy_trinity()
     test_neighbour_filters_direction_and_rejection()
     test_neighbour_determinism()
+    test_gem_static_stats_reachability()
     print('ALL TESTS PASSED')

@@ -187,6 +187,15 @@ def ext_gem_grants_stat(edges, by_type, vm):
                         'status': 'confirmed', 'tier': '1', 'secondary': None,
                         'prov': [prov(vm, 'repoe/gems.json', rk, 'stat_conversions', extra={'canonical': True})],
                     })
+        # static.stats[].id: gem-level constant/implicit grants (e.g. the
+        # "150% Arcane Might" line on Heavy Strike of Trarthus), same rule as per_level
+        for s in (p.get('static') or {}).get('stats') or []:
+            if isinstance(s, dict) and isinstance(s.get('id'), str) and f'stat:{s["id"]}' in stats:
+                merge_edge(edges, {
+                    'src': nid, 'tgt': f'stat:{s["id"]}', 'type': 'gem_grants_stat',
+                    'status': 'confirmed', 'tier': '1', 'secondary': None,
+                    'prov': [prov(vm, 'repoe/gems.json', rk, 'static[].stats[].id')],
+                })
 
 
 def ext_unique_modifier_association(edges, by_type, vm):

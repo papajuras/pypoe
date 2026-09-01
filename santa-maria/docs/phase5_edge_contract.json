@@ -75,7 +75,7 @@
     {
       "id": "gem_grants_stat",
       "label": "Gem grants Stat",
-      "description": "A gem's per-level stat ids reference the stat. A stat_conversions VALUE contributes a gem_grants_stat edge ONLY when (1) the Phase 4 contract/data identifies that value as the canonical stat identifier, AND (2) that value resolves to an existing Stat node. The resulting relationship remains only Gem -> Stat, representing that the gem references/grants the canonical Stat represented by that value. This is NOT a conversion edge and creates no conversion relationship class.",
+      "description": "A gem's per-level stat ids reference the stat; its static.stats[].id values reference the gem-level constant/implicit grants (e.g. the \"150% Arcane Might\" line on Heavy Strike of Trarthus). A stat_conversions VALUE contributes a gem_grants_stat edge ONLY when (1) the Phase 4 contract/data identifies that value as the canonical stat identifier, AND (2) that value resolves to an existing Stat node. The resulting relationship remains only Gem -> Stat, representing that the gem references/grants the canonical Stat represented by that value. This is NOT a conversion edge and creates no conversion relationship class.",
       "source_types": ["Gem"],
       "target_types": ["Stat"],
       "direction": "Gem -> Stat",
@@ -489,6 +489,7 @@
       "method-1/4/5/6 structural resolutions MAY be edges and MUST carry 'resolved_not_validated', never silently 'confirmed'; method-3 (replica->base) is REJECTED and must never be an edge; method-2 and method-5 candidates are NEVER edges",
       "stat_scales_with is numeric '_per_<N>_' only; resource-relative forms are out of scope",
       "stat_conversions values become gem_grants_stat edges only when canonical AND resolving to a Stat node",
+      "gem static.stats[].id values become gem_grants_stat edges when resolving to a Stat node (e.g. the \"150% Arcane Might\" line on Heavy Strike of Trarthus)",
       "modifier_in_group keeps membership=confirmed separate from group_identity_across_domains=assumption_unverified",
       "tier field uses the required 5-tier secondary vocabulary"
     ],
