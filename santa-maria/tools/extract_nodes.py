@@ -173,6 +173,93 @@ def load_pob_blocks(con):
     return name2block
 
 
+# PoB-compatible template resolution (Phase 5.x amendment v5.5, methods 5/6).
+# Approved template pools for method-5 promotion (excluded pools are loaded but
+# never promotable). See phase5_edge_contract.json v5.5 approved-pool rule.
+POB_TEMPLATE_POOLS = [
+    'pob/ModItemExclusive.json', 'pob/ModItem.json', 'pob/ModImplicit.json',
+    'pob/ModExplicit.json', 'pob/ModJewel.json', 'pob/ModJewelAbyss.json',
+    'pob/ModJewelCluster.json', 'pob/ModJewelCharm.json', 'pob/ModFlask.json',
+]
+POB_CLASS_TOK = ['TwoHandSword', 'TwoHandMace', 'TwoHandAxe', 'OneHandSword',
+                 'OneHandMace', 'OneHandAxe', 'ThrustingOneHandSword', 'FishingRod',
+                 'Warstaff', 'Body', 'Amulet', 'Belt', 'Boots', 'Bow', 'Claw',
+                 'Dagger', 'Flask', 'Gloves', 'Helmet', 'Jewel', 'Quiver', 'Ring',
+                 'Shield', 'Staff', 'Tincture', 'Wand']
+POB_ICM = {'Amulet': 'Amulet', 'Belt': 'Belt', 'Boots': 'Boots',
+           'Body Armour': 'Body', 'Gloves': 'Gloves', 'Helmet': 'Helmet',
+           'Ring': 'Ring', 'Shield': 'Shield', 'Bow': 'Bow', 'Claw': 'Claw',
+           'Dagger': 'Dagger', 'One Hand Axe': 'OneHandAxe',
+           'Two Hand Axe': 'TwoHandAxe', 'One Hand Mace': 'OneHandMace',
+           'Two Hand Mace': 'TwoHandMace', 'One Hand Sword': 'OneHandSword',
+           'Two Hand Sword': 'TwoHandSword', 'Staff': 'Staff',
+           'Warstaff': 'Warstaff', 'Wand': 'Wand', 'Jewel': 'Jewel',
+           'Flask': 'Flask', 'Quiver': 'Quiver', 'Fishing Rod': 'FishingRod',
+           'Tincture': 'Tincture', 'Thrusting One Hand Sword': 'ThrustingOneHandSword'}
+_TAG_RE = re.compile(r'\{[^}]*\}')
+_PERN_RE = re.compile(r'\((\d+(?:\.\d+)?)-(?:(\d+(?:\.\d+)?))\)')
+
+
+def _pob_strip(s):
+    return _TAG_RE.sub('', s).strip()
+
+
+def _pob_skeleton(s):
+    s = _PERN_RE.sub('(#-#)', s)
+    return re.sub(r'\d+(?:\.\d+)?', '#', s)
+
+
+def _pob_mod_classes(key):
+    """Item-class tokens in a PoB mod key. The class designator follows 'Unique' or
+    'Implicit' (e.g. UniqueHelmetStr3 -> Helmet, FireResistImplicitRing1 -> Ring).
+    This avoids substring collisions like 'Shield' inside 'EnergyShield'."""
+    runs = [m.group(1) for m in re.finditer(r'(?:Unique|Implicit)([A-Z][A-Za-z]*)', key)]
+    found = set()
+    for run in runs:
+        for c in POB_CLASS_TOK:
+            if run == c or run.startswith(c) or run.endswith(c):
+                found.add(c)
+    kept = set()
+    for c in sorted(found, key=len, reverse=True):
+        if not any(c in o and o != c for o in kept):
+            kept.add(c)
+    return kept
+
+
+def load_pob_templates(con):
+    """approved pool: stripped template text -> set of mod keys; skeleton index."""
+    exact, skel = {}, {}
+    for f in POB_TEMPLATE_POOLS:
+        for k, rec in iter_raw(con, f):
+            if not isinstance(rec, dict):
+                continue
+            for i in range(1, 9):
+                v = rec.get(str(i))
+                if isinstance(v, str):
+                    t = _pob_strip(v)
+                    if t:
+                        exact.setdefault(t, set()).add(k)
+                        skel.setdefault(_pob_skeleton(t), set()).add(k)
+    return exact, skel
+
+
+def load_base2class(con):
+    out = {}
+    for _rk, rec in iter_raw(con, 'repoe/base_items.json'):
+        if isinstance(rec, dict) and rec.get('name'):
+            out.setdefault(rec['name'], rec.get('item_class'))
+    return out
+
+
+def load_vestigial(con):
+    """mod key -> list of unique names (pob/Vestigial.json)."""
+    out = {}
+    for k, v in iter_raw(con, 'pob/Vestigial.json'):
+        if isinstance(v, list):
+            out[k] = [x for x in v if isinstance(x, str)]
+    return out
+
+
 def load_moditemexclusive(con):
     rows = list(iter_raw(con, 'pob/ModItemExclusive.json'))
     return rows
@@ -306,17 +393,52 @@ def unique_filter_mod(mod, key):
     return True
 
 
+def parse_unique_block(block):
+    """PoB unique block -> (base_type, current-variant mod lines with {tags:}/{variant:}
+    stripped, metadata/header removed, base-type line removed). Deterministic."""
+    rest = block.split('\n')[1:]
+    base = rest[0] if rest else None
+    cur = None
+    for ln in rest:
+        m = re.search(r'\{variant:([0-9,]+)\}', ln)
+        if m:
+            nums = [int(x) for x in m.group(1).split(',')]
+            cur = max(nums) if cur is None else max(cur, *nums)
+    out = []
+    for ln in rest[1:]:
+        if ln.startswith(('Requires', 'LevelReq', 'Implicits:', 'Variant:', 'Source:',
+                          'League:', 'Selected', 'Implicit')):
+            continue
+        m = re.match(r'\{variant:([0-9,]+)\}', ln)
+        if m and cur is not None and cur not in [int(x) for x in m.group(1).split(',')]:
+            continue
+        t = _pob_strip(ln)
+        if t:
+            out.append(t)
+    return base, out
+
+
 def resolve_unique_all(uniques, mods_by_key, key_tokens, token_index,
-                       mods_text_norm, excl_text_norm, name2block, passive_ids):
+                       mods_text_norm, excl_text_norm, name2block, passive_ids,
+                       pob=None, name_count=None):
     results = {}
     key_set = set(mods_by_key)
+    pob_exact = (pob or {}).get('exact') or {}
+    pob_skel = (pob or {}).get('skel') or {}
+    pob_base2class = (pob or {}).get('base2class') or {}
+    pob_vestigial = (pob or {}).get('vestigial') or {}
+    name_count = name_count or {}
     for ukey, rec in uniques:
         uid = rec.get('id') or ''
         vid = (rec.get('visual_identity') or {}).get('id') or ''
+        block = name2block.get(uid)
+        is_replica = uid.startswith('Replica ')
         targets = {}
         evidence = []
 
-        # method 1: vid substring over mods keys, then unique-mod filter
+        # method 1: vid matching over mods keys with DIGIT-BOUNDARY (a vid must not
+        # match merely as a numeric prefix of a longer identifier, e.g.
+        # UniqueTwoHandAxe1 must not match UniqueTwoHandAxe10/11/12)
         m1_keys = []
         if vid:
             cand = set()
@@ -324,7 +446,12 @@ def resolve_unique_all(uniques, mods_by_key, key_tokens, token_index,
                 if t.startswith(vid):
                     cand.update(keys)
             for k in sorted(cand):
-                if vid in k and unique_filter_mod(mods_by_key[k], k):
+                i = k.find(vid)
+                if i < 0:
+                    continue
+                if k[i + len(vid):i + len(vid) + 1].isdigit():
+                    continue
+                if unique_filter_mod(mods_by_key[k], k):
                     m1_keys.append(k)
         for k in m1_keys:
             targets[(k, 1)] = {'target_type': 'Modifier', 'target_key': k, 'method': 1,
@@ -333,34 +460,13 @@ def resolve_unique_all(uniques, mods_by_key, key_tokens, token_index,
             evidence.append({'method': 1, 'matched_text': None,
                              'candidate_keys': m1_keys, 'validated': False})
 
-        # method 3: replica -> base unique (vid ends with 'x')
-        m3_keys = []
-        if vid.endswith('x') and len(vid) > 1:
-            base_vid = vid[:-1]
-            base_unique = None
-            for _k2, r2 in uniques:
-                if (r2.get('visual_identity') or {}).get('id') == base_vid:
-                    base_unique = r2
-                    break
-            if base_unique is not None:
-                cand = set()
-                for t, keys in token_index.items():
-                    if t.startswith(base_vid):
-                        cand.update(keys)
-                for k in sorted(cand):
-                    if base_vid in k and unique_filter_mod(mods_by_key[k], k) and k not in m1_keys:
-                        m3_keys.append(k)
-        for k in m3_keys:
-            targets[(k, 3)] = {'target_type': 'Modifier', 'target_key': k, 'method': 3,
-                               'validated': False, 'status': 'resolved'}
-        if m3_keys:
-            evidence.append({'method': 3, 'matched_text': None,
-                             'candidate_keys': m3_keys, 'validated': False})
+        # method 3 (replica -> base inheritance) is REJECTED per contract v5.5.
+        # Replicas resolve from their own PoB block (method 5, candidate-only) or
+        # Vestigial ownership (method 6). No code path emits method-3 targets.
 
         # method 4: passive-grant ("Adds <Name>" effect -> key/pid containing it)
         m4_mod = []
         m4_pass = []
-        block = name2block.get(uid)
         if block:
             for ln in effect_lines(block, uid):
                 m = re.match(r'^Adds\s+(.+)$', ln)
@@ -387,9 +493,7 @@ def resolve_unique_all(uniques, mods_by_key, key_tokens, token_index,
                                  'validated': False, 'status': 'resolved'}
 
         # method 2: normalized effect/display-text matching (candidate only)
-        m2_hit = False
         if block:
-            seen = set()
             for ln in effect_lines(block, uid):
                 q = norm(ln)
                 if len(q) < 14:
@@ -399,7 +503,6 @@ def resolve_unique_all(uniques, mods_by_key, key_tokens, token_index,
                           [k for k, nt in excl_text_norm if ph in nt]
                 if not matches:
                     continue
-                m2_hit = True
                 matches = sorted(set(matches))
                 evidence.append({'method': 2, 'matched_text': ln,
                                  'candidate_keys': matches, 'validated': False})
@@ -407,15 +510,74 @@ def resolve_unique_all(uniques, mods_by_key, key_tokens, token_index,
                     if (k, 2) not in targets:
                         targets[(k, 2)] = {'target_type': 'Modifier', 'target_key': k, 'method': 2,
                                            'validated': False, 'status': 'partial_or_indirect'}
-                # one association per effect line is enough evidence-wise; keep all distinct
-                if len(targets) > 0 and False:
-                    pass
+
+        # method 5: PoB-compatible template matching (contract v5.5). Exact-singleton
+        # + approved pool + item-class + non-replica -> resolved; everything else
+        # (normalized, collisions, replica, excluded-pool) -> candidate-only.
+        m5 = {}
+        if block and pob_exact:
+            base, lines5 = parse_unique_block(block)
+            ic = pob_base2class.get(base)
+            tok = POB_ICM.get(ic) if ic else None
+            for ln in lines5:
+                keys = pob_exact.get(ln)
+                if keys is None:
+                    keys = pob_skel.get(_pob_skeleton(ln))
+                if not keys:
+                    continue
+                if tok:
+                    keys = {k for k in keys
+                            if not _pob_mod_classes(k) or tok in _pob_mod_classes(k)}
+                if not keys:
+                    continue
+                approved = {k for k in keys if k in mods_by_key
+                            and mods_by_key[k].get('generation_type') == 'unique'}
+                is_exact = ln in pob_exact
+                if is_exact and len(keys) == 1 and len(approved) == 1 and not is_replica:
+                    status = 'resolved'
+                else:
+                    status = 'candidate'
+                for k in sorted(keys):
+                    cur = m5.get(k)
+                    if cur is None or (status == 'resolved' and cur['status'] == 'candidate'):
+                        m5[k] = {'status': status, 'line': ln}
+            for k, info in sorted(m5.items()):
+                targets[(k, 5)] = {'target_type': 'Modifier', 'target_key': k, 'method': 5,
+                                   'validated': False,
+                                   'status': 'resolved' if info['status'] == 'resolved'
+                                   else 'partial_or_indirect',
+                                   'matched_line': info['line'],
+                                   'source': 'pob/Uniques/*'}
+            if m5:
+                evidence.append({'method': 5, 'matched_text': None,
+                                 'candidate_keys': sorted(m5), 'validated': False})
+
+        # method 6: Vestigial structured ownership (mod-key -> unique-name). Confirmed
+        # only when the mod key exists AND the unique name resolves to exactly one
+        # UniqueItem node; duplicated names -> candidate/unresolved (never first-match).
+        for modkey, names in pob_vestigial.items():
+            if uid not in names:
+                continue
+            if modkey not in key_set:
+                continue
+            st = 'resolved' if name_count.get(uid) == 1 else 'candidate'
+            targets[(modkey, 6)] = {'target_type': 'Modifier', 'target_key': modkey,
+                                    'method': 6, 'validated': False,
+                                    'status': 'resolved' if st == 'resolved'
+                                    else 'partial_or_indirect',
+                                    'unique_name': uid, 'source': 'pob/Vestigial.json'}
+        if any(t[1] == 6 for t in targets):
+            evidence.append({'method': 6, 'matched_text': None,
+                             'candidate_keys': sorted(k for k, mth in targets if mth == 6),
+                             'validated': False})
+
         resolved_targets = [targets[k] for k in sorted(targets, key=lambda x: (x[1], x[0]))]
 
         # node resolution_status
-        if any(t['method'] in (1, 3, 4) for t in resolved_targets):
+        if any(t['method'] in (1, 4, 5, 6) and t['status'] == 'resolved'
+               for t in resolved_targets):
             status = 'resolved'
-        elif any(t['method'] == 2 for t in resolved_targets):
+        elif any(t['status'] == 'partial_or_indirect' for t in resolved_targets):
             status = 'partial_or_indirect'
         elif block is None and not resolved_targets:
             status = 'no_source_text_for_current_method'
@@ -561,6 +723,16 @@ def extract_all(con):
     name2block = load_pob_blocks(con)
     base_classes = load_baseitem_classes(con)
 
+    # PoB-compatible resolution data (contract v5.5, methods 5/6)
+    pob_exact, pob_skel = load_pob_templates(con)
+    pob = {'exact': pob_exact, 'skel': pob_skel,
+           'base2class': load_base2class(con),
+           'vestigial': load_vestigial(con)}
+    name_count = {}
+    for _k, rec in uniques:
+        nm = rec.get('id') or ''
+        name_count[nm] = name_count.get(nm, 0) + 1
+
     # normalized text for resolver method 2 (mods + ModItemExclusive '1')
     mods_text_norm = [(k, norm(rec.get('text') or '')) for k, rec in mods if rec.get('text')]
     excl_text_norm = [(k, norm(rec.get('1') or '')) for k, rec in excl if rec.get('1')]
@@ -574,7 +746,7 @@ def extract_all(con):
 
     resolver = resolve_unique_all(uniques, mods_by_key, None, token_index,
                                   mods_text_norm, excl_text_norm, name2block,
-                                  set(pkeys))
+                                  set(pkeys), pob=pob, name_count=name_count)
 
     nodes = []
     nodes.extend(extract_stats(canon, mod_ids, pkeys, gem_ids))

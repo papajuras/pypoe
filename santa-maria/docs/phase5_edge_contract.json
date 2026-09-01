@@ -1,0 +1,512 @@
+{
+  "contract": "phase5_edge_contract",
+  "contract_version": "5.5",
+  "phase": "5",
+  "step": "1",
+  "scope": "WHAT/WHETHER specification only. Defines which relationships may be materialized between Phase 4 nodes and the evidence required. It does NOT prescribe implementation: no regexes, SQL, functions, schema, traversal, candidate-generation, caching or indexing. No implementation, no edge population, no graph engine.",
+  "inputs": {
+    "node_contract": "docs/phase4d_extraction_rules.json (contract_version 4D.3)",
+    "nodes_db": "cache/nodes.db (83,534 nodes; 8 types)",
+    "raw_db": "cache/raw_records.db (role 3/4/5 evidence and lookup data)",
+    "test_cases": "docs/phase5_test_cases.json (green/red representability spec)"
+  },
+  "core_rule": "Phase 5 materializes relationships supported by source data and approved deterministic rules. It does not invent mechanics or perform independent semantic inference. A relationship may be represented only when there is a deterministic, inspectable basis in the available source data or explicitly retained evidence.",
+  "not_sufficient_evidence_by_themselves": [
+    "similar display text",
+    "natural-language interpretation",
+    "presumed game mechanics",
+    "numerical plausibility",
+    "build usefulness",
+    "an LLM's reasoning",
+    "a plausible gameplay connection"
+  ],
+  "node_type_registry": {
+    "note": "Immutable reference. Every edge endpoint MUST be one of these node types. The contract must never invent a node type.",
+    "types": ["Stat", "Modifier", "ModifierGroup", "UniqueItem", "Passive", "Gem", "Tag", "ItemClass"],
+    "origin": "source (all Phase 4 nodes; derived nodes are out of scope for Phase 4 and not produced)"
+  },
+  "global_rules": {
+    "no_semantic_inference": true,
+    "no_unsupported_edges": true,
+    "no_promotion_of_unvalidated_candidates": "method-2 resolver matches are candidate associations and NEVER become edges in Step 1. Method-1/3/4 matches are deterministic structural resolutions and MAY become edges; such edges MUST carry status 'resolved_not_validated', which is NOT 'confirmed'. The raw resolver field validated=false MUST NOT be silently rewritten as 'confirmed'; only a future explicit validation event may upgrade an edge, and no automatic promotion is allowed.",
+    "no_invented_nodes": true,
+    "no_unsupported_shortcut_edges": "an edge that bypasses meaningful intermediate source-backed nodes requires independent evidence; otherwise the path must be traversed through the intermediate nodes",
+    "deterministic_reproducibility": "identical inputs produce identical edge eligibility and status",
+    "evidence_status_never_silently_upgraded": "candidate -> confirmed requires an explicit validation event; assumptions and open questions must be recorded as such, not treated as proven",
+    "no_cross_vocabulary_group_merge": "modgroup: (repoe) and modgroup_pob: (pob) are separate namespaces and are never merged; no cross-vocabulary relationships",
+    "empty_resolution_is_not_absence": true,
+    "failed_lookup_is_not_absence": true,
+    "negative_edges_forbidden": "absence of a source fact is never materialized as an edge",
+    "edge_semantic_integrity": "An edge MUST represent exactly the source-backed relationship named by its relationship type. Evidence used to establish an edge MUST NOT silently broaden the meaning of that edge. Examples: 'stat_scales_with' means only the deterministic structural scaling relationship encoded by the stat ID; it does NOT by itself assert magnitude, applicability, completeness, or gameplay outcome. 'gem_has_tag' means only Gem -> Tag membership; it does NOT imply mechanical interaction with other entities sharing the tag. 'modifier_grants_stat' means only that the modifier's source payload references that Stat; it does NOT assert a broader gameplay conclusion. This rule prevents later reasoning layers or LLMs from treating structural edges as stronger mechanical claims than their evidence supports."
+  },
+  "relationship_classes": [
+    {
+      "id": "modifier_grants_stat",
+      "label": "Modifier grants Stat",
+      "description": "A modifier's stat list contains the stat: the modifier's source payload references/grants that stat. This is the primary join atom; every higher structure (shared-stat paths, scaling, conversion carriers) is built on it.",
+      "source_types": ["Modifier"],
+      "target_types": ["Stat"],
+      "direction": "Modifier -> Stat",
+      "symmetry": "directional; reverse reachability is traversal, not a reverse edge",
+      "eligibility": "target Stat node exists AND the target stat_id appears in source Modifier.payload.stats[].id",
+      "minimum_evidence": "one occurrence in Modifier.payload.stats[]",
+      "provenance": "Modifier node provenance (raw_records('repoe/mods.json', <record_key>, repoe@<commit>)); the stats[] entry",
+      "confidence_status": "confirmed (source-backed)",
+      "forbidden": "edges to a stat_id NOT present in the stats[] array; edges inferred from text or name similarity",
+      "unresolved_handling": "n/a",
+      "tier": 1
+    },
+    {
+      "id": "passive_grants_stat",
+      "label": "Passive grants Stat",
+      "description": "A passive's stat map contains the stat (stat_id -> value). For conflict=true passives, edges come from each variant's record (a variant-specific edge is only materialized if variant provenance is retained); otherwise from the shared record.",
+      "source_types": ["Passive"],
+      "target_types": ["Stat"],
+      "direction": "Passive -> Stat",
+      "symmetry": "directional; reverse reachability is traversal",
+      "eligibility": "target Stat node exists AND the target stat_id appears as a key in Passive payload shared.stats (conflict=false) or in a variants[].record.stats (conflict=true). Note: for conflict=true, shared.stats is empty and only variant records carry stats",
+      "minimum_evidence": "one key occurrence",
+      "provenance": "Passive node provenance (raw_records('repoe/passive_skill_trees/<file>', '', repoe@<commit>))",
+      "confidence_status": "confirmed (source-backed)",
+      "forbidden": "stats keys that do not resolve to a Stat node (verified: currently 0 of 6,376 observed passive stat keys are missing)",
+      "unresolved_handling": "n/a",
+      "tier": 1
+    },
+    {
+      "id": "gem_grants_stat",
+      "label": "Gem grants Stat",
+      "description": "A gem's per-level stat ids reference the stat. A stat_conversions VALUE contributes a gem_grants_stat edge ONLY when (1) the Phase 4 contract/data identifies that value as the canonical stat identifier, AND (2) that value resolves to an existing Stat node. The resulting relationship remains only Gem -> Stat, representing that the gem references/grants the canonical Stat represented by that value. This is NOT a conversion edge and creates no conversion relationship class.",
+      "source_types": ["Gem"],
+      "target_types": ["Stat"],
+      "direction": "Gem -> Stat",
+      "symmetry": "directional; reverse reachability is traversal",
+      "eligibility": "target Stat node exists AND the target stat_id appears in Gem payload per_level[*].stats[].id, or equals a stat_conversions VALUE that satisfies BOTH conditions: (1) the Phase 4 contract/data identifies the value as the canonical stat identifier, AND (2) the value resolves to an existing Stat node",
+      "minimum_evidence": "one occurrence satisfying the eligibility condition",
+      "provenance": "Gem node provenance (raw_records('repoe/gems.json', <record_key>, repoe@<commit>))",
+      "confidence_status": "confirmed (source-backed)",
+      "forbidden": [
+        "edges from stat_conversions KEYS or stat_text keys (gem-local alias names are not nodes; they remain Gem payload evidence)",
+        "edges from a stat_conversions VALUE that does not resolve to an existing Stat node",
+        "interpreting stat_conversions as a mechanical conversion relationship (it is a Tier-1 id normalization map only)"
+      ],
+      "unresolved_handling": "stat_conversions values that do not resolve to a Stat node produce no edge; the alias map remains Gem payload evidence",
+      "tier": 1
+    },
+    {
+      "id": "unique_modifier_association",
+      "label": "UniqueItem to Modifier association",
+      "description": "A unique item's mechanics are carried by modifiers resolved from uniques.json via the deterministic resolver. The intended distinction: method 1 (visual_identity naming, digit-boundary enforced) / method 4 (granted-mechanic key) / method 5 (PoB-compatible template match, exact-singleton + approved pool + non-replica) / method 6 (Vestigial structured ownership) -> structural resolution -> edge allowed -> status 'resolved_not_validated'. method 2 (fuzzy display-text) and method-5 candidates (collisions, normalized matches, replica matches, excluded-pool matches) -> candidate association -> no edge. method 3 (replica->base inheritance) is REJECTED and must never produce edges.",
+      "source_types": ["UniqueItem"],
+      "target_types": ["Modifier"],
+      "direction": "UniqueItem -> Modifier",
+      "symmetry": "directional",
+      "eligibility": "target is a Modifier node AND the source UniqueItem.payload.resolved_targets contains an entry with target_key == Modifier node_id (sans 'mod:' prefix) AND method in {1,4,5,6} AND status == 'resolved'",
+      "minimum_evidence": "one resolved_target entry with method in {1,4,5,6} and status 'resolved'",
+      "provenance": "the resolved_target entry (method, matched_text, candidate_keys, validated, plus method-specific evidence) plus UniqueItem provenance and the target Modifier provenance",
+      "confidence_status": "resolved_not_validated — deterministic STRUCTURAL resolution (visual_identity naming with digit-boundary for method 1, granted-mechanic key for method 4, PoB template exact-singleton for method 5, Vestigial structured ownership for method 6). 'resolved_not_validated' is NOT the same as 'confirmed': it means the structural identity association is established, but semantic/mechanical validation has NOT occurred. The raw resolver field validated=false (true for all resolver output at extraction) MUST NOT be silently rewritten as 'confirmed'. A future explicit validation event MAY upgrade the edge; no automatic promotion is allowed",
+      "method_5_promotion_rule": "An exact-singleton template match MAY become a confirmed association ONLY if ALL hold: (1) source is the applicable PoB Unique block; (2) match is exact under the deterministic normalization rules (numeric # / (#-#) fallback is NEVER promotable in this amendment); (3) the candidate is a mods.json record with generation_type == 'unique' (approved pool); (4) the item-class constraint is satisfied (base-type line -> repoe/base_items.json item_class); (5) no duplicate-equivalent ambiguity remains (exact singleton has exactly one class-filtered key); (6) the source unique is NOT a Replica (name prefix 'Replica '); (7) no excluded-pool condition applies (Eldritch/Veiled/Influence-rare/Synthesis-named/corruption/special pools are excluded from promotion; generation_type filter excludes searing_exarch_implicit, eater_of_worlds_implicit, veiled, prefix/suffix rare-generation); (8) no semantic inference is required; (9) provenance records the PoB source line and template deterministically. Only then candidate -> edge. 'Singleton' alone is NOT sufficient evidence.",
+      "method_6_rule": "Vestigial.json structured ownership (mod-key -> unique-name). An association MAY be confirmed ONLY if the mod key exists in mods.json AND the unique name resolves deterministically to exactly one UniqueItem node (duplicated names -> candidate/unresolved; never first-match selection). Provenance records the Vestigial source. This is a stronger, structured evidence source, independent of text matching.",
+      "method_1_digit_boundary": "A Unique vid must not match a modifier key merely because the vid is a numeric prefix of a longer identifier. The vid match is valid only when the character immediately after the vid in the key is the end of the key or a non-digit (e.g. UniqueTwoHandAxe1 matches ...UniqueTwoHandAxe1 but NOT ...UniqueTwoHandAxe10/11/12). This correction removes the previously identified 798 false associations.",
+      "forbidden": [
+        "edges from method-2 targets (fuzzy display-text candidates; NEVER edges)",
+        "edges from method-3 targets (replica->base inheritance is REJECTED; replicas must resolve from their own applicable source block)",
+        "edges from targets with status other than 'resolved' (partial_or_indirect / candidate, unresolved_by_current_resolver, no_source_text_for_current_method, genuinely_absent_confirmed are not edges)",
+        "edges from method-5 normalized-only singletons (candidate-only in this amendment)",
+        "edges from method-5 duplicate-equivalent or genuine collisions (candidate-only)",
+        "edges from method-5 matches whose candidate is from an excluded pool (Eldritch/Veiled/Influence/Synthesis/Master/corruption/special pools) — retained as candidates only",
+        "edges from method-5 matches on Replica uniques (candidate-only)",
+        "edges from method-6 associations with ambiguous unique-name resolution (>1 UniqueItem node shares the name)",
+        "treating empty resolved_targets or a failed lookup as proof of absence (and thus as a negative edge)",
+        "rewriting validated=false as 'confirmed'",
+        "choosing among duplicate-equivalent or genuine collision candidates by parser iteration order or any arbitrary tie-break"
+      ],
+      "unresolved_handling": "no edge. The candidate association remains available as evidence/lookup (retained raw snapshot + resolution_evidence) for a later explicit validation step",
+      "tier": "outside_this_vocabulary"
+    },
+    {
+      "id": "gem_has_tag",
+      "label": "Gem has Tag",
+      "description": "A gem's tag list includes the tag string, resolved to a Tag node when one exists. Membership only; it does NOT imply mechanical interaction with other entities sharing the tag.",
+      "source_types": ["Gem"],
+      "target_types": ["Tag"],
+      "direction": "Gem -> Tag",
+      "symmetry": "directional; reverse reachability is traversal",
+      "eligibility": "target Tag node exists AND the target tag string appears in Gem payload.tags",
+      "minimum_evidence": "one occurrence",
+      "provenance": "Gem node provenance; the payload.tags field",
+      "confidence_status": "confirmed (source-backed)",
+      "forbidden": [
+        "gem tags that do not resolve to a Tag node (e.g. gem-only tags such as 'support', 'low_max_level', 'exceptional') — no node exists, so no edge; this is a documented coverage limitation, not a mechanical statement",
+        "mechanical inference from a shared tag (two entities sharing a tag is NOT a relationship class)"
+      ],
+      "unresolved_handling": "gem-only tags: no edge; recorded as a coverage note in step0_coverage",
+      "tier": 2
+    },
+    {
+      "id": "modifier_has_tag",
+      "label": "Modifier has Tag",
+      "description": "A modifier references the tag in spawn_weights, implicit_tags or adds_tags. The Tag vocabulary is built from these same fields, so every observed tag resolves to a Tag node by construction.",
+      "source_types": ["Modifier"],
+      "target_types": ["Tag"],
+      "direction": "Modifier -> Tag",
+      "symmetry": "directional; reverse reachability is traversal",
+      "eligibility": "target Tag node exists AND the target tag string appears in Modifier.payload.spawn_weights[].tag or implicit_tags[] or adds_tags[]",
+      "minimum_evidence": "one occurrence in any of the three fields",
+      "provenance": "Modifier node provenance; the specific field + (for spawn_weights) the weight value",
+      "confidence_status": "confirmed (source-backed). Evidence strength is equal across the three source fields; the spawn_weight is additional contextual evidence, not a different relationship",
+      "forbidden": "inferring any mechanical interaction between two modifiers because they share a tag",
+      "unresolved_handling": "n/a",
+      "tier": 2
+    },
+    {
+      "id": "modifier_in_group",
+      "label": "Modifier in ModifierGroup (repoe vocabulary)",
+      "description": "A modifier lists the group string in its groups[]; the group is a ModifierGroup node. Membership is per-vocabulary: this class is only defined for the repoe 'modgroup:' namespace.",
+      "source_types": ["Modifier"],
+      "target_types": ["ModifierGroup"],
+      "direction": "Modifier -> ModifierGroup",
+      "symmetry": "directional; reverse reachability is traversal",
+      "eligibility": "target is a ModifierGroup node with node_id 'modgroup:<group>' (repoe vocabulary) AND the group string appears in source Modifier.payload.groups[]",
+      "minimum_evidence": "one occurrence in Modifier.payload.groups[] AND existence of the modgroup:<group> node",
+      "provenance": "Modifier provenance + ModifierGroup provenance (the group string observed in raw_records('repoe/mods.json', <member_mod>, ...).groups[])",
+      "confidence_status": "two SEPARATE statuses: membership = confirmed (the membership itself is source-backed evidence: Modifier.payload.groups[] -> modgroup:<group>); group_identity_across_domains = assumption_unverified (when the ModifierGroup spans multiple domains, the assumption that the same group string within the vocabulary represents one conceptual group across those domains remains explicitly unverified). The edge MUST retain the member's domain. The membership edge is NOT downgraded by the unverified domain assumption. Known figure: 624 of 11,505 ModifierGroup nodes span >1 domain",
+      "forbidden": [
+        "edges into the 'modgroup_pob:' namespace (pob ModItemExclusive members are pob record keys, NOT Modifier nodes; verified mod:AbyssJewelEffect does not exist) — no node endpoint",
+        "merging same-string groups across vocabularies (verified: 0 collisions, rule is absolute regardless)",
+        "treating the domain-aggregation assumption as verified fact"
+      ],
+      "unresolved_handling": "pob groups are represented by their ModifierGroup nodes as vocabulary nodes; membership stays in the raw snapshot as evidence/lookup",
+      "tier": 2
+    },
+    {
+      "id": "unique_in_class",
+      "label": "UniqueItem in ItemClass",
+      "description": "A unique item's item_class string resolves to an ItemClass node. Provides the armour/slot class axis for later reasoning.",
+      "source_types": ["UniqueItem"],
+      "target_types": ["ItemClass"],
+      "direction": "UniqueItem -> ItemClass",
+      "symmetry": "directional",
+      "eligibility": "target ItemClass node exists AND target item_class string == source UniqueItem.payload.item_class",
+      "minimum_evidence": "one occurrence",
+      "provenance": "UniqueItem provenance; the payload.item_class field",
+      "confidence_status": "confirmed (source-backed)",
+      "forbidden": "n/a",
+      "unresolved_handling": "n/a",
+      "tier": 2
+    },
+    {
+      "id": "stat_scales_with",
+      "label": "Stat scales with Stat (operand -> scaling stat)",
+      "description": "A scaling stat's id deterministically references an operand resource by embedding the operand token after an explicit numeric '_per_<N>_' scale token (e.g. stat:attack_minimum_added_fire_damage_per_10_strength scales with stat:strength). This is a structural stat-id fact, NOT a mechanical interpretation. ONLY stat IDs containing an explicit numeric '_per_<N>_' scale segment are eligible for this class; resource-relative forms such as '_per_endurance_charge', '_per_power_charge', '_per_frenzy_charge' are OUT OF SCOPE for this class. The operand set is DATA-DERIVED, not hardcoded: an operand token qualifies only if it resolves to an existing Stat node.",
+      "source_types": ["Stat"],
+      "target_types": ["Stat"],
+      "direction": "operand Stat -> scaling Stat",
+      "symmetry": "directional",
+      "eligibility": "1) target is a Stat node whose stat_id contains an explicit numeric '_per_<N>_' scale segment (N a positive integer) followed by a terminal operand token; 2) the operand token resolves to an existing Stat node; 3) source is that operand Stat node. The qualifying operand set is the union, over all Stat nodes, of terminal operand tokens of numeric '_per_<N>_' segments that resolve to Stat nodes. Resource-relative forms (no numeric N) are never eligible",
+      "minimum_evidence": "the structural stat-id condition above (numeric '_per_<N>_' segment present, operand token resolves to a Stat node)",
+      "provenance": "both Stat nodes' provenance (stats.json record_keys); the stat-id strings are the source fact",
+      "confidence_status": "confirmed_source_backed (deterministic structural fact; does NOT by itself assert magnitude, applicability, completeness, or gameplay outcome)",
+      "forbidden": [
+        "arbitrary stat-id substring similarity (e.g. a stat containing the operand token in a non-'_per_<N>_' position)",
+        "resource-relative forms without an explicit numeric scale segment ('_per_endurance_charge', '_per_power_charge', '_per_frenzy_charge', etc.)",
+        "operands that do not resolve to a Stat node (e.g. 'endurance_charge' currently has no Stat node — no edge, the gap is preserved)",
+        "hardcoding an operand list (Strength, Intelligence, Dexterity, or any other); the operand set remains data-derived",
+        "any claim about magnitude, completeness or mechanic effect from this edge alone"
+      ],
+      "unresolved_handling": "numeric-form operand tokens without a Stat node are recorded in step0_coverage as data gaps, never invented as nodes; resource-relative operands are out of scope and do not yield edges",
+      "tier": "outside_this_vocabulary"
+    }
+  ],
+  "tier_vocabulary": {
+    "definition": "Secondary classification ONLY. It MUST NOT affect edge eligibility, confidence, status, scoring, ranking, traversal, or candidate generation.",
+    "tiers": {
+      "1": "shared stat_id",
+      "2": "shared tag",
+      "3": "hub-conversion",
+      "4": "hub-adjacent producer-consumer",
+      "5": "manual cluster gating",
+      "outside_this_vocabulary": "relationship class does not naturally correspond to any of the five historical tiers"
+    },
+    "note": "Tier 2 historically covered the shared tag/domain coarse-grouping axis (per phase4b_taxonomy T2 = 'shared tag/domain'); the group- and class-membership classes (modifier_in_group, unique_in_class) map to tier 2 via that shared grouping axis. The tier vocabulary is used AS the required secondary classification; no new tier is invented. Tiers 3 (hub-conversion), 4 (hub-adjacent producer-consumer) and 5 (manual cluster gating) have NO materialized relationship class at Step 1: tier coverage is not itself evidence for an edge (see rejected_deferred_classes.conversion_relationship and the ModScalability audit). Classes that do not naturally correspond to any historical tier (unique_modifier_association, stat_scales_with) are classified 'outside_this_vocabulary' rather than forced into a tier."
+  },
+  "rejected_deferred_classes": [
+    {
+      "id": "stat_shared_stat_direct",
+      "considered": "Direct Stat->Stat edges because two stats co-occur on a shared Modifier, or a UniqueItem and a rare modifier share a stat.",
+      "rejected": true,
+      "reason": "Redundant shortcut. The path Stat -> Modifier -> Stat already exists through source-backed intermediate nodes, which carry evidence needed for later reasoning (min/max, generation_type, domain). Direct edges would duplicate the source fact under an arbitrary type.",
+      "missing_evidence": "none — the facts exist; the relationship is intentionally represented through intermediates",
+      "limitation": "design_scope"
+    },
+    {
+      "id": "unique_rare_shared_stat_direct",
+      "considered": "Direct UniqueItem<->rare-Modifier edges because both reference a shared stat.",
+      "rejected": true,
+      "reason": "Same redundancy principle. The path UniqueItem -> Modifier -> Stat -> Modifier -> ... is traversable through real edges and preserves the meaningful intermediate source entities.",
+      "missing_evidence": "none",
+      "limitation": "design_scope"
+    },
+    {
+      "id": "shared_tag_mechanical_inference",
+      "considered": "A relationship between two entities (mods, gems, items) because they share a tag.",
+      "rejected": true,
+      "reason": "Tag co-occurrence is not a mechanical interaction. Tag edges exist only as entity->tag membership (modifier_has_tag / gem_has_tag).",
+      "missing_evidence": "mechanical linkage is not derivable from shared tags",
+      "limitation": "design_scope"
+    },
+    {
+      "id": "display_text_equivalence",
+      "considered": "Equating two stats or entities because stat_translations.json display text is similar or identical.",
+      "rejected": true,
+      "reason": "Display-text comparison is natural-language matching, explicitly forbidden as evidence. It is retained as role-4 lookup only.",
+      "missing_evidence": "none — forbidden by core rule",
+      "limitation": "design_scope"
+    },
+    {
+      "id": "conversion_relationship",
+      "considered": "Stat->Stat or entity->entity edges expressing conversion mechanics (full/partial/conditional), including the Iron Will Test bridge (keystone strong_casting <-> additive_spell_damage_modifiers_apply_to_attack_damage_at_150%_value).",
+      "rejected": true,
+      "reason": "DEFERRED. Conversion completeness (full/partial/conditional) requires magnitude semantics via stat_value_handlers + stat_translations interpretation, which is reasoning, not a structural fact. The keystone<->conversion bridge has NO structural link (4C gap 1): the two stat ids share no node-level relation; only stat_translations text groups them. The ModScalability audit (see evidence_sources.pob/ModScalability.json) confirms no alternate deterministic basis exists: the file carries no stat/mod identifiers and is PoB value-rendering metadata only. The stat_value_handlers audit (see evidence_sources.stat_value_handlers.json) confirms the magnitude chain is value-transform handler metadata only, with no structural identity links. The status vocabulary below is provided so later phases CAN represent the Iron Will Test; no conversion edge is materialized now.",
+      "missing_evidence": "a structural link between the keystone side (strong_casting) and the conversion stat family; stat_value_handlers magnitude chain is outside node payloads (retained as role-4 lookup)",
+      "limitation": "design_scope + validation (keystone bridge requires explicit alias validation before any edge could exist)"
+    },
+    {
+      "id": "gem_stat_conversion_alias",
+      "considered": "Edges from gem-local stat_conversions KEYS (alias names) to their canonical VALUES.",
+      "rejected": true,
+      "reason": "The alias keys are gem-internal names, not Stat nodes. The canonical value side already yields gem_grants_stat edges when the value resolves to a Stat node; the alias map remains Gem payload evidence (Tier-1 id normalization, not a conversion signal).",
+      "missing_evidence": "alias keys are not nodes",
+      "limitation": "data (no node endpoint) + design_scope"
+    },
+    {
+      "id": "pob_group_membership",
+      "considered": "Modifier -> ModifierGroup edges in the 'modgroup_pob:' namespace (from pob/ModItemExclusive.json group membership).",
+      "rejected": true,
+      "reason": "No node endpoint: pob member keys (e.g. 'AbyssJewelEffect') are pob record keys, not Modifier nodes. The 4,180 pob groups are vocabulary nodes; their membership stays in the raw snapshot.",
+      "missing_evidence": "pob membership records are not Modifier nodes",
+      "limitation": "data"
+    },
+    {
+      "id": "buff_grants",
+      "considered": "Modifier -> Buff edges via Modifier.payload.grants_effects[].granted_effect_id.",
+      "rejected": true,
+      "reason": "DEFERRED. The Buff node type was deferred in 4D (requires repo/e buffs.json targeted profiling). grants_effects[] (701 distinct ids) is retained in the Modifier payload.",
+      "missing_evidence": "Buff nodes do not exist",
+      "limitation": "data + design_scope"
+    },
+    {
+      "id": "method2_candidate_edges",
+      "considered": "UniqueItem -> Modifier edges from method-2 normalized display-text matches.",
+      "rejected": true,
+      "reason": "Method-2 matches are candidate associations only (validated=false, deterministic matching is NOT semantic validation). Never edges in Step 1. Available for a later explicit validation step via retained resolution_evidence.",
+      "missing_evidence": "semantic/mechanical validation",
+      "limitation": "validation"
+    },
+    {
+      "id": "method3_replica_base_inheritance",
+      "considered": "Replica Unique items inheriting the base unique's modifier set (previous method 3, e.g. Replica Abyssus inheriting Abyssus's mods).",
+      "rejected": true,
+      "reason": "REJECTED after the PoB ownership audit. Replica items have their OWN modifiers (PoB blocks differ from their bases; distinct Replica-marked mod definitions exist with different values). Assigning the base's mods to a replica is factually wrong. Replicas must resolve from their own applicable PoB block (method 5, candidate-only for replicas) or Vestigial ownership (method 6). No base inheritance unless independently supported by explicit structured source data.",
+      "missing_evidence": "a source-backed link proving the replica shares the base's mod set (the data contradicts it)",
+      "limitation": "data + design_scope"
+    },
+    {
+      "id": "excluded_pool_promotion",
+      "considered": "Promoting PoB template matches whose candidate is an Eldritch/Veiled/Influence/Synthesis/Master/corruption/special-pool definition.",
+      "rejected": true,
+      "reason": "REJECTED. The previous audit identified real singleton false-attribution cases from these pools (e.g. an Eldritch-implicit definition matched as the item's own mod). Such matches may be retained as candidate evidence but MUST NOT become confirmed edges. The deterministic gate is mods.json generation_type == 'unique'.",
+      "missing_evidence": "proof the item actually carries the corruption/special-pool definition",
+      "limitation": "validation + data"
+    },
+    {
+      "id": "normalized_singleton_promotion",
+      "considered": "Promoting method-5 matches found only after numeric normalization to # / (#-#).",
+      "rejected": true,
+      "reason": "Normalized-only singletons remain candidate-only in this amendment. Promotion of normalized matches is a separate future contract decision.",
+      "missing_evidence": "an approved rule for value-normalized display matching",
+      "limitation": "design_scope"
+    },
+    {
+      "id": "absence_as_negative_edge",
+      "considered": "Materializing 'entity X does not relate to Y' edges from empty resolved_targets, failed lookups, or missing source records.",
+      "rejected": true,
+      "reason": "Empty resolution is not proof of absence; failed lookup is not proof of absence. Negative facts require evidence-backed confirmation (e.g. genuinely_absent_confirmed), which is carried in UniqueItem resolution_status, never as an edge.",
+      "missing_evidence": "evidence-backed absence",
+      "limitation": "validation"
+    },
+    {
+      "id": "item_class_membership_from_base_items",
+      "considered": "Modifier or UniqueItem relationships implied by base_items.json item_class data beyond the unique_in_class edge.",
+      "rejected": true,
+      "reason": "Base items are not nodes (not in the Phase 4 type registry) and no deterministic cross-reference to nodes exists at Step 1. Base_items item_class remains evidence for ItemClass vocabulary (observed_from).",
+      "missing_evidence": "base_items are not nodes; no node-level join",
+      "limitation": "data + design_scope"
+    }
+  ],
+  "evidence_sources": {
+    "note": "Role-3 (evidence) / role-4 (lookup) data retained from Phase 4. These are NOT nodes. They may be consumed to VERIFY or document an edge's eligibility/provenance; they never create an edge on their own.",
+    "role5_retention_note": "The complete raw-snapshot inventory is retained in raw_records.db: every source named in the Phase 4 contract's optional_candidate_source lists and the 4C non-node retention table (all PoB Mod* files, buffs, tags, item_classes, base_items, cluster jewels, data-formats schemas, etc.). None of it silently disappears. Step 1 consumes ONLY the role-3/4 sources listed below; every other retained source has disposition 'raw snapshot only, not consumable by any Step 1 relationship'. Sources listed below carry an explicit disposition.",
+    "stat_translations.json": {
+      "role": "3/4",
+      "may_be_used_by": ["unique_modifier_association (method-2 candidate documentation only)", "stat_scales_with (operand display confirmation, never as eligibility)"],
+      "forbidden_use": "display-text equivalence as a relationship basis"
+    },
+    "stat_value_handlers.json": {
+      "role": "4",
+      "disposition": "verified_but_insufficient_for_step_1",
+      "retained_for_later_phase": true,
+      "may_be_used_by": [],
+      "audit": "74 records, keyed by handler NAMES (30%_of_value, negate, divide_by_one_hundred, per_minute_to_per_second, canonical_line, canonical_stat, affliction_reward_type, ...). Value fields are value/magnitude-transform descriptors only: addend/divisor/multiplier/precision/fixed/type, plus relational display lookups (dat_file/index_column/value_column/values/predicate). NO stat ids, NO modifier/node ids, NO explicit cross-stat links, NO relationship-bearing references. The 4D-cited index_handlers chain is ABSENT here (the stat->handler link lives in stat_translations). Its handler-key vocabulary (divide_by_one_hundred, per_minute_to_per_second, permyriad_per_minute_to_%_per_second) is the same metadata family as ModScalability.json formats. DISTINCTION: stat_value_handlers = RePoE-side value/magnitude handling; ModScalability = PoB-side value/display scalability; NEITHER carries structural identity links.",
+      "can_establish_step1_edge": false,
+      "can_establish_iron_will_structural_bridge": false,
+      "note": "Reserved for later conversion/magnitude phases (hub-conversion magnitude chain). Cannot establish a Step-1 edge."
+    },
+    "pob/ModScalability.json": {
+      "role": "5",
+      "disposition": "verified_but_insufficient_for_step_1",
+      "retained_for_later_phase": true,
+      "may_be_used_by": [],
+      "audit": "15,202 records in raw_records.db; keys are PoB display-text lines with '#' placeholders; values carry only 'isScalable' (bool) and 'formats' (display-format codes such as divide_by_one_hundred, negate, permyriad_per_minute_to_%_per_second). 0 keys are Stat ids; 0 keys join to Modifier nodes (2 coincidental string collisions: 'Acrobatics', 'Conduit' — passive-name display lines, not references). No stat/mod/node identifier is present. It is PoB value-rendering/scalability metadata (the PoB-side parallel to stat_value_handlers/stat_translations), i.e. lookup/implementation detail. It provides NO deterministic Tier-3/conversion relationship and NO Iron Will bridge (0 hits for strong_casting). It CANNOT establish an edge; joining it to any node would require display-text equivalence (forbidden). Retained as later-phase evidence only (magnitude/display pipeline).",
+      "forbidden_use": "cannot establish any edge; display-format/scalability metadata only"
+    },
+    "stats_by_file.json": {
+      "role": "4",
+      "disposition": "retained_for_later_phase",
+      "may_be_used_by": [],
+      "note": "Provenance index for coverage audits (named in the 4D contract lookup_and_evidence). Not consumed by any Step 1 relationship."
+    },
+    "pob/ModItemExclusive.json": {
+      "role": "3/4",
+      "may_be_used_by": ["unique_modifier_association (method-2 evidence, candidate-only; method-5 approved-pool template source)", "modifier_in_group (pob vocabulary membership stays here, no edges)"]
+    },
+    "pob/ModItem.json": {
+      "role": "4",
+      "may_be_used_by": ["unique_modifier_association (method-5 approved-pool template source)"]
+    },
+    "pob/ModImplicit.json": {
+      "role": "4",
+      "may_be_used_by": ["unique_modifier_association (method-5 approved-pool template source, normal implicit pool)"]
+    },
+    "pob/ModExplicit.json": {
+      "role": "4",
+      "may_be_used_by": ["unique_modifier_association (method-5 approved-pool template source)"]
+    },
+    "pob/ModJewel.json | pob/ModJewelAbyss.json | pob/ModJewelCluster.json | pob/ModJewelCharm.json | pob/ModFlask.json": {
+      "role": "4",
+      "may_be_used_by": ["unique_modifier_association (method-5 approved-pool template source for jewel/flask items)"]
+    },
+    "pob/Vestigial.json": {
+      "role": "3",
+      "may_be_used_by": ["unique_modifier_association (method-6 structured ownership: mod-key -> unique-name; confirmed only when the mod key exists and the unique name resolves to exactly one UniqueItem node)"]
+    },
+    "excluded_pools": {
+      "note": "ModEldritch.json, ModVeiled.json, ModSynthesis.json, ModMaster.json, ModCorrupted.json, ModDelve.json, ModFoulborn(.Map).json, ModGraft.json, ModMap.json, ModMercenary.json, ModNecropolis.json, ModScourge.json, ModTincture.json and any influence/eldritch/veiled/synthesis/corruption/special definitions are EXCLUDED from confirmed promotion. A template match resolving to such a definition may be retained as candidate evidence only. The deterministic gate is: a candidate is promotable ONLY if it is a mods.json record with generation_type == 'unique' (this excludes searing_exarch_implicit, eater_of_worlds_implicit, veiled and rare-generation prefix/suffix influence mods)."
+    },
+    "pob/QueryMods.json": {
+      "role": "4",
+      "may_be_used_by": ["unique_modifier_association (resolver chain lookup)"]
+    },
+    "pob/TradeSiteStats.json": {
+      "role": "4",
+      "may_be_used_by": ["unique_modifier_association (resolver chain lookup)"]
+    },
+    "pob/ModCache.json": {
+      "role": "4",
+      "may_be_used_by": ["unique_modifier_association (display-text cache, method-2 candidate documentation only)"]
+    },
+    "pob/Uniques/*.json": {
+      "role": "3",
+      "may_be_used_by": ["unique_modifier_association (method-2 evidence, candidate-only; method-5 primary source: variant resolution + tag strip + exact template matching)"]
+    }
+  },
+  "confidence_status_vocabulary": {
+    "confirmed": "fully source-backed structural fact; no validation needed",
+    "confirmed_source_backed": "deterministic structural fact on stat-id strings; no mechanical claim implied",
+    "resolved_not_validated": "deterministic structural identity association (resolver methods 1/4/5/6). NOT the same as 'confirmed': the structural identity association is established, but semantic/mechanical validation has NOT occurred. A future explicit validation event MAY upgrade the edge; no automatic promotion",
+    "candidate": "deterministic match, insufficiently validated; NEVER an edge",
+    "unresolved": "relationship is not established",
+    "known_data_gap": "required source entity/fact absent from the export",
+    "known_validation_gap": "source fact exists but association requires explicit validation",
+    "assumption_unverified": "an identity/equivalence assumption (e.g. group identity across domains) that has not been empirically verified; must be recorded as such, never treated as proven",
+    "conversion_full": "reserved for later phases; conversion is complete (Iron Will Test state, not materialized in Step 1)",
+    "conversion_partial": "reserved for later phases; conversion is partial",
+    "conversion_conditional": "reserved for later phases; conversion applies conditionally",
+    "conversion_unknown": "reserved for later phases; insufficient evidence"
+  },
+  "step0_coverage": {
+    "note": "Mapping of the 12 Step 0 test cases to the contract. No special-case rule was added to force any pass; genuine gaps are preserved with their classification.",
+    "T_exemplars": {"status": "pass", "via": "node existence (no edges required)"},
+    "T4_unique_rare_shared_stat": {"status": "pass", "via": "modifier_grants_stat on both mod:AbberathsFuryEnrageStance and mod:ConvertPhysicalToFireInfluenceMaven; traversal UniqueItem -> Modifier -> Stat -> Modifier (no shortcut edge)"},
+    "T1_firemin_firemax_shared": {"status": "pass", "via": "modifier_grants_stat both firemin and firemax from mod:AddedFireDamagePerStrengthInfluence1; traversal via shared mod"},
+    "T2_per_charge_mods": {"status": "pass", "via": "modifier_grants_stat both stats from mod:AddedFireDamagePerEnduranceChargeInfluence1; traversal via shared mod"},
+    "T_ut_types": {"status": "pass", "via": "gem_has_tag (lightning/physical/chaos resolve to Tag nodes); resonance stat keys remain a payload check, not an edge"},
+    "T_int_grant_stat": {"status": "pass", "via": "modifier_grants_stat on the unique and the Necropolis prefix mod; traversal; NOT the inherent application (accepted 4C limitation)"},
+    "T_int_lightning_mods": {"status": "pass", "via": "modifier_grants_stat both per-10-intelligence lightning stats from mod:RecombinatorSpecialLightningDamageToAttacksPerIntelligence"},
+    "T_mana_lightning_anchor": {"status": "pass", "via": "modifier_grants_stat from mod:AttackLightningDamageMaximumManaUnique__1__"},
+    "R1_strength_to_fire": {"status": "pass", "via": "stat_scales_with: stat:strength -> stat:attack_minimum/maximum_added_fire_damage_per_10_strength (numeric '_per_10_' segment; data-derived operand 'strength' resolves to stat:strength); depth-2 reachability through modifier_grants_stat"},
+    "R2_endurance_charge_to_fire": {
+      "status": "fail (preserved gap)",
+      "gap_class": "data",
+      "detail": "the operand token 'endurance_charge' does not resolve to a Stat node (no node represents endurance charges). The damage side is fully representable via modifier_grants_stat. The contract must not invent the head entity."
+    },
+    "R3_hopeshredder_scaling": {
+      "status": "fail (preserved gap)",
+      "gap_class": "validation",
+      "detail": "The frozen Step 0 test asserts method in {1,3,4} with status 'resolved'. After the v5.5 amendment, Hopeshredder (unique:739) gains confirmed method-5 (PoB template) edges (7 exact singletons from its own block), which are NOT in the test's method scope, so the frozen assertion still evaluates to fail — preserved as a frozen-test artefact. The item is no longer resolution-blocked; the coverage improvement is an EXPECTED IMPROVEMENT beyond the frozen assertion (the test case is not modified)."
+    },
+    "R_adv_whispers_chain": {
+      "status": "partial (gaps preserved)",
+      "hops": {
+        "unique:1461 -> stat:intelligence": "fail — validation gap (Whispers resolves only via method-2 candidates; no unique_modifier_association edge)",
+        "stat:intelligence -> stat:minimum_added_lightning_damage_to_attacks_per_10_intelligence": "pass — stat_scales_with (numeric '_per_10_' segment; operand 'intelligence' resolves to stat:intelligence)",
+        "stat:minimum_added_lightning_damage_to_attacks_per_10_intelligence -> stat:attack_minimum_added_lightning_damage": "fail — audit-backed negative. TARGETED AUDIT (all 40,354 Modifier payloads + all stat_translations files + role-3/4/5 sources): (1) both Stat nodes exist; (2) 0 Modifier payloads reference BOTH stats (3 reference the source alone, 151 the target alone); (3) no approved Stat->Stat class applies — stat_scales_with requires the TARGET to carry a numeric '_per_<N>_' segment, which attack_minimum_added_lightning_damage does not; (4) no source-backed intermediate path exists (a Modifier->Stat<-Modifier path requires a shared modifier; there are none); (5) display text is ABSENT in all stat_translations files for both stats; (6) no retained role-3/4/5 source carries a structural identifier linking them; (7) '_per_<N>_' establishes only intelligence -> per-10-intelligence scaling stat, never scaling -> plain lightning. No deterministic Step-1 basis exists; establishing it requires semantic inference, which is forbidden. Recorded as a data/design gap, not invented",
+        "stat:attack_minimum_added_lightning_damage -> gem:SupportUnholyTrinity": "not directly reachable without the preceding hop; the gem side (Unholy Trinity <-> lightning/physical/chaos) is fully representable via gem_has_tag + gem_grants_stat"
+      },
+      "note": "The quantitative variance hypothesis (damage roll variance / highest-damage-type switching) is explicitly NOT part of this contract (later reasoning)."
+    }
+  },
+  "identity_and_duplication": {
+    "edge_identity": ["source_node_id", "target_node_id", "relationship_type"],
+    "direction": "every relationship class has a fixed direction as specified; reverse reachability is traversal, never a duplicate reverse edge",
+    "symmetry": "no symmetric edge types in Step 1; if a future class is symmetric it MUST declare it explicitly",
+    "one_source_fact_one_edge": "a single source fact is represented under exactly one relationship type; multiple edge types for the same fact are forbidden",
+    "duplicate_edges": "if two independent source facts support the same (source, target, type), the edge exists once with merged provenance listing both facts",
+    "cross_namespace": "modgroup: and modgroup_pob: are distinct namespaces; no edge crosses them",
+    "resolution_multiplicity": "a UniqueItem may have multiple unique_modifier_association edges (one per qualifying resolved target); each carries its own provenance"
+  },
+  "validation": {
+    "checklist": [
+      "every allowed relationship checks against actual Phase 4 node types and payloads",
+      "every evidence requirement checks against retained Phase 4 data",
+      "no relationship requires information Phase 4 discarded",
+      "no relationship definition contains an implementation algorithm (regex/SQL/function/schema/traversal)",
+      "unvalidated resolver candidates (method 2) cannot become confirmed edges",
+      "multi-hop structures are representable through real relationships without hardcoded shortcuts",
+      "all Step 0 green and red cases are covered with preserved gap classifications",
+      "the contract does not invent a node type",
+      "the contract does not depend on semantic inference",
+      "the same source facts cannot produce contradictory edge statuses under the same evidence conditions",
+      "method-1/4/5/6 structural resolutions MAY be edges and MUST carry 'resolved_not_validated', never silently 'confirmed'; method-3 (replica->base) is REJECTED and must never be an edge; method-2 and method-5 candidates are NEVER edges",
+      "stat_scales_with is numeric '_per_<N>_' only; resource-relative forms are out of scope",
+      "stat_conversions values become gem_grants_stat edges only when canonical AND resolving to a Stat node",
+      "modifier_in_group keeps membership=confirmed separate from group_identity_across_domains=assumption_unverified",
+      "tier field uses the required 5-tier secondary vocabulary"
+    ],
+    "verified_facts": [
+      "gem per_level stat id occurrences (9,743) and passive stat keys (6,376) all resolve to Stat nodes (0 missing)",
+      "0 gems currently carry a populated stat_conversions map; the canonical-and-resolves eligibility rule is enforced whenever values are present",
+      "modifier groups join to modgroup: nodes (group AddedFireDamagePerStrength -> 9 member mods == member_count 9)",
+      "624 of 11,505 ModifierGroup nodes span >1 domain (4D open assumption is live; recorded as assumption_unverified on modifier_in_group edges)",
+      "modgroup_pob: members are pob record keys, not Modifier nodes (mod:AbyssJewelEffect absent) -> no membership edges",
+      "0 same-string groups across the two vocabularies",
+      "635 of 1,556 uniques have >=1 method-1/3/4 target; 833 method-2-only; 88 empty (pre-v5.5 baseline)",
+      "v5.5 unique-resolution upgrade: method-1 digit-boundary removes the 798 prefix-collision false associations (UniqueTwoHandAxe1 no longer matches UniqueTwoHandAxe10/11/12); method-3 replica->base inheritance is rejected (replicas resolve from their own PoB blocks); method-5 PoB template matching (approved pool = mods.json generation_type=='unique', exact-singleton, non-replica) and method-6 Vestigial ownership (unambiguous unique-name) add confirmed associations; PoB benchmark: 795 of 921 zero-confirmed uniques gain >=1 exact-singleton candidate, 96 have no usable candidates",
+      "stat:strong_casting and stat:additive_spell_damage_modifiers_apply_to_attack_damage_at_150%_value exist as nodes with no structural link (4C gap 1)",
+      "numeric '_per_<N>_' stat_ids observed: per_10_strength (16 stats), per_10_intelligence (11), per_10_dexterity (12), per_2_intelligence (3); resource-relative forms exist (per_endurance_charge 50, per_power_charge 56, per_frenzy_charge 69) but are OUT OF SCOPE for stat_scales_with, and endurance_charge has no Stat node -> R2 gap preserved",
+      "pob/ModScalability.json audit: 15,202 records; keys are display-text lines with '#' placeholders; values carry only isScalable/formats; 0 keys are Stat ids; 0 joins to Modifier nodes -> no deterministic Tier-3 relationship, no Iron Will bridge; disposition verified_but_insufficient_for_step_1",
+      "tier audit: unique_modifier_association and stat_scales_with reclassified to outside_this_vocabulary (no legitimate historical tier); all other 7 classes retain their tier; tiers 3/4/5 have no materialized class at Step 1",
+      "R_adv hop audit (per-10-intelligence scaling -> plain lightning): both Stat nodes exist; 0 of 40,354 Modifier payloads reference both stats (3 source-only, 151 target-only); target has no '_per_<N>_' segment so stat_scales_with is ineligible; display text absent in all stat_translations files; no role-3/4/5 structural identifier -> no deterministic Step-1 basis, fail classification preserved",
+      "stat_value_handlers audit: 74 records, handler-name keyed, value-transform descriptors only (addend/divisor/multiplier/precision/fixed/type + relational display lookups); NO stat/mod/node ids, NO cross-stat links, NO relationship-bearing references; index_handlers chain absent; disposition verified_but_insufficient_for_step_1; cannot establish the Iron Will structural bridge"
+    ]
+  }
+}
