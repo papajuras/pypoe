@@ -33,7 +33,9 @@ CONTRACT_PATH = DOCS / 'phase5_edge_contract.json'
 TESTCASES_PATH = DOCS / 'phase5_test_cases.json'
 REPORT_PATH = DOCS / 'phase5_step2_report.md'
 
-CONTRACT_VERSION = '5.5'
+CONTRACT_VERSION = '5.7'
+ATTRIBUTE_ARTIFACT = Path(__file__).resolve().parent / 'sources' / 'pob_attribute_mechanics.json'
+MECHANICS_ARTIFACT = Path(__file__).resolve().parent / 'sources' / 'pob_stat_mechanics.json'
 NODE_TYPES = ['Stat', 'Modifier', 'ModifierGroup', 'UniqueItem', 'Passive',
               'Gem', 'Tag', 'ItemClass']
 
@@ -343,6 +345,84 @@ def ext_stat_scales_with(edges, by_type, vm):
         })
 
 
+def ext_attribute_grants_stat(edges, by_type, vm):
+    """Inherent attribute mechanics from the pinned audited PoB source artifact
+    (contract 5.6). provenance_class: audited_pinned_external_source."""
+    art = json.loads(ATTRIBUTE_ARTIFACT.read_text())
+    prov_block = art['provenance']
+    for mech in art['mechanics']:
+        src = 'stat:' + mech['attribute']
+        tgt = 'stat:' + mech['target_stat']
+        if src not in by_type['Stat'] or tgt not in by_type['Stat']:
+            raise SystemExit(f'attribute artifact references missing Stat node: {src} -> {tgt}')
+        merge_edge(edges, {
+            'src': src, 'tgt': tgt, 'type': 'attribute_grants_stat',
+            'status': 'confirmed_source_backed', 'secondary': None,
+            'tier': 'outside_this_vocabulary',
+            'prov': [{
+                'source_file': 'tools/sources/pob_attribute_mechanics.json',
+                'record_key': mech['id'],
+                'source_version': prov_block['pob_commit'],
+                'field': 'mechanics[]',
+                'provenance_class': prov_block['provenance_class'],
+                'pob_source_file': prov_block['source_file'],
+                'pob_function': prov_block['function'],
+                'pob_lines': prov_block['lines'],
+                'pob_mod': mech['pob_mod'],
+                'formula': mech['formula'],
+                'ratio': mech['ratio'],
+            }],
+        })
+
+
+def ext_stat_mechanics(edges, by_type, vm):
+    """Stat mechanic families from the pinned audited PoB source artifact
+    (contract 5.7). stat_mechanic_variant: member -> canonical.
+    stat_mechanic_operand: member -> operand/product family stat
+    (declared product gaps emit no edge). provenance_class:
+    audited_pinned_external_source."""
+    art = json.loads(MECHANICS_ARTIFACT.read_text())
+    prov_block = art['provenance']
+    def node(ref):  # tolerate both bare and prefixed references
+        return ref if ref.startswith('stat:') else 'stat:' + ref
+    for mech in art['mechanics']:
+        canonical = node(mech['canonical_stat'])
+        if canonical not in by_type['Stat']:
+            raise SystemExit(f'mechanics artifact references missing Stat node: {canonical}')
+        base_fact = {'source_file': 'tools/sources/pob_stat_mechanics.json',
+                     'source_version': prov_block['pob_commit'],
+                     'provenance_class': prov_block['provenance_class'],
+                     'mechanic_id': mech['id'],
+                     'pob_flag': mech['pob_flag'],
+                     'pob_sources': prov_block['sources']}
+        for member in mech['members']:
+            src = node(member['stat'])
+            if src not in by_type['Stat']:
+                raise SystemExit(f'mechanics artifact references missing Stat node: {src}')
+            fact = dict(base_fact, record_key=member['stat'],
+                        field=f"mechanics[].members[]({member['role']})",
+                        role=member['role'], value=member['value'],
+                        condition=member['condition'], evidence=member['evidence'])
+            if member['role'] != 'canonical':
+                merge_edge(edges, {'src': src, 'tgt': canonical,
+                                   'type': 'stat_mechanic_variant',
+                                   'status': 'confirmed_source_backed', 'secondary': None,
+                                   'tier': 'outside_this_vocabulary', 'prov': [dict(fact)]})
+            for role_key, role in (('operand_stat', 'operand'), ('product_stat', 'product')):
+                tgt_stat = mech.get(role_key)
+                gap = any(g['stat'] == member['stat'] for g in mech.get('product_gaps', []))
+                if tgt_stat is None or (role == 'product' and gap):
+                    continue
+                tgt = node(tgt_stat)
+                if tgt not in by_type['Stat']:
+                    raise SystemExit(f'mechanics artifact references missing Stat node: {tgt}')
+                merge_edge(edges, {'src': src, 'tgt': tgt,
+                                   'type': 'stat_mechanic_operand',
+                                   'status': 'confirmed_source_backed', 'secondary': None,
+                                   'tier': 'outside_this_vocabulary',
+                                   'prov': [dict(fact, role=role)]})
+
+
 EXTRACTORS = [
     ext_modifier_grants_stat,
     ext_passive_grants_stat,
@@ -353,6 +433,8 @@ EXTRACTORS = [
     ext_modifier_in_group,
     ext_unique_in_class,
     ext_stat_scales_with,
+    ext_attribute_grants_stat,
+    ext_stat_mechanics,
 ]
 
 CLASS_SRC = {
@@ -360,14 +442,16 @@ CLASS_SRC = {
     'gem_grants_stat': 'Gem', 'unique_modifier_association': 'UniqueItem',
     'gem_has_tag': 'Gem', 'modifier_has_tag': 'Modifier',
     'modifier_in_group': 'Modifier', 'unique_in_class': 'UniqueItem',
-    'stat_scales_with': 'Stat',
+    'stat_scales_with': 'Stat', 'attribute_grants_stat': 'Stat',
+    'stat_mechanic_variant': 'Stat', 'stat_mechanic_operand': 'Stat',
 }
 CLASS_TGT = {
     'modifier_grants_stat': 'Stat', 'passive_grants_stat': 'Stat',
     'gem_grants_stat': 'Stat', 'unique_modifier_association': 'Modifier',
     'gem_has_tag': 'Tag', 'modifier_has_tag': 'Tag',
     'modifier_in_group': 'ModifierGroup', 'unique_in_class': 'ItemClass',
-    'stat_scales_with': 'Stat',
+    'stat_scales_with': 'Stat', 'attribute_grants_stat': 'Stat',
+    'stat_mechanic_variant': 'Stat', 'stat_mechanic_operand': 'Stat',
 }
 
 

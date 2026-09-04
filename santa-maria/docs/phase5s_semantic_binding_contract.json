@@ -1,0 +1,91 @@
+{
+  "contract": "phase5s_semantic_binding_contract",
+  "contract_version": "5S.1",
+  "phase": "5S",
+  "frozen": true,
+  "scope": "Defines exactly ONE new relationship class, sem_relation_binds, materialized into cache/edges.db after Phase 5 structural extraction. Binding = reference resolution only. No candidate edges, no carrier-to-carrier edges, no schema changes.",
+  "inputs": {
+    "markers": "cache/semantic_markers.json (contract seven-operator-1.0, frozen: 202 markers, 220 relations)",
+    "nodes_db": "cache/nodes.db (Tag registry + Stat endpoint existence)",
+    "stat_translations": "data/repoe/stat_translations/*.json (role-3/4 lookup; English label index)",
+    "structural_edges": "cache/edges.db (contract 5.5; must exist first)"
+  },
+  "core_rule": "sem_relation_binds means ONLY: the Phase 4M participant explicitly refers to this KB concept. It does NOT assert that any carrier interacts with the concept or with any other node. Binding endpoints are (Stat marker node) -> (Tag | Stat concept node). Carriers never appear as endpoints; their relation to the marker is already the existing *_grants_stat edges.",
+  "participants": {
+    "note": "Only required participants resolve. All other fields (mode/factor/scope/condition/event/order/has_magnitude/probability/coefficient/fraction/axis/subject/source_behavior/entity_scope/dealt_vs_taken/extra_factor/enabling_condition) are attributes recorded in provenance, never binding keys, never edge semantics.",
+    "REDIRECT": ["source", "target"],
+    "SUBSTITUTE": ["from", "to"],
+    "CONVERT": ["pool_a", "pool_b"],
+    "DERIVE": ["source", "target"],
+    "EQUAL": ["bound_value", "reference_value"],
+    "COUNT_AS": ["predicate"],
+    "SUPPRESS": ["suppressed"]
+  },
+  "all_or_nothing": "An operator with >1 required participant emits edges only if EVERY required participant binds; otherwise that relation emits nothing (coverage row, gap preserved). Single-participant operators (COUNT_AS, SUPPRESS) emit one edge per bound field.",
+  "resolution_methods": {
+    "M1_tag": {
+      "rule": "phrase -> tag node. Normalization: casefold, collapse whitespace, spaces to underscores; try exact match against the Tag-node string set, then a singularized form (strip ONE trailing 's'). Data-gated: the tag node must exist in nodes.db.",
+      "status": "confirmed",
+      "target_types": ["Tag"]
+    },
+    "M2_label": {
+      "rule": "phrase -> Stat node by exact normalized FULL-string match against the stat_translations English label index. Index normalization: casefold, collapse whitespace, strip one trailing punctuation from [.,;:]. Strings containing '#' or '{' placeholders are excluded from the index. Singleton only: >1 distinct stat id sharing the string = ambiguous = NO edge. No substring, token-reorder, fuzzy, semantic-similarity, alias-table, or LLM matching is permitted.",
+      "status": "resolved_not_validated",
+      "target_types": ["Stat"]
+    },
+    "placeholder_participant": "a participant phrase containing '#' or '{' is a value template, not a concept: no binding, coverage row.",
+    "precedence": "M1_tag before M2_label; first hit wins."
+  },
+  "zero_or_ambiguous_match": "unresolved/ambiguous participants never produce edges and are never silently dropped: every participant is recorded in cache/sem_binding_coverage.json with its reason. Absence of a binding is not a negative fact.",
+  "uncertainty": "If the relation carries classification_uncertainty, it is copied verbatim into every provenance fact of that relation and the edge status is capped at resolved_not_validated (never confirmed). Uncertainty is never resolved by the binder.",
+  "prose_only": "Markers with prose_only=true or out_of_vocabulary_reason emit nothing (coverage row only).",
+  "status_model": {
+    "edge_statuses": {
+      "confirmed": "M1_tag binding; also used for M1 when the relation carries no uncertainty",
+      "resolved_not_validated": "M2_label, or any relation carrying classification_uncertainty"
+    },
+    "discovery_statuses": {
+      "note": "Traversal-layer statuses attached to query results; NEVER materialized as edges.",
+      "unresolved": "participant did not bind (coverage row)",
+      "candidate": "a path exists from discovery fan-out; no direct source-backed fact composes into a stronger claim",
+      "validated": "the claim is EXACTLY the conjunction of the semantic contracts of the edges on its evidence path (see validation_invariant); per-edge status propagates: any resolved_not_validated edge on the path caps the claim"
+    }
+  },
+  "validation_invariant": "An existing edge is validation evidence ONLY if its semantic contract directly expresses the relationship claim being validated. Membership (modifier_has_tag / gem_has_tag / modifier_in_group / unique_in_class), scaling (stat_scales_with), and graph-proximity paths produce candidates and can NEVER validate a mechanical interaction. validated tier in v1 = carrier claims only: 'node X's payload references marker stat M, whose source text declares relation R' (conjunction of a confirmed *_grants_stat edge and the Phase 4M relation anchored at stat:M). No promotion events exist in this phase.",
+  "identity_and_dedup": "Edge identity is (source, target, relationship_type) as in contract 5.5. Independent source facts binding the same triple are merged into ONE edge whose provenance is a sorted, de-duplicated list of per-relation-field provenance facts.",
+  "provenance_schema": {
+    "fact": {
+      "source_file": "cache/semantic_markers.json",
+      "record_key": "<marker sid>",
+      "source_version": "seven-operator-1.0",
+      "field": "relation[<i>].<field>",
+      "operator": "<frozen operator>",
+      "relation_fields": "<the relation's full frozen fields dict (attributes survive traversal)>",
+      "phrase": "<raw participant phrase>",
+      "normalized": "<normalized phrase>",
+      "method": "M1_tag | M2_label",
+      "matched": "<target node id>",
+      "form": "exact | singular (M1 only)",
+      "label_file": "<stat_translations file> (M2 only)",
+      "classification_uncertainty": "<verbatim from Phase 4M, when present>"
+    }
+  },
+  "edge_attributes": {
+    "relationship_type": "sem_relation_binds",
+    "tier": "outside_this_vocabulary",
+    "secondary_status": null
+  },
+  "idempotency_and_meta": "The writer deletes existing sem_relation_binds rows, then re-inserts; structural meta keys are untouched. Semantic meta keys: sem_contract_version, sem_edge_count, sem_edges_by_type, sem_canonical_hash. Also ensures index idx_edges_target on edges(target_node_id).",
+  "fan_out_rule": "Discover reads bound concept nodes via REVERSE traversal of existing edge classes only. Shared tag/stat membership, group membership, scaling and proximity are discovery context, never interaction claims (see validation_invariant). Coarse-tag fan-out size is a discovery-layer ranking concern; bindings are never pruned for it.",
+  "false_positive_controls": [
+    "exact match only; ambiguity -> no edge",
+    "M1 beats M2; both data-gated on existing nodes",
+    "one edge per (marker, field); from/to never merged",
+    "attributes never encoded as edge semantics",
+    "prose_only markers emit nothing",
+    "classification_uncertainty caps status at resolved_not_validated",
+    "candidates are never persisted as edges",
+    "no carrier-to-carrier edge class exists"
+  ],
+  "coverage_report": "cache/sem_binding_coverage.json records every participant resolution outcome (bound_m1/bound_m2/unresolved/placeholder/prose_only/partial_binding_dropped) so unresolved yield is auditable, never invisible."
+}

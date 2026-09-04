@@ -1,0 +1,2918 @@
+{
+ "active_skill_beam_splits_instead_of_chaining": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "the number of times to Chain",
+     "target": "the number of targets Beam Splits towards"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "active_skill_display_suppress_physical_to_cold_damage_conversion": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "fraction": "{0}%",
+     "pool_a": "Physical Damage",
+     "pool_b": "Cold Damage"
+    },
+    "operator": "CONVERT"
+   }
+  ]
+ },
+ "additional_elemental_damage_reduction_as_half_of_chaos_resistance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": "1/2",
+     "source": "half your Chaos Resistance",
+     "target": "additional Elemental Damage Reduction"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "additive_arrow_speed_modifiers_apply_to_area_of_effect": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Projectile Speed",
+     "target": "this Skill's Area of Effect"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Cast Speed",
+     "target": "this Skill's Activation frequency"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "additive_cast_speed_modifiers_apply_to_trap_throwing_speed": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Cast Speed",
+     "target": "Trap Throwing Speed"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "additive_mine_duration_modifiers_apply_to_buff_effect_duration": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Mine Duration",
+     "target": "this Skill's Buff Duration"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "additive_minion_damage_modifiers_apply_to_you_at_150%_value": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "factor": "150%",
+     "mode": "also",
+     "source": "Minion Damage",
+     "target": "you"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "additive_modifiers_to_bow_damage_also_apply_to_minions": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Damage with Bows",
+     "target": "Minions"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "additive_modifiers_to_minion_attack_speed_also_affect_you": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Minion Attack Speed",
+     "target": "you"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "additive_modifiers_to_minion_cast_speed_also_affect_you": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Minion Cast Speed",
+     "target": "you"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "additive_vaal_skill_damage_modifiers_apply_to_all_skills": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Damage with Vaal Skills",
+     "target": "Non-Vaal Skills"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "all_added_damage_treated_as_added_cold_damage_if_dex_higher_than_int_and_strength": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "condition": "if Dexterity exceeds both other Attributes",
+     "event": "Added Damage gained",
+     "from": "Added Damage of other types",
+     "mode": "instead",
+     "to": "Added Cold Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "all_added_damage_treated_as_added_lightning_damage_if_int_higher_than_dex_and_strength": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "condition": "if Intelligence exceeds both other Attributes",
+     "event": "Added Damage gained",
+     "from": "Added Damage of other types",
+     "mode": "instead",
+     "to": "Added Lightning Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "apply_scorch_instead_of_ignite": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "event": "Hits that would Ignite",
+     "from": "Ignite",
+     "mode": "instead",
+     "to": "Scorch"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "artillery_ballista_cross_strafe_pattern": {
+  "out_of_vocabulary_reason": "Artillery Ballista Projectiles fall in two perpendicular lines instead",
+  "prose_only": true
+ },
+ "attacks_use_life_in_place_of_mana": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Attack Cost",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "base_armour_applies_to_chaos_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Armour damage mitigation",
+     "from": "Physical Damage",
+     "mode": "also",
+     "to": "Chaos Damage taken from Hits"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "base_armour_applies_to_lightning_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Armour damage mitigation",
+     "from": "Physical Damage",
+     "mode": "also",
+     "to": "Lightning Damage taken from Hits"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "base_elemental_damage_heals": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Taking Elemental Damage",
+     "from": "Damage",
+     "mode": "instead",
+     "to": "Healing"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "base_physical_damage_%_to_convert_to_chaos_per_level": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "condition": "per Level",
+     "fraction": "{0}%",
+     "pool_a": "Physical Damage",
+     "pool_b": "Chaos Damage"
+    },
+    "operator": "CONVERT"
+   }
+  ]
+ },
+ "base_skill_cost_life_instead_of_mana": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Supported Skills Cost",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "base_skill_reserve_life_instead_of_mana": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Supported Skills Reserve",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "base_spell_critical_chance_equal_to_the_critical_strike_chance_of_main_weapon": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "base",
+     "bound_value": "Base Spell Critical Strike Chance of Spells",
+     "reference_value": "Critical Strike Chance of Main Hand Weapon",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "bleeding_damage_on_self_converted_to_chaos": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "dealt_vs_taken": "taken",
+     "event": "Damage from Bleeding",
+     "from": "Physical Damage",
+     "mode": "instead",
+     "to": "Chaos Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "brequel_equipment_fruit_jewel_enabled": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Provisioning Wombgifts Birth outcome",
+     "from": "non-Jewels",
+     "mode": "instead",
+     "to": "Jewels"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "cannot_be_affected_by_flasks": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "subject": "you",
+     "suppressed": "Flasks"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "cast_speed_increase_from_arcane_surge_also_applies_to_move_speed": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Cast Speed from Arcane Surge",
+     "target": "Movement Speed"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "champion_ascendancy_nearby_allies_fortification_is_equal_to_yours": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "count-as-vs-equal",
+    "fields": {
+     "axis": "value",
+     "bound_value": "Fortification of Nearby Allies",
+     "entity_scope": "you↔nearby allies",
+     "reference_value": "your Fortification",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "chaos_damage_over_time_heals_while_leeching_life": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "condition": "while Leeching Life",
+     "event": "Taking Chaos Damage over Time",
+     "from": "Damage",
+     "mode": "instead",
+     "to": "Healing"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "chaos_damage_resisted_by_highest_resistance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "event": "Resistance applied to Chaos Damage you Deal with Hits",
+     "from": "Chaos Resistance",
+     "mode": "instead",
+     "to": "highest Resistance"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "chaos_damage_resisted_by_lowest_resistance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "event": "Resistance applied to Chaos Damage you Deal with Hits",
+     "from": "Chaos Resistance",
+     "mode": "instead",
+     "to": "lowest Resistance"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "chart_dropped_currency_converted_to_stacked_decks": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Basic Currency items dropped by Monsters in adjacent Areas",
+     "from": "Basic Currency",
+     "mode": "instead",
+     "to": "Stacked Decks"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "consecrated_path_and_purifying_flame_create_profane_ground_instead_of_consecrated_ground": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Ground created by Consecrated Path and Purifying Flame",
+     "from": "Consecrated Ground",
+     "mode": "instead",
+     "to": "Profane Ground"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "convert_all_elemental_damage_to_chaos": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "fraction": "100%",
+     "pool_a": "All Elemental Damage",
+     "pool_b": "Chaos Damage"
+    },
+    "operator": "CONVERT"
+   }
+  ]
+ },
+ "count_as_blocking_attack_from_shield_attack_first_target": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "enabling_condition": "from the first target Hit with each Shield Attack",
+     "predicate": "Blocking Attack Damage",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "count_as_having_max_endurance_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "having maximum number of Endurance Charges",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "count_as_having_max_endurance_frenzy_power_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "having maximum number of Endurance Charges",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   },
+   {
+    "fields": {
+     "predicate": "having maximum number of Frenzy Charges",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   },
+   {
+    "fields": {
+     "predicate": "having maximum number of Power Charges",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "count_as_having_max_frenzy_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "having maximum number of Frenzy Charges",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "count_as_having_max_power_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "having maximum number of Power Charges",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "create_fungal_ground_instead_of_consecrated_ground": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Ground created",
+     "from": "Consecrated Ground",
+     "mode": "instead",
+     "to": "Fungal Ground"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "create_profane_ground_instead_of_consecrated_ground": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Ground created",
+     "from": "Consecrated Ground",
+     "mode": "instead",
+     "to": "Profane Ground"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "curse_apply_as_aura": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Curse Skills application",
+     "from": "direct Curse",
+     "mode": "instead",
+     "scope": "Supported Curse Skills",
+     "to": "Aura"
+    },
+    "operator": "SUBSTITUTE"
+   },
+   {
+    "fields": {
+     "predicate": "Aura Skills",
+     "subject": "Supported Curse Skills"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "curse_aura_skills_reserve_life": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Curse Aura Skills Reserve",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "curse_skills_cost_life_instead_of_mana": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Curse Skills Cost",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "damage_+%_per_1%_increased_item_found_quantity": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Quantity of Items found",
+     "target": "Damage"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "defences_from_animated_guardians_items_apply_to_animated_weapon": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Defences of Items attached to Animated Guardian",
+     "from": "Animated Guardian",
+     "mode": "also",
+     "to": "Animated Weapons"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "discharge_and_voltaxic_burst_nova_spells_cast_at_target_location": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Cast location of Discharge and Voltaxic Burst",
+     "from": "around you",
+     "mode": "instead",
+     "to": "the targeted location"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "dominating_blow_and_absolution_additive_minion_damage_modifiers_apply_to_you_at_150%_value": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "factor": "150%",
+     "mode": "also",
+     "source": "Minion Damage",
+     "target": "Dominating Blow and Absolution"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "dropped_items_are_converted_to_divination_cards": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Dropped Items with Rarity",
+     "from": "their normal drops",
+     "mode": "instead",
+     "to": "Divination Cards"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "dropped_items_are_converted_to_maps": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Dropped Items with Rarity",
+     "from": "their normal drops",
+     "mode": "instead",
+     "to": "Maps"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "dropped_items_are_converted_to_scarabs_based_on_rarity": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Dropped Items with Rarity",
+     "from": "their normal drops",
+     "mode": "instead",
+     "to": "Scarabs"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "elemental_damage_resisted_by_lowest_elemental_resistance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "event": "Resistance applied to Elemental Damage you Deal with Hits",
+     "from": "corresponding Elemental Resistance",
+     "mode": "instead",
+     "to": "lowest Elemental Resistance"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "elemental_resistances_are_limited_by_highest_maximum_elemental_resistance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "event": "Elemental Resistance cap",
+     "from": "each own Maximum",
+     "mode": "instead",
+     "to": "highest Maximum Elemental Resistance"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "enemies_in_presence_and_you_count_as_moving_when_affected_by_elemental_ailments": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "enabling_condition": "while affected by Elemental Ailments",
+     "predicate": "moving",
+     "subject": "You"
+    },
+    "operator": "COUNT_AS"
+   },
+   {
+    "fields": {
+     "enabling_condition": "while affected by Elemental Ailments",
+     "predicate": "moving",
+     "subject": "Enemies in your Presence"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "enemies_you_ignite_take_chaos_damage_from_ignite_instead": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "dealt_vs_taken": "taken",
+     "event": "Ignite Damage taken by Enemies",
+     "from": "Fire Damage",
+     "mode": "instead",
+     "to": "Chaos Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "energy_shield_%_of_evasion_rating_gained_on_block": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": "{0}%",
+     "condition": "when you Block",
+     "source": "Evasion Rating",
+     "target": "Energy Shield recovered"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "energy_shield_additive_modifiers_instead_apply_to_ward": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "Maximum Energy Shield",
+     "target": "Ward"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "exsanguinate_debuff_deals_fire_damage_instead_of_physical_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "dealt_vs_taken": "dealt",
+     "event": "Exsanguinate debuff Damage",
+     "from": "Physical Damage",
+     "mode": "instead",
+     "to": "Fire Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "extreme_luck_unluck": {
+  "out_of_vocabulary_reason": "Your Lucky or Unlucky effects use the best or worst from three rolls instead of two",
+  "prose_only": true
+ },
+ "fireball_and_rolling_magma_modifiers_to_projectile_count_do_not_apply": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "scope": "Fireball and Rolling Magma",
+     "subject": "you",
+     "suppressed": "Modifiers to number of Projectiles"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "flasks_apply_to_your_linked_targets": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Non-Unique Utility Flasks you Use effect",
+     "from": "you",
+     "mode": "also",
+     "to": "Linked Targets"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "flasks_apply_to_your_zombies_and_spectres": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Flasks you Use effect",
+     "from": "you",
+     "mode": "also",
+     "to": "your Raised Zombies and Spectres"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "gain_absorption_charges_instead_of_power_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Charges gained",
+     "from": "Power Charges",
+     "mode": "instead",
+     "to": "Absorption Charges"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "gain_accuracy_rating_equal_to_2_times_strength": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 2,
+     "source": "Strength",
+     "target": "Accuracy Rating"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "gain_accuracy_rating_equal_to_strength": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 1,
+     "source": "Strength",
+     "target": "Accuracy Rating"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "gain_affliction_charges_instead_of_frenzy_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Charges gained",
+     "from": "Frenzy Charges",
+     "mode": "instead",
+     "to": "Affliction Charges"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "gain_boons_instead_of_afflictions_when_using_a_pact_skill": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Pact Skills grant",
+     "from": "Afflictions",
+     "mode": "instead",
+     "to": "Boons"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "gain_brutal_charges_instead_of_endurance_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Charges gained",
+     "from": "Endurance Charges",
+     "mode": "instead",
+     "to": "Brutal Charges"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "gain_maximum_life_instead_of_maximum_es_from_armour": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Maximum stat from Equipped Armour Items",
+     "from": "Energy Shield",
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "gain_no_maximum_life_from_strength": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "subject": "you",
+     "suppressed": "Strength's bonus to Maximum Life"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "gain_no_maximum_mana_from_intelligence": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "subject": "you",
+     "suppressed": "Intelligence's inherent bonus to Maximum Mana"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "gain_spell_cost_as_energy_shield_every_fifth_cast": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 1,
+     "condition": "every third time you Pay it",
+     "source": "Spell's Upfront Cost",
+     "target": "Energy Shield gained"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "has_avoid_shock_as_avoid_all_elemental_ailments": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Chance to Avoid being Shocked",
+     "target": "all Elemental Ailments"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "has_curse_limit_equal_to_maximum_power_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "value",
+     "bound_value": "Curse Limit",
+     "reference_value": "Maximum Power Charges",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "has_ignite_duration_on_self_as_all_elemental_ailments_on_self": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Ignite Duration on you",
+     "target": "all Elemental Ailments on you"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "heist_currency_alteration_drops_as_regal_%": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "In Heists Orbs of Alteration drop",
+     "from": "Orbs of Alteration",
+     "mode": "instead",
+     "probability": "%",
+     "to": "Regal Orbs"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "heist_currency_augmentation_drops_as_regal_%": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "In Heists Orbs of Augmentation drop",
+     "from": "Orbs of Augmentation",
+     "mode": "instead",
+     "probability": "%",
+     "to": "Regal Orbs"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "heist_currency_chaos_drops_as_ancient_%": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "In Heists Chaos Orbs drop",
+     "from": "Chaos Orbs",
+     "mode": "instead",
+     "probability": "%",
+     "to": "Ancient Orbs"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "heist_currency_chaos_drops_as_divine_%": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "In Heists Chaos Orbs drop",
+     "from": "Chaos Orbs",
+     "mode": "instead",
+     "probability": "%",
+     "to": "Divine Orbs"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "heist_currency_chaos_drops_as_exalted_%": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "In Heists Chaos Orbs drop",
+     "from": "Chaos Orbs",
+     "mode": "instead",
+     "probability": "%",
+     "to": "Exalted Orbs"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "heist_currency_regret_drops_as_annulment_%": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "In Heists Orbs of Regret drop",
+     "from": "Orbs of Regret",
+     "mode": "instead",
+     "probability": "%",
+     "to": "Orbs of Annulment"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "heist_currency_scouring_drops_as_annulment_%": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "In Heists Orbs of Scouring drop",
+     "from": "Orbs of Scouring",
+     "mode": "instead",
+     "probability": "%",
+     "to": "Orbs of Annulment"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_acrobatics": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "factor": "50%",
+     "mode": "instead",
+     "source": "Chance to Suppress Spell Damage",
+     "target": "Chance to Dodge Spell Hits"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "keystone_ailment_crit": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "value",
+     "bound_value": "Damage over Time Multiplier for Ailments",
+     "reference_value": "Critical Strike Multiplier",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   },
+   {
+    "fields": {
+     "suppressed": "Critical Strikes dealing extra Damage"
+    },
+    "operator": "SUPPRESS"
+   },
+   {
+    "fields": {
+     "suppressed": "Non-Critical Strikes inflicting Ailments"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "keystone_avatar_of_fire": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "fraction": "50%",
+     "pool_a": "Physical, Cold and Lightning Damage",
+     "pool_b": "Fire Damage"
+    },
+    "operator": "CONVERT"
+   },
+   {
+    "fields": {
+     "suppressed": "Non-Fire Damage"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "keystone_blood_magic": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "suppressed": "Mana"
+    },
+    "operator": "SUPPRESS"
+   },
+   {
+    "fields": {
+     "event": "Skills Cost",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   },
+   {
+    "fields": {
+     "event": "Skills Reserve",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_eldritch_battery": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Skill Mana Costs spending",
+     "from": "Mana",
+     "mode": "instead",
+     "order": {
+      "consumed_before": [
+       "Energy Shield",
+       "Mana"
+      ]
+     },
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   },
+   {
+    "fields": {
+     "event": "Energy Shield protection",
+     "from": "Life",
+     "mode": "instead",
+     "to": "Mana"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_elemental_overload": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "suppressed": "Your Critical Strikes dealing extra Damage"
+    },
+    "operator": "SUPPRESS"
+   },
+   {
+    "fields": {
+     "suppressed": "Ailments counting as from Critical Strikes"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "keystone_emperors_heart": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Life Recovery from Flasks",
+     "from": "Life",
+     "mode": "also",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_eternal_youth": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Energy Shield Recharge application",
+     "from": "Life",
+     "mode": "instead",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_ghost_dance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "subject": "you",
+     "suppressed": "Energy Shield recovery above Evasion Rating"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "keystone_ghost_reaver": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Leech",
+     "from": "Life",
+     "mode": "instead",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   },
+   {
+    "fields": {
+     "suppressed": "Energy Shield Recharge"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "keystone_hollow_palm_technique": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "enabling_condition": "while you are Unencumbered",
+     "predicate": "Dual Wielding",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "keystone_iron_reflexes": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "fraction": "100%",
+     "pool_a": "Evasion Rating",
+     "pool_b": "Armour"
+    },
+    "operator": "CONVERT"
+   },
+   {
+    "fields": {
+     "suppressed": "Dexterity's bonus to Evasion Rating"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "keystone_magebane": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "subject": "you",
+     "suppressed": "Dexterity's inherent bonus to Evasion Rating"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "keystone_mental_conditioning": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "extra_factor": "2x",
+     "fraction": "80%",
+     "pool_a": "Maximum Mana",
+     "pool_b": "Armour"
+    },
+    "operator": "CONVERT"
+   }
+  ]
+ },
+ "keystone_prismatic_bulwark": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Armour damage mitigation",
+     "from": "Physical Damage",
+     "mode": "instead",
+     "to": "Fire, Cold and Lightning Damage taken from Hits"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_quiet_might": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Charges gained",
+     "from": "Frenzy Charges",
+     "mode": "instead",
+     "to": "Power Charges"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_retaliation_hits": {
+  "out_of_vocabulary_reason": "Damaging Retaliation Skills become Usable every sixth Hit from Enemies instead",
+  "prose_only": true
+ },
+ "keystone_solipsism": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "subject": "you",
+     "suppressed": "Intelligence's inherent bonus to Energy Shield"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "keystone_soul_tether": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "value",
+     "bound_value": "Energy Shield",
+     "reference_value": "zero",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   },
+   {
+    "fields": {
+     "suppressed": "Energy Shield Recharge or Regeneration"
+    },
+    "operator": "SUPPRESS"
+   },
+   {
+    "fields": {
+     "event": "Life Leech Recovery while on Full Life",
+     "from": "Life",
+     "mode": "instead",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_strong_bowman": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "redirect-vs-substitute",
+    "fields": {
+     "event": "Strength's Damage bonus application",
+     "from": "Melee Attack Damage",
+     "mode": "also",
+     "scope": "Supported Skills",
+     "to": "Projectile Attack Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "keystone_tinctures_drain_life": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Tinctures infliction",
+     "from": "Mana Burn",
+     "mode": "instead",
+     "to": "Weeping Wounds"
+    },
+    "operator": "SUBSTITUTE"
+   },
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "Effects that interact with Mana Burn",
+     "target": "Weeping Wounds"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "kinetic_blast_modifiers_to_number_of_projectiles_instead_apply_to_number_of_clusters": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "number of Projectiles",
+     "target": "the number of Explosions"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "kinetic_bolt_forks_apply_to_zig_zags": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "projectiles Fork",
+     "target": "change direction additional times"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "leech_energy_shield_instead_of_life": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Leech",
+     "from": "Life",
+     "mode": "instead",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "life_leech_is_applied_to_remora_link_targets_instead": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Life Leech Recovery",
+     "from": "you",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Linked Target"
+    },
+    "operator": "SUBSTITUTE"
+   },
+   {
+    "fields": {
+     "coefficient": 1,
+     "source": "yours",
+     "target": "Linked target's Maximum total Life Recovery per second from Leech"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "life_recoup_applies_to_energy_shield_instead": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Recoup",
+     "from": "Life",
+     "mode": "instead",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "light_radius_additive_modifiers_apply_to_buff_effect_of_link_skills_if_link_target_is_your_permanent_mercenary": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "condition": "link target is your permanent Mercenary",
+     "mode": "also",
+     "source": "Light Radius",
+     "target": "Effect of your Link Skill Buffs on your Mercenary"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "light_radius_additive_modifiers_apply_to_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Light Radius",
+     "target": "Damage"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "light_radius_increases_apply_to_accuracy": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Light Radius",
+     "target": "Accuracy"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "light_radius_increases_apply_to_area_of_effect": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Light Radius",
+     "target": "this Skill's Area of Effect"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "light_radius_scales_with_energy_shield": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 1,
+     "source": "Energy Shield",
+     "target": "Light Radius"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "link_skills_grant_redirect_curses_to_link_source": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Curses inflicted",
+     "from": "Linked targets",
+     "mode": "instead",
+     "to": "you"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "local_flask_gain_charges_consumed_as_vaal_souls_on_use": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 1,
+     "condition": "when used",
+     "source": "Charges Consumed",
+     "target": "Vaal Souls gained"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "local_flask_life_recovery_from_flasks_also_recovers_energy_shield": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Life Recovery from Flasks",
+     "from": "Life",
+     "mode": "also",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "local_left_ring_socketed_curse_replaces_skitterbots_chilling_aura": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Chilling Skitterbot's Aura application",
+     "from": "Chilling Aura",
+     "mode": "instead",
+     "to": "Socketed Hex Curse"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "local_right_ring_socketed_curse_replaces_skitterbots_shocking_aura": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Shocking Skitterbot's Aura application",
+     "from": "Shocking Aura",
+     "mode": "instead",
+     "to": "Socketed Hex Curse"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "local_unique_jewel_alternate_tree_internal_revision": {
+  "out_of_vocabulary_reason": "Carved to glorify {1} new faithful converted by High Templar Venarius(Avarius-Maxarius) / Passives in radius are Conquered by the Templars",
+  "prose_only": true
+ },
+ "local_unique_jewel_cold_damage_increases_applies_to_physical_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "scope": "in Radius",
+     "source": "Cold Damage in Radius",
+     "target": "Physical Damage"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "local_unique_jewel_damage_increases_applies_to_fire_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "scope": "in Radius",
+     "source": "other Damage Types in Radius",
+     "target": "Fire Damage"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "local_unique_jewel_dex_and_int_apply_to_str_melee_damage_bonus_in_radius": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "count-as-vs-equal",
+    "fields": {
+     "enabling_condition": "for the Strength Melee Damage bonus",
+     "predicate": "Strength",
+     "scope": "in Radius",
+     "subject": "Dexterity and Intelligence from passives in Radius"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "local_unique_jewel_energy_shield_increases_applies_to_armour_doubled": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "factor": "200%",
+     "mode": "also",
+     "scope": "in Radius",
+     "source": "Energy Shield in Radius",
+     "target": "Armour"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "local_unique_jewel_evasion_increases_applies_to_armour": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "scope": "in Radius",
+     "source": "Evasion Rating in Radius",
+     "target": "Armour"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "local_unique_jewel_life_increases_applies_to_energy_shield": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "scope": "in Radius",
+     "source": "Life in Radius",
+     "target": "Energy Shield"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "local_unique_jewel_life_increases_applies_to_mana_doubled": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "factor": "200%",
+     "mode": "also",
+     "scope": "in Radius",
+     "source": "Life in Radius",
+     "target": "Mana"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "local_unique_jewel_passives_in_radius_applied_to_minions_instead": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Passives in Radius application",
+     "from": "you",
+     "mode": "instead",
+     "to": "Minions"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "local_unique_jewel_physical_damage_increases_applies_to_cold_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "scope": "in Radius",
+     "source": "Physical Damage in Radius",
+     "target": "Cold Damage"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "maximum_absorption_charges_is_equal_to_maximum_power_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "max",
+     "bound_value": "Maximum Absorption Charges",
+     "reference_value": "Maximum Power Charges",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "maximum_affliction_charges_is_equal_to_maximum_frenzy_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "max",
+     "bound_value": "Maximum Affliction Charges",
+     "reference_value": "Maximum Frenzy Charges",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "maximum_brutal_charges_is_equal_to_maximum_endurance_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "max",
+     "bound_value": "Maximum Brutal Charges",
+     "reference_value": "Maximum Endurance Charges",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "maximum_endurance_charges_is_equal_to_maximum_frenzy_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "max",
+     "bound_value": "Maximum Endurance Charges",
+     "reference_value": "Maximum Frenzy Charges",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "maximum_frenzy_charges_is_equal_to_maximum_power_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "max",
+     "bound_value": "Maximum Frenzy Charges",
+     "reference_value": "Maximum Power Charges",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "melee_hits_grant_rampage_stacks": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "Rampage Kills",
+     "subject": "Melee Hits"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "minion_damage_increases_and_reductions_also_affects_you": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Minion Damage",
+     "target": "you"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "minions_get_shield_stats_instead_of_you": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "All bonuses from an Equipped Shield",
+     "from": "you",
+     "mode": "instead",
+     "to": "your Minions"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "minions_have_same_num_of_charges_as_owner": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "count-as-vs-equal",
+    "fields": {
+     "axis": "value",
+     "bound_value": "Endurance, Frenzy and Power Charges of Minions",
+     "entity_scope": "minions↔you",
+     "reference_value": "your Charges",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "minions_use_your_main_hand_base_crit_chance_from_weapon": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "base",
+     "bound_value": "Base Attack Critical Strike Chance of Minions from this Skill",
+     "entity_scope": "minions↔you",
+     "reference_value": "Critical Strike Chance of your Main Hand Weapon",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "modifiers_to_attributes_instead_apply_to_ascendance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "Attributes",
+     "target": "Omniscience"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Debuff Duration",
+     "target": "this Skill's Soul Gain Prevention"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_claw_attack_speed_also_affect_unarmed_melee_attack_speed": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Claw Attack Speed",
+     "target": "Unarmed Attack Speed with Melee Skills"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_claw_critical_strike_chance_also_affect_unarmed_melee_critical_strike_chance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Claw Critical Strike Chance",
+     "target": "Unarmed Critical Strike Chance with Melee Skills"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_claw_critical_strike_chance_apply_minion_critical_strike_chance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Claw Critical Strike Chance",
+     "target": "Minions"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_claw_critical_strike_multiplier_apply_minion_critical_strike_multiplier": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Claw Critical Strike Multiplier",
+     "target": "Minions"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_claw_damage_also_affect_unarmed_melee_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Claw Damage",
+     "target": "Unarmed Attack Damage with Melee Skills"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_map_item_drop_quantity_also_apply_to_map_item_drop_rarity": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Quantity of Items found in this Area",
+     "target": "Rarity"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_maximum_fire_resistance_apply_to_maximum_cold_and_lightning_resistance": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Maximum Fire Resistance",
+     "target": "Maximum Cold and Lightning Resistances"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_minimum_endurance_charges_instead_apply_to_brutal_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "Minimum Endurance Charges",
+     "target": "Minimum Brutal Charges"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_minimum_frenzy_charges_instead_apply_to_affliction_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "Minimum Frenzy Charges",
+     "target": "Minimum Affliction Charges"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_minimum_power_charges_instead_apply_to_absorption_charges": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "Minimum Power Charges",
+     "target": "Minimum Absorption Charges"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_number_of_projectiles_instead_apply_to_chaining": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "number of Projectiles",
+     "target": "the number of times this Skill Chains"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_number_of_projectiles_instead_apply_to_number_of_summoned_ghost_cannons": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "number of Projectiles",
+     "target": "create an additional Ghostly Cannon"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_number_of_projectiles_instead_apply_to_splitting": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "number of Projectiles",
+     "target": "the number of targets Projectiles Split towards"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_projectile_count_do_not_apply": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "scope": "this Skill",
+     "subject": "you",
+     "suppressed": "Modifiers to number of Projectiles"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Skill Effect Duration",
+     "target": "this Skill's Soul Gain Prevention"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_totem_duration_also_affect_soul_prevention_duration": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Totem Duration",
+     "target": "this Skill's Soul Gain Prevention"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_trap_throw_speed_apply_to_lightning_spire_trap_frequency": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Trap Throwing Speed",
+     "target": "strike Frequency"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "modifiers_to_trap_throw_speed_apply_to_seismic_trap_frequency": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Trap Throwing Speed",
+     "target": "wave release Frequency"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "nearby_enemies_lightning_resist_equal_to_yours": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "value",
+     "bound_value": "Lightning Resistance of Nearby Enemies",
+     "entity_scope": "you↔nearby enemies",
+     "reference_value": "your Lightning Resistance",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "nearby_party_members_max_endurance_charges_is_equal_to_yours": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "max",
+     "bound_value": "Maximum Endurance Charges of nearby party members",
+     "entity_scope": "you↔nearby party members",
+     "reference_value": "your Maximum Endurance Charges",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "non_curse_auras_only_apply_to_you_and_linked_targets": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "in range of Non-Curse Auras from your Skills",
+     "subject": "Linked Targets"
+    },
+    "operator": "COUNT_AS"
+   },
+   {
+    "fields": {
+     "event": "Non-Curse Auras from your Skills application",
+     "from": "you only",
+     "mode": "instead",
+     "to": "you and Linked Targets"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "non_spectre_minions_use_your_main_hand_base_attack_duration_from_weapon": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "base",
+     "bound_value": "Base Attack time of Non-Spectre Minions",
+     "entity_scope": "minions↔you",
+     "reference_value": "Attack time of your Main Hand Weapon",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "nova_spells_cast_at_target_location": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Cast location of Nova Spells",
+     "from": "around you",
+     "mode": "instead",
+     "to": "the targeted location"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "nova_spells_cast_at_target_location_description_mode": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Cast location of Nova Spells",
+     "from": "around you",
+     "mode": "instead",
+     "to": "the targeted location"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "number_of_warcries_exerting_this_action": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "Exerted",
+     "subject": "Attacks with Supported Skills"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "offerings_also_buff_you": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Your Offering Skills effect",
+     "from": "Minions",
+     "mode": "also",
+     "to": "you"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "overcapped_fire_resistance_gain_as_fire_penetration": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 1,
+     "condition": "up to a maximum of 200%",
+     "source": "your Overcapped Fire Resistance",
+     "target": "Fire Resistance Penetration"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "projectile_damage_modifiers_apply_to_skill_dot": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Projectile Damage",
+     "target": "this Skill's Damage Over Time effect"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "quicksilver_flasks_apply_to_nearby_allies": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Quicksilver Flasks you Use effect",
+     "from": "you",
+     "mode": "also",
+     "to": "nearby Allies"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "rage_grants_spell_damage_instead": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "redirect-vs-substitute",
+    "fields": {
+     "event": "Rage's damage grant",
+     "from": "Attack Damage",
+     "mode": "instead",
+     "to": "Spell Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "rage_grants_spell_damage_instead_at_50%_value": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "redirect-vs-substitute",
+    "fields": {
+     "event": "Rage's damage grant",
+     "factor": "50%",
+     "from": "Attack Damage",
+     "mode": "instead",
+     "to": "Spell Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "raised_zombies_are_usable_as_corpses_when_alive": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "corpses",
+     "subject": "your Raised Zombies"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "reap_debuff_deals_fire_damage_instead_of_physical_damage": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "convert-vs-substitute",
+    "fields": {
+     "dealt_vs_taken": "dealt",
+     "event": "Reap debuff Damage",
+     "from": "Physical Damage",
+     "mode": "instead",
+     "to": "Fire Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "regenerate_energy_shield_instead_of_life": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Life Regeneration application",
+     "from": "Life",
+     "mode": "instead",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "remote_mined_by_support": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 1,
+     "scope": "Supported Skills",
+     "source": "Base Mana and Life Cost",
+     "target": "Base Reservation"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "skill_is_blessing_skill": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "predicate": "Blessing Skills",
+     "subject": "Supported Skills"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "skill_is_steel_skill_reload": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 1,
+     "source": "Damage of removed Impales multiplied by the number of Hits they have left",
+     "target": "Physical Damage reflected around each Enemy"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "skills_that_throw_mines_reserve_life": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Skills that throw Mines Reserve",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "spell_block_equals_attack_block": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "value",
+     "bound_value": "Chance to Block Spell Damage",
+     "reference_value": "Chance to Block Attack Damage",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   },
+   {
+    "fields": {
+     "axis": "max",
+     "bound_value": "Maximum Chance to Block Spell Damage",
+     "reference_value": "Maximum Chance to Block Attack Damage",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   }
+  ]
+ },
+ "spell_damage_modifiers_apply_to_skill_dot": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "also",
+     "source": "Spell Damage",
+     "target": "Supported Skill's Damage Over Time effect"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "start_at_zero_energy_shield": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "axis": "value",
+     "bound_value": "Energy Shield",
+     "reference_value": "zero",
+     "source_behavior": "unspecified"
+    },
+    "operator": "EQUAL"
+   },
+   {
+    "fields": {
+     "suppressed": "Energy Shield Recharge or Regeneration"
+    },
+    "operator": "SUPPRESS"
+   },
+   {
+    "fields": {
+     "event": "Life Leech Recovery while on Full Life",
+     "from": "Life",
+     "mode": "instead",
+     "to": "Energy Shield"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "strength_applies_to_fish_reel_speed_at_20%_value": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "redirect-vs-substitute",
+    "fields": {
+     "event": "Strength's Damage bonus application",
+     "factor": "20%",
+     "from": "Melee Attack Damage",
+     "mode": "also",
+     "to": "Reeling Speed"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "strength_damage_bonus_grants_melee_physical_damage_+3%_per_10_strength_instead": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Strength's Damage Bonus grant",
+     "from": "its default value",
+     "mode": "instead",
+     "to": "3% increased Melee Physical Damage per 10 Strength"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "strong_casting": {
+  "prose_only": false,
+  "relations": [
+   {
+    "classification_uncertainty": "redirect-vs-substitute",
+    "fields": {
+     "event": "Strength's Damage bonus application",
+     "from": "Melee Physical Damage",
+     "mode": "also",
+     "scope": "Supported Skills",
+     "to": "all Spell Damage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "stun_threshold_based_on_energy_shield_instead_of_life": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "coefficient": 1,
+     "source": "Energy Shield",
+     "target": "Stun Threshold"
+    },
+    "operator": "DERIVE"
+   }
+  ]
+ },
+ "summon_2_totems": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Number of Totems summoned",
+     "from": "one",
+     "mode": "instead",
+     "to": "two"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "summoned_skitterbots_auras_also_affect_you": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Summoned Skitterbots' Auras effect",
+     "from": "Enemies",
+     "mode": "also",
+     "to": "you"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "support_spell_cascade_number_of_cascades_per_side": {
+  "out_of_vocabulary_reason": "Supported Area of Effect Skills also affect areas in front of, behind, and on each side of the targeted area",
+  "prose_only": true
+ },
+ "support_spell_cascade_sideways": {
+  "out_of_vocabulary_reason": "Supported Area of Effect Skills also affect areas in front of, behind, and on each side of the targeted area",
+  "prose_only": true
+ },
+ "tinctures_can_apply_to_ranged_weapons": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Tincture Effects",
+     "from": "Melee Weapons",
+     "mode": "also",
+     "to": "Ranged Weapons"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "trap_throw_skills_have_blood_magic": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Skills which throw Traps Cost",
+     "from": "Mana",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Life"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "triggered_by_spiritual_cry": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Supported Skills execution",
+     "from": "direct use",
+     "mode": "instead",
+     "to": "used by Mirage Warriors Summoned by General's Cry"
+    },
+    "operator": "SUBSTITUTE"
+   },
+   {
+    "fields": {
+     "predicate": "Triggered",
+     "subject": "Supported Skills"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "vaal_attack_rage_cost_instead_of_souls_per_use": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Vaal Attack Skills you Use Cost",
+     "from": "Souls",
+     "has_magnitude": true,
+     "mode": "instead",
+     "to": "Rage"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "vaal_ice_shot_modifiers_to_projectile_count_do_not_apply_to_mirages": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "scope": "this Skill when used by Mirage Sharpshooters",
+     "subject": "you",
+     "suppressed": "Modifiers to number of Projectiles"
+    },
+    "operator": "SUPPRESS"
+   }
+  ]
+ },
+ "vaal_lightning_arrow_fork_and_chain_modifiers_apply_to_number_of_redirects": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "mode": "instead",
+     "source": "Projectiles Fork or Chain",
+     "target": "change direction additional times"
+    },
+    "operator": "REDIRECT"
+   }
+  ]
+ },
+ "vigilant_and_flicker_strike_active_skill_cooldown_bypass_type_override_to_power_charge": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Cooldown bypass fuel of Flicker Strike and Vigilant Strike",
+     "from": "Frenzy or Endurance Charges",
+     "mode": "instead",
+     "to": "Power Charges"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ },
+ "water_sphere_does_weird_conversion_stuff": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "condition": "while Sphere has no Ailments",
+     "fraction": "100%",
+     "pool_a": "Physical Damage",
+     "pool_b": "Cold Damage"
+    },
+    "operator": "CONVERT"
+   },
+   {
+    "fields": {
+     "condition": "while sphere is Shocked or Sapped",
+     "fraction": "100%",
+     "pool_a": "Physical Damage",
+     "pool_b": "Lightning Damage"
+    },
+    "operator": "CONVERT"
+   },
+   {
+    "fields": {
+     "condition": "while Sphere is Frozen or Brittle",
+     "fraction": "100%",
+     "pool_a": "Physical Damage",
+     "pool_b": "Cold Damage"
+    },
+    "operator": "CONVERT"
+   }
+  ]
+ },
+ "you_count_as_full_life_while_affected_by_vulnerability": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "enabling_condition": "while Cursed with Vulnerability",
+     "predicate": "on Full Life",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "you_count_as_low_life_while_affected_by_vulnerability": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "enabling_condition": "while Cursed with Vulnerability",
+     "predicate": "on Low Life",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "you_count_as_low_life_while_not_on_full_life": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "enabling_condition": "while not on Full Life",
+     "predicate": "on Low Life",
+     "subject": "you"
+    },
+    "operator": "COUNT_AS"
+   }
+  ]
+ },
+ "your_profane_ground_also_affects_allies_granting_chaotic_might": {
+  "prose_only": false,
+  "relations": [
+   {
+    "fields": {
+     "event": "Profane Ground you create effect",
+     "from": "you",
+     "mode": "also",
+     "to": "you and your Allies"
+    },
+    "operator": "SUBSTITUTE"
+   }
+  ]
+ }
+}

@@ -80,5 +80,19 @@
     "cluster_implicit_type": "Area Damage",
     "use_regal": false,
     "exalt_after_regal": false
+  },
+  "combatant sword": {
+    "prefixes": [
+      " "
+    ],
+    "suffixes": [
+      "of Celebration",
+      "of Destruction",
+      "of Incision"
+    ],
+    "item_type": "1H Sword",
+    "cluster_implicit_type": "",
+    "use_regal": false,
+    "exalt_after_regal": false
   }
 }

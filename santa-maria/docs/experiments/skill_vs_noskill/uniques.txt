@@ -1,0 +1,51 @@
+#	node_id	name	class
+1	unique:1511	Fleshrender	Sword
+2	unique:213	Fencoil	Staff
+3	unique:370	Vaal Sentencing	Jewel
+4	unique:1127	Emperor's Vigilance	Shield
+5	unique:1547	Stormblood	Flask
+6	unique:295	Tasalio's Sign	Ring
+7	unique:185	Oro's Sacrifice	Sword
+8	unique:1107	Profane Proxy	Ring
+9	unique:1346	The Tower of Ordeals	Map
+10	unique:327	Tear of Purity	Amulet
+11	unique:310	Sire of Shards	Staff
+12	unique:932	Death's Harp	Bow
+13	unique:1251	Lord of Steel	Jewel
+14	unique:1207	Replica Heartbreaker	Dagger
+15	unique:800	Zeel's Amplifier	Shield
+16	unique:135	Rat's Nest	Helmet
+17	unique:251	Whakawairua Tuahu	Map
+18	unique:1358	Grand Spectrum	Jewel
+19	unique:640	Wildfire	Jewel
+20	unique:1260	Contract: Jamanra's Rest	HeistContract
+21	unique:1416	The Trickster's Smile	Helmet
+22	unique:1325	Melding of the Flesh	Jewel
+23	unique:1027	Death Rush	Ring
+24	unique:1162	Replica Winterheart	Amulet
+25	unique:426	Ylfeban's Trickery	Helmet
+26	unique:869	Corona Solaris	Wand
+27	unique:967	Ungil's Gauche	Dagger
+28	unique:1069	Cold Iron Point	Dagger
+29	unique:498	Clayshaper	Mace
+30	unique:206	Doon Cuebiyari	Mace
+31	unique:864	Amplification Rod	Wand
+32	unique:986	Headhunter	Belt
+33	unique:1200	Replica Voidwalker	Boots
+34	unique:1233	Replica Unstable Payload	Jewel
+35	unique:336	Twyzel	Wand
+36	unique:41	Wanderlust	Boots
+37	unique:1054	Glorious Vanity	Jewel
+38	unique:1094	Thread of Hope	Jewel
+39	unique:1092	The Saviour	Sword
+40	unique:870	Cragfall	Quiver
+41	unique:1476	Squirming Terror	Ring
+42	unique:1222	Replica Fragile Bloom	Jewel
+43	unique:65	Terminus Est	Sword
+44	unique:1324	The Oppressor	Shield
+45	unique:781	Apep's Supremacy	Shield
+46	unique:419	Demigod's Beacon	Shield
+47	unique:1044	Victario's Acuity	Amulet
+48	unique:1102	Misinformation	Watchstone
+49	unique:818	Ahkeli's Meadow	Ring
+50	unique:1152	Replica Kalisa's Grace	Gloves

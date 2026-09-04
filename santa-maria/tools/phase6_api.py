@@ -30,15 +30,20 @@ NODE_TYPES = ['Stat', 'Modifier', 'ModifierGroup', 'UniqueItem', 'Passive',
               'Gem', 'Tag', 'ItemClass']
 EDGE_TYPES = ['modifier_grants_stat', 'passive_grants_stat', 'gem_grants_stat',
               'unique_modifier_association', 'gem_has_tag', 'modifier_has_tag',
-              'modifier_in_group', 'unique_in_class', 'stat_scales_with']
+              'modifier_in_group', 'unique_in_class', 'stat_scales_with',
+              'sem_relation_binds', 'attribute_grants_stat',
+              'stat_mechanic_variant', 'stat_mechanic_operand']
 
 START_SEED_FILTERS = {'type', 'id_contains', 'name_contains', 'count', 'seed'}
 NEIGHBOUR_FILTERS = {'start', 'direction', 'edge_types', 'max_nodes_per_level',
-                     'include_provenance'}
+                     'include_provenance', 'carrier_grouping'}
+CARRIER_GROUP_CLASSES = {'modifier_grants_stat', 'passive_grants_stat', 'gem_grants_stat',
+                         'unique_modifier_association', 'modifier_has_tag', 'gem_has_tag',
+                         'modifier_in_group', 'unique_in_class'}
 
 DEFAULT_COUNT = 5
 MAX_COUNT = 20
-MAX_DEPTH = 4
+MAX_DEPTH = 6
 DEFAULT_MAX_NODES = 50
 MAX_NODES_PER_LEVEL = 200
 
@@ -198,6 +203,9 @@ class GraphDB:
         incl_prov = filters.get('include_provenance', False)
         if not isinstance(incl_prov, bool):
             raise ValueError('include_provenance must be a boolean')
+        carrier_grouping = filters.get('carrier_grouping', False)
+        if not isinstance(carrier_grouping, bool):
+            raise ValueError('carrier_grouping must be a boolean')
 
         nodes = self._load_nodes()
         if start not in nodes:
@@ -210,10 +218,16 @@ class GraphDB:
         truncated = False
         for d in range(1, depth + 1):
             cand = {}   # neighbor -> edge dict (from,to,type,direction,prov)
+            gagg = {}   # (carrier_type) -> set(member node ids); terminal virtual groups
             for node in sorted(frontier):
+                is_stat = nodes[node][0] == 'Stat'
                 for t in edge_types:
+                    grouping = carrier_grouping and is_stat and t in CARRIER_GROUP_CLASSES
                     if direction in ('out', 'both'):
                         for (tgt, prov) in out[t].get(node, []):
+                            if grouping:
+                                gagg.setdefault(nodes[tgt][0], set()).add(tgt)
+                                continue
                             if tgt in visited:
                                 continue
                             ed = {'from': node, 'to': tgt, 'type': t, 'direction': 'out',
@@ -223,6 +237,9 @@ class GraphDB:
                                 cand[tgt] = ed
                     if direction in ('in', 'both'):
                         for (src, prov) in inn[t].get(node, []):
+                            if grouping:
+                                gagg.setdefault(nodes[src][0], set()).add(src)
+                                continue
                             if src in visited:
                                 continue
                             ed = {'from': node, 'to': src, 'type': t, 'direction': 'in',
@@ -238,7 +255,12 @@ class GraphDB:
                           'direction': e['direction'],
                           **({'provenance': _compact_provenance(e['prov'])} if incl_prov else {})}
                          for e in ordered]
-            levels.append({'depth': d, 'edges': edges_out})
+            groups_out = [{'carrier_type': k, 'count': len(v), 'members': sorted(v)}
+                          for k, v in sorted(gagg.items())]
+            level = {'depth': d, 'edges': edges_out}
+            if carrier_grouping:
+                level['carrier_groups'] = groups_out
+            levels.append(level)
             if not ordered:
                 break
             for e in ordered:
