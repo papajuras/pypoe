@@ -8,6 +8,8 @@ Personal utility for Path of Exile crafting and economy monitoring.
   do. Prefer the smallest edit that answers the question.
 
 ## Behavioral contract
+- Always load the `discovery-api-usage` skill before any santa-maria KB/graph
+  work or build-discovery task — it is mandatory for those tasks.
 - Don't assume intent. If a request is ambiguous or has several plausible
   readings, ask before doing anything — never pick one silently. One question
   beats redoing wrong work.

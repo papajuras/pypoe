@@ -47,6 +47,25 @@ MAX_DEPTH = 6
 DEFAULT_MAX_NODES = 50
 MAX_NODES_PER_LEVEL = 200
 
+# ---- First-class Unique variants (Foulborn / Vestigial) ---------------------
+# Variants are API-layer derived entities associated with an existing base
+# UniqueItem node (no synthetic graph nodes, no modifier/stat duplication).
+# Membership provenance classes, strongest first (never upgraded):
+#   confirmed_edge                      - confirmed unique_modifier_association edge
+#   source_derived_vid_match            - Foulborn: exact VID token match, no KB edge
+#   source_derived_name_match           - Vestigial: name resolves to exactly 1 record, no KB edge
+#   ambiguous_name_shared_by_N_records  - Vestigial: source name held by N>1 records,
+#                                         attached to ALL of them, ambiguity preserved
+#   unresolved_no_such_unique           - Vestigial: source name matches no record (reported only)
+VARIANT_TYPES = ('Foulborn', 'Vestigial')
+VARIANT_EDGE = 'variant_modifier'
+VARIANT_MEMBERSHIP_CLASSES = ('confirmed_edge', 'source_derived_vid_match',
+                              'source_derived_name_match',
+                              'ambiguous_vid_shared_by_N_records',
+                              'ambiguous_name_shared_by_N_records',
+                              'unresolved_no_such_unique')
+SEED_TYPES = NODE_TYPES + ['Variant']
+
 
 def _node_name(node_id, payload):
     t = node_id.split(':', 1)[0]
@@ -69,6 +88,23 @@ def _node_name(node_id, payload):
     return None
 
 
+def _membership_class(membership):
+    """Normalize a membership label (with N substituted) to its enum class."""
+    if membership.startswith('ambiguous_') and '_shared_by_' in membership:
+        prefix = membership.split('_shared_by_')[0]  # 'ambiguous_name' | 'ambiguous_vid'
+        return prefix + '_shared_by_N_records'
+    return membership
+
+
+def _stronger(m_old, m_new):
+    """True if membership m_new is strictly stronger than m_old."""
+    rank = {'confirmed_edge': 3, 'source_derived_vid_match': 2,
+            'source_derived_name_match': 2,
+            'ambiguous_vid_shared_by_N_records': 1,
+            'ambiguous_name_shared_by_N_records': 1}
+    return rank[_membership_class(m_new)] > rank[_membership_class(m_old)]
+
+
 def _compact_provenance(prov):
     """Compact LLM-friendly provenance: source_file + field (+ method for uma)."""
     if not prov:
@@ -79,6 +115,8 @@ def _compact_provenance(prov):
         out['field'] = f['field']
     if f.get('method') is not None:
         out['method'] = f['method']
+    if f.get('membership'):
+        out['membership'] = f['membership']
     return out
 
 
@@ -90,6 +128,7 @@ class GraphDB:
         self.edges_db = Path(edges_db or EDGES_DB)
         self._nodes = None          # node_id -> (type, payload)
         self._edges = None          # dict of edges per type for adjacency
+        self._variants = None       # derived variant index (see VARIANT_TYPES)
 
     def _load_nodes(self):
         if self._nodes is not None:
@@ -126,6 +165,185 @@ class GraphDB:
         self._edges = (out, inn)
         return out, inn
 
+    # ---- derived variant index (Foulborn / Vestigial) -----------------------
+
+    def _load_variants(self):
+        """Deterministic variant index built from authoritative source data.
+
+        Population does NOT depend on unique_modifier_association edges: a
+        missing edge never deletes an otherwise identifiable variant. Edges
+        are read only to label membership as confirmed_edge when present.
+        """
+        if self._variants is not None:
+            return self._variants
+        nodes = self._load_nodes()
+        out, _inn = self._load_edges()
+        uma = out['unique_modifier_association']
+
+        rec_by_id = {}      # unique record_key -> {'name', 'vid'}
+        name_index = {}     # unique display name -> [record_keys]
+        for nid, (typ, p) in nodes.items():
+            if typ != 'UniqueItem':
+                continue
+            rk = nid.split(':', 1)[1]
+            name = p.get('id') or p.get('name') or ''
+            rec_by_id[rk] = {'name': name,
+                             'vid': (p.get('visual_identity') or {}).get('id') or ''}
+            if name:
+                name_index.setdefault(name, []).append(rk)
+
+        def edge_method(rk, mod_id):
+            """(has_confirmed_edge, resolver_method) for a (unique, modifier) pair."""
+            for tgt, prov in uma.get('unique:' + rk, []):
+                if tgt == mod_id:
+                    m = None
+                    for f in prov:
+                        if f.get('method') is not None:
+                            m = f['method']
+                            break
+                    return True, m
+            return False, None
+
+        def keep_stronger(per_record, rk, membership, method):
+            cur = per_record.get(rk)
+            if cur is None or _stronger(cur[0], membership):
+                per_record[rk] = (membership, method)
+
+        variants = {}
+        reverse = {}
+
+        def add(variant_id, vtype, rk, mod_id, membership, source_file, method):
+            v = variants.get(variant_id)
+            if v is None:
+                base = rec_by_id[rk]
+                v = variants[variant_id] = {
+                    'variant_id': variant_id,
+                    'variant_type': vtype,
+                    'base_unique_id': 'unique:' + rk,
+                    'base_unique_name': base['name'],
+                    'display_name': ('%s %s' % (vtype, base['name'])).strip(),
+                    'modifiers': [],
+                }
+            v['modifiers'].append({'modifier_id': mod_id,
+                                   'text': nodes[mod_id][1].get('text'),
+                                   'membership': membership,
+                                   'source_file': source_file, 'method': method})
+            reverse.setdefault(mod_id, []).append(
+                (variant_id, membership, source_file, method))
+
+        # ---- Foulborn: pool = MutatedUnique* Modifier nodes; ownership =
+        # confirmed edge OR exact VID-token match (method-1 rule, verbatim:
+        # vid must occur in the mod key at a non-digit boundary).
+        foul_mods = sorted(nid for nid, (typ, _p) in nodes.items()
+                           if typ == 'Modifier' and nid.startswith('mod:MutatedUnique'))
+
+        def foulborn_ok(p):
+            # unique_filter_mod semantics from the extraction contract
+            if p.get('generation_type') != 'unique':
+                return False
+            if not p.get('text'):
+                return False
+            for s in p.get('stats') or []:
+                sid = s.get('id') or ''
+                if sid.startswith('old_do_not_use_') or sid.startswith('dummy_'):
+                    return False
+            return True
+
+        foul_ok = {m: foulborn_ok(nodes[m][1]) for m in foul_mods}
+        vid2recs = {}
+        for rk, rec in rec_by_id.items():
+            if rec['vid']:
+                vid2recs.setdefault(rec['vid'], []).append(rk)
+        # per (record, mod) pair: strongest membership; a vid shared by N>1
+        # records identifies the pool entry but not one concrete record, so
+        # non-edge pairs are attached to ALL of them with explicit ambiguity.
+        foul_pairs = {}
+        for vid, rks in vid2recs.items():
+            for rk in rks:
+                for m in foul_mods:
+                    if not foul_ok[m]:
+                        continue
+                    k = m.split(':', 1)[1]
+                    i = k.find(vid)
+                    if i < 0 or k[i + len(vid):i + len(vid) + 1].isdigit():
+                        continue
+                    per_record = foul_pairs.setdefault(m, {})
+                    has_edge, method = edge_method(rk, m)
+                    if has_edge:
+                        keep_stronger(per_record, rk, 'confirmed_edge', method)
+                    elif len(rks) > 1:
+                        keep_stronger(per_record, rk,
+                                      'ambiguous_vid_shared_by_%d_records' % len(rks),
+                                      None)
+                    else:
+                        keep_stronger(per_record, rk,
+                                      'source_derived_vid_match', method)
+
+        foul_unresolved = []
+        for m in foul_mods:
+            per_record = foul_pairs.get(m)
+            if not per_record:
+                foul_unresolved.append(m)
+                continue
+            for rk in sorted(per_record):
+                membership, method = per_record[rk]
+                add('variant:foulborn:' + rk, 'Foulborn', rk, m,
+                    membership, 'pob/ModFoulborn.json', method)
+
+        # ---- Vestigial: membership strictly from pob/Vestigial.json
+        # (mod key -> unique display name(s)); name resolved against the record
+        # index; ambiguous names attach to ALL matching records.
+        vest_src = json.loads(
+            (SANTA / 'data' / 'pob' / 'Vestigial.json').read_text())
+
+        vest_unresolved = []
+        for modkey in sorted(vest_src):
+            names = [x for x in vest_src[modkey] if isinstance(x, str)]
+            mod_id = 'mod:' + modkey
+            if mod_id not in nodes:
+                continue
+            per_record = {}
+            matched_any = False
+            for nm in names:
+                matched = name_index.get(nm, [])
+                if not matched:
+                    continue
+                matched_any = True
+                if len(matched) == 1:
+                    rk = matched[0]
+                    has_edge, method = edge_method(rk, mod_id)
+                    keep_stronger(per_record, rk,
+                                  'confirmed_edge' if has_edge
+                                  else 'source_derived_name_match', method)
+                else:
+                    for rk in matched:
+                        has_edge, method = edge_method(rk, mod_id)
+                        if has_edge:
+                            keep_stronger(per_record, rk, 'confirmed_edge', method)
+                        else:
+                            keep_stronger(
+                                per_record, rk,
+                                'ambiguous_name_shared_by_%d_records' % len(matched),
+                                None)
+            if not matched_any:
+                vest_unresolved.append({'modifier_id': mod_id, 'names': names,
+                                        'membership': 'unresolved_no_such_unique'})
+                continue
+            for rk in sorted(per_record):
+                membership, method = per_record[rk]
+                add('variant:vestigial:' + rk, 'Vestigial', rk, mod_id,
+                    membership, 'pob/Vestigial.json', method)
+
+        # structural mutual exclusivity: a modifier belongs to exactly one pool
+        foul_set = set(foul_mods)
+        vest_set = {'mod:' + k for k in vest_src}
+        assert not (foul_set & vest_set), 'Foulborn/Vestigial modifier pools overlap'
+
+        self._variants = {'variants': variants, 'reverse': reverse,
+                          'unresolved': {'foulborn_mods': foul_unresolved,
+                                         'vestigial_mods': vest_unresolved}}
+        return self._variants
+
     # ---- get_start_seed ----
 
     def get_start_seed(self, filters):
@@ -138,8 +356,8 @@ class GraphDB:
                 filters.get('name_contains')):
             raise ValueError('get_start_seed requires at least one of type / id_contains / name_contains')
         ftype = filters.get('type')
-        if ftype is not None and ftype not in NODE_TYPES:
-            raise ValueError(f"invalid type {ftype!r}; must be one of {NODE_TYPES}")
+        if ftype is not None and ftype not in SEED_TYPES:
+            raise ValueError(f"invalid type {ftype!r}; must be one of {SEED_TYPES}")
         idc = filters.get('id_contains')
         if idc is not None and not isinstance(idc, str):
             raise ValueError('id_contains must be a string')
@@ -154,22 +372,40 @@ class GraphDB:
             raise ValueError('seed must be an integer')
 
         nodes = self._load_nodes()
+        vmap = self._load_variants()['variants']
         ids = []
-        for nid, (typ, payload) in nodes.items():
-            if ftype is not None and typ != ftype:
-                continue
-            if idc is not None and idc not in nid:
-                continue
-            if nmc is not None:
-                name = _node_name(nid, payload)
-                if not name or nmc.lower() not in name.lower():
+        if ftype != 'Variant':
+            for nid, (typ, payload) in nodes.items():
+                if ftype is not None and typ != ftype:
                     continue
-            ids.append(nid)
+                if idc is not None and idc not in nid:
+                    continue
+                if nmc is not None:
+                    name = _node_name(nid, payload)
+                    if not name or nmc.lower() not in name.lower():
+                        continue
+                ids.append(nid)
+        if ftype is None or ftype == 'Variant':
+            for vid, v in vmap.items():
+                if idc is not None and idc not in vid:
+                    continue
+                if nmc is not None and nmc.lower() not in v['display_name'].lower():
+                    continue
+                ids.append(vid)
         ids.sort()
         k = min(count, len(ids))
         sample = random.Random(seed).sample(ids, k) if k else []
-        return {'seeds': [{'node_id': nid, 'type': nodes[nid][0],
-                           'name': _node_name(nid, nodes[nid][1])} for nid in sample]}
+
+        def seed_entry(nid):
+            if nid in vmap:
+                v = vmap[nid]
+                return {'node_id': nid, 'type': 'Variant',
+                        'variant_type': v['variant_type'],
+                        'name': v['display_name']}
+            return {'node_id': nid, 'type': nodes[nid][0],
+                    'name': _node_name(nid, nodes[nid][1])}
+
+        return {'seeds': [seed_entry(nid) for nid in sample]}
 
     # ---- get_neighbour ----
 
@@ -189,13 +425,14 @@ class GraphDB:
             raise ValueError("direction must be one of 'out' | 'in' | 'both'")
         et = filters.get('edge_types')
         if et is None:
-            edge_types = list(EDGE_TYPES)
+            edge_types = list(EDGE_TYPES) + [VARIANT_EDGE]
         else:
             if not isinstance(et, list) or not et:
-                raise ValueError('edge_types must be a non-empty array')
+                raise ValueError(f"edge_types must be a non-empty array")
             for t in et:
-                if t not in EDGE_TYPES:
-                    raise ValueError(f"invalid edge_type {t!r}; must be one of {EDGE_TYPES}")
+                if t not in EDGE_TYPES and t != VARIANT_EDGE:
+                    raise ValueError(f"invalid edge_type {t!r}; must be one of "
+                                     f"{EDGE_TYPES + [VARIANT_EDGE]}")
             edge_types = list(et)
         cap = filters.get('max_nodes_per_level', DEFAULT_MAX_NODES)
         if not isinstance(cap, int) or isinstance(cap, bool) or not (1 <= cap <= MAX_NODES_PER_LEVEL):
@@ -208,7 +445,9 @@ class GraphDB:
             raise ValueError('carrier_grouping must be a boolean')
 
         nodes = self._load_nodes()
-        if start not in nodes:
+        vinfo = self._load_variants()
+        vmap = vinfo['variants']
+        if start not in nodes and start not in vmap:
             raise ValueError(f"start node not found: {start!r}")
         out, inn = self._load_edges()
 
@@ -220,8 +459,27 @@ class GraphDB:
             cand = {}   # neighbor -> edge dict (from,to,type,direction,prov)
             gagg = {}   # (carrier_type) -> set(member node ids); terminal virtual groups
             for node in sorted(frontier):
-                is_stat = nodes[node][0] == 'Stat'
+                vmods = vmap[node]['modifiers'] if node in vmap else None
+                is_stat = node in nodes and nodes[node][0] == 'Stat'
+                if vmods is not None and VARIANT_EDGE in edge_types \
+                        and direction in ('out', 'both'):
+                    # variant-rooted level: one virtual ownership edge per member
+                    # modifier, provenance carries the membership class
+                    for minfo in vmods:
+                        tgt = minfo['modifier_id']
+                        if tgt in visited:
+                            continue
+                        prov = [{'source_file': minfo['source_file'],
+                                 'method': minfo['method'],
+                                 'membership': minfo['membership']}]
+                        ed = {'from': node, 'to': tgt, 'type': VARIANT_EDGE,
+                              'direction': 'out', 'prov': prov}
+                        cur = cand.get(tgt)
+                        if cur is None or (VARIANT_EDGE, node) < (cur['type'], cur['from']):
+                            cand[tgt] = ed
                 for t in edge_types:
+                    if t not in out:
+                        continue    # virtual variant edges have no stored adjacency
                     grouping = carrier_grouping and is_stat and t in CARRIER_GROUP_CLASSES
                     if direction in ('out', 'both'):
                         for (tgt, prov) in out[t].get(node, []):
