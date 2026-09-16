@@ -1,0 +1,56 @@
+Prepare a frozen seed corpus for future standardized PoE discovery experiments.
+
+Do not run the discovery experiment yet. The deliverable is only the seed corpus and a short validation report.
+
+We want a fixed set of starting points that can be reused unchanged across future API/agent versions. The corpus must NOT consist only of UniqueItems. Include a deliberate mix of node/entity types that can serve as meaningful discovery starting points through the public Research API.
+
+The corpus must include these specific starting concepts:
+
+* Replica Alberon's Warpath
+* Whispers of Infinity
+* the rare-base Accuracy-stacking boots mechanic/item concept (the rare base, not a UniqueItem)
+
+For the rest, choose the remaining starting points yourself. Aim for diversity across PoE mechanics and across entity types rather than simply selecting famous or obviously powerful items.
+
+Use the public API and the current discovery skill. Do not inspect SQLite, GraphDB internals, raw records, caches, or private helpers.
+
+Use the API's own deterministic/random selection mechanism where appropriate, with recorded seeds. Do not manually invent node IDs when an API-generated starting point can be used.
+
+The final corpus should contain enough entries to be useful for a real benchmark (roughly 80 starting points), while avoiding near-duplicates.
+
+For every entry record:
+
+* corpus index
+* random seed used, if applicable
+* exact starting node ID
+* node/entity type
+* display name
+* why it was included / what kind of discovery it is intended to exercise
+
+For the three mandatory concepts, verify that the exact intended starting point exists and record any ambiguity or API limitation rather than silently substituting something else.
+
+For the Accuracy-stacking boots entry in particular, make sure the corpus records the actual rare-base starting concept rather than accidentally replacing it with an unrelated UniqueItem that happens to interact with Accuracy.
+
+After constructing the corpus, perform a sanity check:
+
+* all entries resolve through the public API;
+* there are no accidental duplicates;
+* the requested mandatory concepts are actually present;
+* the type distribution is reasonably diverse;
+* the corpus does not obviously overrepresent one mechanic family.
+
+Do not modify the API, KB, or skill.
+
+The important output is the frozen corpus itself. Do not optimize it for a particular discovery strategy; future experiments should be able to use this same corpus unchanged.
+
+Additional mandatory coverage requirement:
+
+Make sure the frozen corpus contains **exactly one randomly selected notable passive from every Ascendancy**, with **Luminary excluded**.
+
+* The notable must be an actual Ascendancy notable exposed by the public API.
+* Select the notable randomly/deterministically from the available eligible notables; do not hand-pick them for usefulness.
+* Record the Ascendancy, notable node ID, display name, and the random seed used for its selection.
+* Do not include a second notable from the same Ascendancy as part of this mandatory coverage set.
+* Luminary is the sole exception and must not be represented by this requirement.
+* This requirement is about the corpus's **mandatory Ascendancy coverage**; other corpus entries may be ordinary mechanics/items/etc., but do not accidentally add another Ascendancy notable while constructing this specific coverage set.
+* Verify the final corpus and explicitly report that every eligible Ascendancy appears exactly once in this set.

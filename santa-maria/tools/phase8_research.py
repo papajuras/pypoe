@@ -143,11 +143,11 @@ def carriers(node_id, edge_types=None):
         srcs = sorted(src for (src, _prov) in inn.get(et, {}).get(node_id, []))
         counts[et] = len(srcs)
         for src in srcs:
-            row = {'carrier': src, 'via': et}
+            row = {'carrier': src, 'edge_type': et}
             row.update({k: v for k, v in _entry(src, nodes).items()
                         if k != 'id'})
             rows.append(row)
-    rows.sort(key=lambda r: (r['via'], r['carrier']))
+    rows.sort(key=lambda r: (r['edge_type'], r['carrier']))
     total = len(rows)
     meta = {'node_id': node_id, 'edge_types': ets,
             'counts': counts,

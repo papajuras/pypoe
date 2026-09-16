@@ -1,0 +1,293 @@
+{
+ "provenance": {
+  "provenance_class": "audited_pinned_external_source",
+  "pob_repo": "PathOfBuildingCommunity/PathOfBuilding",
+  "pob_commit": "ed354c2f8c42e148bc904c7508dbe851fb2cf952",
+  "pob_branch": "dev",
+  "sources": {
+   "modparser": {
+    "file": "src/Modules/ModParser.lua",
+    "lines": "3455-3473 (mechanic patterns), 689 (damage base), 708 (attack damage), 967-970 (spell flag)"
+   },
+   "calc": {
+    "file": "src/Modules/CalcOffence.lua",
+    "lines": "651-663",
+    "comment": "Spell Damage conversion from Crown of Eyes, Kinetic Bolt, and the Wandslinger notable"
+   },
+   "gem_stats": {
+    "file": "src/Data/Skills/act_str.lua",
+    "lines": "5681-5695 (HeavyStrikeAltY constantStats)"
+   },
+   "descriptions": {
+    "file": "src/Data/StatDescriptions/stat_descriptions.lua",
+    "lines": "252414-252416 (base/150%/wand desc-ids 2741/2742/2743 adjacent), 59512-59552"
+   }
+  },
+  "extraction": "audited manual extraction, pinned snapshot",
+  "note": "Snapshot of a specific PoB commit, not a regenerated mirror of current PoB. Before bumping pob_commit, verify whether the mechanic patterns or calc block changed (git log -L); if unchanged, keep the old pin. All member patterns return the SAME flag (SpellDamageAppliesToAttacks) plus an optional ImprovedSpellDamageAppliesToAttacks MAX value and condition tags — value and condition are parameterizations of one mechanic, not separate mechanics."
+ },
+ "mechanics": [
+  {
+   "id": "spell_damage_applies_to_attacks",
+   "pob_flag": "SpellDamageAppliesToAttacks",
+   "improved_flag": "ImprovedSpellDamageAppliesToAttacks",
+   "canonical_stat": "stat:additive_spell_damage_modifiers_apply_to_attack_damage",
+   "operand_stat": "stat:spell_damage_+%",
+   "product_stat": "stat:attack_damage_+%",
+   "members": [
+    {
+     "stat": "stat:additive_spell_damage_modifiers_apply_to_attack_damage",
+     "role": "canonical",
+     "value": "100 (Divergent Crown carrier)",
+     "condition": null,
+     "evidence": "ModParser:3461"
+    },
+    {
+     "stat": "stat:additive_spell_damage_modifiers_apply_to_attack_damage_at_150%_value",
+     "role": "variant",
+     "value": 150,
+     "condition": null,
+     "evidence": "ModParser:3461; carrier: Crown of Eyes"
+    },
+    {
+     "stat": "stat:additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value",
+     "role": "variant",
+     "value": "per-stat",
+     "condition": null,
+     "evidence": "ModParser:3468 pattern family; desc-id 2742"
+    },
+    {
+     "stat": "stat:additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value_while_wielding_wand",
+     "role": "variant",
+     "value": "per-stat",
+     "condition": "UsingWand",
+     "evidence": "ModParser:3467/3473; desc-id 2743"
+    },
+    {
+     "stat": "stat:additive_spell_damage_modifiers_apply_to_retaliation_attack_damage_at_%_value",
+     "role": "variant",
+     "value": 200,
+     "condition": "SkillType Retaliation",
+     "evidence": "ModParser:3469-3471; carrier text: 'Retaliation Skills have 200% Arcane Might'"
+    },
+    {
+     "stat": "stat:active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value",
+     "role": "variant",
+     "value": 150,
+     "condition": null,
+     "evidence": "gem_stat_descriptions.lua:6070/21261; Skills/act_str.lua constantStats 150; 15 gem carriers incl. Heavy Strike of Trarthus and Kinetic Bolt"
+    }
+   ],
+   "operand_evidence": "CalcOffence 655 consumes INC {ModFlag.Spell} Damage; ModParser 689 ('damage' = Damage) + 967-970 ('spell'/'for spell damage' = ModFlag.Spell); mechanic pattern text 3457 names 'spell damage' verbatim",
+   "product_evidence": "CalcOffence 657-658 re-emits Damage INC with ModFlag.Attack; ModParser 708 ('attack damage' = {Damage, ModFlag.Attack})",
+   "product_gaps": [
+    {
+     "stat": "stat:additive_spell_damage_modifiers_apply_to_retaliation_attack_damage_at_%_value",
+     "reason": "product is retaliation attack damage; no such KB Stat node exists (verified: KB retaliation family is skill-damage-scoped). Gap preserved, never invented."
+    }
+   ]
+  },
+  {
+   "id": "light_radius_applies_to_damage",
+   "pob_flag": "LightRadiusAppliesToDamage",
+   "canonical_stat": "stat:light_radius_additive_modifiers_apply_to_damage",
+   "members": [
+    {
+     "stat": "stat:light_radius_additive_modifiers_apply_to_damage",
+     "role": "canonical",
+     "value": null,
+     "condition": null,
+     "evidence": "ModParser:3491 'increases and reductions to light radius also apply to damage'"
+    }
+   ],
+   "operand_stat": "stat:light_radius_+%",
+   "product_stat": "stat:damage_+%",
+   "metadata": {
+    "divider": "Wreath of Phrecia block applies half value (CalcOffence 778 mod.value / 2)"
+   },
+   "source": {
+    "calc": "src/Modules/CalcOffence.lua 774-780 (Wreath of Phrecia)",
+    "modparser": "src/Modules/ModParser.lua 3491"
+   }
+  },
+  {
+   "id": "light_radius_applies_to_accuracy",
+   "pob_flag": "LightRadiusAppliesToAccuracy",
+   "canonical_stat": "stat:light_radius_increases_apply_to_accuracy",
+   "members": [
+    {
+     "stat": "stat:light_radius_increases_apply_to_accuracy",
+     "role": "canonical",
+     "value": null,
+     "condition": null,
+     "evidence": "ModParser:3489 'increases and reductions to light radius also apply to accuracy'"
+    }
+   ],
+   "operand_stat": "stat:light_radius_+%",
+   "product_stat": "stat:accuracy_rating_+%",
+   "metadata": {},
+   "source": {
+    "calc": "src/Modules/CalcOffence.lua 766-771 (Corona Solaris)",
+    "modparser": "src/Modules/ModParser.lua 3489"
+   }
+  },
+  {
+   "id": "light_radius_applies_to_area_of_effect",
+   "pob_flag": "LightRadiusAppliesToAreaOfEffect",
+   "canonical_stat": "stat:light_radius_increases_apply_to_area_of_effect",
+   "members": [
+    {
+     "stat": "stat:light_radius_increases_apply_to_area_of_effect",
+     "role": "canonical",
+     "value": null,
+     "condition": null,
+     "evidence": "ModParser:3490 '...also apply to area of effect at 50% of their value'"
+    }
+   ],
+   "operand_stat": "stat:light_radius_+%",
+   "product_stat": "stat:base_skill_area_of_effect_+%",
+   "metadata": {
+    "divider": "block applies half value (CalcOffence 775 mod.value / 2)",
+    "product_resolution": "ModParser:651 'area of effect' = AreaOfEffect; KB stat verified to exist"
+   },
+   "source": {
+    "calc": "src/Modules/CalcOffence.lua 771-776 (Wreath of Phrecia)",
+    "modparser": "src/Modules/ModParser.lua 3490"
+   }
+  },
+  {
+   "id": "minion_damage_applies_to_player",
+   "pob_flag": "MinionDamageAppliesToPlayer",
+   "improved_flag": "ImprovedMinionDamageAppliesToPlayer",
+   "canonical_stat": "stat:minion_damage_increases_and_reductions_also_affects_you",
+   "members": [
+    {
+     "stat": "stat:minion_damage_increases_and_reductions_also_affects_you",
+     "role": "canonical",
+     "value": null,
+     "condition": null,
+     "evidence": "ModParser:3446"
+    },
+    {
+     "stat": "stat:additive_minion_damage_modifiers_apply_to_you_at_%_value",
+     "role": "variant",
+     "value": "per-stat",
+     "condition": null,
+     "evidence": "ModParser:3447 (ImprovedMinionDamageAppliesToPlayer MAX)"
+    },
+    {
+     "stat": "stat:additive_minion_damage_modifiers_apply_to_you_at_150%_value",
+     "role": "variant",
+     "value": 150,
+     "condition": null,
+     "evidence": "ModParser:3447 (ImprovedMinionDamageAppliesToPlayer MAX 150)"
+    }
+   ],
+   "operand_stat": "stat:minion_damage_+%",
+   "product_stat": "stat:damage_+%",
+   "metadata": {
+    "conditions": "ModParser:3448 Dominating Blow/Absolution SkillName condition is a parameterization (same flag)"
+   },
+   "source": {
+    "calc": "src/Modules/CalcOffence.lua 613-623",
+    "modparser": "src/Modules/ModParser.lua 3446-3448"
+   }
+  },
+  {
+   "id": "minion_attack_speed_applies_to_player",
+   "pob_flag": "MinionAttackSpeedAppliesToPlayer",
+   "improved_flag": "ImprovedMinionAttackSpeedAppliesToPlayer",
+   "canonical_stat": "stat:additive_modifiers_to_minion_attack_speed_also_affect_you",
+   "members": [
+    {
+     "stat": "stat:additive_modifiers_to_minion_attack_speed_also_affect_you",
+     "role": "canonical",
+     "value": null,
+     "condition": null,
+     "evidence": "ModParser:3452"
+    }
+   ],
+   "operand_stat": "stat:minion_attack_speed_+%",
+   "product_stat": "stat:attack_speed_+%",
+   "metadata": {},
+   "source": {
+    "calc": "src/Modules/CalcOffence.lua 624-633",
+    "modparser": "src/Modules/ModParser.lua 3452"
+   }
+  },
+  {
+   "id": "minion_cast_speed_applies_to_player",
+   "pob_flag": "MinionCastSpeedAppliesToPlayer",
+   "improved_flag": "ImprovedMinionCastSpeedAppliesToPlayer",
+   "canonical_stat": "stat:additive_modifiers_to_minion_cast_speed_also_affect_you",
+   "members": [
+    {
+     "stat": "stat:additive_modifiers_to_minion_cast_speed_also_affect_you",
+     "role": "canonical",
+     "value": null,
+     "condition": null,
+     "evidence": "ModParser:3453"
+    }
+   ],
+   "operand_stat": "stat:minion_cast_speed_+%",
+   "product_stat": "stat:cast_speed_+%",
+   "metadata": {},
+   "source": {
+    "calc": "src/Modules/CalcOffence.lua 634-643",
+    "modparser": "src/Modules/ModParser.lua 3453"
+   }
+  },
+  {
+   "id": "cast_speed_applies_to_trap_throwing_speed",
+   "pob_flag": "CastSpeedAppliesToTrapThrowingSpeed",
+   "canonical_stat": "stat:additive_cast_speed_modifiers_apply_to_trap_throwing_speed",
+   "members": [
+    {
+     "stat": "stat:additive_cast_speed_modifiers_apply_to_trap_throwing_speed",
+     "role": "canonical",
+     "value": null,
+     "condition": null,
+     "evidence": "ModParser:3492"
+    }
+   ],
+   "operand_stat": "stat:cast_speed_+%",
+   "product_stat": "stat:trap_throwing_speed_+%",
+   "metadata": {
+    "note": "Slavedriver's Hand is source/context evidence, not a semantic class"
+   },
+   "source": {
+    "calc": "src/Modules/CalcOffence.lua 781-789 (Slavedriver's Hand)",
+    "modparser": "src/Modules/ModParser.lua 3492"
+   }
+  },
+  {
+   "id": "cast_speed_applies_to_attack_speed",
+   "pob_flag": "CastSpeedAppliesToAttacks",
+   "improved_flag": "ImprovedCastSpeedAppliesToAttacks",
+   "canonical_stat": "stat:unique_helmet_cast_speed_+%_applies_to_attack_speed_at_%_of_original_value",
+   "members": [
+    {
+     "stat": "stat:unique_helmet_cast_speed_+%_applies_to_attack_speed_at_%_of_original_value",
+     "role": "canonical",
+     "value": null,
+     "condition": null,
+     "evidence": "ModParser:3456; carrier mod:CastSpeedAppliesToAttackSpeedUnique__1 text verified"
+    }
+   ],
+   "operand_stat": "stat:cast_speed_+%",
+   "product_stat": "stat:attack_speed_+%",
+   "metadata": {
+    "unresolved_members": [
+     {
+      "stat": "stat:active_skill_cast_speed_+%_applies_to_attack_speed_at_%_of_original_value",
+      "reason": "0 carriers in KB, no text evidence - UNRESOLVED, not ingested as member"
+     }
+    ]
+   },
+   "source": {
+    "calc": "src/Modules/CalcOffence.lua 666-678",
+    "modparser": "src/Modules/ModParser.lua 3455-3456"
+   }
+  }
+ ]
+}

@@ -82,7 +82,7 @@ net = income - cost. League stamped from the gatherer at creation for future his
 - FE: "create flip" `J` button on each flipper row jumps to the Journal tab, pre-selects the
   matching definition (journal def label == flip name), and pre-fills Cost from the flip's
   blended `source_avg`. Hidden for manual flips with no matching journal def.
-- Test: `PYTHONPATH=app .venv/bin/python3 app/tests/test_journal.py` (7 asserts)
+- Test: `uv run python app/tests/test_journal.py` with `PYTHONPATH=app` (7 asserts)
 
 ### 4. Market analysis (app/ — local, two engines)
 `GET /api/analysis?flip_id=<id>` returns two independent views over the target-side
@@ -144,6 +144,10 @@ repo/
 - SQLite via stdlib, curl_cffi, requests/httpx/websockets for APIs
 
 ## Hard rules
+- **ALWAYS use `uv` instead of bare `python`/`python3`/`.venv/bin/python`** — run
+  everything through `uv run python ...` (from the package dir whose pyproject owns
+  the deps; app from repo root, gatherer from `gatherer/`, santa-maria tools from
+  the repo root). Never call the system/venv interpreter directly.
 - **NEVER delete or clear gatherer/gatherer/data/flips.db** — contains real data
 - **NEVER delete or clear app/pypoe/data/crafting.json** — contains real crafting profiles
 - **NEVER clear data just because schema changed** — use gatherer/gatherer/schema.py migrations
@@ -204,5 +208,6 @@ cd gatherer && uv run python -m gatherer.tests.test_throttle
 cd gatherer && uv run python -m gatherer.tests.test_pricer
 cd gatherer && uv run python -m gatherer.tests.test_store
 # app (assert-based)
-PYTHONPATH=app .venv/bin/python3 app/tests/test_life_block.py
+uv run --with-editable . python app/tests/test_life_block.py
+# or: uv run python app/tests/test_journal.py with PYTHONPATH=app
 ```

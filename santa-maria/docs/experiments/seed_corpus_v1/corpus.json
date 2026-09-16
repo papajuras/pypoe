@@ -1,0 +1,869 @@
+{
+ "name": "seed_corpus_v1",
+ "built_utc": "2026-09-16T19:00:53+00:00",
+ "selection_seed": 20260916,
+ "seed_scheme": "mandatory: seed=null (pinned); ascendancy_coverage: seed=20260916, deterministic rng over sorted ascendancies and notables; random_draw: per-call get_start_seed seed recorded per entry",
+ "entries": [
+  {
+   "index": 0,
+   "node_id": "unique:1198",
+   "type": "UniqueItem",
+   "name": "Replica Alberon's Warpath",
+   "seed": null,
+   "block": "mandatory",
+   "why": "pinned mandatory concept: replica-stacking link (Minion Instability family / unique replica variant); tests replica-variant discovery"
+  },
+  {
+   "index": 1,
+   "node_id": "unique:1461",
+   "type": "UniqueItem",
+   "name": "Whispers of Infinity",
+   "seed": null,
+   "block": "mandatory",
+   "why": "pinned mandatory concept: timeless-jewel keystone transformation; tests passive-tree mutation discovery"
+  },
+  {
+   "index": 2,
+   "node_id": "item_class:Boots",
+   "type": "ItemClass",
+   "name": null,
+   "seed": null,
+   "block": "mandatory",
+   "why": "pinned mandatory concept: rare-base Accuracy-stacking boots archetype as the ITEM CLASS (rare base), deliberately not a UniqueItem; tests base-archetype discovery (KB has no display name for ItemClass nodes: id is the anchor)"
+  },
+  {
+   "index": 3,
+   "node_id": "passive:AscendancyAscendant5",
+   "type": "Passive",
+   "name": "Path of the Shadow",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Ascendant notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Ascendant"
+   }
+  },
+  {
+   "index": 4,
+   "node_id": "passive:AscendancyAssassin10",
+   "type": "Passive",
+   "name": "Toxic Delivery",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Assassin notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Assassin"
+   }
+  },
+  {
+   "index": 5,
+   "node_id": "passive:AscendancyBerserker8",
+   "type": "Passive",
+   "name": "Rite of Ruin",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Berserker notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Berserker"
+   }
+  },
+  {
+   "index": 6,
+   "node_id": "passive:AscendancyChampion14",
+   "type": "Passive",
+   "name": "Master of Metal",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Champion notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Champion"
+   }
+  },
+  {
+   "index": 7,
+   "node_id": "passive:AscendancyChieftan11",
+   "type": "Passive",
+   "name": "Tukohama, War's Herald",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Chieftain notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Chieftain"
+   }
+  },
+  {
+   "index": 8,
+   "node_id": "passive:AscendancyDeadeye14",
+   "type": "Passive",
+   "name": "Gathering Winds",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Deadeye notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Deadeye"
+   }
+  },
+  {
+   "index": 9,
+   "node_id": "passive:AscendancyElementalist19",
+   "type": "Passive",
+   "name": "Shaper of Storms",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Elementalist notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Elementalist"
+   }
+  },
+  {
+   "index": 10,
+   "node_id": "passive:AscendancyGladiator7",
+   "type": "Passive",
+   "name": "Gratuitous Violence",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Gladiator notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Gladiator"
+   }
+  },
+  {
+   "index": 11,
+   "node_id": "passive:AscendancyGuardian16",
+   "type": "Passive",
+   "name": "Unwavering Crusade",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Guardian notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Guardian"
+   }
+  },
+  {
+   "index": 12,
+   "node_id": "passive:AscendancyHeirophant9",
+   "type": "Passive",
+   "name": "Pursuit of Faith",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Hierophant notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Hierophant"
+   }
+  },
+  {
+   "index": 13,
+   "node_id": "passive:AscendancyInquisitor14",
+   "type": "Passive",
+   "name": "Instruments of Zeal",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Inquisitor notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Inquisitor"
+   }
+  },
+  {
+   "index": 14,
+   "node_id": "passive:AscendancyJuggernaut11",
+   "type": "Passive",
+   "name": "Unflinching",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Juggernaut notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Juggernaut"
+   }
+  },
+  {
+   "index": 15,
+   "node_id": "passive:AscendancyNecromancer12",
+   "type": "Passive",
+   "name": "Commander of Darkness",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Necromancer notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Necromancer"
+   }
+  },
+  {
+   "index": 16,
+   "node_id": "passive:AscendancyOccultist8",
+   "type": "Passive",
+   "name": "Unholy Authority",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Occultist notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Occultist"
+   }
+  },
+  {
+   "index": 17,
+   "node_id": "passive:AscendancyPathfinder14",
+   "type": "Passive",
+   "name": "Master Toxicist",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Pathfinder notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Pathfinder"
+   }
+  },
+  {
+   "index": 18,
+   "node_id": "passive:AscendancyReliquarian9",
+   "type": "Passive",
+   "name": "Caster Weapon Display",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Reliquarian notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Reliquarian"
+   }
+  },
+  {
+   "index": 19,
+   "node_id": "passive:AscendancySaboteur4",
+   "type": "Passive",
+   "name": "Born in the Shadows",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Saboteur notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Saboteur"
+   }
+  },
+  {
+   "index": 20,
+   "node_id": "passive:AscendancySlayer8",
+   "type": "Passive",
+   "name": "Overwhelm",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Slayer notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Slayer"
+   }
+  },
+  {
+   "index": 21,
+   "node_id": "passive:AscendancyTrickster2",
+   "type": "Passive",
+   "name": "Swift Killer",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Trickster notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Trickster"
+   }
+  },
+  {
+   "index": 22,
+   "node_id": "passive:AscendancyRaider8",
+   "type": "Passive",
+   "name": "Lesson of the Seasons",
+   "seed": 20260916,
+   "block": "ascendancy_coverage",
+   "why": "base ascendancy coverage: Warden notable, one per ascendancy (deterministic rng over sorted notables)",
+   "notes": {
+    "ascendancy": "Warden"
+   }
+  },
+  {
+   "index": 23,
+   "node_id": "unique:734",
+   "type": "UniqueItem",
+   "name": "Shroud of the Lightless",
+   "seed": 20260917,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 24,
+   "node_id": "unique:1238",
+   "type": "UniqueItem",
+   "name": "Replica Cheap Construction",
+   "seed": 20260917,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 25,
+   "node_id": "unique:165",
+   "type": "UniqueItem",
+   "name": "Perandus Signet",
+   "seed": 20260918,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 26,
+   "node_id": "unique:1281",
+   "type": "UniqueItem",
+   "name": "Legacy of Fury",
+   "seed": 20260918,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 27,
+   "node_id": "unique:766",
+   "type": "UniqueItem",
+   "name": "Farrul's Chase",
+   "seed": 20260919,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 28,
+   "node_id": "unique:1179",
+   "type": "UniqueItem",
+   "name": "Replica Quill Rain",
+   "seed": 20260919,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 29,
+   "node_id": "unique:679",
+   "type": "UniqueItem",
+   "name": "Dendrobate",
+   "seed": 20260920,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 30,
+   "node_id": "unique:764",
+   "type": "UniqueItem",
+   "name": "Farrul's Bite",
+   "seed": 20260920,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 31,
+   "node_id": "unique:1443",
+   "type": "UniqueItem",
+   "name": "Circle of Ambition",
+   "seed": 20260921,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 32,
+   "node_id": "unique:1065",
+   "type": "UniqueItem",
+   "name": "Badge of the Brotherhood",
+   "seed": 20260921,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 33,
+   "node_id": "unique:924",
+   "type": "UniqueItem",
+   "name": "Facebreaker",
+   "seed": 20260922,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 34,
+   "node_id": "unique:838",
+   "type": "UniqueItem",
+   "name": "Solstice Vigil",
+   "seed": 20260922,
+   "block": "random_draw",
+   "why": "build-assembly discovery: unique mechanics as consumer anchors"
+  },
+  {
+   "index": 35,
+   "node_id": "passive:endurance_charges_notable2425",
+   "type": "Passive",
+   "name": "Disciple of the Unyielding",
+   "seed": 20260923,
+   "block": "random_draw",
+   "why": "tree/class-anchored discovery via passive_info (kind_flags preserved)",
+   "notes": {
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": true
+    }
+   }
+  },
+  {
+   "index": 36,
+   "node_id": "passive:atlas_path_17",
+   "type": "Passive",
+   "name": "Map Drop Chance",
+   "seed": 20260923,
+   "block": "random_draw",
+   "why": "tree/class-anchored discovery via passive_info (kind_flags preserved)",
+   "notes": {
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": false
+    }
+   }
+  },
+  {
+   "index": 37,
+   "node_id": "passive:totem_attack_damage2676",
+   "type": "Passive",
+   "name": "Totem Attack Speed",
+   "seed": 20260924,
+   "block": "random_draw",
+   "why": "tree/class-anchored discovery via passive_info (kind_flags preserved)",
+   "notes": {
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": false
+    }
+   }
+  },
+  {
+   "index": 38,
+   "node_id": "passive:dexterity848",
+   "type": "Passive",
+   "name": "Dexterity",
+   "seed": 20260925,
+   "block": "random_draw",
+   "why": "tree/class-anchored discovery via passive_info (kind_flags preserved)",
+   "notes": {
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": false
+    }
+   }
+  },
+  {
+   "index": 39,
+   "node_id": "passive:UniqueItemsNode31_",
+   "type": "Passive",
+   "name": "Lord's Descent",
+   "seed": 20260925,
+   "block": "random_draw",
+   "why": "tree/class-anchored discovery via passive_info (kind_flags preserved)",
+   "notes": {
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": true
+    }
+   }
+  },
+  {
+   "index": 40,
+   "node_id": "passive:atlas_memory_notable_4",
+   "type": "Passive",
+   "name": "Grasp the Past",
+   "seed": 20260927,
+   "block": "random_draw",
+   "why": "tree/class-anchored discovery via passive_info (kind_flags preserved)",
+   "notes": {
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": true
+    }
+   }
+  },
+  {
+   "index": 41,
+   "node_id": "passive:reaver605",
+   "type": "Passive",
+   "name": "Executioner",
+   "seed": 20260927,
+   "block": "random_draw",
+   "why": "tree/class-anchored discovery via passive_info (kind_flags preserved)",
+   "notes": {
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": true
+    }
+   }
+  },
+  {
+   "index": 42,
+   "node_id": "passive:totem_ranged_damage2668",
+   "type": "Passive",
+   "name": "Totem Damage and Placement Speed",
+   "seed": 20260928,
+   "block": "random_draw",
+   "why": "tree/class-anchored discovery via passive_info (kind_flags preserved)",
+   "notes": {
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": false
+    }
+   }
+  },
+  {
+   "index": 43,
+   "node_id": "gem:SplittingSteel",
+   "type": "Gem",
+   "name": "Splitting Steel",
+   "seed": 20260929,
+   "block": "random_draw",
+   "why": "skill/support interaction discovery via gem tags and stats"
+  },
+  {
+   "index": 44,
+   "node_id": "gem:SupportGreaterDevour",
+   "type": "Gem",
+   "name": "Greater Devour Support",
+   "seed": 20260929,
+   "block": "random_draw",
+   "why": "skill/support interaction discovery via gem tags and stats"
+  },
+  {
+   "index": 45,
+   "node_id": "gem:SupportCastLinkedCursesOnCurse",
+   "type": "Gem",
+   "name": "WIP Support",
+   "seed": 20260930,
+   "block": "random_draw",
+   "why": "skill/support interaction discovery via gem tags and stats"
+  },
+  {
+   "index": 46,
+   "node_id": "gem:SummonHolyRelicAltX",
+   "type": "Gem",
+   "name": "Summon Holy Relic of Conviction",
+   "seed": 20260930,
+   "block": "random_draw",
+   "why": "skill/support interaction discovery via gem tags and stats"
+  },
+  {
+   "index": 47,
+   "node_id": "gem:EnchantmentOfReflectionWhenHit4",
+   "type": "Gem",
+   "name": "Commandment of Reflection",
+   "seed": 20260931,
+   "block": "random_draw",
+   "why": "skill/support interaction discovery via gem tags and stats"
+  },
+  {
+   "index": 48,
+   "node_id": "gem:EssenceDrainAltX",
+   "type": "Gem",
+   "name": "Essence Drain of Desperation",
+   "seed": 20260931,
+   "block": "random_draw",
+   "why": "skill/support interaction discovery via gem tags and stats"
+  },
+  {
+   "index": 49,
+   "node_id": "gem:PenanceMark",
+   "type": "Gem",
+   "name": "Penance Mark",
+   "seed": 20260932,
+   "block": "random_draw",
+   "why": "skill/support interaction discovery via gem tags and stats"
+  },
+  {
+   "index": 50,
+   "node_id": "gem:SummonSkeletonsChannelled",
+   "type": "Gem",
+   "name": "Summon Skeletons Channelled",
+   "seed": 20260932,
+   "block": "random_draw",
+   "why": "skill/support interaction discovery via gem tags and stats"
+  },
+  {
+   "index": 51,
+   "node_id": "stat:brequel_misc_fruit_rarer_rewards_chance_+%",
+   "type": "Stat",
+   "name": "brequel_misc_fruit_rarer_rewards_chance_+%",
+   "seed": 20260933,
+   "block": "random_draw",
+   "why": "reverse-carrier fan-out discovery (carriers) across mods/gems/passives"
+  },
+  {
+   "index": 52,
+   "node_id": "stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start",
+   "type": "Stat",
+   "name": "local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start",
+   "seed": 20260933,
+   "block": "random_draw",
+   "why": "reverse-carrier fan-out discovery (carriers) across mods/gems/passives"
+  },
+  {
+   "index": 53,
+   "node_id": "stat:cannot_die",
+   "type": "Stat",
+   "name": "cannot_die",
+   "seed": 20260934,
+   "block": "random_draw",
+   "why": "reverse-carrier fan-out discovery (carriers) across mods/gems/passives"
+  },
+  {
+   "index": 54,
+   "node_id": "stat:critical_strike_chance_+%_with_at_least_200_int",
+   "type": "Stat",
+   "name": "critical_strike_chance_+%_with_at_least_200_int",
+   "seed": 20260934,
+   "block": "random_draw",
+   "why": "reverse-carrier fan-out discovery (carriers) across mods/gems/passives"
+  },
+  {
+   "index": 55,
+   "node_id": "stat:map_watchstone_monsters_life_+%_final",
+   "type": "Stat",
+   "name": "map_watchstone_monsters_life_+%_final",
+   "seed": 20260935,
+   "block": "random_draw",
+   "why": "reverse-carrier fan-out discovery (carriers) across mods/gems/passives"
+  },
+  {
+   "index": 56,
+   "node_id": "stat:banner_adrenaline_duration_+%",
+   "type": "Stat",
+   "name": "banner_adrenaline_duration_+%",
+   "seed": 20260935,
+   "block": "random_draw",
+   "why": "reverse-carrier fan-out discovery (carriers) across mods/gems/passives"
+  },
+  {
+   "index": 57,
+   "node_id": "stat:virtual_minion_attack_speed_+%",
+   "type": "Stat",
+   "name": "virtual_minion_attack_speed_+%",
+   "seed": 20260936,
+   "block": "random_draw",
+   "why": "reverse-carrier fan-out discovery (carriers) across mods/gems/passives"
+  },
+  {
+   "index": 58,
+   "node_id": "stat:critical_strike_chance_+%_per_lightning_adaptation",
+   "type": "Stat",
+   "name": "critical_strike_chance_+%_per_lightning_adaptation",
+   "seed": 20260936,
+   "block": "random_draw",
+   "why": "reverse-carrier fan-out discovery (carriers) across mods/gems/passives"
+  },
+  {
+   "index": 59,
+   "node_id": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+   "type": "Modifier",
+   "name": "",
+   "seed": 20260937,
+   "block": "random_draw",
+   "why": "carrier-family discovery: which uniques share a resolved mod"
+  },
+  {
+   "index": 60,
+   "node_id": "mod:WeaponTreeSupportIronGripHardMode",
+   "type": "Modifier",
+   "name": "",
+   "seed": 20260937,
+   "block": "random_draw",
+   "why": "carrier-family discovery: which uniques share a resolved mod"
+  },
+  {
+   "index": 61,
+   "node_id": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+   "type": "Modifier",
+   "name": "",
+   "seed": 20260938,
+   "block": "random_draw",
+   "why": "carrier-family discovery: which uniques share a resolved mod"
+  },
+  {
+   "index": 62,
+   "node_id": "mod:ColdResistUnique__43",
+   "type": "Modifier",
+   "name": "",
+   "seed": 20260938,
+   "block": "random_draw",
+   "why": "carrier-family discovery: which uniques share a resolved mod"
+  },
+  {
+   "index": 63,
+   "node_id": "mod:TemporalChainsReservationCostUnique__2",
+   "type": "Modifier",
+   "name": "",
+   "seed": 20260939,
+   "block": "random_draw",
+   "why": "carrier-family discovery: which uniques share a resolved mod"
+  },
+  {
+   "index": 64,
+   "node_id": "mod:MonsterMinionInstability",
+   "type": "Modifier",
+   "name": "",
+   "seed": 20260939,
+   "block": "random_draw",
+   "why": "carrier-family discovery: which uniques share a resolved mod"
+  },
+  {
+   "index": 65,
+   "node_id": "mechanic:minion",
+   "type": "Mechanic",
+   "name": null,
+   "seed": 20260940,
+   "block": "random_draw",
+   "why": "mechanic-consumer discovery via stat_mechanic relations"
+  },
+  {
+   "index": 66,
+   "node_id": "mechanic:suppression",
+   "type": "Mechanic",
+   "name": null,
+   "seed": 20260940,
+   "block": "random_draw",
+   "why": "mechanic-consumer discovery via stat_mechanic relations"
+  },
+  {
+   "index": 67,
+   "node_id": "mechanic:attribute",
+   "type": "Mechanic",
+   "name": null,
+   "seed": 20260942,
+   "block": "random_draw",
+   "why": "mechanic-consumer discovery via stat_mechanic relations"
+  },
+  {
+   "index": 68,
+   "node_id": "mechanic:frenzy_charge",
+   "type": "Mechanic",
+   "name": null,
+   "seed": 20260943,
+   "block": "random_draw",
+   "why": "mechanic-consumer discovery via stat_mechanic relations"
+  },
+  {
+   "index": 69,
+   "node_id": "mechanic:chill",
+   "type": "Mechanic",
+   "name": null,
+   "seed": 20260944,
+   "block": "random_draw",
+   "why": "mechanic-consumer discovery via stat_mechanic relations"
+  },
+  {
+   "index": 70,
+   "node_id": "tag:lightning",
+   "type": "Tag",
+   "name": "lightning",
+   "seed": 20260945,
+   "block": "random_draw",
+   "why": "coarse fan-out discovery via tag membership (deliberately broad)"
+  },
+  {
+   "index": 71,
+   "node_id": "tag:curse",
+   "type": "Tag",
+   "name": "curse",
+   "seed": 20260945,
+   "block": "random_draw",
+   "why": "coarse fan-out discovery via tag membership (deliberately broad)"
+  },
+  {
+   "index": 72,
+   "node_id": "tag:quiver_eyrie",
+   "type": "Tag",
+   "name": "quiver_eyrie",
+   "seed": 20260946,
+   "block": "random_draw",
+   "why": "coarse fan-out discovery via tag membership (deliberately broad)"
+  },
+  {
+   "index": 73,
+   "node_id": "tag:blight_death_physical",
+   "type": "Tag",
+   "name": "blight_death_physical",
+   "seed": 20260946,
+   "block": "random_draw",
+   "why": "coarse fan-out discovery via tag membership (deliberately broad)"
+  },
+  {
+   "index": 74,
+   "node_id": "item_class:CursedDucat",
+   "type": "ItemClass",
+   "name": "CursedDucat",
+   "seed": 20260947,
+   "block": "random_draw",
+   "why": "base-archetype discovery: rare-base families by item class"
+  },
+  {
+   "index": 75,
+   "node_id": "item_class:Tincture",
+   "type": "ItemClass",
+   "name": "Tincture",
+   "seed": 20260947,
+   "block": "random_draw",
+   "why": "base-archetype discovery: rare-base families by item class"
+  },
+  {
+   "index": 76,
+   "node_id": "item_class:HeistEquipmentWeapon",
+   "type": "ItemClass",
+   "name": "HeistEquipmentWeapon",
+   "seed": 20260948,
+   "block": "random_draw",
+   "why": "base-archetype discovery: rare-base families by item class"
+  },
+  {
+   "index": 77,
+   "node_id": "item_class:IncubatorStackable",
+   "type": "ItemClass",
+   "name": "IncubatorStackable",
+   "seed": 20260949,
+   "block": "random_draw",
+   "why": "base-archetype discovery: rare-base families by item class"
+  },
+  {
+   "index": 78,
+   "node_id": "item_class:Support Skill Gem",
+   "type": "ItemClass",
+   "name": "Support Skill Gem",
+   "seed": 20260949,
+   "block": "random_draw",
+   "why": "base-archetype discovery: rare-base families by item class"
+  },
+  {
+   "index": 79,
+   "node_id": "item_class:Map",
+   "type": "ItemClass",
+   "name": "Map",
+   "seed": 20260950,
+   "block": "random_draw",
+   "why": "base-archetype discovery: rare-base families by item class"
+  },
+  {
+   "index": 80,
+   "node_id": "item_class:BrequelFruit",
+   "type": "ItemClass",
+   "name": "BrequelFruit",
+   "seed": 20260950,
+   "block": "random_draw",
+   "why": "base-archetype discovery: rare-base families by item class"
+  }
+ ]
+}

@@ -37,7 +37,7 @@ implementation helpers.
   duplication without removing anything.
 * `carriers(node_id, edge_types=None)` — depth-1 reverse projection: what
   grants/carries a node (stats: which modifiers/gems/passives/uniques; a
-  modifier: which uniques carry it). Results carry names, `via`, availability,
+  modifier: which uniques carry it). Results carry names, `edge_type`, availability,
   `passive_info`, and `meta.counts` per edge type. There is deliberately **no
   direction parameter**: the operation is inherently reverse.
 * Envelope (both ops): `{error, results, meta}` — never raises. Input errors
