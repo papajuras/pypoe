@@ -31,10 +31,12 @@ fi
 
 FORCE_DOWNLOAD=0
 FORCE_ANALYSIS=0
+CONSUMER_PROJECTION=0
 for a in "$@"; do
   case "$a" in
     --force-download) FORCE_DOWNLOAD=1 ;;
     --force-analysis) FORCE_ANALYSIS=1 ;;
+    --consumer-projection) CONSUMER_PROJECTION=1 ;;
     -h|--help) sed -n '1,20p' "$0"; exit 0 ;;
     *) echo "unknown argument: $a (try --help)"; exit 2 ;;
   esac
@@ -96,6 +98,16 @@ echo "== [8/9] semantic candidates =="
 # ---- 9. semantic candidate validation (Phase 5V, read-only) ----
 echo "== [9/9] semantic validation =="
 "$PY" "$TOOLS/phase5v_validate.py" --report
+
+# ---- 10. consumer/mechanic projection (EXPERIMENTAL, behind a flag) ----
+# Materializes the pilot-validated stat_mechanic_relation edges. Off by
+# default: the default pipeline output is identical to the verified baseline.
+if [ "$CONSUMER_PROJECTION" = 1 ]; then
+  echo "== [10] consumer projection (flagged experiment) =="
+  "$PY" "$TOOLS/phase7_consumer_project.py" --report
+else
+  echo "== [10] consumer projection SKIPPED (use --consumer-projection) =="
+fi
 
 echo
 echo "== pipeline complete =="

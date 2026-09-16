@@ -27,12 +27,13 @@ NODES_DB = SANTA / 'cache' / 'nodes.db'
 EDGES_DB = SANTA / 'cache' / 'edges.db'
 
 NODE_TYPES = ['Stat', 'Modifier', 'ModifierGroup', 'UniqueItem', 'Passive',
-              'Gem', 'Tag', 'ItemClass']
+              'Gem', 'Tag', 'ItemClass', 'Mechanic']
 EDGE_TYPES = ['modifier_grants_stat', 'passive_grants_stat', 'gem_grants_stat',
               'unique_modifier_association', 'gem_has_tag', 'modifier_has_tag',
               'modifier_in_group', 'unique_in_class', 'stat_scales_with',
               'sem_relation_binds', 'attribute_grants_stat',
-              'stat_mechanic_variant', 'stat_mechanic_operand']
+              'stat_mechanic_variant', 'stat_mechanic_operand',
+              'stat_mechanic_relation']
 
 START_SEED_FILTERS = {'type', 'id_contains', 'name_contains', 'count', 'seed'}
 NEIGHBOUR_FILTERS = {'start', 'direction', 'edge_types', 'max_nodes_per_level',
@@ -105,8 +106,63 @@ def _stronger(m_old, m_new):
     return rank[_membership_class(m_new)] > rank[_membership_class(m_old)]
 
 
+_UBQ_AVAIL_CACHE = None
+_POB_UNIQUES_DIR = SANTA / 'data' / 'pob' / 'Uniques'
+
+
+def _pob_availability():
+    """name -> 'unavailable' | 'available' | 'conflict' (lazy, cached).
+
+    Authoritative signal: PoB Uniques blocks' 'Source: No longer obtainable'
+    header. RePoE carries no availability field. Absence of a PoB block is a
+    coverage gap, NOT evidence of unavailability.
+    """
+    global _UBQ_AVAIL_CACHE
+    if _UBQ_AVAIL_CACHE is None:
+        sources = {}          # name -> set of Source lines (None ok)
+        for f in sorted(_POB_UNIQUES_DIR.glob('*.json')):
+            try:
+                with open(f, encoding='utf-8') as fh:
+                    blocks = json.load(fh)
+            except Exception:
+                continue
+            for block in blocks if isinstance(blocks, list) else []:
+                first = block.split('\n', 1)[0].strip()
+                src = None
+                for line in block.split('\n')[1:6]:
+                    if line.startswith('Source:'):
+                        src = line.split(':', 1)[1].strip()
+                        break
+                sources.setdefault(first, set()).add(src)
+        verdict = {}
+        for name, srcs in sources.items():
+            if all(s == 'No longer obtainable' for s in srcs):
+                verdict[name] = 'unavailable'
+            elif any(s == 'No longer obtainable' for s in srcs):
+                verdict[name] = 'conflict'
+            else:
+                verdict[name] = 'available'
+        _UBQ_AVAIL_CACHE = verdict
+    return _UBQ_AVAIL_CACHE
+
+
+def _unique_availability(name):
+    """'unavailable' | 'available' | None (no PoB block -> not checked)."""
+    return _pob_availability().get(name)
+
+
+def _passive_info(payload):
+    """LLM-facing classification for Passive nodes: ascendancy class +
+    kind_flags. Conflict payloads may carry None (cross-tree disagreement) —
+    surfaced as unknown, never guessed (same semantics as the build
+    validator's _classify_passive)."""
+    return {'ascendancy': (payload.get('shared') or {}).get('ascendancy'),
+            'kind_flags': payload.get('kind_flags')}
+
+
 def _compact_provenance(prov):
-    """Compact LLM-friendly provenance: source_file + field (+ method for uma)."""
+    """Compact LLM-friendly provenance: source_file + field (+ method for uma,
+    + role/state_owner for mechanic relations)."""
     if not prov:
         return {}
     f = prov[0]
@@ -117,6 +173,10 @@ def _compact_provenance(prov):
         out['method'] = f['method']
     if f.get('membership'):
         out['membership'] = f['membership']
+    if f.get('role'):
+        out['role'] = f['role']
+    if f.get('state_owner'):
+        out['state_owner'] = f['state_owner']
     return out
 
 
@@ -402,8 +462,14 @@ class GraphDB:
                 return {'node_id': nid, 'type': 'Variant',
                         'variant_type': v['variant_type'],
                         'name': v['display_name']}
-            return {'node_id': nid, 'type': nodes[nid][0],
-                    'name': _node_name(nid, nodes[nid][1])}
+            out = {'node_id': nid, 'type': nodes[nid][0],
+                   'name': _node_name(nid, nodes[nid][1])}
+            if nodes[nid][0] == 'Passive':
+                out['passive_info'] = _passive_info(nodes[nid][1])
+            elif nodes[nid][0] == 'UniqueItem':
+                out['availability'] = _unique_availability(
+                    out['name'])
+            return out
 
         return {'seeds': [seed_entry(nid) for nid in sample]}
 
@@ -518,6 +584,17 @@ class GraphDB:
             level = {'depth': d, 'edges': edges_out}
             if carrier_grouping:
                 level['carrier_groups'] = groups_out
+            seen_p = {e['to'] for e in ordered}
+            for grp in groups_out:
+                seen_p.update(grp['members'])
+            pnodes = []
+            for nid in sorted(seen_p):
+                if nid in nodes and nodes[nid][0] == 'Passive':
+                    pnodes.append({'id': nid,
+                                   'name': _node_name(nid, nodes[nid][1]),
+                                   'passive_info': _passive_info(nodes[nid][1])})
+            if pnodes:
+                level['passive_nodes'] = pnodes
             levels.append(level)
             if not ordered:
                 break

@@ -2,8 +2,9 @@
 name: scaling-discovery
 description: Identify, validate, and pursue genuine scaling axes during PoE build discovery with the santa-maria knowledge base. Use when exploring the KB graph for build concepts, evaluating scaling relationships, deciding whether a promising interaction warrants deeper architectural exploration, or managing several promising branches (parking and revisiting candidates) during discovery.
 metadata:
-    "opencode/autoinvoke": false
----
+"opencode/autoinvoke": false
+----------------------------
+
 # Skill: Scaling Discovery
 
 Use this skill during build discovery to identify meaningful scaling opportunities, validate them, and decide whether a promising interaction deserves deeper exploration.
@@ -96,7 +97,9 @@ Particularly valuable structures include:
 
 or other structures where one mechanic meaningfully changes the role or value of another.
 
-One structure deserves special attention: a single meaningful axis with **several meaningful consumers or interacting layers** — rather than a single output, or a lone generate → spend → damage chain. When the graph shows hints of such fan-out, treat it as strong evidence that the branch is worth deeper exploration. It is a reason to investigate further, not a requirement every build must meet, and never a criterion a final architecture must satisfy.
+One structure deserves special attention: a single meaningful axis with **several meaningful consumers or interacting layers** rather than a single output or a lone generate → spend → damage chain.
+
+When the graph shows hints of such fan-out, treat it as strong evidence that the branch is worth deeper exploration. It is a reason to investigate further, not a requirement every build must meet.
 
 An additional node is not automatically an additional layer. The relationship must create a meaningful interaction.
 
@@ -123,18 +126,16 @@ Do not impose an arbitrary minimum number of hops. **Depth is valuable only when
 
 Do not commit permanently to the first promising candidate. When more than one candidate looks promising, it is fine to **park** one and continue with the other.
 
-Keep a small mental agenda of parked candidates — a few at most, with no fixed number. For each parked candidate, hold one **concrete reason to revisit it**: an interaction the graph hinted at but that was never explored, a consumer or layer not yet checked, a validation step still pending.
+Keep a small mental agenda of parked candidates — a few at most, with no fixed number. For each parked candidate, hold one **concrete reason to revisit it**: an interaction the graph hinted at but that was never explored, a consumer or layer not yet checked, or a validation step still pending.
 
 Revisit a parked branch when:
 
 * the current branch becomes weak, exhausted, or clearly less promising than the parked one;
 * or new evidence makes the parked candidate's unexplored interaction look richer.
 
-Prefer returning to a parked candidate with evidence of **unexplored interaction** over starting a fresh candidate from nothing.
-
 Rules:
 
-* The agenda is a memory aid, not an algorithm. No scores, no rankings, no quotas, no breadth requirements, no parallel exploration.
+* The agenda is a memory aid, not an algorithm. No scores, rankings, quotas, breadth requirements, or parallel exploration.
 * Park only with a concrete revisit reason. "Might be good" is not a reason.
 * Never manufacture candidates just to keep the agenda populated. An empty agenda is normal.
 * When one branch is clearly the best, follow it deeply and ignore the agenda.
@@ -163,7 +164,44 @@ A generator is not automatically a second scaling axis.
 
 A defensive layer is not automatically part of the scaling chain.
 
-## 9. Prefer genuine architectural depth
+## 9. Validate build composition
+
+Graph reasoning and build validity are separate concerns.
+
+When committing an item, weapon, or other supported component to the emerging build, validate it against the current build state using:
+
+`santa-maria/tools/phase7_build_validity.py`
+
+Flow:
+
+**propose component → validate_addition → VALID: commit / INVALID: reject / UNKNOWN: do not assume valid**
+
+Do not validate every graph node. Validate components when they are actually being added to the build.
+
+Keep committed build state explicit rather than relying only on conversational memory.
+
+Use the validator's conflict reason to steer alternatives when a candidate is rejected.
+
+At the end, validate the complete build with `validate_build`.
+
+`VALID` means only that currently implemented deterministic constraints passed. Do not invent missing constraints or move feasibility rules into the semantic graph.
+
+Do not treat every committed item as a synergy item.
+
+Classify each item as:
+
+core scaling component;
+scaling enabler;
+mechanic converter;
+synergy component;
+constraint/slot filler;
+generic placeholder.
+
+Prefer builds where most committed non-defensive components have a meaningful relationship to the core scaling architecture.
+
+If an item is selected only because a slot or equipment constraint requires something of that type, explicitly mark it as a slot filler. A rare item may be preferable to a Unique in such a role.
+
+## 10. Prefer genuine architectural depth
 
 When comparing possible directions, prefer a candidate where multiple mechanics **depend on, transform, reinforce, or otherwise materially interact with the core scaling axis**.
 
@@ -177,7 +215,23 @@ A short chain can still be strong if the interaction is unusually meaningful.
 
 Conversely, a long chain of weak or unrelated relationships is not valuable merely because it is long.
 
-## 10. Exploration decision
+Prefer scaling axes with multiple independent consumers.
+
+When a candidate scaling variable X is found, do not stop after finding one useful X→output relationship. Search for additional independent mechanisms that consume X or a quantity derived from X.
+
+A particularly valuable candidate is one where the same investment in X improves multiple materially different parts of the build, for example offense + offense, offense + defense, or damage + clear/speed.
+
+Distinguish:
+
+single-use scaling: X → one output;
+multi-use scaling: X → multiple independent outputs;
+compound scaling: X → A and X → B, where A and B interact to produce another meaningful benefit.
+
+Prefer compound/multi-use scaling when the graph provides evidence for it.
+
+Do not manufacture additional consumers merely to increase complexity.
+
+## 11. Exploration decision
 
 At each promising discovery, ask:
 
@@ -189,7 +243,7 @@ If the graph exposes a plausible additional layer, prioritize exploring it.
 
 The purpose of further exploration is to discover whether the candidate can become a **coherent multi-mechanic architecture**, not to artificially increase its complexity.
 
-## 11. Evidence discipline
+## 12. Evidence discipline
 
 Do not manufacture connections to make a candidate appear deeper or more novel — and do not manufacture parked candidates to fill the agenda.
 
