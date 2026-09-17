@@ -36,20 +36,17 @@ echo "==> Uploading to $REMOTE"
 scp_pi "$TARBALL" /tmp/gatherer-deploy.tgz
 rm -f "$TARBALL"
 
-# Preserve the Pi's data dir (flips.db, POESESSID) across the wipe-and-extract.
-ssh_pi "if [ -d $REMOTE_DIR/gatherer/data ]; then cp -r $REMOTE_DIR/gatherer/data /tmp/gatherer-data-backup && echo backed_up; else echo no_data; fi"
-ssh_pi "rm -rf $REMOTE_DIR && mkdir -p $REMOTE_DIR && tar xzf /tmp/gatherer-deploy.tgz -C $REMOTE_DIR --strip-components=1 && echo extracted"
+# Preserve the Pi's data dir across the wipe-and-extract: rename the whole
+# dir aside (instant, same fs) and move just data/ into the fresh extract.
+# NEVER copy data through /tmp — on the Pi it's a small tmpfs (RAM).
+ssh_pi "rm -rf $REMOTE_DIR.old && mv $REMOTE_DIR $REMOTE_DIR.old && mkdir -p $REMOTE_DIR && tar xzf /tmp/gatherer-deploy.tgz -C $REMOTE_DIR --strip-components=1 && mkdir -p $REMOTE_DIR/gatherer && mv $REMOTE_DIR.old/gatherer/data $REMOTE_DIR/gatherer/data && rm -rf $REMOTE_DIR.old && echo extracted"
 
 # 4. Install uv (if missing) + sync deps.
 echo "==> Installing deps"
 ssh_pi "export PATH=\$HOME/.local/bin:\$PATH; command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh; cd $REMOTE_DIR && uv sync --quiet"
 
-# 5. Restore preserved data, or seed on first deploy.
-BACKUP_STATE="$(ssh_pi "[ -d /tmp/gatherer-data-backup ] && echo has_backup || echo no_backup")"
-if [ "$BACKUP_STATE" = "has_backup" ]; then
-    echo "==> Restoring Pi data (flips.db + POESESSID preserved)"
-    ssh_pi "mkdir -p $REMOTE_DIR/gatherer/data && cp -r /tmp/gatherer-data-backup/. $REMOTE_DIR/gatherer/data/ && rm -rf /tmp/gatherer-data-backup"
-else
+# 5. Seed data on first deploy only (redeploys already have it).
+if ! ssh_pi "[ -d $REMOTE_DIR/gatherer/data ]"; then
     echo "==> First deploy — seeding flips.db + POESESSID"
     ssh_pi "mkdir -p $REMOTE_DIR/gatherer/data"
     scp_pi "$REPO/gatherer/gatherer/data/flips.db" "$REMOTE_DIR/gatherer/data/flips.db"

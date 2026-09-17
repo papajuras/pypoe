@@ -1,264 +1,103 @@
 ---
 name: scaling-discovery
-description: Identify, validate, and pursue genuine scaling axes during PoE build discovery with the santa-maria knowledge base. Use when exploring the KB graph for build concepts, evaluating scaling relationships, deciding whether a promising interaction warrants deeper architectural exploration, or managing several promising branches (parking and revisiting candidates) during discovery.
+description: Identify, validate, and pursue genuine scaling axes during PoE build discovery with the santa-maria knowledge base. Primary target: quadratic or higher-order scaling — the same investment in X entering the same output through multiple interacting paths. Use when exploring the KB graph for build concepts, evaluating scaling relationships, or deciding whether a promising interaction warrants deeper exploration.
 metadata:
 "opencode/autoinvoke": false
-----------------------------
+---
 
 # Skill: Scaling Discovery
 
-Use this skill during build discovery to identify meaningful scaling opportunities, validate them, and decide whether a promising interaction deserves deeper exploration.
+Use during build discovery to identify meaningful scaling, validate it, and decide what deserves deeper exploration.
 
-## 1. Identify the scaling axis
+## 1. Scaling axis
 
-A scaling axis is a variable **X** such that increasing X improves an important build output through an explicit game mechanic.
-
-Think:
+A scaling axis is a variable **X** such that increasing X improves an important build output through an explicit game mechanic:
 
 **increase X → mechanic uses/converts X → output improves**
 
-The important property is that the build's output changes **because X changes**.
+The output must change **because X changes**. A generic bonus or multiplier is not an axis; a multiplier matters when a scaling axis feeds it.
 
-A generic bonus, multiplier, or conditional effect is not automatically a scaling axis.
+## 2. Primary target: quadratic or higher-order scaling
 
-For example, `20% more damage` is a multiplier, not a scaling axis. It improves a build, but does not identify **what the build scales with**.
+The discovery target is X entering the **same meaningful output** through two or more interacting paths:
 
-## 2. Validate the relationship
+**X → A, X → B, A × B → output** → X²
+**X → A, X → B, X → C, A × B × C → output** → X³
 
-When a possible scaling relationship appears, identify:
+Ladder:
 
-* **X** — what increases;
-* **mechanism** — how X affects something;
-* **output** — what becomes better because of X.
-
-Apply this test:
-
-> If I increase X, does the relevant output improve because of X?
-
-Prefer explicit KB/graph relationships over assumptions or general game knowledge.
-
-Do not promote an interaction to a confirmed scaling relationship when only one side of the causal chain is supported.
-
-## 3. Do not stop at the first valid scaling relationship
-
-Finding a valid:
-
-**X → output**
-
-relationship is a **lead**, not necessarily a finished build concept.
-
-When an axis is promising, investigate whether it can participate in a larger interacting system.
-
-Look for graph-supported ways to:
-
-* generate or increase X;
-* convert X into another useful quantity;
-* make one effect feed another mechanic;
-* create or expose another scaling axis;
-* find multiple meaningful consumers of X;
-* create a feedback relationship;
-* find enablers that materially change what the interaction can do;
-* connect the core interaction to a coherent defensive layer.
-
-The goal is not to maximize traversal depth.
-
-The goal is to determine whether the initial scaling relationship is part of a **larger build architecture**.
-
-## 4. Generator-spender loops are not sufficient complexity
-
-Do not treat a simple generator → spender/resource-consumer → payoff loop as a deep architecture by itself.
-
-For example:
-
-**generate X → spend X → damage**
-
-is still fundamentally one resource interaction.
-
-A generator and a spender may be important components of a build, but their existence alone does not establish a second scaling system or meaningful architectural depth.
-
-Continue exploring when the interaction exposes additional independent mechanics, scaling axes, conversions, feedback relationships, or other meaningful layers.
-
-Do not reject a build merely because it contains a generator-spender interaction; reject it only when that interaction is effectively the **whole architecture**.
-
-## 5. Look for interacting layers and fan-out
-
-When a promising scaling axis has been identified, actively test whether other mechanics can interact with it.
-
-Particularly valuable structures include:
-
-**X → A → B → output**
-
-**Y → X → output**
-
-**X → output A**
-**X → output B**
-
-**X → A → Y → output**
-
-or other structures where one mechanic meaningfully changes the role or value of another.
-
-One structure deserves special attention: a single meaningful axis with **several meaningful consumers or interacting layers** rather than a single output or a lone generate → spend → damage chain.
-
-When the graph shows hints of such fan-out, treat it as strong evidence that the branch is worth deeper exploration. It is a reason to investigate further, not a requirement every build must meet.
-
-An additional node is not automatically an additional layer. The relationship must create a meaningful interaction.
-
-Prefer **interacting systems** over a collection of unrelated bonuses.
-
-## 6. Explore promising branches proportionally
-
-Do not spend the entire exploration budget on every scaling-looking modifier.
-
-A promising branch deserves additional exploration when there is evidence of:
-
-1. a meaningful scaling axis;
-2. a credible way to generate, increase, or sustain it;
-3. a meaningful consumer or output;
-4. a plausible connection to another mechanic or scaling layer — especially signs that several mechanics could consume the same axis.
-
-If the axis is isolated and no useful continuation is visible, move on.
-
-If the graph exposes a plausible continuation, prioritize exploring it before abandoning the branch.
-
-Do not impose an arbitrary minimum number of hops. **Depth is valuable only when it represents additional interacting mechanics.**
-
-## 7. Keep a small exploration agenda
-
-Do not commit permanently to the first promising candidate. When more than one candidate looks promising, it is fine to **park** one and continue with the other.
-
-Keep a small mental agenda of parked candidates — a few at most, with no fixed number. For each parked candidate, hold one **concrete reason to revisit it**: an interaction the graph hinted at but that was never explored, a consumer or layer not yet checked, or a validation step still pending.
-
-Revisit a parked branch when:
-
-* the current branch becomes weak, exhausted, or clearly less promising than the parked one;
-* or new evidence makes the parked candidate's unexplored interaction look richer.
+- **single-use** — X → A
+- **multi-use** — X → A, X → B, independent outputs (e.g. damage + defense)
+- **quadratic / cubic+** — X feeds ≥2 (≥3) interacting inputs of one output
 
 Rules:
 
-* The agenda is a memory aid, not an algorithm. No scores, rankings, quotas, breadth requirements, or parallel exploration.
-* Park only with a concrete revisit reason. "Might be good" is not a reason.
-* Never manufacture candidates just to keep the agenda populated. An empty agenda is normal.
-* When one branch is clearly the best, follow it deeply and ignore the agenda.
-* A parked candidate may simply die. Drop it when its revisit reason no longer holds.
+- **Multi-use is not double dip.** Damage + defense from X is multi-use; two independent consumers do not interact.
+- **Consumer count is not evidence of quadratic scaling.** A fan-out X → A, B, C is multi-use until effects derived from X actually interact toward one output.
+- **Degree ≠ practical strength.** A cubic term with a tiny coefficient or hard limit can be weak; never rank candidates by degree alone.
+- When claiming, name: X; each path from X; the common output; the combining mechanic; the degree. If any path is unconfirmed, label it a **quadratic/higher-order hypothesis**, not confirmed scaling.
 
-Before abandoning the current branch, check:
+## 3. Validate
 
-> Do I have a parked candidate whose unexplored interaction is stronger than anything left here?
+For any candidate establish **X → mechanism → output**; for higher-order candidates, establish every path and the interaction. Prefer explicit KB/graph relationships. Do not promote to confirmed when only one side of the causal chain is supported, and do not infer a multiplicative interaction merely because two effects share a stat.
 
-## 8. Keep roles distinct
+## 4. Explore for the second path
 
-Separate these roles when reasoning:
+A valid X → output is a **lead**, not a build. Look for:
 
-* **scaling axis** — what the build scales with;
-* **generator** — creates or increases the scaling variable;
-* **consumer/converter** — uses or transforms it;
-* **enabler** — makes the interaction possible;
-* **multiplier** — improves the resulting output;
-* **defense** — keeps the build alive.
+- another mechanic that scales with X;
+- conversion of X into a quantity affecting the output;
+- a multiplier whose input X also increases;
+- another axis Y interacting with X;
+- feedback (X affecting the output more than once);
+- generators/enablers that make the interaction practical;
+- a coherent defensive layer where appropriate.
 
-These roles can interact, but they are not interchangeable.
+An extra node matters only when it adds another interacting layer. Depth for its own sake is worthless.
 
-A multiplier is not automatically a scaling axis.
+## 5. Explore proportionally
 
-A generator is not automatically a second scaling axis.
+A branch merits further exploration when there is evidence of:
 
-A defensive layer is not automatically part of the scaling chain.
+1. a meaningful scaling axis X;
+2. credible generation of X;
+3. a meaningful output;
+4. a second path by which X reaches that output — or a plausible mechanic that could make such a path interact with the first.
 
-## 9. Validate build composition
+Give particular attention to candidates where the second path would establish X² or higher. If the axis is isolated and no plausible continuation is visible, move on. No arbitrary minimum number of hops.
 
-Graph reasoning and build validity are separate concerns.
+## 6. Small agenda
 
-When committing an item, weapon, or other supported component to the emerging build, validate it against the current build state using:
+Park at most a few candidates, each with one **concrete revisit reason**: a possible second X-path, an unconfirmed multiplier, an unexplored consumer, a pending validation. The agenda is a memory aid, not an algorithm — no scores, quotas, or parallel exploration; never manufacture candidates; drop a parked branch when its reason dies. Before abandoning the current branch, check whether a parked candidate has a more promising unexplored path toward higher-order scaling.
 
-`santa-maria/tools/phase7_build_validity.py`
+## 7. Roles
 
-Flow:
+**scaling axis** (what the build scales with) · **generator** (creates X) · **consumer/converter** · **enabler** · **multiplier** · **defense**. They interact but are not interchangeable: a generator is not automatically an axis, a multiplier is not a second path, a second consumer is not a double dip.
 
-**propose component → validate_addition → VALID: commit / INVALID: reject / UNKNOWN: do not assume valid**
+## 8. Build validation
 
-Do not validate every graph node. Validate components when they are actually being added to the build.
+Graph reasoning and build validity are separate concerns. Commit components via `santa-maria/tools/phase7_build_validity.py`:
 
-Keep committed build state explicit rather than relying only on conversational memory.
+**propose component → validate_addition → VALID: commit / INVALID: reject (use the conflict reason to steer alternatives) / UNKNOWN: do not assume valid**
 
-Use the validator's conflict reason to steer alternatives when a candidate is rejected.
+Validate only components actually being added; keep committed state explicit, not in conversational memory; finish with `validate_build`. VALID means only the implemented deterministic constraints passed — never invent missing constraints or move feasibility rules into the semantic graph.
 
-At the end, validate the complete build with `validate_build`.
+Classify each committed item: core scaling component · scaling enabler · mechanic converter · synergy component · **slot filler** (mark explicitly when chosen only for a slot constraint; a rare may be preferable) · generic placeholder. Prefer builds whose non-defensive components participate in the scaling architecture.
 
-`VALID` means only that currently implemented deterministic constraints passed. Do not invent missing constraints or move feasibility rules into the semantic graph.
+## 9. Evidence discipline and decision
 
-Do not treat every committed item as a synergy item.
+At each promising discovery ask:
 
-Classify each item as:
+> Does increasing X merely provide multiple independent benefits, or does X enter the same output through multiple interacting paths?
 
-core scaling component;
-scaling enabler;
-mechanic converter;
-synergy component;
-constraint/slot filler;
-generic placeholder.
+Classify the evidence: **isolated → multi-use → quadratic candidate → quadratic confirmed → cubic+ candidate/confirmed**.
 
-Prefer builds where most committed non-defensive components have a meaningful relationship to the core scaling architecture.
-
-If an item is selected only because a slot or equipment constraint requires something of that type, explicitly mark it as a slot filler. A rare item may be preferable to a Unique in such a role.
-
-## 10. Prefer genuine architectural depth
-
-When comparing possible directions, prefer a candidate where multiple mechanics **depend on, transform, reinforce, or otherwise materially interact with the core scaling axis**.
-
-A strong architecture may contain several layers such as:
-
-**scaling axis → generator/accumulation → consumer/converter → secondary effect → additional scaling/payoff → enabler/defense**
-
-It does not need to contain all of these.
-
-A short chain can still be strong if the interaction is unusually meaningful.
-
-Conversely, a long chain of weak or unrelated relationships is not valuable merely because it is long.
-
-Prefer scaling axes with multiple independent consumers.
-
-When a candidate scaling variable X is found, do not stop after finding one useful X→output relationship. Search for additional independent mechanisms that consume X or a quantity derived from X.
-
-A particularly valuable candidate is one where the same investment in X improves multiple materially different parts of the build, for example offense + offense, offense + defense, or damage + clear/speed.
-
-Distinguish:
-
-single-use scaling: X → one output;
-multi-use scaling: X → multiple independent outputs;
-compound scaling: X → A and X → B, where A and B interact to produce another meaningful benefit.
-
-Prefer compound/multi-use scaling when the graph provides evidence for it.
-
-Do not manufacture additional consumers merely to increase complexity.
-
-## 11. Exploration decision
-
-At each promising discovery, ask:
-
-> Is this merely a valid scaling relationship, a simple generator-spender loop, or evidence of a deeper interacting system?
-
-If it is only an isolated scaling relationship or generator-spender loop and no useful continuation is visible, consult the agenda (§7) and move on.
-
-If the graph exposes a plausible additional layer, prioritize exploring it.
-
-The purpose of further exploration is to discover whether the candidate can become a **coherent multi-mechanic architecture**, not to artificially increase its complexity.
-
-## 12. Evidence discipline
-
-Do not manufacture connections to make a candidate appear deeper or more novel — and do not manufacture parked candidates to fill the agenda.
-
-Important relationships in the proposed architecture should be supported by the KB or by an explicitly available feasibility/mechanics check.
-
-If a potentially useful relationship cannot be confirmed, mark it as uncertain rather than silently treating it as established. If a parked candidate rests on an uncertain relationship, its revisit reason inherits that uncertainty.
-
-Do not substitute general game knowledge for missing graph evidence when claiming that a relationship was discovered from the KB.
+Do not manufacture causal links, multiplicative interactions, or higher-order behavior. X appearing in two places is not X² unless both dependencies provably feed the same meaningful output. Partially known relationships stay hypotheses. Never substitute general game knowledge for missing KB evidence when claiming a relationship was discovered from the KB. **Do not force a quadratic interpretation.**
 
 ## Objective
 
-Find build concepts that are more than isolated scaling modifiers or simple generator-spender loops.
+Find build concepts where a coherent investment in X produces quadratic or higher-order scaling:
 
-When the graph provides evidence for it, pursue **multiple interacting mechanics around a coherent scaling core** — and when several such cores appear, remember the promising ones instead of losing them.
+**X → A, X → B, A × B → output** (and analogues)
 
-Do not force complexity.
-
-**Discover architectural depth when the evidence supports it.**
+Multi-use, compound, generator-spender, and deep architectures matter only as steps toward such interacting dependencies. **The primary target is genuine quadratic-or-higher scaling, not many uses of the same stat.**

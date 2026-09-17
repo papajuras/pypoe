@@ -30,6 +30,8 @@ ITEM_TYPES = [
     "ForbiddenJewel",
 ]
 POLL = 900  # 15 min
+BACKOFF_MIN = 5.0    # first 429/5xx cooldown (s)
+BACKOFF_MAX = 120.0  # cap
 
 
 class NinjaClient:
@@ -37,6 +39,8 @@ class NinjaClient:
         self._session = requests.Session()
         self._session.headers.update({"User-Agent": "pypoe/0.1.0 (div-card scanner)"})
         self._cache: dict[str, dict] = {}  # f"{league}:{type_key}" -> {"etag": str, "data": dict, "expires": float, "stale_ok": float}
+        self._cooldown_until = 0.0  # client-wide: one 429 pauses ALL fetches
+        self._backoff = BACKOFF_MIN
 
     def overview(self, type_key: str, league: str = "Standard") -> dict:
         now = time.time()
@@ -68,7 +72,13 @@ class NinjaClient:
         return resp.json()
 
     def _fetch(self, url: str, cache_key: str) -> dict:
+        now = time.time()
         cached = self._cache.get(cache_key) or {}
+        if now < self._cooldown_until:
+            if cached.get("data") is not None:
+                return cached["data"]
+            raise RuntimeError(f"poe.ninja cooldown, {self._cooldown_until - now:.0f}s left ({cache_key})")
+
         headers = {}
         if cached.get("etag"):
             headers["If-None-Match"] = cached["etag"]
@@ -76,12 +86,27 @@ class NinjaClient:
         resp = self._session.get(url, headers=headers, timeout=15)
         now = time.time()
 
+        if resp.status_code == 429 or resp.status_code >= 500:
+            try:
+                retry_after = float(resp.headers.get("Retry-After") or 0)
+            except ValueError:
+                retry_after = 0.0
+            self._cooldown_until = now + max(self._backoff, retry_after)
+            self._backoff = min(self._backoff * 2, BACKOFF_MAX)
+            if cached.get("data") is not None:
+                return cached["data"]  # stale-serve during cooldown
+            raise RuntimeError(f"poe.ninja {resp.status_code}, cooling down {self._cooldown_until - now:.0f}s")
+
         if resp.status_code == 304:
+            self._cooldown_until = 0.0
+            self._backoff = BACKOFF_MIN
             cached["expires"] = now + POLL
             cached["stale_ok"] = now + POLL + 300
             return cached["data"]
 
         resp.raise_for_status()
+        self._cooldown_until = 0.0
+        self._backoff = BACKOFF_MIN
         data = resp.json()
 
         etag = resp.headers.get("etag", "")
@@ -136,3 +161,14 @@ class NinjaClient:
                     })
         out.sort(key=lambda x: (x["type"], x["name"].lower()))
         return out
+
+
+_client: NinjaClient | None = None
+
+
+def get_client() -> NinjaClient:
+    """Process-wide singleton — the cache/backoff only work if everyone shares one instance."""
+    global _client
+    if _client is None:
+        _client = NinjaClient()
+    return _client
