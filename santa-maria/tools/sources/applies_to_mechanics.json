@@ -1,0 +1,578 @@
+{
+ "covered_by_audited": [
+  "CastSpeedAppliesToAttacks",
+  "CastSpeedAppliesToTrapThrowingSpeed",
+  "LightRadiusAppliesToAccuracy",
+  "LightRadiusAppliesToAreaOfEffect",
+  "LightRadiusAppliesToDamage",
+  "MinionAttackSpeedAppliesToPlayer",
+  "MinionCastSpeedAppliesToPlayer",
+  "MinionDamageAppliesToPlayer",
+  "SpellDamageAppliesToAttacks"
+ ],
+ "mechanics": [
+  {
+   "canonical_stat": "stat:additive_armour_modifiers_apply_to_energy_shield_recharge_rate_at_%_value",
+   "handler": {
+    "file": "src/Modules/CalcDefence.lua",
+    "line": 774,
+    "output_field": "EnergyShieldRecharge"
+   },
+   "id": "armour_applies_to_energy_shield_recharge",
+   "improved_flag": "ImprovedArmourAppliesToEnergyShieldRecharge",
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:additive_armour_modifiers_apply_to_energy_shield_recharge_rate_at_%_value",
+     "value": "per-stat"
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 3447,
+     "phrase": "increases and reductions to armour also apply to energy shield recharge rate at (%d+)%% of their value"
+    }
+   ],
+   "pob_flag": "ArmourAppliesToEnergyShieldRecharge",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:aspect_of_the_avian_grants_avians_might_and_avians_flight_to_nearby_allies",
+   "handler": {
+    "file": "src/Modules/CalcPerform.lua",
+    "line": 2282,
+    "operand_field": "BuffEffectOnSelf"
+   },
+   "id": "buff_applies_to_allies",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:aspect_of_the_avian_grants_avians_might_and_avians_flight_to_nearby_allies",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 4074,
+     "phrase": "aspect of the avian also grants avian's might and avian's flight to nearby allies"
+    }
+   ],
+   "pob_flag": "BuffAppliesToAllies",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:modifiers_to_claw_attack_speed_also_affect_unarmed_melee_attack_speed",
+   "handler": {
+    "file": "src/Modules/CalcOffence.lua",
+    "line": 661,
+    "output_modflag": "Claw"
+   },
+   "id": "claw_attack_speed_applies_to_unarmed",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:modifiers_to_claw_attack_speed_also_affect_unarmed_melee_attack_speed",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 3437,
+     "phrase": "modifiers to claw attack speed also apply to unarmed"
+    },
+    {
+     "line": 3438,
+     "phrase": "modifiers to claw attack speed also apply to unarmed attack speed"
+    },
+    {
+     "line": 3439,
+     "phrase": "modifiers to claw attack speed also apply to unarmed attack speed with melee skills"
+    }
+   ],
+   "pob_flag": "ClawAttackSpeedAppliesToUnarmed",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:modifiers_to_claw_critical_strike_chance_also_affect_unarmed_melee_critical_strike_chance",
+   "handler": {
+    "file": "src/Modules/CalcOffence.lua",
+    "line": 670,
+    "output_modflag": "Claw"
+   },
+   "id": "claw_crit_chance_applies_to_unarmed",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:modifiers_to_claw_critical_strike_chance_also_affect_unarmed_melee_critical_strike_chance",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 3440,
+     "phrase": "modifiers to claw critical strike chance also apply to unarmed"
+    },
+    {
+     "line": 3441,
+     "phrase": "modifiers to claw critical strike chance also apply to unarmed attack critical strike chance"
+    },
+    {
+     "line": 3442,
+     "phrase": "modifiers to claw critical strike chance also apply to unarmed critical strike chance with melee skills"
+    }
+   ],
+   "pob_flag": "ClawCritChanceAppliesToUnarmed",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:modifiers_to_claw_damage_also_affect_unarmed_melee_damage",
+   "handler": {
+    "file": "src/Modules/CalcOffence.lua",
+    "line": 652,
+    "output_modflag": "Claw"
+   },
+   "id": "claw_damage_applies_to_unarmed",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:modifiers_to_claw_damage_also_affect_unarmed_melee_damage",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 3434,
+     "phrase": "modifiers to claw damage also apply to unarmed"
+    },
+    {
+     "line": 3435,
+     "phrase": "modifiers to claw damage also apply to unarmed attack damage"
+    },
+    {
+     "line": 3436,
+     "phrase": "modifiers to claw damage also apply to unarmed attack damage with melee skills"
+    }
+   ],
+   "pob_flag": "ClawDamageAppliesToUnarmed",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:additive_evasion_increase_modifiers_apply_to_spell_damage_at_%_value",
+   "handler": {
+    "file": "src/Modules/CalcOffence.lua",
+    "line": 611,
+    "output_modflag": "Spell"
+   },
+   "id": "evasion_applies_to_spell_damage",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:additive_evasion_increase_modifiers_apply_to_spell_damage_at_%_value",
+     "value": "per-stat"
+    }
+   ],
+   "operand_evidence": "ModParser:3412 phrase operand segment; ModParser phrase table/translation",
+   "operand_stat": "stat:evasion_rating_+%",
+   "pattern_lines": [
+    {
+     "line": 3412,
+     "phrase": "increases and reductions to your evasion rating also apply to your spell damage"
+    }
+   ],
+   "pob_flag": "EvasionAppliesToSpellDamage",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:has_ignite_duration_on_self_as_all_elemental_ailments_on_self",
+   "handler": {
+    "file": "src/Modules/CalcDefence.lua",
+    "line": 1607,
+    "operand_field": "SelfIgniteDuration",
+    "output_field": "SelfIgniteDurationToElementalAilments"
+   },
+   "id": "ignite_duration_applies_to_elemental_ailments",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:has_ignite_duration_on_self_as_all_elemental_ailments_on_self",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 3800,
+     "phrase": "modifiers to ignite duration on you apply to all elemental ailments"
+    }
+   ],
+   "pob_flag": "IgniteDurationAppliesToElementalAilments",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:local_flask_life_recovery_from_flasks_also_recovers_energy_shield",
+   "handler": null,
+   "id": "life_flask_applies_to_energy_shield",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "flag token transform",
+     "role": "canonical",
+     "stat": "stat:life_recovery_from_flasks_also_recovers_energy_shield",
+     "value": null
+    },
+    {
+     "condition": null,
+     "evidence": "flag token transform",
+     "role": "canonical",
+     "stat": "stat:local_flask_life_recovery_from_flasks_also_recovers_energy_shield",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 2417,
+     "phrase": "life recovery from flasks also applies to energy shield"
+    },
+    {
+     "line": 5084,
+     "phrase": "life recovery from flasks also applies to energy shield during f?l?a?s?k? ?effect"
+    }
+   ],
+   "pob_flag": "LifeFlaskAppliesToEnergyShield",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:additive_mana_modifiers_apply_to_shock_effect_at_30%_value",
+   "handler": {
+    "file": "src/Modules/CalcPerform.lua",
+    "line": 2128,
+    "output_field": "EnemyShockEffect"
+   },
+   "id": "mana_applies_to_shock_effect",
+   "improved_flag": "ImprovedManaAppliesToShockEffect",
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:additive_mana_modifiers_apply_to_shock_effect_at_30%_value",
+     "value": 30
+    }
+   ],
+   "operand_evidence": "ModParser:3428 phrase operand segment; ModParser phrase table/translation",
+   "operand_stat": "stat:maximum_mana_+%",
+   "pattern_lines": [
+    {
+     "line": 3428,
+     "phrase": "increases and reductions to maximum mana also apply to shock effect at (%d+)%% of their value"
+    }
+   ],
+   "pob_flag": "ManaAppliesToShockEffect",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:non_instant_mana_recovery_from_flasks_also_recovers_life",
+   "handler": null,
+   "id": "mana_flask_applies_to_life",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:non_instant_mana_recovery_from_flasks_also_recovers_life",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 2421,
+     "phrase": "non%-instant mana recovery from flasks is also recovered as life"
+    }
+   ],
+   "pob_flag": "ManaFlaskAppliesToLife",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:additive_minion_maximum_life_modifiers_apply_to_you_at_%_value",
+   "handler": {
+    "file": "src/Modules/CalcPerform.lua",
+    "line": 1531,
+    "output_field": "Life"
+   },
+   "id": "minion_life_applies_to_player",
+   "improved_flag": "ImprovedMinionLifeAppliesToPlayer",
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:additive_minion_maximum_life_modifiers_apply_to_you_at_%_value",
+     "value": "per-stat"
+    }
+   ],
+   "operand_evidence": "ModParser:3408 phrase operand segment; ModParser phrase table",
+   "operand_stat": "stat:minion_maximum_life_+%",
+   "pattern_lines": [
+    {
+     "line": 3408,
+     "phrase": "increases and reductions to minion maximum life also apply to you at (%d+)%% of their value"
+    }
+   ],
+   "pob_flag": "MinionLifeAppliesToPlayer",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:arrow_speed_additive_modifiers_also_apply_to_bow_damage",
+   "handler": {
+    "file": "src/Modules/CalcOffence.lua",
+    "line": 645,
+    "output_modflag": "Bow"
+   },
+   "id": "projectile_speed_applies_to_bow_damage",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:arrow_speed_additive_modifiers_also_apply_to_bow_damage",
+     "value": null
+    }
+   ],
+   "operand_evidence": "ModParser:3448 phrase operand segment; ModParser phrase table",
+   "operand_stat": "stat:projectile_speed_+%",
+   "pattern_lines": [
+    {
+     "line": 3448,
+     "phrase": "increases and reductions to projectile speed also apply to damage with bows"
+    }
+   ],
+   "pob_flag": "ProjectileSpeedAppliesToBowDamage",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:quicksilver_flasks_apply_to_nearby_allies",
+   "handler": null,
+   "id": "quick_silver_applies_to_allies",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:quicksilver_flasks_apply_to_nearby_allies",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 4112,
+     "phrase": "quicksilver flasks you use also apply to nearby allies"
+    }
+   ],
+   "pob_flag": "QuickSilverAppliesToAllies",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:has_avoid_shock_as_avoid_all_elemental_ailments",
+   "handler": {
+    "file": "src/Modules/CalcDefence.lua",
+    "line": 1573
+   },
+   "id": "shock_avoid_applies_to_elemental_ailments",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:has_avoid_shock_as_avoid_all_elemental_ailments",
+     "value": null
+    }
+   ],
+   "operand_evidence": "no KB stat correspondence verified",
+   "operand_stat": null,
+   "pattern_lines": [
+    {
+     "line": 3809,
+     "phrase": "chance to avoid being shocked applies to all elemental ailments"
+    },
+    {
+     "line": 3810,
+     "phrase": "modifiers to chance to avoid being shocked apply to all elemental ailments"
+    }
+   ],
+   "pob_flag": "ShockAvoidAppliesToElementalAilments",
+   "product_stat": null,
+   "value": null
+  },
+  {
+   "canonical_stat": "stat:additive_life_modifiers_apply_to_attack_damage_at_30%_value",
+   "handler": {
+    "file": "src/Modules/CalcOffence.lua",
+    "line": 511,
+    "operand_field": "Life",
+    "output_field": "Damage",
+    "output_modflag": "Attack",
+    "value": 0.3
+   },
+   "id": "transfiguration_of_body",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:additive_life_modifiers_apply_to_attack_damage_at_30%_value",
+     "value": 30
+    }
+   ],
+   "operand_evidence": "handler src/Modules/CalcOffence.lua:511 operand field Life; ModParser phrase table/translation",
+   "operand_stat": "stat:maximum_life_+%",
+   "pattern_lines": [
+    {
+     "line": 5487,
+     "phrase": "transfiguration of body"
+    }
+   ],
+   "pob_flag": "TransfigurationOfBody",
+   "product_stat": null,
+   "value": 0.3
+  },
+  {
+   "canonical_stat": "stat:additive_mana_modifiers_apply_to_damage_at_30%_value",
+   "handler": {
+    "file": "src/Modules/CalcOffence.lua",
+    "line": 514,
+    "operand_field": "Mana",
+    "output_field": "Damage",
+    "output_modflag": "Spell",
+    "value": 0.3
+   },
+   "id": "transfiguration_of_mind",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:additive_mana_modifiers_apply_to_damage_at_30%_value",
+     "value": 30
+    }
+   ],
+   "operand_evidence": "handler src/Modules/CalcOffence.lua:514 operand field Mana; ModParser phrase table/translation",
+   "operand_stat": "stat:maximum_mana_+%",
+   "pattern_lines": [
+    {
+     "line": 5488,
+     "phrase": "transfiguration of mind"
+    }
+   ],
+   "pob_flag": "TransfigurationOfMind",
+   "product_stat": null,
+   "value": 0.3
+  },
+  {
+   "canonical_stat": "stat:additive_energy_shield_modifiers_apply_to_spell_damage_at_30%_value",
+   "handler": {
+    "file": "src/Modules/CalcOffence.lua",
+    "line": 517,
+    "operand_field": "EnergyShield",
+    "output_field": "Damage",
+    "output_modflag": "Spell",
+    "value": 0.3
+   },
+   "id": "transfiguration_of_soul",
+   "improved_flag": null,
+   "members": [
+    {
+     "condition": null,
+     "evidence": "stat_translations equality",
+     "role": "canonical",
+     "stat": "stat:additive_energy_shield_modifiers_apply_to_spell_damage_at_30%_value",
+     "value": 30
+    }
+   ],
+   "operand_evidence": "handler src/Modules/CalcOffence.lua:517 operand field EnergyShield; ModParser phrase table/translation",
+   "operand_stat": "stat:maximum_energy_shield_+%",
+   "pattern_lines": [
+    {
+     "line": 5489,
+     "phrase": "transfiguration of soul"
+    }
+   ],
+   "pob_flag": "TransfigurationOfSoul",
+   "product_stat": null,
+   "value": 0.3
+  }
+ ],
+ "provenance": {
+  "extraction": "mechanical sweep of applies-to / transfiguration flag class; bindings evidence-backed (pattern lines, Calc handler regions, RePoE stat translations); unresolvable bindings reported unbound",
+  "pob_branch": "master",
+  "pob_commit": "b32759ab0f31a1c8499a0d420cb0f0633d4fe478",
+  "pob_repo": "PathOfBuildingCommunity/PathOfBuilding",
+  "provenance_class": "generated_mechanical_extraction",
+  "source_file": "src/Modules/ModParser.lua"
+ },
+ "unbound": [
+  {
+   "flag": "EnergyShieldRechargeAppliesToLife",
+   "phrases": [
+    "energy shield recharge instead applies to life"
+   ],
+   "reason": "no KB bridge stat bound"
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "index": 19,
+ "node_id": "passive:AscendancySaboteur4",
+ "targets": {
+  "stat:cannot_be_blinded": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 6,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmCannotBeBlinded",
+    "mod:BlindImmunityUniqueSceptre8",
+    "mod:BlindImmunityUnique__1",
+    "mod:NearbyEnemiesAreBlindedInfluenceMaven",
+    "mod:NecropolisCraftingImmunityToBlind",
+    "mod:V2BlindImmunityCorrupted",
+    "passive:AscendancyCustomDeadeye20_",
+    "passive:AscendancySaboteur4"
+   ],
+   "total": 8
+  },
+  "stat:damage_taken_+%_from_blinded_enemies": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyCustomGuardian2",
+    "passive:AscendancySaboteur4"
+   ],
+   "total": 2
+  },
+  "stat:global_chance_to_blind_on_hit_%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 25,
+    "passive_grants_stat": 3,
+    "gem_grants_stat": 5,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SolartwineBlindingNova",
+    "gem:SupportBlind",
+    "gem:SupportBlindRoyale",
+    "gem:Twister",
+    "gem:VaalBladeFlurry",
+    "mod:AnimalCharmBlindOnHitChance1",
+    "mod:AnimalCharmBlindOnHitChance2",
+    "mod:BestiaryModSquidAura1",
+    "mod:BetrayalUpgradeMonsterBlindOnHit",
+    "mod:BlindOnHitSupportedUber1",
+    "mod:BlindOnHitSupportedUber2",
+    "mod:BlindOnHitSupportedUber3",
+    "mod:BlindOnHitSupportedUberMaven",
+    "mod:DelveArmourBlindChance",
+    "mod:GlobalChanceToBlindOnHitInfluence1__"
+   ],
+   "total": 33
+  },
+  "stat:local_display_nearby_enemies_are_blinded": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 5,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:DisplayBlindAuraUnique__1",
+    "mod:NearbyEnemiesAreBlindedInfluence1_",
+    "mod:NearbyEnemiesAreBlindedInfluenceMaven",
+    "mod:NearbyEnemiesAreBlindedUnique__1",
+    "mod:UniqueSpecialCorruptionNearbyEnemiesBlinded",
+    "passive:AscendancyCustomGuardian2",
+    "passive:AscendancySaboteur4"
+   ],
+   "total": 7
+  }
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "index": 55,
+ "node_id": "stat:map_watchstone_monsters_life_+%_final",
+ "type": "Stat",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "stat:map_watchstone_monsters_life_+%_final"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "stat:map_watchstone_monsters_life_+%_final"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:map_watchstone_monsters_life_+%_final"
+   }
+  }
+ ],
+ "start_carriers": {
+  "modifier_grants_stat": {
+   "count": 1,
+   "samples": [
+    {
+     "id": "mod:UniqueWatchstoneMonsterLifeFinal_",
+     "name": ""
+    }
+   ]
+  }
+ },
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 1,
+     "members": [
+      "mod:UniqueWatchstoneMonsterLifeFinal_"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": []
+}

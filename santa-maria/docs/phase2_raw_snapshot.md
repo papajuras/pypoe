@@ -1,8 +1,8 @@
 # Phase 2 — Raw Snapshot Validation Report
 
 - **Database**: `cache/raw_records.db`
-- **Ingested at**: `2026-09-14T17:47:12+00:00`
-- **Source versions**: `repoe@926da1c0c7e2c354edb70b2cddcadf6704957f32` | `pob@bc3c27173ea27a4bd258e0b9af8cd65763ef6121`
+- **Ingested at**: `2026-09-21T07:27:24+00:00`
+- **Source versions**: `repoe@a77305840b4cc8555eeeea144eac3eeddeff134b` | `pob@5da74f8b82167089c3b5902e2059441227f261d7`
 - **Source files expected**: `417`
 - **Source records expected**: `283,774`
 - **raw_records rows inserted**: `283,774` (rows in db: `283,774`)
@@ -14,5 +14,5 @@
 - **Missing source files**: `0`
 - **Files with zero records (empty arrays, no rows by design)**: `pob/Uniques/Special/Generated.json`, `pob/Uniques/Special/New.json`, `pob/Uniques/graft.json`
 - **Spot checks**: Crown of Eyes / Iron Will / Avatar of Fire / ignite-vs-ignited — see check list above
-- **Ingest time**: `4.3s` | **Validation time**: `2.9s` | **Total**: `7.8s`
+- **Ingest time**: `4.0s` | **Validation time**: `2.6s` | **Total**: `7.3s`
 - **Result**: **PASS**

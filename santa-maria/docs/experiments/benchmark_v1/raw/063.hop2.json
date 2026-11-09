@@ -1,0 +1,21 @@
+{
+ "index": 63,
+ "node_id": "mod:TemporalChainsReservationCostUnique__2",
+ "targets": {
+  "stat:temporal_chains_no_reservation": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:TemporalChainsReservationCostUnique__1",
+    "mod:TemporalChainsReservationCostUnique__2",
+    "passive:AscendancyCustomOccultist15"
+   ],
+   "total": 3
+  }
+ }
+}

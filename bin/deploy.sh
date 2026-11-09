@@ -2,7 +2,7 @@
 # pypoe — deploy the gatherer module to the Pi (home LAN, netns WireGuard VPN).
 # Re-runnable: stops the running service gracefully, ships current code,
 # installs deps, restarts. Preserves the Pi's gatherer/gatherer/data/
-# (flips.db, POESESSID) — data is seeded only on first deploy.
+# (flips.db) — data is seeded only on first deploy, POESESSID is synced every deploy.
 #
 # Prereq: `ssh pi` works (see ~/.ssh/config), Pi reachable, VPN conf in ignore/.
 set -euo pipefail
@@ -45,15 +45,20 @@ ssh_pi "rm -rf $REMOTE_DIR.old && mv $REMOTE_DIR $REMOTE_DIR.old && mkdir -p $RE
 echo "==> Installing deps"
 ssh_pi "export PATH=\$HOME/.local/bin:\$PATH; command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh; cd $REMOTE_DIR && uv sync --quiet"
 
-# 5. Seed data on first deploy only (redeploys already have it).
+# 5. Sync POESESSID (always, even on re-deploy).
+echo "==> Syncing POESESSID"
+ssh_pi "mkdir -p $REMOTE_DIR/gatherer/data"
+scp_pi "$REPO/gatherer/gatherer/data/POESESSID" "$REMOTE_DIR/gatherer/data/POESESSID"
+echo "==> POESESSID synced"
+
+# 6. Seed data on first deploy only (redeploys already have it).
 if ! ssh_pi "[ -d $REMOTE_DIR/gatherer/data ]"; then
-    echo "==> First deploy — seeding flips.db + POESESSID"
+    echo "==> First deploy — seeding flips.db"
     ssh_pi "mkdir -p $REMOTE_DIR/gatherer/data"
     scp_pi "$REPO/gatherer/gatherer/data/flips.db" "$REMOTE_DIR/gatherer/data/flips.db"
-    scp_pi "$REPO/gatherer/gatherer/data/POESESSID" "$REMOTE_DIR/gatherer/data/POESESSID"
 fi
 
-# 6. WireGuard VPN for the gatherer (netns; host SSH stays on the LAN).
+# 7. WireGuard VPN for the gatherer (netns; host SSH stays on the LAN).
 echo "==> Installing WireGuard + VPN netns"
 VPN_CONF="$(ls "$REPO"/ignore/*.conf 2>/dev/null | head -1 || true)"
 if [ -n "$VPN_CONF" ]; then
@@ -71,7 +76,7 @@ else
     echo "!! No ignore/*.conf found — skipping VPN setup"
 fi
 
-# 7. Install systemd units (VPN + gatherer-in-netns) + start.
+# 8. Install systemd units (VPN + gatherer-in-netns) + start.
 echo "==> Installing systemd units"
 ssh_pi "cat > /tmp/pypoe-vpn.service <<'EOF'
 [Unit]
@@ -116,7 +121,7 @@ sudo systemctl restart pypoe-vpn
 sudo systemctl restart pypoe-gatherer
 echo started"
 
-# 8. Wait for health + confirm flip count.
+# 9. Wait for health + confirm flip count.
 echo "==> Waiting for health (http://pi.local:$PORT)..."
 for i in $(seq 1 15); do
     if curl -sf --compressed "http://pi.local:$PORT/api/status" >/dev/null 2>&1; then

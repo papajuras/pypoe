@@ -1,0 +1,120 @@
+{
+ "start": "tag:quiver_eyrie",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:AvoidPhysicalDamageInfluence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:AvoidPhysicalDamageInfluence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:FrenzyChargeOnKillInfluence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:FrenzyChargeOnKillInfluence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:FrenzyChargeOnKillInfluenceMaven",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:GlobalChanceToBlindOnHitInfluence1__",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:GlobalChanceToBlindOnHitInfluence2_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:GlobalChanceToBlindOnHitInfluenceMaven",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:IncreasedAccuracyPercentInfluence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:IncreasedAccuracyPercentInfluence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:IncreasedAccuracyPercentInfluenceMaven_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:IncreasedAilmentEffectLowInfluence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:IncreasedAilmentEffectLowInfluence2_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:OnslaughtOnKillInfluence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:OnslaughtOnKillInfluence2_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:OnslaughtOnKillInfluenceMaven",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:PhysicalAddedAsExtraColdInfluence1_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:quiver_eyrie",
+     "to": "mod:PhysicalAddedAsExtraColdInfluence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

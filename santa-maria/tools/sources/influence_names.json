@@ -1,0 +1,17 @@
+{
+  "_authority": "Pinned display-name mapping for the six confluence influences (v1 scope, per whispers08 plan + user confirmation). Tag suffixes are the RePoE spawn_weights[].tag suffixes (e.g. claw_basilisk) AND the item_classes.json influence_tags vocabulary. Suffixes are data-derived (mods.json/item_classes.json); display names are the community-standard influence names for those suffixes. Eldritch / Delve / Essence / Fossil / Synthesis / Scourge / Crucible / Veiled pseudo-influences are deliberately OUT of v1 scope; they are never inferred.",
+  "_evidence": {
+    "suffix_tag_shape": "repoe/mods.json spawn_weights[].tag = '<itemclass_tag>_<suffix>' with weight>0 (e.g. claw_basilisk weight 200 on AddedLightningDamagePerIntelligenceInfluence1)",
+    "class_tag_shape": "repoe/item_classes.json item_classes[].influence_tags = per-class list of the same tags (e.g. Claw -> [claw_crusader, claw_elder, claw_basilisk, claw_eyrie, claw_shaper, claw_adjudicator])",
+    "sample": "mod:AddedLightningDamagePerIntelligenceInfluence1 carries name \"Hunter's\" + spawn_weights claw/dagger/rune_dagger/sceptre/wand_basilisk (all weight 200)"
+  },
+  "influences": {
+    "shaper": {"display_name": "Shaper's"},
+    "elder": {"display_name": "Elder's"},
+    "crusader": {"display_name": "Crusader's"},
+    "eyrie": {"display_name": "Redeemer's"},
+    "adjudicator": {"display_name": "Warlord's"},
+    "basilisk": {"display_name": "Hunter's"}
+  },
+  "provenance_class": "pinned_reviewed_source_table"
+}

@@ -31,18 +31,40 @@ implementation helpers.
 `santa-maria/tools/research.py`):
 
 * `resolve(query, type=None)` — complete, non-sampled node lookup by
-  id/display-name substring (case-insensitive). Returns ids, types, names,
-  `availability` (uniques), `passive_info` (passives). Duplicate display names
-  are a valid lookup: all matches are returned and `meta.ambiguous` flags the
-  duplication without removing anything.
+  id/display-name substring, plus literal normalized substring over modifier
+  `text` (lowercase + strip non-alphanumeric on both sides; no fuzzy
+  matching or synonyms; only payloads carrying a `text` field — Modifiers —
+  can match on text). Returns ids, types, names,
+  `availability` (uniques), `passive_info` (passives), `text` (modifiers).
+  Duplicate display names are a valid lookup: all matches are returned and
+  `meta.ambiguous` flags the duplication without removing anything.
 * `carriers(node_id, edge_types=None)` — depth-1 reverse projection: what
   grants/carries a node (stats: which modifiers/gems/passives/uniques; a
-  modifier: which uniques carry it). Results carry names, `edge_type`, availability,
-  `passive_info`, and `meta.counts` per edge type. There is deliberately **no
-  direction parameter**: the operation is inherently reverse.
+  modifier: which uniques carry it). Results carry names, `edge_type`,
+  `availability`, `passive_info`, modifier `text`, and `meta.counts` per edge
+  type. When the subject is a modifier, `meta.subject_text` carries its real
+  game text. There is deliberately **no direction parameter**: the operation
+  is inherently reverse.
 * Envelope (both ops): `{error, results, meta}` — never raises. Input errors
   (`unknown_subject` with did-you-mean candidates, `unknown_filter`) are
   returned in `error`.
+
+**Intrinsic engine mechanics in the same envelope.** `carriers()` and
+`neighbour` additionally surface, wherever they apply to the probed entity:
+
+* `attribute_grants_stat` — attribute→resource conversions (e.g. an attribute
+  stat feeding a pool stat), each with formula + source provenance;
+* `rule_applies_to` / `rule_negated_by` / `rule_modified_by` — default engine
+  rules (`rule:` nodes) extracted from PoB source: the rule row carries its
+  name (statement), formula/value, operands, and source anchors under a
+  `rule` key; `rule_negated_by`/`rule_modified_by` rows on an entity mean that
+  entity is an exception mechanism to the named default rule.
+
+Rules appear only where they apply (connectivity-bounded — `meta.counts` shows
+the per-type counts). A rule node itself is always an edge source: use
+`neighbour` to read its targets/exceptions; `carriers()` on it returning empty
+is a true fact. Treat these rows as first-class evidence during discovery;
+there is no curated rule list to consult anywhere.
 
 **Phase 6 discovery/traversal** (`santa-maria/tools/phase6_api.py`, also via
 `research.py seed` / `research.py neighbour`):
@@ -55,6 +77,29 @@ implementation helpers.
 `phase7_build_feasibility.py` (`can_support`, `slot_check`, `weapon_check`),
 also via `research.py validate`.
 
+### Mod discovery without name search
+
+Modifier record keys are irregular fossils (`int` vs `intelligence`,
+`Per10Intelligence` vs `PerIntelligence`, `Unique__` suffixes, trailing
+underscores) — never rely on id-substring search as the only door. The
+discovery hierarchy for mods:
+
+1. **Wording → `resolve`** — prose search matches normalized modifier text
+   (`resolve "per 100 maximum mana"`), independent of key spelling. Literal
+   substring only: `per 10 int` will NOT match `per 10 Intelligence` —
+   abbreviation variance is the stat door's job.
+2. **Stat → `carriers(stat)`** — `modifier_grants_stat` edges are complete;
+   probing the per-attribute stat family (`carriers
+   stat:spell_damage_+%_per_10_int`) lists every granter, including
+   influenced/rare-only mods that no unique carries.
+3. **Tag → `neighbour(tag)`** — spawnweight tags enumerate families
+   (`neighbour tag:staff_basilisk`). Note the trap: `modifier_has_tag` edges
+   run mod→tag, and `carriers` is reverse-only, so `carriers(tag)` returns 0
+   **by design** — `neighbour(tag)` is the tag door, not `carriers`.
+
+After any `resolve` over a mod family, carrier-probe every returned row —
+no name filtering.
+
 CLI examples:
 
 ```text
@@ -64,6 +109,49 @@ python3 santa-maria/tools/research.py seed --type UniqueItem --count 3 --seed <i
 python3 santa-maria/tools/research.py neighbour <node_id> --depth 2
 python3 santa-maria/tools/research.py validate '<build-state json>'
 ```
+
+## Alternate (Phrecia) ascendancy exclusion — default ON
+
+`passive:AscendancyCustom*` (Phrecia alternate ascendancies) and
+`passive:AlternateAscendancy*` (alternate-asc trees) stay in the KB but are
+**excluded by default** from every public discovery/validator interface:
+
+* `phase6_api.get_start_seed` / `get_neighbour`: filter key
+  `include_alternate_ascendancies` (bool, default `false`).
+* `phase8_research.resolve` / `carriers`: kwarg
+  `include_alternate_ascendancies` (default `false`). When suppression
+  happens, `meta.excluded_alternate_ascendancies` reports how many carriers /
+  hits were dropped — **suppression is never silent and must never be
+  mistaken for absence**.
+* `phase7_build_validity.validate_addition` / `validate_build`: alternate-ns
+  passives are **INVALID** by default with a reason naming the opt-in.
+
+Opt in per call, or globally via `phase6_api.EXCLUDE_ALTERNATE_ASCENDANCIES = False`
+(module-level; also restores the pre-exclusion validator behaviour). Never
+claim a relationship "does not exist" while the exclusion could be hiding
+carriers — check `meta.excluded_alternate_ascendancies` first.
+
+## Live-only KB (no staleness filtering in the API)
+
+The KB contains **only live data**. Association staleness is decided at
+BUILD time (`extract_nodes` live-gate): a unique→modifier association exists
+only when the mod's text is verifiably present in the unique's CURRENT PoB
+block (number-preserving, formatting-insensitive); uniques without a parsed
+block carry no associations; method-6 (Vestigial alt-quality implicits) is
+retired from the KB until separately modelled. The API adds **no** staleness
+or availability filtering — an empty carriers result is a true absence, with
+no `meta.excluded_*` caveat to check (alternate-ascendancy exclusion above is
+the only standing exclusion). `availability` on unique entries is a PoB
+**obtainability** verdict (item-level, used by the validator), not a liveness
+judgment.
+
+**Never render mod ids as prose.** Mod ids (`mod:Divergent…`, `GainArmour…`)
+are fossils; the id is not the text. Always use the `text` field
+(`resolve` results / `carriers` rows / `meta.subject_text`). If text is
+missing, report it as unresolved — never guess wording from the id
+(whispers02 root cause: `GainArmourEqualToManaReservedUnique__1` was
+fabricated into "Gain Armour equal to Mana Reserved"; the real text is
+"1% increased Armour per 50 Reserved Mana").
 
 ## Forbidden
 

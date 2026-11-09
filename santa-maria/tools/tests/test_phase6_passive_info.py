@@ -37,9 +37,35 @@ def test_neighbour_levels_carry_passive_nodes():
     by_id = {p['id']: p for p in pn}
     assert by_id['passive:AscendancyNecromancer9']['passive_info'][
         'ascendancy'] == 'Necromancer'
-    assert by_id['passive:AscendancyCustomHeirophant18']['name'] == 'Marination'
+    # alternate (Phrecia) ascendancy passives are excluded by default
+    assert not any(p['id'].startswith(('passive:AscendancyCustom',
+                                       'passive:AlternateAscendancy'))
+                   for p in pn)
     # non-Passive endpoints never appear in the block
     assert not any(not p['id'].startswith('passive:') for p in pn)
+
+
+def test_neighbour_alternate_ascendancy_opt_in():
+    n = get_neighbour(1, {'start': 'stat:minion_maximum_life_%_to_add_as_'
+                                   'maximum_energy_shield',
+                          'edge_types': ['passive_grants_stat'],
+                          'max_nodes_per_level': 20,
+                          'include_alternate_ascendancies': True})
+    pn = n['levels'][0]['passive_nodes']
+    by_id = {p['id']: p for p in pn}
+    assert by_id['passive:AscendancyCustomHeirophant18']['name'] == 'Marination'
+
+
+def test_seed_excludes_alternate_ascendancies_by_default():
+    r = get_start_seed({'type': 'Passive', 'id_contains': 'AlternateAscendancy',
+                        'count': 10, 'seed': 1})
+    assert r['seeds'] == []
+    r = get_start_seed({'type': 'Passive', 'id_contains': 'AlternateAscendancy',
+                        'count': 10, 'seed': 1,
+                        'include_alternate_ascendancies': True})
+    assert len(r['seeds']) == 10
+    assert all(s['node_id'].startswith('passive:AlternateAscendancy')
+               for s in r['seeds'])
 
 
 def test_no_passives_no_block():

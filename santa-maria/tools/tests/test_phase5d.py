@@ -87,7 +87,7 @@ def test_iron_will_p1b_p1a():
     # P1a: carriers of the two bound anchor stats (9 melee + 339 spell, 1 shared)
     p1a_nodes = {r['candidate_node_id'] for r in sc
                  if any(a['node_id'].startswith('stat:') for a in r['anchors'])}
-    assert len(p1a_nodes) == 348, len(p1a_nodes)
+    assert len(p1a_nodes) == 333, len(p1a_nodes)
     # P1b: exactly the 10 strong_casting carriers, incl. the keystone passive
     p1b_nodes = {r['candidate_node_id'] for r in sc
                  if any(h['edge_type'] in GRANT_HOPS and h['to'] == 'stat:strong_casting'
@@ -108,7 +108,7 @@ def test_iron_will_p1b_p1a():
     # the other 9 carriers are P1b-only (no stat-anchor path)
     assert all({d5._ptype(p) for p in r['paths']} == {'P1b'}
                for r in p1b_only if r['candidate_node_id'] != 'gem:SupportIronWill')
-    print(f'ok: Iron Will — P1a=348, P1b=10 carriers (keystone included); '
+    print(f'ok: Iron Will — P1a=333, P1b=10 carriers (keystone included); '
           f'SupportIronWill carries P1a+P1b paths; 9 carriers P1b-only')
 
 

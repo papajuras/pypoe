@@ -1,0 +1,47 @@
+{
+ "index": 27,
+ "node_id": "unique:766",
+ "targets": {
+  "mod:ChanceToAvoidBleedingUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:base_avoid_bleed_%"
+   ],
+   "tags": [
+    "tag:ailment",
+    "tag:attack",
+    "tag:bleed",
+    "tag:physical"
+   ]
+  },
+  "mod:DivergentCatsStealthTriggeredIntimidatingCry": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_display_trigger_level_x_intimidating_cry_when_you_lose_cats_stealth"
+   ],
+   "tags": [
+    "tag:divergentunique",
+    "tag:skill"
+   ]
+  },
+  "mod:LocalIncreasedEvasionRatingPercentUnique__13": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_evasion_rating_+%"
+   ],
+   "tags": [
+    "tag:defences",
+    "tag:evasion"
+   ]
+  },
+  "mod:MovementSpeedWithCatsStealthUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:movement_speed_+%_while_you_have_cats_stealth"
+   ],
+   "tags": [
+    "tag:speed"
+   ]
+  }
+ }
+}

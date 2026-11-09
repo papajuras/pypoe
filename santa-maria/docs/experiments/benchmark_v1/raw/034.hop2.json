@@ -1,0 +1,41 @@
+{
+ "index": 34,
+ "node_id": "unique:838",
+ "targets": {
+  "mod:AddedManaRegenerationUnique__2": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:base_mana_regeneration_rate_per_minute"
+   ],
+   "tags": [
+    "tag:mana",
+    "tag:resource"
+   ]
+  },
+  "mod:AllAttributesImplicitAmulet1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:additional_all_attributes"
+   ],
+   "tags": [
+    "tag:attribute"
+   ]
+  },
+  "mod:AllDamageUnique__4": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:damage_+%"
+   ],
+   "tags": [
+    "tag:damage"
+   ]
+  },
+  "mod:GainShapersPresenceUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:gain_shapers_presence_for_10_seconds_on_killing_rare_or_unique_monster"
+   ],
+   "tags": []
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "start": "passive:AscendancyJuggernaut11",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyJuggernaut11",
+     "to": "stat:chance_to_gain_endurance_charge_when_hit_%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyJuggernaut11",
+     "to": "stat:gain_endurance_charge_per_second_if_have_been_hit_recently",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyJuggernaut11",
+     "to": "stat:gain_maximum_endurance_charges_on_endurance_charge_gained_%_chance",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyJuggernaut11",
+     "to": "stat:max_endurance_charges",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

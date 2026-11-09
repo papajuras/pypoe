@@ -1,0 +1,177 @@
+{
+ "index": 63,
+ "node_id": "mod:TemporalChainsReservationCostUnique__2",
+ "type": "Modifier",
+ "name": "",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "mod:TemporalChainsReservationCostUnique__2"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "mod:TemporalChainsReservationCostUnique__2"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "mod:TemporalChainsReservationCostUnique__2"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:temporal_chains_no_reservation"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "modifier_in_group|mod:TemporalChainsReservationCostUnique__2|modgroup:CurseReservationCost|out",
+    "modifier_grants_stat|mod:TemporalChainsReservationCostUnique__2|stat:temporal_chains_no_reservation|out",
+    "modifier_has_tag|mod:TemporalChainsReservationCostUnique__2|tag:caster|out",
+    "modifier_has_tag|mod:TemporalChainsReservationCostUnique__2|tag:curse|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "gem_has_tag|tag:curse|<21 in: gem:AlchemistsMark, gem:AssassinsMark, gem:AssassinsMarkRoyale\u2026>",
+    "modifier_has_tag|tag:caster|<39 in: mod:AbyssCastSpeedIfCriticalStrikeDealtRecentlyJewel1, mod:AbyssCastSpeedIfMinionKilledRecentlyJewel1, mod:AbyssCastSpeedJewel1\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 2,
+     "members": [
+      "mod:TemporalChainsReservationCostUnique__1",
+      "mod:TemporalChainsReservationCostUnique__2"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyCustomOccultist15"
+     ]
+    }
+   ]
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "modifier_in_group|mod:AbyssSelfCurseEffectOnConsecratedGroundJewel1__|modgroup:BuffEnchantment|out",
+    "modifier_in_group|mod:AbyssCastSpeedIfCriticalStrikeDealtRecentlyJewel1|modgroup:CastSpeedIfCriticalStrikeDealtRecently|out",
+    "modifier_in_group|mod:AbyssCastSpeedIfMinionKilledRecentlyJewel1|modgroup:CastSpeedIfMinionKilledRecently|out",
+    "modifier_in_group|mod:AbyssCurseEffectJewel1|modgroup:CurseEffectiveness|out",
+    "modifier_in_group|mod:AbyssChasmCastSpeedFinal|modgroup:FinalCastSpeed|out",
+    "modifier_in_group|mod:AbyssMinionSpellsHinderOnHitChanceJewel1|modgroup:HinderOnHit|out",
+    "modifier_in_group|mod:AbyssCastSpeedJewel1|modgroup:IncreasedCastSpeed|out",
+    "modifier_in_group|mod:AbyssMinionAttackAndCastSpeedIfEnemySlainRecentlyJewel1|modgroup:MinionAttackAndCastSpeedIfEnemySlainRecently|out",
+    "modifier_in_group|mod:AbyssMinionAttackAndCastSpeedJewel1|modgroup:MinionAttackSpeedAndCastSpeed|out",
+    "modifier_in_group|mod:AbyssSpellAddedChaosDamageJewel1|modgroup:SpellAddedChaosSuffix|out",
+    "modifier_in_group|mod:AbyssSpellAddedColdDamageJewel1|modgroup:SpellAddedColdSuffix|out",
+    "modifier_in_group|mod:AbyssSpellAddedChaosDamageWhileDualWieldingJewel1|modgroup:WeaponClassChaosDamage|out",
+    "gem_grants_stat|gem:Enfeeble|stat:accuracy_rating_+%|out",
+    "gem_grants_stat|gem:Conductivity|stat:active_skill_base_radius_+|out",
+    "modifier_grants_stat|mod:AbyssChasmCastSpeedFinal|stat:active_skill_cast_speed_+%_final|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:alchemists_mark_grant_attacker_x_flask_charges_when_hit_once_per_3s|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:alchemists_mark_igniter_creates_burning_ground_%_ignite_damage|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:alchemists_mark_poisoner_creates_caustic_ground_%_poison_damage|out",
+    "gem_grants_stat|gem:PoachersMark|stat:base_additional_physical_damage_reduction_%|out",
+    "modifier_grants_stat|mod:AbyssCastSpeedJewel1|stat:base_cast_speed_+%|out",
+    "gem_grants_stat|gem:Despair|stat:base_chaos_damage_resistance_%|out",
+    "gem_grants_stat|gem:Frostbite|stat:base_cold_damage_resistance_%|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:base_deal_no_damage|out",
+    "gem_grants_stat|gem:Flammability|stat:base_fire_damage_resistance_%|out",
+    "gem_grants_stat|gem:Conductivity|stat:base_lightning_damage_resistance_%|out",
+    "gem_grants_stat|gem:ElementalWeakness|stat:base_resist_all_elements_%|out",
+    "gem_grants_stat|gem:NewPunishment|stat:base_skill_area_of_effect_+%|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:base_skill_effect_duration|out",
+    "gem_grants_stat|gem:Conductivity|stat:base_skill_no_reservation|out",
+    "gem_grants_stat|gem:TemporalChains|stat:buff_time_passed_+%_other_than_temporal_chains|out",
+    "modifier_grants_stat|mod:AbyssCastSpeedIfCriticalStrikeDealtRecentlyJewel1|stat:cast_speed_+%_if_have_crit_recently|out",
+    "modifier_grants_stat|mod:AbyssCastSpeedIfMinionKilledRecentlyJewel1|stat:cast_speed_+%_if_player_minion_has_been_killed_recently|out",
+    "gem_grants_stat|gem:Frostbite|stat:chance_to_be_frozen_%|out",
+    "gem_grants_stat|gem:Flammability|stat:chance_to_be_ignited_%|out",
+    "gem_grants_stat|gem:Conductivity|stat:chance_to_be_shocked_%|out",
+    "gem_grants_stat|gem:WarlordsMark|stat:chance_to_grant_endurance_charge_on_death_%|out",
+    "gem_grants_stat|gem:PoachersMark|stat:chance_to_grant_frenzy_charge_on_death_%|out",
+    "gem_grants_stat|gem:AssassinsMark|stat:chance_to_grant_power_charge_on_death_%|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:curse_effect_+%|out",
+    "gem_grants_stat|gem:TemporalChains|stat:curse_effect_+%_final_vs_players|out",
+    "modifier_grants_stat|mod:AbyssSelfCurseEffectOnConsecratedGroundJewel1__|stat:curse_effect_on_self_+%_while_on_consecrated_ground|out",
+    "gem_grants_stat|gem:Punishment|stat:damage_taken_+%_on_low_life|out",
+    "gem_grants_stat|gem:Punishment|stat:debilitate_self_for_x_milliseconds_on_hit|out",
+    "gem_grants_stat|gem:AssassinsMark|stat:enemy_additional_critical_strike_chance_against_self|out",
+    "gem_grants_stat|gem:AssassinsMark|stat:enemy_additional_critical_strike_multiplier_against_self|out",
+    "gem_grants_stat|gem:WarlordsMark|stat:enemy_chance_to_double_stun_duration_%_vs_self|out",
+    "gem_grants_stat|gem:WarlordsMark|stat:enemy_grant_X_rage_on_stun|out",
+    "gem_grants_stat|gem:WarlordsMarkRoyale|stat:enemy_rage_regeneration_on_stun|out",
+    "gem_grants_stat|gem:Enfeeble|stat:enfeeble_damage_+%_final|out",
+    "gem_grants_stat|gem:Enfeeble|stat:enfeeble_damage_+%_vs_rare_or_unique_final|out",
+    "gem_grants_stat|gem:PoachersMark|stat:life_granted_when_hit_by_attacks|out",
+    "gem_grants_stat|gem:AssassinsMark|stat:life_granted_when_killed|out",
+    "gem_grants_stat|gem:WarlordsMark|stat:life_leech_on_any_damage_when_hit_by_attack_permyriad|out",
+    "gem_grants_stat|gem:PoachersMark|stat:mana_granted_when_hit_by_attacks|out",
+    "gem_grants_stat|gem:AssassinsMark|stat:mana_granted_when_killed|out",
+    "gem_grants_stat|gem:WarlordsMark|stat:mana_leech_on_any_damage_when_hit_by_attack_permyriad|out",
+    "gem_grants_stat|gem:Conductivity|stat:mana_reservation_+%_with_curse_skills|out",
+    "gem_grants_stat|gem:PoachersMark|stat:maximum_added_physical_damage_taken|out",
+    "gem_grants_stat|gem:PoachersMark|stat:minimum_added_physical_damage_taken|out",
+    "modifier_grants_stat|mod:AbyssMinionAttackAndCastSpeedIfEnemySlainRecentlyJewel1|stat:minion_attack_and_cast_speed_+%_if_you_or_minions_have_killed_enemy_recently|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:temporal_chains_no_reservation",
+   "chain": "modifier_grants_stat>stat:temporal_chains_no_reservation",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:temporal_chains_no_reservation": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "mod:TemporalChainsReservationCostUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:TemporalChainsReservationCostUnique__2",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomOccultist15",
+       "name": "<<HRB37>>",
+       "asc": "Occultist"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start",
+  "truncated_bfs"
+ ]
+}

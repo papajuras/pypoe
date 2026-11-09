@@ -1,0 +1,90 @@
+{
+ "start": "gem:EssenceDrainAltX",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:base_chaos_damage_to_deal_per_minute",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:base_is_projectile",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:base_projectile_speed_+%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:base_skill_effect_duration",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:damage_+%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:essence_drain_lose_life_from_damage_permyriad",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:number_of_additional_projectiles",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:quality_display_essence_drain_is_gem",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:skill_effect_duration_+%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:spell_damage_modifiers_apply_to_skill_dot",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:spell_maximum_base_chaos_damage",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "stat:spell_minimum_base_chaos_damage",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EssenceDrainAltX",
+     "to": "tag:chaos",
+     "type": "gem_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+Look for builds with Whispers of Infinity.
+Get me as many genuinely distinct build architectures as you can find.
+No artificial duplication or cosmetic variants of the same architecture.
+Use skill "scaling-discovery", "discovery-api-usage", "build-output"
+Save under `santa-maria/docs/experiments/whispersXX/` (find the previous run and increment the number).
+DO NOT evaluate or reuse previous runs. Run with a clean slate.
+DO NOT propose or rely on ideas from pretraining knowledge. All build mechanics, relationships, and scaling claims must be derived from the public Research API. If the API does not provide evidence for a relationship, treat it as unknown/API GAP rather than filling it from prior knowledge.

@@ -1,0 +1,558 @@
+{
+ "start": "item_class:Boots",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1014",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1028",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1067",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1072",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1121",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1122",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1123",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1147",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1173",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1190",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1198",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1199",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1200",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1217",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1218",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1219",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:125",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:127",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1281",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1295",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1312",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1313",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1335",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1365",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1374",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1387",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1397",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1420",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1432",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1440",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:1481",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:160",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:170",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:177",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:178",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:194",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:222",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:229",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:246",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:258",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:259",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:37",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:39",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:40",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:41",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:42",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:420",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:421",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:422",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:429",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:43",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:44",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:448",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:509",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:527",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:554",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:572",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:602",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:603",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:650",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:661",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:689",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:690",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:691",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:694",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:698",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:723",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:724",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:757",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:762",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:766",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:770",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:79",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:794",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:795",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:81",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:82",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:862",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:878",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:884",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:899",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:901",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:91",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:919",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:925",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:937",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:938",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:940",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:942",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:943",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Boots",
+     "to": "unique:970",
+     "type": "unique_in_class",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

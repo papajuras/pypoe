@@ -1,0 +1,220 @@
+{
+ "index": 47,
+ "node_id": "gem:EnchantmentOfReflectionWhenHit4",
+ "targets": {
+  "stat:active_skill_minion_damage_+%_final": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 29,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AnimateGuardian",
+    "gem:AnimateGuardianAltX",
+    "gem:AnimateWeapon",
+    "gem:AnimateWeaponAltX",
+    "gem:AnimateWeaponAltY",
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX",
+    "gem:BlinkArrowAltY",
+    "gem:BlinkArrowRoyale",
+    "gem:BlinkArrowTriggered",
+    "gem:EnchantmentOfReflectionWhenHit",
+    "gem:EnchantmentOfReflectionWhenHit2",
+    "gem:EnchantmentOfReflectionWhenHit3",
+    "gem:EnchantmentOfReflectionWhenHit4"
+   ],
+   "total": 29
+  },
+  "stat:base_display_minion_actor_level": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 70,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AnimateGuardian",
+    "gem:AnimateGuardianAltX",
+    "gem:AnimateWeapon",
+    "gem:AnimateWeaponAltX",
+    "gem:AnimateWeaponAltY",
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX",
+    "gem:BlinkArrowAltY",
+    "gem:BlinkArrowRoyale",
+    "gem:BlinkArrowTriggered",
+    "gem:CeaselessFleshUnique",
+    "gem:EnchantmentOfReflectionWhenHit"
+   ],
+   "total": 70
+  },
+  "stat:base_skill_effect_duration": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 443,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AfflictionSplitColdIceSpikes",
+    "gem:AfflictionSplitColdSpearGroundToss",
+    "gem:AfflictionSplitColdSpearToss",
+    "gem:AfflictionSplitFireFlameblast",
+    "gem:AfflictionSplitFireSlash",
+    "gem:AfflictionSplitFireTornado",
+    "gem:AfflictionSplitLightningElectricFlail",
+    "gem:AfflictionSplitLightningGigaBall",
+    "gem:AfflictionSplitLightningTeleportStorm",
+    "gem:AfflictionSplitPhysicalAbyssSlam",
+    "gem:AfflictionSplitPhysicalLeapSlam",
+    "gem:AfflictionSplitPhysicalPizzaSlam",
+    "gem:AfflictionUniqueSplitColdIceSpikes"
+   ],
+   "total": 443
+  },
+  "stat:cast_when_hit_%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 13,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:BitingBraidNova",
+    "gem:EnchantmentOfReflectionWhenHit",
+    "gem:EnchantmentOfReflectionWhenHit2",
+    "gem:EnchantmentOfReflectionWhenHit3",
+    "gem:EnchantmentOfReflectionWhenHit4",
+    "gem:EnchantmentOfWinterWhenHit",
+    "gem:EnchantmentOfWinterWhenHit2",
+    "gem:EnchantmentOfWinterWhenHit3",
+    "gem:EnchantmentOfWinterWhenHit4",
+    "gem:GlimpseOfEternity",
+    "gem:ShadeFormWhenHit",
+    "gem:SolartwineBlindingNova",
+    "gem:TriggeredShockedGround"
+   ],
+   "total": 13
+  },
+  "stat:display_minion_monster_type": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 70,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AnimateGuardian",
+    "gem:AnimateGuardianAltX",
+    "gem:AnimateWeapon",
+    "gem:AnimateWeaponAltX",
+    "gem:AnimateWeaponAltY",
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX",
+    "gem:BlinkArrowAltY",
+    "gem:BlinkArrowRoyale",
+    "gem:BlinkArrowTriggered",
+    "gem:CeaselessFleshUnique",
+    "gem:EnchantmentOfReflectionWhenHit"
+   ],
+   "total": 70
+  },
+  "stat:minion_damage_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 224,
+    "passive_grants_stat": 58,
+    "gem_grants_stat": 6,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:BlinkArrowRoyale",
+    "gem:EnchantmentOfReflectionWhenHit",
+    "gem:EnchantmentOfReflectionWhenHit2",
+    "gem:EnchantmentOfReflectionWhenHit3",
+    "gem:EnchantmentOfReflectionWhenHit4",
+    "gem:Replicate",
+    "mod:DelveAbyssJewelMinionDamage1",
+    "mod:DelveGlovesMinionDamage1",
+    "mod:DelveWeaponMinionDamage1h1_",
+    "mod:DelveWeaponMinionDamage1h2",
+    "mod:DelveWeaponMinionDamage1h3___",
+    "mod:DelveWeaponMinionDamage1h4",
+    "mod:DelveWeaponMinionDamage2h1",
+    "mod:DelveWeaponMinionDamage2h2",
+    "mod:DelveWeaponMinionDamage2h3_"
+   ],
+   "total": 288
+  },
+  "stat:minion_maximum_life_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 102,
+    "passive_grants_stat": 31,
+    "gem_grants_stat": 10,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:BlinkArrowRoyale",
+    "gem:EnchantmentOfReflectionWhenHit",
+    "gem:EnchantmentOfReflectionWhenHit2",
+    "gem:EnchantmentOfReflectionWhenHit3",
+    "gem:EnchantmentOfReflectionWhenHit4",
+    "gem:Replicate",
+    "gem:SummonBeastialRhoa",
+    "gem:SummonBeastialSnake",
+    "gem:SummonBeastialUrsa",
+    "gem:SummonTauntingContraption",
+    "mod:AbyssMinionLifeJewel1_",
+    "mod:DelveArmourMinionLife1",
+    "mod:EinharMasterMinionLife1",
+    "mod:EinharMasterMinionLife2",
+    "mod:GraftPrefixTulMinionLife1"
+   ],
+   "total": 143
+  },
+  "stat:number_of_monsters_to_summon": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 18,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 25,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX",
+    "gem:BlinkArrowAltY",
+    "gem:BlinkArrowRoyale",
+    "gem:BlinkArrowTriggered",
+    "gem:EnchantmentOfReflectionWhenHit",
+    "gem:EnchantmentOfReflectionWhenHit2",
+    "gem:EnchantmentOfReflectionWhenHit3",
+    "gem:EnchantmentOfReflectionWhenHit4",
+    "gem:EnchantmentOfTheGraveOnKill",
+    "gem:EnchantmentOfTheGraveOnKill2",
+    "gem:EnchantmentOfTheGraveOnKill3",
+    "gem:EnchantmentOfTheGraveOnKill4",
+    "gem:EnchantmentOfWarOnKill",
+    "gem:EnchantmentOfWarOnKill2"
+   ],
+   "total": 43
+  }
+ }
+}

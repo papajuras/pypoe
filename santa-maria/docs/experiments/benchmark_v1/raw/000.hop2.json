@@ -1,0 +1,20 @@
+{
+ "index": 0,
+ "node_id": "unique:1198",
+ "targets": {
+  "mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:maximum_added_chaos_damage_to_attacks_per_50_strength",
+    "stat:minimum_added_chaos_damage_to_attacks_per_50_strength"
+   ],
+   "tags": [
+    "tag:attack",
+    "tag:chaos",
+    "tag:chaos_damage",
+    "tag:damage",
+    "tag:divergentunique"
+   ]
+  }
+ }
+}

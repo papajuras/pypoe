@@ -1,0 +1,94 @@
+{
+ "index": 69,
+ "node_id": "mechanic:chill",
+ "targets": {
+  "t": {
+   "kind": "tag"
+  },
+  "stat:action_speed_-%_from_chill": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:MonsterBloodlinesChillingAura"
+   ],
+   "total": 1
+  },
+  "stat:all_damage_can_chill": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 9,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AllDamageCanChillUnique__1",
+    "mod:BetrayalUpgradeMonsterColdDamageAndChill",
+    "mod:MonsterArchnemesisPrismatic",
+    "mod:MonsterArchnemesisPrismaticMagic",
+    "mod:NecropolisChill1",
+    "mod:NecropolisChill2",
+    "mod:NecropolisChill3",
+    "mod:TangledAltarDownsideBossAllDamageCanChill",
+    "mod:TangledAltarDownsideBossPhysToAddAsCold",
+    "passive:AscendancyElementalist20"
+   ],
+   "total": 10
+  },
+  "stat:all_damage_taken_can_chill": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AllDamageTakenCanChillUnique__1",
+    "passive:AscendancyCustomSaboteur10"
+   ],
+   "total": 2
+  },
+  "stat:arctic_breath_chilling_area_movement_velocity_+%": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:EnchantmentArcticBreathChillingAreaMovementVelocity1"
+   ],
+   "total": 1
+  },
+  "stat:attack_damage_that_stuns_also_chills": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ChillOnAttackStunUniqueOneHandMace5"
+   ],
+   "total": 1
+  }
+ },
+ "related_stats_sample": {
+  "total": 103,
+  "sample": [
+   "stat:action_speed_-%_from_chill",
+   "stat:all_damage_can_chill",
+   "stat:all_damage_taken_can_chill",
+   "stat:arctic_breath_chilling_area_movement_velocity_+%",
+   "stat:attack_damage_that_stuns_also_chills"
+  ]
+ }
+}

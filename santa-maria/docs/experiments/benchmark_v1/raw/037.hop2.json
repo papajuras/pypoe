@@ -1,0 +1,26 @@
+{
+ "index": 37,
+ "node_id": "passive:totem_attack_damage2676",
+ "targets": {
+  "stat:totem_skill_attack_speed_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 8,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:totem_attack_damage2676",
+    "passive:totem_attack_damage2677",
+    "passive:totem_attack_damage2678",
+    "passive:totem_attack_notable2679",
+    "passive:totem_damage1495",
+    "passive:totem_damage1496",
+    "passive:totem_life_and_duration1503",
+    "passive:totem_placement_speed_notable1509"
+   ],
+   "total": 8
+  }
+ }
+}

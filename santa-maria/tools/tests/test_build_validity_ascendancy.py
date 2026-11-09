@@ -69,11 +69,36 @@ def test_addition_second_ascendancy_rejected():
     assert state.passives == NEC_NOTABLES
 
 
-def test_unclassifiable_is_unknown_never_guessed():
-    r = bv.validate_build(bv.BuildState(passives=[DATA_GAP_SMALL]),
-                          final=False)      # skip the final-only class check
-    assert r['status'] == UNKNOWN, r
-    assert 'unclassifiable' in r['reason']
+def test_alternate_ascendancy_rejected_by_default():
+    # Phrecia/alternate-asc content is INVALID by default, with a reason that
+    # names the exclusion and the opt-in
+    r = bv.validate_addition(bv.BuildState(passives=NEC_NOTABLES),
+                             'AscendancyCustomBerserker11')
+    assert r['status'] == INVALID, r
+    assert 'alternate (Phrecia) ascendancy' in r['reason']
+    r2 = bv.validate_build(bv.BuildState(passives=[DATA_GAP_SMALL]),
+                           final=False)
+    assert r2['status'] == INVALID, r2
+    assert 'alternate (Phrecia) ascendancy' in r2['reason']
+
+
+def test_alternate_ascendancy_opt_in_preserves_unknown_classification():
+    import phase6_api
+    old = phase6_api.EXCLUDE_ALTERNATE_ASCENDANCIES
+    try:
+        phase6_api.EXCLUDE_ALTERNATE_ASCENDANCIES = False
+        # with the exclusion off, the data-gap node is classified UNKNOWN,
+        # never guessed (original behaviour preserved behind opt-in)
+        r = bv.validate_build(bv.BuildState(passives=[DATA_GAP_SMALL]),
+                              final=False)      # skip the final-only class check
+        assert r['status'] == UNKNOWN, r
+        assert 'unclassifiable' in r['reason']
+    finally:
+        phase6_api.EXCLUDE_ALTERNATE_ASCENDANCIES = old
+    # classless regular-tree keystone is legal (consistent ascendancy=None)
+    r2 = bv.validate_addition(bv.BuildState(passives=NEC_NOTABLES),
+                              CLASSLESS_KEYSTONE)
+    assert r2['status'] == VALID, r2
     # classless regular-tree keystone is legal (consistent ascendancy=None)
     r2 = bv.validate_addition(bv.BuildState(passives=NEC_NOTABLES),
                               CLASSLESS_KEYSTONE)

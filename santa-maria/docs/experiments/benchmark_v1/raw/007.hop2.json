@@ -1,0 +1,32 @@
+{
+ "index": 7,
+ "node_id": "passive:AscendancyChieftan11",
+ "targets": {
+  "stat:chieftain_body_armour_supported_by_level_x_ancestral_call": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyChieftan11"
+   ],
+   "total": 1
+  },
+  "stat:chieftain_body_armour_supported_by_level_x_fist_of_war": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyChieftan11"
+   ],
+   "total": 1
+  }
+ }
+}

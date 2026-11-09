@@ -1,0 +1,54 @@
+{
+ "start": "unique:764",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:764",
+     "to": "item_class:Helmet",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:764",
+     "to": "mod:AdditionalCriticalStrikeChanceWithCatAspectUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:764",
+     "to": "mod:ColdResistUnique__25",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:764",
+     "to": "mod:CritsBlindChanceWithCatsStealthUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:764",
+     "to": "mod:DamageAgainstBlindedEnemiesUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:764",
+     "to": "mod:DivergentGrantsCatAspect1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:764",
+     "to": "mod:LocalIncreasedEvasionAndEnergyShieldUnique__12",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

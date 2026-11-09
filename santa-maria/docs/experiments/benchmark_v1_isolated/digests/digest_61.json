@@ -1,0 +1,168 @@
+{
+ "index": 61,
+ "node_id": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+ "type": "Modifier",
+ "name": "",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_flask_recover_%_maximum_energy_shield_on_kill_during_flask_effect"
+   }
+  }
+ ],
+ "start_carriers": {
+  "unique_modifier_association": {
+   "count": 1,
+   "samples": [
+    {
+     "id": "unique:844",
+     "name": "Cinderswallow Urn",
+     "avail": "available"
+    }
+   ]
+  }
+ },
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "modifier_in_group|mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1|modgroup:MaximumEnergyShieldOnKillPercent|out",
+    "modifier_grants_stat|mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1|stat:local_flask_recover_%_maximum_energy_shield_on_kill_during_flask_effect|out",
+    "modifier_has_tag|mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1|tag:defences|out",
+    "modifier_has_tag|mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1|tag:energy_shield|out",
+    "modifier_has_tag|mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1|tag:flask|out",
+    "unique_modifier_association|mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1|unique:844|in"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "unique_in_class|unique:844|item_class:Flask|out",
+    "modifier_has_tag|tag:defences|<50 in: mod:AbyssEvasionRatingWhileMovingJewel1, mod:AbyssFlatArmourJewel1, mod:AbyssFlatArmourJewel2\u2026>",
+    "modifier_has_tag|tag:flask|<9 in: mod:AddedChaosDamageAsPercentOfElementalWhileUsingFlaskUniqueFlask5, mod:AddedChaosDamageAsPercentOfPhysicalWhileUsingFlaskUniqueFlask5, mod:AddedChaosDamageWhileUsingAFlaskUnique__1_\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 1,
+     "members": [
+      "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1"
+     ]
+    }
+   ]
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "modifier_in_group|mod:AddedArmourWhileStationaryUnique__1|modgroup:AddedArmourWhileStationary|out",
+    "modifier_in_group|mod:AddedChaosDamageAsPercentOfElementalWhileUsingFlaskUniqueFlask5|modgroup:AddedChaosDamageAsPercentOfElementalWhileUsingFlask|out",
+    "modifier_in_group|mod:AddedChaosDamageAsPercentOfPhysicalWhileUsingFlaskUniqueFlask5|modgroup:AddedChaosDamageAsPercentOfPhysicalWhileUsingFlask|out",
+    "modifier_in_group|mod:AddedChaosDamageWhileUsingAFlaskUnique__1_|modgroup:AddedChaosDamageWhileUsingAFlask|out",
+    "modifier_in_group|mod:AddedLightningDamageDuringFlaskEffect__1|modgroup:AddedLightningDamageDuringFlaskEffect|out",
+    "modifier_in_group|mod:AddedSpellLightningDamageDuringFlaskEffect__1|modgroup:AddedSpellLightningDamageDuringFlaskEffect|out",
+    "modifier_in_group|mod:AdditionalChanceToEvadeHighInfluence1|modgroup:AdditionalChanceToEvade|out",
+    "modifier_in_group|mod:AdditionalPhysicalDamageReductionDuringFlaskEffectEssence1|modgroup:AdditionalPhysicalDamageReductionDuringFlaskEffect|out",
+    "modifier_in_group|mod:AfflictionJewelSmallPassivesGrantArmour|modgroup:AfflictionJewelSmallPassivesGrantArmour|out",
+    "modifier_in_group|mod:AfflictionJewelSmallPassivesGrantES|modgroup:AfflictionJewelSmallPassivesGrantES|out",
+    "modifier_in_group|mod:AfflictionJewelSmallPassivesGrantEvasion|modgroup:AfflictionJewelSmallPassivesGrantEvasion|out",
+    "modifier_in_group|mod:AbyssFlatEnergyShieldRegenerationJewel1|modgroup:EnergyShieldRegeneration|out",
+    "modifier_in_group|mod:AbyssEvasionRatingWhileMovingJewel1|modgroup:EvasionRatingWhileMoving|out",
+    "modifier_in_group|mod:AbyssIncreasedArmourIfNoEnemySlainRecentlyJewel1__|modgroup:IncreasedArmourIfNoEnemySlainRecently|out",
+    "modifier_in_group|mod:AbyssFlatEnergyShieldJewel1|modgroup:IncreasedEnergyShield|out",
+    "modifier_in_group|mod:AbyssFlatEvasionJewel1|modgroup:IncreasedEvasionRating|out",
+    "modifier_in_group|mod:AbyssFlatArmourJewel1|modgroup:IncreasedPhysicalDamageReductionRating|out",
+    "modifier_in_group|mod:AddedManaRegenerationInfluenceMaven_|modgroup:ManaRegeneration|out",
+    "modifier_in_group|mod:AdditionalPhysicalDamageReductionInfluenceMaven|modgroup:ReducedPhysicalDamageTaken|out",
+    "modifier_grants_stat|mod:AdditionalPhysicalDamageReductionDuringFlaskEffectEssence1|stat:additional_physical_damage_reduction_%_during_flask_effect|out",
+    "modifier_grants_stat|mod:AbyssIncreasedArmourIfNoEnemySlainRecentlyJewel1__|stat:armour_+%_if_enemy_not_killed_recently|out",
+    "modifier_grants_stat|mod:AddedArmourWhileStationaryUnique__1|stat:armour_while_stationary|out",
+    "modifier_grants_stat|mod:AdditionalChanceToEvadeInfluenceMaven|stat:attack_and_cast_speed_+%_if_havent_been_hit_recently|out",
+    "modifier_grants_stat|mod:AdditionalPhysicalDamageReductionInfluenceMaven|stat:base_additional_physical_damage_reduction_%|out",
+    "modifier_grants_stat|mod:AbyssFlatEvasionJewel1|stat:base_evasion_rating|out",
+    "modifier_grants_stat|mod:AddedManaRegenerationInfluenceMaven_|stat:base_mana_regeneration_rate_per_minute|out",
+    "modifier_grants_stat|mod:AbyssFlatEnergyShieldJewel1|stat:base_maximum_energy_shield|out",
+    "modifier_grants_stat|mod:AbyssFlatArmourJewel1|stat:base_physical_damage_reduction_rating|out",
+    "modifier_grants_stat|mod:AdditionalChanceToEvadeHighInfluence1|stat:chance_to_evade_attacks_%|out",
+    "modifier_grants_stat|mod:AbyssFlatEnergyShieldRegenerationJewel1|stat:energy_shield_regeneration_rate_per_second|out",
+    "modifier_grants_stat|mod:AbyssEvasionRatingWhileMovingJewel1|stat:evasion_rating_+%_while_moving|out",
+    "modifier_grants_stat|mod:AfflictionJewelSmallPassivesGrantArmour|stat:local_affliction_jewel_small_nodes_grant_armour|out",
+    "modifier_grants_stat|mod:AfflictionJewelSmallPassivesGrantEvasion|stat:local_affliction_jewel_small_nodes_grant_evasion|out",
+    "modifier_grants_stat|mod:AfflictionJewelSmallPassivesGrantES|stat:local_affliction_jewel_small_nodes_grant_maximum_energy_shield|out",
+    "modifier_grants_stat|mod:AddedChaosDamageAsPercentOfElementalWhileUsingFlaskUniqueFlask5|stat:local_unique_flask_elemental_damage_%_to_add_as_chaos_while_healing|out",
+    "modifier_grants_stat|mod:AddedLightningDamageDuringFlaskEffect__1|stat:local_unique_flask_maximum_added_lightning_damage_to_attacks_during_flask_effect|out",
+    "modifier_grants_stat|mod:AddedSpellLightningDamageDuringFlaskEffect__1|stat:local_unique_flask_maximum_added_lightning_damage_to_spells_during_flask_effect|out",
+    "modifier_grants_stat|mod:AddedLightningDamageDuringFlaskEffect__1|stat:local_unique_flask_minimum_added_lightning_damage_to_attacks_during_flask_effect|out",
+    "modifier_grants_stat|mod:AddedSpellLightningDamageDuringFlaskEffect__1|stat:local_unique_flask_minimum_added_lightning_damage_to_spells_during_flask_effect|out",
+    "modifier_grants_stat|mod:AddedChaosDamageAsPercentOfPhysicalWhileUsingFlaskUniqueFlask5|stat:local_unique_flask_physical_damage_%_to_add_as_chaos_while_healing|out",
+    "modifier_grants_stat|mod:AddedManaRegenerationInfluenceMaven_|stat:mana_flasks_gain_X_charges_every_3_seconds|out",
+    "modifier_grants_stat|mod:AfflictionBossExtraEnergyShield|stat:maximum_life_%_to_add_as_maximum_energy_shield|out",
+    "modifier_grants_stat|mod:AdditionalPhysicalDamageReductionInfluenceMaven|stat:physical_damage_reduction_rating_+%|out",
+    "modifier_grants_stat|mod:AddedChaosDamageWhileUsingAFlaskUnique__1_|stat:spell_and_attack_maximum_added_chaos_damage_during_flask_effect|out",
+    "modifier_grants_stat|mod:AddedChaosDamageWhileUsingAFlaskUnique__1_|stat:spell_and_attack_minimum_added_chaos_damage_during_flask_effect|out",
+    "modifier_has_tag|mod:AbyssEvasionRatingWhileMovingJewel1|tag:abyss_jewel_caster|out",
+    "modifier_has_tag|mod:AbyssEvasionRatingWhileMovingJewel1|tag:abyss_jewel_melee|out",
+    "modifier_has_tag|mod:AbyssEvasionRatingWhileMovingJewel1|tag:abyss_jewel_ranged|out",
+    "modifier_has_tag|mod:AbyssEvasionRatingWhileMovingJewel1|tag:abyss_jewel_summoner|out",
+    "modifier_has_tag|mod:AdditionalChanceToEvadeHighInfluence1|tag:amulet_eyrie|out",
+    "modifier_has_tag|mod:AbyssFlatArmourJewel1|tag:armour|out",
+    "modifier_has_tag|mod:AddedChaosDamageWhileUsingAFlaskUnique__1_|tag:attack|out",
+    "modifier_has_tag|mod:AdditionalPhysicalDamageReductionInfluenceMaven|tag:boots_adjudicator|out",
+    "modifier_has_tag|mod:AddedChaosDamageWhileUsingAFlaskUnique__1_|tag:caster|out",
+    "modifier_has_tag|mod:AddedChaosDamageWhileUsingAFlaskUnique__1_|tag:caster_damage|out",
+    "modifier_has_tag|mod:AddedChaosDamageAsPercentOfElementalWhileUsingFlaskUniqueFlask5|tag:chaos|out",
+    "modifier_has_tag|mod:AddedChaosDamageAsPercentOfElementalWhileUsingFlaskUniqueFlask5|tag:chaos_damage|out",
+    "modifier_has_tag|mod:AddedChaosDamageAsPercentOfElementalWhileUsingFlaskUniqueFlask5|tag:damage|out",
+    "modifier_has_tag|mod:AbyssEvasionRatingWhileMovingJewel1|tag:default|out",
+    "modifier_has_tag|mod:AddedChaosDamageAsPercentOfElementalWhileUsingFlaskUniqueFlask5|tag:elemental|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:local_flask_recover_%_maximum_energy_shield_on_kill_during_flask_effect",
+   "chain": "modifier_grants_stat>stat:local_flask_recover_%_maximum_energy_shield_on_kill_during_flask_effect",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:local_flask_recover_%_maximum_energy_shield_on_kill_during_flask_effect": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+       "name": ""
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

@@ -1,0 +1,1212 @@
+{
+ "start": "mechanic:minion",
+ "depth_requested": 1,
+ "truncated": true,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mechanic:minion",
+     "to": "stat:%_of_your_and_your_minions_damage_cannot_be_reflected",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:%_of_your_and_your_minions_elemental_damage_cannot_be_reflected",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:%_of_your_and_your_minions_physical_damage_cannot_be_reflected",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:absolution_minion_area_of_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:additive_minion_damage_modifiers_apply_to_you_at_150%_value",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:additive_minion_maximum_life_modifiers_apply_to_you_at_%_value",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:additive_modifiers_to_minion_attack_speed_also_affect_you",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:additive_modifiers_to_minion_cast_speed_also_affect_you",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:all_resistances_%_per_active_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:all_resistances_%_per_active_minion_not_from_vaal_skills",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:animated_minions_melee_splash",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:attack_and_movement_speed_+%_if_you_have_beast_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:attack_maximum_added_chaos_damage_if_you_have_beast_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:attack_maximum_added_physical_damage_if_you_have_beast_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:attack_minimum_added_chaos_damage_if_you_have_beast_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:attack_minimum_added_physical_damage_if_you_have_beast_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:base_mana_cost_efficiency_+%_of_minion_skills",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:base_minion_dot_multiplier_+",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:base_minion_duration_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_scout_tower_minion_damage_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_scout_tower_minion_life_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_scout_tower_minion_movement_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_sentinel_tower_minion_damage_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_sentinel_tower_minion_life_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_sentinel_tower_minion_movement_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_summoning_tower_minion_damage_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_summoning_tower_minion_life_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:blight_summoning_tower_minion_movement_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:cannot_be_used_as_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:cast_socketed_minion_skills_on_bow_kill_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:cast_speed_+%_if_player_minion_has_been_killed_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:cast_speed_for_minion_skills_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:damage_removed_from_pack_minions_before_life_or_es_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:display_item_generation_can_roll_minion_affixes",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:display_socketed_minion_gems_supported_by_level_X_life_leech",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:dominating_blow_and_absolution_additive_minion_damage_modifiers_apply_to_you_at_150%_value",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:dominating_blow_minion_damage_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:elemental_reflect_damage_taken_and_minion_elemental_reflect_damage_taken_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:flask_duration_on_minions_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:global_defences_+%_per_active_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:global_defences_+%_per_active_minion_not_from_vaal_skills",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:graft_skill_minion_attack_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:graft_skill_minion_attacks_chance_to_taunt_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:graft_skill_minion_damage_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:graft_skill_minion_maximum_life_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:graft_skill_minion_physical_damage_%_to_add_as_cold",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:graft_skill_minions_%_chance_to_blind_on_hit",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:grant_animated_minion_melee_splash_damage_+%_final_for_splash",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:incursion_map_contains_additional_packs_of_minion_monsters",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:keystone_minion_instability",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:life_and_energy_shield_degeneration_permyriad_per_minute_per_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:life_degeneration_permyriad_per_minute_per_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:link_skills_can_target_minions",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:link_skills_grant_minions_damage_taken_+%_final_from_hallowed_monarch",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:link_skills_grant_random_linked_minion_rare_monster_mods_on_kill_centiseconds",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_affliction_jewel_small_nodes_grant_minion_attack_and_cast_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_affliction_jewel_small_nodes_grant_minion_attack_and_cast_speed_+%_while_you_are_affected_by_a_herald",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_affliction_jewel_small_nodes_grant_minion_life_regeneration_rate_per_minute_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_display_socketed_gems_supported_by_level_x_melee_crit_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_display_socketed_gems_supported_by_level_x_minion_pact",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_display_socketed_gems_supported_by_x_increased_minion_damage_level",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_display_socketed_gems_supported_by_x_increased_minion_life_level",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_display_socketed_gems_supported_by_x_increased_minion_speed_level",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_display_socketed_golem_skills_minions_life_%_to_add_as_energy_shield",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_display_supported_by_level_x_awakened_minion_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_explicit_minion_mod_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_flask_minion_heal_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_left_ring_slot_minion_damage_taken_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_minion_accuracy_rating_with_minion_abyss_jewel_socketed",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_minions_chance_to_gain_unholy_might_on_spell_hit_4_seconds_%_with_minion_abyss_jewel_socketed",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_right_ring_slot_minion_damage_taken_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_socketed_minion_gem_level_+",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_socketed_minion_gem_quality_+",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_unique_jewel_notable_passives_in_radius_instead_grant_minion_damage_taken_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_unique_jewel_notable_passives_in_radius_instead_grant_minion_movement_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:local_unique_jewel_passives_in_radius_applied_to_minions_instead",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:max_life_+%_final_for_minion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:maximum_es_taken_as_physical_damage_on_minion_death_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:maximum_number_of_X_minion_type_doubled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_accuracy_rating",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_accuracy_rating_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_accuracy_rating_per_10_devotion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_additional_base_critical_strike_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_additional_physical_damage_reduction_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_additional_spell_block_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_always_crit",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_are_aggressive_if_have_blocked_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attack_and_cast_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attack_and_cast_speed_+%_if_you_or_minions_have_killed_enemy_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attack_and_cast_speed_+%_per_10_devotion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attack_and_cast_speed_+%_per_active_skeleton",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attack_maximum_added_physical_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attack_minimum_added_physical_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attack_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attack_speed_+%_per_50_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attacks_chance_to_blind_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_attacks_chance_to_taunt_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_fire_damage_%_to_convert_to_chaos",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_chaos",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_chaos_per_empty_gem_socket",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_chaos_per_white_socket_on_item",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_cold",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_cold_per_green_socket_on_item",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_cold_per_socketed_green_gem",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_fire",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_fire_per_red_socket_on_item",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_fire_per_socketed_red_gem",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_lightning",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_lightning_per_blue_socket_on_item",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_base_physical_damage_%_to_convert_to_lightning_per_socketed_blue_gem",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_bleed_on_hit_with_attacks_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_block_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_cannot_crit",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_cast_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_caustic_cloud_on_death_maximum_life_per_minute_to_deal_as_chaos_damage_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chance_to_deal_double_damage_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chance_to_deal_double_damage_%_per_fortification",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chance_to_freeze_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chance_to_gain_onslaught_on_kill_for_4_seconds_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chance_to_gain_unholy_might_on_kill_for_4_seconds_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chance_to_impale_on_attack_hit_%_per_socketed_ghastly_jewel",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chance_to_shock_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chaos_damage_does_not_bypass_energy_shield",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_chaos_resistance_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_cold_damage_resistance_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_cooldown_recovery_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_critical_strike_chance_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_critical_strike_chance_+%_per_maximum_power_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_critical_strike_multiplier_+",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_critical_strike_multiplier_+_per_stackable_unique_jewel",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_+%_if_enemy_hit_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_+%_if_have_used_a_minion_skill_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_+%_per_5_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_+%_per_active_spectre",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_+%_vs_abyssal_monsters",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_increases_and_reductions_also_affects_you",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_over_time_multiplier_+_per_minion_abyss_jewel_up_to_+30",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_damage_taken_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_deal_no_non_cold_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_duration_+%_per_active_zombie",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_elemental_damage_%_to_add_as_chaos",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_elemental_resistance_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_energy_shield_delay_-%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_energy_shield_leech_from_elemental_damage_permyriad",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_evasion_rating_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_fire_cloud_on_death_maximum_life_per_minute_to_deal_as_fire_damage_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_fire_damage_resistance_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_flask_charges_used_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_always_hit",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_maximum_added_chaos_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_maximum_added_cold_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_maximum_added_fire_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_maximum_added_lightning_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_maximum_added_physical_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_minimum_added_chaos_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_minimum_added_cold_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_minimum_added_fire_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_minimum_added_lightning_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_global_minimum_added_physical_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_has_unholy_might",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_hits_ignore_enemy_elemental_resistances_while_has_energy_shield",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_larger_aggro_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_life_%_to_gain_as_flesh_shield_on_nearby_minion_death",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_life_increased_by_overcapped_fire_resistance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_life_leech_from_any_damage_permyriad",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_life_leech_permyriad_vs_poisoned_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_life_recovery_rate_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_life_regeneration_rate_per_minute_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_life_regeneration_rate_per_second",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_maim_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_maximum_all_elemental_resistances_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_maximum_life_%_to_add_as_maximum_energy_shield",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_maximum_life_%_to_convert_to_maximum_energy_shield_per_1%_chaos_resistance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_maximum_life_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_movement_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_movement_speed_+%_per_50_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_no_critical_strike_multiplier",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_physical_damage_%_to_add_as_cold",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_physical_damage_%_to_add_as_fire",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_physical_damage_reduction_rating",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_projectile_speed_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_raging_spirit_%_of_maximum_life_taken_per_minute_as_chaos_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_raging_spirit_maximum_life_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_recover_%_of_maximum_life_on_block",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_skill_area_of_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_skill_gem_level_+",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_skill_gem_quality_+",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_skill_mana_cost_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_spell_suppression_chance_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_spells_chance_to_hinder_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_summoned_recently_critical_strike_chance_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minion_unholy_might_on_kill_duration_ms",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minions_%_chance_to_blind_on_hit",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minions_attacks_overwhelm_%_physical_damage_reduction",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minions_cannot_be_blinded",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minions_chance_to_poison_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minions_deal_%_of_physical_damage_as_additional_chaos_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minions_gain_x_percent_of_your_resistances",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:minion",
+     "to": "stat:minions_gain_your_spell_suppression_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

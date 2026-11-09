@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "gem:EnchantmentOfReflectionWhenHit4",
+   "type": "Gem",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "gem:EnchantmentOfReflectionWhenHit4",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

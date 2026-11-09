@@ -1,0 +1,18 @@
+{
+ "start": "passive:totem_attack_damage2676",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:totem_attack_damage2676",
+     "to": "stat:totem_skill_attack_speed_+%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

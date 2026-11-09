@@ -1,0 +1,165 @@
+{
+ "index": 15,
+ "node_id": "passive:AscendancyNecromancer12",
+ "type": "Passive",
+ "name": "Commander of Darkness",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyNecromancer12"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyNecromancer12"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyNecromancer12"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:auras_grant_attack_and_cast_speed_+%_to_you_and_your_allies"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:damage_+%_for_you_and_allies_affected_by_your_auras"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyNecromancer12|stat:auras_grant_attack_and_cast_speed_+%_to_you_and_your_allies|out",
+    "passive_grants_stat|passive:AscendancyNecromancer12|stat:damage_+%_for_you_and_allies_affected_by_your_auras|out",
+    "passive_grants_stat|passive:AscendancyNecromancer12|stat:elemental_resistances_+%_for_you_and_allies_affected_by_your_auras|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 8,
+     "members": [
+      "mod:AnimalCharmElementalResistancesForAuraAffectedAllies1",
+      "mod:AnimalCharmElementalResistancesForAuraAffectedAllies2",
+      "mod:SynthesisImplicitDamageAffectedByAuras1",
+      "mod:SynthesisImplicitDamageAffectedByAuras2",
+      "mod:SynthesisImplicitDamageAffectedByAuras3_",
+      "mod:SynthesisImplicitDamageAffectedByAurasTwoHand1",
+      "mod:SynthesisImplicitDamageAffectedByAurasTwoHand2_",
+      "mod:SynthesisImplicitDamageAffectedByAurasTwoHand3"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 2,
+     "members": [
+      "passive:AscendancyAscendant39",
+      "passive:AscendancyNecromancer12"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:auras_grant_attack_and_cast_speed_+%_to_you_and_your_allies",
+   "chain": "passive_grants_stat>stat:auras_grant_attack_and_cast_speed_+%_to_you_and_your_allies",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:damage_+%_for_you_and_allies_affected_by_your_auras",
+   "chain": "passive_grants_stat>stat:damage_+%_for_you_and_allies_affected_by_your_auras",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:elemental_resistances_+%_for_you_and_allies_affected_by_your_auras",
+   "chain": "passive_grants_stat>stat:elemental_resistances_+%_for_you_and_allies_affected_by_your_auras",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:auras_grant_attack_and_cast_speed_+%_to_you_and_your_allies": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyAscendant39",
+       "name": "Necromancer",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyNecromancer12",
+       "name": "Commander of Darkness",
+       "asc": "Necromancer"
+      }
+     ]
+    }
+   }
+  },
+  "stat:damage_+%_for_you_and_allies_affected_by_your_auras": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 6,
+     "samples": [
+      {
+       "id": "mod:SynthesisImplicitDamageAffectedByAuras1",
+       "name": ""
+      },
+      {
+       "id": "mod:SynthesisImplicitDamageAffectedByAuras2",
+       "name": ""
+      },
+      {
+       "id": "mod:SynthesisImplicitDamageAffectedByAuras3_",
+       "name": ""
+      },
+      {
+       "id": "mod:SynthesisImplicitDamageAffectedByAurasTwoHand1",
+       "name": ""
+      },
+      {
+       "id": "mod:SynthesisImplicitDamageAffectedByAurasTwoHand2_",
+       "name": ""
+      },
+      {
+       "id": "mod:SynthesisImplicitDamageAffectedByAurasTwoHand3",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyNecromancer12",
+       "name": "Commander of Darkness",
+       "asc": "Necromancer"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

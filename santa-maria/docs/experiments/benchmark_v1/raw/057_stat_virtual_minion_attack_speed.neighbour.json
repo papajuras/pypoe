@@ -1,0 +1,11 @@
+{
+ "start": "stat:virtual_minion_attack_speed_+%",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": []
+  }
+ ]
+}

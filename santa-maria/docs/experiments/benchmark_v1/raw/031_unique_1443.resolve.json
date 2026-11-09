@@ -1,0 +1,20 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "unique:1443",
+   "type": "UniqueItem",
+   "name": "Circle of Ambition",
+   "availability": "available"
+  }
+ ],
+ "meta": {
+  "query": "unique:1443",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

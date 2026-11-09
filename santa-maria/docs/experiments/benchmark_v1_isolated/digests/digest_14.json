@@ -1,0 +1,244 @@
+{
+ "index": 14,
+ "node_id": "passive:AscendancyJuggernaut11",
+ "type": "Passive",
+ "name": "Unflinching",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyJuggernaut11"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyJuggernaut11"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyJuggernaut11"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:chance_to_gain_endurance_charge_when_hit_%"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:gain_endurance_charge_per_second_if_have_been_hit_recently"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyJuggernaut11|stat:chance_to_gain_endurance_charge_when_hit_%|out",
+    "passive_grants_stat|passive:AscendancyJuggernaut11|stat:gain_endurance_charge_per_second_if_have_been_hit_recently|out",
+    "passive_grants_stat|passive:AscendancyJuggernaut11|stat:gain_maximum_endurance_charges_on_endurance_charge_gained_%_chance|out",
+    "passive_grants_stat|passive:AscendancyJuggernaut11|stat:max_endurance_charges|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 44,
+     "members": [
+      "mod:AnimalCharmEnchangeChargeWhenHit1",
+      "mod:AnimalCharmEnchangeChargeWhenHit2",
+      "mod:ChargeBonusChanceToGainMaximumEnduranceCharges",
+      "mod:ChargeBonusEnduranceChargeIfHitRecently",
+      "mod:ChargeBonusMaximumEnduranceCharges",
+      "mod:EnduranceChargeIfHitRecentlyInfluence1",
+      "mod:EnduranceChargeIfHitRecentlyInfluenceMaven",
+      "mod:EssenceHorrorChargesMaxAndDuration_",
+      "mod:GainEnduranceChargesWhenHitUnique__1_",
+      "mod:GraftPrefixUulnetolEnduranceChargeWhenHit1",
+      "mod:HellscapeDownsideMaximumEnduranceCharges1",
+      "mod:MaximumEnduranceChargeInfluence1",
+      "mod:MaximumEnduranceChargeInfluenceMaven__",
+      "mod:MaximumEnduranceChargeUber1",
+      "mod:MaximumEnduranceChargeUniqueBodyStr3",
+      "mod:MaximumEnduranceChargeUniqueBodyStrDex3",
+      "mod:MaximumEnduranceChargeUniqueRing2",
+      "mod:MaximumEnduranceChargeUnique__1_",
+      "mod:MaximumEnduranceChargeUnique__2",
+      "mod:MaximumEnduranceChargesCorruption_",
+      "mod:MonsterArchnemesisJuggernaut___",
+      "mod:MonsterModEnduranceChargeGain",
+      "mod:MutatedUniqueBodyStrInt2MaximumEnduranceCharges",
+      "mod:MutatedUniqueTwoHandAxe1MaximumEnduranceCharges",
+      "mod:NecropolisCraftingMaximumEnduranceCharges",
+      "mod:RecombinatorSpecialMaximumEnduranceCharge",
+      "mod:ReducedMaximumEnduranceChargeUniqueCorruptedJewel17",
+      "mod:ReducedMaximumEnduranceChargeUnique__1",
+      "mod:ReducedMaximumEnduranceChargeUnique__2",
+      "mod:SanctumSpecialMaximumEnduranceCharge",
+      "mod:SynthesisImplicitEnduranceChargeGeneration1",
+      "mod:SynthesisImplicitMaximumEnduranceCharge1",
+      "mod:TalismanEnchantMaximumEnduranceCharges",
+      "mod:V2MaximumEnduranceChargesCorruption",
+      "mod:WeaponTreeAreaOfEffectPerEnduranceCharge",
+      "mod:WeaponTreeAreaOfEffectPerEnduranceCharge2H",
+      "mod:WeaponTreeMaximumEnduranceCharges",
+      "mod:WeaponTreeMaximumEnduranceCharges2H",
+      "mod:WeaponTreeMaximumFrenzyCharges",
+      "mod:WeaponTreeMaximumFrenzyCharges2H",
+      "mod:WeaponTreeMaximumPowerCharges",
+      "mod:WeaponTreeMaximumPowerCharges2H",
+      "mod:WeaponTreeMinimumFrenzyAndPowerCharges",
+      "mod:WeaponTreeMinimumFrenzyAndPowerCharges2H"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 9,
+     "members": [
+      "passive:AscendancyAscendant31",
+      "passive:AscendancyCustomJuggernaut13",
+      "passive:AscendancyJuggernaut11",
+      "passive:armour_endurance_charge_notable2376",
+      "passive:maximum_endurance_charges131",
+      "passive:maximum_endurance_charges132",
+      "passive:maximum_endurance_charges133",
+      "passive:royale_scion_1",
+      "passive:royale_scion_3"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:chance_to_gain_endurance_charge_when_hit_%",
+   "chain": "passive_grants_stat>stat:chance_to_gain_endurance_charge_when_hit_%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:gain_endurance_charge_per_second_if_have_been_hit_recently",
+   "chain": "passive_grants_stat>stat:gain_endurance_charge_per_second_if_have_been_hit_recently",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:gain_maximum_endurance_charges_on_endurance_charge_gained_%_chance",
+   "chain": "passive_grants_stat>stat:gain_maximum_endurance_charges_on_endurance_charge_gained_%_chance",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:max_endurance_charges",
+   "chain": "passive_grants_stat>stat:max_endurance_charges",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:chance_to_gain_endurance_charge_when_hit_%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 4,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmEnchangeChargeWhenHit1",
+       "name": "Juggernaut's"
+      },
+      {
+       "id": "mod:AnimalCharmEnchangeChargeWhenHit2",
+       "name": "Juggernaut's"
+      },
+      {
+       "id": "mod:GainEnduranceChargesWhenHitUnique__1_",
+       "name": ""
+      },
+      {
+       "id": "mod:GraftPrefixUulnetolEnduranceChargeWhenHit1",
+       "name": "Stoic"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 3,
+     "samples": [
+      {
+       "id": "passive:AscendancyJuggernaut11",
+       "name": "Unflinching",
+       "asc": "Juggernaut"
+      },
+      {
+       "id": "passive:armour_endurance_charge_notable2376",
+       "name": "Inexorable"
+      },
+      {
+       "id": "passive:royale_scion_1",
+       "name": "Indomitable Warrior"
+      }
+     ]
+    }
+   }
+  },
+  "stat:gain_endurance_charge_per_second_if_have_been_hit_recently": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 6,
+     "samples": [
+      {
+       "id": "mod:ChargeBonusEnduranceChargeIfHitRecently",
+       "name": ""
+      },
+      {
+       "id": "mod:EnduranceChargeIfHitRecentlyInfluence1",
+       "name": "of the Conquest"
+      },
+      {
+       "id": "mod:EnduranceChargeIfHitRecentlyInfluenceMaven",
+       "name": "of the Elevated Conquest"
+      },
+      {
+       "id": "mod:MonsterArchnemesisJuggernaut___",
+       "name": "of Endurance"
+      },
+      {
+       "id": "mod:MonsterModEnduranceChargeGain",
+       "name": "of Endurance"
+      },
+      {
+       "id": "mod:SynthesisImplicitEnduranceChargeGeneration1",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyAscendant31",
+       "name": "Juggernaut",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyJuggernaut11",
+       "name": "Unflinching",
+       "asc": "Juggernaut"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

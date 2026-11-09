@@ -1,0 +1,193 @@
+{
+ "index": 38,
+ "node_id": "passive:dexterity848",
+ "type": "Passive",
+ "name": "Dexterity",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:dexterity848"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:dexterity848"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:dexterity848"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:base_dexterity"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:dexterity848|stat:base_dexterity|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 82,
+     "members": [
+      "passive:AscendancyAscendant20",
+      "passive:AscendancyCustomRaider18",
+      "passive:acceleration1238",
+      "passive:agility833",
+      "passive:agility834",
+      "passive:agility837",
+      "passive:agility863",
+      "passive:agility876",
+      "passive:attack_speed1279",
+      "passive:blight_special_notable2",
+      "passive:dexterity1986",
+      "passive:dexterity1987",
+      "passive:dexterity1988",
+      "passive:dexterity1989",
+      "passive:dexterity1990_",
+      "passive:dexterity1991",
+      "passive:dexterity835",
+      "passive:dexterity836",
+      "passive:dexterity838",
+      "passive:dexterity839",
+      "passive:dexterity840",
+      "passive:dexterity841",
+      "passive:dexterity844",
+      "passive:dexterity846",
+      "passive:dexterity847",
+      "passive:dexterity848",
+      "passive:dexterity849",
+      "passive:dexterity850",
+      "passive:dexterity851",
+      "passive:dexterity853",
+      "passive:dexterity854",
+      "passive:dexterity855",
+      "passive:dexterity856",
+      "passive:dexterity857",
+      "passive:dexterity858",
+      "passive:dexterity860",
+      "passive:dexterity861",
+      "passive:dexterity862",
+      "passive:dexterity864",
+      "passive:dexterity865",
+      "passive:dexterity866",
+      "passive:dexterity867",
+      "passive:dexterity868",
+      "passive:dexterity869",
+      "passive:dexterity870",
+      "passive:dexterity872",
+      "passive:dexterity873",
+      "passive:dexterity874",
+      "passive:dexterity875",
+      "passive:dexterity877",
+      "passive:dexterity968",
+      "passive:dexterity969",
+      "passive:dexterity971",
+      "passive:dexterity973",
+      "passive:dexterity974",
+      "passive:dexterity975",
+      "passive:dexterity976",
+      "passive:dexterity977",
+      "passive:dexterity979",
+      "passive:dexterity980",
+      "passive:dexterity981",
+      "passive:dexterity982",
+      "passive:dexterity983",
+      "passive:dexterity984",
+      "passive:dexterity985",
+      "passive:dexterity986",
+      "passive:dexterity987",
+      "passive:dexterity988",
+      "passive:dexterity989",
+      "passive:dexterity990",
+      "passive:dexterity991",
+      "passive:dexterity992",
+      "passive:dexterity995",
+      "passive:evasion_phasing_notable2372",
+      "passive:finesse993",
+      "passive:path_of_the_hunter1539",
+      "passive:perfect_aim591",
+      "passive:precision843",
+      "passive:projectile_damage1278",
+      "passive:super_dexterity2435",
+      "passive:super_dexterity2436",
+      "passive:super_dexterity_notable2437"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:base_dexterity",
+   "chain": "passive_grants_stat>stat:base_dexterity",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:base_dexterity": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 82,
+     "samples": [
+      {
+       "id": "passive:AscendancyAscendant20",
+       "name": "Dexterity",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyCustomRaider18",
+       "name": "Scourge of the Wilds",
+       "asc": "Warden"
+      },
+      {
+       "id": "passive:acceleration1238",
+       "name": "Fangs of the Viper"
+      },
+      {
+       "id": "passive:agility833",
+       "name": "Art of the Gladiator"
+      },
+      {
+       "id": "passive:agility834",
+       "name": "Agility"
+      },
+      {
+       "id": "passive:agility837",
+       "name": "Alacrity"
+      },
+      {
+       "id": "passive:agility863",
+       "name": "Proficiency"
+      },
+      {
+       "id": "passive:agility876",
+       "name": "Expertise"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

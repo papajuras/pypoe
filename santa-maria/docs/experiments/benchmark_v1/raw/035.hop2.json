@@ -1,0 +1,87 @@
+{
+ "index": 35,
+ "node_id": "passive:endurance_charges_notable2425",
+ "targets": {
+  "stat:base_minimum_endurance_charges": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 15,
+    "passive_grants_stat": 3,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmMinimumEnduranceAndPowerCharges",
+    "mod:DivergentMinimumEnduranceChargesUnique__1",
+    "mod:HellscapeUpsideMinimumEnduranceCharges1",
+    "mod:JunMaster2MinimumEnduranceCharges1",
+    "mod:JunMasterMinimumEnduranceCharges1",
+    "mod:JunMasterVeiledMinimumEnduranceChargesInverted",
+    "mod:JunMasterVeiledMinimumEnduranceCharges_",
+    "mod:MinimumEnduranceChargeInfluence1",
+    "mod:MinimumEnduranceChargeInfluence2",
+    "mod:SynthesisImplicitMinimumEnduranceCharge1",
+    "mod:V2MinEnduranceChargesCorrupted",
+    "mod:WeaponTreeMinimumEnduranceAndFrenzyCharges",
+    "mod:WeaponTreeMinimumEnduranceAndFrenzyCharges2H",
+    "mod:WeaponTreeMinimumPowerAndEnduranceCharges",
+    "mod:WeaponTreeMinimumPowerAndEnduranceCharges2H"
+   ],
+   "total": 18
+  },
+  "stat:damage_+%_per_endurance_charge": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 35,
+    "passive_grants_stat": 3,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ChargeBonusDamagePerEnduranceCharge",
+    "mod:DamagePerEnduranceChargeEldritchImplicit1",
+    "mod:DamagePerEnduranceChargeEldritchImplicit2",
+    "mod:DamagePerEnduranceChargeEldritchImplicit3",
+    "mod:DamagePerEnduranceChargeEldritchImplicit4",
+    "mod:DamagePerEnduranceChargeEldritchImplicit5",
+    "mod:DamagePerEnduranceChargeEldritchImplicit6",
+    "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence1",
+    "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence2",
+    "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence3",
+    "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence4",
+    "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence5",
+    "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence6",
+    "mod:DamagePerEnduranceChargeEldritchImplicitUniquePresence1",
+    "mod:DamagePerEnduranceChargeEldritchImplicitUniquePresence2"
+   ],
+   "total": 38
+  },
+  "stat:endurance_charge_on_kill_%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 17,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ChanceToGainEnduranceChargeOnKillUber1",
+    "mod:ChanceToGainEnduranceChargeOnKillUber2",
+    "mod:ChanceToGainEnduranceChargeOnKillUberMaven",
+    "mod:ChargeBonusEnduranceChargeOnKill",
+    "mod:EnduranceChargeOnKillChanceProphecy",
+    "mod:EnduranceChargeOnKillInfluence1",
+    "mod:EnduranceChargeOnKillInfluence2",
+    "mod:EnduranceChargeOnKillInfluenceMaven",
+    "mod:HellscapeUpsideChanceToGainEnduranceChargeOnKill1__",
+    "mod:HellscapeUpsideChanceToGainEnduranceChargeOnKill2",
+    "mod:HellscapeUpsideChanceToGainEnduranceChargeOnKill3",
+    "mod:HellscapeUpsideChanceToGainEnduranceChargeOnKill4_",
+    "mod:JunMasterVeiledMinimumEnduranceCharges_",
+    "mod:SynthesisImplicitEnduranceChargeOnKill1",
+    "mod:TalismanEnduranceChargeOnKill_"
+   ],
+   "total": 18
+  }
+ }
+}

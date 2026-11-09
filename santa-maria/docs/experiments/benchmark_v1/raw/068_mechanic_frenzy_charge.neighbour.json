@@ -1,0 +1,636 @@
+{
+ "start": "mechanic:frenzy_charge",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:accuracy_rating_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:accuracy_rating_+_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:accuracy_rating_while_at_maximum_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:add_frenzy_charge_every_50_rampage_stacks",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:add_frenzy_charge_on_critical_strike",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:add_frenzy_charge_on_kill_%_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:add_frenzy_charge_on_skill_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:add_frenzy_charge_on_skill_hit_%_if_4_redeemer_items",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:add_frenzy_charge_when_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:additional_attack_block_%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:attack_and_cast_speed_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:attack_speed_+%_if_not_gained_frenzy_charge_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:attacks_chance_to_poison_%_on_max_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:attacks_poison_while_at_max_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:avoid_elemental_damage_%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:base_attack_speed_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:base_frenzy_charge_duration_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:base_minimum_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:bleeding_dot_multiplier_per_frenzy_charge_+",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:body_armour_implicit_gain_frenzy_charge_every_x_ms",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:bow_attacks_turn_frenzy_charges_into_additional_arrows",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:chance_to_gain_frenzy_charge_on_block_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:chance_to_gain_frenzy_charge_on_stun_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:chance_to_grant_frenzy_charge_to_nearby_allies_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:chance_to_grant_frenzy_charge_to_nearby_allies_on_kill_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:cold_damage_%_to_add_as_chaos_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:cold_damage_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:cold_damage_taken_per_minute_per_frenzy_charge_while_moving",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:count_as_having_max_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:critical_strike_chance_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:critical_strike_multiplier_+_while_have_any_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:damage_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:damage_+%_vs_enemies_on_low_life_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:damage_taken_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:damage_while_no_frenzy_charges_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:elemental_damage_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:evasion_rating_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:faster_bleed_per_frenzy_charge_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:flicker_strike_damage_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:frenzy_%_chance_to_gain_additional_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:frenzy_charge_duration_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:frenzy_charge_on_hit_%_vs_no_evasion_rating",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:frenzy_damage_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:from_self_maximum_added_cold_damage_taken_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:from_self_minimum_added_cold_damage_taken_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_X_frenzy_charges_after_spending_200_mana",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_X_frenzy_charges_per_second",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_affliction_charges_instead_of_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_flask_charge_on_crit_chance_%_while_at_maximum_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_for_each_quarter_life_removed",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_critical_strike_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_critical_strike_at_close_range_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_hit_%_while_blinded",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_hit_while_bleeding",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_hitting_marked_enemy_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_hitting_rare_or_unique_enemy_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_hitting_unique_enemy_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_kill_vs_enemies_with_5+_poisons_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_on_reaching_maximum_power_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_frenzy_charge_per_enemy_you_crit_%_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_iron_reflexes_while_at_maximum_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_maximum_frenzy_charges_on_frenzy_charge_gained_%_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:gain_onslaught_on_hit_chance_while_at_maximum_frenzy_charges_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:global_critical_strike_multiplier_+_while_you_have_no_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:global_defences_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:grant_X_frenzy_charges_to_nearby_allies_on_death",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:life_gained_on_enemy_death_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:life_leech_from_attack_damage_permyriad_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:life_regeneration_rate_per_minute_%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:lightning_damage_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:local_flask_consumes_x_frenzy_charges_on_use",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:local_flask_gain_frenzy_charges_on_use",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:local_flask_gain_x_seconds_of_onslaught_per_frenzy_charge_consumed",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:local_unique_jewel_cold_resistance_also_grants_frenzy_charge_on_kill_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:lose_a_frenzy_charge_on_travel_skill_use_%_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:lose_frenzy_charge_on_kill_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:max_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:max_frenzy_charges_if_6_redeemer_items",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:maximum_added_cold_damage_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:maximum_affliction_charges_is_equal_to_maximum_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:maximum_endurance_charges_is_equal_to_maximum_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:maximum_frenzy_charges_+_while_affected_by_grace",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:maximum_frenzy_charges_is_equal_to_maximum_power_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:melee_weapon_range_+_while_at_maximum_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:minimum_added_cold_damage_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:minimum_frenzy_charges_per_stackable_unique_jewel",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:modifiers_to_minimum_frenzy_charges_instead_apply_to_affliction_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:monster_gain_frenzy_charge_on_kin_death",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:monster_grants_frenzy_charges_to_allies_within_distance_on_death",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:movement_velocity_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:num_of_additional_chains_at_max_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:penetrate_elemental_resistance_per_frenzy_charge_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:phase_run_%_chance_to_not_consume_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:physical_damage_reduction_percent_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:poison_damage_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:poison_dot_multiplier_+_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:projectile_speed_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:sentinel_drone_player_gains_frenzy_charge_on_summon_ms",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:skill_area_of_effect_+%_while_no_frenzy_charges",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:spell_suppression_chance_%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:travel_skills_cooldown_speed_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:frenzy_charge",
+     "to": "stat:viper_and_pestilent_strike_attack_damage_+%_per_frenzy_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

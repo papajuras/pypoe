@@ -4,9 +4,9 @@
 
 ## Validation summary
 
-- Markers total: **202**
-- Semantic relations emitted: **220**
-- Single-relation markers: **178**
+- Markers total: **201**
+- Semantic relations emitted: **219**
+- Single-relation markers: **177**
 - Decomposed markers: **18**
 - Prose-only / out-of-vocabulary markers: **6**
 - Relations carrying classification_uncertainty: **20**
@@ -15,7 +15,7 @@
 
 | operator | count |
 |---|---:|
-| REDIRECT | 54 |
+| REDIRECT | 53 |
 | SUBSTITUTE | 87 |
 | CONVERT | 9 |
 | DERIVE | 12 |

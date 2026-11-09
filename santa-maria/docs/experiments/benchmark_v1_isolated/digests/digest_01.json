@@ -1,0 +1,412 @@
+{
+ "index": 1,
+ "node_id": "unique:1461",
+ "type": "UniqueItem",
+ "name": "Whispers of Infinity",
+ "block": "mandatory",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:1461"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:1461"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:1461"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:base_skills_cost_es_instead_of_mana_life"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:energy_shield_delay_-%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:1461|item_class:Amulet|out",
+    "unique_modifier_association|unique:1461|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|out",
+    "unique_modifier_association|unique:1461|mod:PercentReducedMaximumManaUnique_1|out",
+    "unique_modifier_association|unique:1461|mod:ReducedEnergyShieldDelayImplicit1_|out",
+    "unique_modifier_association|unique:1461|mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|modgroup:AttacksGainMinMaxAddedChaosDamageBasedOnMana|out",
+    "modifier_in_group|mod:ReducedEnergyShieldDelayImplicit1_|modgroup:EnergyShieldDelay|out",
+    "modifier_in_group|mod:PercentReducedMaximumManaUnique_1|modgroup:MaximumManaIncreasePercent|out",
+    "modifier_in_group|mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1|modgroup:SkillsCostEnergyShieldInsteadOfManaLife|out",
+    "modifier_grants_stat|mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1|stat:base_skills_cost_es_instead_of_mana_life|out",
+    "modifier_grants_stat|mod:ReducedEnergyShieldDelayImplicit1_|stat:energy_shield_delay_-%|out",
+    "modifier_grants_stat|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|stat:max_attack_added_chaos_damage_per_100_mana|out",
+    "modifier_grants_stat|mod:PercentReducedMaximumManaUnique_1|stat:maximum_mana_+%|out",
+    "modifier_grants_stat|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|stat:min_attack_added_chaos_damage_per_100_mana|out",
+    "modifier_has_tag|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|tag:attack|out",
+    "modifier_has_tag|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|tag:chaos|out",
+    "modifier_has_tag|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|tag:chaos_damage|out",
+    "modifier_has_tag|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|tag:damage|out",
+    "modifier_has_tag|mod:ReducedEnergyShieldDelayImplicit1_|tag:defences|out",
+    "modifier_has_tag|mod:ReducedEnergyShieldDelayImplicit1_|tag:energy_shield|out",
+    "modifier_has_tag|mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1|tag:life|out",
+    "modifier_has_tag|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|tag:mana|out",
+    "modifier_has_tag|mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1|tag:resource|out",
+    "unique_in_class|item_class:Amulet|<42 in: unique:1002, unique:1004, unique:1013\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_has_tag|tag:attack|<53 in: gem:AncestorTotemSlash, gem:AncestralProtector, gem:AncestralProtectorRoyale\u2026>",
+    "gem_has_tag|tag:chaos|<7 in: gem:AlchemistsMark, gem:Bane, gem:BaneAltX\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 117,
+     "members": [
+      "mod:AncestralItemFasterStartOfEnergyShieldRecharge",
+      "mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1",
+      "mod:DelveQuiverIncreasedMana1",
+      "mod:EinharMasterEnergyShieldDelay1_",
+      "mod:EinharMasterEnergyShieldDelay2",
+      "mod:EinharMasterFasterStartOfRecharge1",
+      "mod:EinharMasterFasterStartOfRecharge2",
+      "mod:EnergyShieldAndManaJewel",
+      "mod:EnergyShieldDelayHighInfluence1__",
+      "mod:EnergyShieldDelayHighInfluence2",
+      "mod:EnergyShieldDelayHighInfluence3",
+      "mod:EnergyShieldDelayInfluence1",
+      "mod:EnergyShieldDelayInfluence2_",
+      "mod:EnergyShieldDelayJewel",
+      "mod:EnergyShieldRechargeDelayInfluence1",
+      "mod:EnergyShieldRechargeDelayInfluence2",
+      "mod:FasterStartEnergyShieldRecharge1",
+      "mod:FasterStartEnergyShieldRecharge2",
+      "mod:FasterStartEnergyShieldRecharge3__",
+      "mod:FasterStartEnergyShieldRecharge4",
+      "mod:FasterStartEnergyShieldRecharge5_",
+      "mod:GainManaOnManaPaidManaCost1",
+      "mod:GainManaOnManaPaidManaCost2",
+      "mod:GainManaOnManaPaidManaCost3____",
+      "mod:GraftPrefixEshIncreasedMana1",
+      "mod:GraftPrefixEshIncreasedMana2",
+      "mod:GraftPrefixEshIncreasedMana3",
+      "mod:HellscapeDownsideManaPercentage3",
+      "mod:HellscapeUpsideManaPercentage3",
+      "mod:HellscapeUpsideManaPercentage4",
+      "mod:IncreasedManaEnhancedLevel50ModPercent",
+      "mod:IncreasedManaEnhancedModPercent",
+      "mod:IncreasedManaUniqueGlovesStr1",
+      "mod:JunMaster2PercentageLifeAndMana1",
+      "mod:JunMasterPercentageLifeAndMana1",
+      "mod:JunMasterVeiledPercentageLifeAndMana",
+      "mod:MaximumManaBodyUber1",
+      "mod:MaximumManaBodyUber2",
+      "mod:MaximumManaBodyUberMaven__",
+      "mod:MaximumManaImplicitAtlasRing_",
+      "mod:MaximumManaIncreasePercentDelve_",
+      "mod:MaximumManaInfluence1",
+      "mod:MaximumManaInfluence2_",
+      "mod:MaximumManaInfluenceMaven",
+      "mod:MaximumManaUber1",
+      "mod:MaximumManaUber2_",
+      "mod:MaximumManaUberMaven",
+      "mod:MaximumManaUniqueAmulet10",
+      "mod:MaximumManaUniqueBodyStrInt1",
+      "mod:MaximumManaUniqueJewel54",
+      "mod:MaximumManaUniqueRing5",
+      "mod:MaximumManaUniqueStaff4",
+      "mod:MaximumManaUniqueStaff5",
+      "mod:MaximumManaUniqueStaff6",
+      "mod:MaximumManaUniqueTwoHandMace5",
+      "mod:MaximumManaUnique__1",
+      "mod:MaximumManaUnique__10",
+      "mod:MaximumManaUnique__3",
+      "mod:MaximumManaUnique__4",
+      "mod:MaximumManaUnique__5",
+      "mod:MaximumManaUnique__6",
+      "mod:MaximumManaUnique__7",
+      "mod:MaximumManaUnique__8",
+      "mod:MaximumManaUnique__9",
+      "mod:MaximumManaUnique___2",
+      "mod:MonsterArchnemesisArcaneEnchanted",
+      "mod:MonsterArchnemesisArcaneEnchantedMagic",
+      "mod:MonsterModFasterStartOfEnergyShield",
+      "mod:MutatedUniqueUniqueAmulet6ReducedMaximumMana",
+      "mod:MutatedUniqueUniqueAmulet81PercentIncreasedMana",
+      "mod:NecropolisEnergyShield1",
+      "mod:NecropolisEnergyShield2",
+      "mod:NecropolisEnergyShield3",
+      "mod:PercentIncreasedLifeAndManaJewel",
+      "mod:PercentIncreasedManaJewel",
+      "mod:PercentReducedMaximumManaUnique_1",
+      "mod:PvPMasterEnergyShieldRecoveryCooldownCrafted",
+      "mod:ReducedEnergyShieldDelayImplicit1_",
+      "mod:ReducedEnergyShieldDelayUniqueBodyInt1",
+      "mod:ReducedEnergyShieldDelayUniqueCorruptedJewel15",
+      "mod:ReducedEnergyShieldDelayUniqueDagger4",
+      "mod:ReducedEnergyShieldDelayUniqueQuiver7",
+      "mod:ReducedEnergyShieldDelayUnique__1",
+      "mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1",
+      "mod:SynthesisImplicitEnergyShieldDelay1",
+      "mod:SynthesisImplicitEnergyShieldDelay2",
+      "mod:SynthesisImplicitPercentMana1_",
+      "mod:SynthesisImplicitPercentMana2",
+      "mod:SynthesisImplicitPercentMana3",
+      "mod:TalismanEnchantMaximumManaIncreasePercent",
+      "mod:TalismanIncreasedMana",
+      "mod:TormentHauntedMonsterSmuggler",
+      "mod:WeaponTreeLocalEnergyShieldAndMana1",
+      "mod:WeaponTreeLocalEnergyShieldAndMana2",
+      "mod:WeaponTreeLocalEnergyShieldAndMana3",
+      "mod:WeaponTreeManaRecoveryRateReducedMaximumMana1",
+      "mod:WeaponTreeManaRecoveryRateReducedMaximumMana2",
+      "mod:WeaponTreeMinionDamage2hLowMana1",
+      "mod:WeaponTreeMinionDamage2hLowMana2",
+      "mod:WeaponTreeMinionDamage2hLowMana3",
+      "mod:WeaponTreeMinionDamage2hLowMana4",
+      "mod:WeaponTreeMinionDamage2hLowMana5",
+      "mod:WeaponTreeMinionDamageLowMana1",
+      "mod:WeaponTreeMinionDamageLowMana2",
+      "mod:WeaponTreeMinionDamageLowMana3",
+      "mod:WeaponTreeMinionDamageLowMana4",
+      "mod:WeaponTreeMinionDamageLowMana5",
+      "mod:WeaponTreeSpellDamage2hLowMana1",
+      "mod:WeaponTreeSpellDamage2hLowMana2",
+      "mod:WeaponTreeSpellDamage2hLowMana3",
+      "mod:WeaponTreeSpellDamage2hLowMana4",
+      "mod:WeaponTreeSpellDamage2hLowMana5",
+      "mod:WeaponTreeSpellDamageLowMana1",
+      "mod:WeaponTreeSpellDamageLowMana2",
+      "mod:WeaponTreeSpellDamageLowMana3",
+      "mod:WeaponTreeSpellDamageLowMana4",
+      "mod:WeaponTreeSpellDamageLowMana5"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 85,
+     "members": [
+      "passive:AscendancyAscendant44",
+      "passive:AscendancyCustomDeadeye1",
+      "passive:AscendancyCustomDeadeye11",
+      "passive:AscendancyCustomDeadeye13",
+      "passive:AscendancyCustomDeadeye15",
+      "passive:AscendancyCustomDeadeye17",
+      "passive:AscendancyCustomDeadeye19",
+      "passive:AscendancyCustomDeadeye3",
+      "passive:AscendancyCustomDeadeye5",
+      "passive:AscendancyCustomDeadeye7",
+      "passive:AscendancyHeirophant4_",
+      "passive:AscendancyHeirophant5",
+      "passive:AscendancyHeirophant6",
+      "passive:AscendancyHeirophant7",
+      "passive:AscendancyNecromancer5",
+      "passive:arcane_focus735",
+      "passive:blight_special_notable9",
+      "passive:deep_thoughts383",
+      "passive:energy_shield_and_mana2343",
+      "passive:energy_shield_delay_notable1688",
+      "passive:increased_mana_cost2773",
+      "passive:increased_mana_cost_notable2774",
+      "passive:life700",
+      "passive:life_and_life_regen1891",
+      "passive:life_mana1639",
+      "passive:life_mana_notable1638",
+      "passive:light_radius_scales_with_es1545",
+      "passive:mana1478",
+      "passive:mana1479",
+      "passive:mana1622",
+      "passive:mana1623",
+      "passive:mana1647",
+      "passive:mana1648",
+      "passive:mana2010",
+      "passive:mana2011",
+      "passive:mana289",
+      "passive:mana290",
+      "passive:mana386",
+      "passive:mana389",
+      "passive:mana390",
+      "passive:mana391",
+      "passive:mana393",
+      "passive:mana399",
+      "passive:mana401",
+      "passive:mana548",
+      "passive:mana550",
+      "passive:mana551",
+      "passive:mana552",
+      "passive:mana767",
+      "passive:mana768",
+      "passive:mana_and_mana_regen_notable2255",
+      "passive:mana_arcane_surge2587",
+      "passive:mana_arcane_surge2588_",
+      "passive:mana_arcane_surge2589",
+      "passive:mana_arcane_surge_notable2590",
+      "passive:mana_flasks1740",
+      "passive:mana_flasks1741",
+      "passive:mana_flasks_notable1699",
+      "passive:mana_flasks_notable1743",
+      "passive:mana_flows549",
+      "passive:mana_intelligence_mana_regen1624",
+      "passive:mana_on_damage_notable1737",
+      "passive:mana_on_kill1475",
+      "passive:mana_on_kill1476",
+      "passive:mana_on_kill1758",
+      "passive:mana_on_kill1759",
+      "passive:mana_on_kill_notable1704",
+      "passive:mana_on_kill_notable1760",
+      "passive:mana_reduced_cost_notable1734",
+      "passive:mana_rmc_regen_notable1878",
+      "passive:mana_spell_block2610",
+      "passive:mana_spell_damage2608",
+      "passive:mana_spell_damage_block2613",
+      "passive:mana_spell_damage_notable2609",
+      "passive:mind_drinker302",
+      "passive:mind_over_matter2166",
+      "passive:mind_over_matter2167",
+      "passive:mind_over_matter_notable2168",
+      "passive:reduced_mana1480",
+      "passive:reduced_mana_cost135",
+      "passive:reduced_mana_cost137",
+      "passive:reduced_mana_cost139",
+      "passive:reduced_mana_cost2225",
+      "passive:royale_ES_2",
+      "passive:royale_mana_2"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:base_skills_cost_es_instead_of_mana_life",
+   "chain": "unique_modifier_association>mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1 -> modifier_grants_stat>stat:base_skills_cost_es_instead_of_mana_life",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:energy_shield_delay_-%",
+   "chain": "unique_modifier_association>mod:ReducedEnergyShieldDelayImplicit1_ -> modifier_grants_stat>stat:energy_shield_delay_-%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:max_attack_added_chaos_damage_per_100_mana",
+   "chain": "unique_modifier_association>mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1 -> modifier_grants_stat>stat:max_attack_added_chaos_damage_per_100_mana",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:maximum_mana_+%",
+   "chain": "unique_modifier_association>mod:PercentReducedMaximumManaUnique_1 -> modifier_grants_stat>stat:maximum_mana_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:min_attack_added_chaos_damage_per_100_mana",
+   "chain": "unique_modifier_association>mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1 -> modifier_grants_stat>stat:min_attack_added_chaos_damage_per_100_mana",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:base_skills_cost_es_instead_of_mana_life": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1",
+       "name": ""
+      }
+     ]
+    }
+   }
+  },
+  "stat:energy_shield_delay_-%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 34,
+     "samples": [
+      {
+       "id": "mod:AncestralItemFasterStartOfEnergyShieldRecharge",
+       "name": ""
+      },
+      {
+       "id": "mod:EinharMasterEnergyShieldDelay1_",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:EinharMasterEnergyShieldDelay2",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:EinharMasterFasterStartOfRecharge1",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EinharMasterFasterStartOfRecharge2",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EnergyShieldDelayHighInfluence1__",
+       "name": "Redeemer's"
+      },
+      {
+       "id": "mod:EnergyShieldDelayHighInfluence2",
+       "name": "Redeemer's"
+      },
+      {
+       "id": "mod:EnergyShieldDelayHighInfluence3",
+       "name": "Redeemer's"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 4,
+     "samples": [
+      {
+       "id": "passive:arcane_focus735",
+       "name": "Arcane Focus"
+      },
+      {
+       "id": "passive:energy_shield_delay_notable1688",
+       "name": "Essence Surge"
+      },
+      {
+       "id": "passive:light_radius_scales_with_es1545",
+       "name": "Essence Infusion"
+      },
+      {
+       "id": "passive:royale_ES_2",
+       "name": "Moment's Respite"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

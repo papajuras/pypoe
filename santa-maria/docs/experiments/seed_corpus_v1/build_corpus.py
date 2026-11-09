@@ -144,7 +144,11 @@ def build():
             type_calls += 1
             calls += 1
             env = api.get_start_seed({'seed': seed_cursor, 'type': typ,
-                                      'count': 2})
+                                      'count': 2,
+                                      # reproduce the frozen corpus exactly:
+                                      # opt into the pre-exclusion pool, the
+                                      # builder rejects alternates itself
+                                      'include_alternate_ascendancies': True})
             if env.get('error'):
                 continue
             for s in env.get('seeds', []):

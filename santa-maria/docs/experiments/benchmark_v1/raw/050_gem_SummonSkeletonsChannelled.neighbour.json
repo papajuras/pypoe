@@ -1,0 +1,60 @@
+{
+ "start": "gem:SummonSkeletonsChannelled",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "gem:SummonSkeletonsChannelled",
+     "to": "stat:active_skill_minion_added_damage_+%_final",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonSkeletonsChannelled",
+     "to": "stat:base_display_minion_actor_level",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonSkeletonsChannelled",
+     "to": "stat:base_number_of_skeletons_allowed",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonSkeletonsChannelled",
+     "to": "stat:base_skill_effect_duration",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonSkeletonsChannelled",
+     "to": "stat:display_minion_monster_type",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonSkeletonsChannelled",
+     "to": "stat:non_ghost_minion_duration_+%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonSkeletonsChannelled",
+     "to": "stat:number_of_melee_skeletons_to_summon",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonSkeletonsChannelled",
+     "to": "tag:minion",
+     "type": "gem_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

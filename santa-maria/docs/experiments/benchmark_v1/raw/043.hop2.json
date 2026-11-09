@@ -1,0 +1,271 @@
+{
+ "index": 43,
+ "node_id": "gem:SplittingSteel",
+ "targets": {
+  "stat:active_skill_base_area_of_effect_radius": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 181,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Affliction",
+    "gem:ArmageddonBrand",
+    "gem:ArmageddonBrandAltX",
+    "gem:ArmageddonBrandAltY",
+    "gem:AspectOfSolaris",
+    "gem:AspectOfTheBrineKing",
+    "gem:AvengingFlame",
+    "gem:BallLightning",
+    "gem:BallLightningAltX",
+    "gem:BallLightningAltY",
+    "gem:BallLightningRoyale",
+    "gem:Bane",
+    "gem:BaneAltX",
+    "gem:BarnacleSnap",
+    "gem:BitingBraidNova"
+   ],
+   "total": 181
+  },
+  "stat:attacks_impale_on_hit_%_chance": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 37,
+    "passive_grants_stat": 11,
+    "gem_grants_stat": 10,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:DoubleStrikeAltX",
+    "gem:LancingSteel",
+    "gem:LancingSteelAltX",
+    "gem:ShatteringSteel",
+    "gem:ShatteringSteelAltX",
+    "gem:ShatteringSteelRoyale",
+    "gem:ShrapnelBallistaAltX",
+    "gem:SplittingSteel",
+    "gem:SplittingSteelAltX",
+    "gem:SupportImpale",
+    "mod:AttackImpaleChanceEldritchImplicit1",
+    "mod:AttackImpaleChanceEldritchImplicit2",
+    "mod:AttackImpaleChanceEldritchImplicit3",
+    "mod:AttackImpaleChanceEldritchImplicit4",
+    "mod:AttackImpaleChanceEldritchImplicit5"
+   ],
+   "total": 58
+  },
+  "stat:base_is_projectile": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 184,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:ArtilleryBallista",
+    "gem:ArtilleryBallistaAltX",
+    "gem:ArtilleryBallistaAltY",
+    "gem:ArtilleryBallistaRoyale",
+    "gem:AvengingFlame",
+    "gem:BallLightning",
+    "gem:BallLightningAltX",
+    "gem:BallLightningRoyale",
+    "gem:BlastRain",
+    "gem:BlastRainAltX",
+    "gem:BlastRainRoyale",
+    "gem:BlazingSalvo",
+    "gem:BlazingSalvoRoyale",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX"
+   ],
+   "total": 184
+  },
+  "stat:base_skill_area_of_effect_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 131,
+    "passive_grants_stat": 33,
+    "gem_grants_stat": 241,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AncestorTotemSlash",
+    "gem:AncestralWarchief",
+    "gem:AncestralWarchiefRoyale",
+    "gem:AspectOfTheSpider",
+    "gem:BallLightning",
+    "gem:BallLightningAltX",
+    "gem:BallLightningAltY",
+    "gem:BallLightningRoyale",
+    "gem:Bane",
+    "gem:BaneAltX",
+    "gem:BladeBlast",
+    "gem:BladeBlastAltX",
+    "gem:BladeBlastAltY",
+    "gem:BladeBlastRoyale",
+    "gem:BladeFlurry"
+   ],
+   "total": 405
+  },
+  "stat:console_skill_dont_chase": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 102,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:ArmageddonBrand",
+    "gem:ArmageddonBrandAltX",
+    "gem:ArmageddonBrandAltY",
+    "gem:AtziriUniqueStaffStormCall",
+    "gem:Bladestorm",
+    "gem:BladestormAltX",
+    "gem:BladestormRoyale",
+    "gem:BloodAndSand",
+    "gem:BloodAndSandRoyale",
+    "gem:BloodSandTriggered",
+    "gem:BrandRecall",
+    "gem:Cleave",
+    "gem:CleaveAltX",
+    "gem:CleaveRoyale",
+    "gem:CobraLash"
+   ],
+   "total": 102
+  },
+  "stat:damage_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 153,
+    "passive_grants_stat": 9,
+    "gem_grants_stat": 480,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AncestorTotemSlash",
+    "gem:AncestralProtector",
+    "gem:AncestralProtectorRoyale",
+    "gem:AncestralWarchief",
+    "gem:AncestralWarchiefRoyale",
+    "gem:Arc",
+    "gem:ArcAltX",
+    "gem:ArcAltY",
+    "gem:ArmageddonBrand",
+    "gem:ArmageddonBrandAltX",
+    "gem:ArmageddonBrandAltY",
+    "gem:BallLightning",
+    "gem:BallLightningAltX",
+    "gem:BallLightningAltY",
+    "gem:BallLightningRoyale"
+   ],
+   "total": 642
+  },
+  "stat:modifiers_to_number_of_projectiles_instead_apply_to_splitting": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 4,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:IceSpearAltX",
+    "gem:SplitArrowAltX",
+    "gem:SplittingSteel",
+    "gem:SplittingSteelAltX",
+    "mod:ProjectileModifiersApplyToSplitsUnique__1",
+    "passive:AscendancyCustomAscendant48"
+   ],
+   "total": 6
+  },
+  "stat:projectile_number_to_split": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 8,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:ArcAltX",
+    "gem:IceSpearAltX",
+    "gem:OrbOfStorms",
+    "gem:OrbOfStormsAltX",
+    "gem:SplitArrowAltX",
+    "gem:SplittingSteel",
+    "gem:SplittingSteelAltX",
+    "gem:SupportSplitProjectiles",
+    "mod:HellscapeUpsideAdditionalSplitChance1_"
+   ],
+   "total": 9
+  },
+  "stat:projectiles_can_split_at_end_of_range": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 3,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SplitArrowAltX",
+    "gem:SplittingSteel",
+    "gem:SplittingSteelAltX"
+   ],
+   "total": 3
+  },
+  "stat:projectiles_can_split_from_terrain": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 4,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:IceSpearAltX",
+    "gem:SplitArrowAltX",
+    "gem:SplittingSteel",
+    "gem:SplittingSteelAltX"
+   ],
+   "total": 4
+  },
+  "stat:skill_projectiles_cannot_return": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 2,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SplittingSteel",
+    "gem:SplittingSteelAltX"
+   ],
+   "total": 2
+  },
+  "stat:steel_skill_%_chance_to_not_consume_ammo": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 7,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:LancingSteel",
+    "gem:LancingSteelAltX",
+    "gem:ShatteringSteel",
+    "gem:ShatteringSteelAltX",
+    "gem:ShatteringSteelRoyale",
+    "gem:SplittingSteel",
+    "gem:SplittingSteelAltX"
+   ],
+   "total": 7
+  }
+ }
+}

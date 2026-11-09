@@ -1,0 +1,112 @@
+{
+ "index": 75,
+ "node_id": "item_class:Tincture",
+ "type": "ItemClass",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "item_class:Tincture"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "item_class:Tincture"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "item_class:Tincture"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|item_class:Tincture|<5 in: unique:1448, unique:1449, unique:1450\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "unique_modifier_association|unique:1452|mod:TinctureApplyWitherStacksOnHitUnique__1|out",
+    "unique_modifier_association|unique:1452|mod:TinctureChanceToBlindImplicit1|out",
+    "unique_modifier_association|unique:1450|mod:TinctureChanceToIgniteImplicit1|out",
+    "unique_modifier_association|unique:1448|mod:TinctureCooldownRecoveryUnique__1|out",
+    "unique_modifier_association|unique:1450|mod:TinctureCoverInAshOnFullLifeUnique__1|out",
+    "unique_modifier_association|unique:1451|mod:TinctureCullingStrikeUnique__1|out",
+    "unique_modifier_association|unique:1448|mod:TinctureElementalDamageImplicit1|out",
+    "unique_modifier_association|unique:1450|mod:TinctureFireDamageTakenPerToxicityUnique__1|out",
+    "unique_modifier_association|unique:1452|mod:TinctureGraspingVineOnWeaponHitUnique__1|out",
+    "unique_modifier_association|unique:1448|mod:TincturePenetrationPerToxicityUnique__1|out",
+    "unique_modifier_association|unique:1451|mod:TinctureRageOnHitImplicit1|out",
+    "unique_modifier_association|unique:1451|mod:TinctureRarityPerToxicityUnique__1|out",
+    "unique_modifier_association|unique:1450|mod:TinctureRefreshIgniteDurationUnique__1|out",
+    "unique_modifier_association|unique:1449|mod:TinctureStunThresholdImplicit1|out",
+    "unique_modifier_association|unique:1451|mod:TinctureToxicityOnHitUnique__1|out",
+    "unique_modifier_association|unique:1449|mod:TinctureToxicityRateUnique__1|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "modifier_in_group|mod:TinctureChanceToIgniteImplicit1|modgroup:ChanceToIgnite|out",
+    "modifier_in_group|mod:TinctureChanceToBlindImplicit1|modgroup:GlobalChanceToBlindOnHit|out",
+    "modifier_in_group|mod:TinctureGraspingVineOnWeaponHitUnique__1|modgroup:GraspingVineOnWeaponHit|out",
+    "modifier_in_group|mod:TinctureElementalDamageImplicit1|modgroup:IncreasedWeaponElementalDamagePercent|out",
+    "modifier_in_group|mod:TinctureRageOnHitImplicit1|modgroup:RageOnHitImplicit|out",
+    "modifier_in_group|mod:TinctureRefreshIgniteDurationUnique__1|modgroup:RefreshIgniteDurationOnWeaponHit|out",
+    "modifier_in_group|mod:TinctureStunThresholdImplicit1|modgroup:StunThresholdReduction|out",
+    "modifier_in_group|mod:TinctureCooldownRecoveryUnique__1|modgroup:TinctureCooldownRecovery|out",
+    "modifier_in_group|mod:TinctureFireDamageTakenPerToxicityUnique__1|modgroup:TinctureFireDamageTakenPerToxicity|out",
+    "modifier_in_group|mod:TincturePenetrationPerToxicityUnique__1|modgroup:TincturePenetrationPerToxicity|out",
+    "modifier_in_group|mod:TinctureRarityPerToxicityUnique__1|modgroup:TinctureRarityPerToxicity|out",
+    "modifier_in_group|mod:TinctureToxicityOnHitUnique__1|modgroup:TinctureToxicityOnHit|out",
+    "modifier_in_group|mod:TinctureToxicityRateUnique__1|modgroup:TinctureToxicityRate|out",
+    "modifier_in_group|mod:TinctureApplyWitherStacksOnHitUnique__1|modgroup:WeaponApplyWitherStacksOnHit|out",
+    "modifier_in_group|mod:TinctureCoverInAshOnFullLifeUnique__1|modgroup:WeaponCoverInAshVsFullLife|out",
+    "modifier_in_group|mod:TinctureCullingStrikeUnique__1|modgroup:WeaponCullingStrike|out",
+    "modifier_grants_stat|mod:TinctureApplyWitherStacksOnHitUnique__1|stat:apply_X_wither_stacks_for_2_seconds_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureChanceToBlindImplicit1|stat:blind_effect_+%_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureGraspingVineOnWeaponHitUnique__1|stat:chance_to_apply_grasping_vines_on_tinctured_weapon_hit_%|out",
+    "modifier_grants_stat|mod:TinctureChanceToBlindImplicit1|stat:chance_to_blind_on_hit_%_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureChanceToIgniteImplicit1|stat:chance_to_ignite_%_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureCullingStrikeUnique__1|stat:culling_strike_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureElementalDamageImplicit1|stat:elemental_damage_+%_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureFireDamageTakenPerToxicityUnique__1|stat:fire_damage_taken_+_per_toxicity_from_tincture|out",
+    "modifier_grants_stat|mod:TinctureRageOnHitImplicit1|stat:gain_x_rage_on_hit_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureChanceToIgniteImplicit1|stat:ignite_damage_+%_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureRarityPerToxicityUnique__1|stat:item_rarity_+%_per_toxicity_up_to_100%_from_tincture|out",
+    "modifier_grants_stat|mod:TinctureToxicityOnHitUnique__1|stat:local_cannot_generate_toxicity_stacks_over_time|out",
+    "modifier_grants_stat|mod:TinctureCooldownRecoveryUnique__1|stat:local_tincture_cooldown_recovery_+%|out",
+    "modifier_grants_stat|mod:TinctureToxicityRateUnique__1|stat:local_tincture_toxicity_rate_+%|out",
+    "modifier_grants_stat|mod:TincturePenetrationPerToxicityUnique__1|stat:penetrate_elemental_resistances_%_per_toxicity_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureRefreshIgniteDurationUnique__1|stat:refresh_ignite_duration_on_tinctured_weapon_hit_%_chance|out",
+    "modifier_grants_stat|mod:TinctureStunThresholdImplicit1|stat:stun_duration_+%_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureStunThresholdImplicit1|stat:stun_threshold_reduction_+%_with_tinctured_weapons|out",
+    "modifier_grants_stat|mod:TinctureCoverInAshOnFullLifeUnique__1|stat:tinctured_weapon_cover_in_ash_on_hit_for_X_seconds_vs_full_life_enemies|out",
+    "modifier_grants_stat|mod:TinctureToxicityOnHitUnique__1|stat:toxicity_stacks_gained_on_hit_with_tinctured_weapons|out",
+    "modifier_has_tag|mod:TinctureChanceToIgniteImplicit1|tag:ailment|out",
+    "modifier_has_tag|mod:TinctureApplyWitherStacksOnHitUnique__1|tag:attack|out",
+    "modifier_has_tag|mod:TinctureApplyWitherStacksOnHitUnique__1|tag:chaos|out",
+    "modifier_has_tag|mod:TinctureChanceToIgniteImplicit1|tag:damage|out",
+    "modifier_has_tag|mod:TinctureChanceToIgniteImplicit1|tag:elemental|out",
+    "modifier_has_tag|mod:TinctureChanceToIgniteImplicit1|tag:elemental_damage|out",
+    "modifier_has_tag|mod:TinctureChanceToIgniteImplicit1|tag:fire|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": []
+}

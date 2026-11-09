@@ -1,0 +1,123 @@
+{
+ "index": 13,
+ "node_id": "passive:AscendancyInquisitor14",
+ "type": "Passive",
+ "name": "Instruments of Zeal",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyInquisitor14"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyInquisitor14"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyInquisitor14"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:gain_fanaticism_for_4_seconds_on_reaching_maximum_fanatic_charges"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:gain_x_fanatic_charges_every_second_if_have_attacked_in_past_second"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyInquisitor14|stat:gain_fanaticism_for_4_seconds_on_reaching_maximum_fanatic_charges|out",
+    "passive_grants_stat|passive:AscendancyInquisitor14|stat:gain_x_fanatic_charges_every_second_if_have_attacked_in_past_second|out",
+    "passive_grants_stat|passive:AscendancyInquisitor14|stat:lose_all_fanatic_charges_on_reaching_maximum_fanatic_charges|out",
+    "passive_grants_stat|passive:AscendancyInquisitor14|stat:maximum_fanaticism_charges|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyInquisitor14"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:gain_fanaticism_for_4_seconds_on_reaching_maximum_fanatic_charges",
+   "chain": "passive_grants_stat>stat:gain_fanaticism_for_4_seconds_on_reaching_maximum_fanatic_charges",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:gain_x_fanatic_charges_every_second_if_have_attacked_in_past_second",
+   "chain": "passive_grants_stat>stat:gain_x_fanatic_charges_every_second_if_have_attacked_in_past_second",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:lose_all_fanatic_charges_on_reaching_maximum_fanatic_charges",
+   "chain": "passive_grants_stat>stat:lose_all_fanatic_charges_on_reaching_maximum_fanatic_charges",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:maximum_fanaticism_charges",
+   "chain": "passive_grants_stat>stat:maximum_fanaticism_charges",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:gain_fanaticism_for_4_seconds_on_reaching_maximum_fanatic_charges": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyInquisitor14",
+       "name": "Instruments of Zeal",
+       "asc": "Inquisitor"
+      }
+     ]
+    }
+   }
+  },
+  "stat:gain_x_fanatic_charges_every_second_if_have_attacked_in_past_second": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyInquisitor14",
+       "name": "Instruments of Zeal",
+       "asc": "Inquisitor"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

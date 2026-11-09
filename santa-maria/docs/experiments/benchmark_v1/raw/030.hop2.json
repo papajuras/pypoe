@@ -1,0 +1,65 @@
+{
+ "index": 30,
+ "node_id": "unique:764",
+ "targets": {
+  "mod:AdditionalCriticalStrikeChanceWithCatAspectUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:additional_critical_strike_chance_permyriad_while_affected_by_cat_aspect"
+   ],
+   "tags": [
+    "tag:critical"
+   ]
+  },
+  "mod:ColdResistUnique__25": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:base_cold_damage_resistance_%"
+   ],
+   "tags": [
+    "tag:cold",
+    "tag:elemental",
+    "tag:resistance"
+   ]
+  },
+  "mod:CritsBlindChanceWithCatsStealthUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:%_chance_to_blind_on_critical_strike_while_you_have_cats_stealth"
+   ],
+   "tags": [
+    "tag:critical"
+   ]
+  },
+  "mod:DamageAgainstBlindedEnemiesUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:hit_and_ailment_damage_+%_vs_blinded_enemies"
+   ],
+   "tags": [
+    "tag:damage"
+   ]
+  },
+  "mod:DivergentGrantsCatAspect1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_display_grants_skill_cat_aspect_level"
+   ],
+   "tags": [
+    "tag:divergentunique",
+    "tag:skill"
+   ]
+  },
+  "mod:LocalIncreasedEvasionAndEnergyShieldUnique__12": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_evasion_and_energy_shield_+%"
+   ],
+   "tags": [
+    "tag:defences",
+    "tag:energy_shield",
+    "tag:evasion"
+   ]
+  }
+ }
+}

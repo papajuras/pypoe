@@ -1,0 +1,29 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "passive:AscendancyAssassin10",
+   "type": "Passive",
+   "name": "Toxic Delivery",
+   "passive_info": {
+    "ascendancy": "Assassin",
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": true
+    }
+   }
+  }
+ ],
+ "meta": {
+  "query": "passive:AscendancyAssassin10",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

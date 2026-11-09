@@ -1,0 +1,182 @@
+{
+ "index": 46,
+ "node_id": "gem:SummonHolyRelicAltX",
+ "targets": {
+  "stat:active_skill_minion_from_alternate_gem_index": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 9,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AnimateGuardianAltX",
+    "gem:RaiseZombieAltX",
+    "gem:RaiseZombieAltY",
+    "gem:SummonCarrionGolemAltY",
+    "gem:SummonChaosGolemAltY",
+    "gem:SummonFlameGolemAltY",
+    "gem:SummonHolyRelicAltX",
+    "gem:SummonReaperAltY",
+    "gem:SummonStoneGolemAltY"
+   ],
+   "total": 9
+  },
+  "stat:active_skill_minion_movement_velocity_+%_final": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 4,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:RaiseSpectre",
+    "gem:RaiseSpectreAltX",
+    "gem:SummonHolyRelic",
+    "gem:SummonHolyRelicAltX"
+   ],
+   "total": 4
+  },
+  "stat:base_display_minion_actor_level": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 70,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AnimateGuardian",
+    "gem:AnimateGuardianAltX",
+    "gem:AnimateWeapon",
+    "gem:AnimateWeaponAltX",
+    "gem:AnimateWeaponAltY",
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX",
+    "gem:BlinkArrowAltY",
+    "gem:BlinkArrowRoyale",
+    "gem:BlinkArrowTriggered",
+    "gem:CeaselessFleshUnique",
+    "gem:EnchantmentOfReflectionWhenHit"
+   ],
+   "total": 70
+  },
+  "stat:base_number_of_relics_allowed": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 2,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SummonHolyRelic",
+    "gem:SummonHolyRelicAltX",
+    "mod:AdditionalHolyRelicUnique__1",
+    "mod:DivergentAdditionalHolyRelicUnique__1"
+   ],
+   "total": 4
+  },
+  "stat:display_minion_monster_type": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 70,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AnimateGuardian",
+    "gem:AnimateGuardianAltX",
+    "gem:AnimateWeapon",
+    "gem:AnimateWeaponAltX",
+    "gem:AnimateWeaponAltY",
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX",
+    "gem:BlinkArrowAltY",
+    "gem:BlinkArrowRoyale",
+    "gem:BlinkArrowTriggered",
+    "gem:CeaselessFleshUnique",
+    "gem:EnchantmentOfReflectionWhenHit"
+   ],
+   "total": 70
+  },
+  "stat:holy_relic_targets_nearest_enemy": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 1,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SummonHolyRelicAltX"
+   ],
+   "total": 1
+  },
+  "stat:infinite_minion_duration": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 37,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AnimateGuardian",
+    "gem:AnimateGuardianAltX",
+    "gem:HeraldOfAgony",
+    "gem:ManifestDancingDervishes",
+    "gem:RaiseSpectre",
+    "gem:RaiseZombie",
+    "gem:RaiseZombieAltX",
+    "gem:RaiseZombieAltY",
+    "gem:SpectralSpirits",
+    "gem:SummonArbalists",
+    "gem:SummonBeastialRhoa",
+    "gem:SummonBeastialSnake",
+    "gem:SummonBeastialUrsa",
+    "gem:SummonCarrionGolem",
+    "gem:SummonCarrionGolemAltX"
+   ],
+   "total": 37
+  },
+  "stat:minions_cannot_taunt_enemies": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 14,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:EnchantmentOfTheGraveOnKill",
+    "gem:EnchantmentOfTheGraveOnKill2",
+    "gem:EnchantmentOfTheGraveOnKill3",
+    "gem:EnchantmentOfTheGraveOnKill4",
+    "gem:HeraldOfAgony",
+    "gem:RaiseSpiders",
+    "gem:SpectralSpirits",
+    "gem:SummonArbalists",
+    "gem:SummonHolyRelic",
+    "gem:SummonHolyRelicAltX",
+    "gem:SummonRagingSpirit",
+    "gem:SummonRagingSpiritAltX",
+    "gem:SummonRagingSpiritRoyale"
+   ],
+   "total": 14
+  },
+  "a": {
+   "kind": "tag"
+  }
+ }
+}

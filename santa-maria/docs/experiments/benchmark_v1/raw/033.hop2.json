@@ -1,0 +1,36 @@
+{
+ "index": 33,
+ "node_id": "unique:924",
+ "targets": {
+  "mod:CriticalMultiplierUniqueGlovesDexInt2": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:base_critical_strike_multiplier_+"
+   ],
+   "tags": [
+    "tag:critical",
+    "tag:damage"
+   ]
+  },
+  "mod:ExtraGore": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:extra_gore"
+   ],
+   "tags": []
+  },
+  "mod:FacebreakerUnarmedMoreDamage": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:unique_facebreaker_unarmed_melee_physical_damage_+%_final"
+   ],
+   "tags": [
+    "tag:attack",
+    "tag:damage",
+    "tag:has_attack_mod",
+    "tag:physical",
+    "tag:physical_damage"
+   ]
+  }
+ }
+}

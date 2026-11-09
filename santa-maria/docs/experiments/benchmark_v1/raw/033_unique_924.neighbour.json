@@ -1,0 +1,36 @@
+{
+ "start": "unique:924",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:924",
+     "to": "item_class:Gloves",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:924",
+     "to": "mod:CriticalMultiplierUniqueGlovesDexInt2",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:924",
+     "to": "mod:ExtraGore",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:924",
+     "to": "mod:FacebreakerUnarmedMoreDamage",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

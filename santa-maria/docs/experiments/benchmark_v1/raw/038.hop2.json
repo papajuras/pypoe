@@ -1,0 +1,33 @@
+{
+ "index": 38,
+ "node_id": "passive:dexterity848",
+ "targets": {
+  "stat:base_dexterity": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 82,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyAscendant20",
+    "passive:AscendancyCustomRaider18",
+    "passive:acceleration1238",
+    "passive:agility833",
+    "passive:agility834",
+    "passive:agility837",
+    "passive:agility863",
+    "passive:agility876",
+    "passive:attack_speed1279",
+    "passive:blight_special_notable2",
+    "passive:dexterity1986",
+    "passive:dexterity1987",
+    "passive:dexterity1988",
+    "passive:dexterity1989",
+    "passive:dexterity1990_"
+   ],
+   "total": 82
+  }
+ }
+}

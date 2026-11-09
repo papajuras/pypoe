@@ -1,0 +1,134 @@
+{
+ "index": 0,
+ "node_id": "unique:1198",
+ "type": "UniqueItem",
+ "name": "Replica Alberon's Warpath",
+ "block": "mandatory",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:1198"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:1198"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:1198"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:maximum_added_chaos_damage_to_attacks_per_50_strength"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:minimum_added_chaos_damage_to_attacks_per_50_strength"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:1198|item_class:Boots|out",
+    "unique_modifier_association|unique:1198|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|modgroup:ChaosDamage|out",
+    "modifier_grants_stat|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|stat:maximum_added_chaos_damage_to_attacks_per_50_strength|out",
+    "modifier_grants_stat|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|stat:minimum_added_chaos_damage_to_attacks_per_50_strength|out",
+    "modifier_has_tag|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|tag:attack|out",
+    "modifier_has_tag|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|tag:chaos|out",
+    "modifier_has_tag|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|tag:chaos_damage|out",
+    "modifier_has_tag|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|tag:damage|out",
+    "modifier_has_tag|mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1|tag:divergentunique|out",
+    "unique_in_class|item_class:Boots|<52 in: unique:1014, unique:1028, unique:1067\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_has_tag|tag:attack|<53 in: gem:AncestorTotemSlash, gem:AncestralProtector, gem:AncestralProtectorRoyale\u2026>",
+    "gem_has_tag|tag:chaos|<7 in: gem:AlchemistsMark, gem:Bane, gem:BaneAltX\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 2,
+     "members": [
+      "mod:AddedChaosDamageToAttacksPer50StrengthUnique__1",
+      "mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:maximum_added_chaos_damage_to_attacks_per_50_strength",
+   "chain": "unique_modifier_association>mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1 -> modifier_grants_stat>stat:maximum_added_chaos_damage_to_attacks_per_50_strength",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:minimum_added_chaos_damage_to_attacks_per_50_strength",
+   "chain": "unique_modifier_association>mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1 -> modifier_grants_stat>stat:minimum_added_chaos_damage_to_attacks_per_50_strength",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:maximum_added_chaos_damage_to_attacks_per_50_strength": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "mod:AddedChaosDamageToAttacksPer50StrengthUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1",
+       "name": ""
+      }
+     ]
+    }
+   }
+  },
+  "stat:minimum_added_chaos_damage_to_attacks_per_50_strength": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "mod:AddedChaosDamageToAttacksPer50StrengthUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1",
+       "name": ""
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

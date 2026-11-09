@@ -1,0 +1,24 @@
+{
+ "start": "unique:1198",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:1198",
+     "to": "item_class:Boots",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1198",
+     "to": "mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

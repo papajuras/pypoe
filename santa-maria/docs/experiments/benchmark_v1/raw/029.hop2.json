@@ -1,0 +1,62 @@
+{
+ "index": 29,
+ "node_id": "unique:679",
+ "targets": {
+  "mod:DivergentSupportedByLesserPoisonUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_display_socketed_gems_supported_by_X_lesser_poison"
+   ],
+   "tags": [
+    "tag:divergentunique",
+    "tag:gem",
+    "tag:support"
+   ]
+  },
+  "mod:LocalIncreasedEnergyShieldUnique__13_": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_energy_shield"
+   ],
+   "tags": [
+    "tag:defences",
+    "tag:energy_shield"
+   ]
+  },
+  "mod:LocalIncreasedEvasionAndEnergyShieldUnique__7": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_evasion_and_energy_shield_+%"
+   ],
+   "tags": [
+    "tag:defences",
+    "tag:energy_shield",
+    "tag:evasion"
+   ]
+  },
+  "mod:PoisonDamageWithOver300DexterityUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:poison_damage_+%_with_over_300_dexterity"
+   ],
+   "tags": [
+    "tag:ailment",
+    "tag:chaos",
+    "tag:chaos_damage",
+    "tag:damage",
+    "tag:poison"
+   ]
+  },
+  "mod:PoisonDurationWithOver150IntelligenceUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:poison_duration_+%_with_over_150_intelligence"
+   ],
+   "tags": [
+    "tag:ailment",
+    "tag:chaos",
+    "tag:poison"
+   ]
+  }
+ }
+}

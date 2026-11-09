@@ -1,0 +1,30 @@
+{
+ "start": "passive:AscendancyRaider8",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyRaider8",
+     "to": "stat:lose_X_bark_on_enemy_spell_hit",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyRaider8",
+     "to": "stat:spell_damage_%_suppressed_per_bark_below_max",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyRaider8",
+     "to": "stat:spell_damage_taken_+_per_barkskin_stack",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

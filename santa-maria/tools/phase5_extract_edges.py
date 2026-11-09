@@ -37,7 +37,7 @@ CONTRACT_VERSION = '5.7'
 ATTRIBUTE_ARTIFACT = Path(__file__).resolve().parent / 'sources' / 'pob_attribute_mechanics.json'
 MECHANICS_ARTIFACT = Path(__file__).resolve().parent / 'sources' / 'pob_stat_mechanics.json'
 NODE_TYPES = ['Stat', 'Modifier', 'ModifierGroup', 'UniqueItem', 'Passive',
-              'Gem', 'Tag', 'ItemClass']
+              'Gem', 'Tag', 'ItemClass', 'Mechanic', 'Rule']
 
 VALID_STATUSES = {'confirmed', 'confirmed_source_backed', 'resolved_not_validated'}
 VALID_TIERS = {'1', '2', '3', '4', '5', 'outside_this_vocabulary'}
@@ -207,8 +207,8 @@ def ext_unique_modifier_association(edges, by_type, vm):
         for t in p.get('resolved_targets') or []:
             if t.get('target_type') != 'Modifier':
                 continue
-            if t.get('method') not in (1, 4, 5, 6):   # contract v5.5; method 3 rejected
-                continue
+            if t.get('method') not in (1, 4, 5):   # contract v5.5; method 3 rejected;
+                continue                           # method 6 (Vestigial) retired — live-only KB
             if t.get('status') != 'resolved':
                 continue
             tk = t.get('target_key')
@@ -222,12 +222,6 @@ def ext_unique_modifier_association(edges, by_type, vm):
                 extra = {'method': 5, 'validated': bool(t.get('validated')),
                          'resolver_status': t.get('status'),
                          'matched_line': t.get('matched_line')}
-            elif mth == 6:
-                src_file = 'pob/Vestigial.json'
-                field = 'method6_ownership'
-                extra = {'method': 6, 'validated': bool(t.get('validated')),
-                         'resolver_status': t.get('status'),
-                         'unique_name': t.get('unique_name')}
             else:
                 src_file = 'repoe/uniques.json'
                 field = 'resolved_targets'

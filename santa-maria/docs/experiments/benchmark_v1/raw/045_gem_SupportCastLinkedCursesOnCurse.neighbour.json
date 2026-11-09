@@ -1,0 +1,24 @@
+{
+ "start": "gem:SupportCastLinkedCursesOnCurse",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "gem:SupportCastLinkedCursesOnCurse",
+     "to": "stat:cast_linked_curses_on_curse",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SupportCastLinkedCursesOnCurse",
+     "to": "tag:support",
+     "type": "gem_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

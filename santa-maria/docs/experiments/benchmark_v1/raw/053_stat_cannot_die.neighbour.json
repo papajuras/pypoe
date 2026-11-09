@@ -1,0 +1,54 @@
+{
+ "start": "stat:cannot_die",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "stat:cannot_die",
+     "to": "mod:CannotDieUnique__1",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    },
+    {
+     "from": "stat:cannot_die",
+     "to": "mod:MonsterAfflictionHasTeleportAndExplodeOnDeathDaemon",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    },
+    {
+     "from": "stat:cannot_die",
+     "to": "mod:MonsterAuraCannotDie1",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    },
+    {
+     "from": "stat:cannot_die",
+     "to": "mod:MonsterImplicitAuraCannotDie1",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    },
+    {
+     "from": "stat:cannot_die",
+     "to": "mod:MonsterImplicitAuraCannotDie2",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    },
+    {
+     "from": "stat:cannot_die",
+     "to": "mod:StrIntMissionAuraCannotDie1",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    },
+    {
+     "from": "stat:cannot_die",
+     "to": "mod:TestingDummyCannotDie",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

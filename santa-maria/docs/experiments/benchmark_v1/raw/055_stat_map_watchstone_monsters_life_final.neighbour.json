@@ -1,0 +1,18 @@
+{
+ "start": "stat:map_watchstone_monsters_life_+%_final",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "stat:map_watchstone_monsters_life_+%_final",
+     "to": "mod:UniqueWatchstoneMonsterLifeFinal_",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

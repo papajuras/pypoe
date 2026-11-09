@@ -1,0 +1,98 @@
+{
+ "index": 40,
+ "node_id": "passive:atlas_memory_notable_4",
+ "type": "Passive",
+ "name": "Grasp the Past",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:atlas_memory_notable_4"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:atlas_memory_notable_4"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:atlas_memory_notable_4"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:map_zana_influence_equipment_item_lucky_chance_%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:atlas_memory_notable_4|stat:map_zana_influence_equipment_item_lucky_chance_%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 1,
+     "members": [
+      "mod:MapRelicZanaInfluenceLuckyStrandChance"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:atlas_memory_notable_4"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:map_zana_influence_equipment_item_lucky_chance_%",
+   "chain": "passive_grants_stat>stat:map_zana_influence_equipment_item_lucky_chance_%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:map_zana_influence_equipment_item_lucky_chance_%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "mod:MapRelicZanaInfluenceLuckyStrandChance",
+       "name": "of Memories"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:atlas_memory_notable_4",
+       "name": "Grasp the Past"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

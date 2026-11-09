@@ -122,9 +122,9 @@ def test_global_partition():
         cls = sc.classify_stat(nid, g)['classification']
         counts[cls] = counts.get(cls, 0) + 1
     # frozen-KB pin (data snapshot c7175e76...); derived, not hardcoded in the classifier
-    assert counts == {sc.ITEM_ONLY_INTERNAL_KEYSTONE: 10, sc.ITEM_ONLY_STAT: 11317,
-                      sc.SHARED_TREE_ITEM: 1318, sc.TREE_ONLY: 761, sc.UNUSED: 9938}, counts
-    print('ok: global partition 10 / 11317 / 1318 / 761 / 9938 over all 23344 stats')
+    assert counts == {sc.ITEM_ONLY_INTERNAL_KEYSTONE: 10, sc.ITEM_ONLY_STAT: 11267,
+                      sc.SHARED_TREE_ITEM: 1311, sc.TREE_ONLY: 768, sc.UNUSED: 9988}, counts
+    print('ok: global partition 10 / 11267 / 1311 / 768 / 9988 over all 23344 stats')
 
 
 def test_no_hardcoded_ids_in_classifier():

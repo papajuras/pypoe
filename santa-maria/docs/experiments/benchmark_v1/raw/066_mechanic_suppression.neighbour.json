@@ -1,0 +1,186 @@
+{
+ "start": "mechanic:suppression",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:base_spell_damage_%_suppressed",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:base_spell_suppression_chance_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:base_spell_suppression_chance_150%_of_value",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:cannot_be_stunned_by_suppressed_spell_damage",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:chance_to_apply_suppression_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:debilitate_enemies_for_x_milliseconds_when_suppressing_their_spell",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:energy_shield_recharges_on_suppress_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:extra_damage_rolls_with_cold_damage_if_have_suppressed_spell_damage_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:hits_against_marked_enemy_cannot_be_blocked_or_suppressed",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:local_unique_jewel_cold_resistance_also_grants_spell_suppression_chance_scaled_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:recover_%_maximum_life_on_suppressing_spell",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:recover_X_life_on_suppressing_spell",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_damage_%_suppressed_if_not_suppressed_spell_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_damage_%_suppressed_while_on_full_energy_shield",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_if_suppressed_spell_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_if_taken_spell_damage_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_per_endurance_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_per_fortification",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_per_power_charge",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_while_affected_by_grace",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_while_affected_by_haste",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_while_channelling",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_while_moving",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_%_while_off_hand_empty",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_modifiers_apply_to_avoid_all_elemental_ailments_at_%_value",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:spell_suppression_chance_modifiers_apply_to_chance_to_double_armour_effect_on_hit_at_%_value",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:suppressed_spell_damage_bypass_energy_shield_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:suppressed_spell_damage_taken_%_recouped_as_es",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:suppression",
+     "to": "stat:your_spells_cannot_be_suppressed",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

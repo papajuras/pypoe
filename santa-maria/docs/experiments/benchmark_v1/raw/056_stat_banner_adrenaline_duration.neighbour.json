@@ -1,0 +1,11 @@
+{
+ "start": "stat:banner_adrenaline_duration_+%",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": []
+  }
+ ]
+}

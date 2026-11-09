@@ -1,0 +1,24 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "tag:lightning",
+   "type": "Tag",
+   "name": null
+  },
+  {
+   "id": "tag:lightning_affinity",
+   "type": "Tag",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "tag:lightning",
+  "type": null,
+  "total": 2,
+  "returned": 2,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

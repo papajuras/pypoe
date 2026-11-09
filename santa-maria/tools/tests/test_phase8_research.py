@@ -10,6 +10,7 @@ truncation, and read-only behavior (KB file digests stable).
 """
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -105,7 +106,15 @@ def test_carriers_input_errors():
 
 
 def test_resolve_exact_and_ambiguity():
+    # alternate (Phrecia) ascendancy passives are excluded by default, but the
+    # suppression is reported, never silent (meta.excluded_...)
     env = R.resolve('Marionettes', type='Passive')
+    assert env['error'] is None and env['results'] == []
+    assert env['meta']['excluded_alternate_ascendancies'] == 1
+    assert env['meta']['total'] == 0
+    # opt-in returns the exact hit with full passive_info
+    env = R.resolve('Marionettes', type='Passive',
+                    include_alternate_ascendancies=True)
     assert env['error'] is None and len(env['results']) == 1
     hit = env['results'][0]
     assert hit['id'] == 'passive:AscendancyCustomHeirophant12'
@@ -141,6 +150,65 @@ def test_resolve_truncation_reports_total():
     print(f'ok: resolve truncation explicit (total={m["total"]})')
 
 
+def _norm(s):
+    return re.sub(r'[^a-z0-9]', '', s.lower())
+
+
+def _assert_text_hits(env, needle, expected_ids):
+    """whispers06 whiff regression: prose search must surface the wording
+    family. Presence of the known pins + property check on every hit —
+    no exact-count pin, so legitimate future wording matches don't break it,
+    while a broken (over- or under-) matcher still fails."""
+    assert env['error'] is None, env
+    ids = {r['id'] for r in env['results']}
+    assert expected_ids <= ids, (needle, sorted(expected_ids - ids))
+    for r in env['results']:
+        assert needle in _norm(r.get('text') or ''), (r['id'], r.get('text'))
+
+
+def test_resolve_prose_search_whiff():
+    # the whispers06 miss: "per 100 Maximum Mana" text exists in the KB but
+    # was unfindable when resolve matched only ids/display names
+    needle = _norm('per 100 Maximum Mana')
+    env = R.resolve('per 100 maximum mana', type='Modifier')
+    _assert_text_hits(env, needle,
+                      {'mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1'})
+    # punctuation/case normalization: same needle, same hit
+    env2 = R.resolve('PER-100 MAXIMUM mana', type='Modifier')
+    assert {r['id'] for r in env2['results']} == \
+        {r['id'] for r in env['results']}
+    print(f'ok: prose search finds the whiff needle ({env["meta"]["total"]} hits)')
+
+
+def test_resolve_prose_search_spell_damage_per_int_trio():
+    # the influenced pair hidden behind Per10Intelligence key spelling +
+    # the unique-carried same-wording mod; stat-space evidence said 3 granters
+    needle = _norm('increased spell damage per 10 intelligence')
+    env = R.resolve('increased spell damage per 10 intelligence',
+                    type='Modifier')
+    _assert_text_hits(env, needle,
+                      {'mod:SpellDamagePer10IntelligenceInfluence1',   # Hunter's
+                       'mod:SpellDamagePer10IntelligenceUber1_',       # The Elder's
+                       'mod:SpellDamagePerIntelligenceUniqueStaff12'}) # The Whispering Ice
+    print(f'ok: prose search surfaces influenced spell-dmg-per-int trio '
+          f'({env["meta"]["total"]} hits)')
+
+
+def test_resolve_text_matching_is_scoped_and_id_semantics_unchanged():
+    # text matching applies only to payloads with `text` (Modifiers):
+    # a type-filtered Stat query must not match prose
+    env = R.resolve('per 100 maximum mana', type='Stat')
+    assert env['error'] is None and env['results'] == [], env
+    # existing id/display-name semantics untouched: exact id hit
+    env = R.resolve('Whispers of Infinity', type='UniqueItem')
+    assert [r['id'] for r in env['results']] == ['unique:1461'], env
+    # existing display-name matching unchanged (mod names, not texts)
+    env = R.resolve('Arcane Cloak', type='Modifier')
+    assert env['meta']['total'] == 3, env
+    assert all('EnchantmentArcaneCloak' in r['id'] for r in env['results'])
+    print('ok: text matching scoped to text payloads; id/name behaviour unchanged')
+
+
 def test_availability_and_unknown_passive_info_surface():
     env = R.resolve('Corona Solaris', type='UniqueItem')
     assert env['results'][0]['availability'] == 'unavailable', \
@@ -173,6 +241,9 @@ if __name__ == '__main__':
     test_resolve_exact_and_ambiguity()
     test_resolve_case_insensitive_and_type_filter()
     test_resolve_truncation_reports_total()
+    test_resolve_prose_search_whiff()
+    test_resolve_prose_search_spell_damage_per_int_trio()
+    test_resolve_text_matching_is_scoped_and_id_semantics_unchanged()
     test_availability_and_unknown_passive_info_surface()
     test_readonly_kb_digests()
     print('ALL TESTS PASSED')

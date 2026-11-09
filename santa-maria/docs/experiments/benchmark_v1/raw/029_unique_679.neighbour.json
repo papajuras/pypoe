@@ -1,0 +1,48 @@
+{
+ "start": "unique:679",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:679",
+     "to": "item_class:Body Armour",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:679",
+     "to": "mod:DivergentSupportedByLesserPoisonUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:679",
+     "to": "mod:LocalIncreasedEnergyShieldUnique__13_",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:679",
+     "to": "mod:LocalIncreasedEvasionAndEnergyShieldUnique__7",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:679",
+     "to": "mod:PoisonDamageWithOver300DexterityUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:679",
+     "to": "mod:PoisonDurationWithOver150IntelligenceUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

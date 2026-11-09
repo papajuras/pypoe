@@ -1,0 +1,47 @@
+{
+ "index": 4,
+ "node_id": "passive:AscendancyAssassin10",
+ "targets": {
+  "stat:poison_duration_+%_per_poison_applied_recently": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmPoisonDurationPerPoisonAppliedRecently1",
+    "mod:AnimalCharmPoisonDurationPerPoisonAppliedRecently2",
+    "passive:AscendancyAssassin10"
+   ],
+   "total": 3
+  },
+  "stat:poison_from_critical_strikes_damage_+%_final": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyAssassin10"
+   ],
+   "total": 1
+  },
+  "stat:recover_permyriad_maximum_life_per_poison_on_enemy_on_kill": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyAssassin10"
+   ],
+   "total": 1
+  }
+ }
+}

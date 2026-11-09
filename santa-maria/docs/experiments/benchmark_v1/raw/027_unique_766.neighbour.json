@@ -1,0 +1,42 @@
+{
+ "start": "unique:766",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:766",
+     "to": "item_class:Boots",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:766",
+     "to": "mod:ChanceToAvoidBleedingUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:766",
+     "to": "mod:DivergentCatsStealthTriggeredIntimidatingCry",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:766",
+     "to": "mod:LocalIncreasedEvasionRatingPercentUnique__13",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:766",
+     "to": "mod:MovementSpeedWithCatsStealthUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

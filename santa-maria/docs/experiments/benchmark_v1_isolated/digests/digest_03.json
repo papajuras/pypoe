@@ -1,0 +1,113 @@
+{
+ "index": 3,
+ "node_id": "passive:AscendancyAscendant5",
+ "type": "Passive",
+ "name": "Path of the Shadow",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyAscendant5"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyAscendant5"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyAscendant5"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:display_can_take_character_start_point"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyAscendant5|stat:display_can_take_character_start_point|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 6,
+     "members": [
+      "passive:AscendancyAscendant1",
+      "passive:AscendancyAscendant2",
+      "passive:AscendancyAscendant3",
+      "passive:AscendancyAscendant4",
+      "passive:AscendancyAscendant5",
+      "passive:AscendancyAscendant6"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:display_can_take_character_start_point",
+   "chain": "passive_grants_stat>stat:display_can_take_character_start_point",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:display_can_take_character_start_point": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 6,
+     "samples": [
+      {
+       "id": "passive:AscendancyAscendant1",
+       "name": "Path of the Ranger",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyAscendant2",
+       "name": "Path of the Witch",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyAscendant3",
+       "name": "Path of the Marauder",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyAscendant4",
+       "name": "Path of the Duelist",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyAscendant5",
+       "name": "Path of the Shadow",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyAscendant6",
+       "name": "Path of the Templar",
+       "asc": "Ascendant"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

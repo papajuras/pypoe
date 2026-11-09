@@ -1,0 +1,60 @@
+{
+ "start": "unique:1065",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:1065",
+     "to": "item_class:Amulet",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1065",
+     "to": "mod:ElusiveBuffEffectPerPowerChargeUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1065",
+     "to": "mod:HybridDexInt",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1065",
+     "to": "mod:LoseFrenzyChargeOnTravelSkillUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1065",
+     "to": "mod:LosePowerChargeOnElusiveGainUnique__1_",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1065",
+     "to": "mod:MaximumFrenzyChargesEqualToMaximumPowerChargesUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1065",
+     "to": "mod:MutatedUniqueAmulet57MovementVelocityPerFrenzyCharge",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1065",
+     "to": "mod:TravelSkillCooldownRecoveryPerFrenzyChargeUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

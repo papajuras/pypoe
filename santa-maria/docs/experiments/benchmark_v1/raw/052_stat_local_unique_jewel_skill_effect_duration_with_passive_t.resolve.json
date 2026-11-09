@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start",
+   "type": "Stat",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

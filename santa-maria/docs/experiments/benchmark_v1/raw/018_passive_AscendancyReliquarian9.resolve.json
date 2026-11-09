@@ -1,0 +1,29 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "passive:AscendancyReliquarian9",
+   "type": "Passive",
+   "name": "Caster Weapon Display",
+   "passive_info": {
+    "ascendancy": "Reliquarian",
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": true,
+     "is_notable": true
+    }
+   }
+  }
+ ],
+ "meta": {
+  "query": "passive:AscendancyReliquarian9",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

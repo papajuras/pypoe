@@ -1,0 +1,81 @@
+{
+ "index": 12,
+ "node_id": "passive:AscendancyHeirophant9",
+ "targets": {
+  "stat:number_of_additional_totems_allowed": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 14,
+    "passive_grants_stat": 3,
+    "gem_grants_stat": 9,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AncestorTotemSlash",
+    "gem:SearingBond",
+    "gem:SearingBondAltX",
+    "gem:SearingBondRoyale",
+    "gem:SiegeBallista",
+    "gem:SiegeBallistaAltX",
+    "gem:SiegeBallistaRoyale",
+    "gem:VaalAncestralWarchief",
+    "gem:VaalRejuvenationTotem",
+    "mod:AdditionalTotemsUniqueBodyInt7",
+    "mod:AdditionalTotemsUniqueScepter_1",
+    "mod:AdditionalTotemsUniqueStaff38",
+    "mod:AdditionalTotemsUnique__1",
+    "mod:JunMasterMaximumTotem1",
+    "mod:MaximumTotemUber1"
+   ],
+   "total": 26
+  },
+  "stat:summon_totem_cast_speed_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 55,
+    "passive_grants_stat": 11,
+    "gem_grants_stat": 15,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AncestorTotemSlash",
+    "gem:AncestralProtector",
+    "gem:AncestralProtectorRoyale",
+    "gem:AncestralWarchief",
+    "gem:AncestralWarchiefRoyale",
+    "gem:SearingBond",
+    "gem:SearingBondAltX",
+    "gem:SearingBondRoyale",
+    "gem:SiegeBallista",
+    "gem:SiegeBallistaAltX",
+    "gem:SiegeBallistaAltY",
+    "gem:SiegeBallistaRoyale",
+    "gem:SupportEarthbreaker",
+    "gem:SupportFocusedBallista",
+    "gem:VaalAncestralWarchief"
+   ],
+   "total": 81
+  },
+  "stat:totem_duration_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 6,
+    "passive_grants_stat": 3,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:HellscapeDownsideTotemDuration2",
+    "mod:HellscapeDownsideTotemDuration3_",
+    "mod:HellscapeUpsideTotemDuration2",
+    "mod:HellscapeUpsideTotemDuration3",
+    "mod:HellscapeUpsideTotemDuration4",
+    "mod:TotemDurationUniqueStaff38",
+    "passive:AscendancyHeirophant9",
+    "passive:totem_attack_and_cast_speed1504",
+    "passive:totem_damage_and_life_notable1502"
+   ],
+   "total": 9
+  }
+ }
+}

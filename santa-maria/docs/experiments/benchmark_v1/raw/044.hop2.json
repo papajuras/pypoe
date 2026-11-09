@@ -1,0 +1,50 @@
+{
+ "index": 44,
+ "node_id": "gem:SupportGreaterDevour",
+ "targets": {
+  "stat:killing_blow_consumes_corpse_chance_to_gain_soul_per_power_permillage": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 1,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SupportGreaterDevour"
+   ],
+   "total": 1
+  },
+  "stat:killing_blow_consumes_corpse_restore_x_life": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 2,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SupportDevour",
+    "gem:SupportGreaterDevour"
+   ],
+   "total": 2
+  },
+  "stat:killing_blow_consumes_corpse_restore_x_mana": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 2,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SupportDevour",
+    "gem:SupportGreaterDevour"
+   ],
+   "total": 2
+  },
+  "a": {
+   "kind": "tag"
+  }
+ }
+}

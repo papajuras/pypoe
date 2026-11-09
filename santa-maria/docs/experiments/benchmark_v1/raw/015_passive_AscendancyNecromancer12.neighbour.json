@@ -1,0 +1,30 @@
+{
+ "start": "passive:AscendancyNecromancer12",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyNecromancer12",
+     "to": "stat:auras_grant_attack_and_cast_speed_+%_to_you_and_your_allies",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyNecromancer12",
+     "to": "stat:damage_+%_for_you_and_allies_affected_by_your_auras",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyNecromancer12",
+     "to": "stat:elemental_resistances_+%_for_you_and_allies_affected_by_your_auras",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

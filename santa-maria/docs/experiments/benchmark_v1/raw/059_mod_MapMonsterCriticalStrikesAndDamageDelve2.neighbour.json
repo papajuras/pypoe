@@ -1,0 +1,66 @@
+{
+ "start": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "modgroup:MapMonsterCriticalStrikesAndDamage",
+     "type": "modifier_in_group",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "stat:map_item_drop_quantity_+%",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "stat:map_item_drop_rarity_+%",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "stat:map_monsters_critical_strike_chance_+%",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "stat:map_monsters_critical_strike_multiplier_+",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "stat:map_pack_size_+%",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "tag:critical",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "tag:damage",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+     "to": "tag:default",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

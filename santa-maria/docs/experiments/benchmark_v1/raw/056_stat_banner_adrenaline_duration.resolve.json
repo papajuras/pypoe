@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "stat:banner_adrenaline_duration_+%",
+   "type": "Stat",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "stat:banner_adrenaline_duration_+%",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

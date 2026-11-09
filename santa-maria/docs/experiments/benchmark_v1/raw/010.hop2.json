@@ -1,0 +1,23 @@
+{
+ "index": 10,
+ "node_id": "passive:AscendancyGladiator7",
+ "targets": {
+  "stat:bleeding_enemies_explode_for_%_life_as_physical_damage": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 4,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmBleedExplode1",
+    "mod:AnimalCharmBleedExplode2",
+    "mod:BleedingEnemiesExplodeUnique__1",
+    "mod:DivergentBleedingEnemiesExplodeUnique__1",
+    "passive:AscendancyGladiator7"
+   ],
+   "total": 5
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "start": "passive:AscendancyBerserker8",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyBerserker8",
+     "to": "stat:life_loss_%_per_minute_per_rage_while_not_losing_rage",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyBerserker8",
+     "to": "stat:rage_effect_+%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

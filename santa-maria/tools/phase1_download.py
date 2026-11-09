@@ -40,6 +40,24 @@ POB_TREE = 'https://api.github.com/repos/repoe-fork/pob-data/git/trees/master?re
 POB_RAW = 'https://raw.githubusercontent.com/repoe-fork/pob-data/master/pob-data/poe1/'
 POB_REPO = 'repoe-fork/pob-data'
 
+# PoB calculation source (Lua): intrinsic engine rules live in the calc code
+# (attribute conversions, damage-pool routing, DoT flags, pool thresholds).
+# NOT part of the manifest record scope (phase2 ingests manifest keys only);
+# recorded under _meta.sources.poblua + _meta.poblua_files (size + sha1 each)
+# so the snapshot stays auditable without entering raw_records.db.
+POBLUA_REPO = 'PathOfBuildingCommunity/PathOfBuilding'
+POBLUA_RAW = 'https://raw.githubusercontent.com/PathOfBuildingCommunity/PathOfBuilding/master/'
+POBLUA_FILES = (
+    'src/Modules/CalcSetup.lua',
+    'src/Modules/CalcPerform.lua',
+    'src/Modules/CalcOffence.lua',
+    'src/Modules/CalcDefence.lua',
+    'src/Modules/CalcTools.lua',
+    'src/Data/Misc.lua',
+    'src/Modules/Data.lua',
+    'src/Modules/ModParser.lua',
+)
+
 
 def get_json(url):
     req = urllib.request.Request(url, headers={'User-Agent': 'recon'})
@@ -95,13 +113,18 @@ SCOPE_DESCRIPTION = (
     '(procedural tile graphs). The RePoE git `data/` tree at the recorded commit '
     'is taken as the authoritative equivalent of the published RePoE export '
     '(the site is built from this repo); provenance (commit/tree SHA) is recorded '
-    'in _meta so the snapshot is auditable.'
+    'in _meta so the snapshot is auditable. PoB calculation-source Lua files '
+    '(pob-src/, intrinsic engine rules) are recorded under _meta.sources.poblua '
+    'with per-file size+sha1; they are NOT manifest keys (phase2 ingests manifest '
+    'keys only).'
 )
 
 
 def plan():
-    """Return (files, provenance). files = [(relpath, url, dest)] covering the
-    current intended download scope; provenance = per-repo commit/tree info."""
+    """Return (files, provenance, lua_files). files = [(relpath, url, dest)]
+    covering the current intended JSON download scope; lua_files = the PoB
+    calculation-source files [(relpath, url, dest)]; provenance = per-repo
+    commit/tree info."""
     files = []
 
     tree = get_json(REPOE_TREE)
@@ -130,11 +153,15 @@ def plan():
             continue
         files.append((f'pob/{rel}', POB_RAW + quote(rel, safe='/'), DATA / 'pob' / rel))
 
+    lua_files = [(f'pob-src/{p}', POBLUA_RAW + quote(p, safe='/'),
+                  DATA / 'pob-src' / p) for p in POBLUA_FILES]
+
     provenance = {
         'repoe': {**repo_provenance(REPOE_REPO), 'tree': tree_sha},
         'pob': {**repo_provenance(POB_REPO), 'tree': ptree_sha},
+        'poblua': {**repo_provenance(POBLUA_REPO)},
     }
-    return files, provenance
+    return files, provenance, lua_files
 
 
 def build_manifest(files):
@@ -163,10 +190,10 @@ def stale_files(files, root=DATA):
 
 
 def main():
-    files, provenance = plan()
-    print(f"planning {len(files)} files")
+    files, provenance, lua_files = plan()
+    print(f"planning {len(files)} files + {len(lua_files)} PoB source files")
     new = 0
-    for _rel, url, dest in files:
+    for _rel, url, dest in files + lua_files:
         if fetch(url, dest):
             new += 1
     print(f"downloaded {new} new files")
@@ -176,9 +203,18 @@ def main():
         print(f"WARNING: {len(stale)} stale/out-of-scope file(s) on disk excluded from manifest: {stale[:5]}")
     if missing:
         print(f"WARNING: {len(missing)} planned file(s) missing on disk (download failed?): {missing[:5]}")
+    lua_rec = {}
+    lua_missing = []
+    for rel, _url, dest in lua_files:
+        if dest.exists() and dest.stat().st_size > 0:
+            lua_rec[rel] = [dest.stat().st_size, hashlib.sha1(dest.read_bytes()).hexdigest()]
+        else:
+            lua_missing.append(rel)
+    provenance['poblua']['files'] = lua_rec
     manifest[META_KEY] = {
         'generated_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
         'sources': provenance,
+        'poblua_files_missing': lua_missing,
         'scope': SCOPE_DESCRIPTION,
         'planned_count': len(files),
         'downloaded_ok_count': len(manifest),

@@ -1,0 +1,30 @@
+{
+ "start": "passive:endurance_charges_notable2425",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:endurance_charges_notable2425",
+     "to": "stat:base_minimum_endurance_charges",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:endurance_charges_notable2425",
+     "to": "stat:damage_+%_per_endurance_charge",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:endurance_charges_notable2425",
+     "to": "stat:endurance_charge_on_kill_%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

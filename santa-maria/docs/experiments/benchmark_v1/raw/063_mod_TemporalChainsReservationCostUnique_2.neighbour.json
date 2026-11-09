@@ -1,0 +1,36 @@
+{
+ "start": "mod:TemporalChainsReservationCostUnique__2",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mod:TemporalChainsReservationCostUnique__2",
+     "to": "modgroup:CurseReservationCost",
+     "type": "modifier_in_group",
+     "direction": "out"
+    },
+    {
+     "from": "mod:TemporalChainsReservationCostUnique__2",
+     "to": "stat:temporal_chains_no_reservation",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:TemporalChainsReservationCostUnique__2",
+     "to": "tag:caster",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:TemporalChainsReservationCostUnique__2",
+     "to": "tag:curse",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

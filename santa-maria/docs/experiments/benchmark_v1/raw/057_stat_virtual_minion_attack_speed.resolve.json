@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "stat:virtual_minion_attack_speed_+%",
+   "type": "Stat",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "stat:virtual_minion_attack_speed_+%",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

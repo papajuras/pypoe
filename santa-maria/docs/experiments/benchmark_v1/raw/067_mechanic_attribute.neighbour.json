@@ -1,0 +1,654 @@
+{
+ "start": "mechanic:attribute",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:X_accuracy_per_2_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:X_life_per_4_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:X_mana_per_4_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:accuracy_rating_+%_per_25_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:accuracy_rating_+_per_2_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:area_damage_+%_per_12_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:area_of_effect_+%_per_20_int",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:area_of_effect_+%_per_50_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:armour_+%_per_50_str",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_maximum_added_fire_damage_per_10_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_maximum_added_lightning_damage_per_10_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_maximum_added_lightning_damage_per_10_int",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_maximum_added_physical_damage_per_25_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_maximum_added_physical_damage_per_25_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_minimum_added_fire_damage_per_10_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_minimum_added_lightning_damage_per_10_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_minimum_added_lightning_damage_per_10_int",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_minimum_added_physical_damage_per_25_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_minimum_added_physical_damage_per_25_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_speed_+%_per_10_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attack_speed_+%_per_25_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attacks_with_this_weapon_maximum_added_cold_damage_per_10_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:attacks_with_this_weapon_minimum_added_cold_damage_per_10_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:bleed_duration_per_12_intelligence_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:block_chance_%_per_50_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:cast_speed_+%_per_20_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:chance_to_deal_double_damage_%_per_500_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:critical_strike_chance_+%_per_10_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:critical_strike_chance_+%_per_25_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:critical_strike_chance_+%_per_8_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:critical_strike_multiplier_+_per_25_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_+%_per_100_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_+%_per_100_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_+%_per_100_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_+%_per_15_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_+%_per_15_int",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_+%_per_15_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_taken_per_250_dexterity_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_taken_per_250_intelligence_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:damage_taken_per_250_strength_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:dominance_additional_block_%_on_nearby_allies_per_100_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:dominance_cast_speed_+%_on_nearby_allies_per_100_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:dominance_critical_strike_multiplier_+_on_nearby_allies_per_100_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:dominance_defences_+%_on_nearby_allies_per_100_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:elemental_damage_+%_per_10_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:elemental_damage_+%_per_12_int",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:elemental_damage_+%_per_12_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:energy_shield_+%_per_10_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:evasion_+%_per_10_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:fire_damage_+%_per_20_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:fortify_duration_+%_per_10_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:lightning_damage_+%_per_10_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_X_dexterity_per_1_dexterity_allocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_X_intelligence_per_1_intelligence_allocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_X_strength_per_1_strength_allocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_accuracy_rating_+_per_10_dex_unallocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_accuracy_rating_+_per_10_int_unallocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_additional_physical_damage_reduction_%_per_10_str_allocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_chaos_damage_+%_per_10_int_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_critical_strike_multiplier_+_per_10_str_unallocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_dot_multiplier_+_per_10_int_unallocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_elemental_hit_50%_less_cold_damage_per_40_str_and_int",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_elemental_hit_50%_less_fire_damage_per_40_int_and_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_elemental_hit_50%_less_lightning_damage_per_40_str_and_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_energy_shield_regeneration_rate_per_minute_%_per_10_int_allocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_life_recovery_rate_+%_per_10_str_allocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_life_recovery_rate_+%_per_10_str_unallocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_mana_recovery_rate_+%_per_10_int_allocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_mana_recovery_rate_+%_per_10_int_unallocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_maximum_mana_+_per_10_dex_unallocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_movement_speed_+%_per_10_dex_allocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_movement_speed_+%_per_10_dex_unallocated_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_physical_damage_+1%_per_int_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:local_unique_jewel_totem_life_+X%_per_10_str_in_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:maximum_added_chaos_damage_to_attacks_per_50_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:maximum_added_cold_damage_to_attacks_per_10_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:maximum_added_fire_damage_to_attacks_per_10_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:maximum_added_lightning_damage_to_attacks_per_10_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:maximum_energy_shield_+_per_5_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:maximum_life_per_10_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:maximum_life_per_10_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:maximum_mana_+_per_2_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:melee_damage_+%_per_20_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:melee_physical_damage_+%_per_10_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:melee_physical_damage_+%_per_10_strength_while_fortified",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:minimum_added_chaos_damage_to_attacks_per_50_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:minimum_added_cold_damage_to_attacks_per_10_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:minimum_added_fire_damage_to_attacks_per_10_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:minimum_added_lightning_damage_to_attacks_per_10_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:number_of_additional_shrapnel_ballistae_per_200_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:number_of_additional_siege_ballistae_per_200_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:physical_damage_over_time_per_10_dexterity_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:physical_skill_effect_duration_per_12_intelligence_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:physical_weapon_damage_+%_per_10_str",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:projectile_speed_+%_per_20_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:spell_block_chance_%_per_50_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:spell_damage_+%_per_10_int",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:spell_damage_+%_per_10_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:spell_damage_+%_per_16_dex",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:spell_damage_+%_per_16_int",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:spell_damage_+%_per_16_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:spell_maximum_added_lightning_damage_per_10_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:spell_minimum_added_lightning_damage_per_10_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:strength_damage_bonus_grants_melee_physical_damage_+3%_per_10_strength_instead",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:stun_duration_+%_per_15_strength",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:volatile_dead_and_cremation_penetrate_%_fire_resistance_per_100_dexterity",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:attribute",
+     "to": "stat:x_to_maximum_life_per_2_intelligence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "index": 41,
+ "node_id": "passive:reaver605",
+ "type": "Passive",
+ "name": "Executioner",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:reaver605"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:reaver605"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:reaver605"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:damage_vs_enemies_on_low_life_+%"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:skill_area_of_effect_+%_if_enemy_killed_recently"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:reaver605|stat:damage_vs_enemies_on_low_life_+%|out",
+    "passive_grants_stat|passive:reaver605|stat:skill_area_of_effect_+%_if_enemy_killed_recently|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 10,
+     "members": [
+      "mod:AnimalCharmAreaOfEffectIfKilledRecently1",
+      "mod:AnimalCharmAreaOfEffectIfKilledRecently2",
+      "mod:AreaOfEffectIfKilledRecentlyInfluence1",
+      "mod:AreaOfEffectIfKilledRecentlyInfluence2_",
+      "mod:AreaOfEffectIfKilledRecentlyTwoHandInfluence1",
+      "mod:AreaOfEffectIfKilledRecentlyTwoHandInfluence2",
+      "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently1",
+      "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently2",
+      "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently2h1",
+      "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently2h2"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 2,
+     "members": [
+      "passive:AscendancyAscendant40",
+      "passive:reaver605"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:damage_vs_enemies_on_low_life_+%",
+   "chain": "passive_grants_stat>stat:damage_vs_enemies_on_low_life_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:skill_area_of_effect_+%_if_enemy_killed_recently",
+   "chain": "passive_grants_stat>stat:skill_area_of_effect_+%_if_enemy_killed_recently",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:damage_vs_enemies_on_low_life_+%": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:reaver605",
+       "name": "Executioner"
+      }
+     ]
+    }
+   }
+  },
+  "stat:skill_area_of_effect_+%_if_enemy_killed_recently": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 10,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmAreaOfEffectIfKilledRecently1",
+       "name": "Slayer's"
+      },
+      {
+       "id": "mod:AnimalCharmAreaOfEffectIfKilledRecently2",
+       "name": "Slayer's"
+      },
+      {
+       "id": "mod:AreaOfEffectIfKilledRecentlyInfluence1",
+       "name": "of the Hunt"
+      },
+      {
+       "id": "mod:AreaOfEffectIfKilledRecentlyInfluence2_",
+       "name": "of the Hunt"
+      },
+      {
+       "id": "mod:AreaOfEffectIfKilledRecentlyTwoHandInfluence1",
+       "name": "of the Hunt"
+      },
+      {
+       "id": "mod:AreaOfEffectIfKilledRecentlyTwoHandInfluence2",
+       "name": "of the Hunt"
+      },
+      {
+       "id": "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently1",
+       "name": ""
+      },
+      {
+       "id": "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently2",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyAscendant40",
+       "name": "Slayer",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:reaver605",
+       "name": "Executioner"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

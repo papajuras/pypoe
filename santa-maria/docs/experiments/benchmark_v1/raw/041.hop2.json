@@ -1,0 +1,43 @@
+{
+ "index": 41,
+ "node_id": "passive:reaver605",
+ "targets": {
+  "stat:damage_vs_enemies_on_low_life_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:reaver605"
+   ],
+   "total": 1
+  },
+  "stat:skill_area_of_effect_+%_if_enemy_killed_recently": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 10,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmAreaOfEffectIfKilledRecently1",
+    "mod:AnimalCharmAreaOfEffectIfKilledRecently2",
+    "mod:AreaOfEffectIfKilledRecentlyInfluence1",
+    "mod:AreaOfEffectIfKilledRecentlyInfluence2_",
+    "mod:AreaOfEffectIfKilledRecentlyTwoHandInfluence1",
+    "mod:AreaOfEffectIfKilledRecentlyTwoHandInfluence2",
+    "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently1",
+    "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently2",
+    "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently2h1",
+    "mod:WeaponTreeAreaOfEffectReducedAreaOfEffectIfKilledRecently2h2",
+    "passive:AscendancyAscendant40",
+    "passive:reaver605"
+   ],
+   "total": 12
+  }
+ }
+}

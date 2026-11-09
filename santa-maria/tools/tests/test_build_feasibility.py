@@ -212,7 +212,17 @@ def test_weapon_restrictions():
     assert r['result'] == bf.UNKNOWN, r
     r = bf.weapon_check('gem:LightningTrap', 'Bow', g)
     assert r['result'] == bf.VALID and 'no weapon restrictions' in r['reason'], r
-    print('ok: weapon restriction checks; missing restrictions never invalid')
+    # multi-weapon contexts: any-match
+    r = bf.weapon_check(HH, [REDBEAK, 'Sceptre'], g)
+    assert r['result'] == bf.VALID and '(Sceptre)' in r['reason'], r
+    r = bf.weapon_check('gem:GroundSlam', [REDBEAK, ICHIMONJI], g)
+    assert r['result'] == bf.INVALID and 'none of' in r['reason'], r
+    r = bf.weapon_check(HH, [REDBEAK, WELLHOOK], g)
+    assert r['result'] == bf.UNKNOWN, r
+    r = bf.weapon_check(HH, [], g)
+    assert r['result'] == bf.UNKNOWN, r
+    print('ok: weapon restriction checks (single + multi any-match); '
+          'missing restrictions never invalid')
 
 
 def test_deterministic():

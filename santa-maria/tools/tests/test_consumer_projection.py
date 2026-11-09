@@ -46,7 +46,8 @@ def test_graph_matches_artifact():
     cp.verify()  # set equality + provenance completeness + no duplicates
     con = sqlite3.connect(cp.CACHE / 'edges.db')
     rows = con.execute("select source_node_id, provenance from edges "
-                       "where relationship_type=?", (cp.EDGE_TYPE,)).fetchall()
+                       "where relationship_type=? and target_node_id not like "
+                       "'mechanic:applies_to_%'", (cp.EDGE_TYPE,)).fetchall()
     by_role = {}
     for src, prov in rows:
         p = json.loads(prov)[0]

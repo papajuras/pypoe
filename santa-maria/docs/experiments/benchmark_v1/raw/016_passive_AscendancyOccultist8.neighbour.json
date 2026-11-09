@@ -1,0 +1,24 @@
+{
+ "start": "passive:AscendancyOccultist8",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyOccultist8",
+     "to": "stat:ignore_hexproof",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyOccultist8",
+     "to": "stat:number_of_additional_curses_allowed",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

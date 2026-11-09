@@ -1,0 +1,585 @@
+{
+ "benchmark": "benchmark_v1",
+ "date": "2026-09-17",
+ "corpus_sha256": "d62839a9045e28c8aa0bc9d431c3aaef241089c40acee121c96e294e900d56a8",
+ "kb_cache_sha256_start": {
+  "nodes.db": "289b29aea530a15f",
+  "edges.db": "5eb3059b82633bfa",
+  "raw_records.db": "a8b725e9f27db1e1"
+ },
+ "kb_cache_sha256_end": {
+  "nodes.db": "289b29aea530a15f",
+  "edges.db": "5eb3059b82633bfa",
+  "raw_records.db": "a8b725e9f27db1e1"
+ },
+ "read_only_verified": true,
+ "entries": [
+  {
+   "index": 0,
+   "verdict": "ISOLATED",
+   "axis": "strength->added chaos damage (attacks)",
+   "evidence": "per-50-str chaos stats carried only by mod + Divergent variant (2 carriers)",
+   "links": "-"
+  },
+  {
+   "index": 1,
+   "verdict": "ISOLATED",
+   "axis": "mana-cost->chaos dmg; ES-instead-of-mana",
+   "evidence": "4 mods; ES-for-mana stat single-carrier",
+   "links": "-"
+  },
+  {
+   "index": 2,
+   "verdict": "NONE",
+   "axis": "item-class hub",
+   "evidence": "91 uniques in class via unique_in_class; no stat edges",
+   "links": "-"
+  },
+  {
+   "index": 3,
+   "verdict": "ENABLER",
+   "axis": "ascendant cross-asc start",
+   "evidence": "grants display_can_take_character_start_point (6 passives)",
+   "links": "-"
+  },
+  {
+   "index": 4,
+   "verdict": "CHAIN",
+   "axis": "poison (crit/duration/leech)",
+   "evidence": "poison_duration_per_poison_applied_recently: 2 mods+1 passive; poison-from-crit family",
+   "links": "4<->17<->29"
+  },
+  {
+   "index": 5,
+   "verdict": "CHAIN",
+   "axis": "rage",
+   "evidence": "rage_effect_+% carried by mods; life-loss-per-rage unique stat",
+   "links": "rage family"
+  },
+  {
+   "index": 6,
+   "verdict": "CHAIN",
+   "axis": "impale",
+   "evidence": "impaled_reflected_hits: 2 mods+2 passives; impale chance family 37 mods+11 passives+10 gems",
+   "links": "6<->43"
+  },
+  {
+   "index": 7,
+   "verdict": "ISOLATED",
+   "axis": "body-armour triggers (ancestral call/fist of war)",
+   "evidence": "stats single-passive-carried",
+   "links": "-"
+  },
+  {
+   "index": 8,
+   "verdict": "ISOLATED",
+   "axis": "tailwind per gale force",
+   "evidence": "1 passive carrier",
+   "links": "-"
+  },
+  {
+   "index": 9,
+   "verdict": "CHAIN",
+   "axis": "shock forcing",
+   "evidence": "all_damage_can_shock 12 mods+1 passive; always_shock 8 mods+2 passives (incl Reliquarian22)",
+   "links": "9<->26-adjacent"
+  },
+  {
+   "index": 10,
+   "verdict": "CHAIN",
+   "axis": "bleed pop",
+   "evidence": "bleeding_explode_%_life: 4 mods+1 passive",
+   "links": "-"
+  },
+  {
+   "index": 11,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero passive_grants_stat edges recorded for this notable",
+   "links": "-"
+  },
+  {
+   "index": 12,
+   "verdict": "CHAIN",
+   "axis": "totem count",
+   "evidence": "additional_totems_allowed: 14 mods+3 passives+9 gems",
+   "links": "12<->37<->42"
+  },
+  {
+   "index": 13,
+   "verdict": "ISOLATED",
+   "axis": "fanaticism charges",
+   "evidence": "fanatic charge stats mostly self-carried (1 passive each)",
+   "links": "-"
+  },
+  {
+   "index": 14,
+   "verdict": "CHAIN",
+   "axis": "endurance charges",
+   "evidence": "gain-on-hit 4 mods+3 passives; max charges family",
+   "links": "14<->35"
+  },
+  {
+   "index": 15,
+   "verdict": "ISOLATED",
+   "axis": "aura effect",
+   "evidence": "aura stats 2 passive carriers each",
+   "links": "-"
+  },
+  {
+   "index": 16,
+   "verdict": "CHAIN",
+   "axis": "curse limit",
+   "evidence": "additional_curses_allowed: 21 mods+5 passives+2 gems",
+   "links": "16<->63<->71"
+  },
+  {
+   "index": 17,
+   "verdict": "ISOLATED",
+   "axis": "flask-effect poison",
+   "evidence": "poison stats self-carried (unique to node); poison family adjacent",
+   "links": "4<->29"
+  },
+  {
+   "index": 18,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero out-edges",
+   "links": "-"
+  },
+  {
+   "index": 19,
+   "verdict": "CHAIN",
+   "axis": "blind",
+   "evidence": "cannot_be_blinded 6 mods+2 passives; blind_on_hit family; damage-vs-blinded link",
+   "links": "19<->30"
+  },
+  {
+   "index": 20,
+   "verdict": "ISOLATED",
+   "axis": "crit multi per nearby enemy",
+   "evidence": "stats self/1-passive carried",
+   "links": "-"
+  },
+  {
+   "index": 21,
+   "verdict": "CHAIN",
+   "axis": "frenzy charges",
+   "evidence": "max_frenzy_charges: 33 mods+9 passives",
+   "links": "21<->32<->68"
+  },
+  {
+   "index": 22,
+   "verdict": "ISOLATED",
+   "axis": "barkskin (Warden)",
+   "evidence": "bark stats single-carried (Warden-exclusive)",
+   "links": "-"
+  },
+  {
+   "index": 23,
+   "verdict": "ISOLATED",
+   "axis": "per-abyssal-jewel scaling",
+   "evidence": "per-jewel pen/life/mana stats single-carried (self)",
+   "links": "-"
+  },
+  {
+   "index": 24,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "unavailable in KB; zero mod associations",
+   "links": "-"
+  },
+  {
+   "index": 25,
+   "verdict": "ISOLATED",
+   "axis": "int per equipped unique",
+   "evidence": "single-carrier stat",
+   "links": "-"
+  },
+  {
+   "index": 26,
+   "verdict": "CHAIN",
+   "axis": "scorch",
+   "evidence": "scorch_effect, nearby-scorched, scorched-explode mods; ailment family adjacent to 9",
+   "links": "26<->9-adjacent"
+  },
+  {
+   "index": 27,
+   "verdict": "ISOLATED",
+   "axis": "cat stealth (Farrul family)",
+   "evidence": "cat stealth stats; pairs with 30",
+   "links": "27<->30"
+  },
+  {
+   "index": 28,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero mod associations",
+   "links": "-"
+  },
+  {
+   "index": 29,
+   "verdict": "CHAIN",
+   "axis": "poison (stat-gated converters)",
+   "evidence": "poison dmg @300dex, duration @150int; lesser-poison support converter",
+   "links": "4<->17<->29"
+  },
+  {
+   "index": 30,
+   "verdict": "CHAIN",
+   "axis": "cat aspect crit + blind synergy",
+   "evidence": "crit permyriad w/ cat aspect; crits blind w/ stealth; dmg vs blinded",
+   "links": "30<->19<->27"
+  },
+  {
+   "index": 31,
+   "verdict": "CHAIN",
+   "axis": "herald reservation",
+   "evidence": "herald reservation efficiency: 1 mod+5 passives",
+   "links": "herald family"
+  },
+  {
+   "index": 32,
+   "verdict": "CHAIN",
+   "axis": "charge conversion",
+   "evidence": "frenzy=max power swap; movement+cooldown per frenzy; frenzy family",
+   "links": "32<->21<->68"
+  },
+  {
+   "index": 33,
+   "verdict": "ISOLATED",
+   "axis": "unarmed scaling",
+   "evidence": "unarmed more-dmg: 3 carriers (orig+divergent+crafted)",
+   "links": "-"
+  },
+  {
+   "index": 34,
+   "verdict": "ISOLATED",
+   "axis": "shaper's presence",
+   "evidence": "single-carrier stat",
+   "links": "-"
+  },
+  {
+   "index": 35,
+   "verdict": "CHAIN",
+   "axis": "endurance charges",
+   "evidence": "min charges 15 mods+3 passives; dmg per charge 35 mods+3 passives",
+   "links": "35<->14"
+  },
+  {
+   "index": 36,
+   "verdict": "CHAIN",
+   "axis": "atlas drop",
+   "evidence": "map drop chance: 9 mods+34 passives",
+   "links": "atlas family"
+  },
+  {
+   "index": 37,
+   "verdict": "CHAIN",
+   "axis": "totem attack speed",
+   "evidence": "8 passive carriers",
+   "links": "12<->42"
+  },
+  {
+   "index": 38,
+   "verdict": "CHAIN",
+   "axis": "dexterity attribute",
+   "evidence": "base_dexterity: 82 passive carriers",
+   "links": "38<->67"
+  },
+  {
+   "index": 39,
+   "verdict": "ISOLATED",
+   "axis": "brequel fruit uniques",
+   "evidence": "3 passive carriers (event content)",
+   "links": "-"
+  },
+  {
+   "index": 40,
+   "verdict": "ISOLATED",
+   "axis": "zana influence lucky",
+   "evidence": "1 mod+1 passive",
+   "links": "-"
+  },
+  {
+   "index": 41,
+   "verdict": "ISOLATED",
+   "axis": "low-life dmg / AoE on kill",
+   "evidence": "1 passive carrier each",
+   "links": "-"
+  },
+  {
+   "index": 42,
+   "verdict": "CHAIN",
+   "axis": "totem cast speed/damage",
+   "evidence": "summon_totem_cast_speed: 55 mods+11 passives+15 gems",
+   "links": "12<->37<->42"
+  },
+  {
+   "index": 43,
+   "verdict": "CHAIN",
+   "axis": "impale (skill side)",
+   "evidence": "attacks_impale chance: 37 mods+11 passives+10 gems",
+   "links": "43<->6"
+  },
+  {
+   "index": 44,
+   "verdict": "ISOLATED",
+   "axis": "corpse consume (devour)",
+   "evidence": "soul/life/mana restore stats 1 gem each",
+   "links": "-"
+  },
+  {
+   "index": 45,
+   "verdict": "ISOLATED",
+   "axis": "curse-on-curse",
+   "evidence": "cast_linked_curses_on_curse 1 gem; curse family adjacent",
+   "links": "16<->71"
+  },
+  {
+   "index": 46,
+   "verdict": "CHAIN",
+   "axis": "minion (relic)",
+   "evidence": "minion-from-alternate-gem 9 gems; infinite duration; minion tag",
+   "links": "46<->65"
+  },
+  {
+   "index": 47,
+   "verdict": "CHAIN",
+   "axis": "minion (triggered relic)",
+   "evidence": "minion dmg final 29 gems; summon-on-hit",
+   "links": "47<->65"
+  },
+  {
+   "index": 48,
+   "verdict": "CHAIN",
+   "axis": "chaos DoT",
+   "evidence": "chaos dmg/min 27 gems; spell mods apply to DoT",
+   "links": "48<->65-adjacent"
+  },
+  {
+   "index": 49,
+   "verdict": "CHAIN",
+   "axis": "mark/phantasms",
+   "evidence": "phantasms-on-hit; base_deal_no_damage 109 gems",
+   "links": "49<->65-adjacent"
+  },
+  {
+   "index": 50,
+   "verdict": "CHAIN",
+   "axis": "minion (channeled skeletons)",
+   "evidence": "skeleton stats; minion tag",
+   "links": "50<->65"
+  },
+  {
+   "index": 51,
+   "verdict": "ISOLATED",
+   "axis": "fruit rewards",
+   "evidence": "1 passive carrier",
+   "links": "-"
+  },
+  {
+   "index": 52,
+   "verdict": "ISOLATED",
+   "axis": "witch-start jewel duration",
+   "evidence": "1 mod carrier",
+   "links": "-"
+  },
+  {
+   "index": 53,
+   "verdict": "NONE",
+   "axis": "monster-only",
+   "evidence": "7 carriers all Monster*/TestingDummy mods \u2014 no player-facing source",
+   "links": "-"
+  },
+  {
+   "index": 54,
+   "verdict": "ISOLATED",
+   "axis": "crit @200 int",
+   "evidence": "1 mod carrier (unique-tied)",
+   "links": "-"
+  },
+  {
+   "index": 55,
+   "verdict": "ISOLATED",
+   "axis": "watchstone content",
+   "evidence": "1 mod carrier",
+   "links": "-"
+  },
+  {
+   "index": 56,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero carriers",
+   "links": "-"
+  },
+  {
+   "index": 57,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero carriers",
+   "links": "-"
+  },
+  {
+   "index": 58,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero carriers",
+   "links": "-"
+  },
+  {
+   "index": 59,
+   "verdict": "CHAIN",
+   "axis": "map quantity/rarity family",
+   "evidence": "grants IIQ/IIR/packsize/crit stats; map_item_drop_quantity 1938 mod carriers",
+   "links": "map-content"
+  },
+  {
+   "index": 60,
+   "verdict": "ISOLATED",
+   "axis": "iron grip (weapon tree)",
+   "evidence": "socketed-iron-grip stat 8 mod carriers",
+   "links": "-"
+  },
+  {
+   "index": 61,
+   "verdict": "ISOLATED",
+   "axis": "ES on kill flask",
+   "evidence": "carried by unique:844 Cinderswallow Urn",
+   "links": "-"
+  },
+  {
+   "index": 62,
+   "verdict": "CHAIN",
+   "axis": "cold resistance (generic)",
+   "evidence": "base_cold_resistance: 193 mods+5 passives+4 gems",
+   "links": "generic defense"
+  },
+  {
+   "index": 63,
+   "verdict": "CHAIN",
+   "axis": "curse reservation",
+   "evidence": "temporal_chains_no_reservation: 2 mods+1 passive",
+   "links": "63<->16<->71"
+  },
+  {
+   "index": 64,
+   "verdict": "CHAIN",
+   "axis": "Minion Instability keystone",
+   "evidence": "keystone_minion_instability: 6 mods+1 passive",
+   "links": "64<->65; corpus-0 hint"
+  },
+  {
+   "index": 65,
+   "verdict": "CHAIN",
+   "axis": "minion hub",
+   "evidence": "200 related stats (truncated); reflect-avoidance/attribute/minion-dmg families",
+   "links": "65 hub: 46,47,50,64"
+  },
+  {
+   "index": 66,
+   "verdict": "CHAIN",
+   "axis": "suppression hub",
+   "evidence": "29 stats; base_spell_suppression_chance 81 mods+29 passives",
+   "links": "defense hub"
+  },
+  {
+   "index": 67,
+   "verdict": "CHAIN",
+   "axis": "attribute hub",
+   "evidence": "107 stats; per-attribute conversions",
+   "links": "67<->38"
+  },
+  {
+   "index": 68,
+   "verdict": "CHAIN",
+   "axis": "frenzy hub",
+   "evidence": "104 stats; charge generation/consumption families",
+   "links": "68<->21<->32"
+  },
+  {
+   "index": 69,
+   "verdict": "CHAIN",
+   "axis": "chill hub",
+   "evidence": "103 stats; all_damage_can_chill 9 mods+1 passive",
+   "links": "ailment hub"
+  },
+  {
+   "index": 70,
+   "verdict": "CHAIN",
+   "axis": "lightning tag (coarse)",
+   "evidence": "150 gems+50 mods (truncated at 200)",
+   "links": "coarse"
+  },
+  {
+   "index": 71,
+   "verdict": "CHAIN",
+   "axis": "curse tag (coarse)",
+   "evidence": "21 gems+179 mods",
+   "links": "71<->16<->63"
+  },
+  {
+   "index": 72,
+   "verdict": "ISOLATED",
+   "axis": "eyrie quiver family",
+   "evidence": "18 mod carriers",
+   "links": "-"
+  },
+  {
+   "index": 73,
+   "verdict": "NONE",
+   "axis": "blight death physical",
+   "evidence": "1 mod carrier",
+   "links": "-"
+  },
+  {
+   "index": 74,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero edges",
+   "links": "-"
+  },
+  {
+   "index": 75,
+   "verdict": "ISOLATED",
+   "axis": "tincture class",
+   "evidence": "5 uniques in class; no stat edges",
+   "links": "-"
+  },
+  {
+   "index": 76,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero edges",
+   "links": "-"
+  },
+  {
+   "index": 77,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero edges",
+   "links": "-"
+  },
+  {
+   "index": 78,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero edges (class-level membership not modeled)",
+   "links": "-"
+  },
+  {
+   "index": 79,
+   "verdict": "ISOLATED",
+   "axis": "map class",
+   "evidence": "33 uniques in class",
+   "links": "-"
+  },
+  {
+   "index": 80,
+   "verdict": "NONE",
+   "axis": "(KB fact)",
+   "evidence": "zero edges",
+   "links": "-"
+  }
+ ]
+}

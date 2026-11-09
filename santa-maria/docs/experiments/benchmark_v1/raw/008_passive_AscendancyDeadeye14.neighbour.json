@@ -1,0 +1,18 @@
+{
+ "start": "passive:AscendancyDeadeye14",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyDeadeye14",
+     "to": "stat:tailwind_effect_on_self_+%_per_gale_force",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

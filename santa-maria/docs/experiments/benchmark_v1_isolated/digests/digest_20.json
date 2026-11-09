@@ -1,0 +1,115 @@
+{
+ "index": 20,
+ "node_id": "passive:AscendancySlayer8",
+ "type": "Passive",
+ "name": "Overwhelm",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancySlayer8"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancySlayer8"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancySlayer8"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:override_weapon_base_critical_strike_chance"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:slayer_critical_strike_multiplier_+_per_nearby_enemy_up_to_100"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancySlayer8|stat:override_weapon_base_critical_strike_chance|out",
+    "passive_grants_stat|passive:AscendancySlayer8|stat:slayer_critical_strike_multiplier_+_per_nearby_enemy_up_to_100|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 2,
+     "members": [
+      "passive:AscendancyCustomTrickster2",
+      "passive:AscendancySlayer8"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:override_weapon_base_critical_strike_chance",
+   "chain": "passive_grants_stat>stat:override_weapon_base_critical_strike_chance",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:slayer_critical_strike_multiplier_+_per_nearby_enemy_up_to_100",
+   "chain": "passive_grants_stat>stat:slayer_critical_strike_multiplier_+_per_nearby_enemy_up_to_100",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:override_weapon_base_critical_strike_chance": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomTrickster2",
+       "name": "Sightless",
+       "asc": "Trickster"
+      },
+      {
+       "id": "passive:AscendancySlayer8",
+       "name": "Overwhelm",
+       "asc": "Slayer"
+      }
+     ]
+    }
+   }
+  },
+  "stat:slayer_critical_strike_multiplier_+_per_nearby_enemy_up_to_100": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancySlayer8",
+       "name": "Overwhelm",
+       "asc": "Slayer"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

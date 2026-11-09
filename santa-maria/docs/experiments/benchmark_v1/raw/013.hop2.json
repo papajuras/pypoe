@@ -1,0 +1,58 @@
+{
+ "index": 13,
+ "node_id": "passive:AscendancyInquisitor14",
+ "targets": {
+  "stat:gain_fanaticism_for_4_seconds_on_reaching_maximum_fanatic_charges": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyInquisitor14"
+   ],
+   "total": 1
+  },
+  "stat:gain_x_fanatic_charges_every_second_if_have_attacked_in_past_second": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyInquisitor14"
+   ],
+   "total": 1
+  },
+  "stat:lose_all_fanatic_charges_on_reaching_maximum_fanatic_charges": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyInquisitor14"
+   ],
+   "total": 1
+  },
+  "stat:maximum_fanaticism_charges": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyInquisitor14"
+   ],
+   "total": 1
+  }
+ }
+}

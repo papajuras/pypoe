@@ -1,0 +1,30 @@
+{
+ "start": "passive:AscendancyAssassin10",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyAssassin10",
+     "to": "stat:poison_duration_+%_per_poison_applied_recently",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyAssassin10",
+     "to": "stat:poison_from_critical_strikes_damage_+%_final",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyAssassin10",
+     "to": "stat:recover_permyriad_maximum_life_per_poison_on_enemy_on_kill",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

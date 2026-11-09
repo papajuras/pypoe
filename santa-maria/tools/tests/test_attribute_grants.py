@@ -96,8 +96,8 @@ def test_4m_vocabulary_correction():
     f = sc['relations'][0]['fields']
     assert f['from'] == 'Melee Physical Damage', f
     assert f['to'] == 'all Spell Damage'
-    assert len(MARKERS['markers']) == 202 and MARKERS['meta']['relations_total'] == 220
-    print('ok: 4M strong_casting from-phrase corrected; marker contract intact (202/220)')
+    assert len(MARKERS['markers']) == 201 and MARKERS['meta']['relations_total'] == 219
+    print('ok: 4M strong_casting from-phrase corrected; marker contract intact (201/219)')
 
 
 def test_meta_contract_version():

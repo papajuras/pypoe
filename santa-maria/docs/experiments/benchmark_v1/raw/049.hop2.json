@@ -1,0 +1,73 @@
+{
+ "index": 49,
+ "node_id": "gem:PenanceMark",
+ "targets": {
+  "stat:base_deal_no_damage": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 109,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AlchemistsMark",
+    "gem:Anger",
+    "gem:ArcaneCloak",
+    "gem:AssassinsMark",
+    "gem:AssassinsMarkRoyale",
+    "gem:AssassinsMarkTriggered",
+    "gem:Berserk",
+    "gem:BloodAndSand",
+    "gem:BloodAndSandRoyale",
+    "gem:BloodOffering",
+    "gem:BloodSandTriggered",
+    "gem:BoneArmour",
+    "gem:BoneOffering",
+    "gem:BoneOfferingTriggeredUnique",
+    "gem:BrandSupport"
+   ],
+   "total": 109
+  },
+  "stat:base_skill_effect_duration": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 443,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AfflictionSplitColdIceSpikes",
+    "gem:AfflictionSplitColdSpearGroundToss",
+    "gem:AfflictionSplitColdSpearToss",
+    "gem:AfflictionSplitFireFlameblast",
+    "gem:AfflictionSplitFireSlash",
+    "gem:AfflictionSplitFireTornado",
+    "gem:AfflictionSplitLightningElectricFlail",
+    "gem:AfflictionSplitLightningGigaBall",
+    "gem:AfflictionSplitLightningTeleportStorm",
+    "gem:AfflictionSplitPhysicalAbyssSlam",
+    "gem:AfflictionSplitPhysicalLeapSlam",
+    "gem:AfflictionSplitPhysicalPizzaSlam",
+    "gem:AfflictionUniqueSplitColdIceSpikes"
+   ],
+   "total": 443
+  },
+  "stat:penance_mark_summon_phantasms_when_hit": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 1,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:PenanceMark"
+   ],
+   "total": 1
+  }
+ }
+}

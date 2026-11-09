@@ -358,21 +358,8 @@ def validate_support_chain(skill_gem, support_gems, graph=None):
             'final_types': list(current)}
 
 
-def weapon_check(skill_gem, weapon=None, graph=None):
-    """Evaluate active_skill.weapon_restrictions against a weapon class/item.
-
-    weapon: item_class name ('Bow'), unique id/name, or None.
-    Missing restrictions -> valid ('no weapon restrictions'), never invalid.
-    """
-    g = graph or phase6_api.get_graph()
-    nodes = g._load_nodes()
-    kid = _resolve(skill_gem, nodes, 'gem', ('display_name', 'record_key'))
-    restrictions = (nodes[kid][1].get('active_skill') or {}).get('weapon_restrictions')
-    if not restrictions:
-        return {'skill': kid, 'result': VALID, 'reason': 'no weapon restrictions'}
-    if weapon is None:
-        return {'skill': kid, 'result': UNKNOWN,
-                'reason': f'restrictions {restrictions} but no weapon given'}
+def _one_weapon_check(kid, restrictions, weapon, nodes, g):
+    """weapon_check against one weapon; returns the single-weapon verdict."""
     cls, uid = weapon, None
     if not weapon.startswith('item_class:'):
         if weapon in nodes and nodes[weapon][0] == 'UniqueItem':
@@ -398,6 +385,128 @@ def weapon_check(skill_gem, weapon=None, graph=None):
             'result': VALID if ok else INVALID,
             'reason': (f'{cls} is an allowed weapon class' if ok
                        else f'{cls} not in weapon_restrictions')}
+
+
+def weapon_check(skill_gem, weapon=None, graph=None):
+    """Evaluate active_skill.weapon_restrictions against a weapon context.
+
+    weapon: item_class name ('Bow'), unique id/name, or None. A list of
+    those models a multi-weapon context (e.g. dual-wield) and matches when
+    ANY equipped weapon class satisfies the restrictions (any-match).
+    Missing restrictions -> valid ('no weapon restrictions'), never invalid.
+    """
+    g = graph or phase6_api.get_graph()
+    nodes = g._load_nodes()
+    kid = _resolve(skill_gem, nodes, 'gem', ('display_name', 'record_key'))
+    restrictions = (nodes[kid][1].get('active_skill') or {}).get('weapon_restrictions')
+    if not restrictions:
+        return {'skill': kid, 'result': VALID, 'reason': 'no weapon restrictions'}
+    if weapon is None:
+        return {'skill': kid, 'result': UNKNOWN,
+                'reason': f'restrictions {restrictions} but no weapon given'}
+    if isinstance(weapon, list):
+        if not weapon:
+            return {'skill': kid, 'result': UNKNOWN,
+                    'reason': f'restrictions {restrictions} but no weapon given'}
+        checks = [dict(_one_weapon_check(kid, restrictions, w, nodes, g), weapon=w)
+                  for w in weapon]
+        if any(c['result'] == VALID for c in checks):
+            good = next(c for c in checks if c['result'] == VALID)
+            return {'skill': kid, 'weapon_class': good['weapon_class'],
+                    'restrictions': restrictions, 'result': VALID,
+                    'reason': f"{good['reason']} ({good['weapon']})"}
+        if all(c['result'] == INVALID for c in checks):
+            names = ', '.join(str(c['weapon_class']) for c in checks)
+            return {'skill': kid, 'weapon_class': names,
+                    'restrictions': restrictions, 'result': INVALID,
+                    'reason': f'none of ({names}) in weapon_restrictions'}
+        why = '; '.join(c['reason'] for c in checks if c['result'] == UNKNOWN)
+        return {'skill': kid, 'restrictions': restrictions, 'result': UNKNOWN,
+                'reason': why or 'weapon context unresolved'}
+    return _one_weapon_check(kid, restrictions, weapon, nodes, g)
+
+
+def _mod_influence_tag_suffixes(mod_node, nodes, g):
+    """[(suffix, tags-on-this-class)] per influence of the mod; uses the edge
+    provenance tags (the mod's real spawn_weights tags), filtered to the
+    target class's influence_tags — the class-level binding."""
+    out, _ = g._load_edges()
+    suffixes = []
+    for (tgt, prov) in out.get('modifier_has_influence', {}).get(mod_node, []):
+        sfx = (nodes.get(tgt, (None, {}))[1] or {}).get('tag_suffix')
+        if sfx:
+            suffixes.append((sfx, prov))
+    return suffixes
+
+
+def influence_check(mods, item_class, graph=None):
+    """Influence compatibility for influenced mods on a rare item class.
+
+    mods: list of modifier ids ('mod:...') or names. item_class: item_class
+    name ('Claw'). Outcomes exactly 'valid' | 'invalid' | 'unknown':
+      valid   — the mod's influence (phase 5I projection) carries a spawn tag
+                present in the item class's influence_tags (exact tag binding,
+                e.g. claw_basilisk ∈ Claw.influence_tags)
+      invalid — the mod has influence edges but none of its spawn tags appear
+                in the class's influence tags
+      unknown — a mod resolves to nothing, has no influence edges, the item
+                class is unknown, or the class has no influence tags
+                (knowledge limitation, never assumed compatible)
+    Data source: modifier_has_influence edges (with their spawn_tags evidence)
+    only — no hardcoded list.
+    """
+    g = graph or phase6_api.get_graph()
+    nodes = g._load_nodes()
+    out, _inn = g._load_edges()
+    cid = 'item_class:' + str(item_class)
+    if cid not in nodes:
+        return {'result': 'unknown',
+                'reason': f'unknown item_class: {item_class!r}'}
+    class_tags = set(nodes[cid][1].get('influence_tags') or [])
+    if not class_tags:
+        return {'result': 'unknown', 'reason':
+                f'no influence_tags on item_class: {item_class!r}'}
+    checks = []
+    for mod in mods:
+        try:
+            mnode = _resolve(mod, nodes, 'mod', ('record_key', 'name'))
+        except ValueError:
+            checks.append({'mod': str(mod), 'result': 'unknown',
+                           'reason': 'modifier not found'})
+            continue
+        sfxs = _mod_influence_tag_suffixes(mnode, nodes, g)
+        if not sfxs:
+            checks.append({'mod': mnode, 'result': 'unknown',
+                           'reason': 'modifier carries no influence'})
+            continue
+        hit_tags, miss_names = [], []
+        for sfx, prov in sfxs:
+            spawn_tags = set()
+            for p in prov or []:
+                spawn_tags |= set(p.get('tags') or [])
+            tags = sorted(t for t in spawn_tags if t in class_tags)
+            if tags:
+                hit_tags.append((sfx, tags))
+            else:
+                n = nodes.get('influence:' + sfx, (None, {}))[1] or {}
+                miss_names.append(n.get('name') or sfx)
+        if hit_tags:
+            checks.append({'mod': mnode, 'result': 'valid',
+                           'bound_tags': sorted(t for _s, ts in hit_tags
+                                                for t in ts)})
+        else:
+            checks.append({'mod': mnode, 'result': 'invalid',
+                           'reason': f'influence {", ".join(miss_names)} '
+                                     f'cannot roll on {item_class}'})
+    bad = [c for c in checks if c['result'] == 'invalid']
+    unk = [c for c in checks if c['result'] == 'unknown']
+    if bad:
+        return {'result': 'invalid',
+                'reason': f"{bad[0]['mod']}: {bad[0]['reason']}"}
+    if unk:
+        return {'result': 'unknown',
+                'reason': unk[0].get('reason') or 'influence data missing'}
+    return {'result': 'valid', 'reason': 'influence compatible with class'}
 
 
 def demo():

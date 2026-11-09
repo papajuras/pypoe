@@ -1,0 +1,42 @@
+{
+ "start": "unique:838",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:838",
+     "to": "item_class:Amulet",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:838",
+     "to": "mod:AddedManaRegenerationUnique__2",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:838",
+     "to": "mod:AllAttributesImplicitAmulet1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:838",
+     "to": "mod:AllDamageUnique__4",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:838",
+     "to": "mod:GainShapersPresenceUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

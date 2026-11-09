@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "stat:critical_strike_chance_+%_with_at_least_200_int",
+   "type": "Stat",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "stat:critical_strike_chance_+%_with_at_least_200_int",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

@@ -102,7 +102,6 @@ VALID_WRT = ('valid with respect to the constraints implemented and checked by '
 LIMITATIONS = [
     'unique duplication not modeled: two copies of the same unique are not '
     'detected unless slot capacity collides',
-    'influenced-item compatibility not modeled',
     'items with no slot model (jewels, flasks, ...) surface as unsupported -> '
     'unknown, never assumed valid',
     'socket/link capacity, reservation feasibility, passive-tree legality, '
@@ -120,6 +119,9 @@ LIMITATIONS = [
     'disabled/unavailable uniques; absence of a PoB block is a coverage gap '
     '(~83/1382 unique names) and is NOT availability-checked — PoB absence '
     'is not evidence of unavailability',
+    'multi-weapon contexts (dual-wield): gem weapon restrictions evaluated '
+    'as any-match against all equipped weapons; main-hand/off-hand not '
+    'modeled',
 ]
 
 ASCENDANCY_NOTABLE_CAP = 4
@@ -128,29 +130,42 @@ ASCENDANCY_NOTABLE_CAP = 4
 @dataclass
 class BuildState:
     """Smallest explicit build state: equipped items + optional gem groups
-    and passives.
+    and passives + influenced rare items.
 
     items: unique ids ('unique:597') or unique names. gem_groups:
     {'skill': id-or-name, 'supports': [id-or-name, ...]}. passives: passive
     ids ('passive:AscendancyNecromancer9') or passive names.
-    Immutable-by-convention: add()/add_gem_group()/add_passive() return new
-    instances.
+    influenced_items: rare-item declarations {'item_class': 'Claw',
+    'mods': [modifier ids/names]} — checked via the phase 5I influence
+    projection (influence_check).
+    Immutable-by-convention: add()/add_gem_group()/add_passive()/
+    add_influenced() return new instances.
     """
     items: list = field(default_factory=list)
     gem_groups: list = field(default_factory=list)
     passives: list = field(default_factory=list)
+    influenced_items: list = field(default_factory=list)
 
     def add(self, candidate):
         return BuildState(list(self.items) + [candidate],
-                          list(self.gem_groups), list(self.passives))
+                          list(self.gem_groups), list(self.passives),
+                          list(self.influenced_items))
 
     def add_gem_group(self, skill, supports=()):
         gg = self.gem_groups + [{'skill': skill, 'supports': list(supports)}]
-        return BuildState(list(self.items), gg, list(self.passives))
+        return BuildState(list(self.items), gg, list(self.passives),
+                          list(self.influenced_items))
 
     def add_passive(self, candidate):
         return BuildState(list(self.items), list(self.gem_groups),
-                          list(self.passives) + [candidate])
+                          list(self.passives) + [candidate],
+                          list(self.influenced_items))
+
+    def add_influenced(self, item_class, mods):
+        entry = {'item_class': item_class, 'mods': list(mods)}
+        return BuildState(list(self.items), list(self.gem_groups),
+                          list(self.passives),
+                          list(self.influenced_items) + [entry])
 
 
 def _as_state(state):
@@ -159,21 +174,26 @@ def _as_state(state):
     if isinstance(state, dict):
         return BuildState(list(state.get('items', [])),
                           [dict(g) for g in state.get('gem_groups', [])],
-                          list(state.get('passives', [])))
+                          list(state.get('passives', [])),
+                          [dict(e) for e in state.get('influenced_items', [])])
     return BuildState(list(state))          # bare list of items
 
 
-def _unique_weapon(slot_result, names):
-    """The state's weapon for gem weapon_check, only when uniquely determined."""
-    weapons = [a for a in slot_result['assignments']
+def _weapon_context(slot_result):
+    """The state's weapon(s) for gem weapon_check.
+
+    One weapon -> item id (context uniquely determined); two or more
+    (dual-wield) -> list of item ids, resolved as any-match by
+    feas.weapon_check; none -> (None, reason).
+    """
+    weapons = [a['item'] for a in slot_result['assignments']
                if 'weapon' in (a['slots'] or [])]
     if len(weapons) == 1:
-        return weapons[0]['item'], None
-    ws = ', '.join(names.get(a['item'], a['item']) for a in weapons)
-    reason = (f'weapon context not uniquely determined: {len(weapons)} '
-              f'weapon-class items equipped' + (f' ({ws})' if ws else '')
-              + '; weapon_check skipped')
-    return None, reason
+        return weapons[0], None
+    if weapons:
+        return weapons, None
+    return None, ('weapon context not uniquely determined: 0 weapon-class '
+                  'items equipped; weapon_check skipped')
 
 
 def _resolve_passive(candidate, nodes):
@@ -229,14 +249,22 @@ def _passive_checks(passives, g, final):
     with items); unclassifiable payloads contribute 'unknown'.
     """
     nodes = g._load_nodes()
-    resolved, unknown_reasons = [], []
+    resolved, unknown_reasons, alt_reasons = [], [], []
+    alt_allowed = not phase6_api.EXCLUDE_ALTERNATE_ASCENDANCIES
     for entry in passives:
         pid = _resolve_passive(entry, nodes)
         typ, payload = nodes[pid]
         asc, notable, status = _classify_passive(payload)
         name = payload.get('name') or pid
         resolved.append({'passive': pid, 'name': name, 'ascendancy': asc,
-                         'class_status': status, 'is_notable': notable})
+                         'class_status': status, 'is_notable': notable,
+                         'alternate_ascendancy':
+                             phase6_api.is_alternate_ascendancy(pid)})
+        if phase6_api.is_alternate_ascendancy(pid) and not alt_allowed:
+            alt_reasons.append(
+                f"{name} ({pid}): alternate (Phrecia) ascendancy content is "
+                f"disabled by default in discovery; opt in via "
+                f"phase6_api.EXCLUDE_ALTERNATE_ASCENDANCIES = False")
         if status == 'unknown':
             unknown_reasons.append(
                 f"{name}: ascendancy/flags unclassifiable in KB (never guessed)")
@@ -258,8 +286,11 @@ def _passive_checks(passives, g, final):
     if final and not classes:
         single.update(result=INVALID,
                       reason='no Ascendancy in final build state')
+    alt_excl = {'result': VALID if not alt_reasons else INVALID,
+                'reason': '; '.join(alt_reasons) if alt_reasons else None}
 
-    results = [class_mix, cap, single] if final else [class_mix, cap]
+    results = [class_mix, cap, single, alt_excl] if final \
+        else [class_mix, cap, alt_excl]
     status = INVALID if any(c['result'] == INVALID for c in results) \
         else UNKNOWN if unknown_reasons else VALID
     reasons = ([c['reason'] for c in results if c['result'] == INVALID]
@@ -269,7 +300,8 @@ def _passive_checks(passives, g, final):
             'resolved': resolved,
             'class_mix': class_mix,
             'notable_cap': cap,
-            'single_ascendancy': single}
+            'single_ascendancy': single,
+            'alternate_ascendancy_exclusion': alt_excl}
 
 
 def _check_gem_group(gg, weapon, weapon_reason, g):
@@ -327,13 +359,23 @@ def validate_build(state, graph=None, final=True):
 
     gem_checks = []
     if state.gem_groups:
-        weapon, weapon_reason = _unique_weapon(sr, names)
+        weapon, weapon_reason = _weapon_context(sr)
         gem_checks = [_check_gem_group(gg, weapon, weapon_reason, g)
                       for gg in state.gem_groups]
     gem_invalid = [c for c in gem_checks if c['status'] == INVALID]
     gem_unknown = [c for c in gem_checks if c['status'] == UNKNOWN]
 
-    if conflicts or gem_invalid or passive_invalid or avail_invalid:
+    influence_checks = []
+    for e in (state.influenced_items or []):
+        chk = dict(feas.influence_check(e['mods'], e['item_class'], g))
+        chk.update({'item_class': e['item_class'],
+                    'mods': [str(m) for m in e['mods']]})
+        influence_checks.append(chk)
+    infl_invalid = [c for c in influence_checks if c['result'] == INVALID]
+    infl_unknown = [c for c in influence_checks if c['result'] == UNKNOWN]
+
+    if conflicts or gem_invalid or passive_invalid or avail_invalid \
+            or infl_invalid:
         status = INVALID
         reasons = conflict_reasons + [f"gem group {c['skill']}: {_gem_reason(c)}"
                                       for c in gem_invalid]
@@ -341,7 +383,10 @@ def validate_build(state, graph=None, final=True):
             reasons.append(f"availability: {ac_reason}")
         if passive_invalid:
             reasons.append(f"passives: {pc_reason}")
-    elif sr['unsupported'] or gem_unknown or passive_unknown or avail_unknown:
+        if infl_invalid:
+            reasons += [f"influence: {c['reason']}" for c in infl_invalid]
+    elif sr['unsupported'] or gem_unknown or passive_unknown or avail_unknown \
+            or infl_unknown:
         status = UNKNOWN
         reasons = ([f"{u['name']} ({u['item_class']}): {u['reason']} — not checked"
                     for u in sr['unsupported']]
@@ -351,6 +396,8 @@ def validate_build(state, graph=None, final=True):
             reasons.append(f"availability: {ac_reason}")
         if passive_unknown:
             reasons.append(f"passives: {pc_reason}")
+        if infl_unknown:
+            reasons += [f"influence: {c['reason']}" for c in infl_unknown]
     else:
         status, reasons = VALID, []
 
@@ -361,10 +408,13 @@ def validate_build(state, graph=None, final=True):
             'gem_checks': gem_checks,
             'passive_checks': pc,
             'availability_checks': ac,
+            'influence_checks': influence_checks,
             'checked': (['slot_occupancy', 'weapon_configuration']
                         + (['gem_support'] if state.gem_groups else [])
                         + (['ascendancy_composition'] if pc else [])
-                        + (['item_availability'] if ac else [])),
+                        + (['item_availability'] if ac else [])
+                        + (['influence_compatibility']
+                           if influence_checks else [])),
             'valid_wrt': VALID_WRT,
             'limitations': LIMITATIONS}
 
@@ -397,7 +447,14 @@ def validate_addition(state, candidate, graph=None):
         pid = cand_pid
         cand = next((r for r in pc['resolved'] if r['passive'] == pid), None)
         if cand and pc['status'] == INVALID:
-            if len(pc['class_mix']['classes']) > 1 and cand['class_status'] == 'known':
+            if cand.get('alternate_ascendancy') and \
+                    pc['alternate_ascendancy_exclusion']['result'] == INVALID:
+                out['reason'] = (f"candidate {cand['name']} is alternate "
+                                 f"(Phrecia) ascendancy content, disabled by "
+                                 f"default in discovery; opt in via "
+                                 f"phase6_api.EXCLUDE_ALTERNATE_ASCENDANCIES "
+                                 f"= False")
+            elif len(pc['class_mix']['classes']) > 1 and cand['class_status'] == 'known':
                 others = [c for c in pc['class_mix']['classes']
                           if c != cand['ascendancy']]
                 out['reason'] = (f"candidate {cand['name']} would introduce a "

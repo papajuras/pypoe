@@ -143,19 +143,6 @@
    }
   ]
  },
- "additive_vaal_skill_damage_modifiers_apply_to_all_skills": {
-  "prose_only": false,
-  "relations": [
-   {
-    "fields": {
-     "mode": "also",
-     "source": "Damage with Vaal Skills",
-     "target": "Non-Vaal Skills"
-    },
-    "operator": "REDIRECT"
-   }
-  ]
- },
  "all_added_damage_treated_as_added_cold_damage_if_dex_higher_than_int_and_strength": {
   "prose_only": false,
   "relations": [

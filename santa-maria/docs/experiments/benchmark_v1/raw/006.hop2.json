@@ -1,0 +1,35 @@
+{
+ "index": 6,
+ "node_id": "passive:AscendancyChampion14",
+ "targets": {
+  "stat:impaled_debuff_number_of_reflected_hits": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmImpaleLastsForExtraHits",
+    "mod:ImpalesInflictedLastAdditionalHitsUnique_1UNUSED",
+    "passive:AscendancyChampion14",
+    "passive:impale_notable_2907"
+   ],
+   "total": 4
+  },
+  "stat:you_and_nearby_allies_armour_+_if_have_impaled_recently": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyChampion14"
+   ],
+   "total": 1
+  }
+ }
+}

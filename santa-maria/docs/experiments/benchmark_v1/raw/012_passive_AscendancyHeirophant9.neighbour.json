@@ -1,0 +1,30 @@
+{
+ "start": "passive:AscendancyHeirophant9",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyHeirophant9",
+     "to": "stat:number_of_additional_totems_allowed",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyHeirophant9",
+     "to": "stat:summon_totem_cast_speed_+%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyHeirophant9",
+     "to": "stat:totem_duration_+%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

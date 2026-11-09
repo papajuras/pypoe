@@ -1,0 +1,30 @@
+{
+ "start": "unique:1443",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:1443",
+     "to": "item_class:Ring",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1443",
+     "to": "mod:HeraldBonusAgonyChaosResist_",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1443",
+     "to": "mod:HeraldReservationEfficiencyUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "index": 20,
+ "node_id": "passive:AscendancySlayer8",
+ "targets": {
+  "stat:override_weapon_base_critical_strike_chance": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyCustomTrickster2",
+    "passive:AscendancySlayer8"
+   ],
+   "total": 2
+  },
+  "stat:slayer_critical_strike_multiplier_+_per_nearby_enemy_up_to_100": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancySlayer8"
+   ],
+   "total": 1
+  }
+ }
+}

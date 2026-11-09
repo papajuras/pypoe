@@ -1,0 +1,344 @@
+{
+ "index": 27,
+ "node_id": "unique:766",
+ "type": "UniqueItem",
+ "name": "Farrul's Chase",
+ "block": "random_draw",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:766"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:766"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:766"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:base_avoid_bleed_%"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_display_trigger_level_x_intimidating_cry_when_you_lose_cats_stealth"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:766|item_class:Boots|out",
+    "unique_modifier_association|unique:766|mod:ChanceToAvoidBleedingUnique__1|out",
+    "unique_modifier_association|unique:766|mod:DivergentCatsStealthTriggeredIntimidatingCry|out",
+    "unique_modifier_association|unique:766|mod:LocalIncreasedEvasionRatingPercentUnique__13|out",
+    "unique_modifier_association|unique:766|mod:MovementSpeedWithCatsStealthUnique__1|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:MovementSpeedWithCatsStealthUnique__1|modgroup:CatModifiers|out",
+    "modifier_in_group|mod:DivergentCatsStealthTriggeredIntimidatingCry|modgroup:CatsStealthTriggeredIntimidatingCry|out",
+    "modifier_in_group|mod:ChanceToAvoidBleedingUnique__1|modgroup:ChanceToAvoidBleeding|out",
+    "modifier_in_group|mod:LocalIncreasedEvasionRatingPercentUnique__13|modgroup:DefencesPercent|out",
+    "modifier_grants_stat|mod:ChanceToAvoidBleedingUnique__1|stat:base_avoid_bleed_%|out",
+    "modifier_grants_stat|mod:DivergentCatsStealthTriggeredIntimidatingCry|stat:local_display_trigger_level_x_intimidating_cry_when_you_lose_cats_stealth|out",
+    "modifier_grants_stat|mod:LocalIncreasedEvasionRatingPercentUnique__13|stat:local_evasion_rating_+%|out",
+    "modifier_grants_stat|mod:MovementSpeedWithCatsStealthUnique__1|stat:movement_speed_+%_while_you_have_cats_stealth|out",
+    "modifier_has_tag|mod:ChanceToAvoidBleedingUnique__1|tag:ailment|out",
+    "modifier_has_tag|mod:ChanceToAvoidBleedingUnique__1|tag:attack|out",
+    "modifier_has_tag|mod:ChanceToAvoidBleedingUnique__1|tag:bleed|out",
+    "modifier_has_tag|mod:LocalIncreasedEvasionRatingPercentUnique__13|tag:defences|out",
+    "modifier_has_tag|mod:DivergentCatsStealthTriggeredIntimidatingCry|tag:divergentunique|out",
+    "modifier_has_tag|mod:LocalIncreasedEvasionRatingPercentUnique__13|tag:evasion|out",
+    "modifier_has_tag|mod:ChanceToAvoidBleedingUnique__1|tag:physical|out",
+    "modifier_has_tag|mod:DivergentCatsStealthTriggeredIntimidatingCry|tag:skill|out",
+    "modifier_has_tag|mod:MovementSpeedWithCatsStealthUnique__1|tag:speed|out",
+    "unique_in_class|item_class:Boots|<43 in: unique:1014, unique:1028, unique:1067\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_has_tag|tag:attack|<40 in: gem:AncestorTotemSlash, gem:AncestralProtector, gem:AncestralProtectorRoyale\u2026>",
+    "gem_has_tag|tag:physical|<20 in: gem:Absolution, gem:AbsolutionAltX, gem:AnimateWeapon\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 138,
+     "members": [
+      "mod:AbyssAvoidBleedingJewel1",
+      "mod:AbyssAvoidBleedingJewel2",
+      "mod:AvoidBleedAndPoisonInfluence1",
+      "mod:AvoidBleedAndPoisonInfluence2____",
+      "mod:AvoidBleedAndPoisonInfluence3",
+      "mod:AvoidBleedAndPoisonInfluenceMaven",
+      "mod:BetrayalUpgradeMonsterAvoidAilments",
+      "mod:CatsStealthTriggeredIntimidatingCry",
+      "mod:ChanceToAvoidBleedingEldritchImplicit1",
+      "mod:ChanceToAvoidBleedingEldritchImplicit2",
+      "mod:ChanceToAvoidBleedingEldritchImplicit3",
+      "mod:ChanceToAvoidBleedingEldritchImplicit4",
+      "mod:ChanceToAvoidBleedingEldritchImplicit5",
+      "mod:ChanceToAvoidBleedingEldritchImplicit6",
+      "mod:ChanceToAvoidBleedingEldritchImplicitPinnaclePresence1",
+      "mod:ChanceToAvoidBleedingEldritchImplicitPinnaclePresence2",
+      "mod:ChanceToAvoidBleedingEldritchImplicitPinnaclePresence3",
+      "mod:ChanceToAvoidBleedingEldritchImplicitPinnaclePresence4",
+      "mod:ChanceToAvoidBleedingEldritchImplicitPinnaclePresence5",
+      "mod:ChanceToAvoidBleedingEldritchImplicitPinnaclePresence6",
+      "mod:ChanceToAvoidBleedingEldritchImplicitUniquePresence1",
+      "mod:ChanceToAvoidBleedingEldritchImplicitUniquePresence2",
+      "mod:ChanceToAvoidBleedingEldritchImplicitUniquePresence3",
+      "mod:ChanceToAvoidBleedingEldritchImplicitUniquePresence4",
+      "mod:ChanceToAvoidBleedingEldritchImplicitUniquePresence5",
+      "mod:ChanceToAvoidBleedingEldritchImplicitUniquePresence6",
+      "mod:ChanceToAvoidBleedingUnique__1",
+      "mod:ChanceToAvoidBleedingUnique__2_",
+      "mod:DelveArmourAvoidBleeding1",
+      "mod:DelveArmourEvasion1",
+      "mod:DivergentCatsStealthTriggeredIntimidatingCry",
+      "mod:EinharMasterAvoidBleed1",
+      "mod:EinharMasterAvoidBleed2_",
+      "mod:EinharMasterEvasionPercent1",
+      "mod:EinharMasterEvasionPercent2",
+      "mod:EinharMasterEvasionPercent3",
+      "mod:EvasionPercentCrafted",
+      "mod:HellscapeUpsideChanceToAvoidBleeding2_",
+      "mod:HellscapeUpsideChanceToAvoidBleeding3_",
+      "mod:HellscapeUpsideChanceToAvoidBleeding4",
+      "mod:JunMaster2LocalIncreasedEvasionAndLife1",
+      "mod:JunMaster2LocalIncreasedEvasionAndLife2",
+      "mod:JunMaster2LocalIncreasedEvasionAndLife3",
+      "mod:JunMaster2LocalIncreasedEvasionAndLifeHigh1",
+      "mod:JunMaster2LocalIncreasedEvasionAndLifeHigh2",
+      "mod:JunMaster2LocalIncreasedEvasionAndLifeHigh3",
+      "mod:JunMaster2LocalIncreasedEvasionAndLifeMed1",
+      "mod:JunMaster2LocalIncreasedEvasionAndLifeMed2",
+      "mod:JunMaster2LocalIncreasedEvasionAndLifeMed3_",
+      "mod:JunMasterLocalIncreasedEvasionAndLife1",
+      "mod:JunMasterLocalIncreasedEvasionAndLife2",
+      "mod:JunMasterLocalIncreasedEvasionAndLife3",
+      "mod:JunMasterLocalIncreasedEvasionAndLife4",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndLifeHigh_",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndLifeMed___",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndLife__",
+      "mod:LocalIncreasedEvasionPercentAndStunRecoveryUniqueDexHelmet1",
+      "mod:LocalIncreasedEvasionRatingPercent1",
+      "mod:LocalIncreasedEvasionRatingPercent2",
+      "mod:LocalIncreasedEvasionRatingPercent3",
+      "mod:LocalIncreasedEvasionRatingPercent4",
+      "mod:LocalIncreasedEvasionRatingPercent5",
+      "mod:LocalIncreasedEvasionRatingPercent6",
+      "mod:LocalIncreasedEvasionRatingPercent7",
+      "mod:LocalIncreasedEvasionRatingPercent8",
+      "mod:LocalIncreasedEvasionRatingPercentAndStunRecovery1",
+      "mod:LocalIncreasedEvasionRatingPercentAndStunRecovery2",
+      "mod:LocalIncreasedEvasionRatingPercentAndStunRecovery3",
+      "mod:LocalIncreasedEvasionRatingPercentAndStunRecovery4",
+      "mod:LocalIncreasedEvasionRatingPercentAndStunRecovery5",
+      "mod:LocalIncreasedEvasionRatingPercentAndStunRecovery6",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyDex1",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyDex2",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyDex3",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyDex4",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyDex5",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyDex5Royale",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyDex6",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyStrDex5",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBodyStrDexInt1c",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBootsDex1",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBootsDex3",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBootsDex6",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBootsDex6Royale",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBootsDex7",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBootsDexInt1",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueBootsStrDex5",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueDexHelmet2",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueGlovesDex2",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueGlovesDexInt5",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueGlovesStrDex1",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueHelmetDex5",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueHelmetDex6",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueShieldDex1",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueShieldDex3",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueShieldDex4",
+      "mod:LocalIncreasedEvasionRatingPercentUniqueShieldDex5",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__1",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__10",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__11",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__12",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__13",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__14",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__15_",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__16",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__17",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__18",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__19",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__2",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__20",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__21",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__3",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__4",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__5",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__6",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__7",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__8",
+      "mod:LocalIncreasedEvasionRatingPercentUnique__9",
+      "mod:LocalIncreasedEvationRatingPercentUniqueBootsDex9",
+      "mod:MovementSpeedWithCatsStealthUnique__1",
+      "mod:MovementVelocityEnhancedLevel50ModDodge",
+      "mod:MovementVelocityEnhancedModDodge_",
+      "mod:SanctumSpecialChanceToAvoidBleeding",
+      "mod:StrMasterEvasionPercentCrafted1",
+      "mod:StrMasterEvasionPercentCrafted2",
+      "mod:SynthesisImplicitAvoidBleed1",
+      "mod:SynthesisImplicitAvoidBleed2_",
+      "mod:SynthesisImplicitAvoidBleed3",
+      "mod:SynthesisImplicitAvoidBleedJewel1",
+      "mod:SynthesisImplicitIncreasedEvasion1",
+      "mod:SynthesisImplicitIncreasedEvasion2",
+      "mod:SynthesisImplicitIncreasedEvasion3",
+      "mod:SynthesisImplicitIncreasedEvasion4",
+      "mod:SynthesisImplicitIncreasedEvasion5",
+      "mod:V2AvoidBleedAbyssalJewelCorrupted_",
+      "mod:V2AvoidBleedJewelCorrupted__",
+      "mod:WeaponTreeAvoidBleedChanceToBePoisoned1",
+      "mod:WeaponTreeAvoidBleedChanceToBePoisoned2"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 3,
+     "members": [
+      "passive:channelling_damage2276",
+      "passive:channelling_damage2278",
+      "passive:channelling_notabel2283"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:base_avoid_bleed_%",
+   "chain": "unique_modifier_association>mod:ChanceToAvoidBleedingUnique__1 -> modifier_grants_stat>stat:base_avoid_bleed_%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:local_display_trigger_level_x_intimidating_cry_when_you_lose_cats_stealth",
+   "chain": "unique_modifier_association>mod:DivergentCatsStealthTriggeredIntimidatingCry -> modifier_grants_stat>stat:local_display_trigger_level_x_intimidating_cry_when_you_lose_cats_stealth",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:local_evasion_rating_+%",
+   "chain": "unique_modifier_association>mod:LocalIncreasedEvasionRatingPercentUnique__13 -> modifier_grants_stat>stat:local_evasion_rating_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:movement_speed_+%_while_you_have_cats_stealth",
+   "chain": "unique_modifier_association>mod:MovementSpeedWithCatsStealthUnique__1 -> modifier_grants_stat>stat:movement_speed_+%_while_you_have_cats_stealth",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:base_avoid_bleed_%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 44,
+     "samples": [
+      {
+       "id": "mod:AbyssAvoidBleedingJewel1",
+       "name": "of Stemming"
+      },
+      {
+       "id": "mod:AbyssAvoidBleedingJewel2",
+       "name": "of the Tourniquet"
+      },
+      {
+       "id": "mod:AvoidBleedAndPoisonInfluence1",
+       "name": "of the Hunt"
+      },
+      {
+       "id": "mod:AvoidBleedAndPoisonInfluence2____",
+       "name": "of the Hunt"
+      },
+      {
+       "id": "mod:AvoidBleedAndPoisonInfluence3",
+       "name": "of the Hunt"
+      },
+      {
+       "id": "mod:AvoidBleedAndPoisonInfluenceMaven",
+       "name": "of the Elevated Hunt"
+      },
+      {
+       "id": "mod:BetrayalUpgradeMonsterAvoidAilments",
+       "name": ""
+      },
+      {
+       "id": "mod:ChanceToAvoidBleedingEldritchImplicit1",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 3,
+     "samples": [
+      {
+       "id": "passive:channelling_damage2276",
+       "name": "Chaos Resistance and Avoidance"
+      },
+      {
+       "id": "passive:channelling_damage2278",
+       "name": "Bleed Avoidance"
+      },
+      {
+       "id": "passive:channelling_notabel2283",
+       "name": "Tolerance"
+      }
+     ]
+    }
+   }
+  },
+  "stat:local_display_trigger_level_x_intimidating_cry_when_you_lose_cats_stealth": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "mod:CatsStealthTriggeredIntimidatingCry",
+       "name": ""
+      },
+      {
+       "id": "mod:DivergentCatsStealthTriggeredIntimidatingCry",
+       "name": ""
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

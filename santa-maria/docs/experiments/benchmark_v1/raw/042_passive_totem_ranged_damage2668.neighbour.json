@@ -1,0 +1,24 @@
+{
+ "start": "passive:totem_ranged_damage2668",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:totem_ranged_damage2668",
+     "to": "stat:summon_totem_cast_speed_+%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:totem_ranged_damage2668",
+     "to": "stat:totem_damage_+%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

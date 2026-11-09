@@ -1,0 +1,137 @@
+{
+ "index": 4,
+ "node_id": "passive:AscendancyAssassin10",
+ "type": "Passive",
+ "name": "Toxic Delivery",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyAssassin10"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyAssassin10"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyAssassin10"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:poison_duration_+%_per_poison_applied_recently"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:poison_from_critical_strikes_damage_+%_final"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyAssassin10|stat:poison_duration_+%_per_poison_applied_recently|out",
+    "passive_grants_stat|passive:AscendancyAssassin10|stat:poison_from_critical_strikes_damage_+%_final|out",
+    "passive_grants_stat|passive:AscendancyAssassin10|stat:recover_permyriad_maximum_life_per_poison_on_enemy_on_kill|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 2,
+     "members": [
+      "mod:AnimalCharmPoisonDurationPerPoisonAppliedRecently1",
+      "mod:AnimalCharmPoisonDurationPerPoisonAppliedRecently2"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyAssassin10"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:poison_duration_+%_per_poison_applied_recently",
+   "chain": "passive_grants_stat>stat:poison_duration_+%_per_poison_applied_recently",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:poison_from_critical_strikes_damage_+%_final",
+   "chain": "passive_grants_stat>stat:poison_from_critical_strikes_damage_+%_final",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:recover_permyriad_maximum_life_per_poison_on_enemy_on_kill",
+   "chain": "passive_grants_stat>stat:recover_permyriad_maximum_life_per_poison_on_enemy_on_kill",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:poison_duration_+%_per_poison_applied_recently": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmPoisonDurationPerPoisonAppliedRecently1",
+       "name": "Assassin's"
+      },
+      {
+       "id": "mod:AnimalCharmPoisonDurationPerPoisonAppliedRecently2",
+       "name": "Assassin's"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyAssassin10",
+       "name": "Toxic Delivery",
+       "asc": "Assassin"
+      }
+     ]
+    }
+   }
+  },
+  "stat:poison_from_critical_strikes_damage_+%_final": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyAssassin10",
+       "name": "Toxic Delivery",
+       "asc": "Assassin"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

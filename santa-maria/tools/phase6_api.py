@@ -27,17 +27,45 @@ NODES_DB = SANTA / 'cache' / 'nodes.db'
 EDGES_DB = SANTA / 'cache' / 'edges.db'
 
 NODE_TYPES = ['Stat', 'Modifier', 'ModifierGroup', 'UniqueItem', 'Passive',
-              'Gem', 'Tag', 'ItemClass', 'Mechanic']
+              'Gem', 'Tag', 'ItemClass', 'Mechanic', 'Rule', 'Influence']
 EDGE_TYPES = ['modifier_grants_stat', 'passive_grants_stat', 'gem_grants_stat',
               'unique_modifier_association', 'gem_has_tag', 'modifier_has_tag',
               'modifier_in_group', 'unique_in_class', 'stat_scales_with',
               'sem_relation_binds', 'attribute_grants_stat',
               'stat_mechanic_variant', 'stat_mechanic_operand',
-              'stat_mechanic_relation']
+              'stat_mechanic_relation', 'rule_applies_to', 'rule_negated_by',
+              'rule_modified_by', 'modifier_has_influence',
+              'influence_spawns_on']
 
-START_SEED_FILTERS = {'type', 'id_contains', 'name_contains', 'count', 'seed'}
+START_SEED_FILTERS = {'type', 'id_contains', 'name_contains', 'count', 'seed',
+                      'include_alternate_ascendancies'}
 NEIGHBOUR_FILTERS = {'start', 'direction', 'edge_types', 'max_nodes_per_level',
-                     'include_provenance', 'carrier_grouping'}
+                     'include_provenance', 'carrier_grouping',
+                     'include_alternate_ascendancies'}
+
+# ---- Alternate (Phrecia) ascendancy exclusion -------------------------------
+# passive:AscendancyCustom* = Phrecia alternate ascendancies;
+# passive:AlternateAscendancy* = alternate-asc trees. Present in the KB, but
+# excluded from discovery results BY DEFAULT (opt-in per call via
+# 'include_alternate_ascendancies': True). Exclusions are always reported in
+# meta ('excluded_alternate_ascendancies') so suppression is never mistaken
+# for absence.
+ALTERNATE_ASCENDANCY_PREFIXES = ('passive:AscendancyCustom',
+                                 'passive:AlternateAscendancy')
+EXCLUDE_ALTERNATE_ASCENDANCIES = True
+
+
+def is_alternate_ascendancy(node_id):
+    return isinstance(node_id, str) and \
+        node_id.startswith(ALTERNATE_ASCENDANCY_PREFIXES)
+
+
+def _alt_excl_flag(filters):
+    val = filters.get('include_alternate_ascendancies', False)
+    if not isinstance(val, bool):
+        raise ValueError('include_alternate_ascendancies must be a boolean')
+    return EXCLUDE_ALTERNATE_ASCENDANCIES and not val
+
 CARRIER_GROUP_CLASSES = {'modifier_grants_stat', 'passive_grants_stat', 'gem_grants_stat',
                          'unique_modifier_association', 'modifier_has_tag', 'gem_has_tag',
                          'modifier_in_group', 'unique_in_class'}
@@ -84,8 +112,14 @@ def _node_name(node_id, payload):
         return payload.get('display_name') or (payload.get('active_skill') or {}).get('display_name')
     if t == 'tag':
         return payload.get('tag')
+    if t == 'influence':
+        return payload.get('name')
     if t == 'item_class':
         return payload.get('item_class')
+    if t == 'rule':
+        return payload.get('name')
+    if t == 'mechanic':
+        return payload.get('name') or payload.get('description')
     return None
 
 
@@ -433,9 +467,12 @@ class GraphDB:
 
         nodes = self._load_nodes()
         vmap = self._load_variants()['variants']
+        excl_alt = _alt_excl_flag(filters)
         ids = []
         if ftype != 'Variant':
             for nid, (typ, payload) in nodes.items():
+                if excl_alt and is_alternate_ascendancy(nid):
+                    continue
                 if ftype is not None and typ != ftype:
                     continue
                 if idc is not None and idc not in nid:
@@ -509,6 +546,7 @@ class GraphDB:
         carrier_grouping = filters.get('carrier_grouping', False)
         if not isinstance(carrier_grouping, bool):
             raise ValueError('carrier_grouping must be a boolean')
+        excl_alt = _alt_excl_flag(filters)
 
         nodes = self._load_nodes()
         vinfo = self._load_variants()
@@ -571,6 +609,12 @@ class GraphDB:
                             cur = cand.get(src)
                             if cur is None or (t, node) < (cur['type'], cur['from']):
                                 cand[src] = ed
+            if excl_alt:
+                cand = {n: e for n, e in cand.items()
+                        if not is_alternate_ascendancy(n)}
+                gagg = {k: {m for m in v if not is_alternate_ascendancy(m)}
+                        for k, v in gagg.items()}
+                gagg = {k: v for k, v in gagg.items() if v}
             ordered = [cand[n] for n in sorted(cand)]
             if len(ordered) > cap:
                 ordered = ordered[:cap]

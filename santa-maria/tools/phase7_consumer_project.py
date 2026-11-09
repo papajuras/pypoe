@@ -48,7 +48,10 @@ def project(report=False):
 
     con = sqlite3.connect(CACHE / 'nodes.db')
     stats = {r[0] for r in con.execute("select node_id from nodes where type='Stat'")}
-    con.execute("delete from nodes where node_id like 'mechanic:%'")
+    # scope deletes to THIS projection's namespace; mechanic:applies_to_* rows
+    # belong to phase5m_applies_to.py and must survive (order-safe re-runs)
+    con.execute("delete from nodes where node_id like 'mechanic:%' "
+                "and node_id not like 'mechanic:applies_to_%'")
     mechanics = []
     for token, meta in art['mechanics'].items():
         payload = json.dumps({'kind': 'mechanic', 'token': token,
@@ -62,7 +65,8 @@ def project(report=False):
     con.close()
 
     con = sqlite3.connect(CACHE / 'edges.db')
-    con.execute("delete from edges where relationship_type=?", (EDGE_TYPE,))
+    con.execute("delete from edges where relationship_type=? and "
+                "target_node_id not like 'mechanic:applies_to_%'", (EDGE_TYPE,))
     edges, skipped = [], []
     for c in art['classifications']:
         if not c.get('emit'):
@@ -118,7 +122,8 @@ def verify():
     expect = {c['stat_id'] for c in art['classifications'] if c.get('emit')}
     con = sqlite3.connect(CACHE / 'edges.db')
     rows = con.execute("select source_node_id, target_node_id, provenance from edges "
-                       "where relationship_type=?", (EDGE_TYPE,)).fetchall()
+                       "where relationship_type=? and target_node_id not like "
+                       "'mechanic:applies_to_%'", (EDGE_TYPE,)).fetchall()
     got = {r[0][5:] for r in rows}
     assert got == expect, f'set drift: +{sorted(got - expect)[:3]} -{sorted(expect - got)[:3]}'
     assert len(rows) == len(expect), 'duplicate edges present'
@@ -129,7 +134,8 @@ def verify():
                                     'contract_version', 'source_file')), src
     mcon = sqlite3.connect(CACHE / 'nodes.db')
     mechs = {r[0] for r in mcon.execute(
-        "select node_id from nodes where type='Mechanic'")}
+        "select node_id from nodes where type='Mechanic' and node_id not like "
+        "'mechanic:applies_to_%'")}
     assert mechs == {f'mechanic:{t}' for t in art['mechanics']}, mechs
     print(f'verify ok: {len(rows)} edges, {len(mechs)} mechanic nodes, '
           f'provenance complete, no duplicates')

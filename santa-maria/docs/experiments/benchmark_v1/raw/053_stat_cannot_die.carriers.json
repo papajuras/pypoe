@@ -1,0 +1,65 @@
+{
+ "error": null,
+ "results": [
+  {
+   "carrier": "mod:CannotDieUnique__1",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": ""
+  },
+  {
+   "carrier": "mod:MonsterAfflictionHasTeleportAndExplodeOnDeathDaemon",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": "Vengeful Stalker"
+  },
+  {
+   "carrier": "mod:MonsterAuraCannotDie1",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": "Cannot Die Aura"
+  },
+  {
+   "carrier": "mod:MonsterImplicitAuraCannotDie1",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": ""
+  },
+  {
+   "carrier": "mod:MonsterImplicitAuraCannotDie2",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": ""
+  },
+  {
+   "carrier": "mod:StrIntMissionAuraCannotDie1",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": ""
+  },
+  {
+   "carrier": "mod:TestingDummyCannotDie",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": ""
+  }
+ ],
+ "meta": {
+  "node_id": "stat:cannot_die",
+  "edge_types": [
+   "modifier_grants_stat",
+   "passive_grants_stat",
+   "gem_grants_stat",
+   "unique_modifier_association"
+  ],
+  "counts": {
+   "modifier_grants_stat": 7,
+   "passive_grants_stat": 0,
+   "gem_grants_stat": 0,
+   "unique_modifier_association": 0
+  },
+  "total": 7,
+  "returned": 7,
+  "truncated": null
+ }
+}

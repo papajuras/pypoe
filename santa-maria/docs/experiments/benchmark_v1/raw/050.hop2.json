@@ -1,0 +1,174 @@
+{
+ "index": 50,
+ "node_id": "gem:SummonSkeletonsChannelled",
+ "targets": {
+  "stat:active_skill_minion_added_damage_+%_final": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 2,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SpectralSpirits",
+    "gem:SummonSkeletonsChannelled"
+   ],
+   "total": 2
+  },
+  "stat:base_display_minion_actor_level": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 70,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AnimateGuardian",
+    "gem:AnimateGuardianAltX",
+    "gem:AnimateWeapon",
+    "gem:AnimateWeaponAltX",
+    "gem:AnimateWeaponAltY",
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX",
+    "gem:BlinkArrowAltY",
+    "gem:BlinkArrowRoyale",
+    "gem:BlinkArrowTriggered",
+    "gem:CeaselessFleshUnique",
+    "gem:EnchantmentOfReflectionWhenHit"
+   ],
+   "total": 70
+  },
+  "stat:base_number_of_skeletons_allowed": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 22,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 6,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SummonSkeletons",
+    "gem:SummonSkeletonsAltX",
+    "gem:SummonSkeletonsAltY",
+    "gem:SummonSkeletonsChannelled",
+    "gem:SummonSkeletonsRoyale",
+    "gem:VaalSummonSkeletons",
+    "mod:HellscapeDownsideAdditionalSkeleton1",
+    "mod:HellscapeUpsideAdditionalSkeleton1__",
+    "mod:IntMasterIncreasedZombiesCrafted",
+    "mod:IntMasterMaximumSkeletonsCraftedUpdated",
+    "mod:JunMaster2MaximumZombieAndSkeleton1_",
+    "mod:JunMasterMaximumZombieAndSkeleton1",
+    "mod:JunMasterVeiledMaximumZombieAndSkeleton",
+    "mod:MaximumMinionCountAmuletSkeletonDelve__",
+    "mod:MaximumMinionCountAmuletZombieDelve"
+   ],
+   "total": 30
+  },
+  "stat:base_skill_effect_duration": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 443,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AfflictionSplitColdIceSpikes",
+    "gem:AfflictionSplitColdSpearGroundToss",
+    "gem:AfflictionSplitColdSpearToss",
+    "gem:AfflictionSplitFireFlameblast",
+    "gem:AfflictionSplitFireSlash",
+    "gem:AfflictionSplitFireTornado",
+    "gem:AfflictionSplitLightningElectricFlail",
+    "gem:AfflictionSplitLightningGigaBall",
+    "gem:AfflictionSplitLightningTeleportStorm",
+    "gem:AfflictionSplitPhysicalAbyssSlam",
+    "gem:AfflictionSplitPhysicalLeapSlam",
+    "gem:AfflictionSplitPhysicalPizzaSlam",
+    "gem:AfflictionUniqueSplitColdIceSpikes"
+   ],
+   "total": 443
+  },
+  "stat:display_minion_monster_type": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 70,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AnimateGuardian",
+    "gem:AnimateGuardianAltX",
+    "gem:AnimateWeapon",
+    "gem:AnimateWeaponAltX",
+    "gem:AnimateWeaponAltY",
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX",
+    "gem:BlinkArrowAltY",
+    "gem:BlinkArrowRoyale",
+    "gem:BlinkArrowTriggered",
+    "gem:CeaselessFleshUnique",
+    "gem:EnchantmentOfReflectionWhenHit"
+   ],
+   "total": 70
+  },
+  "stat:non_ghost_minion_duration_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 20,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AnimateGuardiansWeapon",
+    "gem:AnimateWeapon",
+    "gem:AnimateWeaponAltX",
+    "gem:AnimateWeaponAltY",
+    "gem:AshwakerSummonRagingSpiritOnKill",
+    "gem:DominatingBlow",
+    "gem:DominatingBlowAltX",
+    "gem:DominatingBlowRoyale",
+    "gem:SummonRagingSpirit",
+    "gem:SummonRagingSpiritAltX",
+    "gem:SummonRagingSpiritRoyale",
+    "gem:SummonSkeletons",
+    "gem:SummonSkeletonsAltX",
+    "gem:SummonSkeletonsAltY",
+    "gem:SummonSkeletonsChannelled"
+   ],
+   "total": 20
+  },
+  "stat:number_of_melee_skeletons_to_summon": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 4,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SummonSkeletons",
+    "gem:SummonSkeletonsChannelled",
+    "gem:SummonSkeletonsRoyale",
+    "gem:VaalSummonSkeletons"
+   ],
+   "total": 4
+  },
+  "a": {
+   "kind": "tag"
+  }
+ }
+}

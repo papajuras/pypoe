@@ -1,0 +1,54 @@
+{
+ "index": 1,
+ "node_id": "unique:1461",
+ "targets": {
+  "mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:max_attack_added_chaos_damage_per_100_mana",
+    "stat:min_attack_added_chaos_damage_per_100_mana"
+   ],
+   "tags": [
+    "tag:attack",
+    "tag:chaos",
+    "tag:chaos_damage",
+    "tag:damage",
+    "tag:mana",
+    "tag:resource"
+   ]
+  },
+  "mod:PercentReducedMaximumManaUnique_1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:maximum_mana_+%"
+   ],
+   "tags": [
+    "tag:mana",
+    "tag:resource"
+   ]
+  },
+  "mod:ReducedEnergyShieldDelayImplicit1_": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:energy_shield_delay_-%"
+   ],
+   "tags": [
+    "tag:defences",
+    "tag:energy_shield"
+   ]
+  },
+  "mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:base_skills_cost_es_instead_of_mana_life"
+   ],
+   "tags": [
+    "tag:defences",
+    "tag:energy_shield",
+    "tag:life",
+    "tag:mana",
+    "tag:resource"
+   ]
+  }
+ }
+}

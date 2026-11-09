@@ -6,9 +6,10 @@ Covers: valid configurations; the required HoWA + Jiquani's Potential
 regression (individually-valid items, invalid composition); incremental
 detection with no state mutation on rejection; valid continuation; final
 validate_build (single + multiple conflicts); unknown outcomes (no slot
-model, unresolved parent weapon, ambiguous weapon context); the pinned
+model, unresolved parent weapon, empty weapon context); the pinned
 unique-duplication limitation; gem groups (valid / weapon-restriction
-invalid / chain invalid); CLI integration usable by the discovery agent.
+invalid / chain invalid / dual-wield any-match); CLI integration usable by
+the discovery agent.
 """
 import json
 import subprocess
@@ -132,17 +133,24 @@ def test_gem_groups():
     r = bv.validate_build(s, g)
     assert r['status'] == bv.INVALID, r
     assert r['gem_checks'][0]['support_chain']['result'] == bv.INVALID, r
-    # ambiguous weapon context (two 1H) -> unknown with explicit reason
+    # dual-wield (two 1H swords): any-match — Holy Hammers fits neither -> invalid
     s = bv.BuildState([REDBEAK, ICHIMONJI], [{'skill': HH}])
     r = bv.validate_build(s, g)
-    assert r['status'] == bv.UNKNOWN, r
-    assert 'not uniquely determined' in r['reason'], r
-    assert r['gem_checks'][0]['weapon_restriction']['result'] == bv.UNKNOWN, r
+    assert r['status'] == bv.INVALID, r
+    assert r['gem_checks'][0]['weapon_restriction']['result'] == bv.INVALID, r
+    assert 'none of' in r['gem_checks'][0]['weapon_restriction']['reason'], r
+    # dual claws (HoWA + Hand of Thought and Motion): Lightning Strike is
+    # claw-restricted; any one claw satisfies -> valid
+    s = bv.BuildState([HOWA, 'unique:596'], [{'skill': 'gem:LightningStrike'}])
+    r = bv.validate_build(s, g)
+    assert r['status'] == bv.VALID, r
+    assert r['gem_checks'][0]['weapon_restriction']['result'] == bv.VALID, r
     # no weapon at all -> unknown, never guessed
     s = bv.BuildState([], [{'skill': HH}])
     r = bv.validate_build(s, g)
     assert r['status'] == bv.UNKNOWN and '0 weapon-class items' in r['reason'], r
-    print('ok: gem groups valid/invalid/unknown; weapon context never guessed')
+    print('ok: gem groups valid/invalid/unknown; dual-wield any-match; '
+          'weapon context never guessed')
 
 
 def test_cli_integration():

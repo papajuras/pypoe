@@ -1,0 +1,249 @@
+{
+ "index": 16,
+ "node_id": "passive:AscendancyOccultist8",
+ "type": "Passive",
+ "name": "Unholy Authority",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyOccultist8"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyOccultist8"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyOccultist8"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:ignore_hexproof"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:number_of_additional_curses_allowed"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyOccultist8|stat:ignore_hexproof|out",
+    "passive_grants_stat|passive:AscendancyOccultist8|stat:number_of_additional_curses_allowed|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 2,
+     "members": [
+      "gem:SupportCursePillarTriggerCurses",
+      "gem:SupportCursePillarTriggerCursesLessCurseEffect"
+     ]
+    },
+    {
+     "carrier_type": "Modifier",
+     "count": 25,
+     "members": [
+      "mod:AdditionalCurseCorrupted",
+      "mod:AdditionalCurseOnEnemiesDelve",
+      "mod:AdditionalCurseOnEnemiesInfluence1",
+      "mod:AdditionalCurseOnEnemiesInfluenceMavenV2___",
+      "mod:AdditionalCurseOnEnemiesInfluenceMaven_",
+      "mod:AdditionalCurseOnEnemiesMapBossGeofri_",
+      "mod:AdditionalCurseOnEnemiesUnique__1",
+      "mod:AdditionalCurseOnEnemiesUnique__2",
+      "mod:AdditionalCurseOnEnemiesUnique__3",
+      "mod:AdditionalCurseOnEnemies_",
+      "mod:AnimalCharmIgnoreHexproofEnemies",
+      "mod:DivergentAdditionalCurseOnEnemiesUnique__1",
+      "mod:DivergentIgnoreHexproofUnique___1",
+      "mod:DoedreAdditionalCurseOnEnemies2",
+      "mod:HellscapeDownsideAdditionalCurse1__",
+      "mod:IgnoreHexproofUnique___1",
+      "mod:JunMaster2MaximumCurse1_",
+      "mod:JunMasterMaximumCurse1",
+      "mod:JunMasterVeiledMaximumCurse",
+      "mod:MonsterIgnoreHexproof",
+      "mod:MonsterImplicitExtraCurses1",
+      "mod:TormentHauntedMonsterBlasphemer",
+      "mod:TwoAdditionalCursesOnEnemies",
+      "mod:V2AdditionalCurseCorrupted",
+      "mod:VillageAdditionalCurseOnEnemies"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 6,
+     "members": [
+      "passive:AscendancyAscendant37",
+      "passive:AscendancyCustomGuardian10",
+      "passive:AscendancyCustomHeirophant16",
+      "passive:AscendancyCustomNecromancer13",
+      "passive:AscendancyOccultist8",
+      "passive:whispers_of_doom1185"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:ignore_hexproof",
+   "chain": "passive_grants_stat>stat:ignore_hexproof",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:number_of_additional_curses_allowed",
+   "chain": "passive_grants_stat>stat:number_of_additional_curses_allowed",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:ignore_hexproof": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 4,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmIgnoreHexproofEnemies",
+       "name": "Occultist's"
+      },
+      {
+       "id": "mod:DivergentIgnoreHexproofUnique___1",
+       "name": ""
+      },
+      {
+       "id": "mod:IgnoreHexproofUnique___1",
+       "name": ""
+      },
+      {
+       "id": "mod:MonsterIgnoreHexproof",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomGuardian10",
+       "name": "Devout of Yugul",
+       "asc": "Guardian"
+      },
+      {
+       "id": "passive:AscendancyOccultist8",
+       "name": "Unholy Authority",
+       "asc": "Occultist"
+      }
+     ]
+    }
+   }
+  },
+  "stat:number_of_additional_curses_allowed": {
+   "carriers": {
+    "gem_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "gem:SupportCursePillarTriggerCurses",
+       "name": null
+      },
+      {
+       "id": "gem:SupportCursePillarTriggerCursesLessCurseEffect",
+       "name": null
+      }
+     ]
+    },
+    "modifier_grants_stat": {
+     "count": 21,
+     "samples": [
+      {
+       "id": "mod:AdditionalCurseCorrupted",
+       "name": ""
+      },
+      {
+       "id": "mod:AdditionalCurseOnEnemiesDelve",
+       "name": "Subterranean"
+      },
+      {
+       "id": "mod:AdditionalCurseOnEnemiesInfluence1",
+       "name": "Hunter's"
+      },
+      {
+       "id": "mod:AdditionalCurseOnEnemiesInfluenceMavenV2___",
+       "name": "Elevated Hunter's"
+      },
+      {
+       "id": "mod:AdditionalCurseOnEnemiesInfluenceMaven_",
+       "name": "Elevated Hunter's"
+      },
+      {
+       "id": "mod:AdditionalCurseOnEnemiesMapBossGeofri_",
+       "name": ""
+      },
+      {
+       "id": "mod:AdditionalCurseOnEnemiesUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:AdditionalCurseOnEnemiesUnique__2",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 5,
+     "samples": [
+      {
+       "id": "passive:AscendancyAscendant37",
+       "name": "Occultist",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyCustomHeirophant16",
+       "name": "Hexbearer",
+       "asc": "Hierophant"
+      },
+      {
+       "id": "passive:AscendancyCustomNecromancer13",
+       "name": "Vile Imprecations",
+       "asc": "Necromancer"
+      },
+      {
+       "id": "passive:AscendancyOccultist8",
+       "name": "Unholy Authority",
+       "asc": "Occultist"
+      },
+      {
+       "id": "passive:whispers_of_doom1185",
+       "name": "Whispers of Doom"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start",
+  "multi_source:number_of_additional_curses_allowed"
+ ]
+}

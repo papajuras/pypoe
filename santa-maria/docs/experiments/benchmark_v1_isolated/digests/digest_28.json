@@ -1,0 +1,116 @@
+{
+ "index": 28,
+ "node_id": "unique:1179",
+ "type": "UniqueItem",
+ "name": "Replica Quill Rain",
+ "block": "random_draw",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:1179"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:1179"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:1179"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:1179|item_class:Bow|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "unique_in_class|item_class:Bow|<37 in: unique:10, unique:110, unique:1148\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "unique_modifier_association|unique:86|mod:AccuracyPercentUniqueBow5|out",
+    "unique_modifier_association|unique:292|mod:AddedChaosDamageUniqueBow12|out",
+    "unique_modifier_association|unique:739|mod:AddedColdDamagePerFrenzyChargeUnique__1|out",
+    "unique_modifier_association|unique:171|mod:AddedColdDamageUniqueBow9|out",
+    "unique_modifier_association|unique:470|mod:AddedDamagePerDexterityUnique__1|out",
+    "unique_modifier_association|unique:110|mod:AddedLightningDamageUniqueBow8|out",
+    "unique_modifier_association|unique:171|mod:AddedLightningDamageUniqueBow9|out",
+    "unique_modifier_association|unique:840|mod:AddedPhysicalDamageVsBleedingEnemiesUnique__1|out",
+    "unique_modifier_association|unique:14|mod:AdditionalArrowsUniqueBow3|out",
+    "unique_modifier_association|unique:450|mod:AdditionalChainUnique__1|out",
+    "unique_modifier_association|unique:470|mod:AdditionalSnipeTotemsPerDexterityUnique__1|out",
+    "unique_modifier_association|unique:584|mod:AlwaysPierceBurningEnemiesUnique__1|out",
+    "unique_modifier_association|unique:1521|mod:AnimosityPhysDegenSkillUnique__1|out",
+    "unique_modifier_association|unique:584|mod:ArrowAddedFireDamagePerEnemyPiercedUnique__1|out",
+    "unique_modifier_association|unique:95|mod:ArrowPierceUniqueBow7|out",
+    "unique_modifier_association|unique:565|mod:ArrowsAlwaysPierceAfterForkingUnique__1__|out",
+    "unique_modifier_association|unique:726|mod:ArrowsIfHaventUsedDashRecentlyUnique__1|out",
+    "unique_modifier_association|unique:565|mod:ArrowsThatPierceHaveCritMultiUnique__1|out",
+    "unique_modifier_association|unique:739|mod:AttackDamageLeechPerFrenzyChargeUnique__1|out",
+    "unique_modifier_association|unique:1521|mod:AttackImpaleChanceUnique__3|out",
+    "unique_modifier_association|unique:726|mod:AttackSpeedIfHaventUsedDashRecentlyUnique__1|out",
+    "unique_modifier_association|unique:181|mod:AttacksShockAsIfDealingMoreDamageUniqueBow10|out",
+    "unique_modifier_association|unique:6|mod:AttacksYouUseYourselfAttackSpeedFinalUnique__1|out",
+    "unique_modifier_association|unique:6|mod:AttacksYouUseYourselfRepeatCountUnique__1|out",
+    "unique_modifier_association|unique:739|mod:AvoidElementalDamagePerFrenzyChargeUnique__1|out",
+    "unique_modifier_association|unique:840|mod:BleedOnCritUnique__1_|out",
+    "unique_modifier_association|unique:1330|mod:BowAttacksFrenzyChargesArrowsUnique__1|out",
+    "unique_modifier_association|unique:292|mod:CastSocketedMinionSpellsOnKillUniqueBow12|out",
+    "unique_modifier_association|unique:181|mod:ChanceToShockUniqueBow10|out",
+    "unique_modifier_association|unique:1499|mod:ChaosDamageCanFreezeUnique_1|out",
+    "unique_modifier_association|unique:181|mod:ChaosDamageCanShockUniqueBow10|out",
+    "unique_modifier_association|unique:292|mod:ChaosResistUniqueBow12|out",
+    "unique_modifier_association|unique:516|mod:ChilledGroundEffectUnique__1|out",
+    "unique_modifier_association|unique:516|mod:ConsecratedGroundEffectUnique__1|out",
+    "unique_modifier_association|unique:181|mod:ConvertLightningDamageToChaosUniqueBow10|out",
+    "unique_modifier_association|unique:181|mod:ConvertLightningDamageToChaosUniqueBow10Updated|out",
+    "unique_modifier_association|unique:585|mod:ConvertPhysicalToFireUnique__1|out",
+    "unique_modifier_association|unique:565|mod:CriticalStrikeChanceForForkingArrowsUnique__1|out",
+    "unique_modifier_association|unique:171|mod:CriticalStrikeChanceUniqueBow9|out",
+    "unique_modifier_association|unique:1330|mod:CriticalStrikeMultiplierFrenzyChargesUnique__1|out",
+    "unique_modifier_association|unique:739|mod:DamageTakenPerFrenzyChargeMovingUnique__1|out",
+    "unique_modifier_association|unique:85|mod:DexterityUniqueBow4|out",
+    "unique_modifier_association|unique:90|mod:DexterityUniqueBow6|out",
+    "unique_modifier_association|unique:95|mod:DexterityUniqueBow7|out",
+    "unique_modifier_association|unique:726|mod:DisableTravelSkillsExceptDashUnique__1|out",
+    "unique_modifier_association|unique:840|mod:EnemiesYouBleedGrantIncreasedFlaskChargesUnique__1_|out",
+    "unique_modifier_association|unique:726|mod:EvasionRatingIfUsedDashRecentlyUnique__1|out",
+    "unique_modifier_association|unique:1517|mod:FireDamagePercentUnique__15|out",
+    "unique_modifier_association|unique:1517|mod:FireExposureOnHitVsMaxResentmentStacksUnique__1|out",
+    "unique_modifier_association|unique:1330|mod:FrenzyChargePerEnemyCritUnique__1|out",
+    "unique_modifier_association|unique:585|mod:GainLifeOnIgnitingEnemyUnique__1|out",
+    "unique_modifier_association|unique:726|mod:GrantsDashUnique__1_|out",
+    "unique_modifier_association|unique:10|mod:IncreasedAccuracyUniqueBow2|out",
+    "unique_modifier_association|unique:85|mod:IncreasedAccuracyUniqueBow4|out",
+    "unique_modifier_association|unique:95|mod:IncreasedAccuracyUniqueBow7|out",
+    "unique_modifier_association|unique:6|mod:IncreasedManaUniqueBow1|out",
+    "unique_modifier_association|unique:292|mod:IncreasedMinionDamagePerDexterityUniqueBow12|out",
+    "unique_modifier_association|unique:6|mod:IncreasedPhysicalDamagePercentUniqueBowImplicit1|out",
+    "unique_modifier_association|unique:171|mod:IncreasedRarityWhenSlayingFrozenUnique__1|out",
+    "unique_modifier_association|unique:292|mod:IntelligenceRequirementsUniqueBow12|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

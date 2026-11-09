@@ -1,0 +1,83 @@
+{
+ "index": 8,
+ "node_id": "passive:AscendancyDeadeye14",
+ "type": "Passive",
+ "name": "Gathering Winds",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyDeadeye14"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyDeadeye14"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyDeadeye14"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:tailwind_effect_on_self_+%_per_gale_force"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyDeadeye14|stat:tailwind_effect_on_self_+%_per_gale_force|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyDeadeye14"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:tailwind_effect_on_self_+%_per_gale_force",
+   "chain": "passive_grants_stat>stat:tailwind_effect_on_self_+%_per_gale_force",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:tailwind_effect_on_self_+%_per_gale_force": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyDeadeye14",
+       "name": "Gathering Winds",
+       "asc": "Deadeye"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

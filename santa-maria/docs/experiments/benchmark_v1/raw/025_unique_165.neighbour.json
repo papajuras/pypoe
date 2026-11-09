@@ -1,0 +1,48 @@
+{
+ "start": "unique:165",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:165",
+     "to": "item_class:Ring",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:165",
+     "to": "mod:IncreasedChanceForMonstersToDropWisdomScrollsUniqueRing14",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:165",
+     "to": "mod:IncreasedExperienceUniqueRing14",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:165",
+     "to": "mod:IncreasedIntelligencePerUniqueUniqueRing14",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:165",
+     "to": "mod:IncreasedManaUniqueRing14",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:165",
+     "to": "mod:ManaRegenerationUniqueRing14",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

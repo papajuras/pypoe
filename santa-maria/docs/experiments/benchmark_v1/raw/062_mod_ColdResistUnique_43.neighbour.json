@@ -1,0 +1,42 @@
+{
+ "start": "mod:ColdResistUnique__43",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mod:ColdResistUnique__43",
+     "to": "modgroup:ColdResistance",
+     "type": "modifier_in_group",
+     "direction": "out"
+    },
+    {
+     "from": "mod:ColdResistUnique__43",
+     "to": "stat:base_cold_damage_resistance_%",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:ColdResistUnique__43",
+     "to": "tag:cold",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:ColdResistUnique__43",
+     "to": "tag:elemental",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:ColdResistUnique__43",
+     "to": "tag:resistance",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

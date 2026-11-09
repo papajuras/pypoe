@@ -10,6 +10,12 @@ Personal utility for Path of Exile crafting and economy monitoring.
 ## Behavioral contract
 - Always load the `discovery-api-usage` skill before any santa-maria KB/graph
   work or build-discovery task — it is mandatory for those tasks.
+- Discovery excludes Phrecia/alternate-ascendancy content by default
+  (`passive:AscendancyCustom*`, `passive:AlternateAscendancy*`) — see the
+  "Alternate (Phrecia) ascendancy exclusion" section of the
+  `discovery-api-usage` skill. Check `meta.excluded_alternate_ascendancies`
+  before claiming absence; opt in per call or via
+  `phase6_api.EXCLUDE_ALTERNATE_ASCENDANCIES`. The KB keeps the data.
 - Don't assume intent. If a request is ambiguous or has several plausible
   readings, ask before doing anything — never pick one silently. One question
   beats redoing wrong work.

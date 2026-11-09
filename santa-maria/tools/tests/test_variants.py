@@ -28,9 +28,13 @@ def test_population_counts():
     types = Counter(x['variant_type'] for x in vs.values())
     assert types == Counter({'Vestigial': 447, 'Foulborn': 252}), types
     mem = Counter(m['membership'] for x in vs.values() for m in x['modifiers'])
-    assert mem['confirmed_edge'] == 768, mem            # 329 F + 439 V, exact KB parity
-    assert mem['source_derived_vid_match'] == 15, mem   # rule-verbatim fresh VID matches
-    assert mem['ambiguous_name_shared_by_2_records'] == 44, mem
+    # live-only KB: method-6 (Vestigial ownership) association edges retired,
+    # so most Vestigial/Foulborn membership degraded to source-derived classes;
+    # confirmed_edge survives only where a live m1/m5 KB edge exists
+    assert mem['confirmed_edge'] == 58, mem
+    assert mem['source_derived_vid_match'] == 303, mem   # incl. degraded Foulborn pairs
+    assert mem['source_derived_name_match'] == 383, mem
+    assert mem['ambiguous_name_shared_by_2_records'] == 48, mem
     assert mem['ambiguous_name_shared_by_3_records'] == 36, mem
     assert len(v['unresolved']['foulborn_mods']) == 39, len(v['unresolved']['foulborn_mods'])
     assert len(v['unresolved']['vestigial_mods']) == 6, len(v['unresolved']['vestigial_mods'])
