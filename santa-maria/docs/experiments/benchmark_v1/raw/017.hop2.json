@@ -1,0 +1,32 @@
+{
+ "index": 17,
+ "node_id": "passive:AscendancyPathfinder14",
+ "targets": {
+  "stat:pathfinder_poison_damage_+100%_final_chance_during_flask_effect": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyPathfinder14"
+   ],
+   "total": 1
+  },
+  "stat:unique_spread_poison_to_nearby_enemies_during_flask_effect": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyPathfinder14"
+   ],
+   "total": 1
+  }
+ }
+}

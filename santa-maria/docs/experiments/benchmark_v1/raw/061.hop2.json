@@ -1,0 +1,19 @@
+{
+ "index": 61,
+ "node_id": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+ "targets": {
+  "stat:local_flask_recover_%_maximum_energy_shield_on_kill_during_flask_effect": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1"
+   ],
+   "total": 1
+  }
+ }
+}

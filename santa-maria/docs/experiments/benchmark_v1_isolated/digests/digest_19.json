@@ -1,0 +1,217 @@
+{
+ "index": 19,
+ "node_id": "passive:AscendancySaboteur4",
+ "type": "Passive",
+ "name": "Born in the Shadows",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancySaboteur4"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancySaboteur4"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancySaboteur4"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:cannot_be_blinded"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:damage_taken_+%_from_blinded_enemies"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancySaboteur4|stat:cannot_be_blinded|out",
+    "passive_grants_stat|passive:AscendancySaboteur4|stat:damage_taken_+%_from_blinded_enemies|out",
+    "passive_grants_stat|passive:AscendancySaboteur4|stat:global_chance_to_blind_on_hit_%|out",
+    "passive_grants_stat|passive:AscendancySaboteur4|stat:local_display_nearby_enemies_are_blinded|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 5,
+     "members": [
+      "gem:SolartwineBlindingNova",
+      "gem:SupportBlind",
+      "gem:SupportBlindRoyale",
+      "gem:Twister",
+      "gem:VaalBladeFlurry"
+     ]
+    },
+    {
+     "carrier_type": "Modifier",
+     "count": 35,
+     "members": [
+      "mod:AnimalCharmBlindOnHitChance1",
+      "mod:AnimalCharmBlindOnHitChance2",
+      "mod:AnimalCharmCannotBeBlinded",
+      "mod:BestiaryModSquidAura1",
+      "mod:BetrayalUpgradeMonsterBlindOnHit",
+      "mod:BlindImmunityUniqueSceptre8",
+      "mod:BlindImmunityUnique__1",
+      "mod:BlindOnHitSupportedUber1",
+      "mod:BlindOnHitSupportedUber2",
+      "mod:BlindOnHitSupportedUber3",
+      "mod:BlindOnHitSupportedUberMaven",
+      "mod:DelveArmourBlindChance",
+      "mod:DisplayBlindAuraUnique__1",
+      "mod:GlobalChanceToBlindOnHitInfluence1__",
+      "mod:GlobalChanceToBlindOnHitInfluence2_",
+      "mod:GlobalChanceToBlindOnHitInfluenceMaven",
+      "mod:GlobalChanceToBlindOnHitUniqueSceptre8",
+      "mod:HellscapeUpsideChanceToBlindOnHit2_",
+      "mod:HellscapeUpsideChanceToBlindOnHit3___",
+      "mod:HellscapeUpsideChanceToBlindOnHit4_",
+      "mod:MonsterArchnemesisAssassin",
+      "mod:MonsterModApplyBlind",
+      "mod:NearbyEnemiesAreBlindedInfluence1_",
+      "mod:NearbyEnemiesAreBlindedInfluenceMaven",
+      "mod:NearbyEnemiesAreBlindedUnique__1",
+      "mod:NecropolisCraftingGlobalChanceToBlindOnHit",
+      "mod:NecropolisCraftingImmunityToBlind",
+      "mod:RampageDaemonGlobalBlindChance",
+      "mod:SynthesisImplicitBlindOnHit1",
+      "mod:TangledAltarDownsideBossBlindOnHit",
+      "mod:TormentHauntedMonsterSextantFelon",
+      "mod:TormentTouchedMonsterSextantFelon_",
+      "mod:TormentTouchedMonsterSpy",
+      "mod:UniqueSpecialCorruptionNearbyEnemiesBlinded",
+      "mod:V2BlindImmunityCorrupted"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 4,
+     "members": [
+      "passive:AscendancyAscendant48",
+      "passive:AscendancyCustomDeadeye20_",
+      "passive:AscendancyCustomGuardian2",
+      "passive:AscendancySaboteur4"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:cannot_be_blinded",
+   "chain": "passive_grants_stat>stat:cannot_be_blinded",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:damage_taken_+%_from_blinded_enemies",
+   "chain": "passive_grants_stat>stat:damage_taken_+%_from_blinded_enemies",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:global_chance_to_blind_on_hit_%",
+   "chain": "passive_grants_stat>stat:global_chance_to_blind_on_hit_%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:local_display_nearby_enemies_are_blinded",
+   "chain": "passive_grants_stat>stat:local_display_nearby_enemies_are_blinded",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:cannot_be_blinded": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 6,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmCannotBeBlinded",
+       "name": "of the Saboteur"
+      },
+      {
+       "id": "mod:BlindImmunityUniqueSceptre8",
+       "name": ""
+      },
+      {
+       "id": "mod:BlindImmunityUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:NearbyEnemiesAreBlindedInfluenceMaven",
+       "name": "Elevated Redeemer's"
+      },
+      {
+       "id": "mod:NecropolisCraftingImmunityToBlind",
+       "name": "of Haunting"
+      },
+      {
+       "id": "mod:V2BlindImmunityCorrupted",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomDeadeye20_",
+       "name": "not a word",
+       "asc": "Deadeye"
+      },
+      {
+       "id": "passive:AscendancySaboteur4",
+       "name": "Born in the Shadows",
+       "asc": "Saboteur"
+      }
+     ]
+    }
+   }
+  },
+  "stat:damage_taken_+%_from_blinded_enemies": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomGuardian2",
+       "name": "Devout of Solaris",
+       "asc": "Guardian"
+      },
+      {
+       "id": "passive:AscendancySaboteur4",
+       "name": "Born in the Shadows",
+       "asc": "Saboteur"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

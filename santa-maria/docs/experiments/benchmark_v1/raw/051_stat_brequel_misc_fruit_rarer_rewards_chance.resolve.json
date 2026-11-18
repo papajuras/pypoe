@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "stat:brequel_misc_fruit_rarer_rewards_chance_+%",
+   "type": "Stat",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "stat:brequel_misc_fruit_rarer_rewards_chance_+%",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

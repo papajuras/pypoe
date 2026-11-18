@@ -1,0 +1,29 @@
+{
+ "error": null,
+ "results": [
+  {
+   "carrier": "mod:StarterPassiveJewelUnique__12__",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": ""
+  }
+ ],
+ "meta": {
+  "node_id": "stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start",
+  "edge_types": [
+   "modifier_grants_stat",
+   "passive_grants_stat",
+   "gem_grants_stat",
+   "unique_modifier_association"
+  ],
+  "counts": {
+   "modifier_grants_stat": 1,
+   "passive_grants_stat": 0,
+   "gem_grants_stat": 0,
+   "unique_modifier_association": 0
+  },
+  "total": 1,
+  "returned": 1,
+  "truncated": null
+ }
+}

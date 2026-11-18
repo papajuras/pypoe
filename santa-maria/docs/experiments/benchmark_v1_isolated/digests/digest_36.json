@@ -1,0 +1,195 @@
+{
+ "index": 36,
+ "node_id": "passive:atlas_path_17",
+ "type": "Passive",
+ "name": "Map Drop Chance",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:atlas_path_17"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:atlas_path_17"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:atlas_path_17"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:map_map_item_drop_chance_+%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:atlas_path_17|stat:map_map_item_drop_chance_+%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 9,
+     "members": [
+      "mod:MapRelicImplicitIncreasedMapsDroppedChanceExtraLarge",
+      "mod:MapRelicImplicitIncreasedMapsDroppedChanceLarge",
+      "mod:MapRelicImplicitIncreasedMapsDroppedChanceMedium",
+      "mod:MapRelicImplicitIncreasedMapsDroppedChanceSmall",
+      "mod:MapRelicIncreasedMapDropsChance1",
+      "mod:ScarabMaps1",
+      "mod:ScarabMaps2",
+      "mod:ScarabMaps3",
+      "mod:ScarabMaps4_"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 34,
+     "members": [
+      "passive:atlas_boss_adjacent_maps_1",
+      "passive:atlas_boss_adjacent_maps_2",
+      "passive:atlas_boss_adjacent_maps_8",
+      "passive:atlas_path_1",
+      "passive:atlas_path_10",
+      "passive:atlas_path_12",
+      "passive:atlas_path_13",
+      "passive:atlas_path_14",
+      "passive:atlas_path_15",
+      "passive:atlas_path_16",
+      "passive:atlas_path_17",
+      "passive:atlas_path_18",
+      "passive:atlas_path_19",
+      "passive:atlas_path_2",
+      "passive:atlas_path_20",
+      "passive:atlas_path_21",
+      "passive:atlas_path_22",
+      "passive:atlas_path_23_",
+      "passive:atlas_path_24_",
+      "passive:atlas_path_25_",
+      "passive:atlas_path_26",
+      "passive:atlas_path_27",
+      "passive:atlas_path_28",
+      "passive:atlas_path_29",
+      "passive:atlas_path_3",
+      "passive:atlas_path_30",
+      "passive:atlas_path_37",
+      "passive:atlas_path_38",
+      "passive:atlas_path_4",
+      "passive:atlas_path_5",
+      "passive:atlas_path_6",
+      "passive:atlas_path_7",
+      "passive:atlas_path_8",
+      "passive:atlas_path_9"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:map_map_item_drop_chance_+%",
+   "chain": "passive_grants_stat>stat:map_map_item_drop_chance_+%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:map_map_item_drop_chance_+%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 9,
+     "samples": [
+      {
+       "id": "mod:MapRelicImplicitIncreasedMapsDroppedChanceExtraLarge",
+       "name": ""
+      },
+      {
+       "id": "mod:MapRelicImplicitIncreasedMapsDroppedChanceLarge",
+       "name": ""
+      },
+      {
+       "id": "mod:MapRelicImplicitIncreasedMapsDroppedChanceMedium",
+       "name": ""
+      },
+      {
+       "id": "mod:MapRelicImplicitIncreasedMapsDroppedChanceSmall",
+       "name": ""
+      },
+      {
+       "id": "mod:MapRelicIncreasedMapDropsChance1",
+       "name": "Cartographer's"
+      },
+      {
+       "id": "mod:ScarabMaps1",
+       "name": ""
+      },
+      {
+       "id": "mod:ScarabMaps2",
+       "name": ""
+      },
+      {
+       "id": "mod:ScarabMaps3",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 34,
+     "samples": [
+      {
+       "id": "passive:atlas_boss_adjacent_maps_1",
+       "name": "Map Drop Chance"
+      },
+      {
+       "id": "passive:atlas_boss_adjacent_maps_2",
+       "name": "Map Drop Chance"
+      },
+      {
+       "id": "passive:atlas_boss_adjacent_maps_8",
+       "name": "Map Drop Chance"
+      },
+      {
+       "id": "passive:atlas_path_1",
+       "name": "Map Drop Chance"
+      },
+      {
+       "id": "passive:atlas_path_10",
+       "name": "Map Drop Chance"
+      },
+      {
+       "id": "passive:atlas_path_12",
+       "name": "Map Drop Chance"
+      },
+      {
+       "id": "passive:atlas_path_13",
+       "name": "Map Drop Chance"
+      },
+      {
+       "id": "passive:atlas_path_14",
+       "name": "Map Drop Chance"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "index": 54,
+ "node_id": "stat:critical_strike_chance_+%_with_at_least_200_int",
+ "type": "Stat",
+ "resolve_error": null,
+ "carriers_error": null,
+ "carrier_counts": {
+  "modifier_grants_stat": 1,
+  "passive_grants_stat": 0,
+  "gem_grants_stat": 0,
+  "unique_modifier_association": 0
+ },
+ "neighbour_error": null
+}

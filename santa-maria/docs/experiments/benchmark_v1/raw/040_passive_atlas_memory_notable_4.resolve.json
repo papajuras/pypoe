@@ -1,0 +1,29 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "passive:atlas_memory_notable_4",
+   "type": "Passive",
+   "name": "Grasp the Past",
+   "passive_info": {
+    "ascendancy": null,
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": true
+    }
+   }
+  }
+ ],
+ "meta": {
+  "query": "passive:atlas_memory_notable_4",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

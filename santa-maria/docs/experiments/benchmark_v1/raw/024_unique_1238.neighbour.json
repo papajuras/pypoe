@@ -1,0 +1,18 @@
+{
+ "start": "unique:1238",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:1238",
+     "to": "item_class:Jewel",
+     "type": "unique_in_class",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

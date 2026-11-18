@@ -1,0 +1,173 @@
+{
+ "index": 31,
+ "node_id": "unique:1443",
+ "type": "UniqueItem",
+ "name": "Circle of Ambition",
+ "block": "random_draw",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:1443"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:1443"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:1443"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:chaos_damage_resistance_%_while_affected_by_herald_of_agony"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:herald_skills_mana_reservation_efficiency_+%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:1443|item_class:Ring|out",
+    "unique_modifier_association|unique:1443|mod:HeraldBonusAgonyChaosResist_|out",
+    "unique_modifier_association|unique:1443|mod:HeraldReservationEfficiencyUnique__1|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:HeraldBonusAgonyChaosResist_|modgroup:HeraldBonus|out",
+    "modifier_in_group|mod:HeraldReservationEfficiencyUnique__1|modgroup:ManaReservationReduced|out",
+    "modifier_grants_stat|mod:HeraldBonusAgonyChaosResist_|stat:chaos_damage_resistance_%_while_affected_by_herald_of_agony|out",
+    "modifier_grants_stat|mod:HeraldReservationEfficiencyUnique__1|stat:herald_skills_mana_reservation_efficiency_+%|out",
+    "modifier_has_tag|mod:HeraldBonusAgonyChaosResist_|tag:chaos|out",
+    "modifier_has_tag|mod:HeraldBonusAgonyChaosResist_|tag:resistance|out",
+    "unique_in_class|item_class:Ring|<54 in: unique:1003, unique:1006, unique:1009\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_has_tag|tag:chaos|<60 in: gem:AlchemistsMark, gem:Bane, gem:BaneAltX\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 2,
+     "members": [
+      "mod:HeraldBonusAgonyChaosResist_",
+      "mod:HeraldReservationEfficiencyUnique__1"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 6,
+     "members": [
+      "passive:AscendancyCustomElementalist21",
+      "passive:AscendancyCustomElementalist7",
+      "passive:AscendancyElementalist14",
+      "passive:heart_of_the_panther994",
+      "passive:herald_reservation2722",
+      "passive:herald_reservation2723"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:chaos_damage_resistance_%_while_affected_by_herald_of_agony",
+   "chain": "unique_modifier_association>mod:HeraldBonusAgonyChaosResist_ -> modifier_grants_stat>stat:chaos_damage_resistance_%_while_affected_by_herald_of_agony",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:herald_skills_mana_reservation_efficiency_+%",
+   "chain": "unique_modifier_association>mod:HeraldReservationEfficiencyUnique__1 -> modifier_grants_stat>stat:herald_skills_mana_reservation_efficiency_+%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:chaos_damage_resistance_%_while_affected_by_herald_of_agony": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "mod:HeraldBonusAgonyChaosResist_",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomElementalist21",
+       "name": "Future Nostalgia",
+       "asc": "Elementalist"
+      }
+     ]
+    }
+   }
+  },
+  "stat:herald_skills_mana_reservation_efficiency_+%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "mod:HeraldReservationEfficiencyUnique__1",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 5,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomElementalist7",
+       "name": "Coming Calamity",
+       "asc": "Elementalist"
+      },
+      {
+       "id": "passive:AscendancyElementalist14",
+       "name": "Bringer of Ruin",
+       "asc": "Elementalist"
+      },
+      {
+       "id": "passive:heart_of_the_panther994",
+       "name": "Presage"
+      },
+      {
+       "id": "passive:herald_reservation2722",
+       "name": "Reservation Efficiency of Heralds"
+      },
+      {
+       "id": "passive:herald_reservation2723",
+       "name": "Reservation Efficiency of Heralds"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

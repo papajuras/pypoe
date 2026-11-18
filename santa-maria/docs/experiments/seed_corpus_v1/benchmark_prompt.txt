@@ -1,0 +1,197 @@
+# Standardized PoE Discovery Benchmark v2
+
+Run the first standardized Path of Exile discovery benchmark using the frozen seed corpus:
+
+`santa-maria/docs/experiments/seed_corpus_v1/corpus.json`
+
+This is **Benchmark v1**. Keep the prompt, corpus, and benchmark conditions fixed for this benchmark. Future changes should create a new benchmark version rather than silently modifying v1.
+
+## 1. Governing skills
+
+Use:
+
+* `discovery-api-usage` — governing contract for accessing the KB and handling evidence, UNKNOWNs, truncation, and API gaps.
+* `scaling-discovery` — governing methodology for discovering and pursuing meaningful scaling architectures.
+* `build-output` — governing format for human-readable build outputs.
+
+Do not duplicate these skills or replace them with a different methodology.
+
+## 2. Frozen corpus
+
+Use exactly:
+
+`santa-maria/docs/experiments/seed_corpus_v1/corpus.json`
+
+Do not modify, reorder, filter, replace, or silently substitute entries.
+
+Treat every corpus entry as an independent discovery session and start from its exact specified node.
+
+If a starting point cannot be resolved through the public API, record that fact. Do not substitute another starting point.
+
+Record the corpus version/hash if available.
+
+## 3. Objective
+
+The objective is **build discovery**, using scaling discovery as the means.
+
+For each starting point, investigate whether it leads to a meaningful scaling relationship, interaction, or build architecture.
+
+When you find something that you consider **genuinely interesting and build-worthy, do not stop at describing the graph relationship: attempt to construct a concrete build around it.**
+
+Use the `scaling-discovery` skill to decide which branches deserve deeper exploration and when a discovery is strong enough to pursue.
+
+**Do not force builds.**
+
+A seed may legitimately end as `NONE`, `ISOLATED`, `ENABLER`, UNKNOWN, API-GAP, or another dead end. Do not add arbitrary components merely to manufacture a build.
+
+Likewise, do not spend most of the budget trying to rescue a weak build idea. If a promising-looking direction fails to form a coherent architecture, record the failure and move on when appropriate.
+
+## 4. Build construction and validation
+
+When a discovery is sufficiently interesting to warrant a concrete build:
+
+1. Construct a coherent build concept with concrete components.
+2. Use the Phase 7 validation/feasibility interfaces where applicable.
+3. Distinguish clearly between `CANDIDATE`, `VALIDATED`, `REJECTED`, `UNKNOWN-BLOCKED`, and `API-GAP-BLOCKED`.
+4. Record why rejected candidates failed.
+5. Do not claim validation beyond what the available validator actually establishes.
+
+A build does not need to be fully optimized or numerically complete, but it must contain enough concrete components to constitute a coherent build concept.
+
+The original corpus starting point does not have to remain the centerpiece of the final build. It may lead to another component or architecture, but the connection to the original starting point must remain explicit.
+
+## 5. Build output
+
+For **every concrete build you decide is worth presenting**, use the `build-output` skill.
+
+**Each build must be written to its own separate file.**
+
+Do not combine multiple builds into one build-output file.
+
+Use a descriptive convention such as:
+
+`build_<corpus-index>_<short-name>.md`
+
+The main benchmark report may summarize the builds and reference their files, but the complete human-readable build belongs in its individual file.
+
+Do not create build files for every isolated relationship or dead end.
+
+## 6. Research rules
+
+Follow `discovery-api-usage` strictly.
+
+Use only the permitted public research interfaces.
+
+Do not access SQLite, raw PoB/RePoE records, GraphDB internals, caches, private helpers, extraction internals, or filesystem data as an alternative KB interface.
+
+Python may only post-process information already returned by the public API.
+
+If the API cannot answer a necessary question, use the API GAP protocol rather than working around the API.
+
+Treat complete empty results as legitimate evidence of absence. Do not turn UNKNOWN or truncated results into assumptions.
+
+## 7. Fixed budget
+
+Use the same bounded research budget for every corpus entry.
+
+You choose how to spend the budget. Prioritize promising discovery branches and build-worthy ideas rather than exhaustive enumeration.
+
+Do not give individual seeds unlimited additional research because they appear promising.
+
+Record research/API usage sufficiently to make the run auditable.
+
+## 8. Independent sessions
+
+Do not carry discoveries from one corpus entry into another.
+
+After all individual sessions, perform a cross-entry analysis.
+
+Look for:
+
+* recurring scaling architectures;
+* multi-use and compound-scaling patterns;
+* discoveries that successfully became concrete builds;
+* promising discoveries that failed to become builds;
+* recurring dead ends;
+* UNKNOWNs and API gaps;
+* KB/modeling limitations;
+* research patterns that consumed substantial budget.
+
+Do not reduce the benchmark to a single overall score.
+
+## 9. Required per-entry record
+
+For every corpus entry record:
+
+* corpus index;
+* exact starting node;
+* primary discovery/verdict;
+* important evidence chains;
+* candidate builds attempted;
+* validation result of each attempted build;
+* rejection / UNKNOWN / API GAP reasons where applicable;
+* build output file(s), if any;
+* research/API usage.
+
+## 10. Final report
+
+Produce:
+
+### Per-seed results
+
+A compact table covering all corpus entries, including the starting point, primary verdict, build attempts/results, and build-output file where applicable.
+
+### Concrete builds
+
+Summarize the most meaningful builds and reference their individual build-output files.
+
+### Discovery summary
+
+Summarize the strongest scaling architectures, multi-use/compound discoveries, isolated axes, enablers, and legitimate dead ends.
+
+### Build-construction summary
+
+Report:
+
+* concrete build candidates attempted;
+* validated;
+* rejected;
+* UNKNOWN-blocked;
+* API-GAP-blocked;
+* important reasons for failure;
+* which discovery patterns most often produced coherent builds.
+
+### Aggregate measurements
+
+Report raw measurements including:
+
+* corpus size;
+* research/API usage;
+* discovery verdict counts;
+* build candidate count;
+* validated/rejected/blocked counts;
+* truncation events;
+* API GAPs.
+
+Do not collapse these into a single quality score.
+
+### Critical self-review
+
+State whether:
+
+* the frozen corpus and budget were respected;
+* sessions remained independent;
+* public API rules were followed;
+* discoveries were evidence-supported;
+* promising discoveries were appropriately pursued into builds;
+* any build was forced despite weak evidence;
+* validation claims were justified;
+* every presented build has its own `build-output` file;
+* important limitations came from the API, KB/modeling, or reasoning.
+
+Do not modify Benchmark v1 retroactively based on this run.
+
+Save results as next benchmark under santa-maria/docs/experiments.
+
+DO NOT examine results of previous runs.
+DO NOT override existing benchmark results. Increment counter in directory name and create a new one.

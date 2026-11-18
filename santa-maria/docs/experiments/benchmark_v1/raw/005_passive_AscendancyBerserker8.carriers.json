@@ -1,0 +1,22 @@
+{
+ "error": null,
+ "results": [],
+ "meta": {
+  "node_id": "passive:AscendancyBerserker8",
+  "edge_types": [
+   "modifier_grants_stat",
+   "passive_grants_stat",
+   "gem_grants_stat",
+   "unique_modifier_association"
+  ],
+  "counts": {
+   "modifier_grants_stat": 0,
+   "passive_grants_stat": 0,
+   "gem_grants_stat": 0,
+   "unique_modifier_association": 0
+  },
+  "total": 0,
+  "returned": 0,
+  "truncated": null
+ }
+}

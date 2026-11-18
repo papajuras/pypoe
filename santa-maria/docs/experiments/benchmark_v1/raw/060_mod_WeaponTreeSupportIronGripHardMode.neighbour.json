@@ -1,0 +1,48 @@
+{
+ "start": "mod:WeaponTreeSupportIronGripHardMode",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mod:WeaponTreeSupportIronGripHardMode",
+     "to": "modgroup:WeaponTreeSupportIronGrip",
+     "type": "modifier_in_group",
+     "direction": "out"
+    },
+    {
+     "from": "mod:WeaponTreeSupportIronGripHardMode",
+     "to": "stat:local_display_socketed_gems_supported_by_level_x_iron_grip",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:WeaponTreeSupportIronGripHardMode",
+     "to": "tag:default",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:WeaponTreeSupportIronGripHardMode",
+     "to": "tag:has_attack_mod",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:WeaponTreeSupportIronGripHardMode",
+     "to": "tag:one_hand_weapon",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:WeaponTreeSupportIronGripHardMode",
+     "to": "tag:shield",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

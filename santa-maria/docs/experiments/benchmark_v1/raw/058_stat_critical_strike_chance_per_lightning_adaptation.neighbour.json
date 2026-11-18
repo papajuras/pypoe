@@ -1,0 +1,11 @@
+{
+ "start": "stat:critical_strike_chance_+%_per_lightning_adaptation",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": []
+  }
+ ]
+}

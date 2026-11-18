@@ -1,0 +1,155 @@
+{
+ "index": 79,
+ "node_id": "item_class:Map",
+ "type": "ItemClass",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "item_class:Map"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "item_class:Map"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "item_class:Map"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|item_class:Map|<33 in: unique:1095, unique:1096, unique:1097\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "unique_modifier_association|unique:152|mod:DisplayMapFinalBossDropsHigherLevelGearUniqueMap10|out",
+    "unique_modifier_association|unique:208|mod:MapBossCurrencyDropsUniqueMap13_|out",
+    "unique_modifier_association|unique:699|mod:MapChestItemRarityUniqueMap1|out",
+    "unique_modifier_association|unique:208|mod:MapDangerousBossUniqueMap13|out",
+    "unique_modifier_association|unique:150|mod:MapDesecratedGroundUniqueMap9|out",
+    "unique_modifier_association|unique:1524|mod:MapDisplayBossDropsAdditionalMapsUniqueMap11|out",
+    "unique_modifier_association|unique:208|mod:MapDisplayIncreasedBossExperienceUniqueMap13|out",
+    "unique_modifier_association|unique:1524|mod:MapDisplayInhabitedByWildBeastsUniqueMap11|out",
+    "unique_modifier_association|unique:1524|mod:MapDropNoItemsUniqueMap11|out",
+    "unique_modifier_association|unique:150|mod:MapHasOxygenUniqueMap9|out",
+    "unique_modifier_association|unique:1524|mod:MapIncreasedExperienceGainUniqueMap11|out",
+    "unique_modifier_association|unique:333|mod:MapIncreasedExperienceGainUniqueMap5|out",
+    "unique_modifier_association|unique:1524|mod:MapInhabitedByEinharUniqueMap11|out",
+    "unique_modifier_association|unique:331|mod:MapItemDropRarityUniqueMap2|out",
+    "unique_modifier_association|unique:332|mod:MapItemDropRarityUniqueMap4|out",
+    "unique_modifier_association|unique:333|mod:MapItemDropRarityUniqueMap5|out",
+    "unique_modifier_association|unique:331|mod:MapMonsterAttacksApplyRandomCursesUniqueMap2|out",
+    "unique_modifier_association|unique:152|mod:MapMonsterDamageUniqueMap10|out",
+    "unique_modifier_association|unique:1524|mod:MapMonsterDamageUniqueMap11|out",
+    "unique_modifier_association|unique:251|mod:MapMonsterDamageUniqueMap15|out",
+    "unique_modifier_association|unique:333|mod:MapMonsterDamageUniqueMap5|out",
+    "unique_modifier_association|unique:150|mod:MapMonsterDamageUniqueMap9|out",
+    "unique_modifier_association|unique:334|mod:MapMonsterEnduranceUniqueMap7|out",
+    "unique_modifier_association|unique:251|mod:MapMonsterFastUniqueMap15|out",
+    "unique_modifier_association|unique:333|mod:MapMonsterFastUniqueMap5|out",
+    "unique_modifier_association|unique:152|mod:MapMonsterLifeUniqueMap10|out",
+    "unique_modifier_association|unique:1524|mod:MapMonsterLifeUniqueMap11|out",
+    "unique_modifier_association|unique:333|mod:MapMonsterLifeUniqueMap5|out",
+    "unique_modifier_association|unique:150|mod:MapMonsterLifeUniqueMap9|out",
+    "unique_modifier_association|unique:331|mod:MapMonsterLightningDamageUniqueMap2|out",
+    "unique_modifier_association|unique:331|mod:MapMonsterLightningDamageUniqueMap2_13|out",
+    "unique_modifier_association|unique:334|mod:MapMonsterLightningDamageUniqueMap7|out",
+    "unique_modifier_association|unique:334|mod:MapMonsterPowerUniqueMap7|out",
+    "unique_modifier_association|unique:251|mod:MapMonstersImmuneRandomStatusAilmentStunUniqueMap15|out",
+    "unique_modifier_association|unique:331|mod:MapMonstersImmuneRandomStatusAilmentStunUniqueMap2|out",
+    "unique_modifier_association|unique:331|mod:MapMonstersReflectCursesUniqueMap2|out",
+    "unique_modifier_association|unique:1524|mod:MapMoreMonsterPackVarietyUniqueMap11|out",
+    "unique_modifier_association|unique:251|mod:MapQuantityAndRarityUniqueMap15|out",
+    "unique_modifier_association|unique:251|mod:MapReducedCurseEffectUniqueMap15|out",
+    "unique_modifier_association|unique:251|mod:MapTotemsUniqueMap15|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "modifier_in_group|mod:MapReducedCurseEffectUniqueMap15|modgroup:CurseEffectMap|out",
+    "modifier_in_group|mod:DisplayMapFinalBossDropsHigherLevelGearUniqueMap10|modgroup:DisplayMapFinalBossDropsHigherLevelGear|out",
+    "modifier_in_group|mod:MapChestItemRarityUniqueMap1|modgroup:MapChestItemRarity|out",
+    "modifier_in_group|mod:MapBossCurrencyDropsUniqueMap13_|modgroup:MapDangerousBoss|out",
+    "modifier_in_group|mod:MapDisplayBossDropsAdditionalMapsUniqueMap11|modgroup:MapDisplayBossDropsAdditionalMaps|out",
+    "modifier_in_group|mod:MapDisplayInhabitedByWildBeastsUniqueMap11|modgroup:MapDisplayInhabitedByBeasts|out",
+    "modifier_in_group|mod:MapDropNoItemsUniqueMap11|modgroup:MapDropNoItems|out",
+    "modifier_in_group|mod:MapDesecratedGroundUniqueMap9|modgroup:MapGroundEffect|out",
+    "modifier_in_group|mod:MapHasOxygenUniqueMap9|modgroup:MapHasOxygen|out",
+    "modifier_in_group|mod:MapIncreasedExperienceGainUniqueMap11|modgroup:MapIncreasedExperienceGain|out",
+    "modifier_in_group|mod:MapItemDropRarityUniqueMap2|modgroup:MapItemDropRarity|out",
+    "modifier_in_group|mod:MapMonsterAttacksApplyRandomCursesUniqueMap2|modgroup:MapMonsterAttacksApplyRandomCurses|out",
+    "modifier_in_group|mod:MapMonsterDamageUniqueMap10|modgroup:MapMonsterDamage|out",
+    "modifier_in_group|mod:MapMonsterLightningDamageUniqueMap2|modgroup:MapMonsterElementalDamage|out",
+    "modifier_in_group|mod:MapMonsterEnduranceUniqueMap7|modgroup:MapMonsterEndurance|out",
+    "modifier_in_group|mod:MapMonsterFastUniqueMap15|modgroup:MapMonsterFast|out",
+    "modifier_in_group|mod:MapMonsterLifeUniqueMap10|modgroup:MapMonsterLife|out",
+    "modifier_in_group|mod:MapMonsterLightningDamageUniqueMap2_13|modgroup:MapMonsterLightningDamage|out",
+    "modifier_in_group|mod:MapMoreMonsterPackVarietyUniqueMap11|modgroup:MapMonsterPacks|out",
+    "modifier_in_group|mod:MapMonsterPowerUniqueMap7|modgroup:MapMonsterPower|out",
+    "modifier_in_group|mod:MapMonstersImmuneRandomStatusAilmentStunUniqueMap15|modgroup:MapMonstersImmuneRandomStatusAilmentStun|out",
+    "modifier_in_group|mod:MapMonstersReflectCursesUniqueMap2|modgroup:MapMonstersReflectCurses|out",
+    "modifier_in_group|mod:MapQuantityAndRarityUniqueMap15|modgroup:MapQuantityAndRarity|out",
+    "modifier_in_group|mod:MapInhabitedByEinharUniqueMap11|modgroup:MapSupporterEvilEinhar|out",
+    "modifier_in_group|mod:MapTotemsUniqueMap15|modgroup:MapTotems|out",
+    "modifier_grants_stat|mod:MapDisplayIncreasedBossExperienceUniqueMap13|stat:display_map_boss_gives_experience_+%|out",
+    "modifier_grants_stat|mod:DisplayMapFinalBossDropsHigherLevelGearUniqueMap10|stat:display_map_final_boss_drops_higher_level_gear|out",
+    "modifier_grants_stat|mod:MapHasOxygenUniqueMap9|stat:display_map_has_oxygen|out",
+    "modifier_grants_stat|mod:MapDisplayInhabitedByWildBeastsUniqueMap11|stat:display_map_inhabited_by_wild_beasts|out",
+    "modifier_grants_stat|mod:MapMoreMonsterPackVarietyUniqueMap11|stat:map_additional_number_of_packs_to_choose|out",
+    "modifier_grants_stat|mod:MapInhabitedByEinharUniqueMap11|stat:map_additional_red_beasts|out",
+    "modifier_grants_stat|mod:MapDesecratedGroundUniqueMap9|stat:map_base_ground_desecration_damage_to_deal_per_minute|out",
+    "modifier_grants_stat|mod:MapInhabitedByEinharUniqueMap11|stat:map_bestiary_league|out",
+    "modifier_grants_stat|mod:MapDangerousBossUniqueMap13|stat:map_boss_attack_and_cast_speed_+%|out",
+    "modifier_grants_stat|mod:MapDangerousBossUniqueMap13|stat:map_boss_damage_+%|out",
+    "modifier_grants_stat|mod:MapChestItemRarityUniqueMap1|stat:map_chest_item_rarity_+%|out",
+    "modifier_grants_stat|mod:MapBossCurrencyDropsUniqueMap13_|stat:map_death_and_taxes_boss_drops_additional_currency|out",
+    "modifier_grants_stat|mod:MapDisplayBossDropsAdditionalMapsUniqueMap11|stat:map_display_unique_boss_drops_X_maps|out",
+    "modifier_grants_stat|mod:MapIncreasedExperienceGainUniqueMap11|stat:map_experience_gain_+%|out",
+    "modifier_grants_stat|mod:MapDesecratedGroundUniqueMap9|stat:map_ground_effect_patches_per_100_tiles|out",
+    "modifier_grants_stat|mod:MapDesecratedGroundUniqueMap9|stat:map_ground_effect_radius|out",
+    "modifier_grants_stat|mod:MapDangerousBossUniqueMap13|stat:map_item_drop_quantity_+%|out",
+    "modifier_grants_stat|mod:MapItemDropRarityUniqueMap2|stat:map_item_drop_rarity_+%|out",
+    "modifier_grants_stat|mod:MapMonsterAttacksApplyRandomCursesUniqueMap2|stat:map_monster_melee_attacks_apply_random_curses|out",
+    "modifier_grants_stat|mod:MapDropNoItemsUniqueMap11|stat:map_monster_no_drops|out",
+    "modifier_grants_stat|mod:MapMonsterLightningDamageUniqueMap2|stat:map_monsters_%_physical_damage_to_add_as_lightning|out",
+    "modifier_grants_stat|mod:MapMonsterLightningDamageUniqueMap2|stat:map_monsters_%_physical_damage_to_convert_to_lightning|out",
+    "modifier_grants_stat|mod:MapMonsterFastUniqueMap15|stat:map_monsters_attack_speed_+%|out",
+    "modifier_grants_stat|mod:MapMonsterFastUniqueMap15|stat:map_monsters_cast_speed_+%|out",
+    "modifier_grants_stat|mod:MapReducedCurseEffectUniqueMap15|stat:map_monsters_curse_effect_+%|out",
+    "modifier_grants_stat|mod:MapMonsterDamageUniqueMap10|stat:map_monsters_damage_+%|out",
+    "modifier_grants_stat|mod:MapMonsterEnduranceUniqueMap7|stat:map_monsters_gain_x_endurance_charges_every_20_seconds|out",
+    "modifier_grants_stat|mod:MapMonsterPowerUniqueMap7|stat:map_monsters_gain_x_power_charges_every_20_seconds|out",
+    "modifier_grants_stat|mod:MapMonstersImmuneRandomStatusAilmentStunUniqueMap15|stat:map_monsters_immune_to_a_random_status_ailment_or_stun|out",
+    "modifier_grants_stat|mod:MapMonsterLifeUniqueMap10|stat:map_monsters_life_+%|out",
+    "modifier_grants_stat|mod:MapMonsterFastUniqueMap15|stat:map_monsters_movement_speed_+%|out",
+    "modifier_grants_stat|mod:MapMonstersReflectCursesUniqueMap2|stat:map_monsters_reflect_curses|out",
+    "modifier_grants_stat|mod:MapTotemsUniqueMap15|stat:map_packs_are_totems|out",
+    "modifier_has_tag|mod:MapDangerousBossUniqueMap13|tag:attack|out",
+    "modifier_has_tag|mod:MapHasOxygenUniqueMap9|tag:blue_herring|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

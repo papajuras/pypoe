@@ -1,0 +1,51 @@
+{
+ "index": 26,
+ "node_id": "unique:1281",
+ "targets": {
+  "mod:DivergentNearbyEnemiesAreScorchedUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_display_nearby_enemies_scorched"
+   ],
+   "tags": [
+    "tag:ailment",
+    "tag:divergentunique",
+    "tag:elemental",
+    "tag:fire"
+   ]
+  },
+  "mod:LocalIncreasedArmourAndEvasionUnique__18": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_armour_and_evasion_+%"
+   ],
+   "tags": [
+    "tag:armour",
+    "tag:defences",
+    "tag:evasion"
+   ]
+  },
+  "mod:ScorchEffectUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:scorch_effect_+%"
+   ],
+   "tags": [
+    "tag:ailment",
+    "tag:elemental",
+    "tag:fire"
+   ]
+  },
+  "mod:ScorchedEnemiesDegenExplodeUnique__1_": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:scorched_enemies_explode_on_death_for_8%_life_as_fire_degen_chance"
+   ],
+   "tags": [
+    "tag:ailment",
+    "tag:elemental",
+    "tag:fire"
+   ]
+  }
+ }
+}

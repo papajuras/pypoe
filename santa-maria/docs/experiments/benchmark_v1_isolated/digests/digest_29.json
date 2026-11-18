@@ -1,0 +1,489 @@
+{
+ "index": 29,
+ "node_id": "unique:679",
+ "type": "UniqueItem",
+ "name": "Dendrobate",
+ "block": "random_draw",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:679"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:679"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:679"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_display_socketed_gems_supported_by_X_lesser_poison"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_energy_shield"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:679|item_class:Body Armour|out",
+    "unique_modifier_association|unique:679|mod:DivergentSupportedByLesserPoisonUnique__1|out",
+    "unique_modifier_association|unique:679|mod:LocalIncreasedEnergyShieldUnique__13_|out",
+    "unique_modifier_association|unique:679|mod:LocalIncreasedEvasionAndEnergyShieldUnique__7|out",
+    "unique_modifier_association|unique:679|mod:PoisonDamageWithOver300DexterityUnique__1|out",
+    "unique_modifier_association|unique:679|mod:PoisonDurationWithOver150IntelligenceUnique__1|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:LocalIncreasedEnergyShieldUnique__13_|modgroup:BaseLocalDefences|out",
+    "modifier_in_group|mod:LocalIncreasedEvasionAndEnergyShieldUnique__7|modgroup:DefencesPercent|out",
+    "modifier_in_group|mod:PoisonDamageWithOver300DexterityUnique__1|modgroup:PoisonDamageWithOver300Dexterity|out",
+    "modifier_in_group|mod:PoisonDurationWithOver150IntelligenceUnique__1|modgroup:PoisonDurationWithOver150Intelligence|out",
+    "modifier_in_group|mod:DivergentSupportedByLesserPoisonUnique__1|modgroup:SupportedByLesserPoison|out",
+    "modifier_grants_stat|mod:DivergentSupportedByLesserPoisonUnique__1|stat:local_display_socketed_gems_supported_by_X_lesser_poison|out",
+    "modifier_grants_stat|mod:LocalIncreasedEnergyShieldUnique__13_|stat:local_energy_shield|out",
+    "modifier_grants_stat|mod:LocalIncreasedEvasionAndEnergyShieldUnique__7|stat:local_evasion_and_energy_shield_+%|out",
+    "modifier_grants_stat|mod:PoisonDamageWithOver300DexterityUnique__1|stat:poison_damage_+%_with_over_300_dexterity|out",
+    "modifier_grants_stat|mod:PoisonDurationWithOver150IntelligenceUnique__1|stat:poison_duration_+%_with_over_150_intelligence|out",
+    "modifier_has_tag|mod:PoisonDamageWithOver300DexterityUnique__1|tag:ailment|out",
+    "modifier_has_tag|mod:PoisonDamageWithOver300DexterityUnique__1|tag:chaos|out",
+    "modifier_has_tag|mod:PoisonDamageWithOver300DexterityUnique__1|tag:chaos_damage|out",
+    "modifier_has_tag|mod:PoisonDamageWithOver300DexterityUnique__1|tag:damage|out",
+    "modifier_has_tag|mod:LocalIncreasedEnergyShieldUnique__13_|tag:defences|out",
+    "modifier_has_tag|mod:DivergentSupportedByLesserPoisonUnique__1|tag:divergentunique|out",
+    "modifier_has_tag|mod:LocalIncreasedEnergyShieldUnique__13_|tag:energy_shield|out",
+    "modifier_has_tag|mod:LocalIncreasedEvasionAndEnergyShieldUnique__7|tag:evasion|out",
+    "modifier_has_tag|mod:DivergentSupportedByLesserPoisonUnique__1|tag:gem|out",
+    "modifier_has_tag|mod:PoisonDamageWithOver300DexterityUnique__1|tag:poison|out",
+    "modifier_has_tag|mod:DivergentSupportedByLesserPoisonUnique__1|tag:support|out",
+    "unique_in_class|item_class:Body Armour|<39 in: unique:1025, unique:104, unique:105\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_has_tag|tag:chaos|<48 in: gem:AlchemistsMark, gem:Bane, gem:BaneAltX\u2026>",
+    "gem_has_tag|tag:support|<12 in: gem:HandcastRapidFireSupport, gem:SupportAddedColdDamage, gem:SupportAddedColdDamageRoyale\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 274,
+     "members": [
+      "mod:ChanceToPoisonUber1",
+      "mod:ChanceToPoisonUber2",
+      "mod:DelveArmourEvasionAndEnergyShield1",
+      "mod:DivergentSupportedByLesserPoisonUnique__1",
+      "mod:EinharMasterEvasionAndEnergyShieldPercent1",
+      "mod:EinharMasterEvasionAndEnergyShieldPercent2",
+      "mod:EinharMasterEvasionAndEnergyShieldPercent3",
+      "mod:EinharMasterFlatEnergyShield1",
+      "mod:EinharMasterFlatEnergyShield2",
+      "mod:EinharMasterFlatEnergyShield3",
+      "mod:EvasionAndEnergyShieldPercentCrafted",
+      "mod:HellscapeUpsideEnergyShieldBodyArmour1",
+      "mod:HellscapeUpsideEnergyShieldBodyArmour2_",
+      "mod:HellscapeUpsideEnergyShieldBodyArmour3_",
+      "mod:HellscapeUpsideEnergyShieldBodyArmour4",
+      "mod:HellscapeUpsideEnergyShieldGlovesBoots1_",
+      "mod:HellscapeUpsideEnergyShieldGlovesBoots2__",
+      "mod:HellscapeUpsideEnergyShieldGlovesBoots3",
+      "mod:HellscapeUpsideEnergyShieldGlovesBoots4",
+      "mod:HellscapeUpsideEnergyShieldHelmetShield1_",
+      "mod:HellscapeUpsideEnergyShieldHelmetShield2",
+      "mod:HellscapeUpsideEnergyShieldHelmetShield3",
+      "mod:HellscapeUpsideEnergyShieldHelmetShield4",
+      "mod:HungryLoopSupportedByLesserPoison_",
+      "mod:IncreasedEnergyShieldUniqueBodyStrDexInt1",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife1",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife2",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife3",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeHigh1",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeHigh2",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeHigh3",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeMed1",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeMed2",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeMed3",
+      "mod:JunMasterLocalIncreasedEvasionAndEnergyShieldAndLife1",
+      "mod:JunMasterLocalIncreasedEvasionAndEnergyShieldAndLife2",
+      "mod:JunMasterLocalIncreasedEvasionAndEnergyShieldAndLife3",
+      "mod:JunMasterLocalIncreasedEvasionAndEnergyShieldAndLife4",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndEnergyShieldAndLife",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndEnergyShieldAndLifeHigh",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndEnergyShieldAndLifeMed",
+      "mod:LocalBaseArmourAndEnergyShield1",
+      "mod:LocalBaseArmourAndEnergyShield2_",
+      "mod:LocalBaseArmourAndEnergyShield3",
+      "mod:LocalBaseArmourAndEnergyShield4",
+      "mod:LocalBaseArmourAndEnergyShield5",
+      "mod:LocalBaseArmourAndEnergyShield6",
+      "mod:LocalBaseArmourAndEnergyShield7",
+      "mod:LocalBaseArmourAndEnergyShield8",
+      "mod:LocalBaseArmourAndEnergyShieldAndLife1_",
+      "mod:LocalBaseArmourAndEnergyShieldAndLife2_",
+      "mod:LocalBaseArmourAndEnergyShieldAndLife3",
+      "mod:LocalBaseArmourAndEnergyShieldAndLife4_",
+      "mod:LocalBaseEnergyShieldAndLife1",
+      "mod:LocalBaseEnergyShieldAndLife2",
+      "mod:LocalBaseEnergyShieldAndLife3_",
+      "mod:LocalBaseEnergyShieldAndLife4_",
+      "mod:LocalBaseEnergyShieldAndMana1",
+      "mod:LocalBaseEnergyShieldAndMana2",
+      "mod:LocalBaseEnergyShieldAndMana3",
+      "mod:LocalBaseEnergyShieldAndMana4",
+      "mod:LocalBaseEvasionRatingAndEnergyShield1",
+      "mod:LocalBaseEvasionRatingAndEnergyShield2",
+      "mod:LocalBaseEvasionRatingAndEnergyShield3",
+      "mod:LocalBaseEvasionRatingAndEnergyShield4",
+      "mod:LocalBaseEvasionRatingAndEnergyShield5_",
+      "mod:LocalBaseEvasionRatingAndEnergyShield6",
+      "mod:LocalBaseEvasionRatingAndEnergyShield7___",
+      "mod:LocalBaseEvasionRatingAndEnergyShield8___",
+      "mod:LocalBaseEvasionRatingAndEnergyShieldAndLife1",
+      "mod:LocalBaseEvasionRatingAndEnergyShieldAndLife2",
+      "mod:LocalBaseEvasionRatingAndEnergyShieldAndLife3",
+      "mod:LocalBaseEvasionRatingAndEnergyShieldAndLife4",
+      "mod:LocalIncreasedEnergySheildUnique__1",
+      "mod:LocalIncreasedEnergySheildUnique__2_",
+      "mod:LocalIncreasedEnergyShield1",
+      "mod:LocalIncreasedEnergyShield10",
+      "mod:LocalIncreasedEnergyShield11",
+      "mod:LocalIncreasedEnergyShield2",
+      "mod:LocalIncreasedEnergyShield3",
+      "mod:LocalIncreasedEnergyShield4",
+      "mod:LocalIncreasedEnergyShield5",
+      "mod:LocalIncreasedEnergyShield6",
+      "mod:LocalIncreasedEnergyShield7",
+      "mod:LocalIncreasedEnergyShield8",
+      "mod:LocalIncreasedEnergyShield9",
+      "mod:LocalIncreasedEnergyShieldEssenceBootsGloves4",
+      "mod:LocalIncreasedEnergyShieldEssenceBootsGloves5",
+      "mod:LocalIncreasedEnergyShieldEssenceBootsGloves6",
+      "mod:LocalIncreasedEnergyShieldEssenceBootsGloves7",
+      "mod:LocalIncreasedEnergyShieldEssenceChest5",
+      "mod:LocalIncreasedEnergyShieldEssenceChest6",
+      "mod:LocalIncreasedEnergyShieldEssenceChest7__",
+      "mod:LocalIncreasedEnergyShieldEssenceHelm5",
+      "mod:LocalIncreasedEnergyShieldEssenceHelm6",
+      "mod:LocalIncreasedEnergyShieldEssenceHelm7",
+      "mod:LocalIncreasedEnergyShieldEssenceShield5",
+      "mod:LocalIncreasedEnergyShieldEssenceShield6",
+      "mod:LocalIncreasedEnergyShieldEssenceShield7",
+      "mod:LocalIncreasedEnergyShieldPercentAndStunRecoveryUniqueHelmetInt2",
+      "mod:LocalIncreasedEnergyShieldPercentAndStunRecoveryUnique__1",
+      "mod:LocalIncreasedEnergyShieldPercentUniqueBootsInt1",
+      "mod:LocalIncreasedEnergyShieldPercentUniqueIntHelmet1",
+      "mod:LocalIncreasedEnergyShieldUniqueBodyInt5",
+      "mod:LocalIncreasedEnergyShieldUniqueBootsDex1",
+      "mod:LocalIncreasedEnergyShieldUniqueBootsDex8",
+      "mod:LocalIncreasedEnergyShieldUniqueBootsDexInt4",
+      "mod:LocalIncreasedEnergyShieldUniqueBootsInt2",
+      "mod:LocalIncreasedEnergyShieldUniqueGlovesDexInt3",
+      "mod:LocalIncreasedEnergyShieldUniqueGlovesInt1",
+      "mod:LocalIncreasedEnergyShieldUniqueGlovesInt2",
+      "mod:LocalIncreasedEnergyShieldUniqueGlovesStr4",
+      "mod:LocalIncreasedEnergyShieldUniqueHelmetDexInt5",
+      "mod:LocalIncreasedEnergyShieldUniqueHelmetInt5_",
+      "mod:LocalIncreasedEnergyShieldUniqueHelmetInt6",
+      "mod:LocalIncreasedEnergyShieldUniqueHelmetInt_1",
+      "mod:LocalIncreasedEnergyShieldUniqueHelmetStrInt5_",
+      "mod:LocalIncreasedEnergyShieldUniqueShieldInt5",
+      "mod:LocalIncreasedEnergyShieldUnique__10",
+      "mod:LocalIncreasedEnergyShieldUnique__11",
+      "mod:LocalIncreasedEnergyShieldUnique__11Royale__",
+      "mod:LocalIncreasedEnergyShieldUnique__12",
+      "mod:LocalIncreasedEnergyShieldUnique__13",
+      "mod:LocalIncreasedEnergyShieldUnique__13_",
+      "mod:LocalIncreasedEnergyShieldUnique__14",
+      "mod:LocalIncreasedEnergyShieldUnique__15",
+      "mod:LocalIncreasedEnergyShieldUnique__16",
+      "mod:LocalIncreasedEnergyShieldUnique__17__",
+      "mod:LocalIncreasedEnergyShieldUnique__18_",
+      "mod:LocalIncreasedEnergyShieldUnique__19",
+      "mod:LocalIncreasedEnergyShieldUnique__20",
+      "mod:LocalIncreasedEnergyShieldUnique__21",
+      "mod:LocalIncreasedEnergyShieldUnique__22",
+      "mod:LocalIncreasedEnergyShieldUnique__23",
+      "mod:LocalIncreasedEnergyShieldUnique__24_",
+      "mod:LocalIncreasedEnergyShieldUnique__25",
+      "mod:LocalIncreasedEnergyShieldUnique__26",
+      "mod:LocalIncreasedEnergyShieldUnique__27_",
+      "mod:LocalIncreasedEnergyShieldUnique__28",
+      "mod:LocalIncreasedEnergyShieldUnique__29",
+      "mod:LocalIncreasedEnergyShieldUnique__3",
+      "mod:LocalIncreasedEnergyShieldUnique__30__",
+      "mod:LocalIncreasedEnergyShieldUnique__31",
+      "mod:LocalIncreasedEnergyShieldUnique__32",
+      "mod:LocalIncreasedEnergyShieldUnique__33",
+      "mod:LocalIncreasedEnergyShieldUnique__34",
+      "mod:LocalIncreasedEnergyShieldUnique__35",
+      "mod:LocalIncreasedEnergyShieldUnique__5",
+      "mod:LocalIncreasedEnergyShieldUnique__6",
+      "mod:LocalIncreasedEnergyShieldUnique__7",
+      "mod:LocalIncreasedEnergyShieldUnique__8",
+      "mod:LocalIncreasedEnergyShieldUnique__9",
+      "mod:LocalIncreasedEnergyShieldUnique___4",
+      "mod:LocalIncreasedEnergyShiledUniqueBootsInt6",
+      "mod:LocalIncreasedEvasionAndEnergyShield1",
+      "mod:LocalIncreasedEvasionAndEnergyShield2",
+      "mod:LocalIncreasedEvasionAndEnergyShield3",
+      "mod:LocalIncreasedEvasionAndEnergyShield4",
+      "mod:LocalIncreasedEvasionAndEnergyShield5_",
+      "mod:LocalIncreasedEvasionAndEnergyShield6",
+      "mod:LocalIncreasedEvasionAndEnergyShield7",
+      "mod:LocalIncreasedEvasionAndEnergyShield8",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery1",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery2",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery3",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery4",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery5",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery6",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt1",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt2",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt2Royale",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt3",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt4",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyStrDexInt1d",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyStrDexInt1f",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueGlovesDexInt6",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueHelmetDexInt18",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueHelmetDexInt3",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueHelmetDexInt5",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueHelmetDexInt6",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__1",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__10",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__12",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__13",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__14",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__15",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__16",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__17",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__18",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__19___",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__2",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__20",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__21_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__22",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__23",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__24",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__25",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__26",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__27",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__28",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__29",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__3",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__30_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__31",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__32_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__33",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__34",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__35",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__36",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__37",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__38",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__39",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__4",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__5",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__6_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__7",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__8",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__9",
+      "mod:MutatedUniqueGlovesDexInt5LocalEnergyShield",
+      "mod:PoisonDamageSupportedUber1_",
+      "mod:PoisonDamageSupportedUber2",
+      "mod:PoisonDamageSupportedUber3",
+      "mod:PoisonDamageSupportedUberMaven",
+      "mod:PoisonDamageWeaponSupportedUber1",
+      "mod:PoisonDamageWeaponSupportedUber2",
+      "mod:PoisonDamageWithOver300DexterityUnique__1",
+      "mod:PoisonDurationSupportedUber1",
+      "mod:PoisonDurationSupportedUber2",
+      "mod:PoisonDurationSupportedUber3",
+      "mod:PoisonDurationSupportedUberMaven",
+      "mod:PoisonDurationWithOver150IntelligenceUnique__1",
+      "mod:StrMasterEvasionAndEnergyShieldPercentCrafted1",
+      "mod:StrMasterEvasionAndEnergyShieldPercentCrafted2",
+      "mod:StrMasterFlatEnergyShieldCrafted1",
+      "mod:StrMasterFlatEnergyShieldCrafted2",
+      "mod:StrMasterFlatEnergyShieldCraftedBodyArmour",
+      "mod:StrMasterFlatEnergyShieldCraftedGlovesBoots",
+      "mod:StrMasterFlatEnergyShieldCraftedHelmet",
+      "mod:SupportedByLesserPoisonUnique__1",
+      "mod:SynthesisImplicitFlatEnergyShield1",
+      "mod:SynthesisImplicitFlatEnergyShield2",
+      "mod:SynthesisImplicitFlatEnergyShield3",
+      "mod:SynthesisImplicitFlatEnergyShield4",
+      "mod:SynthesisImplicitFlatEnergyShield5_",
+      "mod:SynthesisImplicitFlatEnergyShieldMinor1",
+      "mod:SynthesisImplicitFlatEnergyShieldMinor2_",
+      "mod:SynthesisImplicitFlatEnergyShieldMinor3_",
+      "mod:SynthesisImplicitFlatEnergyShieldMinor4",
+      "mod:SynthesisImplicitFlatEnergyShieldMinor5_",
+      "mod:WeaponTreeLocalEnergyShield1",
+      "mod:WeaponTreeLocalEnergyShield2",
+      "mod:WeaponTreeLocalEnergyShield3",
+      "mod:WeaponTreeLocalEnergyShield4",
+      "mod:WeaponTreeLocalEnergyShield5",
+      "mod:WeaponTreeLocalEnergyShieldAndMana1",
+      "mod:WeaponTreeLocalEnergyShieldAndMana2",
+      "mod:WeaponTreeLocalEnergyShieldAndMana3",
+      "mod:WeaponTreeLocalEnergyShieldImplicitEffect1",
+      "mod:WeaponTreeLocalEnergyShieldImplicitEffect2",
+      "mod:WeaponTreeLocalEnergyShieldImplicitEffect3",
+      "mod:WeaponTreeLocalEnergyShieldIncreasedIntelligence1",
+      "mod:WeaponTreeLocalEnergyShieldIncreasedIntelligence2",
+      "mod:WeaponTreeLocalEnergyShieldIncreasedIntelligence3",
+      "mod:WeaponTreeLocalEnergyShieldReducedManaRegeneration1",
+      "mod:WeaponTreeLocalEnergyShieldReducedManaRegeneration2",
+      "mod:WeaponTreeLocalEnergyShieldReducedManaRegeneration3",
+      "mod:WeaponTreeLocalEnergyShieldReducedRechargeRate1",
+      "mod:WeaponTreeLocalEnergyShieldReducedRechargeRate2",
+      "mod:WeaponTreeLocalEnergyShieldReducedRechargeRate3",
+      "mod:WeaponTreeSupportChanceToPoison",
+      "mod:WeaponTreeSupportChanceToPoison2H",
+      "mod:WeaponTreeSupportChanceToPoison2HHardMode",
+      "mod:WeaponTreeSupportChanceToPoisonHardMode"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:local_display_socketed_gems_supported_by_X_lesser_poison",
+   "chain": "unique_modifier_association>mod:DivergentSupportedByLesserPoisonUnique__1 -> modifier_grants_stat>stat:local_display_socketed_gems_supported_by_X_lesser_poison",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:local_energy_shield",
+   "chain": "unique_modifier_association>mod:LocalIncreasedEnergyShieldUnique__13_ -> modifier_grants_stat>stat:local_energy_shield",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:local_evasion_and_energy_shield_+%",
+   "chain": "unique_modifier_association>mod:LocalIncreasedEvasionAndEnergyShieldUnique__7 -> modifier_grants_stat>stat:local_evasion_and_energy_shield_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:poison_damage_+%_with_over_300_dexterity",
+   "chain": "unique_modifier_association>mod:PoisonDamageWithOver300DexterityUnique__1 -> modifier_grants_stat>stat:poison_damage_+%_with_over_300_dexterity",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:poison_duration_+%_with_over_150_intelligence",
+   "chain": "unique_modifier_association>mod:PoisonDurationWithOver150IntelligenceUnique__1 -> modifier_grants_stat>stat:poison_duration_+%_with_over_150_intelligence",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:local_display_socketed_gems_supported_by_X_lesser_poison": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 19,
+     "samples": [
+      {
+       "id": "mod:ChanceToPoisonUber1",
+       "name": "of the Elder"
+      },
+      {
+       "id": "mod:ChanceToPoisonUber2",
+       "name": "of the Elder"
+      },
+      {
+       "id": "mod:DivergentSupportedByLesserPoisonUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:HungryLoopSupportedByLesserPoison_",
+       "name": ""
+      },
+      {
+       "id": "mod:PoisonDamageSupportedUber1_",
+       "name": "of the Elder"
+      },
+      {
+       "id": "mod:PoisonDamageSupportedUber2",
+       "name": "of the Elder"
+      },
+      {
+       "id": "mod:PoisonDamageSupportedUber3",
+       "name": "of the Elder"
+      },
+      {
+       "id": "mod:PoisonDamageSupportedUberMaven",
+       "name": "of the Elevated Elder"
+      }
+     ]
+    }
+   }
+  },
+  "stat:local_energy_shield": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 165,
+     "samples": [
+      {
+       "id": "mod:EinharMasterFlatEnergyShield1",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EinharMasterFlatEnergyShield2",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EinharMasterFlatEnergyShield3",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:HellscapeUpsideEnergyShieldBodyArmour1",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideEnergyShieldBodyArmour2_",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideEnergyShieldBodyArmour3_",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideEnergyShieldBodyArmour4",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideEnergyShieldGlovesBoots1_",
+       "name": ""
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

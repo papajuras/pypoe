@@ -1,0 +1,36 @@
+{
+ "start": "passive:AscendancyInquisitor14",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyInquisitor14",
+     "to": "stat:gain_fanaticism_for_4_seconds_on_reaching_maximum_fanatic_charges",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyInquisitor14",
+     "to": "stat:gain_x_fanatic_charges_every_second_if_have_attacked_in_past_second",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyInquisitor14",
+     "to": "stat:lose_all_fanatic_charges_on_reaching_maximum_fanatic_charges",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyInquisitor14",
+     "to": "stat:maximum_fanaticism_charges",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

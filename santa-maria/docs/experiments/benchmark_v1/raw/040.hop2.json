@@ -1,0 +1,20 @@
+{
+ "index": 40,
+ "node_id": "passive:atlas_memory_notable_4",
+ "targets": {
+  "stat:map_zana_influence_equipment_item_lucky_chance_%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:MapRelicZanaInfluenceLuckyStrandChance",
+    "passive:atlas_memory_notable_4"
+   ],
+   "total": 2
+  }
+ }
+}

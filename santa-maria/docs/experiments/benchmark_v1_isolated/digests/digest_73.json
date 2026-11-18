@@ -1,0 +1,76 @@
+{
+ "index": 73,
+ "node_id": "tag:blight_death_physical",
+ "type": "Tag",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "tag:blight_death_physical"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "tag:blight_death_physical"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "tag:blight_death_physical"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "modifier_has_tag|tag:blight_death_physical|<1 in: mod:BlightDaemonDeathModPhysicalBlood>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:BlightDaemonDeathModPhysicalBlood|modgroup:Nothing|out",
+    "modifier_grants_stat|mod:BlightDaemonDeathModPhysicalBlood|stat:spawn_monster_on_death_variation|out",
+    "modifier_has_tag|mod:BlightDaemonDeathModPhysicalBlood|tag:default|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "modifier_in_group|modgroup:Nothing|mod:AbberathsFuryEnrageStance|in",
+    "modifier_has_tag|tag:default|<59 in: mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_, mod:AbyssAccuracyRatingJewel1, mod:AbyssAccuracyRatingJewel2\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 9,
+     "members": [
+      "mod:BlightDaemonDeathModChaosGhosts",
+      "mod:BlightDaemonDeathModColdSnaps_",
+      "mod:BlightDaemonDeathModFireVolatiles_",
+      "mod:BlightDaemonDeathModLightningZaps",
+      "mod:BlightDaemonDeathModPhysicalBlood",
+      "mod:EssenceBloodwormSummonedOnDeath",
+      "mod:EssenceRockGolemSummonedOnDeath",
+      "mod:ObsidianGolemSummonedOnDeath",
+      "mod:WbSummonChaosSkeletonOnDeath"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

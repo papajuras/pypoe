@@ -1,0 +1,1212 @@
+{
+ "start": "tag:curse",
+ "depth_requested": 1,
+ "truncated": true,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "tag:curse",
+     "to": "gem:AlchemistsMark",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:AssassinsMark",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:AssassinsMarkRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:Conductivity",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:Despair",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:DespairRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:ElementalWeakness",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:ElementalWeaknessRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:Enfeeble",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:Flammability",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:Frostbite",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:NewPunishment",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:PoachersMark",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:PoachersMarkRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:Punishment",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:SnipersMark",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:TemporalChains",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:Vulnerability",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:VulnerabilityRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:WarlordsMark",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "gem:WarlordsMarkRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AbyssCurseEffectJewel1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AbyssCurseEffectJewel2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AbyssSelfCurseEffectOnConsecratedGroundJewel1__",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseCorrupted",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemies6HunterItemsUnique__1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemiesDelve",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemiesInfluence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemiesInfluenceMavenV2___",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemiesInfluenceMaven_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemiesMapBossGeofri_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemiesUnique__1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemiesUnique__2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemiesUnique__3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnEnemies_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AdditionalCurseOnSelfUniqueCorruptedJewel13",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionJewelSmallPassivesGrantCurseAreaOfEffect",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionJewelSmallPassivesGrantCurseAreaOfEffect2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionJewelSmallPassivesGrantCurseAreaOfEffect3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableBlizzardCaller_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableDarkDiscourse",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableDoedresApathy____",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableDoedresGluttony",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableEvilEye",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableExploitWeakness_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableHexBreaker",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableHoundsMark",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableLordofDrought_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableMasterOfTheMaelstrom_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableMasterofFear",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableMiseryEverlasting",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableNumbingElixir",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableTempttheStorm",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableVictimMaker",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableWardbreaker_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableWhispersofDeath",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AfflictionNotableWishforDeath_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:AtziriReflectCurses",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:BetrayalUpgradeMonsterHexproof",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:BreachBodyVulnerabilityOnHit1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:ChargeBonusAdditionalCursePowerCharges",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:ConductivityReservationCostUnique__1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CorruptedSideAreaHexproof_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:Curse25PercentHinderEnemyUnique__1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:Curse50PercentCurseEffectUnique__1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:Curse75PercentEnemyDamageTakenUnique__1__",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseAreaOfEffectDelve",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseAreaOfEffectUniqueQuiver5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseAreaOfEffectUniqueStaff5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseAreaOfEffectUnique__1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseAreaOfEffectUnique__2_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseAreaOfEffectUnique__3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseAreaOfEffectUnique__4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseAurasAffectYouUnique__1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseCastSpeedJewel_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseCastSpeedUnique__1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseCastSpeedUnique__2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseDurationDelve",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicit1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicit2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicit3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicit4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicit5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicit6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitPinnaclePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitPinnaclePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitPinnaclePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitPinnaclePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitPinnaclePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitPinnaclePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitUniquePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitUniquePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitUniquePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitUniquePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitUniquePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectConductivityEldritchImplicitUniquePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitPinnaclePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitPinnaclePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitPinnaclePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitPinnaclePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitPinnaclePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitPinnaclePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitUniquePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitUniquePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitUniquePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitUniquePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitUniquePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectDespairEldritchImplicitUniquePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicit1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicit2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicit3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicit4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicit5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicit6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitPinnaclePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitPinnaclePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitPinnaclePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitPinnaclePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitPinnaclePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitPinnaclePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitUniquePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitUniquePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitUniquePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitUniquePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitUniquePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectElementalWeaknessEldritchImplicitUniquePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitPinnaclePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitPinnaclePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitPinnaclePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitPinnaclePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitPinnaclePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitPinnaclePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitUniquePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitUniquePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitUniquePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitUniquePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitUniquePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectEnfeebleEldritchImplicitUniquePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicit1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicit2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicit3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicit4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicit5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicit6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitPinnaclePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitPinnaclePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitPinnaclePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitPinnaclePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitPinnaclePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitPinnaclePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitUniquePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitUniquePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitUniquePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitUniquePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitUniquePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFlammabilityEldritchImplicitUniquePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicit1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicit2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicit3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicit4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicit5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicit6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitPinnaclePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitPinnaclePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitPinnaclePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitPinnaclePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitPinnaclePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitPinnaclePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitUniquePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitUniquePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitUniquePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitUniquePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitUniquePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectFrostbiteEldritchImplicitUniquePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectOnYouJewel",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitPinnaclePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitPinnaclePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitPinnaclePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitPinnaclePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitPinnaclePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitPinnaclePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitUniquePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitUniquePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitUniquePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitUniquePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitUniquePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectPunishmentEldritchImplicitUniquePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicit1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicit2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicit3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicit4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicit5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicit6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicitPinnaclePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicitPinnaclePresence2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicitPinnaclePresence3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicitPinnaclePresence4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicitPinnaclePresence5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicitPinnaclePresence6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:curse",
+     "to": "mod:CurseEffectTemporalChainsEldritchImplicitUniquePresence1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

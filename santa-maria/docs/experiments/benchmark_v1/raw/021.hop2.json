@@ -1,0 +1,48 @@
+{
+ "index": 21,
+ "node_id": "passive:AscendancyTrickster2",
+ "targets": {
+  "stat:base_charge_duration_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmChargeDuration1",
+    "mod:AnimalCharmChargeDuration2",
+    "passive:AscendancyTrickster2"
+   ],
+   "total": 3
+  },
+  "stat:max_frenzy_charges": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 33,
+    "passive_grants_stat": 9,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ChargeBonusMaximumFrenzyCharges",
+    "mod:DivergentMaximumFrenzyChargesUniqueBootsStrDex2",
+    "mod:EssenceHorrorChargesMaxAndDuration_",
+    "mod:HellscapeDownsideMaximumFrenzyCharges1",
+    "mod:MaxFrenzyChargesCorrupted",
+    "mod:MaximumFrenzyChargeInfluence1",
+    "mod:MaximumFrenzyChargeInfluenceMaven",
+    "mod:MaximumFrenzyChargeUber1",
+    "mod:MaximumFrenzyChargesUniqueBodyStr3",
+    "mod:MaximumFrenzyChargesUniqueBootsStrDex2_",
+    "mod:MaximumFrenzyChargesUniqueDescentOneHandSword1",
+    "mod:MaximumFrenzyChargesUnique__1",
+    "mod:MonsterAdditionalFrenzyCharges",
+    "mod:MonsterAdditionalFrenzyCharges2",
+    "mod:NecropolisCraftingMaximumFrenzyCharges"
+   ],
+   "total": 42
+  }
+ }
+}

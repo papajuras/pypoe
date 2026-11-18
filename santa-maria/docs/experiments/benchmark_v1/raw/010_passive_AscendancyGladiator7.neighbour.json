@@ -1,0 +1,18 @@
+{
+ "start": "passive:AscendancyGladiator7",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyGladiator7",
+     "to": "stat:bleeding_enemies_explode_for_%_life_as_physical_damage",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

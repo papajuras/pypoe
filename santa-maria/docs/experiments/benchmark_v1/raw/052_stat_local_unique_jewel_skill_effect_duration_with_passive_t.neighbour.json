@@ -1,0 +1,18 @@
+{
+ "start": "stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start",
+     "to": "mod:StarterPassiveJewelUnique__12__",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,385 @@
+{
+ "index": 42,
+ "node_id": "passive:totem_ranged_damage2668",
+ "type": "Passive",
+ "name": "Totem Damage and Placement Speed",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:totem_ranged_damage2668"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:totem_ranged_damage2668"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:totem_ranged_damage2668"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:summon_totem_cast_speed_+%"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:totem_damage_+%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:totem_ranged_damage2668|stat:summon_totem_cast_speed_+%|out",
+    "passive_grants_stat|passive:totem_ranged_damage2668|stat:totem_damage_+%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 15,
+     "members": [
+      "gem:AncestorTotemSlash",
+      "gem:AncestralProtector",
+      "gem:AncestralProtectorRoyale",
+      "gem:AncestralWarchief",
+      "gem:AncestralWarchiefRoyale",
+      "gem:SearingBond",
+      "gem:SearingBondAltX",
+      "gem:SearingBondRoyale",
+      "gem:SiegeBallista",
+      "gem:SiegeBallistaAltX",
+      "gem:SiegeBallistaAltY",
+      "gem:SiegeBallistaRoyale",
+      "gem:SupportEarthbreaker",
+      "gem:SupportFocusedBallista",
+      "gem:VaalAncestralWarchief"
+     ]
+    },
+    {
+     "carrier_type": "Modifier",
+     "count": 66,
+     "members": [
+      "mod:HellscapeUpsideTotemPlacementSpeed2",
+      "mod:HellscapeUpsideTotemPlacementSpeed3",
+      "mod:HellscapeUpsideTotemPlacementSpeed4",
+      "mod:JewelImplicitTotemPlacementSpeed",
+      "mod:JunMaster2SummonTotemCastSpeed1",
+      "mod:JunMaster2SummonTotemCastSpeed2",
+      "mod:JunMaster2SummonTotemCastSpeed3",
+      "mod:JunMasterSummonTotemCastSpeed1",
+      "mod:JunMasterSummonTotemCastSpeed2_",
+      "mod:JunMasterSummonTotemCastSpeed3",
+      "mod:JunMasterVeiledSummonTotemCastSpeed_",
+      "mod:ReducedTotemDamageUniqueJewel26",
+      "mod:SanctumSpecialSummonTotemCastSpeed",
+      "mod:SummonTotemCastSpeed",
+      "mod:SummonTotemCastSpeedEldritchImplicit1",
+      "mod:SummonTotemCastSpeedEldritchImplicit2",
+      "mod:SummonTotemCastSpeedEldritchImplicit3",
+      "mod:SummonTotemCastSpeedEldritchImplicit4",
+      "mod:SummonTotemCastSpeedEldritchImplicit5",
+      "mod:SummonTotemCastSpeedEldritchImplicit6",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence1",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence2",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence3",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence4",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence5",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence6",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence1",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence2",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence3",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence4",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence5",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence6",
+      "mod:SummonTotemCastSpeedEssence1",
+      "mod:SummonTotemCastSpeedEssence2",
+      "mod:SummonTotemCastSpeedEssence3",
+      "mod:SummonTotemCastSpeedEssence4",
+      "mod:SummonTotemCastSpeedImplicit1",
+      "mod:SummonTotemCastSpeedUnique__1",
+      "mod:SummonTotemCastSpeedUnique__2",
+      "mod:SummonTotemCastSpeedUnique__3",
+      "mod:SynthesisImplicitTotemPlacementSpeed1",
+      "mod:SynthesisImplicitTotemPlacementSpeed2",
+      "mod:SynthesisImplicitTotemPlacementSpeedJewel1___",
+      "mod:SynthesisImplicitTotemPlacementSpeedJewel2_",
+      "mod:TotemDamageAttackUber1",
+      "mod:TotemDamageAttackUber2_",
+      "mod:TotemDamageAttackUber3",
+      "mod:TotemDamageAttackUberMaven",
+      "mod:TotemDamageJewel",
+      "mod:TotemDamageSpellUber1",
+      "mod:TotemDamageSpellUber2",
+      "mod:TotemDamageSpellUber3",
+      "mod:TotemDamageSpellUberMaven_",
+      "mod:TotemDamageUnique__1_",
+      "mod:TotemSpeedAttackUber1",
+      "mod:TotemSpeedAttackUber2",
+      "mod:TotemSpeedAttackUber3",
+      "mod:TotemSpeedAttackUberMaven",
+      "mod:TotemSpeedSpellUber1_",
+      "mod:TotemSpeedSpellUber2",
+      "mod:TotemSpeedSpellUber3",
+      "mod:TotemSpeedSpellUberMaven",
+      "mod:WeaponTreeTotemChanceToSpawnTwo1",
+      "mod:WeaponTreeTotemChanceToSpawnTwo2",
+      "mod:WeaponTreeTotemChanceToSpawnTwo2h1",
+      "mod:WeaponTreeTotemChanceToSpawnTwo2h2"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 15,
+     "members": [
+      "passive:AlternateAscendancyAbyssalSmall1",
+      "passive:AscendancyHeirophant2",
+      "passive:AscendancyHeirophant3",
+      "passive:AscendancyHeirophant9",
+      "passive:totem_attack_and_cast_speed1504",
+      "passive:totem_damage1491_",
+      "passive:totem_damage1497",
+      "passive:totem_damage_and_life_notable1502",
+      "passive:totem_damage_notable1498",
+      "passive:totem_duration22",
+      "passive:totem_placement_speed_notable1509",
+      "passive:totem_ranged_damage2667",
+      "passive:totem_ranged_damage2668",
+      "passive:totem_ranged_damage2669",
+      "passive:totem_ranged_notable2670"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:summon_totem_cast_speed_+%",
+   "chain": "passive_grants_stat>stat:summon_totem_cast_speed_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:totem_damage_+%",
+   "chain": "passive_grants_stat>stat:totem_damage_+%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:summon_totem_cast_speed_+%": {
+   "carriers": {
+    "gem_grants_stat": {
+     "count": 15,
+     "samples": [
+      {
+       "id": "gem:AncestorTotemSlash",
+       "name": null
+      },
+      {
+       "id": "gem:AncestralProtector",
+       "name": null
+      },
+      {
+       "id": "gem:AncestralProtectorRoyale",
+       "name": null
+      },
+      {
+       "id": "gem:AncestralWarchief",
+       "name": null
+      },
+      {
+       "id": "gem:AncestralWarchiefRoyale",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBond",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBondAltX",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBondRoyale",
+       "name": null
+      }
+     ]
+    },
+    "modifier_grants_stat": {
+     "count": 55,
+     "samples": [
+      {
+       "id": "mod:HellscapeUpsideTotemPlacementSpeed2",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideTotemPlacementSpeed3",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideTotemPlacementSpeed4",
+       "name": ""
+      },
+      {
+       "id": "mod:JewelImplicitTotemPlacementSpeed",
+       "name": ""
+      },
+      {
+       "id": "mod:JunMaster2SummonTotemCastSpeed1",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:JunMaster2SummonTotemCastSpeed2",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:JunMaster2SummonTotemCastSpeed3",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:JunMasterSummonTotemCastSpeed1",
+       "name": "of Craft"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 11,
+     "samples": [
+      {
+       "id": "passive:AscendancyHeirophant2",
+       "name": "Mana Regeneration, Totem Placement Speed",
+       "asc": "Hierophant"
+      },
+      {
+       "id": "passive:AscendancyHeirophant3",
+       "name": "Mana Regeneration, Totem Placement Speed",
+       "asc": "Hierophant"
+      },
+      {
+       "id": "passive:AscendancyHeirophant9",
+       "name": "Pursuit of Faith",
+       "asc": "Hierophant"
+      },
+      {
+       "id": "passive:totem_attack_and_cast_speed1504",
+       "name": "Totem Placement Speed and Duration"
+      },
+      {
+       "id": "passive:totem_damage1491_",
+       "name": "Totem Damage and Placement Speed"
+      },
+      {
+       "id": "passive:totem_damage1497",
+       "name": "Totem Damage and Placement Speed"
+      },
+      {
+       "id": "passive:totem_damage_notable1498",
+       "name": "Shamanistic Fury"
+      },
+      {
+       "id": "passive:totem_placement_speed_notable1509",
+       "name": "Totemic Zeal"
+      }
+     ]
+    }
+   }
+  },
+  "stat:totem_damage_+%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 11,
+     "samples": [
+      {
+       "id": "mod:ReducedTotemDamageUniqueJewel26",
+       "name": ""
+      },
+      {
+       "id": "mod:TotemDamageAttackUber1",
+       "name": "of Shaping"
+      },
+      {
+       "id": "mod:TotemDamageAttackUber2_",
+       "name": "of Shaping"
+      },
+      {
+       "id": "mod:TotemDamageAttackUber3",
+       "name": "of Shaping"
+      },
+      {
+       "id": "mod:TotemDamageAttackUberMaven",
+       "name": "of Elevated Shaping"
+      },
+      {
+       "id": "mod:TotemDamageJewel",
+       "name": "Shaman's"
+      },
+      {
+       "id": "mod:TotemDamageSpellUber1",
+       "name": "of the Elder"
+      },
+      {
+       "id": "mod:TotemDamageSpellUber2",
+       "name": "of the Elder"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 10,
+     "samples": [
+      {
+       "id": "passive:AlternateAscendancyAbyssalSmall1",
+       "name": "Totem Damage and Life "
+      },
+      {
+       "id": "passive:totem_damage1491_",
+       "name": "Totem Damage and Placement Speed"
+      },
+      {
+       "id": "passive:totem_damage1497",
+       "name": "Totem Damage and Placement Speed"
+      },
+      {
+       "id": "passive:totem_damage_and_life_notable1502",
+       "name": "Primal Manifestation"
+      },
+      {
+       "id": "passive:totem_damage_notable1498",
+       "name": "Shamanistic Fury"
+      },
+      {
+       "id": "passive:totem_duration22",
+       "name": "Totem Life and Damage"
+      },
+      {
+       "id": "passive:totem_ranged_damage2667",
+       "name": "Totem Damage and Placement Speed"
+      },
+      {
+       "id": "passive:totem_ranged_damage2668",
+       "name": "Totem Damage and Placement Speed"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start",
+  "multi_source:summon_totem_cast_speed_+%"
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "gem:SplittingSteel",
+   "type": "Gem",
+   "name": null
+  },
+  {
+   "id": "gem:SplittingSteelAltX",
+   "type": "Gem",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "gem:SplittingSteel",
+  "type": null,
+  "total": 2,
+  "returned": 2,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

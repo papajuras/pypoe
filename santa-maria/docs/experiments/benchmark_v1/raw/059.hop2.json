@@ -1,0 +1,141 @@
+{
+ "index": 59,
+ "node_id": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+ "targets": {
+  "stat:map_item_drop_quantity_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 1938,
+    "passive_grants_stat": 15,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AfflictionFragmentImplicit",
+    "mod:BlightFragmentMushrune11",
+    "mod:CleansingAltarUpsidePlayerIncreasedQuantity",
+    "mod:CorruptedSideAreaAreaOfEffect",
+    "mod:CorruptedSideAreaCannotBeStunned",
+    "mod:CorruptedSideAreaColdDamage",
+    "mod:CorruptedSideAreaColdResistance",
+    "mod:CorruptedSideAreaCriticalStrikesAndDamage",
+    "mod:CorruptedSideAreaDamage",
+    "mod:CorruptedSideAreaDangerousBoss",
+    "mod:CorruptedSideAreaElementalEquilibrium",
+    "mod:CorruptedSideAreaElementalReflect",
+    "mod:CorruptedSideAreaEnduranceCharges",
+    "mod:CorruptedSideAreaFast",
+    "mod:CorruptedSideAreaFireDamage"
+   ],
+   "total": 1953
+  },
+  "stat:map_item_drop_rarity_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 1577,
+    "passive_grants_stat": 7,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:BlightFragmentMushrune10New",
+    "mod:BlightFragmentMushrune6New",
+    "mod:BlightFragmentMushrune8New",
+    "mod:CleansingAltarUpsidePlayerIncreasedRarity",
+    "mod:CrucibleMapMonsterAdditionalPhysicalDamageReduction",
+    "mod:CrucibleMapMonsterAdditionalPhysicalDamageReductionUber",
+    "mod:CrucibleMapMonsterAdditionalProjectiles",
+    "mod:CrucibleMapMonsterAdditionalProjectilesUber",
+    "mod:CrucibleMapMonsterAlwaysCrit",
+    "mod:CrucibleMapMonsterAlwaysCritUber",
+    "mod:CrucibleMapMonsterAlwaysHits",
+    "mod:CrucibleMapMonsterAreaOfEffect",
+    "mod:CrucibleMapMonsterAreaOfEffectUber",
+    "mod:CrucibleMapMonsterAttackAndSpellBlock",
+    "mod:CrucibleMapMonsterAttackAndSpellBlockUber"
+   ],
+   "total": 1584
+  },
+  "stat:map_monsters_critical_strike_chance_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 48,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:CorruptedSideAreaCriticalStrikesAndDamage",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage1_",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage2__",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage3",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage4",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage5",
+    "mod:IncursionMonsterCrits1",
+    "mod:IncursionMonsterCrits2",
+    "mod:IncursionMonsterCrits3",
+    "mod:MapCorruptedSideAreaCriticalStrikesAndDamage_",
+    "mod:MapDeepwaterChartMonsterCriticalStrikesAndDamageHigh",
+    "mod:MapDeepwaterChartMonsterCriticalStrikesAndDamageMed",
+    "mod:MapDeepwaterChartMonsterCriticalStrikesAndDamageVeryHigh",
+    "mod:MapDeepwaterCursedDucatImplicitMod5",
+    "mod:MapMonsterCriticalStrikeChance_Test"
+   ],
+   "total": 48
+  },
+  "stat:map_monsters_critical_strike_multiplier_+": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 50,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:CorruptedSideAreaCriticalStrikesAndDamage",
+    "mod:CrucibleMapMonsterAlwaysCrit",
+    "mod:CrucibleMapMonsterAlwaysCritUber",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage1_",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage2__",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage3",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage4",
+    "mod:HeistContractMonsterCriticalStrikesAndDamage5",
+    "mod:IncursionMonsterCrits1",
+    "mod:IncursionMonsterCrits2",
+    "mod:IncursionMonsterCrits3",
+    "mod:MapCorruptedSideAreaCriticalStrikesAndDamage_",
+    "mod:MapDeepwaterChartMonsterCriticalStrikesAndDamageHigh",
+    "mod:MapDeepwaterChartMonsterCriticalStrikesAndDamageMed",
+    "mod:MapDeepwaterChartMonsterCriticalStrikesAndDamageVeryHigh"
+   ],
+   "total": 50
+  },
+  "stat:map_pack_size_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 963,
+    "passive_grants_stat": 3,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AtlasGildedScarabInsteadGrantsPackSize",
+    "mod:AtlasPolishedScarabInsteadGrantsPackSize",
+    "mod:AtlasRustedScarabInsteadGrantsPackSize",
+    "mod:AtlasWingedScarabInsteadGrantsPackSize",
+    "mod:BlightFragmentMushrune10",
+    "mod:BlightFragmentMushrune10New",
+    "mod:BlightFragmentMushrune11",
+    "mod:BlightFragmentMushrune12",
+    "mod:BlightFragmentMushrune1_",
+    "mod:BlightFragmentMushrune2",
+    "mod:BlightFragmentMushrune3",
+    "mod:BlightFragmentMushrune4",
+    "mod:BlightFragmentMushrune5",
+    "mod:BlightFragmentMushrune6",
+    "mod:BlightFragmentMushrune6New"
+   ],
+   "total": 966
+  }
+ }
+}

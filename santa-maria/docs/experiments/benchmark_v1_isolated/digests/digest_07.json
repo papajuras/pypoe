@@ -1,0 +1,109 @@
+{
+ "index": 7,
+ "node_id": "passive:AscendancyChieftan11",
+ "type": "Passive",
+ "name": "Tukohama, War's Herald",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyChieftan11"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyChieftan11"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyChieftan11"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:chieftain_body_armour_supported_by_level_x_ancestral_call"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:chieftain_body_armour_supported_by_level_x_fist_of_war"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyChieftan11|stat:chieftain_body_armour_supported_by_level_x_ancestral_call|out",
+    "passive_grants_stat|passive:AscendancyChieftan11|stat:chieftain_body_armour_supported_by_level_x_fist_of_war|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyChieftan11"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:chieftain_body_armour_supported_by_level_x_ancestral_call",
+   "chain": "passive_grants_stat>stat:chieftain_body_armour_supported_by_level_x_ancestral_call",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:chieftain_body_armour_supported_by_level_x_fist_of_war",
+   "chain": "passive_grants_stat>stat:chieftain_body_armour_supported_by_level_x_fist_of_war",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:chieftain_body_armour_supported_by_level_x_ancestral_call": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyChieftan11",
+       "name": "Tukohama, War's Herald",
+       "asc": "Chieftain"
+      }
+     ]
+    }
+   }
+  },
+  "stat:chieftain_body_armour_supported_by_level_x_fist_of_war": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyChieftan11",
+       "name": "Tukohama, War's Herald",
+       "asc": "Chieftain"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

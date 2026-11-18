@@ -1,0 +1,127 @@
+{
+ "index": 66,
+ "node_id": "mechanic:suppression",
+ "targets": {
+  "t": {
+   "kind": "tag"
+  },
+  "stat:base_spell_damage_%_suppressed": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 17,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:MaximumAttackDodgeChanceInfluence1_",
+    "mod:MaximumSpellDodgeChanceInfluence1",
+    "mod:MonsterArchnemesisTrickster_",
+    "mod:MutatedUniqueBodyDex1SpellDamageSuppressed",
+    "mod:MutatedUniqueJewel177SpellDamageSuppressed",
+    "mod:SpellDamageSuppressedInfluence1",
+    "mod:SpellDamageSuppressedUnique__1",
+    "mod:SpellDamageSuppressedUnique__2",
+    "mod:SynthesisImplicitMaximumAttackDodge1_",
+    "mod:SynthesisImplicitMaximumSpellDodge1",
+    "mod:SynthesisImplicitSpellDamageSuppressed1_",
+    "mod:TangledAltarDownsideBossSuppressSpells",
+    "mod:TangledAltarDownsideMonsterSupressSpells",
+    "mod:WeaponTreeSpellDamageSuppressedSpellSuppression1",
+    "mod:WeaponTreeSpellDamageSuppressedSpellSuppression2"
+   ],
+   "total": 19
+  },
+  "stat:base_spell_suppression_chance_%": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 81,
+    "passive_grants_stat": 29,
+    "gem_grants_stat": 1,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:DefianceBanner",
+    "mod:AnimalCharmSpellSuppressionChance1",
+    "mod:AnimalCharmSpellSuppressionChance2",
+    "mod:ChanceToDodgeImplicitShield1",
+    "mod:ChanceToDodgeImplicitShield2",
+    "mod:ChanceToDodgeSpellsImplicitShield1",
+    "mod:ChanceToDodgeSpellsImplicitShield2",
+    "mod:ChanceToDodgeSpellsUnique__1",
+    "mod:ChanceToDodgeSpellsUnique__2",
+    "mod:ChanceToDodgeSpellsUnique__3_",
+    "mod:ChanceToDodgeUnique__1",
+    "mod:ChanceToSuppressSpells1_",
+    "mod:ChanceToSuppressSpells2",
+    "mod:ChanceToSuppressSpells3",
+    "mod:ChanceToSuppressSpells4"
+   ],
+   "total": 111
+  },
+  "stat:base_spell_suppression_chance_150%_of_value": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 48,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ChanceToDodge1",
+    "mod:ChanceToDodge1_",
+    "mod:ChanceToDodge2",
+    "mod:ChanceToDodge2__",
+    "mod:ChanceToDodge3",
+    "mod:ChanceToDodgeAttacksInfluence1",
+    "mod:ChanceToDodgeAttacksInfluence2",
+    "mod:ChanceToDodgeAttacksInfluence3",
+    "mod:ChanceToDodgeAttacksInfluenceMaven__",
+    "mod:ChanceToDodgeCorruption",
+    "mod:ChanceToDodgeEssence4",
+    "mod:ChanceToDodgeEssence5",
+    "mod:ChanceToDodgeEssence6",
+    "mod:ChanceToDodgeEssence7",
+    "mod:ChanceToDodgeIfBlockedRecentlyUber1"
+   ],
+   "total": 48
+  },
+  "stat:cannot_be_stunned_by_suppressed_spell_damage": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:CannotBeStunnedSuppressedDamageUnique__1",
+    "mod:DivergentCannotBeStunnedSuppressedDamageUnique__1"
+   ],
+   "total": 2
+  },
+  "stat:chance_to_apply_suppression_on_hit_%": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:MonsterSuppressingFire"
+   ],
+   "total": 1
+  }
+ },
+ "related_stats_sample": {
+  "total": 29,
+  "sample": [
+   "stat:base_spell_damage_%_suppressed",
+   "stat:base_spell_suppression_chance_%",
+   "stat:base_spell_suppression_chance_150%_of_value",
+   "stat:cannot_be_stunned_by_suppressed_spell_damage",
+   "stat:chance_to_apply_suppression_on_hit_%"
+  ]
+ }
+}

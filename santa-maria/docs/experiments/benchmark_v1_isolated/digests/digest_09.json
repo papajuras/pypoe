@@ -1,0 +1,219 @@
+{
+ "index": 9,
+ "node_id": "passive:AscendancyElementalist19",
+ "type": "Passive",
+ "name": "Shaper of Storms",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyElementalist19"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyElementalist19"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyElementalist19"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:all_damage_can_shock"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:always_shock"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyElementalist19|stat:all_damage_can_shock|out",
+    "passive_grants_stat|passive:AscendancyElementalist19|stat:always_shock|out",
+    "passive_grants_stat|passive:AscendancyElementalist19|stat:shock_minimum_damage_taken_increase_%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 15,
+     "members": [
+      "mod:AnimalCharmShockMinimumDamageIncrease1",
+      "mod:AnimalCharmShockMinimumDamageIncrease2",
+      "mod:BetrayalUpgradeMonsterLightningDamageAndShock_",
+      "mod:ExpeditionRelicModifierAllDamageShocksShockEffect",
+      "mod:MonsterArchnemesisMinionShocker",
+      "mod:MonsterArchnemesisPrismatic",
+      "mod:MonsterArchnemesisPrismaticMagic",
+      "mod:MonsterArchnemesisShockerMagic",
+      "mod:MonsterArchnemesisShocker_",
+      "mod:MonsterModApplyShock",
+      "mod:NecropolisShock1",
+      "mod:NecropolisShock2",
+      "mod:NecropolisShock3",
+      "mod:TangledAltarDownsideBossAllDamageCanShock",
+      "mod:TangledAltarDownsideBossPhysToAddAsLightning"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 4,
+     "members": [
+      "passive:AscendancyAscendant38",
+      "passive:AscendancyElementalist19",
+      "passive:AscendancyReliquarian22",
+      "passive:royale_totem_2"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:all_damage_can_shock",
+   "chain": "passive_grants_stat>stat:all_damage_can_shock",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:always_shock",
+   "chain": "passive_grants_stat>stat:always_shock",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:shock_minimum_damage_taken_increase_%",
+   "chain": "passive_grants_stat>stat:shock_minimum_damage_taken_increase_%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:all_damage_can_shock": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 12,
+     "samples": [
+      {
+       "id": "mod:BetrayalUpgradeMonsterLightningDamageAndShock_",
+       "name": ""
+      },
+      {
+       "id": "mod:ExpeditionRelicModifierAllDamageShocksShockEffect",
+       "name": ""
+      },
+      {
+       "id": "mod:MonsterArchnemesisMinionShocker",
+       "name": ""
+      },
+      {
+       "id": "mod:MonsterArchnemesisPrismatic",
+       "name": "Elemental"
+      },
+      {
+       "id": "mod:MonsterArchnemesisPrismaticMagic",
+       "name": "Elemental"
+      },
+      {
+       "id": "mod:MonsterArchnemesisShockerMagic",
+       "name": "Shocking"
+      },
+      {
+       "id": "mod:MonsterArchnemesisShocker_",
+       "name": "Shocking"
+      },
+      {
+       "id": "mod:NecropolisShock1",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyElementalist19",
+       "name": "Shaper of Storms",
+       "asc": "Elementalist"
+      }
+     ]
+    }
+   }
+  },
+  "stat:always_shock": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 8,
+     "samples": [
+      {
+       "id": "mod:MonsterArchnemesisMinionShocker",
+       "name": ""
+      },
+      {
+       "id": "mod:MonsterArchnemesisPrismatic",
+       "name": "Elemental"
+      },
+      {
+       "id": "mod:MonsterArchnemesisPrismaticMagic",
+       "name": "Elemental"
+      },
+      {
+       "id": "mod:MonsterArchnemesisShockerMagic",
+       "name": "Shocking"
+      },
+      {
+       "id": "mod:MonsterArchnemesisShocker_",
+       "name": "Shocking"
+      },
+      {
+       "id": "mod:MonsterModApplyShock",
+       "name": "of Shocking"
+      },
+      {
+       "id": "mod:TangledAltarDownsideBossAllDamageCanShock",
+       "name": ""
+      },
+      {
+       "id": "mod:TangledAltarDownsideBossPhysToAddAsLightning",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyElementalist19",
+       "name": "Shaper of Storms",
+       "asc": "Elementalist"
+      },
+      {
+       "id": "passive:AscendancyReliquarian22",
+       "name": "Fidelitas' Spike",
+       "asc": "Reliquarian"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

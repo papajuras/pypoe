@@ -1,0 +1,60 @@
+{
+ "index": 42,
+ "node_id": "passive:totem_ranged_damage2668",
+ "targets": {
+  "stat:summon_totem_cast_speed_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 55,
+    "passive_grants_stat": 11,
+    "gem_grants_stat": 15,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AncestorTotemSlash",
+    "gem:AncestralProtector",
+    "gem:AncestralProtectorRoyale",
+    "gem:AncestralWarchief",
+    "gem:AncestralWarchiefRoyale",
+    "gem:SearingBond",
+    "gem:SearingBondAltX",
+    "gem:SearingBondRoyale",
+    "gem:SiegeBallista",
+    "gem:SiegeBallistaAltX",
+    "gem:SiegeBallistaAltY",
+    "gem:SiegeBallistaRoyale",
+    "gem:SupportEarthbreaker",
+    "gem:SupportFocusedBallista",
+    "gem:VaalAncestralWarchief"
+   ],
+   "total": 81
+  },
+  "stat:totem_damage_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 11,
+    "passive_grants_stat": 10,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ReducedTotemDamageUniqueJewel26",
+    "mod:TotemDamageAttackUber1",
+    "mod:TotemDamageAttackUber2_",
+    "mod:TotemDamageAttackUber3",
+    "mod:TotemDamageAttackUberMaven",
+    "mod:TotemDamageJewel",
+    "mod:TotemDamageSpellUber1",
+    "mod:TotemDamageSpellUber2",
+    "mod:TotemDamageSpellUber3",
+    "mod:TotemDamageSpellUberMaven_",
+    "mod:TotemDamageUnique__1_",
+    "passive:AlternateAscendancyAbyssalSmall1",
+    "passive:totem_damage1491_",
+    "passive:totem_damage1497",
+    "passive:totem_damage_and_life_notable1502"
+   ],
+   "total": 21
+  }
+ }
+}

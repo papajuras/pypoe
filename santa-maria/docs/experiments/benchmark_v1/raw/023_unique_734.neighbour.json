@@ -1,0 +1,48 @@
+{
+ "start": "unique:734",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:734",
+     "to": "item_class:Body Armour",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:734",
+     "to": "mod:ElementalPenetrationPerAbyssalJewelUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:734",
+     "to": "mod:IncreasedLifePerAbyssalJewelUnique__2",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:734",
+     "to": "mod:IncreasedManaPerAbyssalJewelUnique__2",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:734",
+     "to": "mod:LocalDisplayGrantLevelXShadeFormUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:734",
+     "to": "mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

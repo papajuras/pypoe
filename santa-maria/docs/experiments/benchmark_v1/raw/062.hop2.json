@@ -1,0 +1,33 @@
+{
+ "index": 62,
+ "node_id": "mod:ColdResistUnique__43",
+ "targets": {
+  "stat:base_cold_damage_resistance_%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 193,
+    "passive_grants_stat": 5,
+    "gem_grants_stat": 4,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:FrostBomb",
+    "gem:FrostBombRoyale",
+    "gem:Frostbite",
+    "gem:PurityOfIce",
+    "mod:AbyssColdResistanceJewel1",
+    "mod:AncestralItemColdResistance",
+    "mod:AvoidColdDamageInfluenceMaven_",
+    "mod:BetrayalUpgradeMonsterColdResistance",
+    "mod:ColdResist1",
+    "mod:ColdResist2",
+    "mod:ColdResist3",
+    "mod:ColdResist4",
+    "mod:ColdResist5",
+    "mod:ColdResist6",
+    "mod:ColdResist7"
+   ],
+   "total": 202
+  }
+ }
+}

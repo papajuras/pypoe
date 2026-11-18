@@ -1,0 +1,109 @@
+{
+ "index": 17,
+ "node_id": "passive:AscendancyPathfinder14",
+ "type": "Passive",
+ "name": "Master Toxicist",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyPathfinder14"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyPathfinder14"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyPathfinder14"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:pathfinder_poison_damage_+100%_final_chance_during_flask_effect"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:unique_spread_poison_to_nearby_enemies_during_flask_effect"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyPathfinder14|stat:pathfinder_poison_damage_+100%_final_chance_during_flask_effect|out",
+    "passive_grants_stat|passive:AscendancyPathfinder14|stat:unique_spread_poison_to_nearby_enemies_during_flask_effect|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyPathfinder14"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:pathfinder_poison_damage_+100%_final_chance_during_flask_effect",
+   "chain": "passive_grants_stat>stat:pathfinder_poison_damage_+100%_final_chance_during_flask_effect",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:unique_spread_poison_to_nearby_enemies_during_flask_effect",
+   "chain": "passive_grants_stat>stat:unique_spread_poison_to_nearby_enemies_during_flask_effect",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:pathfinder_poison_damage_+100%_final_chance_during_flask_effect": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyPathfinder14",
+       "name": "Master Toxicist",
+       "asc": "Pathfinder"
+      }
+     ]
+    }
+   }
+  },
+  "stat:unique_spread_poison_to_nearby_enemies_during_flask_effect": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyPathfinder14",
+       "name": "Master Toxicist",
+       "asc": "Pathfinder"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

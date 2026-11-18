@@ -1,0 +1,18 @@
+{
+ "start": "passive:AscendancyAscendant5",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyAscendant5",
+     "to": "stat:display_can_take_character_start_point",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

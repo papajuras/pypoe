@@ -1,0 +1,890 @@
+## [  0] unique:1198  (UniqueItem)
+  resolve: unique:1198 | "Replica Alberon's Warpath" | available
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Boots
+    unique_modifier_association n=1:
+      -> mod:DivergentAddedChaosDamageToAttacksPer50StrengthUnique__1
+
+## [  1] unique:1461  (UniqueItem)
+  resolve: unique:1461 | 'Whispers of Infinity' | available
+  carriers: ALL ZERO
+  neighbour: out=5 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Amulet
+    unique_modifier_association n=4:
+      -> mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1
+      -> mod:PercentReducedMaximumManaUnique_1
+      -> mod:ReducedEnergyShieldDelayImplicit1_
+      -> mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1
+
+## [  2] item_class:Boots  (ItemClass)
+  resolve: item_class:Boots | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=91 truncated=False
+    unique_in_class n=91:
+      <- item_class:Boots
+      <- item_class:Boots
+      <- item_class:Boots
+      <- item_class:Boots
+      <- item_class:Boots
+      <- item_class:Boots
+      <- item_class:Boots
+      <- item_class:Boots
+      <- item_class:Boots
+      <- item_class:Boots
+      ... +81 more
+
+## [  3] passive:AscendancyAscendant5  (Passive)
+  resolve: passive:AscendancyAscendant5 | 'Path of the Shadow' | None asc=Ascendant keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    passive_grants_stat n=1:
+      -> stat:display_can_take_character_start_point
+
+## [  4] passive:AscendancyAssassin10  (Passive)
+  resolve: passive:AscendancyAssassin10 | 'Toxic Delivery' | None asc=Assassin keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=3 in=0 truncated=False
+    passive_grants_stat n=3:
+      -> stat:poison_duration_+%_per_poison_applied_recently
+      -> stat:poison_from_critical_strikes_damage_+%_final
+      -> stat:recover_permyriad_maximum_life_per_poison_on_enemy_on_kill
+
+## [  5] passive:AscendancyBerserker8  (Passive)
+  resolve: passive:AscendancyBerserker8 | 'Rite of Ruin' | None asc=Berserker keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:life_loss_%_per_minute_per_rage_while_not_losing_rage
+      -> stat:rage_effect_+%
+
+## [  6] passive:AscendancyChampion14  (Passive)
+  resolve: passive:AscendancyChampion14 | 'Master of Metal' | None asc=Champion keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:impaled_debuff_number_of_reflected_hits
+      -> stat:you_and_nearby_allies_armour_+_if_have_impaled_recently
+
+## [  7] passive:AscendancyChieftan11  (Passive)
+  resolve: passive:AscendancyChieftan11 | "Tukohama, War's Herald" | None asc=Chieftain keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:chieftain_body_armour_supported_by_level_x_ancestral_call
+      -> stat:chieftain_body_armour_supported_by_level_x_fist_of_war
+
+## [  8] passive:AscendancyDeadeye14  (Passive)
+  resolve: passive:AscendancyDeadeye14 | 'Gathering Winds' | None asc=Deadeye keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    passive_grants_stat n=1:
+      -> stat:tailwind_effect_on_self_+%_per_gale_force
+
+## [  9] passive:AscendancyElementalist19  (Passive)
+  resolve: passive:AscendancyElementalist19 | 'Shaper of Storms' | None asc=Elementalist keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=3 in=0 truncated=False
+    passive_grants_stat n=3:
+      -> stat:all_damage_can_shock
+      -> stat:always_shock
+      -> stat:shock_minimum_damage_taken_increase_%
+
+## [ 10] passive:AscendancyGladiator7  (Passive)
+  resolve: passive:AscendancyGladiator7 | 'Gratuitous Violence' | None asc=Gladiator keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    passive_grants_stat n=1:
+      -> stat:bleeding_enemies_explode_for_%_life_as_physical_damage
+
+## [ 11] passive:AscendancyGuardian16  (Passive)
+  resolve: passive:AscendancyGuardian16 | 'Unwavering Crusade' | None asc=Guardian keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 12] passive:AscendancyHeirophant9  (Passive)
+  resolve: passive:AscendancyHeirophant9 | 'Pursuit of Faith' | None asc=Hierophant keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=3 in=0 truncated=False
+    passive_grants_stat n=3:
+      -> stat:number_of_additional_totems_allowed
+      -> stat:summon_totem_cast_speed_+%
+      -> stat:totem_duration_+%
+
+## [ 13] passive:AscendancyInquisitor14  (Passive)
+  resolve: passive:AscendancyInquisitor14 | 'Instruments of Zeal' | None asc=Inquisitor keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=4 in=0 truncated=False
+    passive_grants_stat n=4:
+      -> stat:gain_fanaticism_for_4_seconds_on_reaching_maximum_fanatic_charges
+      -> stat:gain_x_fanatic_charges_every_second_if_have_attacked_in_past_second
+      -> stat:lose_all_fanatic_charges_on_reaching_maximum_fanatic_charges
+      -> stat:maximum_fanaticism_charges
+
+## [ 14] passive:AscendancyJuggernaut11  (Passive)
+  resolve: passive:AscendancyJuggernaut11 | 'Unflinching' | None asc=Juggernaut keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=4 in=0 truncated=False
+    passive_grants_stat n=4:
+      -> stat:chance_to_gain_endurance_charge_when_hit_%
+      -> stat:gain_endurance_charge_per_second_if_have_been_hit_recently
+      -> stat:gain_maximum_endurance_charges_on_endurance_charge_gained_%_chance
+      -> stat:max_endurance_charges
+
+## [ 15] passive:AscendancyNecromancer12  (Passive)
+  resolve: passive:AscendancyNecromancer12 | 'Commander of Darkness' | None asc=Necromancer keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=3 in=0 truncated=False
+    passive_grants_stat n=3:
+      -> stat:auras_grant_attack_and_cast_speed_+%_to_you_and_your_allies
+      -> stat:damage_+%_for_you_and_allies_affected_by_your_auras
+      -> stat:elemental_resistances_+%_for_you_and_allies_affected_by_your_auras
+
+## [ 16] passive:AscendancyOccultist8  (Passive)
+  resolve: passive:AscendancyOccultist8 | 'Unholy Authority' | None asc=Occultist keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:ignore_hexproof
+      -> stat:number_of_additional_curses_allowed
+
+## [ 17] passive:AscendancyPathfinder14  (Passive)
+  resolve: passive:AscendancyPathfinder14 | 'Master Toxicist' | None asc=Pathfinder keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:pathfinder_poison_damage_+100%_final_chance_during_flask_effect
+      -> stat:unique_spread_poison_to_nearby_enemies_during_flask_effect
+
+## [ 18] passive:AscendancyReliquarian9  (Passive)
+  resolve: passive:AscendancyReliquarian9 | 'Caster Weapon Display' | None asc=Reliquarian keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 19] passive:AscendancySaboteur4  (Passive)
+  resolve: passive:AscendancySaboteur4 | 'Born in the Shadows' | None asc=Saboteur keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=4 in=0 truncated=False
+    passive_grants_stat n=4:
+      -> stat:cannot_be_blinded
+      -> stat:damage_taken_+%_from_blinded_enemies
+      -> stat:global_chance_to_blind_on_hit_%
+      -> stat:local_display_nearby_enemies_are_blinded
+
+## [ 20] passive:AscendancySlayer8  (Passive)
+  resolve: passive:AscendancySlayer8 | 'Overwhelm' | None asc=Slayer keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:override_weapon_base_critical_strike_chance
+      -> stat:slayer_critical_strike_multiplier_+_per_nearby_enemy_up_to_100
+
+## [ 21] passive:AscendancyTrickster2  (Passive)
+  resolve: passive:AscendancyTrickster2 | 'Swift Killer' | None asc=Trickster keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:base_charge_duration_+%
+      -> stat:max_frenzy_charges
+
+## [ 22] passive:AscendancyRaider8  (Passive)
+  resolve: passive:AscendancyRaider8 | 'Lesson of the Seasons' | None asc=Warden keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=3 in=0 truncated=False
+    passive_grants_stat n=3:
+      -> stat:lose_X_bark_on_enemy_spell_hit
+      -> stat:spell_damage_%_suppressed_per_bark_below_max
+      -> stat:spell_damage_taken_+_per_barkskin_stack
+
+## [ 23] unique:734  (UniqueItem)
+  resolve: unique:734 | 'Shroud of the Lightless' | available
+  carriers: ALL ZERO
+  neighbour: out=6 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Body Armour
+    unique_modifier_association n=5:
+      -> mod:ElementalPenetrationPerAbyssalJewelUnique__1
+      -> mod:IncreasedLifePerAbyssalJewelUnique__2
+      -> mod:IncreasedManaPerAbyssalJewelUnique__2
+      -> mod:LocalDisplayGrantLevelXShadeFormUnique__1
+      -> mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_
+
+## [ 24] unique:1238  (UniqueItem)
+  resolve: unique:1238 | 'Replica Cheap Construction' | unavailable
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Jewel
+
+## [ 25] unique:165  (UniqueItem)
+  resolve: unique:165 | 'Perandus Signet' | available
+  carriers: ALL ZERO
+  neighbour: out=6 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Ring
+    unique_modifier_association n=5:
+      -> mod:IncreasedChanceForMonstersToDropWisdomScrollsUniqueRing14
+      -> mod:IncreasedExperienceUniqueRing14
+      -> mod:IncreasedIntelligencePerUniqueUniqueRing14
+      -> mod:IncreasedManaUniqueRing14
+      -> mod:ManaRegenerationUniqueRing14
+
+## [ 26] unique:1281  (UniqueItem)
+  resolve: unique:1281 | 'Legacy of Fury' | available
+  carriers: ALL ZERO
+  neighbour: out=5 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Boots
+    unique_modifier_association n=4:
+      -> mod:DivergentNearbyEnemiesAreScorchedUnique__1
+      -> mod:LocalIncreasedArmourAndEvasionUnique__18
+      -> mod:ScorchEffectUnique__1
+      -> mod:ScorchedEnemiesDegenExplodeUnique__1_
+
+## [ 27] unique:766  (UniqueItem)
+  resolve: unique:766 | "Farrul's Chase" | available
+  carriers: ALL ZERO
+  neighbour: out=5 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Boots
+    unique_modifier_association n=4:
+      -> mod:ChanceToAvoidBleedingUnique__1
+      -> mod:DivergentCatsStealthTriggeredIntimidatingCry
+      -> mod:LocalIncreasedEvasionRatingPercentUnique__13
+      -> mod:MovementSpeedWithCatsStealthUnique__1
+
+## [ 28] unique:1179  (UniqueItem)
+  resolve: unique:1179 | 'Replica Quill Rain' | available
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Bow
+
+## [ 29] unique:679  (UniqueItem)
+  resolve: unique:679 | 'Dendrobate' | available
+  carriers: ALL ZERO
+  neighbour: out=6 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Body Armour
+    unique_modifier_association n=5:
+      -> mod:DivergentSupportedByLesserPoisonUnique__1
+      -> mod:LocalIncreasedEnergyShieldUnique__13_
+      -> mod:LocalIncreasedEvasionAndEnergyShieldUnique__7
+      -> mod:PoisonDamageWithOver300DexterityUnique__1
+      -> mod:PoisonDurationWithOver150IntelligenceUnique__1
+
+## [ 30] unique:764  (UniqueItem)
+  resolve: unique:764 | "Farrul's Bite" | available
+  carriers: ALL ZERO
+  neighbour: out=7 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Helmet
+    unique_modifier_association n=6:
+      -> mod:AdditionalCriticalStrikeChanceWithCatAspectUnique__1
+      -> mod:ColdResistUnique__25
+      -> mod:CritsBlindChanceWithCatsStealthUnique__1
+      -> mod:DamageAgainstBlindedEnemiesUnique__1
+      -> mod:DivergentGrantsCatAspect1
+      -> mod:LocalIncreasedEvasionAndEnergyShieldUnique__12
+
+## [ 31] unique:1443  (UniqueItem)
+  resolve: unique:1443 | 'Circle of Ambition' | available
+  carriers: ALL ZERO
+  neighbour: out=3 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Ring
+    unique_modifier_association n=2:
+      -> mod:HeraldBonusAgonyChaosResist_
+      -> mod:HeraldReservationEfficiencyUnique__1
+
+## [ 32] unique:1065  (UniqueItem)
+  resolve: unique:1065 | 'Badge of the Brotherhood' | available
+  carriers: ALL ZERO
+  neighbour: out=8 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Amulet
+    unique_modifier_association n=7:
+      -> mod:ElusiveBuffEffectPerPowerChargeUnique__1
+      -> mod:HybridDexInt
+      -> mod:LoseFrenzyChargeOnTravelSkillUnique__1
+      -> mod:LosePowerChargeOnElusiveGainUnique__1_
+      -> mod:MaximumFrenzyChargesEqualToMaximumPowerChargesUnique__1
+      -> mod:MutatedUniqueAmulet57MovementVelocityPerFrenzyCharge
+      -> mod:TravelSkillCooldownRecoveryPerFrenzyChargeUnique__1
+
+## [ 33] unique:924  (UniqueItem)
+  resolve: unique:924 | 'Facebreaker' | available
+  carriers: ALL ZERO
+  neighbour: out=4 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Gloves
+    unique_modifier_association n=3:
+      -> mod:CriticalMultiplierUniqueGlovesDexInt2
+      -> mod:ExtraGore
+      -> mod:FacebreakerUnarmedMoreDamage
+
+## [ 34] unique:838  (UniqueItem)
+  resolve: unique:838 | 'Solstice Vigil' | available
+  carriers: ALL ZERO
+  neighbour: out=5 in=0 truncated=False
+    unique_in_class n=1:
+      -> item_class:Amulet
+    unique_modifier_association n=4:
+      -> mod:AddedManaRegenerationUnique__2
+      -> mod:AllAttributesImplicitAmulet1
+      -> mod:AllDamageUnique__4
+      -> mod:GainShapersPresenceUnique__1
+
+## [ 35] passive:endurance_charges_notable2425  (Passive)
+  resolve: passive:endurance_charges_notable2425 | 'Disciple of the Unyielding' | None asc=None keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=3 in=0 truncated=False
+    passive_grants_stat n=3:
+      -> stat:base_minimum_endurance_charges
+      -> stat:damage_+%_per_endurance_charge
+      -> stat:endurance_charge_on_kill_%
+
+## [ 36] passive:atlas_path_17  (Passive)
+  resolve: passive:atlas_path_17 | 'Map Drop Chance' | None asc=None keystone=False notable=False
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    passive_grants_stat n=1:
+      -> stat:map_map_item_drop_chance_+%
+
+## [ 37] passive:totem_attack_damage2676  (Passive)
+  resolve: passive:totem_attack_damage2676 | 'Totem Attack Speed' | None asc=None keystone=False notable=False
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    passive_grants_stat n=1:
+      -> stat:totem_skill_attack_speed_+%
+
+## [ 38] passive:dexterity848  (Passive)
+  resolve: passive:dexterity848 | 'Dexterity' | None asc=None keystone=False notable=False
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    passive_grants_stat n=1:
+      -> stat:base_dexterity
+
+## [ 39] passive:UniqueItemsNode31_  (Passive)
+  resolve: passive:UniqueItemsNode31_ | "Lord's Descent" | None asc=None keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    passive_grants_stat n=1:
+      -> stat:brequel_unique_fruit_special_unique_chance_+%
+
+## [ 40] passive:atlas_memory_notable_4  (Passive)
+  resolve: passive:atlas_memory_notable_4 | 'Grasp the Past' | None asc=None keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=1 in=0 truncated=False
+    passive_grants_stat n=1:
+      -> stat:map_zana_influence_equipment_item_lucky_chance_%
+
+## [ 41] passive:reaver605  (Passive)
+  resolve: passive:reaver605 | 'Executioner' | None asc=None keystone=False notable=True
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:damage_vs_enemies_on_low_life_+%
+      -> stat:skill_area_of_effect_+%_if_enemy_killed_recently
+
+## [ 42] passive:totem_ranged_damage2668  (Passive)
+  resolve: passive:totem_ranged_damage2668 | 'Totem Damage and Placement Speed' | None asc=None keystone=False notable=False
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    passive_grants_stat n=2:
+      -> stat:summon_totem_cast_speed_+%
+      -> stat:totem_damage_+%
+
+## [ 43] gem:SplittingSteel  (Gem)
+  resolve: gem:SplittingSteel | None | None
+  resolve: gem:SplittingSteelAltX | None | None
+  carriers: ALL ZERO
+  neighbour: out=14 in=0 truncated=False
+    gem_grants_stat n=12:
+      -> stat:active_skill_base_area_of_effect_radius
+      -> stat:attacks_impale_on_hit_%_chance
+      -> stat:base_is_projectile
+      -> stat:base_skill_area_of_effect_+%
+      -> stat:console_skill_dont_chase
+      -> stat:damage_+%
+      -> stat:modifiers_to_number_of_projectiles_instead_apply_to_splitting
+      -> stat:projectile_number_to_split
+      -> stat:projectiles_can_split_at_end_of_range
+      -> stat:projectiles_can_split_from_terrain
+      ... +2 more
+    gem_has_tag n=2:
+      -> tag:attack
+      -> tag:physical
+
+## [ 44] gem:SupportGreaterDevour  (Gem)
+  resolve: gem:SupportGreaterDevour | None | None
+  carriers: ALL ZERO
+  neighbour: out=4 in=0 truncated=False
+    gem_grants_stat n=3:
+      -> stat:killing_blow_consumes_corpse_chance_to_gain_soul_per_power_permillage
+      -> stat:killing_blow_consumes_corpse_restore_x_life
+      -> stat:killing_blow_consumes_corpse_restore_x_mana
+    gem_has_tag n=1:
+      -> tag:support
+
+## [ 45] gem:SupportCastLinkedCursesOnCurse  (Gem)
+  resolve: gem:SupportCastLinkedCursesOnCurse | None | None
+  carriers: ALL ZERO
+  neighbour: out=2 in=0 truncated=False
+    gem_grants_stat n=1:
+      -> stat:cast_linked_curses_on_curse
+    gem_has_tag n=1:
+      -> tag:support
+
+## [ 46] gem:SummonHolyRelicAltX  (Gem)
+  resolve: gem:SummonHolyRelicAltX | None | None
+  carriers: ALL ZERO
+  neighbour: out=9 in=0 truncated=False
+    gem_grants_stat n=8:
+      -> stat:active_skill_minion_from_alternate_gem_index
+      -> stat:active_skill_minion_movement_velocity_+%_final
+      -> stat:base_display_minion_actor_level
+      -> stat:base_number_of_relics_allowed
+      -> stat:display_minion_monster_type
+      -> stat:holy_relic_targets_nearest_enemy
+      -> stat:infinite_minion_duration
+      -> stat:minions_cannot_taunt_enemies
+    gem_has_tag n=1:
+      -> tag:minion
+
+## [ 47] gem:EnchantmentOfReflectionWhenHit4  (Gem)
+  resolve: gem:EnchantmentOfReflectionWhenHit4 | None | None
+  carriers: ALL ZERO
+  neighbour: out=8 in=0 truncated=False
+    gem_grants_stat n=8:
+      -> stat:active_skill_minion_damage_+%_final
+      -> stat:base_display_minion_actor_level
+      -> stat:base_skill_effect_duration
+      -> stat:cast_when_hit_%
+      -> stat:display_minion_monster_type
+      -> stat:minion_damage_+%
+      -> stat:minion_maximum_life_+%
+      -> stat:number_of_monsters_to_summon
+
+## [ 48] gem:EssenceDrainAltX  (Gem)
+  resolve: gem:EssenceDrainAltX | None | None
+  carriers: ALL ZERO
+  neighbour: out=13 in=0 truncated=False
+    gem_grants_stat n=12:
+      -> stat:base_chaos_damage_to_deal_per_minute
+      -> stat:base_is_projectile
+      -> stat:base_projectile_speed_+%
+      -> stat:base_skill_effect_duration
+      -> stat:damage_+%
+      -> stat:essence_drain_lose_life_from_damage_permyriad
+      -> stat:number_of_additional_projectiles
+      -> stat:quality_display_essence_drain_is_gem
+      -> stat:skill_effect_duration_+%
+      -> stat:spell_damage_modifiers_apply_to_skill_dot
+      ... +2 more
+    gem_has_tag n=1:
+      -> tag:chaos
+
+## [ 49] gem:PenanceMark  (Gem)
+  resolve: gem:PenanceMark | None | None
+  carriers: ALL ZERO
+  neighbour: out=3 in=0 truncated=False
+    gem_grants_stat n=3:
+      -> stat:base_deal_no_damage
+      -> stat:base_skill_effect_duration
+      -> stat:penance_mark_summon_phantasms_when_hit
+
+## [ 50] gem:SummonSkeletonsChannelled  (Gem)
+  resolve: gem:SummonSkeletonsChannelled | None | None
+  carriers: ALL ZERO
+  neighbour: out=8 in=0 truncated=False
+    gem_grants_stat n=7:
+      -> stat:active_skill_minion_added_damage_+%_final
+      -> stat:base_display_minion_actor_level
+      -> stat:base_number_of_skeletons_allowed
+      -> stat:base_skill_effect_duration
+      -> stat:display_minion_monster_type
+      -> stat:non_ghost_minion_duration_+%
+      -> stat:number_of_melee_skeletons_to_summon
+    gem_has_tag n=1:
+      -> tag:minion
+
+## [ 51] stat:brequel_misc_fruit_rarer_rewards_chance_+%  (Stat)
+  resolve: stat:brequel_misc_fruit_rarer_rewards_chance_+% | None | None
+  carriers: {'passive_grants_stat': 1}
+    <- passive:MiscItemsNode3 (passive_grants_stat) 'None'
+  neighbour: out=0 in=1 truncated=False
+    passive_grants_stat n=1:
+      <- stat:brequel_misc_fruit_rarer_rewards_chance_+%
+
+## [ 52] stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start  (Stat)
+  resolve: stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start | None | None
+  carriers: {'modifier_grants_stat': 1}
+    <- mod:StarterPassiveJewelUnique__12__ (modifier_grants_stat) 'None'
+  neighbour: out=0 in=1 truncated=False
+    modifier_grants_stat n=1:
+      <- stat:local_unique_jewel_skill_effect_duration_+%_with_passive_tree_connected_to_witch_start
+
+## [ 53] stat:cannot_die  (Stat)
+  resolve: stat:cannot_die | None | None
+  resolve: stat:cannot_die_and_damage_+%_near_pack_corpse | None | None
+  carriers: {'modifier_grants_stat': 7}
+    <- mod:CannotDieUnique__1 (modifier_grants_stat) 'None'
+    <- mod:MonsterAfflictionHasTeleportAndExplodeOnDeathDaemon (modifier_grants_stat) 'None'
+    <- mod:MonsterAuraCannotDie1 (modifier_grants_stat) 'None'
+    <- mod:MonsterImplicitAuraCannotDie1 (modifier_grants_stat) 'None'
+    <- mod:MonsterImplicitAuraCannotDie2 (modifier_grants_stat) 'None'
+    <- mod:StrIntMissionAuraCannotDie1 (modifier_grants_stat) 'None'
+    <- mod:TestingDummyCannotDie (modifier_grants_stat) 'None'
+  neighbour: out=0 in=7 truncated=False
+    modifier_grants_stat n=7:
+      <- stat:cannot_die
+      <- stat:cannot_die
+      <- stat:cannot_die
+      <- stat:cannot_die
+      <- stat:cannot_die
+      <- stat:cannot_die
+      <- stat:cannot_die
+
+## [ 54] stat:critical_strike_chance_+%_with_at_least_200_int  (Stat)
+  resolve: stat:critical_strike_chance_+%_with_at_least_200_int | None | None
+  carriers: {'modifier_grants_stat': 1}
+    <- mod:CriticalStrikeChanceAt200IntelligenceUnique__1 (modifier_grants_stat) 'None'
+  neighbour: out=0 in=1 truncated=False
+    modifier_grants_stat n=1:
+      <- stat:critical_strike_chance_+%_with_at_least_200_int
+
+## [ 55] stat:map_watchstone_monsters_life_+%_final  (Stat)
+  resolve: stat:map_watchstone_monsters_life_+%_final | None | None
+  carriers: {'modifier_grants_stat': 1}
+    <- mod:UniqueWatchstoneMonsterLifeFinal_ (modifier_grants_stat) 'None'
+  neighbour: out=0 in=1 truncated=False
+    modifier_grants_stat n=1:
+      <- stat:map_watchstone_monsters_life_+%_final
+
+## [ 56] stat:banner_adrenaline_duration_+%  (Stat)
+  resolve: stat:banner_adrenaline_duration_+% | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 57] stat:virtual_minion_attack_speed_+%  (Stat)
+  resolve: stat:virtual_minion_attack_speed_+% | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 58] stat:critical_strike_chance_+%_per_lightning_adaptation  (Stat)
+  resolve: stat:critical_strike_chance_+%_per_lightning_adaptation | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 59] mod:MapMonsterCriticalStrikesAndDamageDelve2  (Modifier)
+  resolve: mod:MapMonsterCriticalStrikesAndDamageDelve2 | '' | None
+  carriers: ALL ZERO
+  neighbour: out=9 in=0 truncated=False
+    modifier_grants_stat n=5:
+      -> stat:map_item_drop_quantity_+%
+      -> stat:map_item_drop_rarity_+%
+      -> stat:map_monsters_critical_strike_chance_+%
+      -> stat:map_monsters_critical_strike_multiplier_+
+      -> stat:map_pack_size_+%
+    modifier_has_tag n=3:
+      -> tag:critical
+      -> tag:damage
+      -> tag:default
+    modifier_in_group n=1:
+      -> modgroup:MapMonsterCriticalStrikesAndDamage
+
+## [ 60] mod:WeaponTreeSupportIronGripHardMode  (Modifier)
+  resolve: mod:WeaponTreeSupportIronGripHardMode | '' | None
+  carriers: ALL ZERO
+  neighbour: out=6 in=0 truncated=False
+    modifier_grants_stat n=1:
+      -> stat:local_display_socketed_gems_supported_by_level_x_iron_grip
+    modifier_has_tag n=4:
+      -> tag:default
+      -> tag:has_attack_mod
+      -> tag:one_hand_weapon
+      -> tag:shield
+    modifier_in_group n=1:
+      -> modgroup:WeaponTreeSupportIronGrip
+
+## [ 61] mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1  (Modifier)
+  resolve: mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1 | '' | None
+  carriers: {'unique_modifier_association': 1}
+    <- unique:844 (unique_modifier_association) 'None'
+  neighbour: out=5 in=1 truncated=False
+    modifier_grants_stat n=1:
+      -> stat:local_flask_recover_%_maximum_energy_shield_on_kill_during_flask_effect
+    modifier_has_tag n=3:
+      -> tag:defences
+      -> tag:energy_shield
+      -> tag:flask
+    modifier_in_group n=1:
+      -> modgroup:MaximumEnergyShieldOnKillPercent
+    unique_modifier_association n=1:
+      <- mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1
+
+## [ 62] mod:ColdResistUnique__43  (Modifier)
+  resolve: mod:ColdResistUnique__43 | '' | None
+  carriers: ALL ZERO
+  neighbour: out=5 in=0 truncated=False
+    modifier_grants_stat n=1:
+      -> stat:base_cold_damage_resistance_%
+    modifier_has_tag n=3:
+      -> tag:cold
+      -> tag:elemental
+      -> tag:resistance
+    modifier_in_group n=1:
+      -> modgroup:ColdResistance
+
+## [ 63] mod:TemporalChainsReservationCostUnique__2  (Modifier)
+  resolve: mod:TemporalChainsReservationCostUnique__2 | '' | None
+  carriers: ALL ZERO
+  neighbour: out=4 in=0 truncated=False
+    modifier_grants_stat n=1:
+      -> stat:temporal_chains_no_reservation
+    modifier_has_tag n=2:
+      -> tag:caster
+      -> tag:curse
+    modifier_in_group n=1:
+      -> modgroup:CurseReservationCost
+
+## [ 64] mod:MonsterMinionInstability  (Modifier)
+  resolve: mod:MonsterMinionInstability | '' | None
+  carriers: ALL ZERO
+  neighbour: out=7 in=0 truncated=False
+    modifier_grants_stat n=1:
+      -> stat:keystone_minion_instability
+    modifier_has_tag n=5:
+      -> tag:damage
+      -> tag:elemental
+      -> tag:elemental_damage
+      -> tag:fire
+      -> tag:minion
+    modifier_in_group n=1:
+      -> modgroup:Keystone
+
+## [ 65] mechanic:minion  (Mechanic)
+  resolve: mechanic:minion | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=200 truncated=True
+    stat_mechanic_relation n=200:
+      <- mechanic:minion
+      <- mechanic:minion
+      <- mechanic:minion
+      <- mechanic:minion
+      <- mechanic:minion
+      <- mechanic:minion
+      <- mechanic:minion
+      <- mechanic:minion
+      <- mechanic:minion
+      <- mechanic:minion
+      ... +190 more
+
+## [ 66] mechanic:suppression  (Mechanic)
+  resolve: mechanic:suppression | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=29 truncated=False
+    stat_mechanic_relation n=29:
+      <- mechanic:suppression
+      <- mechanic:suppression
+      <- mechanic:suppression
+      <- mechanic:suppression
+      <- mechanic:suppression
+      <- mechanic:suppression
+      <- mechanic:suppression
+      <- mechanic:suppression
+      <- mechanic:suppression
+      <- mechanic:suppression
+      ... +19 more
+
+## [ 67] mechanic:attribute  (Mechanic)
+  resolve: mechanic:attribute | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=107 truncated=False
+    stat_mechanic_relation n=107:
+      <- mechanic:attribute
+      <- mechanic:attribute
+      <- mechanic:attribute
+      <- mechanic:attribute
+      <- mechanic:attribute
+      <- mechanic:attribute
+      <- mechanic:attribute
+      <- mechanic:attribute
+      <- mechanic:attribute
+      <- mechanic:attribute
+      ... +97 more
+
+## [ 68] mechanic:frenzy_charge  (Mechanic)
+  resolve: mechanic:frenzy_charge | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=104 truncated=False
+    stat_mechanic_relation n=104:
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      <- mechanic:frenzy_charge
+      ... +94 more
+
+## [ 69] mechanic:chill  (Mechanic)
+  resolve: mechanic:chill | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=103 truncated=False
+    stat_mechanic_relation n=103:
+      <- mechanic:chill
+      <- mechanic:chill
+      <- mechanic:chill
+      <- mechanic:chill
+      <- mechanic:chill
+      <- mechanic:chill
+      <- mechanic:chill
+      <- mechanic:chill
+      <- mechanic:chill
+      <- mechanic:chill
+      ... +93 more
+
+## [ 70] tag:lightning  (Tag)
+  resolve: tag:lightning | None | None
+  resolve: tag:lightning_affinity | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=200 truncated=True
+    gem_has_tag n=150:
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      ... +140 more
+    modifier_has_tag n=50:
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      <- tag:lightning
+      ... +40 more
+
+## [ 71] tag:curse  (Tag)
+  resolve: tag:curse | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=200 truncated=True
+    gem_has_tag n=21:
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      ... +11 more
+    modifier_has_tag n=179:
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      <- tag:curse
+      ... +169 more
+
+## [ 72] tag:quiver_eyrie  (Tag)
+  resolve: tag:quiver_eyrie | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=18 truncated=False
+    modifier_has_tag n=18:
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      <- tag:quiver_eyrie
+      ... +8 more
+
+## [ 73] tag:blight_death_physical  (Tag)
+  resolve: tag:blight_death_physical | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=1 truncated=False
+    modifier_has_tag n=1:
+      <- tag:blight_death_physical
+
+## [ 74] item_class:CursedDucat  (ItemClass)
+  resolve: item_class:CursedDucat | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 75] item_class:Tincture  (ItemClass)
+  resolve: item_class:Tincture | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=5 truncated=False
+    unique_in_class n=5:
+      <- item_class:Tincture
+      <- item_class:Tincture
+      <- item_class:Tincture
+      <- item_class:Tincture
+      <- item_class:Tincture
+
+## [ 76] item_class:HeistEquipmentWeapon  (ItemClass)
+  resolve: item_class:HeistEquipmentWeapon | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 77] item_class:IncubatorStackable  (ItemClass)
+  resolve: item_class:IncubatorStackable | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 78] item_class:Support Skill Gem  (ItemClass)
+  resolve: item_class:Support Skill Gem | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False
+
+## [ 79] item_class:Map  (ItemClass)
+  resolve: item_class:Map | None | None
+  resolve: item_class:MapFragment | None | None
+  resolve: item_class:MapKey | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=33 truncated=False
+    unique_in_class n=33:
+      <- item_class:Map
+      <- item_class:Map
+      <- item_class:Map
+      <- item_class:Map
+      <- item_class:Map
+      <- item_class:Map
+      <- item_class:Map
+      <- item_class:Map
+      <- item_class:Map
+      <- item_class:Map
+      ... +23 more
+
+## [ 80] item_class:BrequelFruit  (ItemClass)
+  resolve: item_class:BrequelFruit | None | None
+  carriers: ALL ZERO
+  neighbour: out=0 in=0 truncated=False

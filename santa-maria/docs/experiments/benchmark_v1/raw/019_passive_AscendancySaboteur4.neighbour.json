@@ -1,0 +1,36 @@
+{
+ "start": "passive:AscendancySaboteur4",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancySaboteur4",
+     "to": "stat:cannot_be_blinded",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancySaboteur4",
+     "to": "stat:damage_taken_+%_from_blinded_enemies",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancySaboteur4",
+     "to": "stat:global_chance_to_blind_on_hit_%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancySaboteur4",
+     "to": "stat:local_display_nearby_enemies_are_blinded",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

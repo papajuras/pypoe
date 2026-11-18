@@ -1,0 +1,24 @@
+{
+ "index": 3,
+ "node_id": "passive:AscendancyAscendant5",
+ "targets": {
+  "stat:display_can_take_character_start_point": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 6,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyAscendant1",
+    "passive:AscendancyAscendant2",
+    "passive:AscendancyAscendant3",
+    "passive:AscendancyAscendant4",
+    "passive:AscendancyAscendant5",
+    "passive:AscendancyAscendant6"
+   ],
+   "total": 6
+  }
+ }
+}

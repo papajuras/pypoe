@@ -23,7 +23,7 @@ from pypoe.db.affixes import load_affixes
 from pypoe.flipper import journal as journal_store
 from pypoe.flipper.gatherer_client import GathererClient
 
-from ninja import NinjaClient
+from ninja import get_client
 
 logger = logging.getLogger(__name__)
 
@@ -448,18 +448,19 @@ def _pull_flips() -> dict:
     with _cache_lock:
         _flip_cache.clear()
         _last_league = data.get("league", "")
-        for item in data.get("flips", []):
-            flip_id = item.get("id")
-            if flip_id:
-                _blend_source_chaos(item, _last_league)
-                _flip_cache[flip_id] = item
+    rate_cache: dict[str, float] = {}
+    for item in data.get("flips", []):
+        flip_id = item.get("id")
+        if flip_id:
+            _blend_source_chaos(item, _last_league, rate_cache)
+            _flip_cache[flip_id] = item
         _last_queue = data.get("queue_size", 0)
         _last_server_time = data.get("server_time", time.time())
     logger.info("sync: flips refreshed (%d)", len(_flip_cache))
     return _cache_payload()
 
 
-def _blend_source_chaos(item: dict, league: str) -> None:
+def _blend_source_chaos(item: dict, league: str, rate_cache: dict) -> None:
     """Merge chaos source listings into source_avg at the divine rate (app-side)."""
     price = item.get("price")
     if not price:
@@ -469,7 +470,9 @@ def _blend_source_chaos(item: dict, league: str) -> None:
     if chaos_cnt <= 0:
         return
     try:
-        rate = NinjaClient().divine_rate(league or "Standard")
+        if league not in rate_cache:
+            rate_cache[league] = get_client().divine_rate(league or "Standard")
+        rate = rate_cache[league]
     except Exception:
         logger.exception("divine_rate fetch failed — leaving source divine-only")
         return

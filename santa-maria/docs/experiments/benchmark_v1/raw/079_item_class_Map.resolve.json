@@ -1,0 +1,29 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "item_class:Map",
+   "type": "ItemClass",
+   "name": null
+  },
+  {
+   "id": "item_class:MapFragment",
+   "type": "ItemClass",
+   "name": null
+  },
+  {
+   "id": "item_class:MapKey",
+   "type": "ItemClass",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "item_class:Map",
+  "type": null,
+  "total": 3,
+  "returned": 3,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

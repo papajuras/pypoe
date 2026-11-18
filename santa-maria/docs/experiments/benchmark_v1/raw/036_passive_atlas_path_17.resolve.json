@@ -1,0 +1,29 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "passive:atlas_path_17",
+   "type": "Passive",
+   "name": "Map Drop Chance",
+   "passive_info": {
+    "ascendancy": null,
+    "kind_flags": {
+     "is_ascendancy_starting_node": false,
+     "is_jewel_socket": false,
+     "is_keystone": false,
+     "is_multiple_choice": false,
+     "is_notable": false
+    }
+   }
+  }
+ ],
+ "meta": {
+  "query": "passive:atlas_path_17",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

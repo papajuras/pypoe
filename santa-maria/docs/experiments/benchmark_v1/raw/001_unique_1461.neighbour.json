@@ -1,0 +1,42 @@
+{
+ "start": "unique:1461",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:1461",
+     "to": "item_class:Amulet",
+     "type": "unique_in_class",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1461",
+     "to": "mod:AttacksGainMinMaxAddedChaosDamageBasedOnManaUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1461",
+     "to": "mod:PercentReducedMaximumManaUnique_1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1461",
+     "to": "mod:ReducedEnergyShieldDelayImplicit1_",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    },
+    {
+     "from": "unique:1461",
+     "to": "mod:SkillsCostEnergyShieldInsteadOfManaLifeUnique__1",
+     "type": "unique_modifier_association",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

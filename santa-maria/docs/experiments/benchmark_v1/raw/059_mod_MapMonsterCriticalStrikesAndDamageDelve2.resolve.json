@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+   "type": "Modifier",
+   "name": ""
+  }
+ ],
+ "meta": {
+  "query": "mod:MapMonsterCriticalStrikesAndDamageDelve2",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

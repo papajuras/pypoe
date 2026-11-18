@@ -1,0 +1,42 @@
+{
+ "start": "item_class:Tincture",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "item_class:Tincture",
+     "to": "unique:1448",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Tincture",
+     "to": "unique:1449",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Tincture",
+     "to": "unique:1450",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Tincture",
+     "to": "unique:1451",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Tincture",
+     "to": "unique:1452",
+     "type": "unique_in_class",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

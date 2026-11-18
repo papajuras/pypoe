@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 
 import ninja.divcards as divcards
-from ninja import NinjaClient
+from ninja import get_client
 from ninja.ninja import ITEM_TYPES
 
 LEAGUE = "Allflame"
@@ -20,7 +20,7 @@ SET_COST_FLOOR = 50.0   # chaos — skip cards too cheap to matter
 MIN_LISTINGS = 3        # reward must have this many ninja listings
 
 
-def load_reward_prices(client: NinjaClient) -> dict[str, float]:
+def load_reward_prices(client) -> dict[str, float]:
     """Reward item name -> cheapest chaos price (non-variant, non-corrupted lines)."""
     prices: dict[str, float] = {}
     for t in ITEM_TYPES:
@@ -46,7 +46,7 @@ def main():
     parser.add_argument("--refresh", action="store_true", help="re-fetch poedb mapping")
     args = parser.parse_args()
 
-    client = NinjaClient()
+    client = get_client()
 
     cards = divcards.fetch(refresh=args.refresh)
     card_prices = {

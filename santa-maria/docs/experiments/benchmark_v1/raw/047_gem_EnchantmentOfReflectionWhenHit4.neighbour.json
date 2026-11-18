@@ -1,0 +1,60 @@
+{
+ "start": "gem:EnchantmentOfReflectionWhenHit4",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "gem:EnchantmentOfReflectionWhenHit4",
+     "to": "stat:active_skill_minion_damage_+%_final",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EnchantmentOfReflectionWhenHit4",
+     "to": "stat:base_display_minion_actor_level",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EnchantmentOfReflectionWhenHit4",
+     "to": "stat:base_skill_effect_duration",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EnchantmentOfReflectionWhenHit4",
+     "to": "stat:cast_when_hit_%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EnchantmentOfReflectionWhenHit4",
+     "to": "stat:display_minion_monster_type",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EnchantmentOfReflectionWhenHit4",
+     "to": "stat:minion_damage_+%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EnchantmentOfReflectionWhenHit4",
+     "to": "stat:minion_maximum_life_+%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:EnchantmentOfReflectionWhenHit4",
+     "to": "stat:number_of_monsters_to_summon",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

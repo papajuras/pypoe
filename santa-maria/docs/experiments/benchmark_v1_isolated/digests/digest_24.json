@@ -1,0 +1,116 @@
+{
+ "index": 24,
+ "node_id": "unique:1238",
+ "type": "UniqueItem",
+ "name": "Replica Cheap Construction",
+ "block": "random_draw",
+ "availability": "unavailable",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:1238"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:1238"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:1238"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:1238|item_class:Jewel|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "unique_in_class|item_class:Jewel|<60 in: unique:1054, unique:1055, unique:1056\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "unique_modifier_association|unique:1115|mod:AccuracyPerPointToClassStartUnique__1|out",
+    "unique_modifier_association|unique:1304|mod:AllAttributesUnique__23|out",
+    "unique_modifier_association|unique:1325|mod:AllResistancesUnique__24_|out",
+    "unique_modifier_association|unique:1303|mod:ArcaneSurgeEffectPerCasterAbyssJewelUnique__1|out",
+    "unique_modifier_association|unique:1302|mod:ChainOffTerrainChancePerRangedAbyssJewelUnique__1__|out",
+    "unique_modifier_association|unique:1369|mod:ConsecratedGroundLingersUnique__1|out",
+    "unique_modifier_association|unique:1369|mod:ConsecratedGroundStationarySTRHighestUnique__1|out",
+    "unique_modifier_association|unique:1411|mod:CorruptedMagicJewelModEffectUnique__1|out",
+    "unique_modifier_association|unique:1257|mod:CriticalStrikeChancePerIntensityUnique__1|out",
+    "unique_modifier_association|unique:1258|mod:CriticalStrikeChancePerIntensityUnique__2|out",
+    "unique_modifier_association|unique:1382|mod:DexterityUnique__26|out",
+    "unique_modifier_association|unique:1259|mod:DischargeThresholdJewel__1|out",
+    "unique_modifier_association|unique:1259|mod:ElementalDamageUnique__4|out",
+    "unique_modifier_association|unique:1325|mod:ElementalResistanceHighestMaxResistanceUnique__1_|out",
+    "unique_modifier_association|unique:1117|mod:ExpansionJewel3JewelSockets|out",
+    "unique_modifier_association|unique:1117|mod:ExpansionJewelEmptyPassiveUnique__4|out",
+    "unique_modifier_association|unique:1362|mod:FireResistUnique__31|out",
+    "unique_modifier_association|unique:1363|mod:ImmuneToCursesRemainingDurationUnique__1|out",
+    "unique_modifier_association|unique:1251|mod:ImpaleEffectUnique__2|out",
+    "unique_modifier_association|unique:1339|mod:InfernalCryThresholdJewel|out",
+    "unique_modifier_association|unique:1114|mod:JewelExpansionHollowPalmTechnique|out",
+    "unique_modifier_association|unique:1108|mod:JewelExpansionKeystoneDiscipleOfKitava_|out",
+    "unique_modifier_association|unique:1112|mod:JewelExpansionKineticism|out",
+    "unique_modifier_association|unique:1109|mod:JewelExpansionLoneMessenger_|out",
+    "unique_modifier_association|unique:1110|mod:JewelExpansionNaturesPatience|out",
+    "unique_modifier_association|unique:1111|mod:JewelExpansionSecretsOfSuffering|out",
+    "unique_modifier_association|unique:1113|mod:JewelExpansionVeteransAwareness_|out",
+    "unique_modifier_association|unique:1094|mod:JewelRingRadiusValuesUnique__2|out",
+    "unique_modifier_association|unique:1114|mod:KeystoneHollowPalmTechniqueUnique__1|out",
+    "unique_modifier_association|unique:1326|mod:LifeLossReservesLifeUnique__1|out",
+    "unique_modifier_association|unique:1361|mod:LightningResistUnique__28|out",
+    "unique_modifier_association|unique:1115|mod:LocalIncreasedEffectPathToClassStartUnique__1|out",
+    "unique_modifier_association|unique:1301|mod:MainHandCriticalStrikeChancePerMeleeAbyssJewelUnique__1|out",
+    "unique_modifier_association|unique:1057|mod:ManaCostEfficiencyPerDevotion|out",
+    "unique_modifier_association|unique:1325|mod:MaximumElementalResistanceUnique__2|out",
+    "unique_modifier_association|unique:1353|mod:MinimumPowerChargesPerStackableJewelUnique__1|out",
+    "unique_modifier_association|unique:1071|mod:MinionAttackAndCastSpeedUnique__1|out",
+    "unique_modifier_association|unique:1070|mod:MinionAttackBlockChanceUnique__1|out",
+    "unique_modifier_association|unique:1304|mod:MinionDamageOverTimeMultiplierPerMinionAbyssJewelUnique__1|out",
+    "unique_modifier_association|unique:1070|mod:MinionDamageUnique__6|out",
+    "unique_modifier_association|unique:1071|mod:MinionDodgeChanceUniqueJewel16|out",
+    "unique_modifier_association|unique:1070|mod:MinionLifeRecoveryOnBlockUniqueJewel18|out",
+    "unique_modifier_association|unique:1070|mod:MinionLifeUniqueJewel18|out",
+    "unique_modifier_association|unique:1071|mod:MinionRunSpeedUniqueJewel16|out",
+    "unique_modifier_association|unique:1070|mod:MinionSpellBlockChanceUnique__1_|out",
+    "unique_modifier_association|unique:1071|mod:MinionSuppressSpellChanceUnique__1|out",
+    "unique_modifier_association|unique:1382|mod:ModifiersToSuppressionApplyToAilmentAvoidUnique__1|out",
+    "unique_modifier_association|unique:1326|mod:MoreMaximumReservedLifeUnique__1|out",
+    "unique_modifier_association|unique:1361|mod:MutatedUniqueJewel173ShockDuration|out",
+    "unique_modifier_association|unique:1361|mod:MutatedUniqueJewel173ShockEffect|out",
+    "unique_modifier_association|unique:1363|mod:MutatedUniqueJewel175CurseDuration|out",
+    "unique_modifier_association|unique:1363|mod:MutatedUniqueJewel175CurseEnemiesExplode25%Chaos|out",
+    "unique_modifier_association|unique:1382|mod:MutatedUniqueJewel177ChanceToSuppressSpells|out",
+    "unique_modifier_association|unique:1382|mod:MutatedUniqueJewel177ModifiersToSpellSuppressionAlsoApplytoChanceToDefendPercentArmor|out",
+    "unique_modifier_association|unique:1382|mod:MutatedUniqueJewel177SpellDamageSuppressed|out",
+    "unique_modifier_association|unique:1070|mod:NotablesGrantMinionDamageTakenUnique__1_|out",
+    "unique_modifier_association|unique:1071|mod:NotablesGrantMinionMovementSpeedUnique__1_|out",
+    "unique_modifier_association|unique:1301|mod:OffHandCriticalStrikeMultiplierPerMeleeAbyssJewelUnique__1__|out",
+    "unique_modifier_association|unique:1369|mod:ProfaneGroundCriticalStrikeINTHighestUnique__1|out",
+    "unique_modifier_association|unique:1369|mod:ProfaneGroundLingersUnique__1|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "index": 10,
+ "node_id": "passive:AscendancyGladiator7",
+ "type": "Passive",
+ "name": "Gratuitous Violence",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyGladiator7"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyGladiator7"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyGladiator7"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:bleeding_enemies_explode_for_%_life_as_physical_damage"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyGladiator7|stat:bleeding_enemies_explode_for_%_life_as_physical_damage|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 4,
+     "members": [
+      "mod:AnimalCharmBleedExplode1",
+      "mod:AnimalCharmBleedExplode2",
+      "mod:BleedingEnemiesExplodeUnique__1",
+      "mod:DivergentBleedingEnemiesExplodeUnique__1"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyGladiator7"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:bleeding_enemies_explode_for_%_life_as_physical_damage",
+   "chain": "passive_grants_stat>stat:bleeding_enemies_explode_for_%_life_as_physical_damage",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:bleeding_enemies_explode_for_%_life_as_physical_damage": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 4,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmBleedExplode1",
+       "name": "Gladiator's"
+      },
+      {
+       "id": "mod:AnimalCharmBleedExplode2",
+       "name": "Gladiator's"
+      },
+      {
+       "id": "mod:BleedingEnemiesExplodeUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:DivergentBleedingEnemiesExplodeUnique__1",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyGladiator7",
+       "name": "Gratuitous Violence",
+       "asc": "Gladiator"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

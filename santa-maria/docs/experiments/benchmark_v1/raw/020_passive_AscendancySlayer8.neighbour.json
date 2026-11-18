@@ -1,0 +1,24 @@
+{
+ "start": "passive:AscendancySlayer8",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancySlayer8",
+     "to": "stat:override_weapon_base_critical_strike_chance",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancySlayer8",
+     "to": "stat:slayer_critical_strike_multiplier_+_per_nearby_enemy_up_to_100",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

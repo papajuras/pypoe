@@ -1,0 +1,1212 @@
+{
+ "start": "tag:lightning",
+ "depth_requested": 1,
+ "truncated": true,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "tag:lightning",
+     "to": "gem:Absolution",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:AbsolutionAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:AnimateGuardianAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Arc",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ArcAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ArcAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ArcaneCloak",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:BallLightning",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:BallLightningAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:BallLightningAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:BallLightningRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ChargedDash",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ChargedDashAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ChargedDashRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Conductivity",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:CracklingLance",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:CracklingLanceAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:CracklingLanceAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Discharge",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:DischargeAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:DivineIre",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:DivineIreAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:DivineIreAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:DivineIreRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:DivineRetribution",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:DoryanisTouch",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ElementalHit",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ElementalHitAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ElementalHitRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:EnergyBlade",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ExplosiveConcoction",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ExplosiveConcoctionAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GalvanicArrow",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GalvanicArrowAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GalvanicArrowAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GalvanicArrowRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GalvanicField",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GalvanicFieldAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GraftSkillEshJoltBuff",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GraftSkillEshLightningClones",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GraftSkillEshLightningHands",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GraftSkillEshLightningRing",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:GraftSkillTulAegis",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:HeraldOfThunder",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:HolyHammers",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:HolyHammersAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:HolyStrike",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Hydrosphere",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:HydrosphereRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningArrow",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningArrowAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningArrowRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningChannel",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningCircle",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningConduit",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningConduitAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningSpireTrap",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningSpireTrapAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningSpireTrapAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningSpireTrapRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningStrike",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningStrikeAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningTendrils",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningTendrilsAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningTendrilsAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningTendrilsRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningTrap",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningTrapAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningTrapRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningWarp",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:LightningWarpRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ManaInfusedStaff",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Manabond",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:NewShockNova",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:OrbOfStorms",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:OrbOfStormsAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:PactOfLycia",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:PenanceBrand",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:PenanceBrandAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:PenanceBrandAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:PowerSiphonAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:PurityOfLightning",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:RighteousLightning",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ShieldOfLight",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ShockNova",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ShockNovaAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:ShockNovaRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SigilOfPower",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Smite",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SmiteAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SmiteRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Spark",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SparkAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SparkAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StaticStrike",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StaticStrikeAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormBrand",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormBrandAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormBurst",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormBurstAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormCall",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormCallRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormRain",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormRainAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormRainAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Stormbind",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormbindAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:StormblastMine",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SummonLightningGolem",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SummonLightningGolemAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SummonSkitterbots",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportAddedLightningDamage",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportAddedLightningDamageRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportArchmage",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportAwakenedAddedLightningDamage",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportAwakenedLightningPenetration",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportCrustaceousGrasp",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportElementalProliferation",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportExcommunicate",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportFoulgrasp",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportInnervate",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportLightningPenetration",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportLivingLightning",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportOvercharge",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportPhysicalToLightning",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportPrismaticBurst",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SupportUnholyTrinity",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Sweep",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SweepAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:SweepRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:TempestShield",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Thunderstorm",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:TornadoAltY",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalAbsolution",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalArc",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalImpurityOfLightning",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalLightningArrow",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalLightningStrike",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalLightningTrap",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalLightningWarpInstant",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalSmite",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalSpark",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VaalStormCall",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:VoltaxicBurst",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:WaveOfConviction",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:WaveOfConvictionRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:WildStrike",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:WildStrikeAltX",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:WildStrikeRoyale",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "gem:Wrath",
+     "type": "gem_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithAxesJewel1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithAxesJewel2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithAxesJewel3_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithAxesJewel4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithAxesJewel5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithAxesJewel6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithBowsJewel1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithBowsJewel2_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithBowsJewel3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithBowsJewel4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithBowsJewel5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithBowsJewel6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithClawsJewel1__",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithClawsJewel2_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithClawsJewel3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithClawsJewel4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithClawsJewel5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithClawsJewel6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithDaggersJewel1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithDaggersJewel2_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithDaggersJewel3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithDaggersJewel4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithDaggersJewel5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithDaggersJewel6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithMacesJewel1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithMacesJewel2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithMacesJewel3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithMacesJewel4_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithMacesJewel5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithMacesJewel6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithStavesJewel1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithStavesJewel2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithStavesJewel3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithStavesJewel4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithStavesJewel5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithStavesJewel6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithSwordsJewel1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithSwordsJewel2__",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithSwordsJewel3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithSwordsJewel4_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithSwordsJewel5_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithSwordsJewel6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithWandsJewel1_",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithWandsJewel2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithWandsJewel3",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithWandsJewel4",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithWandsJewel5",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningDamageWithWandsJewel6",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningSuffixJewel1",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    },
+    {
+     "from": "tag:lightning",
+     "to": "mod:AbyssAddedLightningSuffixJewel2",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

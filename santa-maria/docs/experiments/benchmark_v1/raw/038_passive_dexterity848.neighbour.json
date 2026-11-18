@@ -1,0 +1,18 @@
+{
+ "start": "passive:dexterity848",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:dexterity848",
+     "to": "stat:base_dexterity",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

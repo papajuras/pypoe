@@ -1,0 +1,116 @@
+{
+ "index": 22,
+ "node_id": "passive:AscendancyRaider8",
+ "type": "Passive",
+ "name": "Lesson of the Seasons",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyRaider8"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyRaider8"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyRaider8"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:lose_X_bark_on_enemy_spell_hit"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:spell_damage_%_suppressed_per_bark_below_max"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyRaider8|stat:lose_X_bark_on_enemy_spell_hit|out",
+    "passive_grants_stat|passive:AscendancyRaider8|stat:spell_damage_%_suppressed_per_bark_below_max|out",
+    "passive_grants_stat|passive:AscendancyRaider8|stat:spell_damage_taken_+_per_barkskin_stack|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyRaider8"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:lose_X_bark_on_enemy_spell_hit",
+   "chain": "passive_grants_stat>stat:lose_X_bark_on_enemy_spell_hit",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:spell_damage_%_suppressed_per_bark_below_max",
+   "chain": "passive_grants_stat>stat:spell_damage_%_suppressed_per_bark_below_max",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:spell_damage_taken_+_per_barkskin_stack",
+   "chain": "passive_grants_stat>stat:spell_damage_taken_+_per_barkskin_stack",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:lose_X_bark_on_enemy_spell_hit": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyRaider8",
+       "name": "Lesson of the Seasons",
+       "asc": "Warden"
+      }
+     ]
+    }
+   }
+  },
+  "stat:spell_damage_%_suppressed_per_bark_below_max": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyRaider8",
+       "name": "Lesson of the Seasons",
+       "asc": "Warden"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

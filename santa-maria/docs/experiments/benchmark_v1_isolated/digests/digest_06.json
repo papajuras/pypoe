@@ -1,0 +1,135 @@
+{
+ "index": 6,
+ "node_id": "passive:AscendancyChampion14",
+ "type": "Passive",
+ "name": "Master of Metal",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyChampion14"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyChampion14"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyChampion14"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:impaled_debuff_number_of_reflected_hits"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:you_and_nearby_allies_armour_+_if_have_impaled_recently"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyChampion14|stat:impaled_debuff_number_of_reflected_hits|out",
+    "passive_grants_stat|passive:AscendancyChampion14|stat:you_and_nearby_allies_armour_+_if_have_impaled_recently|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 2,
+     "members": [
+      "mod:AnimalCharmImpaleLastsForExtraHits",
+      "mod:ImpalesInflictedLastAdditionalHitsUnique_1UNUSED"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 2,
+     "members": [
+      "passive:AscendancyChampion14",
+      "passive:impale_notable_2907"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:impaled_debuff_number_of_reflected_hits",
+   "chain": "passive_grants_stat>stat:impaled_debuff_number_of_reflected_hits",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:you_and_nearby_allies_armour_+_if_have_impaled_recently",
+   "chain": "passive_grants_stat>stat:you_and_nearby_allies_armour_+_if_have_impaled_recently",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:impaled_debuff_number_of_reflected_hits": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmImpaleLastsForExtraHits",
+       "name": "Champion's"
+      },
+      {
+       "id": "mod:ImpalesInflictedLastAdditionalHitsUnique_1UNUSED",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "passive:AscendancyChampion14",
+       "name": "Master of Metal",
+       "asc": "Champion"
+      },
+      {
+       "id": "passive:impale_notable_2907",
+       "name": "Brutal Skewering"
+      }
+     ]
+    }
+   }
+  },
+  "stat:you_and_nearby_allies_armour_+_if_have_impaled_recently": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyChampion14",
+       "name": "Master of Metal",
+       "asc": "Champion"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

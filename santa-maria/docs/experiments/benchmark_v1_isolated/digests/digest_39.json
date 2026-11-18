@@ -1,0 +1,92 @@
+{
+ "index": 39,
+ "node_id": "passive:UniqueItemsNode31_",
+ "type": "Passive",
+ "name": "Lord's Descent",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:UniqueItemsNode31_"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:UniqueItemsNode31_"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:UniqueItemsNode31_"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:brequel_unique_fruit_special_unique_chance_+%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:UniqueItemsNode31_|stat:brequel_unique_fruit_special_unique_chance_+%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 3,
+     "members": [
+      "passive:UniqueItemsNode31_",
+      "passive:UniqueItemsNode32",
+      "passive:UniqueItemsNode3f"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:brequel_unique_fruit_special_unique_chance_+%",
+   "chain": "passive_grants_stat>stat:brequel_unique_fruit_special_unique_chance_+%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:brequel_unique_fruit_special_unique_chance_+%": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 3,
+     "samples": [
+      {
+       "id": "passive:UniqueItemsNode31_",
+       "name": "Lord's Descent"
+      },
+      {
+       "id": "passive:UniqueItemsNode32",
+       "name": "Remembered Origins"
+      },
+      {
+       "id": "passive:UniqueItemsNode3f",
+       "name": "Foulborn Ancestry"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "_schema": "unobtainable mod families — reviewed exclusion from node extraction (phase 4E load_mods gate)",
+  "_authority": "This pinned, reviewed list is the authoritative classification. KB evidence (e.g. zero in-edges / no carrier) is supporting evidence for the review, never the classification criterion itself.",
+  "_effect": "Mod record keys starting with any family_prefix are not emitted as nodes; all downstream edges derive from nodes and disappear with them.",
+  "families": [
+    {
+      "family_prefix": "SynthesisImplicit",
+      "reason": "Synthesis league mechanic removed from the game; implicit mods are legacy-only and obtainable by no live path",
+      "provenance": "user-confirmed removal 2026-09-21; supporting KB evidence at decision time: 1341 mod nodes, sampled nodes with 0 in-edges, no unique_modifier_association rows",
+      "decided": "2026-09-21"
+    }
+  ]
+}

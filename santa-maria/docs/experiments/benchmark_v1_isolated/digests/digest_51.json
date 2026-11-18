@@ -1,0 +1,57 @@
+{
+ "index": 51,
+ "node_id": "stat:brequel_misc_fruit_rarer_rewards_chance_+%",
+ "type": "Stat",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "stat:brequel_misc_fruit_rarer_rewards_chance_+%"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "stat:brequel_misc_fruit_rarer_rewards_chance_+%"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:brequel_misc_fruit_rarer_rewards_chance_+%"
+   }
+  }
+ ],
+ "start_carriers": {
+  "passive_grants_stat": {
+   "count": 1,
+   "samples": [
+    {
+     "id": "passive:MiscItemsNode3",
+     "name": "Artificial Selection"
+    }
+   ]
+  }
+ },
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:MiscItemsNode3"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": []
+}

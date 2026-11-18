@@ -1,0 +1,48 @@
+{
+ "start": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+     "to": "modgroup:MaximumEnergyShieldOnKillPercent",
+     "type": "modifier_in_group",
+     "direction": "out"
+    },
+    {
+     "from": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+     "to": "stat:local_flask_recover_%_maximum_energy_shield_on_kill_during_flask_effect",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+     "to": "tag:defences",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+     "to": "tag:energy_shield",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+     "to": "tag:flask",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+     "to": "unique:844",
+     "type": "unique_modifier_association",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

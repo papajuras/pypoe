@@ -1,0 +1,24 @@
+{
+ "start": "passive:AscendancyPathfinder14",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyPathfinder14",
+     "to": "stat:pathfinder_poison_damage_+100%_final_chance_during_flask_effect",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyPathfinder14",
+     "to": "stat:unique_spread_poison_to_nearby_enemies_during_flask_effect",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

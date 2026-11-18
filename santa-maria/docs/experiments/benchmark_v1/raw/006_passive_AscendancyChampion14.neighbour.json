@@ -1,0 +1,24 @@
+{
+ "start": "passive:AscendancyChampion14",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyChampion14",
+     "to": "stat:impaled_debuff_number_of_reflected_hits",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyChampion14",
+     "to": "stat:you_and_nearby_allies_armour_+_if_have_impaled_recently",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

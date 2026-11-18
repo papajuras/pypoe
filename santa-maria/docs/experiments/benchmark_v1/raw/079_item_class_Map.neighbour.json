@@ -1,0 +1,210 @@
+{
+ "start": "item_class:Map",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "item_class:Map",
+     "to": "unique:1095",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1096",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1097",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1098",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1099",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1140",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1235",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1236",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1237",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1346",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:150",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:152",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:1524",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:208",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:251",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:331",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:332",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:333",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:334",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:335",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:440",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:487",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:525",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:564",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:577",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:682",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:683",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:684",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:699",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:700",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:701",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:702",
+     "type": "unique_in_class",
+     "direction": "in"
+    },
+    {
+     "from": "item_class:Map",
+     "to": "unique:703",
+     "type": "unique_in_class",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

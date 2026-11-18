@@ -1,0 +1,72 @@
+{
+  "provenance": {
+    "provenance_class": "audited_pinned_external_source",
+    "pob_repo": "PathOfBuildingCommunity/PathOfBuilding",
+    "pob_commit": "ed354c2f8c42e148bc904c7508dbe851fb2cf952",
+    "pob_branch": "dev",
+    "source_file": "src/Modules/CalcPerform.lua",
+    "function": "doActorAttribsConditions",
+    "block": "Add attribute bonuses",
+    "lines": "511-543",
+    "extraction": "audited manual extraction, pinned snapshot",
+    "note": "Snapshot of a specific PoB commit, not a regenerated mirror of current PoB. Before bumping pob_commit, verify whether this attribute block or PoB's vocabulary mapping changed (git log -L on the block); if unchanged, keep the old pin.",
+    "vocabulary_evidence": "src/Modules/ModParser.lua:719 maps 'melee physical damage' to {PhysicalDamage, ModFlag.Melee}; lines 236/241/243/751 map 'maximum energy shield'/'evasion'/'energy shield'/'accuracy' to the internal mod names used below."
+  },
+  "mechanics": [
+    {
+      "id": "strength_melee_physical_damage",
+      "attribute": "strength",
+      "target_stat": "melee_physical_damage_+%",
+      "pob_mod": {"name": "PhysicalDamage", "type": "INC", "flag": "Melee"},
+      "formula": "floor(Strength / 5) %",
+      "ratio": "1% increased Melee Physical Damage per 5 Strength",
+      "suppressed_by": ["NoStrengthAttributeBonuses"]
+    },
+    {
+      "id": "strength_life",
+      "attribute": "strength",
+      "target_stat": "base_maximum_life",
+      "pob_mod": {"name": "Life", "type": "BASE", "flag": null},
+      "formula": "floor(Strength / 2) Life",
+      "ratio": "1 Life per 2 Strength",
+      "suppressed_by": ["NoStrengthAttributeBonuses", "NoStrBonusToLife"]
+    },
+    {
+      "id": "dexterity_accuracy",
+      "attribute": "dexterity",
+      "target_stat": "accuracy_rating",
+      "pob_mod": {"name": "Accuracy", "type": "BASE", "flag": null},
+      "formula": "Dexterity * AccuracyPerDexBase",
+      "ratio": "AccuracyPerDexBase Accuracy per Dexterity (PoB data.misc constant)",
+      "override": "DexAccBonusOverride",
+      "suppressed_by": ["NoDexterityAttributeBonuses"]
+    },
+    {
+      "id": "dexterity_evasion",
+      "attribute": "dexterity",
+      "target_stat": "evasion_rating_+%",
+      "pob_mod": {"name": "Evasion", "type": "INC", "flag": null},
+      "formula": "floor(Dexterity / 5) %",
+      "ratio": "1% increased Evasion Rating per 5 Dexterity",
+      "suppressed_by": ["NoDexterityAttributeBonuses", "NoDexBonusToEvasion"]
+    },
+    {
+      "id": "intelligence_mana",
+      "attribute": "intelligence",
+      "target_stat": "base_maximum_mana",
+      "pob_mod": {"name": "Mana", "type": "BASE", "flag": null},
+      "formula": "floor(Intelligence / 2) Mana",
+      "ratio": "1 Mana per 2 Intelligence",
+      "suppressed_by": ["NoIntelligenceAttributeBonuses", "NoIntBonusToMana"]
+    },
+    {
+      "id": "intelligence_energy_shield",
+      "attribute": "intelligence",
+      "target_stat": "maximum_energy_shield_+%",
+      "pob_mod": {"name": "EnergyShield", "type": "INC", "flag": null},
+      "formula": "floor(Intelligence / 10) %",
+      "ratio": "1% increased maximum Energy Shield per 10 Intelligence",
+      "suppressed_by": ["NoIntelligenceAttributeBonuses", "NoIntBonusToES"]
+    }
+  ]
+}

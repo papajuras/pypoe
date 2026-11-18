@@ -1,0 +1,36 @@
+{
+ "start": "gem:SupportGreaterDevour",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "gem:SupportGreaterDevour",
+     "to": "stat:killing_blow_consumes_corpse_chance_to_gain_soul_per_power_permillage",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SupportGreaterDevour",
+     "to": "stat:killing_blow_consumes_corpse_restore_x_life",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SupportGreaterDevour",
+     "to": "stat:killing_blow_consumes_corpse_restore_x_mana",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SupportGreaterDevour",
+     "to": "tag:support",
+     "type": "gem_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

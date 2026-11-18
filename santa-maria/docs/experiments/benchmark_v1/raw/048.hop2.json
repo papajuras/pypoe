@@ -1,0 +1,304 @@
+{
+ "index": 48,
+ "node_id": "gem:EssenceDrainAltX",
+ "targets": {
+  "stat:base_chaos_damage_to_deal_per_minute": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 27,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Bane",
+    "gem:BaneAltX",
+    "gem:Blight",
+    "gem:BlightAltX",
+    "gem:BlightAltY",
+    "gem:BlightRoyale",
+    "gem:CausticArrow",
+    "gem:CausticArrowRoyale",
+    "gem:Contagion",
+    "gem:ContagionAltX",
+    "gem:ContagionAltY",
+    "gem:DarktongueKiss",
+    "gem:DeathAura",
+    "gem:Desecrate",
+    "gem:DesecrateRoyale"
+   ],
+   "total": 27
+  },
+  "stat:base_is_projectile": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 184,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:ArtilleryBallista",
+    "gem:ArtilleryBallistaAltX",
+    "gem:ArtilleryBallistaAltY",
+    "gem:ArtilleryBallistaRoyale",
+    "gem:AvengingFlame",
+    "gem:BallLightning",
+    "gem:BallLightningAltX",
+    "gem:BallLightningRoyale",
+    "gem:BlastRain",
+    "gem:BlastRainAltX",
+    "gem:BlastRainRoyale",
+    "gem:BlazingSalvo",
+    "gem:BlazingSalvoRoyale",
+    "gem:BlinkArrow",
+    "gem:BlinkArrowAltX"
+   ],
+   "total": 184
+  },
+  "stat:base_projectile_speed_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 73,
+    "passive_grants_stat": 13,
+    "gem_grants_stat": 56,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:BallLightning",
+    "gem:BallLightningAltX",
+    "gem:BallLightningAltY",
+    "gem:BallLightningRoyale",
+    "gem:CobraLash",
+    "gem:CobraLashRoyale",
+    "gem:EssenceDrain",
+    "gem:EssenceDrainAltX",
+    "gem:EssenceDrainAltY",
+    "gem:EssenceDrainRoyale",
+    "gem:EtherealKnives",
+    "gem:EtherealKnivesAltX",
+    "gem:EtherealKnivesAltY",
+    "gem:EtherealKnivesRoyale",
+    "gem:EyeOfWinter"
+   ],
+   "total": 142
+  },
+  "stat:base_skill_effect_duration": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 443,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:AfflictionSplitColdIceSpikes",
+    "gem:AfflictionSplitColdSpearGroundToss",
+    "gem:AfflictionSplitColdSpearToss",
+    "gem:AfflictionSplitFireFlameblast",
+    "gem:AfflictionSplitFireSlash",
+    "gem:AfflictionSplitFireTornado",
+    "gem:AfflictionSplitLightningElectricFlail",
+    "gem:AfflictionSplitLightningGigaBall",
+    "gem:AfflictionSplitLightningTeleportStorm",
+    "gem:AfflictionSplitPhysicalAbyssSlam",
+    "gem:AfflictionSplitPhysicalLeapSlam",
+    "gem:AfflictionSplitPhysicalPizzaSlam",
+    "gem:AfflictionUniqueSplitColdIceSpikes"
+   ],
+   "total": 443
+  },
+  "stat:damage_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 153,
+    "passive_grants_stat": 9,
+    "gem_grants_stat": 480,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AncestorTotemSlash",
+    "gem:AncestralProtector",
+    "gem:AncestralProtectorRoyale",
+    "gem:AncestralWarchief",
+    "gem:AncestralWarchiefRoyale",
+    "gem:Arc",
+    "gem:ArcAltX",
+    "gem:ArcAltY",
+    "gem:ArmageddonBrand",
+    "gem:ArmageddonBrandAltX",
+    "gem:ArmageddonBrandAltY",
+    "gem:BallLightning",
+    "gem:BallLightningAltX",
+    "gem:BallLightningAltY",
+    "gem:BallLightningRoyale"
+   ],
+   "total": 642
+  },
+  "stat:essence_drain_lose_life_from_damage_permyriad": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 1,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:EssenceDrainAltX"
+   ],
+   "total": 1
+  },
+  "stat:number_of_additional_projectiles": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 28,
+    "passive_grants_stat": 5,
+    "gem_grants_stat": 110,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:ArtilleryBallista",
+    "gem:ArtilleryBallistaAltX",
+    "gem:ArtilleryBallistaAltY",
+    "gem:ArtilleryBallistaRoyale",
+    "gem:BallLightning",
+    "gem:BallLightningAltX",
+    "gem:BallLightningAltY",
+    "gem:BallLightningRoyale",
+    "gem:Barrage",
+    "gem:BarrageAltX",
+    "gem:BlazingSalvo",
+    "gem:BlazingSalvoRoyale",
+    "gem:BoneNova",
+    "gem:CremationRoyale",
+    "gem:ElementalProjectiles"
+   ],
+   "total": 143
+  },
+  "stat:quality_display_essence_drain_is_gem": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 3,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:EssenceDrain",
+    "gem:EssenceDrainAltX",
+    "gem:EssenceDrainAltY"
+   ],
+   "total": 3
+  },
+  "stat:skill_effect_duration_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 49,
+    "passive_grants_stat": 20,
+    "gem_grants_stat": 135,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:AssassinsMark",
+    "gem:AssassinsMarkRoyale",
+    "gem:AssassinsMarkTriggered",
+    "gem:BladeVortex",
+    "gem:BladeVortexAltX",
+    "gem:BladeVortexRoyale",
+    "gem:BloodOffering",
+    "gem:BoneOffering",
+    "gem:BoneOfferingTriggeredUnique",
+    "gem:CausticArrow",
+    "gem:CausticArrowAltX",
+    "gem:CausticArrowRoyale",
+    "gem:Conductivity",
+    "gem:Contagion",
+    "gem:ContagionAltX"
+   ],
+   "total": 204
+  },
+  "stat:spell_damage_modifiers_apply_to_skill_dot": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 52,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Bane",
+    "gem:BaneAltX",
+    "gem:Blight",
+    "gem:BlightAltX",
+    "gem:BlightAltY",
+    "gem:BlightRoyale",
+    "gem:ColdSnap",
+    "gem:ColdSnapRoyale",
+    "gem:Contagion",
+    "gem:ContagionAltX",
+    "gem:ContagionAltY",
+    "gem:CreepingFrost",
+    "gem:CreepingFrostAltX",
+    "gem:CreepingFrostRoyale",
+    "gem:DarktongueKiss"
+   ],
+   "total": 52
+  },
+  "stat:spell_maximum_base_chaos_damage": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 20,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:DarkPact",
+    "gem:DarkPactAltX",
+    "gem:DarkPactRoyale",
+    "gem:DoomBlast",
+    "gem:EssenceDrain",
+    "gem:EssenceDrainAltX",
+    "gem:EssenceDrainAltY",
+    "gem:EssenceDrainRoyale",
+    "gem:ForbiddenRite",
+    "gem:ForbiddenRiteAltX",
+    "gem:Hexblast",
+    "gem:HexblastAltX",
+    "gem:HexblastAltY",
+    "gem:PlaytestSpell",
+    "gem:Soulrend"
+   ],
+   "total": 20
+  },
+  "stat:spell_minimum_base_chaos_damage": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 20,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:DarkPact",
+    "gem:DarkPactAltX",
+    "gem:DarkPactRoyale",
+    "gem:DoomBlast",
+    "gem:EssenceDrain",
+    "gem:EssenceDrainAltX",
+    "gem:EssenceDrainAltY",
+    "gem:EssenceDrainRoyale",
+    "gem:ForbiddenRite",
+    "gem:ForbiddenRiteAltX",
+    "gem:Hexblast",
+    "gem:HexblastAltX",
+    "gem:HexblastAltY",
+    "gem:PlaytestSpell",
+    "gem:Soulrend"
+   ],
+   "total": 20
+  }
+ }
+}

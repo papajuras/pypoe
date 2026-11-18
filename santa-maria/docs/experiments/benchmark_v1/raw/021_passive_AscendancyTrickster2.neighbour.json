@@ -1,0 +1,24 @@
+{
+ "start": "passive:AscendancyTrickster2",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyTrickster2",
+     "to": "stat:base_charge_duration_+%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyTrickster2",
+     "to": "stat:max_frenzy_charges",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

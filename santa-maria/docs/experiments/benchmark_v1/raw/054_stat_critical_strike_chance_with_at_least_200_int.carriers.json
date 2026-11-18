@@ -1,0 +1,29 @@
+{
+ "error": null,
+ "results": [
+  {
+   "carrier": "mod:CriticalStrikeChanceAt200IntelligenceUnique__1",
+   "edge_type": "modifier_grants_stat",
+   "type": "Modifier",
+   "name": ""
+  }
+ ],
+ "meta": {
+  "node_id": "stat:critical_strike_chance_+%_with_at_least_200_int",
+  "edge_types": [
+   "modifier_grants_stat",
+   "passive_grants_stat",
+   "gem_grants_stat",
+   "unique_modifier_association"
+  ],
+  "counts": {
+   "modifier_grants_stat": 1,
+   "passive_grants_stat": 0,
+   "gem_grants_stat": 0,
+   "unique_modifier_association": 0
+  },
+  "total": 1,
+  "returned": 1,
+  "truncated": null
+ }
+}

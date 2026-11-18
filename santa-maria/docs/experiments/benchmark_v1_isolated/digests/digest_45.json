@@ -1,0 +1,152 @@
+{
+ "index": 45,
+ "node_id": "gem:SupportCastLinkedCursesOnCurse",
+ "type": "Gem",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "gem:SupportCastLinkedCursesOnCurse"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "gem:SupportCastLinkedCursesOnCurse"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "gem:SupportCastLinkedCursesOnCurse"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:cast_linked_curses_on_curse"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "gem_grants_stat|gem:SupportCastLinkedCursesOnCurse|stat:cast_linked_curses_on_curse|out",
+    "gem_has_tag|gem:SupportCastLinkedCursesOnCurse|tag:support|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "gem_has_tag|tag:support|<60 in: gem:HandcastRapidFireSupport, gem:SupportAddedChaosDamage, gem:SupportAddedColdDamage\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 1,
+     "members": [
+      "gem:SupportCastLinkedCursesOnCurse"
+     ]
+    }
+   ]
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_grants_stat|gem:SupportAdditionalAccuracy|stat:accuracy_rating|out",
+    "gem_grants_stat|gem:SupportAwakenedHextouch|stat:apply_linked_curses_on_hit_%|out",
+    "gem_grants_stat|gem:SupportArchmage|stat:archmage_gain_lightning_damage_%_of_max_unreserved_mana|out",
+    "gem_grants_stat|gem:SupportBallistaTotem|stat:attack_skills_additional_ballista_totems_allowed|out",
+    "gem_grants_stat|gem:SupportAwakenedGenerosity|stat:aura_cannot_affect_self|out",
+    "gem_grants_stat|gem:SupportArrogance|stat:aura_effect_+%|out",
+    "gem_grants_stat|gem:SupportAwakenedCastWhileChannelling|stat:avoid_interruption_while_using_this_skill_%|out",
+    "gem_grants_stat|gem:SupportAwakenedUnboundAilments|stat:base_all_ailment_duration_+%|out",
+    "gem_grants_stat|gem:SupportAwakenedBrutality|stat:base_deal_no_chaos_damage|out",
+    "gem_grants_stat|gem:SupportAwakenedColdPenetration|stat:base_inflict_cold_exposure_on_hit_%_chance|out",
+    "gem_grants_stat|gem:SupportAwakenedFirePenetration|stat:base_inflict_fire_exposure_on_hit_%_chance|out",
+    "gem_grants_stat|gem:SupportAwakenedLightningPenetration|stat:base_inflict_lightning_exposure_on_hit_%_chance|out",
+    "gem_grants_stat|gem:SupportAwakenedMultistrike|stat:base_melee_attack_repeat_count|out",
+    "gem_grants_stat|gem:SupportAwakenedColdPenetration|stat:base_reduce_enemy_cold_resistance_%|out",
+    "gem_grants_stat|gem:SupportAwakenedFirePenetration|stat:base_reduce_enemy_fire_resistance_%|out",
+    "gem_grants_stat|gem:SupportAwakenedLightningPenetration|stat:base_reduce_enemy_lightning_resistance_%|out",
+    "gem_grants_stat|gem:SupportAwakenedIncreasedAreaofEffect|stat:base_skill_area_of_effect_+%|out",
+    "gem_grants_stat|gem:SupportAwakenedBlasphemy|stat:base_skill_is_instant|out",
+    "gem_grants_stat|gem:SupportBallistaTotem|stat:base_skill_is_totemified|out",
+    "gem_grants_stat|gem:SupportArrogance|stat:base_skill_reserve_life_instead_of_mana|out",
+    "gem_grants_stat|gem:SupportAwakenedSpellEcho|stat:base_spell_repeat_count|out",
+    "gem_grants_stat|gem:SupportBallistaTotem|stat:base_totem_duration|out",
+    "gem_grants_stat|gem:SupportBallistaTotem|stat:base_totem_range|out",
+    "gem_grants_stat|gem:SupportAwakenedElementalFocus|stat:cannot_inflict_status_ailments|out",
+    "gem_grants_stat|gem:SupportAwakenedCastOnCriticalStrike|stat:cast_linked_spells_on_attack_crit_%|out",
+    "gem_grants_stat|gem:SupportAwakenedCastWhileChannelling|stat:cast_while_channelling_time_ms|out",
+    "gem_grants_stat|gem:SupportAwakenedBrutality|stat:chance_to_crush_on_hit_%|out",
+    "gem_grants_stat|gem:SupportAwakenedMeleePhysicalDamage|stat:chance_to_intimidate_on_hit_%|out",
+    "gem_grants_stat|gem:SupportAwakenedControlledDestruction|stat:chance_to_unnerve_on_hit_%|out",
+    "gem_grants_stat|gem:SupportAwakenedBlasphemy|stat:curse_apply_as_aura|out",
+    "gem_grants_stat|gem:SupportAwakenedBlasphemy|stat:curse_area_of_effect_+%|out",
+    "gem_grants_stat|gem:SupportAwakenedBrutality|stat:deal_no_elemental_damage|out",
+    "gem_grants_stat|gem:SupportBallistaTotem|stat:disable_skill_if_melee_attack|out",
+    "gem_grants_stat|gem:SupportAwakenedElementalDamageWithAttacks|stat:elemental_damage_cannot_be_reflected|out",
+    "gem_grants_stat|gem:SupportAnnhilation|stat:explode_enemies_for_10%_life_as_random_element_on_killing_blow_chance_%|out",
+    "gem_grants_stat|gem:SupportAddedChaosDamage|stat:global_maximum_added_chaos_damage|out",
+    "gem_grants_stat|gem:SupportAddedColdDamage|stat:global_maximum_added_cold_damage|out",
+    "gem_grants_stat|gem:SupportAddedLightningDamage|stat:global_maximum_added_lightning_damage|out",
+    "gem_grants_stat|gem:SupportAddedChaosDamage|stat:global_minimum_added_chaos_damage|out",
+    "gem_grants_stat|gem:SupportAddedColdDamage|stat:global_minimum_added_cold_damage|out",
+    "gem_grants_stat|gem:SupportAddedLightningDamage|stat:global_minimum_added_lightning_damage|out",
+    "gem_grants_stat|gem:SupportAwakenedIncreasedAreaofEffect|stat:inc_aoe_plus_more_area_damage_+%_final|out",
+    "gem_grants_stat|gem:SupportBallistaTotem|stat:is_ranged_attack_totem|out",
+    "gem_grants_stat|gem:SupportBallistaTotem|stat:is_totem|out",
+    "gem_grants_stat|gem:SupportArchmage|stat:manaweave_cost_equals_%_unreserved_mana|out",
+    "gem_grants_stat|gem:SupportAncestralCall|stat:melee_attack_number_of_spirit_strikes|out",
+    "gem_grants_stat|gem:SupportBehead|stat:melee_range_+|out",
+    "gem_grants_stat|gem:SupportAwakenedMeleeSplash|stat:melee_splash|out",
+    "gem_grants_stat|gem:SupportAwakenedMeleeSplash|stat:melee_splash_area_of_effect_+%_final|out",
+    "gem_grants_stat|gem:SupportAdvancedTraps|stat:multi_trap_and_mine_support_flags|out",
+    "gem_grants_stat|gem:SupportAwakenedMultistrike|stat:multistrike_damage_+%_final_on_first_repeat|out",
+    "gem_grants_stat|gem:SupportAwakenedMultistrike|stat:multistrike_damage_+%_final_on_second_repeat|out",
+    "gem_grants_stat|gem:SupportAwakenedMultistrike|stat:multistrike_damage_+%_final_on_third_repeat|out",
+    "gem_grants_stat|gem:SupportAwakenedGenerosity|stat:non_curse_aura_effect_+%|out",
+    "gem_grants_stat|gem:SupportAwakenedUnboundAilments|stat:non_damaging_ailment_effect_+%|out",
+    "gem_grants_stat|gem:SupportAwakenedFork|stat:number_of_additional_forks_base|out",
+    "gem_grants_stat|gem:SupportArrowNova|stat:number_of_additional_projectiles|out",
+    "gem_grants_stat|gem:SupportAwakenedChain|stat:number_of_chains|out",
+    "gem_grants_stat|gem:SupportAddedFireDamage|stat:physical_damage_%_to_add_as_fire|out",
+    "gem_grants_stat|gem:SupportAdvancedTraps|stat:placing_traps_cooldown_recovery_+%|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:cast_linked_curses_on_curse",
+   "chain": "gem_grants_stat>stat:cast_linked_curses_on_curse",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:cast_linked_curses_on_curse": {
+   "carriers": {
+    "gem_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "gem:SupportCastLinkedCursesOnCurse",
+       "name": null
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start",
+  "truncated_bfs"
+ ]
+}

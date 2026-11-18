@@ -1,0 +1,178 @@
+{
+ "index": 60,
+ "node_id": "mod:WeaponTreeSupportIronGripHardMode",
+ "type": "Modifier",
+ "name": "",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "mod:WeaponTreeSupportIronGripHardMode"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "mod:WeaponTreeSupportIronGripHardMode"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "mod:WeaponTreeSupportIronGripHardMode"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_display_socketed_gems_supported_by_level_x_iron_grip"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "modifier_in_group|mod:WeaponTreeSupportIronGripHardMode|modgroup:WeaponTreeSupportIronGrip|out",
+    "modifier_grants_stat|mod:WeaponTreeSupportIronGripHardMode|stat:local_display_socketed_gems_supported_by_level_x_iron_grip|out",
+    "modifier_has_tag|mod:WeaponTreeSupportIronGripHardMode|tag:default|out",
+    "modifier_has_tag|mod:WeaponTreeSupportIronGripHardMode|tag:has_attack_mod|out",
+    "modifier_has_tag|mod:WeaponTreeSupportIronGripHardMode|tag:one_hand_weapon|out",
+    "modifier_has_tag|mod:WeaponTreeSupportIronGripHardMode|tag:shield|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_has_tag|tag:default|<60 in: mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_, mod:AbyssAccuracyRatingJewel1, mod:AbyssAccuracyRatingJewel2\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 8,
+     "members": [
+      "mod:HungryLoopSupportedByIronGrip",
+      "mod:LocalIncreasedPhysicalDamagePercentIronGripUber1",
+      "mod:LocalIncreasedPhysicalDamagePercentIronGripUber2_",
+      "mod:LocalIncreasedPhysicalDamagePercentIronGripUber3",
+      "mod:WeaponTreeSupportIronGrip",
+      "mod:WeaponTreeSupportIronGrip2H",
+      "mod:WeaponTreeSupportIronGrip2HHardMode",
+      "mod:WeaponTreeSupportIronGripHardMode"
+     ]
+    }
+   ]
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "modifier_in_group|mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_|modgroup:AccuracyIfNoEnemySlainRecently|out",
+    "modifier_in_group|mod:AbyssAddedChaosSuffixJewel1|modgroup:AddedChaosSuffix|out",
+    "modifier_in_group|mod:AbyssAccuracyRatingJewel1|modgroup:IncreasedAccuracy|out",
+    "modifier_in_group|mod:AbyssAddedChaosDamageWithBowsJewel1_|modgroup:SpecificWeaponChaosDamage|out",
+    "modifier_in_group|mod:AbyssAddedColdDamageWithAxesJewel1|modgroup:SpecificWeaponColdDamage|out",
+    "modifier_grants_stat|mod:AbyssAccuracyRatingJewel1|stat:accuracy_rating|out",
+    "modifier_grants_stat|mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_|stat:accuracy_rating_+%_if_enemy_not_killed_recently|out",
+    "modifier_grants_stat|mod:AbyssAddedChaosSuffixJewel1|stat:attack_maximum_added_chaos_damage|out",
+    "modifier_grants_stat|mod:AbyssAddedChaosDamageWithBowsJewel1_|stat:attack_maximum_added_chaos_damage_with_bows|out",
+    "modifier_grants_stat|mod:AbyssAddedChaosDamageWithClawsJewel1|stat:attack_maximum_added_chaos_damage_with_claws|out",
+    "modifier_grants_stat|mod:AbyssAddedChaosDamageWithDaggersJewel1|stat:attack_maximum_added_chaos_damage_with_daggers|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithAxesJewel1|stat:attack_maximum_added_cold_damage_with_axes|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithBowsJewel1|stat:attack_maximum_added_cold_damage_with_bows|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithClawsJewel1|stat:attack_maximum_added_cold_damage_with_claws|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithDaggersJewel1|stat:attack_maximum_added_cold_damage_with_daggers|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithMacesJewel1|stat:attack_maximum_added_cold_damage_with_maces|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithStavesJewel1|stat:attack_maximum_added_cold_damage_with_staves|out",
+    "modifier_grants_stat|mod:AbyssAddedChaosSuffixJewel1|stat:attack_minimum_added_chaos_damage|out",
+    "modifier_grants_stat|mod:AbyssAddedChaosDamageWithBowsJewel1_|stat:attack_minimum_added_chaos_damage_with_bows|out",
+    "modifier_grants_stat|mod:AbyssAddedChaosDamageWithClawsJewel1|stat:attack_minimum_added_chaos_damage_with_claws|out",
+    "modifier_grants_stat|mod:AbyssAddedChaosDamageWithDaggersJewel1|stat:attack_minimum_added_chaos_damage_with_daggers|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithAxesJewel1|stat:attack_minimum_added_cold_damage_with_axes|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithBowsJewel1|stat:attack_minimum_added_cold_damage_with_bows|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithClawsJewel1|stat:attack_minimum_added_cold_damage_with_claws|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithDaggersJewel1|stat:attack_minimum_added_cold_damage_with_daggers|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithMacesJewel1|stat:attack_minimum_added_cold_damage_with_maces|out",
+    "modifier_grants_stat|mod:AbyssAddedColdDamageWithStavesJewel1|stat:attack_minimum_added_cold_damage_with_staves|out",
+    "modifier_has_tag|mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_|tag:abyss_jewel_caster|out",
+    "modifier_has_tag|mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_|tag:abyss_jewel_melee|out",
+    "modifier_has_tag|mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_|tag:abyss_jewel_ranged|out",
+    "modifier_has_tag|mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_|tag:abyss_jewel_summoner|out",
+    "modifier_has_tag|mod:AbyssAccuracyIfNoEnemySlainRecentlyJewel1_|tag:attack|out",
+    "modifier_has_tag|mod:AbyssAddedColdDamageWithAxesJewel1|tag:axe|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithBowsJewel1_|tag:bow|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithBowsJewel1_|tag:chaos|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithBowsJewel1_|tag:chaos_damage|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithClawsJewel1|tag:claw|out",
+    "modifier_has_tag|mod:AbyssAddedColdDamageWithAxesJewel1|tag:cold|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithDaggersJewel1|tag:dagger|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithBowsJewel1_|tag:damage|out",
+    "modifier_has_tag|mod:AbyssAddedColdDamageWithAxesJewel1|tag:elemental|out",
+    "modifier_has_tag|mod:AbyssAddedColdDamageWithAxesJewel1|tag:elemental_damage|out",
+    "modifier_has_tag|mod:AbyssAddedColdDamageWithMacesJewel1|tag:mace|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithBowsJewel1_|tag:one_handed_mod|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithBowsJewel1_|tag:specific_weapon|out",
+    "modifier_has_tag|mod:AbyssAddedColdDamageWithStavesJewel1|tag:staff|out",
+    "modifier_has_tag|mod:AbyssAddedChaosDamageWithBowsJewel1_|tag:two_handed_mod|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:local_display_socketed_gems_supported_by_level_x_iron_grip",
+   "chain": "modifier_grants_stat>stat:local_display_socketed_gems_supported_by_level_x_iron_grip",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:local_display_socketed_gems_supported_by_level_x_iron_grip": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 8,
+     "samples": [
+      {
+       "id": "mod:HungryLoopSupportedByIronGrip",
+       "name": ""
+      },
+      {
+       "id": "mod:LocalIncreasedPhysicalDamagePercentIronGripUber1",
+       "name": "The Elder's"
+      },
+      {
+       "id": "mod:LocalIncreasedPhysicalDamagePercentIronGripUber2_",
+       "name": "The Elder's"
+      },
+      {
+       "id": "mod:LocalIncreasedPhysicalDamagePercentIronGripUber3",
+       "name": "The Elder's"
+      },
+      {
+       "id": "mod:WeaponTreeSupportIronGrip",
+       "name": ""
+      },
+      {
+       "id": "mod:WeaponTreeSupportIronGrip2H",
+       "name": ""
+      },
+      {
+       "id": "mod:WeaponTreeSupportIronGrip2HHardMode",
+       "name": ""
+      },
+      {
+       "id": "mod:WeaponTreeSupportIronGripHardMode",
+       "name": ""
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start",
+  "truncated_bfs"
+ ]
+}

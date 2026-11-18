@@ -1,0 +1,117 @@
+{
+ "index": 37,
+ "node_id": "passive:totem_attack_damage2676",
+ "type": "Passive",
+ "name": "Totem Attack Speed",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:totem_attack_damage2676"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:totem_attack_damage2676"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:totem_attack_damage2676"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:totem_skill_attack_speed_+%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:totem_attack_damage2676|stat:totem_skill_attack_speed_+%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Passive",
+     "count": 8,
+     "members": [
+      "passive:totem_attack_damage2676",
+      "passive:totem_attack_damage2677",
+      "passive:totem_attack_damage2678",
+      "passive:totem_attack_notable2679",
+      "passive:totem_damage1495",
+      "passive:totem_damage1496",
+      "passive:totem_life_and_duration1503",
+      "passive:totem_placement_speed_notable1509"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:totem_skill_attack_speed_+%",
+   "chain": "passive_grants_stat>stat:totem_skill_attack_speed_+%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:totem_skill_attack_speed_+%": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 8,
+     "samples": [
+      {
+       "id": "passive:totem_attack_damage2676",
+       "name": "Totem Attack Speed"
+      },
+      {
+       "id": "passive:totem_attack_damage2677",
+       "name": "Totem Attack Speed"
+      },
+      {
+       "id": "passive:totem_attack_damage2678",
+       "name": "Totem Attack Speed"
+      },
+      {
+       "id": "passive:totem_attack_notable2679",
+       "name": "Surveillance"
+      },
+      {
+       "id": "passive:totem_damage1495",
+       "name": "Totem Attack and Cast Speed"
+      },
+      {
+       "id": "passive:totem_damage1496",
+       "name": "Totem Attack and Cast Speed"
+      },
+      {
+       "id": "passive:totem_life_and_duration1503",
+       "name": "Totem Attack and Cast Speed"
+      },
+      {
+       "id": "passive:totem_placement_speed_notable1509",
+       "name": "Totemic Zeal"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

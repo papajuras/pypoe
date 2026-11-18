@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "item_class:BrequelFruit",
+   "type": "ItemClass",
+   "name": null
+  }
+ ],
+ "meta": {
+  "query": "item_class:BrequelFruit",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

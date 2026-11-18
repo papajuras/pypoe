@@ -1,0 +1,22 @@
+{
+ "index": 45,
+ "node_id": "gem:SupportCastLinkedCursesOnCurse",
+ "targets": {
+  "stat:cast_linked_curses_on_curse": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 1,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SupportCastLinkedCursesOnCurse"
+   ],
+   "total": 1
+  },
+  "a": {
+   "kind": "tag"
+  }
+ }
+}

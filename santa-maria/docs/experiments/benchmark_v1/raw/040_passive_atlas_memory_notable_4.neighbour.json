@@ -1,0 +1,18 @@
+{
+ "start": "passive:atlas_memory_notable_4",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:atlas_memory_notable_4",
+     "to": "stat:map_zana_influence_equipment_item_lucky_chance_%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

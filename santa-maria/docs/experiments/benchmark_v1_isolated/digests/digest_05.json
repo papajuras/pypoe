@@ -1,0 +1,125 @@
+{
+ "index": 5,
+ "node_id": "passive:AscendancyBerserker8",
+ "type": "Passive",
+ "name": "Rite of Ruin",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyBerserker8"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyBerserker8"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyBerserker8"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:life_loss_%_per_minute_per_rage_while_not_losing_rage"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:rage_effect_+%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyBerserker8|stat:life_loss_%_per_minute_per_rage_while_not_losing_rage|out",
+    "passive_grants_stat|passive:AscendancyBerserker8|stat:rage_effect_+%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 1,
+     "members": [
+      "mod:VillageRageEffect"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyBerserker8"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:life_loss_%_per_minute_per_rage_while_not_losing_rage",
+   "chain": "passive_grants_stat>stat:life_loss_%_per_minute_per_rage_while_not_losing_rage",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:rage_effect_+%",
+   "chain": "passive_grants_stat>stat:rage_effect_+%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:life_loss_%_per_minute_per_rage_while_not_losing_rage": {
+   "carriers": {
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyBerserker8",
+       "name": "Rite of Ruin",
+       "asc": "Berserker"
+      }
+     ]
+    }
+   }
+  },
+  "stat:rage_effect_+%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "mod:VillageRageEffect",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyBerserker8",
+       "name": "Rite of Ruin",
+       "asc": "Berserker"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

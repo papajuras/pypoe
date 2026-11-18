@@ -1,0 +1,49 @@
+{
+ "index": 25,
+ "node_id": "unique:165",
+ "targets": {
+  "mod:IncreasedChanceForMonstersToDropWisdomScrollsUniqueRing14": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:additional_scroll_of_wisdom_drop_chance_%"
+   ],
+   "tags": []
+  },
+  "mod:IncreasedExperienceUniqueRing14": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:experience_gain_+%"
+   ],
+   "tags": []
+  },
+  "mod:IncreasedIntelligencePerUniqueUniqueRing14": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:intelligence_+%_per_equipped_unique"
+   ],
+   "tags": [
+    "tag:attribute"
+   ]
+  },
+  "mod:IncreasedManaUniqueRing14": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:base_maximum_mana"
+   ],
+   "tags": [
+    "tag:mana",
+    "tag:resource"
+   ]
+  },
+  "mod:ManaRegenerationUniqueRing14": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:mana_regeneration_rate_+%"
+   ],
+   "tags": [
+    "tag:mana",
+    "tag:resource"
+   ]
+  }
+ }
+}

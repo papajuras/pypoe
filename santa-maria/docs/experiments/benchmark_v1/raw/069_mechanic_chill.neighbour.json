@@ -1,0 +1,630 @@
+{
+ "start": "mechanic:chill",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mechanic:chill",
+     "to": "stat:action_speed_-%_from_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:all_damage_can_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:all_damage_taken_can_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:arctic_breath_chilling_area_movement_velocity_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:attack_damage_that_stuns_also_chills",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:attack_speed_+%_while_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:avoid_freeze_and_chill_%_if_you_have_used_a_fire_skill_recently",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:avoid_shock_%_while_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:base_avoid_chill_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:base_avoid_chill_%_while_have_onslaught",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:base_cannot_be_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:base_immune_to_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:base_life_leech_from_attack_damage_permyriad_vs_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:base_self_chill_duration_-%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:blight_chilling_tower_chill_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:blind_chilled_enemies_on_hit_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:cannot_be_chilled_or_frozen_while_moving",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:cast_speed_+%_while_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chance_to_sap_%_vs_enemies_in_chilling_areas",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chance_to_shock_chilled_enemies_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chaos_damage_can_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_and_freeze_duration_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_and_freeze_duration_based_on_%_energy_shield",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_attackers_for_4_seconds_on_block_%_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_duration_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_effect_+%_while_mana_leeching",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_effect_+%_with_tinctured_weapons",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_effect_is_reversed",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_effect_is_reversed_when_on_chilled_ground",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_effectiveness_on_self_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_enemy_when_hit_duration_ms",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_minimum_slow_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_nearby_enemies_when_you_focus",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chill_prevention_ms_when_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chilled_ground_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chilled_ground_on_freeze_%_chance_for_3_seconds",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chilled_ground_when_hit_with_attack_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chilled_while_bleeding",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chilled_while_poisoned",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chilling_areas_also_grant_curse_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chilling_areas_also_grant_lightning_damage_taken_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:chills_from_your_hits_cause_shattering",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:cold_damage_%_to_add_as_fire_per_1%_chill_effect_on_enemy",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:cold_damage_cannot_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:cold_penetration_%_vs_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:creeping_frost_cold_snap_chance_to_sap_%_vs_enemies_in_chilling_areas",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:damage_+%_vs_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:elemental_penetration_%_while_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:enemies_chilled_by_bane_and_contagion",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:enemies_chilled_by_hits_deal_damage_lessened_by_chill_effect",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:enemies_chilled_by_hits_take_damage_increased_by_chill_effect",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:enemies_hitting_you_drop_chilled_ground_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:freeze_chilled_enemies_as_though_dealt_damage_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:gain_chilling_shocking_igniting_conflux_while_affected_by_glorious_madness",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:global_critical_strike_chance_+%_vs_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:global_maximum_added_cold_damage_vs_chilled_or_frozen_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:global_minimum_added_cold_damage_vs_chilled_or_frozen_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:hit_and_ailment_damage_+%_vs_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:ice_nova_chill_minimum_slow_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:ice_siphon_trap_chill_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:immune_to_burning_shocks_and_chilled_ground",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:life_regeneration_rate_per_minute_%_when_on_chilled_ground",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_affliction_notable_chilling_presence",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_affliction_notable_deep_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_avoid_chill_%_during_flask_effect",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_chill_on_hit_ms_if_in_off_hand",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_display_nearby_enemies_are_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_display_socketed_gems_supported_by_level_x_bonechill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_double_damage_to_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_flask_chill_or_freeze_immunity_if_chilled_or_frozen",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_flask_chill_or_freeze_immunity_if_chilled_or_frozen_s",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_flask_chilled_ground_on_flask_use_radius",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_flask_immune_to_freeze_and_chill_during_flask_effect",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_flask_use_on_affected_by_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_self_chill_effect_+%_during_flask_effect",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_unique_flask_all_damage_from_critical_strikes_can_chill_during_effect",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:local_unique_flask_avoid_chill_%_while_healing",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:maximum_added_cold_damage_vs_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:minimum_added_cold_damage_vs_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:movement_speed_+%_while_on_burning_chilled_shocked_ground",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:movement_velocity_+%_while_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:nearby_enemies_are_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:nearby_enemies_chilled_on_block",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:never_freeze_or_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:non_chilled_enemies_you_bleed_are_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:non_chilled_enemies_you_poison_are_chilled",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:old_do_not_use_life_leech_from_attack_damage_permyriad_vs_chilled_enemies",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:physical_damage_can_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:physical_damage_reduction_rating_+%_while_chilled_or_frozen",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:primordial_altar_chilled_ground_on_death_%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:recover_%_life_when_you_chill_a_non_chilled_enemy",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:reflect_chill_and_freeze_%_chance",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:remove_chill_and_freeze_on_flask_use",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:shocked_chilled_effect_on_self_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:unaffected_by_chill",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:unaffected_by_chill_if_2_redeemer_items",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:unaffected_by_chill_while_channelling",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:unaffected_by_chill_while_mana_leeching",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:unaffected_by_chilled_ground",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:unaffected_by_chilled_ground_while_affected_by_purity_of_ice",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:unique_chill_duration_+%_when_in_off_hand",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    },
+    {
+     "from": "mechanic:chill",
+     "to": "stat:winter_brand_chill_effect_+%",
+     "type": "stat_mechanic_relation",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

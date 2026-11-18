@@ -1,0 +1,427 @@
+{
+ "index": 33,
+ "node_id": "unique:924",
+ "type": "UniqueItem",
+ "name": "Facebreaker",
+ "block": "random_draw",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:924"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:924"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:924"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:base_critical_strike_multiplier_+"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:extra_gore"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:924|item_class:Gloves|out",
+    "unique_modifier_association|unique:924|mod:CriticalMultiplierUniqueGlovesDexInt2|out",
+    "unique_modifier_association|unique:924|mod:ExtraGore|out",
+    "unique_modifier_association|unique:924|mod:FacebreakerUnarmedMoreDamage|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:CriticalMultiplierUniqueGlovesDexInt2|modgroup:CriticalStrikeMultiplier|out",
+    "modifier_in_group|mod:ExtraGore|modgroup:ExtraGore|out",
+    "modifier_in_group|mod:FacebreakerUnarmedMoreDamage|modgroup:FacebreakerPhysicalUnarmedDamage|out",
+    "modifier_grants_stat|mod:CriticalMultiplierUniqueGlovesDexInt2|stat:base_critical_strike_multiplier_+|out",
+    "modifier_grants_stat|mod:ExtraGore|stat:extra_gore|out",
+    "modifier_grants_stat|mod:FacebreakerUnarmedMoreDamage|stat:unique_facebreaker_unarmed_melee_physical_damage_+%_final|out",
+    "modifier_has_tag|mod:FacebreakerUnarmedMoreDamage|tag:attack|out",
+    "modifier_has_tag|mod:CriticalMultiplierUniqueGlovesDexInt2|tag:critical|out",
+    "modifier_has_tag|mod:CriticalMultiplierUniqueGlovesDexInt2|tag:damage|out",
+    "modifier_has_tag|mod:FacebreakerUnarmedMoreDamage|tag:has_attack_mod|out",
+    "modifier_has_tag|mod:FacebreakerUnarmedMoreDamage|tag:physical|out",
+    "modifier_has_tag|mod:FacebreakerUnarmedMoreDamage|tag:physical_damage|out",
+    "unique_modifier_association|mod:ExtraGore|unique:1001|in",
+    "unique_modifier_association|mod:ExtraGore|unique:114|in",
+    "unique_modifier_association|mod:ExtraGore|unique:144|in",
+    "unique_modifier_association|mod:ExtraGore|unique:174|in",
+    "unique_in_class|item_class:Gloves|<44 in: unique:1010, unique:1029, unique:1049\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_has_tag|tag:attack|<36 in: gem:AncestorTotemSlash, gem:AncestralProtector, gem:AncestralProtectorRoyale\u2026>",
+    "gem_has_tag|tag:critical|<8 in: gem:Ambush, gem:AssassinsMark, gem:AssassinsMarkRoyale\u2026>",
+    "gem_has_tag|tag:physical|<16 in: gem:Absolution, gem:AbsolutionAltX, gem:AnimateWeapon\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 6,
+     "members": [
+      "gem:IcicleMine",
+      "gem:IcicleMineAltX",
+      "gem:IcicleMineAltY",
+      "gem:ModSupportSocketedAttacksCriticalStrikeMultiplier",
+      "gem:ModSupportSocketedSpellsCriticalStrikeMultiplier",
+      "gem:SupportIncreasedCriticalDamage"
+     ]
+    },
+    {
+     "carrier_type": "Modifier",
+     "count": 135,
+     "members": [
+      "mod:AbyssCriticalStrikeMultiplierJewel1",
+      "mod:AzmeriCasterDemonCriticalStrikeMultiplier",
+      "mod:AzmeriDustPrimalist",
+      "mod:AzmeriDustPrimalistForest",
+      "mod:BestiaryModTigerSpiritBossMinions",
+      "mod:BetrayalUpgradeMonsterCritChanceAndMulti_",
+      "mod:BetrayalUpgradeMonsterCriticalStrikeChanceAndAccuracy",
+      "mod:CriitcalMultiplierEssence7",
+      "mod:CriticalMultiplier1",
+      "mod:CriticalMultiplier2",
+      "mod:CriticalMultiplier3",
+      "mod:CriticalMultiplier4",
+      "mod:CriticalMultiplier5",
+      "mod:CriticalMultiplier6",
+      "mod:CriticalMultiplierEssenceRing5_",
+      "mod:CriticalMultiplierEssenceRing6_",
+      "mod:CriticalMultiplierEssenceRing7",
+      "mod:CriticalMultiplierImplicitBow1",
+      "mod:CriticalMultiplierImplicitSword1",
+      "mod:CriticalMultiplierImplicitSword2",
+      "mod:CriticalMultiplierImplicitSword2H1",
+      "mod:CriticalMultiplierImplicitSword3",
+      "mod:CriticalMultiplierImplicitSwordM2",
+      "mod:CriticalMultiplierSupportedTwoHandedUber1",
+      "mod:CriticalMultiplierSupportedTwoHandedUber2",
+      "mod:CriticalMultiplierSupportedUber1",
+      "mod:CriticalMultiplierSupportedUber2",
+      "mod:CriticalMultiplierUniqueAmulet17",
+      "mod:CriticalMultiplierUniqueDagger8",
+      "mod:CriticalMultiplierUniqueDescentDagger1",
+      "mod:CriticalMultiplierUniqueGlovesDex2",
+      "mod:CriticalMultiplierUniqueGlovesDexInt2",
+      "mod:CriticalMultiplierUniqueGlovesDexInt4",
+      "mod:CriticalMultiplierUniqueGlovesDexInt6_",
+      "mod:CriticalMultiplierUniqueHelmetStr3",
+      "mod:CriticalMultiplierUniqueRing17",
+      "mod:CriticalMultiplierUniqueRing8",
+      "mod:CriticalMultiplierUnique__1",
+      "mod:CriticalMultiplierUnique__2",
+      "mod:CriticalMultiplierUnique__3__",
+      "mod:CriticalMultiplierUnique__4____",
+      "mod:CriticalMultiplierUnique__5",
+      "mod:CriticalMultiplierUnique__6",
+      "mod:CriticalMultiplierUnique__7",
+      "mod:CriticalMultiplierUnique__8",
+      "mod:CriticalStrikeChanceIfNoCriticalStrikeDealtRecentlyUber1",
+      "mod:CriticalStrikeMultiplierInfluence1",
+      "mod:CriticalStrikeMultiplierInfluence2",
+      "mod:CriticalStrikeMultiplierInfluence3",
+      "mod:CriticalStrikeMultiplierInfluenceMaven__",
+      "mod:CriticalStrikeMultiplierJewel",
+      "mod:CriticalStrikeMultiplierRingInfluence1",
+      "mod:CriticalStrikeMultiplierRingInfluence2_",
+      "mod:CriticalStrikeMultiplierRingInfluence3_",
+      "mod:CriticalStrikeMultiplierUber1",
+      "mod:CriticalStrikeMultiplierUber2_",
+      "mod:CriticalStrikeMultiplierUber3",
+      "mod:DexMasterCritMultCraftedi1",
+      "mod:DexMasterCritMultiCrafted2",
+      "mod:DivergentFacebreakerUnarmedMoreDamage",
+      "mod:DoedreCurseZoneAuraEnfeeble",
+      "mod:DoedreCurseZoneAuraEnfeeble2",
+      "mod:EinharMasterCriticalStrikeMultiplier1",
+      "mod:EinharMasterCriticalStrikeMultiplier2",
+      "mod:EinharMasterCriticalStrikeMultiplier3",
+      "mod:ExtraGore",
+      "mod:FacebreakerUnarmedMoreDamage",
+      "mod:GraftPrefixTulCritMultiplier1",
+      "mod:GraftPrefixTulCritMultiplier2",
+      "mod:GraftPrefixTulCritMultiplier3",
+      "mod:GraftPrefixTulCritMultiplier4",
+      "mod:GraftPrefixTulCritMultiplier5",
+      "mod:HellscapeDownsideCriticalStrikeMultiplier2",
+      "mod:HellscapeDownsideCriticalStrikeMultiplier3__",
+      "mod:HellscapeUpsideCriticalStrikeMultiplier2_",
+      "mod:HellscapeUpsideCriticalStrikeMultiplier3",
+      "mod:HellscapeUpsideCriticalStrikeMultiplier4",
+      "mod:LocalCriticalMultiplier1",
+      "mod:LocalCriticalMultiplier2",
+      "mod:LocalCriticalMultiplier3",
+      "mod:LocalCriticalMultiplier4",
+      "mod:LocalCriticalMultiplier5",
+      "mod:LocalCriticalMultiplier6",
+      "mod:LocalCriticalMultiplierUniqueBow3",
+      "mod:LocalCriticalMultiplierUniqueClaw2",
+      "mod:LocalCriticalMultiplierUniqueDagger4",
+      "mod:LocalCriticalMultiplierUniqueOneHandSword4",
+      "mod:LocalCriticalStrikeMultiplierCrafted",
+      "mod:LocalIncreasedPhysicalDamagePercentAndCritMultiInfluence1",
+      "mod:LocalIncreasedPhysicalDamagePercentAndCritMultiInfluence2",
+      "mod:LocalIncreasedPhysicalDamagePercentAndCritMultiInfluence3_",
+      "mod:LocalIncreasedPhysicalDamagePercentAndCritMultiInfluence4",
+      "mod:LocalIncreasedPhysicalDamagePercentAndCritMultiInfluence5",
+      "mod:MonsterArchnemesisBonebreakerMagic",
+      "mod:MonsterArchnemesisBonebreaker_",
+      "mod:MonsterCriticals1",
+      "mod:MonsterExtraGore",
+      "mod:MonsterImplicitCriticals1",
+      "mod:MutatedUniqueRing6CriticalStrikeMultiplier",
+      "mod:NearbyAlliesHaveCriticalStrikeMultiplierUnique__1",
+      "mod:NecropolisCraftingCriticalStrikeMultiplier",
+      "mod:NecropolisIncreasedCriticalStrikes1",
+      "mod:NecropolisIncreasedCriticalStrikes2",
+      "mod:NecropolisIncreasedCriticalStrikes3",
+      "mod:NecropolisIncreasedCriticalStrikes4",
+      "mod:NecropolisIncreasedCriticalStrikes5",
+      "mod:NecropolisIncreasedCriticalStrikes6",
+      "mod:StrDexMasterBabyFacebreakersCrafted",
+      "mod:StrDexMasterCritMultCraftedi1",
+      "mod:StrDexMasterCritMultiCrafted2",
+      "mod:SynthesisImplicitCriticalMultiplier1",
+      "mod:SynthesisImplicitCriticalMultiplier2",
+      "mod:SynthesisImplicitCriticalMultiplier3",
+      "mod:SynthesisImplicitCriticalMultiplier4",
+      "mod:SynthesisImplicitCriticalMultiplier5",
+      "mod:SynthesisImplicitCriticalMultiplierJewel1_",
+      "mod:SynthesisImplicitCriticalMultiplierJewel2",
+      "mod:SynthesisImplicitMinorCriticalMultiplier1",
+      "mod:SynthesisImplicitMinorCriticalMultiplier2",
+      "mod:SynthesisImplicitMinorCriticalMultiplier3_",
+      "mod:SynthesisImplicitMinorCriticalMultiplier4_",
+      "mod:SynthesisImplicitMinorCriticalMultiplier5",
+      "mod:TalismanEnchantCriticalStrikeMultiplier",
+      "mod:TalismanIncreasedCriticalStrikeMultiplier_",
+      "mod:TalismanMonsterCritChanceAmulet",
+      "mod:TalismanMonsterCritMultiplierAmulet",
+      "mod:V2GlobalCriticalStrikeMultiplier2HCorrupted",
+      "mod:V2GlobalCriticalStrikeMultiplierCorrupted",
+      "mod:V2GlobalCriticalStrikeMultiplierRingCorrupted",
+      "mod:WeaponTreeLocalCritChanceCritMulti1",
+      "mod:WeaponTreeLocalCritChanceCritMulti2",
+      "mod:WeaponTreeLocalCritChanceCritMulti2h1",
+      "mod:WeaponTreeLocalCritChanceCritMulti2h2",
+      "mod:WeaponTreeLocalCritChanceCritMulti2h3",
+      "mod:WeaponTreeLocalCritChanceCritMulti3"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 18,
+     "members": [
+      "passive:AscendancyAssassin5",
+      "passive:AscendancyAssassin7",
+      "passive:AscendancyCustomTrickster1",
+      "passive:AscendancyCustomTrickster11",
+      "passive:AscendancyCustomTrickster13",
+      "passive:AscendancyCustomTrickster15_",
+      "passive:AscendancyCustomTrickster16_",
+      "passive:AscendancyCustomTrickster5",
+      "passive:AscendancyCustomTrickster7",
+      "passive:AscendancyCustomTrickster9",
+      "passive:AscendancyInquisitor5",
+      "passive:AscendancyInquisitor6",
+      "passive:assassination1239",
+      "passive:critical_notable1770",
+      "passive:critical_strike_multiplier411",
+      "passive:critical_strike_multiplier765",
+      "passive:heartseeker626",
+      "passive:throatseeker764"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:base_critical_strike_multiplier_+",
+   "chain": "unique_modifier_association>mod:CriticalMultiplierUniqueGlovesDexInt2 -> modifier_grants_stat>stat:base_critical_strike_multiplier_+",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:extra_gore",
+   "chain": "unique_modifier_association>mod:ExtraGore -> modifier_grants_stat>stat:extra_gore",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:unique_facebreaker_unarmed_melee_physical_damage_+%_final",
+   "chain": "unique_modifier_association>mod:FacebreakerUnarmedMoreDamage -> modifier_grants_stat>stat:unique_facebreaker_unarmed_melee_physical_damage_+%_final",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:base_critical_strike_multiplier_+": {
+   "carriers": {
+    "gem_grants_stat": {
+     "count": 6,
+     "samples": [
+      {
+       "id": "gem:IcicleMine",
+       "name": null
+      },
+      {
+       "id": "gem:IcicleMineAltX",
+       "name": null
+      },
+      {
+       "id": "gem:IcicleMineAltY",
+       "name": null
+      },
+      {
+       "id": "gem:ModSupportSocketedAttacksCriticalStrikeMultiplier",
+       "name": null
+      },
+      {
+       "id": "gem:ModSupportSocketedSpellsCriticalStrikeMultiplier",
+       "name": null
+      },
+      {
+       "id": "gem:SupportIncreasedCriticalDamage",
+       "name": null
+      }
+     ]
+    },
+    "modifier_grants_stat": {
+     "count": 128,
+     "samples": [
+      {
+       "id": "mod:AbyssCriticalStrikeMultiplierJewel1",
+       "name": "of Potency"
+      },
+      {
+       "id": "mod:AzmeriCasterDemonCriticalStrikeMultiplier",
+       "name": ""
+      },
+      {
+       "id": "mod:AzmeriDustPrimalist",
+       "name": ""
+      },
+      {
+       "id": "mod:AzmeriDustPrimalistForest",
+       "name": ""
+      },
+      {
+       "id": "mod:BestiaryModTigerSpiritBossMinions",
+       "name": ""
+      },
+      {
+       "id": "mod:BetrayalUpgradeMonsterCritChanceAndMulti_",
+       "name": ""
+      },
+      {
+       "id": "mod:BetrayalUpgradeMonsterCriticalStrikeChanceAndAccuracy",
+       "name": ""
+      },
+      {
+       "id": "mod:CriitcalMultiplierEssence7",
+       "name": "of the Essence"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 18,
+     "samples": [
+      {
+       "id": "passive:AscendancyAssassin5",
+       "name": "Critical Strike Chance and Multiplier",
+       "asc": "Assassin"
+      },
+      {
+       "id": "passive:AscendancyAssassin7",
+       "name": "Critical Strike Chance and Multiplier",
+       "asc": "Assassin"
+      },
+      {
+       "id": "passive:AscendancyCustomTrickster1",
+       "name": "Critical Strike Multiplier and Stealth",
+       "asc": "Trickster"
+      },
+      {
+       "id": "passive:AscendancyCustomTrickster11",
+       "name": "Critical Strike Multiplier and Stealth",
+       "asc": "Trickster"
+      },
+      {
+       "id": "passive:AscendancyCustomTrickster13",
+       "name": "Critical Strike Multiplier and Stealth",
+       "asc": "Trickster"
+      },
+      {
+       "id": "passive:AscendancyCustomTrickster15_",
+       "name": "Critical Strike Multiplier and Stealth",
+       "asc": "Trickster"
+      },
+      {
+       "id": "passive:AscendancyCustomTrickster16_",
+       "name": "Critical Strike Multiplier and Stealth",
+       "asc": "Trickster"
+      },
+      {
+       "id": "passive:AscendancyCustomTrickster5",
+       "name": "Critical Strike Multiplier and Stealth",
+       "asc": "Trickster"
+      }
+     ]
+    }
+   }
+  },
+  "stat:extra_gore": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 4,
+     "samples": [
+      {
+       "id": "mod:ExtraGore",
+       "name": ""
+      },
+      {
+       "id": "mod:MonsterArchnemesisBonebreakerMagic",
+       "name": "of Stunning"
+      },
+      {
+       "id": "mod:MonsterArchnemesisBonebreaker_",
+       "name": "of Stunning"
+      },
+      {
+       "id": "mod:MonsterExtraGore",
+       "name": ""
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "multi_source:base_critical_strike_multiplier_+",
+  "truncated_bfs"
+ ]
+}

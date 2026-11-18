@@ -1,0 +1,66 @@
+{
+ "start": "gem:SummonHolyRelicAltX",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "stat:active_skill_minion_from_alternate_gem_index",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "stat:active_skill_minion_movement_velocity_+%_final",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "stat:base_display_minion_actor_level",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "stat:base_number_of_relics_allowed",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "stat:display_minion_monster_type",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "stat:holy_relic_targets_nearest_enemy",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "stat:infinite_minion_duration",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "stat:minions_cannot_taunt_enemies",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SummonHolyRelicAltX",
+     "to": "tag:minion",
+     "type": "gem_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

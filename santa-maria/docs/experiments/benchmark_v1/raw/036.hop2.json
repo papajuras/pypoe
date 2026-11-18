@@ -1,0 +1,33 @@
+{
+ "index": 36,
+ "node_id": "passive:atlas_path_17",
+ "targets": {
+  "stat:map_map_item_drop_chance_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 9,
+    "passive_grants_stat": 34,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:MapRelicImplicitIncreasedMapsDroppedChanceExtraLarge",
+    "mod:MapRelicImplicitIncreasedMapsDroppedChanceLarge",
+    "mod:MapRelicImplicitIncreasedMapsDroppedChanceMedium",
+    "mod:MapRelicImplicitIncreasedMapsDroppedChanceSmall",
+    "mod:MapRelicIncreasedMapDropsChance1",
+    "mod:ScarabMaps1",
+    "mod:ScarabMaps2",
+    "mod:ScarabMaps3",
+    "mod:ScarabMaps4_",
+    "passive:atlas_boss_adjacent_maps_1",
+    "passive:atlas_boss_adjacent_maps_2",
+    "passive:atlas_boss_adjacent_maps_8",
+    "passive:atlas_path_1",
+    "passive:atlas_path_10",
+    "passive:atlas_path_12"
+   ],
+   "total": 43
+  }
+ }
+}

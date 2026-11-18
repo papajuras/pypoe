@@ -1,0 +1,54 @@
+{
+ "start": "mod:MonsterMinionInstability",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "mod:MonsterMinionInstability",
+     "to": "modgroup:Keystone",
+     "type": "modifier_in_group",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MonsterMinionInstability",
+     "to": "stat:keystone_minion_instability",
+     "type": "modifier_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MonsterMinionInstability",
+     "to": "tag:damage",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MonsterMinionInstability",
+     "to": "tag:elemental",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MonsterMinionInstability",
+     "to": "tag:elemental_damage",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MonsterMinionInstability",
+     "to": "tag:fire",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "mod:MonsterMinionInstability",
+     "to": "tag:minion",
+     "type": "modifier_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

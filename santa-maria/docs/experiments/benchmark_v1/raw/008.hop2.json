@@ -1,0 +1,19 @@
+{
+ "index": 8,
+ "node_id": "passive:AscendancyDeadeye14",
+ "targets": {
+  "stat:tailwind_effect_on_self_+%_per_gale_force": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyDeadeye14"
+   ],
+   "total": 1
+  }
+ }
+}

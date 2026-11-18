@@ -1,0 +1,39 @@
+{
+ "index": 77,
+ "node_id": "item_class:IncubatorStackable",
+ "type": "ItemClass",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "item_class:IncubatorStackable"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "item_class:IncubatorStackable"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "item_class:IncubatorStackable"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": []
+}

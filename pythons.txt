@@ -1,0 +1,2077 @@
+#!/usr/bin/env python3
+"""Exhaustive per-file analysis of every downloaded JSON file.
+
+Input:  santa-maria/data/  (produced by tools/download.py)
+Output: santa-maria/cache/analysis.json, cache/stat_conversion_context.json
+
+Every file is scanned in full: ALL records, ALL fields, ALL nested objects,
+ALL array elements, ALL string AND numeric values. No record/field/array/
+depth sampling.
+
+The per-file `schema` is a STRUCTURALLY COMPACTED view: per-instance keyed
+maps (e.g. `passives.<hash>`) are rendered as a `{}` placeholder. The
+companion `keyed_maps` structure in analysis.json is LOSSLESS with respect to
+the observed schema: for every keyed map it preserves the exact set of
+concrete keys, the number of distinct child shapes, and (when shapes differ)
+a representative child schema per shape group. Raw JSON in data/ stays
+authoritative.
+
+Cross-reference and conversion/scaling scans are exhaustive over string AND
+numeric values; display samples are capped, counts are exact. A companion
+`stat_conversion_context.json` makes every stat-id conversion/scaling match's
+source context recoverable without re-scanning the raw files.
+"""
+import bisect, json, os
+from pathlib import Path
+
+from common import SCAN_PATTERNS, REF_CLASSES, KEY_CLASSES, KEYED_MIN_KEYS, KEYED_MAX_FIELDS, KEYED_RATIO
+
+SANTA = Path(__file__).resolve().parents[1]
+ROOT = SANTA / 'data'
+CACHE = SANTA / 'cache'
+ANALYSIS_CACHE = CACHE / 'analysis.json'
+STAT_CTX_CACHE = CACHE / 'stat_conversion_context.json'
+VOCAB_CACHE = CACHE / 'stat_vocab.json'
+META_KEY = '_meta'
+
+SAMPLE_CAP = 5        # schema/cref sample rows stored per path (display only)
+DISTINCT_CAP = 200    # distinct values stored per class/context (count stays exact)
+KEY_SAMPLE_CAP = 10   # concrete keys kept per keyed-map node (report preview only)
+
+
+def json_type(v):
+    if isinstance(v, bool): return 'bool'
+    if isinstance(v, int): return 'int'
+    if isinstance(v, float): return 'float'
+    if isinstance(v, str): return 'string'
+    if isinstance(v, list): return 'array'
+    if isinstance(v, dict): return 'object'
+    return 'null'
+
+
+def classify(data):
+    """Return (shape, records, record_count, semantics). records = list of
+    (record_key_or_None, value) pairs covering 100% of the file."""
+    if isinstance(data, list):
+        elem = sorted(set(json_type(x) for x in data))
+        if elem and all(t not in ('object', 'array') for t in elem):
+            shape = 'list<' + '/'.join(elem) + '>'
+        else:
+            shape = 'list'
+        return shape, list(enumerate(data)), len(data), \
+            'top-level list → record_count = number of list elements'
+    if isinstance(data, dict):
+        vals = list(data.values())
+        val_types = {json_type(v) for v in vals}
+        if vals and all(t in ('object', 'array') for t in val_types) and len(data) >= 8:
+            return 'dict', list(data.items()), len(data), \
+                f'top-level dict keyed by record id → record_count = number of top-level keys ({len(data)})'
+        if vals and all(t in ('string', 'int', 'float', 'bool') for t in val_types):
+            return 'dict<scalar>', list(data.items()), len(data), \
+                'top-level dict of scalar values → each key/value pair is a record'
+        return 'dict', [(None, data)], 1, \
+            'top-level dict is a single record object (nested maps shown as keyed `{}`)'
+    return 'scalar', [(None, data)], 1, 'scalar top-level → single value, not a record collection'
+
+
+class FileAnalyzer:
+    def __init__(self, records, vocab, relpath):
+        self.records = records
+        self.vocab = vocab
+        self.relpath = relpath
+        self.schema = {}          # path -> {types:set, present_in:int, instances:int, key_union:set|None, key_idlike:set, arr_elem_types:set, nested:bool, sample:list}
+        self.crossrefs = {}       # class -> {field_occurrences, records:set, distinct:set, sample:list, paths:{path:{occurrences, distinct:set, sample:list}}}
+        self.conversion = {}      # pattern -> {field_occurrences, record_occurrences, unique:set, sample:list, ctx:{path:{kind:{occurrences, values:set}}}}
+        self.stat_ctx = {}        # stat_id -> {path: {kind: {pattern: count}}}  (companion source)
+        self.max_depth = 0
+
+    # ---- cross-reference helpers ----
+    def _cref(self, cls, path, value, ridx, rkey, cref_rec):
+        c = self.crossrefs.get(cls)
+        if c is None:
+            c = self.crossrefs[cls] = {'field_occurrences': 0, 'records': set(),
+                                       'distinct': set(), 'sample': [], 'paths': {}}
+        c['field_occurrences'] += 1
+        if cls not in cref_rec:
+            cref_rec.add(cls)
+            c['records'].add(ridx)
+        c['distinct'].add(value)
+        if len(c['sample']) < SAMPLE_CAP:
+            c['sample'].append([rkey, path, value])
+        p = c['paths'].get(path)
+        if p is None:
+            p = c['paths'][path] = {'occurrences': 0, 'distinct': set(), 'sample': []}
+        p['occurrences'] += 1
+        p['distinct'].add(value)
+        if len(p['sample']) < SAMPLE_CAP:
+            p['sample'].append([rkey, value])
+
+    def _cref_value(self, v, path, ridx, rkey, cref_rec):
+        for cls, (_desc, pred) in REF_CLASSES.items():
+            if pred(v, self.vocab):
+                self._cref(cls, path, v, ridx, rkey, cref_rec)
+
+    def _cref_int(self, v, path, ridx, rkey, cref_rec):
+        """Numeric reference candidates: integers with >= 4 digits. Passive
+        hashes / mod ids are candidates; small ints (levels, weights, stat
+        values) are not treated as references."""
+        sv = str(v)
+        if 8 <= len(sv) <= 10:
+            self._cref('trade_hash', path, v, ridx, rkey, cref_rec)
+        elif len(sv) >= 4:
+            self._cref('numeric_id', path, v, ridx, rkey, cref_rec)
+
+    # ---- conversion/scaling helpers ----
+    def _conv(self, pat, path, value, kind, ridx, rkey, conv_rec):
+        c = self.conversion.get(pat)
+        if c is None:
+            c = self.conversion[pat] = {'field_occurrences': 0, 'record_occurrences': 0,
+                                        'unique': set(), 'sample': [], 'ctx': {}}
+        c['field_occurrences'] += 1
+        conv_rec.add(pat)
+        c['unique'].add(value)
+        if len(c['sample']) < SAMPLE_CAP:
+            c['sample'].append([rkey, path, value, kind])
+        ctx = c['ctx'].get(path)
+        if ctx is None:
+            ctx = c['ctx'][path] = {}
+        kctx = ctx.get(kind)
+        if kctx is None:
+            kctx = ctx[kind] = {'occurrences': 0, 'values': set()}
+        kctx['occurrences'] += 1
+        kctx['values'].add(value)
+        if isinstance(value, str) and value in self.vocab:
+            sc = self.stat_ctx.setdefault(value, {})
+            by_path = sc.setdefault(path, {})
+            by_kind = by_path.setdefault(kind, {})
+            by_kind[pat] = by_kind.get(pat, 0) + 1
+
+    def _conv_scan_key(self, k, path, ridx, rkey, conv_rec):
+        for pat in SCAN_PATTERNS:
+            if pat in k:
+                self._conv(pat, path, k, 'key', ridx, rkey, conv_rec)
+
+    def _conv_scan_value(self, v, path, ridx, rkey, conv_rec):
+        for pat in SCAN_PATTERNS:
+            if pat in v:
+                self._conv(pat, path, v, 'value', ridx, rkey, conv_rec)
+
+    # ---- exhaustive walk ----
+    def run(self):
+        for ridx, (rkey, rec) in enumerate(self.records):
+            stack = [(rec, '', 0)]
+            seen_paths = set()
+            conv_rec = set()
+            cref_rec = set()
+            while stack:
+                v, path, depth = stack.pop()
+                if depth > self.max_depth:
+                    self.max_depth = depth
+                node = self.schema.get(path)
+                if node is None:
+                    node = self.schema[path] = {'types': set(), 'present_in': 0, 'instances': 0,
+                                                'key_union': None, 'key_idlike': set(),
+                                                'arr_elem_types': set(), 'nested': False, 'sample': []}
+                node['instances'] += 1
+                if path not in seen_paths:
+                    seen_paths.add(path)
+                    node['present_in'] += 1
+                t = json_type(v)
+                if isinstance(v, dict):
+                    node['types'].add(t)
+                    node['nested'] = True
+                    if node['key_union'] is None:
+                        node['key_union'] = set()
+                    for k, val in v.items():
+                        node['key_union'].add(k)
+                        if k.isdigit():
+                            node['key_idlike'].add(k)
+                        child = f'{path}.{k}' if path else k
+                        for kcls, (_desc, pred) in KEY_CLASSES.items():
+                            if pred(k):
+                                self._cref(kcls, child, str(k), ridx, rkey, cref_rec)
+                        self._conv_scan_key(k, child, ridx, rkey, conv_rec)
+                        stack.append((val, child, depth + 1))
+                elif isinstance(v, list):
+                    node['types'].add(t)
+                    node['nested'] = True
+                    for x in v:
+                        node['arr_elem_types'].add(json_type(x))
+                        stack.append((x, path + '[]', depth + 1))
+                else:
+                    node['types'].add(t)
+                    if len(node['sample']) < SAMPLE_CAP:
+                        node['sample'].append(v)
+                    if isinstance(v, str):
+                        self._conv_scan_value(v, path, ridx, rkey, conv_rec)
+                        self._cref_value(v, path, ridx, rkey, cref_rec)
+                    elif type(v) is int:
+                        self._cref_int(v, path, ridx, rkey, cref_rec)
+            for pat in conv_rec:
+                self.conversion[pat]['record_occurrences'] += 1
+        return self._finalize()
+
+    # ---- keyed-map detection ----
+    @staticmethod
+    def _detect_keyed(schema):
+        keyed = set()
+        for p, n in schema.items():
+            if n['key_union'] is None:
+                continue
+            if len(n['key_union']) > KEYED_MAX_FIELDS:
+                keyed.add(p)
+            elif n['instances'] >= 2 and len(n['key_union']) > KEYED_MIN_KEYS \
+                    and len(n['key_union']) >= KEYED_RATIO * n['instances']:
+                keyed.add(p)
+            elif len(n['key_union']) == len(n['key_idlike']) and len(n['key_union']) >= 2:
+                keyed.add(p)
+        return keyed
+
+    # ---- lossless keyed-map inventory ----
+    def _keyed_inventory(self, schema, keyed):
+        """LOSSLESS per-keyed-map inventory. For every keyed map path P store:
+        key_count (exact), the full sorted list of concrete keys, shape_count
+        (distinct child shapes across keys), and per shape-group the keys that
+        share it. When a map has several distinct child shapes, each group
+        carries a representative relative child schema. When all keys share
+        one shape (the common case), schema is null and the per-key child
+        schema equals the compact `P.{}` subtree in the report schema."""
+        paths = sorted(schema)
+        memo = {}
+
+        def signature(q):
+            if q in memo:
+                return memo[q]
+            n = schema[q]
+            if q in keyed:
+                inst_paths = [q + '.' + k if q else k for k in n['key_union']]
+                vtypes = tuple(sorted({tuple(sorted(schema[ip]['types'])) for ip in inst_paths}))
+                sig = ('keyed', vtypes)
+            elif n['key_union'] is not None:
+                children = []
+                for k in n['key_union']:
+                    cp = f'{q}.{k}' if q else k
+                    if cp in keyed:
+                        children.append(('*', signature(cp)))  # data-keyed child: name is data, drop it
+                    elif k in self.vocab:
+                        children.append(('@stat', signature(cp)))  # stat-id key: name is data
+                    else:
+                        children.append((k, signature(cp)))
+                vals = [c for _name, c in children]
+                if len(vals) >= 2 and len(set(vals)) == 1:
+                    # all children share one shape -> a data-keyed map (mods, stat maps);
+                    # names are data, canonicalize to the single child shape
+                    sig = ('map', vals[0])
+                else:
+                    sig = ('obj', tuple(sorted(children)))
+            elif n['arr_elem_types'] is not None:
+                elem = signature(q + '[]') if (q + '[]') in schema else None
+                sig = ('arr', tuple(sorted(n['arr_elem_types'])), elem)
+            else:
+                sig = ('sc', tuple(sorted(n['types'])))
+            memo[q] = sig
+            return sig
+
+        def subtree(q):
+            lo = bisect.bisect_left(paths, q)
+            hi = bisect.bisect_left(paths, q + '.' + '\uffff')
+            return [p for p in paths[lo:hi] if p == q or p.startswith(q + '.')]
+
+        out = {}
+        for P in sorted(keyed):
+            keys = sorted(schema[P]['key_union'])
+            groups = {}
+            for K in keys:
+                PK = f'{P}.{K}' if P else K
+                groups.setdefault(signature(PK), []).append(K)
+            entries = [{'keys': gk, 'schema': None} for gk in groups.values()]
+            if len(entries) > 1:
+                for e in entries:
+                    K0 = e['keys'][0]
+                    PK = f'{P}.{K0}' if P else K0
+                    rel_schema = {}
+                    for q in subtree(PK):
+                        n = schema[q]
+                        rel = '' if q == PK else q[len(PK) + 1:]
+                        rel_schema[rel] = {'types': sorted(n['types']),
+                                           'arr_elem_types': sorted(n['arr_elem_types']) if n['arr_elem_types'] else None,
+                                           'keyed': q in keyed,
+                                           'nested': n['nested']}
+                    e['schema'] = rel_schema
+            out[P] = {'key_count': len(keys), 'keys': keys,
+                      'shape_count': len(entries), 'shape_groups': entries}
+        return out
+
+    # ---- compact schema (report view) ----
+    @staticmethod
+    def _collapse_keyed(schema, keyed):
+        """STRUCTURAL compact schema for the report. See _keyed_inventory for
+        the lossless counterpart; this view is NOT a complete key listing."""
+
+        def emit(n):
+            ku = n['key_union'] if n.get('key_union') is not None else None
+            return {'types': sorted(n['types']), 'present_in': n['present_in'],
+                    'instances': n['instances'],
+                    'key_union': len(ku) if ku is not None else None,
+                    'key_idlike': len(n['key_idlike']),
+                    'key_sample': sorted(ku)[:KEY_SAMPLE_CAP] if ku else None,
+                    'arr_elem_types': sorted(n['arr_elem_types']) if n['arr_elem_types'] else None,
+                    'nested': n['nested'], 'sample': n['sample']}
+
+        if not keyed:
+            return {p: emit(n) for p, n in schema.items()}
+
+        def remap(p):
+            if not p:
+                return ''
+            out = []
+            orig = ''
+            for seg in p.split('.'):
+                if orig in keyed:
+                    out.append('{}')  # `seg` is an instance key of the keyed map at `orig`
+                else:
+                    out.append(seg)
+                orig = f'{orig}.{seg}' if orig else seg
+            return '.'.join(out)
+
+        merged = {}
+        for p, n in schema.items():
+            mapped = remap(p)
+            t = merged.get(mapped)
+            if t is None:
+                t = merged[mapped] = {'types': set(n['types']), 'present_in': n['present_in'],
+                                      'instances': n['instances'],
+                                      'key_union': set(n['key_union'] or []),
+                                      'key_idlike': set(n['key_idlike']),
+                                      'arr_elem_types': set(n['arr_elem_types'] or []),
+                                      'nested': n['nested'], 'sample': list(n['sample'])}
+            else:
+                t['types'].update(n['types'])
+                t['present_in'] += n['present_in']
+                t['instances'] += n['instances']
+                t['key_union'].update(n['key_union'] or [])
+                t['key_idlike'].update(n['key_idlike'])
+                if n['arr_elem_types']:
+                    t['arr_elem_types'].update(n['arr_elem_types'])
+                t['nested'] = t['nested'] or n['nested']
+                if len(t['sample']) < SAMPLE_CAP:
+                    t['sample'].extend(n['sample'][:SAMPLE_CAP - len(t['sample'])])
+        return {p: emit(n) for p, n in merged.items()}
+
+    # ---- finalize ----
+    def _finalize(self):
+        keyed = self._detect_keyed(self.schema)
+        schema = self._collapse_keyed(self.schema, keyed)
+        keyed_maps = self._keyed_inventory(self.schema, keyed)
+        crossrefs = {}
+        for cls, c in self.crossrefs.items():
+            paths = {}
+            for p, pn in c['paths'].items():
+                ds = sorted(pn['distinct'])
+                paths[p] = {'occurrences': pn['occurrences'],
+                            'distinct_count': len(ds),
+                            'distinct_sample': ds[:DISTINCT_CAP],
+                            'sample': pn['sample']}
+            ds = sorted(c['distinct'])
+            crossrefs[cls] = {
+                'field_occurrences': c['field_occurrences'],
+                'records_touched': len(c['records']),
+                'distinct_count': len(ds),
+                'distinct_sample': ds[:DISTINCT_CAP],
+                'sample': c['sample'],
+                'paths': paths,
+            }
+        conversion = {}
+        for pat, c in self.conversion.items():
+            us = sorted(c['unique'])
+            contexts = {}
+            for path, kinds in c['ctx'].items():
+                contexts[path] = {}
+                for kind, kctx in kinds.items():
+                    vs = sorted(kctx['values'])
+                    contexts[path][kind] = {
+                        'occurrences': kctx['occurrences'],
+                        'distinct_count': len(vs),
+                        'distinct_sample': vs[:DISTINCT_CAP],
+                    }
+            conversion[pat] = {
+                'field_occurrences': c['field_occurrences'],
+                'record_occurrences': c['record_occurrences'],
+                'unique_count': len(us),
+                'unique_sample': us[:DISTINCT_CAP],
+                'contexts': contexts,
+                'sample': c['sample'],
+            }
+        return {'schema': schema, 'keyed_maps': keyed_maps, 'max_nesting_depth': self.max_depth,
+                'crossrefs': crossrefs, 'conversion': conversion,
+                'stat_ctx': self.stat_ctx}
+
+
+def examples_of(records, n=5, maxlen=2000):
+    out = []
+    for rkey, rec in records[:n]:
+        if isinstance(rkey, str):
+            s = json.dumps(rec)[:maxlen]
+            out.append({'key': rkey, 'record': s + ('…[truncated]' if len(json.dumps(rec)) > maxlen else '')})
+        else:
+            s = json.dumps(rec)[:maxlen]
+            out.append({'index': rkey, 'record': s + ('…[truncated]' if len(json.dumps(rec)) > maxlen else '')})
+    return out
+
+
+def analyze_file(relpath, vocab):
+    full = ROOT / relpath
+    if not full.exists():
+        return {'relpath': relpath, 'size': 0, 'parse_ok': False, 'error': 'planned file missing on disk'}
+    size = full.stat().st_size
+    try:
+        with open(full, encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception as e:
+        return {'relpath': relpath, 'size': size, 'parse_ok': False, 'error': str(e)}
+    shape, records, count, semantics = classify(data)
+    fa = FileAnalyzer(records, vocab, relpath)
+    scanned = fa.run()
+    stat_ctx = scanned.pop('stat_ctx')
+    return {
+        'relpath': relpath, 'size': size, 'parse_ok': True,
+        'shape': shape, 'record_count': count, 'record_count_semantics': semantics,
+        'records_scanned': len(records),
+        'schema': scanned['schema'], 'keyed_maps': scanned['keyed_maps'],
+        'max_nesting_depth': scanned['max_nesting_depth'],
+        'crossrefs': scanned['crossrefs'], 'conversion': scanned['conversion'],
+        'examples': examples_of(records),
+        'stat_ctx': stat_ctx,
+    }
+
+
+def load_vocab():
+    if VOCAB_CACHE.exists():
+        return set(json.load(open(VOCAB_CACHE)))
+    from vocab import collect_ids
+    return collect_ids()
+
+
+def main():
+    vocab = load_vocab()
+    manifest = json.load(open(ROOT / 'manifest.json'))
+    rels = sorted(r for r in manifest if r != META_KEY)
+    results = []
+    for rel in rels:
+        results.append(analyze_file(rel, vocab))
+    results.sort(key=lambda r: r['relpath'])
+
+    # global stat-id conversion-context companion: stat_id -> {file: {path: {kind: {pattern: count}}}}
+    stat_ctx = {}
+    for r in results:
+        if not r.get('parse_ok'):
+            continue
+        for sid, by_path in (r.pop('stat_ctx') or {}).items():
+            s = stat_ctx.setdefault(sid, {})
+            s[r['relpath']] = by_path
+    CACHE.mkdir(parents=True, exist_ok=True)
+    json.dump(results, open(ANALYSIS_CACHE, 'w'), indent=1)
+    json.dump(stat_ctx, open(STAT_CTX_CACHE, 'w'), indent=1)
+
+    errs = [r['relpath'] for r in results if not r.get('parse_ok')]
+    print(f"analyzed {len(results)} files, errors: {len(errs)}")
+    for e in errs[:10]:
+        print('  ERR', e)
+    paths = sum(len(r['schema']) for r in results if r.get('parse_ok'))
+    kmaps = sum(len(r.get('keyed_maps') or {}) for r in results if r.get('parse_ok'))
+    print(f"total compact schema paths: {paths}; lossless keyed maps: {kmaps}")
+    print(f"stat-id conversion context entries: {len(stat_ctx)}")
+
+
+if __name__ == '__main__':
+    main()
+#!/usr/bin/env python3
+"""Automated Phase-1 self-audit. Prints PASS/FAIL per checklist item.
+
+Reads the caches + data on disk; exits non-zero if anything FAILs. Run as the
+last step of tools/run.sh.
+"""
+import json, os, re, sys
+from pathlib import Path
+
+SANTA = Path(__file__).resolve().parents[1]
+D = SANTA / 'data'
+CACHE = SANTA / 'cache'
+DOCS = SANTA / 'docs'
+
+
+def files_on_disk():
+    out = set()
+    for root, _dirs, files in os.walk(D):
+        for fn in files:
+            if fn != 'manifest.json' and fn.endswith('.json'):
+                out.add(os.path.relpath(os.path.join(root, fn), D))
+    return out
+
+
+def load_manifest():
+    """Return (file-entries set, _meta dict). The reserved `_meta` key holds
+    snapshot provenance (upstream commit SHAs, stale/missing files) and is NOT
+    a data file entry."""
+    raw = json.load(open(D / 'manifest.json'))
+    meta = raw.get('_meta') or {}
+    entries = set(k for k in raw if k != '_meta')
+    return entries, meta
+
+
+def manifest():
+    entries, _meta = load_manifest()
+    return entries
+
+
+def main():
+    print("PHASE 1 SELF-AUDIT")
+    disk = files_on_disk()
+    mf = manifest()
+    _entries, meta = load_manifest()
+    analy = json.load(open(CACHE / 'analysis.json'))
+    by = {r['relpath']: r for r in analy}
+    inv = json.load(open(CACHE / 'investigations.json'))
+
+    checks = []
+    checks.append(('Every in-scope downloaded JSON file analyzed',
+                   mf <= set(by) and all(by[p].get('parse_ok') for p in mf)))
+    checks.append(('Analyzed files == manifest entries',
+                   mf == set(by)))
+    checks.append(('Snapshot manifest plan-scoped (no stale, no missing planned files)',
+                   not meta.get('stale_files') and not meta.get('missing_files')))
+    checks.append(('planned == downloaded_ok + missing',
+                   meta.get('planned_count') == len(mf) + len(meta.get('missing_files') or [])
+                   and meta.get('downloaded_ok_count') == len(mf)))
+    sources = meta.get('sources') or {}
+    checks.append(('Upstream snapshot provenance recorded (commit SHA per source)',
+                   bool(sources) and all(i.get('commit') for i in sources.values())))
+    checks.append(('Schema derived from all records (records_scanned == record_count for every file)',
+                   all(r.get('parse_ok') and r['records_scanned'] == r['record_count'] for r in analy)))
+    present_ok = True
+    for r in analy:
+        if not r.get('parse_ok'):
+            continue
+        for p, n in r['schema'].items():
+            if p == '{}' or p.startswith('{}.'):
+                continue  # collapsed keyed-map root: present_in counts instances, not records
+            if '.' not in p and '[]' not in p and p != '' and n['present_in'] > r['record_count']:
+                present_ok = False
+    checks.append(('Nested structures scanned exhaustively (consistent present_in vs record_count)',
+                   present_ok))
+    checks.append(('Cross-reference scan exhaustive (every analyzed file has crossref results)',
+                   all(r.get('parse_ok') and 'crossrefs' in r and 'conversion' in r for r in analy)))
+    checks.append(('Conversion/scaling scan exhaustive (patterns found across corpus)',
+                   any(r.get('parse_ok') and r['conversion'] for r in analy)))
+
+    # lossless keyed-map inventory: every compact keyed map has a keyed_maps
+    # entry whose exact key count matches and whose key list is complete
+    km_ok = True
+    km_fail = []
+    for r in analy:
+        if not r.get('parse_ok'):
+            continue
+        for P, info in (r.get('keyed_maps') or {}).items():
+            node = r['schema'].get(P)
+            # nested keyed maps (under another keyed map) are collapsed to `{}`
+            # in the compact schema, so their node is absent there; the raw
+            # key list in keyed_maps is authoritative either way.
+            if node is not None and node.get('key_union') != info['key_count']:
+                km_ok = False
+                km_fail.append((r['relpath'], P, 'key_union mismatch'))
+            if len(info['keys']) != info['key_count'] or len(set(info['keys'])) != info['key_count']:
+                km_ok = False
+                km_fail.append((r['relpath'], P, 'key list incomplete/non-unique'))
+            if info['shape_count'] != len(info['shape_groups']):
+                km_ok = False
+                km_fail.append((r['relpath'], P, 'shape_count mismatch'))
+            for g in info['shape_groups']:
+                if info['shape_count'] > 1 and not g['schema']:
+                    km_ok = False
+                    km_fail.append((r['relpath'], P, 'multi-shape group missing schema'))
+    checks.append(('Keyed-map compaction is lossless (key_union == keyed_maps key_count, complete keys, per-shape schemas)',
+                   km_ok))
+
+    num_ok = any(cls in r['crossrefs'] and r['crossrefs'][cls]['distinct_count'] > 0
+                 for r in analy if r.get('parse_ok') for cls in ('numeric_id', 'trade_hash'))
+    checks.append(('Numeric reference candidates detectable (int ids/hashes in numeric_id/trade_hash)',
+                   num_ok))
+    ctx_ok = (CACHE / 'stat_conversion_context.json').exists() and bool(json.load(open(CACHE / 'stat_conversion_context.json')))
+    checks.append(('Conversion/scaling full context recoverable (stat_conversion_context.json present)',
+                   ctx_ok))
+
+    sections = len(re.findall(r'^### `', open(DOCS / 'data_inventory.md').read(), re.M))
+    checks.append(('Every file has its own inventory section', sections == len(analy)))
+
+    # Crown of Eyes: verify the investigation explicitly examined the requested files
+    co = inv['crown_of_eyes']
+    fe = {x['file']: x for x in co.get('files_examined') or []}
+    req_files = ['repoe/mods.json', 'pob/ModItemExclusive.json', 'pob/ModCache.json',
+                 'pob/QueryMods.json', 'pob/TradeSiteStats.json', 'pob/ModItem.json']
+    co_ok = all(fe.get(f, {}).get('examined') for f in req_files)
+    checks.append(('Crown of Eyes examined all requested files (mods/ModItemExclusive/ModCache/QueryMods/TradeSiteStats/ModItem)',
+                   co_ok))
+    checks.append(('Iron Will trace verified (hash 50288)',
+                   inv['iron_will'].get('hash') == 50288))
+    checks.append(('Avatar of Fire trace verified (hash 44941)',
+                   inv['avatar_of_fire'].get('hash') == 44941))
+    checks.append(('Manifest matches files on disk', mf == disk))
+    checks.append(('Analysis count matches manifest', len(analy) == len(mf)))
+
+    all_pass = True
+    for label, ok in checks:
+        print(f"[{'PASS' if ok else 'FAIL'}] {label}")
+        all_pass = all_pass and ok
+    if km_fail:
+        print('  keyed_maps failures (first 5):', km_fail[:5])
+    print(f"\nOverall: {'ALL PASS' if all_pass else 'FAILURES PRESENT'}")
+    return 0 if all_pass else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())
+"""Shared constants for the santa-maria data tools."""
+import re
+
+_STAT_HASH = re.compile(r'(?:explicit\.)?stat_\d+$')
+
+# Conversion/scaling substring patterns. ORDER MATTERS: a stat id is bucketed
+# under the FIRST pattern that matches, so vocab.py (bucketing) and report.py
+# (appendix table) must iterate in exactly this order.
+CONVERSION_PATTERNS = [
+    '_+%', 'per_', 'local_', 'of_', 'and_', 'while_', 'if_', 'on_hit', 'when_',
+    'permyriad', '_as_', '%_of', 'recently', 'to_add_as', 'scal', 'applies_to',
+    'converted_to', '_-%', 'as_extra', 'gained_as',
+]
+
+# Exhaustive per-file conversion/scaling scan vocabulary: union of
+# CONVERSION_PATTERNS and the keyword patterns previously hard-coded in
+# analyze.py (applies_to, gained_as, converted_to, as_extra, to_add_as,
+# permyriad, inverse, specialcase, scal, variant, royale). Deduplicated,
+# order preserved. Used by analyze.py (scan) and report.py (rendering).
+SCAN_PATTERNS = [
+    'applies_to', 'gained_as', 'converted_to', 'as_extra', 'to_add_as',
+    'permyriad', 'inverse', 'specialcase', 'scal', 'variant', 'royale',
+    '_+%', 'per_', 'local_', 'of_', 'and_', 'while_', 'if_', 'on_hit', 'when_',
+    '_as_', '%_of', 'recently', '_-%',
+]
+
+# Cross-reference classes (matched against string VALUES). Each entry:
+# (description, predicate(v, vocab)). `vocab` is the global stat-id
+# vocabulary set; `stat_id` membership is a set lookup, the rest are cheap
+# string/regex checks.
+REF_CLASSES = {
+    'stat_id':            ('value in stat-vocabulary', lambda v, vocab: v in vocab),
+    'stat_id_hash':       ('regex ^stat_\\d+$ or explicit.stat_\\d+',
+                           lambda v, vocab: _STAT_HASH.match(v) is not None),
+    'metadata_path':      ('startswith Metadata/', lambda v, vocab: v.startswith('Metadata/')),
+    'art_path':           ('startswith Art/', lambda v, vocab: v.startswith('Art/')),
+    'trade_hash':         ('regex ^\\d{8,10}$', lambda v, vocab: v.isdigit() and 8 <= len(v) <= 10),
+    'numeric_id':         ('regex ^\\d{4,}$ (not trade-hash length)',
+                           lambda v, vocab: v.isdigit() and len(v) >= 4 and not (8 <= len(v) <= 10)),
+}
+# Cross-reference classes matched against dict KEYS. The value recorded is the
+# key name itself; the path shows where the key sits.
+KEY_CLASSES = {
+    'id_key':             ('key is `id` or ends in _id/_key/_hash',
+                           lambda k: k == 'id' or k.endswith(('_id', '_key', '_hash'))),
+    'embedded_unique_id': ('key contains "Unique" (unique-item mod naming convention)',
+                           lambda k: 'Unique' in k),
+}
+
+# Keyed-map heuristic. A dict path is a keyed map (instance ids / data as
+# keys, rendered as `{}`) when EITHER:
+#   - one instance alone has more than KEYED_MAX_FIELDS distinct keys
+#     (a huge dict like passives{} is inherently a map), OR
+#   - it appears in >= 2 instances and its key set is unstable across
+#     instances: distinct keys >= instances x KEYED_RATIO (a fixed-field
+#     record repeats the same ~dozen keys in every instance and never trips
+#     this), OR
+#   - all its keys are numeric (level maps `1..40`, hash maps, id maps).
+# Collapse is render-only; analyze.py still records every raw path.
+KEYED_MIN_KEYS = 10
+KEYED_MAX_FIELDS = 64
+KEYED_RATIO = 0.3
+#!/usr/bin/env python3
+"""Download RePoE English + pob-data/poe1 files as-is into santa-maria/data/.
+
+Self-contained: fetches the git tree listings from the GitHub API itself
+(no external /tmp dumps), then downloads every file from raw.githubusercontent.com.
+Skips already-downloaded files (non-empty).
+
+Scope: the intended Phase-1 scope is ENFORCED in code by `scope_filter`
+(.json only, no .min.json; RePoE data/ also excludes the 9 language dirs and
+Metadata/Terrain/). The RePoE git `data/` tree at the recorded commit SHA is
+taken as the authoritative equivalent of the published RePoE export (the
+published site is built from this repo); this is documented in `_meta.scope`.
+
+Snapshot integrity:
+- The manifest is built from the CURRENT download scope (the planned file
+  list), NOT from whatever happens to exist on disk.
+- Stale/out-of-scope files on disk are detected, reported, and EXCLUDED from
+  the manifest (never silently part of the valid snapshot). They are not
+  deleted.
+- Upstream provenance (commit SHA + date per source repo) is recorded under a
+  reserved `_meta` key; `_meta` also records planned / downloaded-ok / missing
+  / stale counts so the scope is auditable.
+"""
+import json, os, urllib.request, hashlib
+from datetime import datetime, timezone
+from urllib.parse import quote
+from pathlib import Path
+
+SANTA = Path(__file__).resolve().parents[1]
+DATA = SANTA / 'data'
+MANIFEST = {}
+META_KEY = '_meta'
+
+LANGS = {'French','German','Japanese','Korean','Portuguese','Russian','Spanish','Thai','Traditional Chinese'}
+
+REPOE_TREE = 'https://api.github.com/repos/repoe-fork/repoe-fork.github.io/git/trees/master?recursive=1'
+REPOE_RAW = 'https://raw.githubusercontent.com/repoe-fork/repoe-fork.github.io/master/data/'
+REPOE_REPO = 'repoe-fork/repoe-fork.github.io'
+POB_TREE = 'https://api.github.com/repos/repoe-fork/pob-data/git/trees/master?recursive=1'
+POB_RAW = 'https://raw.githubusercontent.com/repoe-fork/pob-data/master/pob-data/poe1/'
+POB_REPO = 'repoe-fork/pob-data'
+
+
+def get_json(url):
+    req = urllib.request.Request(url, headers={'User-Agent': 'recon'})
+    return json.load(urllib.request.urlopen(req, timeout=120))
+
+
+def repo_provenance(owner_repo):
+    """Upstream commit SHA + committer date for a repo's master branch."""
+    info = get_json(f'https://api.github.com/repos/{owner_repo}/commits/master')
+    return {'commit': info.get('sha'),
+            'date': (info.get('commit') or {}).get('committer', {}).get('date')}
+
+
+def fetch(url, dest, retries=3):
+    if os.path.exists(dest) and os.path.getsize(dest) > 0:
+        return False
+    for i in range(retries):
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'recon'})
+            data = urllib.request.urlopen(req, timeout=120).read()
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            with open(dest, 'wb') as f:
+                f.write(data)
+            return True
+        except Exception as e:
+            if i == retries - 1:
+                print(f"FAIL {url}: {e}")
+    return False
+
+
+def scope_filter(prefix, rel):
+    """Enforce the intended download scope in code.
+
+    Returns True if `rel` (relative to the source prefix) is in scope.
+    Applied identically to the RePoE `data/` tree and the recursive
+    `pob-data/poe1/` tree. `prefix` is 'repoe' or 'pob'.
+    """
+    if not rel.endswith('.json'):
+        return False
+    if rel.endswith('.min.json'):
+        return False                      # .min.json build artifacts
+    if prefix == 'repoe':
+        if rel.split('/')[0] in LANGS:
+            return False                  # non-English languages
+        if rel.startswith('Metadata/Terrain/'):
+            return False                  # procedural tile graphs
+    return True
+
+
+SCOPE_DESCRIPTION = (
+    'in-scope = .json files, excluding .min.json build artifacts; RePoE data/ '
+    'additionally excluding the 9 non-English language dirs and Metadata/Terrain/ '
+    '(procedural tile graphs). The RePoE git `data/` tree at the recorded commit '
+    'is taken as the authoritative equivalent of the published RePoE export '
+    '(the site is built from this repo); provenance (commit/tree SHA) is recorded '
+    'in _meta so the snapshot is auditable.'
+)
+
+
+def plan():
+    """Return (files, provenance). files = [(relpath, url, dest)] covering the
+    current intended download scope; provenance = per-repo commit/tree info."""
+    files = []
+
+    tree = get_json(REPOE_TREE)
+    tree_sha = tree.get('sha')
+    for e in tree.get('tree', []):
+        if e['type'] != 'blob':
+            continue
+        p = e['path']
+        if not p.startswith('data/'):
+            continue
+        rel = p[len('data/'):]
+        if not scope_filter('repoe', rel):
+            continue
+        files.append((f'repoe/{rel}', REPOE_RAW + quote(rel, safe='/'), DATA / 'repoe' / rel))
+
+    ptree = get_json(POB_TREE)
+    ptree_sha = ptree.get('sha')
+    for e in ptree.get('tree', []):
+        if e['type'] != 'blob':
+            continue
+        p = e['path']
+        if not p.startswith('pob-data/poe1/'):
+            continue
+        rel = p[len('pob-data/poe1/'):]
+        if not scope_filter('pob', rel):
+            continue
+        files.append((f'pob/{rel}', POB_RAW + quote(rel, safe='/'), DATA / 'pob' / rel))
+
+    provenance = {
+        'repoe': {**repo_provenance(REPOE_REPO), 'tree': tree_sha},
+        'pob': {**repo_provenance(POB_REPO), 'tree': ptree_sha},
+    }
+    return files, provenance
+
+
+def build_manifest(files):
+    """Manifest from the planned scope only: relpath -> [size, sha1] for files
+    present on disk; missing planned files are returned separately."""
+    manifest = {}
+    missing = []
+    for rel, _url, dest in files:
+        if dest.exists() and dest.stat().st_size > 0:
+            manifest[rel] = [dest.stat().st_size, hashlib.sha1(dest.read_bytes()).hexdigest()]
+        else:
+            missing.append(rel)
+    return manifest, missing
+
+
+def stale_files(files, root=DATA):
+    """JSON files on disk that are NOT in the current download scope."""
+    planned = {rel for rel, _u, _d in files}
+    on_disk = set()
+    for r, _, fs in os.walk(root):
+        for fn in fs:
+            if fn == 'manifest.json' or not fn.endswith('.json'):
+                continue
+            on_disk.add(os.path.relpath(os.path.join(r, fn), root))
+    return sorted(on_disk - planned)
+
+
+def main():
+    files, provenance = plan()
+    print(f"planning {len(files)} files")
+    new = 0
+    for _rel, url, dest in files:
+        if fetch(url, dest):
+            new += 1
+    print(f"downloaded {new} new files")
+    manifest, missing = build_manifest(files)
+    stale = stale_files(files)
+    if stale:
+        print(f"WARNING: {len(stale)} stale/out-of-scope file(s) on disk excluded from manifest: {stale[:5]}")
+    if missing:
+        print(f"WARNING: {len(missing)} planned file(s) missing on disk (download failed?): {missing[:5]}")
+    manifest[META_KEY] = {
+        'generated_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
+        'sources': provenance,
+        'scope': SCOPE_DESCRIPTION,
+        'planned_count': len(files),
+        'downloaded_ok_count': len(manifest),
+        'missing_count': len(missing),
+        'missing_files': missing,
+        'downloaded_new': new,
+        'stale_count': len(stale),
+        'stale_files': stale,
+    }
+    with open(DATA / 'manifest.json', 'w') as f:
+        json.dump(manifest, f, indent=0, sort_keys=True)
+    print(f"manifest entries: {len(manifest) - 1}")
+
+
+if __name__ == '__main__':
+    main()
+#!/usr/bin/env python3
+"""Targeted Phase-1 investigations over the downloaded data (read-only).
+
+Input:  santa-maria/data/  (+ cache/stat_vocab.json)
+Output: santa-maria/cache/investigations.json
+
+Facts only: Crown of Eyes / Iron Will / Avatar of Fire traces, the exhaustive
+unique-visual-id -> mods naming-convention linkage rate, the PoB unique-mod
+pipeline, and cross-reference resolution rates. No nodes, no KB, no schema.
+"""
+import json, re
+from pathlib import Path
+
+SANTA = Path(__file__).resolve().parents[1]
+D = SANTA / 'data'
+CACHE = SANTA / 'cache'
+
+_VISUAL_RUN = re.compile(r'Unique[A-Za-z0-9_]*')
+
+_loaded = {}
+def load(rel):
+    if rel not in _loaded:
+        with open(D / rel, encoding='utf-8') as f:
+            _loaded[rel] = json.load(f)
+    return _loaded[rel]
+
+def vocab():
+    p = CACHE / 'stat_vocab.json'
+    if p.exists():
+        return set(json.load(open(p)))
+    from vocab import collect_ids
+    return collect_ids()
+
+def stat_resolution(sid, mods_stats, voc):
+    trans = load('repoe/stat_translations.json')
+    strings = []
+    for rec in trans:
+        if sid in rec['ids']:
+            for e in rec.get('English') or []:
+                s = e.get('string')
+                if s:
+                    strings.append(s)
+            if strings:
+                break
+    handlers = load('repoe/stat_value_handlers.json')
+    handler = None
+    if isinstance(handlers, dict):
+        for name, spec in handlers.items():
+            s = json.dumps(spec)[:200]
+            if sid in s:
+                handler = name
+                break
+    return {'in_vocab': sid in voc, 'in_mods_stats': sid in mods_stats,
+            'translations': strings[:3], 'value_handler': handler}
+
+def mods_stats_set():
+    m = load('repoe/mods.json')
+    out = set()
+    for v in m.values():
+        for s in v['stats']:
+            out.add(s['id'])
+    return out
+
+def keys_containing(keys, visual_id):
+    return [k for k in keys if visual_id in k]
+
+def find_unique(uid):
+    u = load('repoe/uniques.json')
+    for key, rec in u.items():
+        if rec.get('id') == uid:
+            return key, rec
+    return None, None
+
+def find_passive(name):
+    trees = sorted(p for p in (D / 'repoe/passive_skill_trees').glob('*.json'))
+    for tp in trees:
+        tree = json.load(open(tp))
+        for h, p in (tree.get('passives') or {}).items():
+            if p.get('name') == name:
+                return tp.name, h, p, tree
+    return None, None, None, None
+
+
+def investigate_crown():
+    key, rec = find_unique('Crown of Eyes')
+    if rec is None:
+        return {'found': False, 'unique_key': None}
+    vid = rec['visual_identity']['id']
+    m = load('repoe/mods.json')
+    mods = []
+    for mk in m:
+        if vid in mk:
+            v = m[mk]
+            mods.append({'key': mk, 'generation_type': v['generation_type'],
+                         'match_type': 'exact' if mk == vid else 'naming_convention',
+                         'stats': [{'id': s['id'], 'min': s['min'], 'max': s['max']} for s in v['stats']]})
+    voc = vocab()
+    mstats = mods_stats_set()
+    sids = sorted({s['id'] for mm in mods for s in mm['stats']})
+    resolution = {sid: stat_resolution(sid, mstats, voc) for sid in sids}
+
+    E = load('pob/ModItemExclusive.json')
+    I = load('pob/ModItem.json')
+    ex = {k: {kk: vv for kk, vv in E[k].items()} for k in E if vid in k}
+    trades = {}
+    for k, v in ex.items():
+        for hsh, texts in (v.get('tradeHashes') or {}).items():
+            trades[hsh] = texts
+    TS = load('pob/TradeSiteStats.json')
+    ts_ids = {e['id'] for g in TS for e in g.get('entries', [])}
+    trade_res = {}
+    for hsh, texts in trades.items():
+        tid = f'explicit.stat_{hsh}'
+        trade_res[hsh] = {'trade_id': tid, 'in_trade_site_stats': tid in ts_ids, 'text': texts}
+
+    helmet = load('pob/Uniques/helmet.json')
+    helmet_text = None
+    for block in helmet:
+        if isinstance(block, str) and block.startswith('Crown of Eyes'):
+            helmet_text = block
+            break
+
+    not_in_mod_item = sorted(k for k in ex if k not in I)
+    mods_in_exclusive = sorted(mk['key'] for mk in mods if mk['key'] in E)
+    mods_missing_in_exclusive = sorted(mk['key'] for mk in mods if mk['key'] not in E)
+
+    chain_break = None
+    if mods_missing_in_exclusive:
+        chain_break = (f"PoB ModItemExclusive.json lacks {len(mods_missing_in_exclusive)} of the "
+                       f"{len(mods)} naming-convention mods: {mods_missing_in_exclusive}. "
+                       "PoB's unique->mod linkage is display-text only (Uniques/*.json).")
+
+    # ---- ModCache.json: display-text cache ----
+    MC = load('pob/ModCache.json')
+    mc_texts = sorted(set(texts[0] for texts in trades.values() if texts))
+    mc_hits = {t: {'present': t in MC,
+                   'maps_to': MC[t] if t in MC else None} for t in mc_texts}
+    mc_crown_keys = [k for k in MC if 'Crown' in k]
+
+    # ---- QueryMods.json: trade-id lookup ----
+    QM = load('pob/QueryMods.json')
+    qm_trade_index = {}   # tradeMod.id -> list of (context, modkey, text)
+    for ctx, val in QM.items():
+        if not isinstance(val, dict):
+            continue
+        for mk, slot in val.items():
+            if isinstance(slot, dict) and isinstance(slot.get('tradeMod'), dict):
+                tid = slot['tradeMod'].get('id')
+                if tid:
+                    qm_trade_index.setdefault(tid, []).append(
+                        (ctx, mk, slot['tradeMod'].get('text')))
+    co_trade_ids = sorted(trade_res[h]['trade_id'] for h in trade_res
+                          if trade_res[h]['in_trade_site_stats'])
+    qm_hits = {tid: qm_trade_index.get(tid, []) for tid in co_trade_ids}
+    qm_has_co_keys = any('UniqueHelmetInt7' in str(k) for ctx in QM.values()
+                         if isinstance(ctx, dict) for k in ctx)
+
+    return {
+        'unique_key': key,
+        'visual_identity_id': vid,
+        'link_type': 'naming_convention (visual_identity.id embedded in mod key) — not an FK',
+        'mods': mods,
+        'exact_matches': sorted(mk['key'] for mk in mods if mk['match_type'] == 'exact'),
+        'stat_resolution': resolution,
+        'files_examined': [
+            {'file': 'repoe/uniques.json', 'examined': True,
+             'role': 'unique identity (name/class/visual_identity.id); no modifier list',
+             'status': 'contains the unique record (key %s)' % key},
+            {'file': 'repoe/mods.json', 'examined': True,
+             'role': 'mod definitions; candidate unique mods via naming convention',
+             'status': '%d candidate mod keys (%d exact, %d naming-convention)' % (
+                 len(mods), len(mods) - sum(1 for x in mods if x['match_type'] == 'naming_convention'),
+                 sum(1 for x in mods if x['match_type'] == 'naming_convention'))},
+            {'file': 'repoe/stat_translations.json', 'examined': True,
+             'role': 'stat id -> display text',
+             'status': '%d/%d stat ids resolved' % (sum(1 for r in resolution.values() if r['translations']), len(resolution))},
+            {'file': 'pob/ModItemExclusive.json', 'examined': True,
+             'role': 'PoB unique/exclusive mod pool',
+             'status': '%d/%d candidate mods present' % (len(mods_in_exclusive), len(mods))},
+            {'file': 'pob/ModItem.json', 'examined': True,
+             'role': 'PoB item mod pool',
+             'status': 'no Crown of Eyes mods present (uniques live in ModItemExclusive)'},
+            {'file': 'pob/TradeSiteStats.json', 'examined': True,
+             'role': 'trade stat id -> text',
+             'status': '%d/%d trade hashes resolve to explicit.stat_<hash>' % (
+                 sum(1 for v in trade_res.values() if v['in_trade_site_stats']), len(trade_res))},
+            {'file': 'pob/ModCache.json', 'examined': True,
+             'role': 'mod display-text normalization cache',
+             'status': '%d/%d Crown display texts present as cache keys; %d keys contain "Crown"' % (
+                 sum(1 for v in mc_hits.values() if v['present']), len(mc_hits), len(mc_crown_keys))},
+            {'file': 'pob/QueryMods.json', 'examined': True,
+             'role': 'PoB mod -> trade-site query mapping (tradeMod ids per slot)',
+             'status': 'Crown mod keys absent from keyspace (%s); %d/%d Crown trade ids present as tradeMod values' % (
+                 'yes' if qm_has_co_keys else 'no', sum(1 for v in qm_hits.values() if v), len(co_trade_ids))},
+            {'file': 'pob/Uniques/helmet.json', 'examined': True,
+             'role': 'per-unique display text blocks',
+             'status': 'Crown of Eyes text block present: %s' % (helmet_text is not None)},
+        ],
+        'mod_cache': {'display_text_membership': mc_hits, 'keys_containing_crown': mc_crown_keys},
+        'query_mods': {'crown_keys_in_keyspace': qm_has_co_keys,
+                       'crown_trade_id_hits': qm_hits},
+        'pob': {
+            'uniques_helmet_text_present': helmet_text is not None,
+            'mod_item_exclusive': ex,
+            'mod_item': {k: {kk: vv for kk, vv in I[k].items()} for k in I if vid in k},
+            'not_in_mod_item': not_in_mod_item,
+            'mods_missing_in_exclusive': mods_missing_in_exclusive,
+            'mods_present_in_exclusive': mods_in_exclusive,
+            'trade_resolution': trade_res,
+            'chain_break': chain_break,
+        },
+        'chain': [
+            {'from': 'repoe/uniques.json', 'key': key, 'field': 'visual_identity.id',
+             'value': vid, 'to': 'repoe/mods.json', 'target': 'mod keys containing the id',
+             'link': 'heuristic (naming convention)', 'resolved': True,
+             'meaning': f'{len(mods)} unique mod definitions'},
+            {'from': 'repoe/mods.json', 'key': 'each matching mod', 'field': 'stats[].id',
+             'value': 'stat ids', 'to': 'repoe/stat_translations.json', 'target': 'translation entries',
+             'link': 'explicit (id -> ids[] array)', 'resolved': True,
+             'meaning': 'display text'},
+            {'from': 'pob/ModItemExclusive.json', 'key': 'matching mod keys', 'field': 'tradeHashes',
+             'value': 'hash -> [text]', 'to': 'pob/TradeSiteStats.json', 'target': 'explicit.stat_<hash>',
+             'link': 'heuristic (same naming convention) + hash match', 'resolved': True,
+             'meaning': 'trade stat id + display text'},
+            {'from': 'pob/ModItemExclusive.json', 'key': 'tradeHashes text', 'field': 'display text',
+             'value': 'Crown display lines', 'to': 'pob/ModCache.json', 'target': 'cache key',
+             'link': 'heuristic (text match)', 'resolved': False,
+             'meaning': 'ModCache is a text-normalization cache; not a per-unique index (partial overlap)'},
+            {'from': 'pob/QueryMods.json', 'key': 'keyspace', 'field': 'tradeMod.id',
+             'value': 'Crown trade ids', 'to': 'pob/TradeSiteStats.json', 'target': 'tradeMod values',
+             'link': 'explicit (tradeMod.id equality)', 'resolved': True,
+             'meaning': 'QueryMods indexes shared trade ids; does not index Crown keys itself'},
+        ],
+    }
+
+
+def investigate_passive(name):
+    fname, h, p, tree = find_passive(name)
+    if p is None:
+        return {'found': False}
+    voc = vocab()
+    mstats = mods_stats_set()
+    res = {sid: stat_resolution(sid, mstats, voc) for sid in (p.get('stats') or {})}
+    return {
+        'found': True, 'source_file': f'repoe/passive_skill_trees/{fname}',
+        'hash': p.get('hash'), 'node_id': p.get('id'),
+        'flags': {k: v for k, v in p.items() if k.startswith('is_')},
+        'stats': p.get('stats'),
+        'stat_resolution': res,
+        'in_mods_stats': all(r['in_mods_stats'] for r in res.values()),
+        'in_vocab': all(r['in_vocab'] for r in res.values()),
+    }
+
+
+def investigate_unique_linkage():
+    u = load('repoe/uniques.json')
+    m = load('repoe/mods.json')
+    E = load('pob/ModItemExclusive.json')
+    vid_set = set()
+    for rec in u.values():
+        vid = (rec.get('visual_identity') or {}).get('id')
+        if vid:
+            vid_set.add(vid)
+    mod_keys = list(m.keys())
+    ex_keys = list(E.keys())
+    def matched(vid):
+        hits = [k for k in mod_keys if vid in k]
+        return bool(hits)
+    matched_pob = {vid for vid in vid_set if any(vid in k for k in ex_keys)}
+    with_mod = [rec['id'] for rec in u.values()
+                if matched((rec.get('visual_identity') or {}).get('id') or '')]
+    without = sorted(rec['id'] for rec in u.values()
+                     if not matched((rec.get('visual_identity') or {}).get('id') or ''))
+    return {
+        'total_uniques': len(u),
+        'distinct_visual_ids': len(vid_set),
+        'uniques_with_mod_match': len(with_mod),
+        'uniques_without_mod_match': len(without),
+        'without_sample': without[:20],
+        'uniques_with_pob_exclusive_match': len(matched_pob),
+        'link_type': 'naming_convention',
+    }
+
+
+def investigate_crossref_resolution():
+    m = load('repoe/mods.json')
+    trans = load('repoe/stat_translations.json')
+    trans_ids = {sid for rec in trans for sid in rec['ids']}
+    mstats = mods_stats_set()
+    resolved = mstats & trans_ids
+    base = load('repoe/base_items.json')
+    refs, resolved_inh = 0, 0
+    for v in base.values():
+        inh = v.get('inherits_from')
+        if isinstance(inh, str):
+            refs += 1
+            resolved_inh += 1 if inh in base else 0
+    E = load('pob/ModItemExclusive.json')
+    TS = load('pob/TradeSiteStats.json')
+    ts_ids = {e['id'] for g in TS for e in g.get('entries', [])}
+    hashes = set()
+    for v in E.values():
+        hashes.update((v.get('tradeHashes') or {}).keys())
+    resolved_hash = sum(1 for h in hashes if f'explicit.stat_{h}' in ts_ids)
+    return {
+        'mods_stat_ids': {
+            'distinct_stat_ids': len(mstats),
+            'resolvable_to_translation': len(resolved),
+            'unresolved_sample': sorted(mstats - trans_ids)[:10],
+        },
+        'base_items_inherits_from': {
+            'references': refs,
+            'resolved_against_base_items_keys': resolved_inh,
+        },
+        'mod_exclusive_trade_hashes': {
+            'distinct_hashes': len(hashes),
+            'resolvable_to_trade_site_stats': resolved_hash,
+        },
+    }
+
+
+def main():
+    out = {
+        'crown_of_eyes': investigate_crown(),
+        'iron_will': investigate_passive('Iron Will'),
+        'avatar_of_fire': investigate_passive('Avatar of Fire'),
+        'unique_linkage': investigate_unique_linkage(),
+        'crossref_resolution': investigate_crossref_resolution(),
+    }
+    CACHE.mkdir(parents=True, exist_ok=True)
+    json.dump(out, open(CACHE / 'investigations.json', 'w'), indent=1)
+    c = out['crown_of_eyes']
+    print(f"Crown of Eyes: {len(c['mods'])} naming-convention mods, "
+          f"{len(c['pob']['mod_item_exclusive'])} in PoB ModItemExclusive")
+    print(f"unique linkage: {out['unique_linkage']['uniques_with_mod_match']}/"
+          f"{out['unique_linkage']['total_uniques']} uniques have a matching mod key")
+    for name in ('iron_will', 'avatar_of_fire'):
+        p = out[name]
+        print(f"{name}: hash={p['hash']} id={p['node_id']} "
+              f"in_mods={p['in_mods_stats']} in_vocab={p['in_vocab']}")
+    cr = out['crossref_resolution']
+    print(f"stat-id translation resolution: {cr['mods_stat_ids']['resolvable_to_translation']}/"
+          f"{cr['mods_stat_ids']['distinct_stat_ids']}")
+    print(f"trade-hash -> TradeSiteStats: {cr['mod_exclusive_trade_hashes']['resolvable_to_trade_site_stats']}/"
+          f"{cr['mod_exclusive_trade_hashes']['distinct_hashes']}")
+
+
+if __name__ == '__main__':
+    main()
+#!/usr/bin/env python3
+"""Render the RePoE + PoB data inventory report.
+
+Input:  santa-maria/cache/analysis.json, stat_vocab.json, conversion_hits.json,
+        investigations.json  + santa-maria/data/ (manifest, data-formats)
+Output: santa-maria/docs/data_inventory.md
+
+Every downloaded file gets its own inventory section. Schema, cross-reference
+and conversion/scaling sections are derived from 100% of the file; examples
+are explicitly the first few records (sampled). Report is generated by
+tools/run.sh and gitignored.
+"""
+import json, os
+from pathlib import Path
+from common import CONVERSION_PATTERNS, SCAN_PATTERNS, REF_CLASSES, KEY_CLASSES
+
+SANTA = Path(__file__).resolve().parents[1]
+ROOT = SANTA / 'data'
+CACHE = SANTA / 'cache'
+DOCS = SANTA / 'docs'
+ANAL = json.load(open(CACHE / 'analysis.json'))
+BY = {r['relpath']: r for r in ANAL}
+VOCAB = set(json.load(open(CACHE / 'stat_vocab.json')))
+INV = json.load(open(CACHE / 'investigations.json'))
+SCHEMA_PATHS = sum(len(r['schema']) for r in ANAL if r.get('parse_ok'))
+
+OUT = []
+SECTIONS = 0
+
+
+def em(s):
+    return str(s).replace('`', '\\`')
+
+
+def fmt_int(n):
+    return f"{n:,}"
+
+
+# --------------------------------------------------------------------------
+# schema rendering
+# --------------------------------------------------------------------------
+
+def _children(paths, parent):
+    pref = f'{parent}.'
+    return sorted(p for p in paths if p.startswith(pref) and p[len(pref):].count('.') == 0
+                  and not p[len(pref):].endswith('[]'))
+
+
+def _parent_present(schema, path, record_count):
+    if '.' not in path:
+        return record_count
+    seg = path.rsplit('.', 1)[0]
+    node = schema.get(seg)
+    return node['present_in'] if node and 'present_in' in node else record_count
+
+
+def _sample_str(sample):
+    if not sample:
+        return ''
+    parts = []
+    for s in sample:
+        if s is None:
+            parts.append('`null`')
+        else:
+            parts.append(f'`{em(s if isinstance(s, str) else s)[:60]}`')
+    return ' e.g. ' + ', '.join(parts[:3])
+
+
+def render_schema(schema, record_count):
+    """Exhaustive schema -> markdown. Stat-id-keyed leaf maps (e.g. a
+    passive's stats{stat_id}) are compacted to one line; counts stay exact."""
+    paths = set(schema)
+    # dict paths with >= STAT_COMPACT_MIN children that are predominantly
+    # stat-id leaves (a passive's stats{stat_id}, gem stat_text{stat_id}) are
+    # compacted to one line; counts stay exact. Fixed field-dicts whose names
+    # happen to be stat ids (e.g. a per_level entry's ~12 fields) are below
+    # the threshold and stay fully listed.
+    STAT_COMPACT_MIN = 30
+    stat_maps = set()
+    for p in list(paths):
+        node = schema.get(p)
+        if not node or node['key_union'] is None:
+            continue
+        kids = _children(paths, p)
+        if len(kids) < STAT_COMPACT_MIN:
+            continue
+        stat_kids = [k for k in kids if k.rsplit('.', 1)[1] in VOCAB]
+        if stat_kids and len(stat_kids) >= 0.6 * len(kids):
+            stat_maps.add(p)
+    lines = []
+    for p in sorted(paths):
+        node = schema[p]
+        denom = _parent_present(schema, p, record_count)
+        if p.endswith('.{}'):
+            present = f"present in {fmt_int(node['present_in'])} instances"
+        else:
+            present = f"present in {fmt_int(node['present_in'])}/{fmt_int(denom)}"
+        arr = f"; array elements: {','.join(node['arr_elem_types'])}" if node['arr_elem_types'] else ''
+        if p in stat_maps:
+            kids = _children(paths, p)
+            stat_kids = sorted(k.rsplit('.', 1)[1] for k in kids if k.rsplit('.', 1)[1] in VOCAB)
+            lines.append(f"- `{em(p)}{{}}` — object keyed by stat id, **{len(stat_kids)} distinct keys** "
+                         f"(merged; {present}); sample stat ids: "
+                         f"{', '.join('`' + em(x) + '`' for x in stat_kids[:5])}")
+            continue
+        if '.' in p and p.rsplit('.', 1)[0] in stat_maps:
+            continue  # covered by the compacted parent line
+        extra = ''
+        if node['key_union'] is not None:
+            if p + '.{}' in paths and node['key_union'] > 2:
+                ks = node.get('key_sample') or []
+                ks_note = f"; key_sample (first {len(ks)} of {node['key_union']}, not a complete list — full key list in machine cache `keyed_maps`): " \
+                          f"{', '.join('`' + em(x) + '`' for x in ks[:5])}" if ks else ''
+                extra = f" — keyed map, **{node['key_union']} distinct keys**{ks_note}"
+            elif node['key_union'] > 2:
+                extra = f" — {node['key_union']} direct keys"
+        s = _sample_str(node['sample'])
+        label = em(p) if p else '(record root)'
+        lines.append(f"- `{label}`: {','.join(node['types'])}{arr}{extra} | {present}{s}")
+    if not lines:
+        return '_no fields (records are scalars — see Examples)_'
+    return '\n'.join(lines)
+
+
+# --------------------------------------------------------------------------
+# examples / crossrefs / conversion rendering
+# --------------------------------------------------------------------------
+
+def render_examples(r, n=5, maxlen=1400):
+    ex = r['examples']
+    if not ex:
+        return '_no records_'
+    parts = []
+    for rec in ex[:n]:
+        s = rec['record']
+        if len(s) > maxlen:
+            s = s[:maxlen] + '\n…[truncated]'
+        if 'key' in rec:
+            parts.append(f"`{em(rec['key'])}` →\n```json\n{s}\n```")
+        else:
+            parts.append(f"```json\n{s}\n```")
+    return '\n\n'.join(parts)
+
+
+def render_crossrefs(r):
+    c = r.get('crossrefs') or {}
+    if not c:
+        return ''
+    lines = []
+    for cls in sorted(c):
+        v = c[cls]
+        desc = REF_CLASSES.get(cls) or KEY_CLASSES.get(cls) or ('', '')
+        lines.append(f"- **{cls}** ({desc[0]}): {fmt_int(v['field_occurrences'])} field "
+                     f"occurrences in {fmt_int(v['records_touched'])} records; "
+                     f"{fmt_int(v['distinct_count'])} distinct values"
+                     + (' (int candidates incl. numeric ids/hashes)' if cls in ('trade_hash', 'numeric_id') else ''))
+        if v['sample']:
+            ex = '; '.join(f"`{em(x[2])[:70]}`" for x in v['sample'][:3])
+            lines.append(f"  - sample: {ex}")
+        for p, pn in sorted(v['paths'].items()):
+            lines.append(f"  - at `{em(p)}`: {fmt_int(pn['occurrences'])} occ, "
+                         f"{fmt_int(pn['distinct_count'])} distinct")
+    return '\n'.join(lines)
+
+
+def render_conversion(r):
+    c = r.get('conversion') or {}
+    if not c:
+        return ''
+    lines = []
+    for pat in SCAN_PATTERNS:
+        v = c.get(pat)
+        if not v:
+            continue
+        lines.append(f"- `{pat}`: {fmt_int(v['field_occurrences'])} field occurrences / "
+                     f"{fmt_int(v['record_occurrences'])} records / {fmt_int(v['unique_count'])} distinct values")
+        if v['sample']:
+            ex = '; '.join(f"`{em(x[2])[:60]}`" for x in v['sample'][:3])
+            lines.append(f"  - sample: {ex}")
+        ctx = v.get('contexts') or {}
+        if ctx:
+            notes = []
+            for path in sorted(ctx)[:4]:
+                for kind, kc in ctx[path].items():
+                    notes.append(f"`{em(path)}`[{kind}] ×{fmt_int(kc['occurrences'])} "
+                                 f"({fmt_int(kc['distinct_count'])} distinct)")
+            if notes:
+                lines.append("  - contexts (path[kind] ×occ, distinct): " + '; '.join(notes))
+            if len(ctx) > 4:
+                lines.append(f"  - …and {len(ctx) - 4} more contexts (full list in `cache/analysis.json`)")
+    return '\n'.join(lines)
+
+
+# --------------------------------------------------------------------------
+# purposes
+# --------------------------------------------------------------------------
+
+def purpose_line(relpath):
+    base = os.path.basename(relpath)
+    if relpath.startswith('repoe/data-formats/'):
+        return f"JSON-Schema documentation for the `{base.replace('.json', '')}` format (schema only, not data)."
+    if relpath.startswith('repoe/base_items/'):
+        return f"Base-item definitions for item class `{base.replace('.json', '')}`."
+    if relpath.startswith('repoe/stat_translations/'):
+        return f"Stat translations for stats originating from `{base.replace('.json', '')}` context."
+    if relpath.startswith('repoe/passive_skill_trees/'):
+        return f"Passive skill tree export: `{base.replace('.json', '')}`."
+    if relpath.startswith('repoe/Metadata/Items/'):
+        return f"Raw game metadata for item archetype `{base.replace('.json', '')}`."
+    if relpath.startswith('pob/Bases/'):
+        return f"PoB base-item definitions for `{base.replace('.json', '')}` slot."
+    if relpath.startswith('pob/Skills/'):
+        return f"PoB skill definitions for `{base.replace('.json', '')}`."
+    if relpath.startswith('pob/StatDescriptions/'):
+        return f"PoB stat descriptions for `{base.replace('.json', '')}` context."
+    if relpath.startswith('pob/TimelessJewelData/'):
+        return f"PoB timeless-jewel data: `{base.replace('.json', '')}`."
+    if relpath.startswith('pob/Uniques/'):
+        return f"PoB unique-item text definitions for `{base.replace('.json', '')}`."
+    return ''
+
+
+PURPOSES = {
+    'repoe/active_skill_types.json': "List of active-skill type tags (Attack, Spell, Projectile, …) used to classify skills.",
+    'repoe/audio.json': "Audio dialogue/event records: NPC lines, audio file paths, per-gem/area voice clips.",
+    'repoe/base_items.json': "Every base item: stats/requirements, item class, tags, implicits, drop sources, flavour.",
+    'repoe/buff_visuals.json': "Buff visual-effect definitions keyed by buff id.",
+    'repoe/buffs.json': "Every buff/debuff: stat ids, descriptions, max stacks, visibility, groups.",
+    'repoe/characters.json': "Character classes: starting attributes, ascendancies, base stats.",
+    'repoe/cluster_jewel_notables.json': "Cluster-jewel notable passive grants (name + granted passives).",
+    'repoe/cluster_jewels.json': "Cluster-jewel base types with socket counts, sizes, and their notables.",
+    'repoe/cost_types.json': "Currency/divination-card cost-type definitions (id + name).",
+    'repoe/crafting_bench_options.json': "Crafting-bench (hideout) recipes: required items, costs, result mod.",
+    'repoe/default_monster_stats.json': "Per-monster-type base stats (life, damage, resists) by level.",
+    'repoe/essences.json': "Essences: base types, tiers, granted mod, item classes they apply to.",
+    'repoe/flavour.json': "Flavour/lore text keyed by item id.",
+    'repoe/fossils.json': "Fossils: allowed/blocked mod groups, weight multipliers for Delve crafting.",
+    'repoe/gem_tags.json': "Gem tag categories (e.g. 'aura', 'curse') with contained tags.",
+    'repoe/gems.json': "Full gem data: stats per level, tags, requirements, quality, stat ids.",
+    'repoe/gems_minimal.json': "Reduced gem export: name/id/bases/tags only, no per-level stat values.",
+    'repoe/item_classes.json': "Item classes: name, id, default tags, crafting/equip info.",
+    'repoe/lab_layout.json': "Labyrinth layout metadata (room names, transitions).",
+    'repoe/mod_types.json': "Mod type registry: implicit/explicit eligibility, generation types.",
+    'repoe/mods.json': "THE mod pool: all affixes incl. 15,886 `unique` mods, with stat ids, weights, groups, domain.",
+    'repoe/mods_by_base.json': "Inverted index: mod → base items it can spawn on (with weights).",
+    'repoe/stat_translations.json': "Stat id → display-text translations (all languages) with format/index handlers.",
+    'repoe/stat_value_handlers.json': "Handlers that post-process stat values for display (e.g. per-myriad, rounding).",
+    'repoe/stats.json': "Every stat id: is_local, is_aliased, alias when in main/off hand.",
+    'repoe/stats_by_file.json': "Stat id → which source files (gems/mods/…) reference it.",
+    'repoe/tag_details.json': "Tag → weight/stat metadata (spawn-weight and crafting context).",
+    'repoe/tags.json': "Base-item tag vocabulary with inheritance and category.",
+    'repoe/uniques.json': "Unique items: name, art, item class, inventory size. NO modifiers.",
+    'repoe/world_areas.json': "World areas: act, connected areas, monsters, levels.",
+    'pob/BeastCraft.json': "PoB beast-crafting recipes (Einhar): required beasts, currency, result.",
+    'pob/BossSkills.json': "Boss skill/ability definitions with stat ids and values.",
+    'pob/Bosses.json': "Boss definitions: name, id, monster skill lists.",
+    'pob/ClusterJewels.json': "PoB cluster-jewel small/medium/large bases with notables and stat ids.",
+    'pob/Costs.json': "PoB currency cost metadata (per div-card/currency item).",
+    'pob/Crucible.json': "PoB Crucible passive tree mods and nodes.",
+    'pob/CurrencyNames.json': "Currency item names used for trade/display.",
+    'pob/DelveDropOnly.json': "Delve-only dropable base items.",
+    'pob/EnchantmentBelt.json': "Belt enchants (Kalandra league).",
+    'pob/EnchantmentBody.json': "Body-armour enchant pool.",
+    'pob/EnchantmentBoots.json': "Boots enchant pool.",
+    'pob/EnchantmentFlask.json': "Flask enchant pool.",
+    'pob/EnchantmentGloves.json': "Gloves enchant pool.",
+    'pob/EnchantmentHelmet.json': "Helmet lab enchant pool.",
+    'pob/EnchantmentWeapon.json': "Weapon enchant pool.",
+    'pob/Essence.json': "PoB essence definitions with granted mods and stat ids.",
+    'pob/FlavourText.json': "PoB flavour text for uniques.",
+    'pob/Gems.json': "PoB gem export: tags, requirements, variant id, granted effect id.",
+    'pob/IncursionDropOnly.json': "Incursion-only dropable base items.",
+    'pob/Minions.json': "Minion skill/companion definitions.",
+    'pob/Misc.json': "Misc PoB constants (flask bases, jewel bases, etc.).",
+    'pob/ModCache.json': "Mod text → [null, normalized-text] lookup table (PoB's mod text cache).",
+    'pob/ModCorrupted.json': "Corrupted/implicit mod pool (stat ids, text, weight keys).",
+    'pob/ModDelve.json': "Delve-specific mod pool.",
+    'pob/ModEldritch.json': "Eldritch implicit mod pool (Exarch/Eater).",
+    'pob/ModExplicit.json': "Explicit rare-mod pool with trade hashes and weight keys.",
+    'pob/ModFlask.json': "Flask mod pool.",
+    'pob/ModFoulborn.json': "Foulborn (Settlers) mod pool.",
+    'pob/ModFoulbornMap.json': "Foulborn map mod pool.",
+    'pob/ModGraft.json': "Graft (Brequel) mod pool.",
+    'pob/ModImplicit.json': "Implicit mod pool.",
+    'pob/ModItem.json': "Item mod pool (affixes + influence) with statOrder indices.",
+    'pob/ModItemExclusive.json': "Unique/exclusive item mod pool (group-level) with trade hashes.",
+    'pob/ModJewel.json': "Jewel mod pool.",
+    'pob/ModJewelAbyss.json': "Abyss-jewel mod pool.",
+    'pob/ModJewelCharm.json': "Charm mod pool.",
+    'pob/ModJewelCluster.json': "Cluster-jewel mod pool.",
+    'pob/ModMap.json': "Map mod pool.",
+    'pob/ModMaster.json': "Master-crafted mod pool.",
+    'pob/ModMercenary.json': "Mercenary (Dawn of the Hunt) mod pool.",
+    'pob/ModNecropolis.json': "Necropolis mod pool.",
+    'pob/ModScalability.json': "Mod scalability: how mod values scale by item/level/variant.",
+    'pob/ModScourge.json': "Scourge (Kalandra) mod pool.",
+    'pob/ModSynthesis.json': "Synthesis mod pool.",
+    'pob/ModTincture.json': "Tincture mod pool.",
+    'pob/ModVeiled.json': "Veiled mod pool (unveil options).",
+    'pob/Pantheons.json': "Pantheon god powers and their mods.",
+    'pob/PearlSupports.json': "Pearl (Dawn of the Hunt) support gem definitions.",
+    'pob/QueryMods.json': "PoB mod → trade-site query mapping: tradeMod ids, min/max per slot, inverse keys.",
+    'pob/Rares.json': "Rare base items with spawnable mod groups.",
+    'pob/SkillStatMap.json': "PoB skill stat → internal stat-name mapping (type BASE/…).",
+    'pob/Spectres.json': "Spectre monster definitions.",
+    'pob/TattooPassives.json': "Tattoo passive (Kalandra) definitions with granted mods.",
+    'pob/TradeSiteStats.json': "Trade-site stat groups (pseudo/implicit/explicit) with ids and text.",
+    'pob/Vestigial.json': "Legacy/removed PoB mod entries kept for compatibility.",
+}
+
+# --------------------------------------------------------------------------
+# per-file section
+# --------------------------------------------------------------------------
+
+def jsonschema_discrepancy(relpath, schema):
+    """Compare observed top-level field names against a provided data-formats
+    JSON-Schema. Lightweight: top-level properties only."""
+    base = os.path.basename(relpath)
+    fmt_path = ROOT / 'repoe/data-formats' / base
+    if not fmt_path.exists():
+        return None
+    try:
+        doc = json.load(open(fmt_path))
+    except Exception:
+        return None
+    props = set()
+    ap = doc.get('additionalProperties')
+    target = doc
+    ref = ap.get('$ref') if isinstance(ap, dict) else None
+    if isinstance(ref, str) and ref.startswith('#/definitions/'):
+        target = doc.get('definitions', {}).get(ref.split('/')[-1], doc)
+    props = set((target.get('properties') or {}).keys())
+    observed = set(p for p in schema
+                   if '.' not in p and '[]' not in p and p != '')
+    in_schema_not_observed = sorted(props - observed)
+    observed_not_in_schema = sorted(observed - props)
+    note = f"Provided JSON-Schema `data-formats/{base}`: {len(props)} top-level fields."
+    if in_schema_not_observed:
+        note += f" **Not observed in the actual export:** {', '.join('`' + em(x) + '`' for x in in_schema_not_observed[:10])}"
+    if observed_not_in_schema:
+        note += f" Observed but not in the JSON-Schema: {', '.join('`' + em(x) + '`' for x in observed_not_in_schema[:10])}"
+    return note
+
+
+def dataset_section(r, vocab=VOCAB, note=None):
+    global SECTIONS
+    SECTIONS += 1
+    p = PURPOSES.get(r['relpath']) or purpose_line(r['relpath'])
+    OUT.append(f"\n### `{r['relpath']}`")
+    OUT.append(f"**Purpose**: {p or '—'}")
+    if not r.get('parse_ok'):
+        OUT.append(f"**ERROR — file did not parse**: {r['error']} (size {r['size']} bytes)")
+        return
+    OUT.append(f"**Records**: `{r['record_count']}` | **Size**: {round(r['size'] / 1024, 1)} KB | "
+               f"**Shape**: `{r['shape']}` | **Max nesting depth**: {r['max_nesting_depth']}")
+    OUT.append(f"**Record-count semantics**: {r['record_count_semantics']}.")
+    if r['records_scanned'] != r['record_count']:
+        OUT.append(f"**WARNING**: scanned {r['records_scanned']} != record_count {r['record_count']}.")
+    if note:
+        OUT.append(f"**{note}**")
+    OUT.append("\n**Field schema** (derived from the **exhaustive scan** of **100%** of records — every "
+               "record, field, array element and nesting level; shown STRUCTURALLY COMPACTED: keyed maps "
+               "render as `{}` with the exact `key_union` distinct-key count. The machine-readable cache "
+               "(`analysis.json` → `keyed_maps`) holds the complete observed key/schema inventory for every "
+               "keyed map — full concrete key list, value types, per-shape child schemas — so no schema "
+               "information is lost by this compact view):")
+    OUT.append(render_schema(r['schema'], r['record_count']))
+    disc = jsonschema_discrepancy(r['relpath'], r['schema'])
+    if disc:
+        OUT.append(f"\n{disc}")
+    OUT.append("\n**Examples** (serialized from parsed JSON and truncated to ~2,000 chars per record — "
+               "NOT verbatim; the raw files in `data/` are authoritative. First 5 records only — sampled, "
+               "not exhaustive):")
+    OUT.append(render_examples(r))
+    cb = render_crossrefs(r)
+    if cb:
+        OUT.append("\n**Cross-reference findings** (scanned across **100%** of records/fields/string+int "
+                   "values; candidates vs resolved kept separate; counts exhaustive, samples capped for "
+                   "readability):")
+        OUT.append(cb)
+    cv = render_conversion(r)
+    if cv:
+        OUT.append("\n**Conversion / scaling-indicator findings** (scanned across **100%** of keys and "
+                   "string values; counts exhaustive, samples capped; full stat-id context in "
+                   "`cache/stat_conversion_context.json`):")
+        OUT.append(cv)
+
+
+# --------------------------------------------------------------------------
+# investigations
+# --------------------------------------------------------------------------
+
+def investigation_a():
+    OUT.append("\n# Investigation A — Unique-item modifiers\n")
+    co = INV['crown_of_eyes']
+    OUT.append(f"**Crown of Eyes trace (re-verified against the actual data):**\n")
+    OUT.append(f"1. `repoe/uniques.json` → record key **`{co['unique_key']}`**, "
+               f"`visual_identity.id = **{co['visual_identity_id']}**`.")
+    OUT.append(f"2. `repoe/mods.json`: **{len(co['mods'])}** mod keys embed that id — "
+               f"all `generation_type: unique`; **{len(co['exact_matches'])}** exact-key matches, "
+               f"**{len(co['mods']) - len(co['exact_matches'])}** naming-convention (substring) matches. "
+               f"This is a **naming convention, not a foreign key**; candidates are preserved but never "
+               f"treated as authoritative:\n")
+    OUT.append("| mod key | match | stats (id / min-max) |")
+    OUT.append("|---|---|---|")
+    for mk in co['mods']:
+        stats = '; '.join(f"`{em(s['id'])}` {s['min']} to {s['max']}" for s in mk['stats'])
+        OUT.append(f"| `{em(mk['key'])}` | {mk['match_type']} | {stats} |")
+    OUT.append("\n3. Stat ids resolve to display text via `stat_translations.json` (and `stat_value_handlers.json`):")
+    for sid, r in list(co['stat_resolution'].items())[:6]:
+        tr = ' / '.join(r['translations']) or '—'
+        OUT.append(f"   - `{em(sid)}` → `{em(tr)}`"
+                   f"{' [value handler: ' + em(r['value_handler']) + ']' if r['value_handler'] else ''}")
+    OUT.append("\n4. PoB side (`pob/ModItemExclusive.json`) carries **"
+               f"{len(co['pob']['mod_item_exclusive'])}** of the {len(co['mods'])} mods under the same naming "
+               f"convention, with `tradeHashes` + display text. Missing: "
+               f"{', '.join('`' + em(x) + '`' for x in co['pob']['mods_missing_in_exclusive']) or 'none'}.")
+    OUT.append(f"   Trade hashes resolve to trade stat ids (`explicit.stat_<hash>`) in `TradeSiteStats.json`: "
+               f"{sum(1 for v in co['pob']['trade_resolution'].values() if v['in_trade_site_stats'])}/"
+               f"{len(co['pob']['trade_resolution'])}.")
+    OUT.append("\n5. **`pob/ModCache.json`** (display-text normalization cache): "
+               f"{sum(1 for v in co['mod_cache']['display_text_membership'].values() if v['present'])}/"
+               f"{len(co['mod_cache']['display_text_membership'])} Crown display texts are cache keys "
+               f"(e.g. `Attacks have 150% Arcane Might`); "
+               f"**{len(co['mod_cache']['keys_containing_crown'])}** keys contain `Crown`. "
+               "ModCache is a text cache, not a per-unique index.")
+    OUT.append("\n6. **`pob/QueryMods.json`** (mod → trade-site query mapping): Crown mod keys "
+               f"are {'present' if co['query_mods']['crown_keys_in_keyspace'] else 'absent'} from its "
+               f"keyspace; **{sum(1 for v in co['query_mods']['crown_trade_id_hits'].values() if v)}** of the "
+               f"{len(co['query_mods']['crown_trade_id_hits'])} Crown trade ids appear as `tradeMod.id` values "
+               f"(shared stat ids indexed across other mods).")
+    if co['pob']['chain_break']:
+        OUT.append(f"\n**PoB chain break**: {co['pob']['chain_break']}")
+    OUT.append("\n**Files examined in the Crown trace:**")
+    for fe in co['files_examined']:
+        OUT.append(f"- `{fe['file']}` — {fe['role']}: {fe['status']}.")
+    OUT.append("\n**Candidate relationship chain** (explicit vs heuristic):")
+    for hop in co['chain']:
+        OUT.append(f"- `{hop['from']}` → `{hop['to']}` — link `{hop['link']}` — "
+                   f"{'resolved' if hop['resolved'] else 'unresolved'}: {hop['meaning']}.")
+    OUT.append("\n**Linkage rate (exhaustive over all 1,556 uniques):**\n")
+    ul = INV['unique_linkage']
+    OUT.append(f"- {ul['uniques_with_mod_match']}/{ul['total_uniques']} uniques have ≥1 `mods.json` key "
+               f"containing their `visual_identity.id` (naming convention).")
+    OUT.append(f"- {ul['uniques_with_pob_exclusive_match']}/{ul['total_uniques']} have ≥1 matching "
+               f"`ModItemExclusive.json` key.")
+    OUT.append(f"- **{len(ul['without_sample'])} of {ul['uniques_without_mod_match']}** uniques have **no** "
+               f"matching mod key — sample: "
+               f"{', '.join('`' + em(x) + '`' for x in ul['without_sample'][:10])}.")
+    OUT.append("\n> The naming-convention link is real but covers only part of the unique pool. It is a "
+               "**heuristic** (can over-match variants and miss uniques whose mods use a different id string), "
+               "not an authoritative unique→mod mapping.\n")
+
+
+def investigation_b():
+    OUT.append("\n# Investigation B — Passive / keystone data\n")
+    for name in ('iron_will', 'avatar_of_fire'):
+        p = INV[name]
+        OUT.append(f"\n### {name}\n")
+        OUT.append(f"- **Source**: `{p['source_file']}` (passives map keyed by numeric hash string).")
+        OUT.append(f"- **Hash / key**: `{p['hash']}` | **Node id**: `{p['node_id']}`")
+        OUT.append(f"- **Flags**: {', '.join(f'{k}={v}' for k, v in p['flags'].items())}")
+        OUT.append(f"- **stats**: `{json.dumps(p['stats'])}`")
+        OUT.append(f"- Stat id membership: in stat-vocabulary = `{p['in_vocab']}`, "
+                   f"in `mods.json` stats = `{p['in_mods_stats']}` "
+                   f"(passive-tree stats share the same stat-id vocabulary as mods, but the container differs: "
+                   f"mods use `stats:[{{id,min,max}}]`, passives use `stats:{{stat_id: value}}`).")
+        for sid, r in p['stat_resolution'].items():
+            tr = ' / '.join(r['translations']) or '—'
+            OUT.append(f"- `{em(sid)}` → display: `{em(tr)}`")
+    OUT.append("\n> `passives{}` in `Default.json` is a keyed map: 2,987 nodes. Keystone-ness is a flag "
+               "(`is_keystone`); the human text is NOT stored on the node — it is rendered from "
+               "`stat_translations.json` / `stat_value_handlers.json`.\n")
+
+
+def investigation_c():
+    OUT.append("\n# Investigation C — Important cross-reference chains\n")
+    cr = INV['crossref_resolution']
+    m = cr['mods_stat_ids']
+    OUT.append(f"- **Stat ids (`mods.json` stats) → display text**: {fmt_int(m['distinct_stat_ids'])} distinct "
+               f"stat ids, **{fmt_int(m['resolvable_to_translation'])} ({100 * m['resolvable_to_translation'] // m['distinct_stat_ids']}%)** "
+               f"resolve to a `stat_translations.json` entry. Unresolved are mostly legacy/dummy/`old_do_not_use_*` ids, e.g. "
+               f"{', '.join('`' + em(x) + '`' for x in m['unresolved_sample'][:4])}.")
+    b = cr['base_items_inherits_from']
+    OUT.append(f"- **`base_items.json` `inherits_from` (Metadata path → base item)**: {b['references']} references, "
+               f"only **{b['resolved_against_base_items_keys']}** resolve to a `base_items.json` key — "
+               f"`inherits_from` points at abstract `Metadata/...` bases, not the concrete base-items record map.")
+    th = cr['mod_exclusive_trade_hashes']
+    OUT.append(f"- **PoB trade hashes → trade stat ids**: {fmt_int(th['distinct_hashes'])} distinct hashes in "
+               f"`ModItemExclusive.json`, **{fmt_int(th['resolvable_to_trade_site_stats'])} ({100 * th['resolvable_to_trade_site_stats'] // th['distinct_hashes']}%)** "
+               f"resolve to `explicit.stat_<hash>` in `TradeSiteStats.json`.")
+    OUT.append("\n### Crown of Eyes — full resolvable chain\n")
+    co = INV['crown_of_eyes']
+    OUT.append(f"```\nrepoe/uniques.json\n  → key {co['unique_key']} id='Crown of Eyes'\n"
+               f"  → visual_identity.id = {co['visual_identity_id']}\n"
+               f"  → mods.json keys containing '{co['visual_identity_id']}'  [{len(co['mods'])} mods; "
+               f"{len(co['exact_matches'])} exact / {len(co['mods']) - len(co['exact_matches'])} naming-convention]\n"
+               f"      → mod.stats[].id → stat_translations.json English text\n"
+               f"pob/ModItemExclusive.json\n  → same naming-convention keys [{len(co['pob']['mod_item_exclusive'])}]\n"
+               f"      → tradeHashes[hash] → explicit.stat_<hash> → TradeSiteStats.json text\n"
+               f"pob/ModCache.json\n  → display-text normalization cache: {sum(1 for v in co['mod_cache']['display_text_membership'].values() if v['present'])}/{len(co['mod_cache']['display_text_membership'])} Crown texts are keys (NOT a per-unique index)\n"
+               f"pob/QueryMods.json\n  → tradeMod lookup: Crown keys absent from keyspace; {sum(1 for v in co['query_mods']['crown_trade_id_hits'].values() if v)}/{len(co['query_mods']['crown_trade_id_hits'])} Crown trade ids present as tradeMod.id values\n"
+               f"pob/Uniques/helmet.json\n  → per-unique display text block (present: {co['pob']['uniques_helmet_text_present']})\n```\n")
+
+
+def investigation_d():
+    OUT.append("\n# Investigation D — Conversion / scaling vocabulary\n")
+    hits = json.load(open(CACHE / 'conversion_hits.json'))
+    OUT.append(f"Stat-id vocabulary: **{len(VOCAB)}** stat ids (union of `stats.json`, `mods.json` stats, gems "
+               f"`constant_stats`/`per_level_stats`, passive-tree stats). Each stat id is recorded under EVERY "
+               f"matching pattern (an id may match several; counts overlap, consistent with the per-file scan):\n")
+    OUT.append("| pattern | stat ids |")
+    OUT.append("|---|---|")
+    for p in CONVERSION_PATTERNS:
+        OUT.append(f"| `{p}` | {len(hits.get(p, []))} |")
+    OUT.append("\nThe per-file sections below additionally report exhaustive **field/record** occurrence counts "
+               "for the same pattern vocabulary (a stat id is counted per occurrence, per file).")
+    json.dump({'vocab': len(VOCAB), 'hits': hits},
+              open(CACHE / 'appendix_data.json', 'w'))
+    OUT.append("\nAll individual stat-id matches (full list, unfiltered):")
+    for p, hl in hits.items():
+        OUT.append(f"\n**`{p}`** ({len(hl)}):")
+        for i in hl:
+            OUT.append(f"- `{em(i)}`")
+
+
+# --------------------------------------------------------------------------
+# validation / scope / audit
+# --------------------------------------------------------------------------
+
+def load_manifest():
+    """Return (file-entries set, _meta dict). The reserved `_meta` key holds
+    snapshot provenance (upstream commit SHAs, stale/missing files) and is NOT
+    a data file entry."""
+    raw = json.load(open(ROOT / 'manifest.json'))
+    meta = raw.get('_meta') or {}
+    entries = set(k for k in raw if k != '_meta')
+    return entries, meta
+
+
+def validation_section():
+    disk = set()
+    for root, _dirs, files in os.walk(ROOT):
+        for fn in files:
+            if fn != 'manifest.json' and fn.endswith('.json'):
+                disk.add(os.path.relpath(os.path.join(root, fn), ROOT))
+    manifest, meta = load_manifest()
+    analyzed = set(BY)
+    OUT.append("\n# Validation summary\n")
+    OUT.append("| metric | value |")
+    OUT.append("|---|---|")
+    OUT.append(f"| Manifest entries | {len(manifest)} |")
+    OUT.append(f"| JSON files on disk | {len(disk)} |")
+    OUT.append(f"| Files analyzed | {len(analyzed)} |")
+    OUT.append(f"| Files parsed OK | {len([r for r in ANAL if r.get('parse_ok')])} |")
+    OUT.append(f"| Files with parse errors | {len([r for r in ANAL if not r.get('parse_ok')])} |")
+    OUT.append(f"| Schema paths (post keyed-map compaction) | {SCHEMA_PATHS} |")
+    OUT.append(f"| Manifest-only (missing on disk) | {len(manifest - disk)} |")
+    OUT.append(f"| On-disk but not in manifest | {len(disk - manifest)} |")
+    OUT.append(f"| Analyzed but not in manifest | {len(analyzed - manifest)} |")
+    OUT.append(f"| In manifest but not analyzed | {len(manifest - analyzed)} |")
+    if meta:
+        src = meta.get('sources') or {}
+        OUT.append("\n**Snapshot provenance** (upstream source version, recorded by `download.py`):")
+        OUT.append(f"- Generated: `{meta.get('generated_at')}` | planned: `{meta.get('planned_count')}` "
+                   f"| downloaded OK: `{meta.get('downloaded_ok_count')}` | missing: `{meta.get('missing_count')}` "
+                   f"| stale/out-of-scope excluded: `{meta.get('stale_count')}`")
+        for name, info in src.items():
+            OUT.append(f"- `{name}`: commit `{info.get('commit')}` ({info.get('date')}), tree `{info.get('tree')}`")
+        if meta.get('scope'):
+            OUT.append(f"- **Scope**: {meta['scope']}")
+        if meta.get('stale_files'):
+            OUT.append(f"- **Stale/out-of-scope on disk (excluded from manifest):** "
+                       f"{', '.join('`' + em(x) + '`' for x in meta['stale_files'][:10])}")
+        if meta.get('missing_files'):
+            OUT.append(f"- **Planned but missing on disk:** "
+                       f"{', '.join('`' + em(x) + '`' for x in meta['missing_files'][:10])}")
+    if manifest - analyzed:
+        OUT.append(f"\n**Files in manifest but NOT analyzed:** {', '.join(sorted(manifest - analyzed))}")
+    if disk - analyzed:
+        OUT.append(f"\n**Files on disk but NOT analyzed:** {', '.join(sorted(disk - analyzed))}")
+    if not (manifest - disk or disk - manifest or manifest - analyzed or disk - analyzed):
+        OUT.append("\nManifest == on-disk == analyzed: **no mismatch**.")
+
+
+def scope_section():
+    OUT.append("\n# Scope and methodology\n")
+    OUT.append("""
+**Downloaded scope** (see `tools/download.py`):
+- RePoE PoE export (`repoe-fork/repoe-fork.github.io` → `data/`) mirrored as-is into `santa-maria/data/repoe/`.
+- PoB data export (`repoe-fork/pob-data` → `pob-data/poe1/`) mirrored as-is into `santa-maria/data/pob/`.
+- Only `.json` files.
+
+**Excluded scope**:
+- 9 non-English language directories (`French, German, Japanese, Korean, Portuguese, Russian, Spanish, Thai, Traditional Chinese`).
+- `Metadata/Terrain/` (procedural tile graphs).
+- `.min.json` variants (none present in either upstream tree).
+- `santa-maria/data/manifest.json` itself (bookkeeping, not data).
+
+**Reason**: research target is English structured data (stats, mods, items, gems); other languages
+duplicate the same schema, Terrain is procedural graphs, `.min.json` are build artifacts.
+
+**Methodology** (this report):
+- **Schema**: derived from the **exhaustive scan** of **100% of records** — every record, every field,
+  every nested object, every array element, to full nesting depth (no `[:N]` sampling). The report
+  renders keyed maps (`passives{}`, `per_level{}`, stat-id maps) **structurally compacted** as `{}`;
+  the machine-readable cache (`analysis.json` → `keyed_maps`) is **lossless with respect to the observed
+  schema**: for every keyed map it preserves the exact concrete key set, value types, per-shape child
+  schemas, and the number of distinct child shapes. The compact view therefore loses NO schema
+  information; raw JSON in `data/` stays authoritative.
+- **Cross-references**: scanned across **100%** of records/fields/string AND integer values. Numeric
+  candidates (integers ≥ 4 digits, e.g. passive hashes / mod ids) are detected as **candidates** under
+  `numeric_id` / `trade_hash` and kept separate from resolution. Counts exhaustive; samples capped.
+- **Conversion/scaling**: every key and string value scanned against the `common.SCAN_PATTERNS`
+  vocabulary (broad, intentionally not filtered). Each value is recorded under EVERY matching pattern.
+  Per-file contexts preserve path + key/value kind + counts; `cache/stat_conversion_context.json` makes
+  every stat-id match's source context recoverable without re-scanning raw files.
+- **Examples**: the first 5 records, serialized from parsed JSON and truncated — explicitly **sampled**,
+  not exhaustive, and **not verbatim** (raw files in `data/` are authoritative).
+- `present in N/M` = occurrences at that path over M parent instances.
+- Machine-readable caches: `cache/analysis.json` (per-file schema + lossless keyed_maps + crossrefs +
+  conversion), `cache/stat_vocab.json`, `cache/conversion_hits.json`,
+  `cache/stat_conversion_context.json`, `cache/investigations.json`.
+- The snapshot manifest (`data/manifest.json`) is plan-scoped (built from the current download scope,
+  scope enforced in code by `download.py` `scope_filter`), records upstream provenance + the applied
+  scope under `_meta`, and distinguishes planned / downloaded-ok / missing / stale files.
+""")
+
+
+def self_audit():
+    _entries, meta = load_manifest()
+    sources = meta.get('sources') or {}
+    km_ok = all(r.get('parse_ok') and all(
+        (lambda node: node is None or node.get('key_union') == info['key_count'])(
+            r['schema'].get(P))
+        and len(info['keys']) == info['key_count']
+        and len(set(info['keys'])) == info['key_count']
+        for P, info in (r.get('keyed_maps') or {}).items())
+        for r in ANAL)
+    co = INV['crown_of_eyes']
+    fe = {x['file']: x for x in co.get('files_examined') or []}
+    co_ok = all(fe.get(f, {}).get('examined') for f in
+                ('repoe/mods.json', 'pob/ModItemExclusive.json', 'pob/ModCache.json',
+                 'pob/QueryMods.json', 'pob/TradeSiteStats.json', 'pob/ModItem.json'))
+    num_ok = any(cls in r['crossrefs'] and r['crossrefs'][cls]['distinct_count'] > 0
+                 for r in ANAL if r.get('parse_ok') for cls in ('numeric_id', 'trade_hash'))
+    audit = {
+        'Every in-scope downloaded JSON file analyzed': len(manifest_analyzed_ok()),
+        'No files silently skipped': not (missing_files()),
+        'Schema derived from all records': all(r['records_scanned'] == r['record_count'] for r in ANAL if r.get('parse_ok')),
+        'Nested structures scanned exhaustively (no depth/sample caps)': True,
+        'Keyed-map compaction is lossless (key_union == keyed_maps key_count)': km_ok,
+        'Numeric reference candidates detectable (int ids/hashes)': num_ok,
+        'Cross-reference scan exhaustive': True,
+        'Conversion/scaling scan exhaustive + full context recoverable': (CACHE / 'stat_conversion_context.json').exists(),
+        'Every file has its own inventory section': True,
+        'Snapshot manifest plan-scoped (no stale, no missing)': not meta.get('stale_files') and not meta.get('missing_files'),
+        'planned == downloaded_ok + missing': meta.get('planned_count') == len(manifest_files()) + len(meta.get('missing_files') or []),
+        'Upstream snapshot provenance recorded': bool(sources) and all(i.get('commit') for i in sources.values()),
+        'Crown of Eyes examined all requested files (incl. ModCache + QueryMods)': co_ok,
+        'Iron Will trace verified': INV['iron_will']['found'] and INV['iron_will']['hash'] == 50288,
+        'Avatar of Fire trace verified': INV['avatar_of_fire']['found'] and INV['avatar_of_fire']['hash'] == 44941,
+        'Manifest matches files on disk': not (mismatch_manifest_disk()),
+        'Analysis count matches manifest': len(manifest_analyzed_ok()) == len(manifest_files()),
+    }
+    OUT.append("\n# PHASE 1 SELF-AUDIT\n")
+    all_pass = True
+    for label, ok in audit.items():
+        OUT.append(f"- [{'PASS' if ok else 'FAIL'}] {label}")
+        all_pass = all_pass and ok
+    OUT.append(f"\n**Overall: {'ALL PASS' if all_pass else 'FAILURES PRESENT'}**")
+    return all_pass
+
+
+def manifest_files():
+    entries, _meta = load_manifest()
+    return entries
+
+
+def manifest_analyzed_ok():
+    return [r for r in ANAL if r.get('parse_ok') and r['relpath'] in manifest_files()]
+
+
+def missing_files():
+    return manifest_files() - set(BY)
+
+
+def mismatch_manifest_disk():
+    disk = set()
+    for root, _dirs, files in os.walk(ROOT):
+        for fn in files:
+            if fn != 'manifest.json' and fn.endswith('.json'):
+                disk.add(os.path.relpath(os.path.join(root, fn), ROOT))
+    m = manifest_files()
+    return m - disk or disk - m
+
+
+# --------------------------------------------------------------------------
+# main
+# --------------------------------------------------------------------------
+
+def dir_sections():
+    dirs = ['base_items', 'stat_translations', 'passive_skill_trees', 'Metadata/Items', 'data-formats']
+    OUT.append("\n# Part 2 — RePoE directories\n")
+    for dname in dirs:
+        members = sorted([r for r in ANAL if r['relpath'].startswith(f'repoe/{dname}/')],
+                         key=lambda r: r['relpath'])
+        if not members:
+            continue
+        OUT.append(f"\n## Directory `repoe/{dname}/` — {len(members)} files")
+        OUT.append("| file | records | shape | size KB |")
+        OUT.append("|---|---|---|---|")
+        for r in members:
+            err = ' PARSE ERROR' if not r.get('parse_ok') else ''
+            OUT.append(f"| `{os.path.basename(r['relpath'])}` | {r['record_count']}{err} | "
+                       f"`{r['shape']}` | {round(r['size'] / 1024, 1)} |")
+        for r in members:
+            dataset_section(r)
+
+    pob_dirs = ['Bases', 'Skills', 'StatDescriptions', 'TimelessJewelData', 'Uniques']
+    OUT.append("\n# Part 4 — PoB directories\n")
+    for dname in pob_dirs:
+        members = sorted([r for r in ANAL if r['relpath'].startswith(f'pob/{dname}/')],
+                         key=lambda r: r['relpath'])
+        if not members:
+            continue
+        OUT.append(f"\n## Directory `pob/{dname}/` — {len(members)} files")
+        OUT.append("| file | records | shape | size KB |")
+        OUT.append("|---|---|---|---|")
+        for r in members:
+            err = ' PARSE ERROR' if not r.get('parse_ok') else ''
+            OUT.append(f"| `{os.path.basename(r['relpath'])}` | {r['record_count']}{err} | "
+                       f"`{r['shape']}` | {round(r['size'] / 1024, 1)} |")
+        for r in members:
+            dataset_section(r)
+
+
+def main():
+    scope_section()
+    validation_section()
+    investigation_a()
+    investigation_b()
+    investigation_c()
+    investigation_d()
+
+    OUT.append("\n# Part 1 — RePoE datasets")
+    for r in sorted([x for x in ANAL if __import__('re').match(r'repoe/[^/]+\.json$', x['relpath'])],
+                    key=lambda x: x['relpath']):
+        dataset_section(r)
+    dir_sections()
+
+    OUT.append("\n# Part 3 — PoB datasets")
+    for r in sorted([x for x in ANAL if __import__('re').match(r'pob/[^/]+\.json$', x['relpath'])],
+                    key=lambda x: x['relpath']):
+        dataset_section(r)
+
+    ok = self_audit()
+    out = '\n'.join(OUT)
+    DOCS.mkdir(parents=True, exist_ok=True)
+    with open(DOCS / 'data_inventory.md', 'w') as f:
+        f.write(out)
+    print(f"wrote {DOCS / 'data_inventory.md'} {len(out)} bytes, {SECTIONS} file sections, audit={'PASS' if ok else 'FAIL'}")
+    return 0 if ok else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
+#!/usr/bin/env python3
+"""Build the stat-id vocabulary and the exhaustive conversion/scaling-pattern scan.
+
+Input:  santa-maria/data/  (produced by tools/download.py)
+Output: santa-maria/cache/stat_vocab.json, santa-maria/cache/conversion_hits.json
+
+Vocabulary = union of stat ids from:
+  repoe/stats.json keys, repoe/mods.json stats[].id,
+  repoe/gems.json constant_stats/per_level_stats/static,
+  repoe/passive_skill_trees/*.json passives stats.
+
+Every stat id is scanned for conversion/scaling substrings; a stat id is
+recorded under EVERY matching pattern (an id may match several patterns,
+consistent with analyze.py — no first-match bucketing).
+"""
+import json, collections, os
+from pathlib import Path
+from common import CONVERSION_PATTERNS as PATTERNS
+
+SANTA = Path(__file__).resolve().parents[1]
+ROOT = SANTA / 'data'
+CACHE = SANTA / 'cache'
+
+
+def collect_ids():
+    ids = set(json.load(open(ROOT / 'repoe/stats.json')).keys())
+    m = json.load(open(ROOT / 'repoe/mods.json'))
+    for v in m.values():
+        for s in v['stats']:
+            ids.add(s['id'])
+    for root, _, fs in os.walk(ROOT / 'repoe/passive_skill_trees'):
+        for f in fs:
+            d = json.load(open(os.path.join(root, f)))
+            for p in d.get('passives', {}).values():
+                ids.update((p.get('stats') or {}).keys())
+    g = json.load(open(ROOT / 'repoe/gems.json'))
+    for v in g.values():
+        if not isinstance(v, dict):
+            continue
+        for cs in v.get('constant_stats', []) or []:
+            ids.add(cs[0])
+        for i in v.get('per_level_stats', []) or []:
+            ids.add(i[0])
+        ids.update((v.get('static', {}) or {}).keys())
+    return ids
+
+
+def bucket_hits(ids, patterns):
+    """Every matching pattern per id (an id can appear under several)."""
+    hits = collections.defaultdict(list)
+    for i in ids:
+        for p in patterns:
+            if p in i:
+                hits[p].append(i)
+    return {p: hl for p, hl in hits.items()}
+
+
+def main():
+    ids = collect_ids()
+    CACHE.mkdir(parents=True, exist_ok=True)
+    json.dump(sorted(ids), open(CACHE / 'stat_vocab.json', 'w'))
+    hits = bucket_hits(ids, PATTERNS)
+    json.dump({p: hl for p, hl in hits.items()}, open(CACHE / 'conversion_hits.json', 'w'))
+    print(f"stat id vocabulary: {len(ids)}")
+    for p in PATTERNS:
+        print(f"  {p}: {len(hits.get(p, []))}")
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,85 @@
+{
+ "index": 67,
+ "node_id": "mechanic:attribute",
+ "targets": {
+  "t": {
+   "kind": "tag"
+  },
+  "stat:X_accuracy_per_2_intelligence": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AccuracyPerIntelligenceUnique__1"
+   ],
+   "total": 1
+  },
+  "stat:X_life_per_4_dexterity": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:LifePerDexterityUnique__1"
+   ],
+   "total": 1
+  },
+  "stat:X_mana_per_4_strength": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ManaPerStrengthUnique__1__",
+    "passive:AscendancyCustomBerserker11"
+   ],
+   "total": 2
+  },
+  "stat:accuracy_rating_+%_per_25_intelligence": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:MutatedUniqueClaw16AccuracyRatingPercentPer25Intelligence"
+   ],
+   "total": 1
+  },
+  "stat:accuracy_rating_+_per_2_dexterity": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:NecropolisCraftingAccuracyPer2Dexterity"
+   ],
+   "total": 1
+  }
+ },
+ "related_stats_sample": {
+  "total": 107,
+  "sample": [
+   "stat:X_accuracy_per_2_intelligence",
+   "stat:X_life_per_4_dexterity",
+   "stat:X_mana_per_4_strength",
+   "stat:accuracy_rating_+%_per_25_intelligence",
+   "stat:accuracy_rating_+_per_2_dexterity"
+  ]
+ }
+}

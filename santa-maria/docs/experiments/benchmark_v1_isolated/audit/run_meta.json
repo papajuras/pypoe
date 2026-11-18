@@ -1,0 +1,63 @@
+{
+ "run": "benchmark v1 (isolated run)",
+ "run_date": "2026-09-17",
+ "corpus_sha256": "d62839a9045e28c8aa0bc9d431c3aaef241089c40acee121c96e294e900d56a8",
+ "kb_read_only": true,
+ "nodes_db_sha256_16": "289b29aea530a15f",
+ "edges_db_sha256_16": "5eb3059b82633bfa",
+ "audit": {
+  "raw_lines": 489,
+  "unique_calls": 462,
+  "ops": {
+   "resolve": 119,
+   "carriers": 240,
+   "neighbour": 91,
+   "validate_build": 37,
+   "can_support": 2
+  }
+ },
+ "stages": {
+  "A": {
+   "calls": 343,
+   "seeds": 81,
+   "budget_per_seed": 6
+  },
+  "C": {
+   "calls": 146,
+   "seeds": 18,
+   "full": [
+    9,
+    12,
+    14,
+    16,
+    21,
+    32,
+    33,
+    35,
+    43,
+    47,
+    64,
+    66,
+    67
+   ],
+   "lite": [
+    1,
+    19,
+    25,
+    29,
+    30
+   ]
+  },
+  "D": {
+   "validate_build": 37,
+   "can_support": 2,
+   "statuses": {
+    "valid": 17,
+    "unknown": 14,
+    "invalid": 3,
+    "input_error": 3
+   }
+  }
+ },
+ "note": "27 raw audit lines are duplicates from re-executions after terminal-output truncation"
+}

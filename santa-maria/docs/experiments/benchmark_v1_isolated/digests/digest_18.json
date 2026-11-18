@@ -1,0 +1,41 @@
+{
+ "index": 18,
+ "node_id": "passive:AscendancyReliquarian9",
+ "type": "Passive",
+ "name": "Caster Weapon Display",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyReliquarian9"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyReliquarian9"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyReliquarian9"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

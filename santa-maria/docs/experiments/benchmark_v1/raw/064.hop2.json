@@ -1,0 +1,25 @@
+{
+ "index": 64,
+ "node_id": "mod:MonsterMinionInstability",
+ "targets": {
+  "stat:keystone_minion_instability": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 6,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:HellscapeUpsideKeystoneMinionInstability",
+    "mod:KeystoneMinionInstabilityUnique__1",
+    "mod:MonsterMinionInstability",
+    "mod:RecombinatorSpecialKeystoneMinionInstability",
+    "mod:SanctumSpecialCorruptionKeystoneMinionInstability",
+    "mod:WeaponTreeKeystoneMinionInstability",
+    "passive:minion_instability1133"
+   ],
+   "total": 7
+  }
+ }
+}

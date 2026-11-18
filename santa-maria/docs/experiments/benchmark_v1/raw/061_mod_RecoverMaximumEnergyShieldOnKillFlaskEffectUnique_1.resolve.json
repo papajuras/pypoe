@@ -1,0 +1,19 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+   "type": "Modifier",
+   "name": ""
+  }
+ ],
+ "meta": {
+  "query": "mod:RecoverMaximumEnergyShieldOnKillFlaskEffectUnique__1",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

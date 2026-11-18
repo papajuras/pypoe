@@ -1,0 +1,30 @@
+{
+ "start": "gem:PenanceMark",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "gem:PenanceMark",
+     "to": "stat:base_deal_no_damage",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:PenanceMark",
+     "to": "stat:base_skill_effect_duration",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:PenanceMark",
+     "to": "stat:penance_mark_summon_phantasms_when_hit",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

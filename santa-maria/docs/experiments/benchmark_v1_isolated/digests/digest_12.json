@@ -1,0 +1,422 @@
+{
+ "index": 12,
+ "node_id": "passive:AscendancyHeirophant9",
+ "type": "Passive",
+ "name": "Pursuit of Faith",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyHeirophant9"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyHeirophant9"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyHeirophant9"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:number_of_additional_totems_allowed"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:summon_totem_cast_speed_+%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyHeirophant9|stat:number_of_additional_totems_allowed|out",
+    "passive_grants_stat|passive:AscendancyHeirophant9|stat:summon_totem_cast_speed_+%|out",
+    "passive_grants_stat|passive:AscendancyHeirophant9|stat:totem_duration_+%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 16,
+     "members": [
+      "gem:AncestorTotemSlash",
+      "gem:AncestralProtector",
+      "gem:AncestralProtectorRoyale",
+      "gem:AncestralWarchief",
+      "gem:AncestralWarchiefRoyale",
+      "gem:SearingBond",
+      "gem:SearingBondAltX",
+      "gem:SearingBondRoyale",
+      "gem:SiegeBallista",
+      "gem:SiegeBallistaAltX",
+      "gem:SiegeBallistaAltY",
+      "gem:SiegeBallistaRoyale",
+      "gem:SupportEarthbreaker",
+      "gem:SupportFocusedBallista",
+      "gem:VaalAncestralWarchief",
+      "gem:VaalRejuvenationTotem"
+     ]
+    },
+    {
+     "carrier_type": "Modifier",
+     "count": 75,
+     "members": [
+      "mod:AdditionalTotemsUniqueBodyInt7",
+      "mod:AdditionalTotemsUniqueScepter_1",
+      "mod:AdditionalTotemsUniqueStaff38",
+      "mod:AdditionalTotemsUnique__1",
+      "mod:HellscapeDownsideTotemDuration2",
+      "mod:HellscapeDownsideTotemDuration3_",
+      "mod:HellscapeUpsideTotemDuration2",
+      "mod:HellscapeUpsideTotemDuration3",
+      "mod:HellscapeUpsideTotemDuration4",
+      "mod:HellscapeUpsideTotemPlacementSpeed2",
+      "mod:HellscapeUpsideTotemPlacementSpeed3",
+      "mod:HellscapeUpsideTotemPlacementSpeed4",
+      "mod:JewelImplicitTotemPlacementSpeed",
+      "mod:JunMaster2SummonTotemCastSpeed1",
+      "mod:JunMaster2SummonTotemCastSpeed2",
+      "mod:JunMaster2SummonTotemCastSpeed3",
+      "mod:JunMasterMaximumTotem1",
+      "mod:JunMasterSummonTotemCastSpeed1",
+      "mod:JunMasterSummonTotemCastSpeed2_",
+      "mod:JunMasterSummonTotemCastSpeed3",
+      "mod:JunMasterVeiledSummonTotemCastSpeed_",
+      "mod:MaximumTotemUber1",
+      "mod:MonsterAdditionalTotem",
+      "mod:MonsterAdditionalTotem1",
+      "mod:MonsterAdditionalTotems",
+      "mod:MonsterAdditionalTotems2",
+      "mod:MonsterAdditionalTotems3",
+      "mod:MonsterFiveAdditionalTotems_",
+      "mod:MonsterSevenAdditionalTotems",
+      "mod:MonsterTwoAdditionalTotems",
+      "mod:SanctumSpecialSummonTotemCastSpeed",
+      "mod:SummonTotemCastSpeed",
+      "mod:SummonTotemCastSpeedEldritchImplicit1",
+      "mod:SummonTotemCastSpeedEldritchImplicit2",
+      "mod:SummonTotemCastSpeedEldritchImplicit3",
+      "mod:SummonTotemCastSpeedEldritchImplicit4",
+      "mod:SummonTotemCastSpeedEldritchImplicit5",
+      "mod:SummonTotemCastSpeedEldritchImplicit6",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence1",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence2",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence3",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence4",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence5",
+      "mod:SummonTotemCastSpeedEldritchImplicitPinnaclePresence6",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence1",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence2",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence3",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence4",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence5",
+      "mod:SummonTotemCastSpeedEldritchImplicitUniquePresence6",
+      "mod:SummonTotemCastSpeedEssence1",
+      "mod:SummonTotemCastSpeedEssence2",
+      "mod:SummonTotemCastSpeedEssence3",
+      "mod:SummonTotemCastSpeedEssence4",
+      "mod:SummonTotemCastSpeedImplicit1",
+      "mod:SummonTotemCastSpeedUnique__1",
+      "mod:SummonTotemCastSpeedUnique__2",
+      "mod:SummonTotemCastSpeedUnique__3",
+      "mod:SynthesisImplicitTotemPlacementSpeed1",
+      "mod:SynthesisImplicitTotemPlacementSpeed2",
+      "mod:SynthesisImplicitTotemPlacementSpeedJewel1___",
+      "mod:SynthesisImplicitTotemPlacementSpeedJewel2_",
+      "mod:TotemDurationUniqueStaff38",
+      "mod:TotemSpeedAttackUber1",
+      "mod:TotemSpeedAttackUber2",
+      "mod:TotemSpeedAttackUber3",
+      "mod:TotemSpeedAttackUberMaven",
+      "mod:TotemSpeedSpellUber1_",
+      "mod:TotemSpeedSpellUber2",
+      "mod:TotemSpeedSpellUber3",
+      "mod:TotemSpeedSpellUberMaven",
+      "mod:WeaponTreeTotemChanceToSpawnTwo1",
+      "mod:WeaponTreeTotemChanceToSpawnTwo2",
+      "mod:WeaponTreeTotemChanceToSpawnTwo2h1",
+      "mod:WeaponTreeTotemChanceToSpawnTwo2h2"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 14,
+     "members": [
+      "passive:AscendancyAscendant44",
+      "passive:AscendancyCustomJuggernaut9",
+      "passive:AscendancyHeirophant2",
+      "passive:AscendancyHeirophant3",
+      "passive:AscendancyHeirophant9",
+      "passive:totem_attack_and_cast_speed1504",
+      "passive:totem_damage1491_",
+      "passive:totem_damage1497",
+      "passive:totem_damage_and_life_notable1502",
+      "passive:totem_damage_notable1498",
+      "passive:totem_placement_speed_notable1509",
+      "passive:totem_ranged_damage2667",
+      "passive:totem_ranged_damage2668",
+      "passive:totem_ranged_damage2669"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:number_of_additional_totems_allowed",
+   "chain": "passive_grants_stat>stat:number_of_additional_totems_allowed",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:summon_totem_cast_speed_+%",
+   "chain": "passive_grants_stat>stat:summon_totem_cast_speed_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:totem_duration_+%",
+   "chain": "passive_grants_stat>stat:totem_duration_+%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:number_of_additional_totems_allowed": {
+   "carriers": {
+    "gem_grants_stat": {
+     "count": 9,
+     "samples": [
+      {
+       "id": "gem:AncestorTotemSlash",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBond",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBondAltX",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBondRoyale",
+       "name": null
+      },
+      {
+       "id": "gem:SiegeBallista",
+       "name": null
+      },
+      {
+       "id": "gem:SiegeBallistaAltX",
+       "name": null
+      },
+      {
+       "id": "gem:SiegeBallistaRoyale",
+       "name": null
+      },
+      {
+       "id": "gem:VaalAncestralWarchief",
+       "name": null
+      }
+     ]
+    },
+    "modifier_grants_stat": {
+     "count": 14,
+     "samples": [
+      {
+       "id": "mod:AdditionalTotemsUniqueBodyInt7",
+       "name": ""
+      },
+      {
+       "id": "mod:AdditionalTotemsUniqueScepter_1",
+       "name": ""
+      },
+      {
+       "id": "mod:AdditionalTotemsUniqueStaff38",
+       "name": ""
+      },
+      {
+       "id": "mod:AdditionalTotemsUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:JunMasterMaximumTotem1",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:MaximumTotemUber1",
+       "name": "The Shaper's"
+      },
+      {
+       "id": "mod:MonsterAdditionalTotem",
+       "name": ""
+      },
+      {
+       "id": "mod:MonsterAdditionalTotem1",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 3,
+     "samples": [
+      {
+       "id": "passive:AscendancyAscendant44",
+       "name": "Hierophant",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyCustomJuggernaut9",
+       "name": "Forest of Ancestors",
+       "asc": "Juggernaut"
+      },
+      {
+       "id": "passive:AscendancyHeirophant9",
+       "name": "Pursuit of Faith",
+       "asc": "Hierophant"
+      }
+     ]
+    }
+   }
+  },
+  "stat:summon_totem_cast_speed_+%": {
+   "carriers": {
+    "gem_grants_stat": {
+     "count": 15,
+     "samples": [
+      {
+       "id": "gem:AncestorTotemSlash",
+       "name": null
+      },
+      {
+       "id": "gem:AncestralProtector",
+       "name": null
+      },
+      {
+       "id": "gem:AncestralProtectorRoyale",
+       "name": null
+      },
+      {
+       "id": "gem:AncestralWarchief",
+       "name": null
+      },
+      {
+       "id": "gem:AncestralWarchiefRoyale",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBond",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBondAltX",
+       "name": null
+      },
+      {
+       "id": "gem:SearingBondRoyale",
+       "name": null
+      }
+     ]
+    },
+    "modifier_grants_stat": {
+     "count": 55,
+     "samples": [
+      {
+       "id": "mod:HellscapeUpsideTotemPlacementSpeed2",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideTotemPlacementSpeed3",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideTotemPlacementSpeed4",
+       "name": ""
+      },
+      {
+       "id": "mod:JewelImplicitTotemPlacementSpeed",
+       "name": ""
+      },
+      {
+       "id": "mod:JunMaster2SummonTotemCastSpeed1",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:JunMaster2SummonTotemCastSpeed2",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:JunMaster2SummonTotemCastSpeed3",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:JunMasterSummonTotemCastSpeed1",
+       "name": "of Craft"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 11,
+     "samples": [
+      {
+       "id": "passive:AscendancyHeirophant2",
+       "name": "Mana Regeneration, Totem Placement Speed",
+       "asc": "Hierophant"
+      },
+      {
+       "id": "passive:AscendancyHeirophant3",
+       "name": "Mana Regeneration, Totem Placement Speed",
+       "asc": "Hierophant"
+      },
+      {
+       "id": "passive:AscendancyHeirophant9",
+       "name": "Pursuit of Faith",
+       "asc": "Hierophant"
+      },
+      {
+       "id": "passive:totem_attack_and_cast_speed1504",
+       "name": "Totem Placement Speed and Duration"
+      },
+      {
+       "id": "passive:totem_damage1491_",
+       "name": "Totem Damage and Placement Speed"
+      },
+      {
+       "id": "passive:totem_damage1497",
+       "name": "Totem Damage and Placement Speed"
+      },
+      {
+       "id": "passive:totem_damage_notable1498",
+       "name": "Shamanistic Fury"
+      },
+      {
+       "id": "passive:totem_placement_speed_notable1509",
+       "name": "Totemic Zeal"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start",
+  "multi_source:number_of_additional_totems_allowed",
+  "multi_source:summon_totem_cast_speed_+%"
+ ]
+}

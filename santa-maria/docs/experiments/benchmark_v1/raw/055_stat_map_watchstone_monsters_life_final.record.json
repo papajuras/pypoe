@@ -1,0 +1,14 @@
+{
+ "index": 55,
+ "node_id": "stat:map_watchstone_monsters_life_+%_final",
+ "type": "Stat",
+ "resolve_error": null,
+ "carriers_error": null,
+ "carrier_counts": {
+  "modifier_grants_stat": 1,
+  "passive_grants_stat": 0,
+  "gem_grants_stat": 0,
+  "unique_modifier_association": 0
+ },
+ "neighbour_error": null
+}

@@ -1,0 +1,24 @@
+{
+ "start": "passive:reaver605",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:reaver605",
+     "to": "stat:damage_vs_enemies_on_low_life_+%",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:reaver605",
+     "to": "stat:skill_area_of_effect_+%_if_enemy_killed_recently",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

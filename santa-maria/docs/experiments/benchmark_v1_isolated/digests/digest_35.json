@@ -1,0 +1,284 @@
+{
+ "index": 35,
+ "node_id": "passive:endurance_charges_notable2425",
+ "type": "Passive",
+ "name": "Disciple of the Unyielding",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:endurance_charges_notable2425"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:endurance_charges_notable2425"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:endurance_charges_notable2425"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:base_minimum_endurance_charges"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:damage_+%_per_endurance_charge"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:endurance_charges_notable2425|stat:base_minimum_endurance_charges|out",
+    "passive_grants_stat|passive:endurance_charges_notable2425|stat:damage_+%_per_endurance_charge|out",
+    "passive_grants_stat|passive:endurance_charges_notable2425|stat:endurance_charge_on_kill_%|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 66,
+     "members": [
+      "mod:AnimalCharmMinimumEnduranceAndPowerCharges",
+      "mod:ChanceToGainEnduranceChargeOnKillUber1",
+      "mod:ChanceToGainEnduranceChargeOnKillUber2",
+      "mod:ChanceToGainEnduranceChargeOnKillUberMaven",
+      "mod:ChargeBonusDamagePerEnduranceCharge",
+      "mod:ChargeBonusEnduranceChargeOnKill",
+      "mod:DamagePerEnduranceChargeEldritchImplicit1",
+      "mod:DamagePerEnduranceChargeEldritchImplicit2",
+      "mod:DamagePerEnduranceChargeEldritchImplicit3",
+      "mod:DamagePerEnduranceChargeEldritchImplicit4",
+      "mod:DamagePerEnduranceChargeEldritchImplicit5",
+      "mod:DamagePerEnduranceChargeEldritchImplicit6",
+      "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence1",
+      "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence2",
+      "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence3",
+      "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence4",
+      "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence5",
+      "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence6",
+      "mod:DamagePerEnduranceChargeEldritchImplicitUniquePresence1",
+      "mod:DamagePerEnduranceChargeEldritchImplicitUniquePresence2",
+      "mod:DamagePerEnduranceChargeEldritchImplicitUniquePresence3",
+      "mod:DamagePerEnduranceChargeEldritchImplicitUniquePresence4",
+      "mod:DamagePerEnduranceChargeEldritchImplicitUniquePresence5",
+      "mod:DamagePerEnduranceChargeEldritchImplicitUniquePresence6",
+      "mod:DamagePerEnduranceChargeInfluence1__",
+      "mod:DamagePerEnduranceChargeInfluence2",
+      "mod:DamagePerEnduranceChargeTwoHandWeaponInfluence1",
+      "mod:DamagePerEnduranceChargeTwoHandWeaponInfluence2",
+      "mod:DamagePerEnduranceChargeWeaponInfluence1",
+      "mod:DamagePerEnduranceChargeWeaponInfluence2_",
+      "mod:DivergentMinimumEnduranceChargesUnique__1",
+      "mod:EnduranceChargeOnKillChanceProphecy",
+      "mod:EnduranceChargeOnKillInfluence1",
+      "mod:EnduranceChargeOnKillInfluence2",
+      "mod:EnduranceChargeOnKillInfluenceMaven",
+      "mod:HellscapeUpsideChanceToGainEnduranceChargeOnKill1__",
+      "mod:HellscapeUpsideChanceToGainEnduranceChargeOnKill2",
+      "mod:HellscapeUpsideChanceToGainEnduranceChargeOnKill3",
+      "mod:HellscapeUpsideChanceToGainEnduranceChargeOnKill4_",
+      "mod:HellscapeUpsideMinimumEnduranceCharges1",
+      "mod:JunMaster2DamagePerEnduranceCharge1h1_",
+      "mod:JunMaster2DamagePerEnduranceCharge2h1",
+      "mod:JunMaster2MinimumEnduranceCharges1",
+      "mod:JunMasterDamagePerEnduranceCharge1h1_",
+      "mod:JunMasterDamagePerEnduranceCharge2h1_",
+      "mod:JunMasterMinimumEnduranceCharges1",
+      "mod:JunMasterVeiledDamagePerEnduranceCharge1h",
+      "mod:JunMasterVeiledDamagePerEnduranceCharge2h",
+      "mod:JunMasterVeiledMinimumEnduranceChargesInverted",
+      "mod:JunMasterVeiledMinimumEnduranceCharges_",
+      "mod:MinimumEnduranceChargeInfluence1",
+      "mod:MinimumEnduranceChargeInfluence2",
+      "mod:SanctumSpecialDamagePerEnduranceCharge",
+      "mod:SynthesisImplicitDamagePerEnduranceCharge1",
+      "mod:SynthesisImplicitDamagePerEnduranceCharge2",
+      "mod:SynthesisImplicitDamagePerEnduranceChargeMinor1",
+      "mod:SynthesisImplicitEnduranceChargeOnKill1",
+      "mod:SynthesisImplicitMinimumEnduranceCharge1",
+      "mod:TalismanEnduranceChargeOnKill_",
+      "mod:V2MinEnduranceChargesCorrupted",
+      "mod:VillageEnduranceChargeOnKillChance",
+      "mod:WeaponTreeEnduranceChargeOnKill",
+      "mod:WeaponTreeMinimumEnduranceAndFrenzyCharges",
+      "mod:WeaponTreeMinimumEnduranceAndFrenzyCharges2H",
+      "mod:WeaponTreeMinimumPowerAndEnduranceCharges",
+      "mod:WeaponTreeMinimumPowerAndEnduranceCharges2H"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 5,
+     "members": [
+      "passive:AscendancyAscendant31",
+      "passive:AscendancyCustomGuardian12",
+      "passive:AscendancyHeirophant11",
+      "passive:AscendancyJuggernaut9",
+      "passive:endurance_charges_notable2425"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:base_minimum_endurance_charges",
+   "chain": "passive_grants_stat>stat:base_minimum_endurance_charges",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:damage_+%_per_endurance_charge",
+   "chain": "passive_grants_stat>stat:damage_+%_per_endurance_charge",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:endurance_charge_on_kill_%",
+   "chain": "passive_grants_stat>stat:endurance_charge_on_kill_%",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:base_minimum_endurance_charges": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 15,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmMinimumEnduranceAndPowerCharges",
+       "name": "of the Hierophant"
+      },
+      {
+       "id": "mod:DivergentMinimumEnduranceChargesUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeUpsideMinimumEnduranceCharges1",
+       "name": ""
+      },
+      {
+       "id": "mod:JunMaster2MinimumEnduranceCharges1",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:JunMasterMinimumEnduranceCharges1",
+       "name": "of Craft"
+      },
+      {
+       "id": "mod:JunMasterVeiledMinimumEnduranceChargesInverted",
+       "name": "of the Order"
+      },
+      {
+       "id": "mod:JunMasterVeiledMinimumEnduranceCharges_",
+       "name": "of the Order"
+      },
+      {
+       "id": "mod:MinimumEnduranceChargeInfluence1",
+       "name": "of the Conquest"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 3,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomGuardian12",
+       "name": "Devout of Ralakesh",
+       "asc": "Guardian"
+      },
+      {
+       "id": "passive:AscendancyHeirophant11",
+       "name": "Conviction of Power",
+       "asc": "Hierophant"
+      },
+      {
+       "id": "passive:endurance_charges_notable2425",
+       "name": "Disciple of the Unyielding"
+      }
+     ]
+    }
+   }
+  },
+  "stat:damage_+%_per_endurance_charge": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 35,
+     "samples": [
+      {
+       "id": "mod:ChargeBonusDamagePerEnduranceCharge",
+       "name": ""
+      },
+      {
+       "id": "mod:DamagePerEnduranceChargeEldritchImplicit1",
+       "name": ""
+      },
+      {
+       "id": "mod:DamagePerEnduranceChargeEldritchImplicit2",
+       "name": ""
+      },
+      {
+       "id": "mod:DamagePerEnduranceChargeEldritchImplicit3",
+       "name": ""
+      },
+      {
+       "id": "mod:DamagePerEnduranceChargeEldritchImplicit4",
+       "name": ""
+      },
+      {
+       "id": "mod:DamagePerEnduranceChargeEldritchImplicit5",
+       "name": ""
+      },
+      {
+       "id": "mod:DamagePerEnduranceChargeEldritchImplicit6",
+       "name": ""
+      },
+      {
+       "id": "mod:DamagePerEnduranceChargeEldritchImplicitPinnaclePresence1",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 3,
+     "samples": [
+      {
+       "id": "passive:AscendancyAscendant31",
+       "name": "Juggernaut",
+       "asc": "Ascendant"
+      },
+      {
+       "id": "passive:AscendancyJuggernaut9",
+       "name": "Unyielding",
+       "asc": "Juggernaut"
+      },
+      {
+       "id": "passive:endurance_charges_notable2425",
+       "name": "Disciple of the Unyielding"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start"
+ ]
+}

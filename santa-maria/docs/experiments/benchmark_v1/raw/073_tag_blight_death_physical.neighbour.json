@@ -1,0 +1,18 @@
+{
+ "start": "tag:blight_death_physical",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "tag:blight_death_physical",
+     "to": "mod:BlightDaemonDeathModPhysicalBlood",
+     "type": "modifier_has_tag",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

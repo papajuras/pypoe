@@ -1,0 +1,420 @@
+{
+ "index": 21,
+ "node_id": "passive:AscendancyTrickster2",
+ "type": "Passive",
+ "name": "Swift Killer",
+ "block": "ascendancy_coverage",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "passive:AscendancyTrickster2"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "passive:AscendancyTrickster2"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "passive:AscendancyTrickster2"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:base_charge_duration_+%"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:max_frenzy_charges"
+   }
+  },
+  {
+   "neighbour": {
+    "mechanic": "mechanic:frenzy_charge"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "passive_grants_stat|passive:AscendancyTrickster2|stat:base_charge_duration_+%|out",
+    "passive_grants_stat|passive:AscendancyTrickster2|stat:max_frenzy_charges|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "stat_mechanic_relation|stat:max_frenzy_charges|mechanic:frenzy_charge|out"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 35,
+     "members": [
+      "mod:AnimalCharmChargeDuration1",
+      "mod:AnimalCharmChargeDuration2",
+      "mod:ChargeBonusMaximumFrenzyCharges",
+      "mod:DivergentMaximumFrenzyChargesUniqueBootsStrDex2",
+      "mod:EssenceHorrorChargesMaxAndDuration_",
+      "mod:HellscapeDownsideMaximumFrenzyCharges1",
+      "mod:MaxFrenzyChargesCorrupted",
+      "mod:MaximumFrenzyChargeInfluence1",
+      "mod:MaximumFrenzyChargeInfluenceMaven",
+      "mod:MaximumFrenzyChargeUber1",
+      "mod:MaximumFrenzyChargesUniqueBodyStr3",
+      "mod:MaximumFrenzyChargesUniqueBootsStrDex2_",
+      "mod:MaximumFrenzyChargesUniqueDescentOneHandSword1",
+      "mod:MaximumFrenzyChargesUnique__1",
+      "mod:MonsterAdditionalFrenzyCharges",
+      "mod:MonsterAdditionalFrenzyCharges2",
+      "mod:NecropolisCraftingMaximumFrenzyCharges",
+      "mod:RecombinatorSpecialMaximumFrenzyCharge",
+      "mod:ReducedMaximumFrenzyChargesUniqueCorruptedJewel16",
+      "mod:ReducedMaximumFrenzyChargesUnique__1",
+      "mod:ReducedMaximumFrenzyChargesUnique__2_",
+      "mod:SanctumSpecialMaximumFrenzyCharge",
+      "mod:SynthesisImplicitMaximumFrenzyCharge1",
+      "mod:TalismanEnchantMaximumFrenzyCharges",
+      "mod:V2MaxFrenzyChargesCorrupted",
+      "mod:WeaponTreeMaximumEnduranceCharges",
+      "mod:WeaponTreeMaximumEnduranceCharges2H",
+      "mod:WeaponTreeMaximumFrenzyCharges",
+      "mod:WeaponTreeMaximumFrenzyCharges2H",
+      "mod:WeaponTreeMaximumPowerCharges",
+      "mod:WeaponTreeMaximumPowerCharges2H",
+      "mod:WeaponTreeMinimumPowerAndEnduranceCharges",
+      "mod:WeaponTreeMinimumPowerAndEnduranceCharges2H",
+      "mod:WeaponTreeMovementSpeedPerFrenzyCharge",
+      "mod:WeaponTreeMovementSpeedPerFrenzyCharge2H"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 9,
+     "members": [
+      "passive:AscendancyCustomRaider8",
+      "passive:AscendancyDeadeye10",
+      "passive:AscendancyReliquarian16",
+      "passive:AscendancySlayer14",
+      "passive:AscendancyTrickster2",
+      "passive:maximum_frenzy_charges525",
+      "passive:maximum_frenzy_charges526",
+      "passive:maximum_frenzy_charges527",
+      "passive:royale_weird_6"
+     ]
+    }
+   ]
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:accuracy_rating_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:accuracy_rating_+_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:accuracy_rating_while_at_maximum_frenzy_charges|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:add_frenzy_charge_every_50_rampage_stacks|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:add_frenzy_charge_on_critical_strike|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:add_frenzy_charge_on_kill_%_chance|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:add_frenzy_charge_on_skill_hit_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:add_frenzy_charge_on_skill_hit_%_if_4_redeemer_items|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:add_frenzy_charge_when_hit_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:additional_attack_block_%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:attack_and_cast_speed_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:attack_speed_+%_if_not_gained_frenzy_charge_recently|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:attacks_chance_to_poison_%_on_max_frenzy_charges|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:attacks_poison_while_at_max_frenzy_charges|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:avoid_elemental_damage_%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:base_attack_speed_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:base_frenzy_charge_duration_+%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:base_minimum_frenzy_charges|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:bleeding_dot_multiplier_per_frenzy_charge_+|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:body_armour_implicit_gain_frenzy_charge_every_x_ms|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:bow_attacks_turn_frenzy_charges_into_additional_arrows|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:chance_to_gain_frenzy_charge_on_block_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:chance_to_gain_frenzy_charge_on_stun_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:chance_to_grant_frenzy_charge_to_nearby_allies_on_hit_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:chance_to_grant_frenzy_charge_to_nearby_allies_on_kill_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:cold_damage_%_to_add_as_chaos_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:cold_damage_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:cold_damage_taken_per_minute_per_frenzy_charge_while_moving|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:count_as_having_max_frenzy_charges|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:critical_strike_chance_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:critical_strike_multiplier_+_while_have_any_frenzy_charges|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:damage_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:damage_+%_vs_enemies_on_low_life_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:damage_taken_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:damage_while_no_frenzy_charges_+%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:elemental_damage_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:evasion_rating_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:faster_bleed_per_frenzy_charge_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:flicker_strike_damage_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:frenzy_%_chance_to_gain_additional_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:frenzy_charge_duration_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:frenzy_charge_on_hit_%_vs_no_evasion_rating|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:frenzy_damage_+%_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:from_self_maximum_added_cold_damage_taken_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:from_self_minimum_added_cold_damage_taken_per_frenzy_charge|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_X_frenzy_charges_after_spending_200_mana|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_X_frenzy_charges_per_second|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_affliction_charges_instead_of_frenzy_charges|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_flask_charge_on_crit_chance_%_while_at_maximum_frenzy_charges|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_for_each_quarter_life_removed|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_on_critical_strike_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_on_critical_strike_at_close_range_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_on_hit_%_while_blinded|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_on_hit_while_bleeding|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_on_hitting_marked_enemy_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_on_hitting_rare_or_unique_enemy_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_on_hitting_unique_enemy_%|in",
+    "stat_mechanic_relation|mechanic:frenzy_charge|stat:gain_frenzy_charge_on_kill_vs_enemies_with_5+_poisons_%|in"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:base_charge_duration_+%",
+   "chain": "passive_grants_stat>stat:base_charge_duration_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:max_frenzy_charges",
+   "chain": "passive_grants_stat>stat:max_frenzy_charges",
+   "mech": [
+    "stat_mechanic_relation"
+   ],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:base_charge_duration_+%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "mod:AnimalCharmChargeDuration1",
+       "name": "Trickster's"
+      },
+      {
+       "id": "mod:AnimalCharmChargeDuration2",
+       "name": "Trickster's"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:AscendancyTrickster2",
+       "name": "Swift Killer",
+       "asc": "Trickster"
+      }
+     ]
+    }
+   }
+  },
+  "stat:max_frenzy_charges": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 33,
+     "samples": [
+      {
+       "id": "mod:ChargeBonusMaximumFrenzyCharges",
+       "name": ""
+      },
+      {
+       "id": "mod:DivergentMaximumFrenzyChargesUniqueBootsStrDex2",
+       "name": ""
+      },
+      {
+       "id": "mod:EssenceHorrorChargesMaxAndDuration_",
+       "name": ""
+      },
+      {
+       "id": "mod:HellscapeDownsideMaximumFrenzyCharges1",
+       "name": ""
+      },
+      {
+       "id": "mod:MaxFrenzyChargesCorrupted",
+       "name": ""
+      },
+      {
+       "id": "mod:MaximumFrenzyChargeInfluence1",
+       "name": "Warlord's"
+      },
+      {
+       "id": "mod:MaximumFrenzyChargeInfluenceMaven",
+       "name": "Elevated Warlord's"
+      },
+      {
+       "id": "mod:MaximumFrenzyChargeUber1",
+       "name": "of Shaping"
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 9,
+     "samples": [
+      {
+       "id": "passive:AscendancyCustomRaider8",
+       "name": "Fearful Symmetry",
+       "asc": "Warden"
+      },
+      {
+       "id": "passive:AscendancyDeadeye10",
+       "name": "Avidity",
+       "asc": "Deadeye"
+      },
+      {
+       "id": "passive:AscendancyReliquarian16",
+       "name": "Ahn's Might",
+       "asc": "Reliquarian"
+      },
+      {
+       "id": "passive:AscendancySlayer14",
+       "name": "Masterful Form",
+       "asc": "Slayer"
+      },
+      {
+       "id": "passive:AscendancyTrickster2",
+       "name": "Swift Killer",
+       "asc": "Trickster"
+      },
+      {
+       "id": "passive:maximum_frenzy_charges525",
+       "name": "Fervour"
+      },
+      {
+       "id": "passive:maximum_frenzy_charges526",
+       "name": "Frenetic"
+      },
+      {
+       "id": "passive:maximum_frenzy_charges527",
+       "name": "Savagery"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": {
+  "mechanic": "mechanic:frenzy_charge",
+  "related_stats": 104,
+  "truncated": false,
+  "sample": [
+   {
+    "stat": "stat:%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:accuracy_rating_+%_per_frenzy_charge",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:accuracy_rating_+_per_frenzy_charge",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:accuracy_rating_while_at_maximum_frenzy_charges",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:add_frenzy_charge_every_50_rampage_stacks",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:add_frenzy_charge_on_critical_strike",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:add_frenzy_charge_on_kill_%_chance",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:add_frenzy_charge_on_skill_hit_%",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:add_frenzy_charge_on_skill_hit_%_if_4_redeemer_items",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:add_frenzy_charge_when_hit_%",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:additional_attack_block_%_per_frenzy_charge",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:attack_and_cast_speed_+%_per_frenzy_charge",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:attack_speed_+%_if_not_gained_frenzy_charge_recently",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:attacks_chance_to_poison_%_on_max_frenzy_charges",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:attacks_poison_while_at_max_frenzy_charges",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:avoid_elemental_damage_%_per_frenzy_charge",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:base_attack_speed_+%_per_frenzy_charge",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:base_frenzy_charge_duration_+%",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:base_minimum_frenzy_charges",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:bleeding_dot_multiplier_per_frenzy_charge_+",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:body_armour_implicit_gain_frenzy_charge_every_x_ms",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:bow_attacks_turn_frenzy_charges_into_additional_arrows",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:chance_to_gain_frenzy_charge_on_block_%",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%",
+    "role": "relation:trigger"
+   }
+  ]
+ },
+ "flags": [
+  "zero_carrier_start",
+  "mech_linked",
+  "truncated_bfs",
+  "mech_hub:104"
+ ]
+}

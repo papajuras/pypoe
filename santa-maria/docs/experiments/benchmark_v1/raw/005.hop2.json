@@ -1,0 +1,33 @@
+{
+ "index": 5,
+ "node_id": "passive:AscendancyBerserker8",
+ "targets": {
+  "stat:life_loss_%_per_minute_per_rage_while_not_losing_rage": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyBerserker8"
+   ],
+   "total": 1
+  },
+  "stat:rage_effect_+%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:VillageRageEffect",
+    "passive:AscendancyBerserker8"
+   ],
+   "total": 2
+  }
+ }
+}

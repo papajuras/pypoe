@@ -1,0 +1,325 @@
+# Phase 7B — Post-Fix Autonomous Build Discovery
+
+Run another autonomous PoE build-discovery experiment using the current system after the recent infrastructure fixes.
+
+## Goal
+
+Test whether the recent fixes produce more coherent and legally composable build concepts:
+
+* Ascendancy metadata is now exposed by the discovery API;
+* build validity now enforces exactly one Ascendancy and at most 4 Ascendancy Notables;
+* unavailable/disabled Unique items are now detected;
+* consumer-mechanic projection is enabled.
+
+The goal is **not to manufacture a fixed number of builds**.
+
+Search for genuinely interesting build concepts and follow promising discoveries far enough to determine whether they can become coherent builds.
+
+---
+
+# 1. Exploration
+
+Use the existing directed/stateful discovery process.
+
+Use:
+
+* `depth=3` for graph queries;
+* `carrier_grouping=true`;
+* API-randomized starting nodes via `phase6_api.get_start_seed`;
+* no fixed maximum number of exploration steps.
+
+The previous 40-step limit is intentionally removed.
+
+However:
+
+> **Do not interpret the lack of a step limit as a reason to explore indefinitely.**
+
+Use judgment.
+
+Continue exploring while the current branch is producing new, relevant evidence toward a coherent build.
+
+Stop or branch away when:
+
+* the path becomes repetitive;
+* newly discovered nodes are mostly irrelevant;
+* the current concept has no plausible scaling or interaction;
+* feasibility problems make the branch unproductive;
+* further exploration is unlikely to change the build concept;
+* a sufficiently coherent build has already been established.
+
+The objective is **useful exploration, not maximum traversal**.
+
+Do not make dozens of essentially identical API calls merely because no hard limit exists.
+
+---
+
+# 2. Build discovery
+
+Do NOT invent a build first and then search for graph evidence supporting it.
+
+The build must emerge from the exploration.
+
+Prefer builds with:
+
+* meaningful scaling relationships;
+* multiple interacting mechanics;
+* useful multi-hop relationships;
+* coherent offensive and/or defensive architecture;
+* mechanics discovered from different exploration steps;
+* graph-supported synergies rather than simple co-occurrence.
+
+Do not force complexity.
+
+A short graph-supported interaction can be valuable if it produces a coherent build.
+
+---
+
+# 3. Ascendancy
+
+Every build candidate should **attempt to identify an appropriate Ascendancy**.
+
+When the graph exposes Ascendancy nodes or Ascendancy-related mechanics:
+
+1. consider which Ascendancy naturally fits the discovered mechanics;
+2. explore relevant Ascendancy nodes;
+3. validate candidate Ascendancy additions with `phase7_build_validity.py`;
+4. keep the build within:
+
+   * exactly **one Ascendancy**;
+   * maximum **4 Ascendancy Notables**.
+
+Do not randomly add an Ascendancy merely to satisfy the requirement.
+
+The Ascendancy should have an evidence-based relationship to the build where possible.
+
+### Important
+
+**Lack of an Ascendancy does NOT invalidate an otherwise interesting build.**
+
+If no suitable Ascendancy can be established from the available graph evidence:
+
+* keep the build;
+* record `Ascendancy: unresolved / not established`;
+* explain why one could not be selected.
+
+Do not force an Ascendancy from general PoE knowledge when the graph does not support the connection.
+
+---
+
+# 4. Feasibility and validity
+
+Use the existing validation system when actually committing build components.
+
+For every component that becomes part of the build:
+
+```text
+propose
+→ validate_addition
+→ VALID: commit
+→ INVALID: reject
+→ UNKNOWN: do not assume validity
+```
+
+Pay particular attention to the fixes introduced since the previous experiment.
+
+### Availability
+
+Do not use Unique items explicitly marked by PoB as:
+
+```text
+Source: No longer obtainable
+```
+
+They must not become valid build components.
+
+### Ascendancy
+
+Do not mix Ascendancies.
+
+Do not exceed 4 Ascendancy Notables.
+
+Do not silently assume unknown Ascendancy metadata.
+
+### Other constraints
+
+Continue respecting the existing validator rather than inventing additional constraints.
+
+---
+
+# 5. Randomness
+
+Starting points must come from the API's own random-selection mechanism.
+
+Do not manually choose an interesting node and call it random.
+
+Do not replace API randomness with an LLM-selected seed.
+
+Continue recording every starting seed.
+
+The existing limit of **15 UniqueItem random starts** remains in force.
+
+Other seed types may continue beyond that limit.
+
+---
+
+# 6. Failed branches
+
+Record failed attempts and dead ends.
+
+Do not hide them.
+
+A failed branch is useful evidence if it shows:
+
+* sparse graph coverage;
+* missing consumer relationship;
+* unavailable content;
+* feasibility conflict;
+* unsupported mechanic;
+* missing Ascendancy information;
+* misleading carrier relationship;
+* insufficient graph connectivity;
+* another architectural limitation.
+
+Do not spend excessive time documenting trivial dead ends.
+
+---
+
+# 7. Discovery discipline
+
+Maintain a lightweight state ledger for each serious candidate:
+
+```text
+Core mechanic:
+Scaling axis:
+Generator:
+Consumer/converter:
+Additional interacting mechanics:
+Candidate Ascendancy:
+Committed components:
+Rejected components:
+Open questions:
+```
+
+Update it when the build meaningfully changes.
+
+Avoid repeatedly rediscovering the same relationship.
+
+When several promising branches exist, it is acceptable to park one and investigate another, then return if useful.
+
+Do not force novelty.
+
+A known archetype is still a valid result if the graph genuinely reconstructs it.
+
+---
+
+# 8. Experiment output — MUST BE SAVED
+
+The experiment result must be persisted as a human-readable experiment report.
+
+**Do not leave the result only in the chat, terminal output, or temporary files.**
+
+Use the **same Phase 7 experiment-results location and reporting convention used by the previous Phase 7 autonomous discovery run**.
+
+Do not invent a new results directory merely for this rerun.
+
+If the previous Phase 7 report already has an established report file/location, extend or create the corresponding rerun report there using the existing naming convention.
+
+The report must contain at minimum:
+
+* experiment name / date;
+* configuration;
+* all starting seeds;
+* all attempts, including failed attempts;
+* successful build concepts;
+* exploration paths / important decisions;
+* scaling relationships;
+* Ascendancy selection attempts;
+* validation results;
+* unavailable-content encounters;
+* unsupported or uncertain claims;
+* convergence / repetition observations;
+* comparison with the previous run;
+* final conclusions.
+
+For successful builds, preserve enough detail that another person can understand **how the build emerged from the graph**, not merely what the final build was.
+
+If the experiment produces machine-readable logs or raw traces, retain them where the existing Phase 7 convention normally stores such artifacts, but the human-readable report is mandatory.
+
+Before finishing, verify that the report actually exists at the expected Phase 7 results location.
+
+---
+
+# 9. Evaluation
+
+For every successful build candidate report:
+
+* build concept;
+* main mechanic;
+* scaling axis;
+* important mechanics;
+* important items;
+* Ascendancy, if established;
+* Ascendancy Notables used, if any;
+* meaningful graph-supported reasoning chains;
+* feasibility/validity status;
+* unsupported or uncertain claims;
+* whether the build appears obvious, recombinational, or genuinely non-obvious;
+* approximate amount of exploration required to reach the concept.
+
+Also record why exploration stopped.
+
+---
+
+# 10. What to measure
+
+At the end summarize:
+
+* number of independent starting attempts;
+* successful build concepts;
+* failed/dead-end attempts;
+* builds with a validated Ascendancy;
+* builds where Ascendancy remained unresolved;
+* builds rejected because of actual constraints;
+* unavailable items encountered;
+* meaningful multi-hop discoveries;
+* genuinely non-obvious discoveries, if any;
+* repeated/convergent archetypes;
+* most common reason branches failed.
+
+Do not manufacture percentages or quality scores where the sample is too small.
+
+---
+
+# 11. Most important comparison with the previous run
+
+Explicitly compare this run against the previous Phase 7 discovery run.
+
+Determine whether the new infrastructure appears to improve:
+
+1. legal build composition;
+2. Ascendancy selection;
+3. rejection of unavailable content;
+4. multi-mechanic reasoning;
+5. feasibility awareness;
+6. overall discovery quality.
+
+Separate actual measured improvements from subjective impressions.
+
+---
+
+# 12. Final verdict
+
+Answer:
+
+1. Did the fixes materially improve build discovery?
+2. Are builds now more likely to form legally valid compositions?
+3. Is the LLM actually using Ascendancy information when it is available?
+4. How often does Ascendancy remain unresolved?
+5. Did unavailable-content filtering remove real false candidates?
+6. Are meaningful multi-hop synergies still being discovered?
+7. Did removing the exploration-step limit improve discovery, or mainly cause diminishing-return exploration?
+8. What is the single most important remaining limitation?
+
+Do not implement additional fixes during this experiment.
+
+This is an evaluation run.

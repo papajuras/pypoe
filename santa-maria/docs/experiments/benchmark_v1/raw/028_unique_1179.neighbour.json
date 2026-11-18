@@ -1,0 +1,18 @@
+{
+ "start": "unique:1179",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "unique:1179",
+     "to": "item_class:Bow",
+     "type": "unique_in_class",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

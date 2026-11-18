@@ -1,0 +1,18 @@
+{
+ "start": "stat:critical_strike_chance_+%_with_at_least_200_int",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "stat:critical_strike_chance_+%_with_at_least_200_int",
+     "to": "mod:CriticalStrikeChanceAt200IntelligenceUnique__1",
+     "type": "modifier_grants_stat",
+     "direction": "in"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,284 @@
+{
+ "index": 23,
+ "node_id": "unique:734",
+ "type": "UniqueItem",
+ "name": "Shroud of the Lightless",
+ "block": "random_draw",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:734"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:734"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:734"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_display_trigger_level_20_shade_form_on_skill_use_%"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_evasion_and_energy_shield_+%"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:734|item_class:Body Armour|out",
+    "unique_modifier_association|unique:734|mod:ElementalPenetrationPerAbyssalJewelUnique__1|out",
+    "unique_modifier_association|unique:734|mod:IncreasedLifePerAbyssalJewelUnique__2|out",
+    "unique_modifier_association|unique:734|mod:IncreasedManaPerAbyssalJewelUnique__2|out",
+    "unique_modifier_association|unique:734|mod:LocalDisplayGrantLevelXShadeFormUnique__1|out",
+    "unique_modifier_association|unique:734|mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_|modgroup:DefencesPercent|out",
+    "modifier_in_group|mod:ElementalPenetrationPerAbyssalJewelUnique__1|modgroup:ElementalPenetration|out",
+    "modifier_in_group|mod:LocalDisplayGrantLevelXShadeFormUnique__1|modgroup:GrantedSkill|out",
+    "modifier_in_group|mod:IncreasedLifePerAbyssalJewelUnique__2|modgroup:IncreasedLifePerAbyssalJewel|out",
+    "modifier_in_group|mod:IncreasedManaPerAbyssalJewelUnique__2|modgroup:IncreasedManaPerAbyssalJewel|out",
+    "modifier_grants_stat|mod:LocalDisplayGrantLevelXShadeFormUnique__1|stat:local_display_trigger_level_20_shade_form_on_skill_use_%|out",
+    "modifier_grants_stat|mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_|stat:local_evasion_and_energy_shield_+%|out",
+    "modifier_grants_stat|mod:IncreasedLifePerAbyssalJewelUnique__2|stat:maximum_life_+%_per_abyssal_jewel_affecting_you|out",
+    "modifier_grants_stat|mod:IncreasedManaPerAbyssalJewelUnique__2|stat:maximum_mana_+%_per_abyssal_jewel_affecting_you|out",
+    "modifier_grants_stat|mod:ElementalPenetrationPerAbyssalJewelUnique__1|stat:penetrate_elemental_resistance_%_per_abyssal_jewel_affecting_you|out",
+    "modifier_has_tag|mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_|tag:defences|out",
+    "modifier_has_tag|mod:ElementalPenetrationPerAbyssalJewelUnique__1|tag:elemental|out",
+    "modifier_has_tag|mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_|tag:energy_shield|out",
+    "modifier_has_tag|mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_|tag:evasion|out",
+    "modifier_has_tag|mod:IncreasedLifePerAbyssalJewelUnique__2|tag:life|out",
+    "modifier_has_tag|mod:IncreasedManaPerAbyssalJewelUnique__2|tag:mana|out",
+    "modifier_has_tag|mod:IncreasedLifePerAbyssalJewelUnique__2|tag:resource|out",
+    "modifier_has_tag|mod:LocalDisplayGrantLevelXShadeFormUnique__1|tag:skill|out",
+    "unique_in_class|item_class:Body Armour|<42 in: unique:1025, unique:104, unique:105\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "modifier_has_tag|tag:elemental|<60 in: mod:AbberathsFuryEnrageStance, mod:AbyssAddedColdDamageWithAxesJewel1, mod:AbyssAddedColdDamageWithAxesJewel2\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 94,
+     "members": [
+      "mod:DelveArmourEvasionAndEnergyShield1",
+      "mod:EinharMasterEvasionAndEnergyShieldPercent1",
+      "mod:EinharMasterEvasionAndEnergyShieldPercent2",
+      "mod:EinharMasterEvasionAndEnergyShieldPercent3",
+      "mod:ElementalPenetrationPerAbyssalJewelUnique__1",
+      "mod:EvasionAndEnergyShieldPercentCrafted",
+      "mod:IncreasedLifePerAbyssalJewelUnique__1",
+      "mod:IncreasedLifePerAbyssalJewelUnique__2",
+      "mod:IncreasedManaPerAbyssalJewelUnique__1_",
+      "mod:IncreasedManaPerAbyssalJewelUnique__2",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife1",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife2",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife3",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeHigh1",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeHigh2",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeHigh3",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeMed1",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeMed2",
+      "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLifeMed3",
+      "mod:JunMasterLocalIncreasedEvasionAndEnergyShieldAndLife1",
+      "mod:JunMasterLocalIncreasedEvasionAndEnergyShieldAndLife2",
+      "mod:JunMasterLocalIncreasedEvasionAndEnergyShieldAndLife3",
+      "mod:JunMasterLocalIncreasedEvasionAndEnergyShieldAndLife4",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndEnergyShieldAndLife",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndEnergyShieldAndLifeHigh",
+      "mod:JunMasterVeiledLocalIncreasedEvasionAndEnergyShieldAndLifeMed",
+      "mod:LocalDisplayGrantLevelXShadeFormUnique__1",
+      "mod:LocalIncreasedEvasionAndEnergyShield1",
+      "mod:LocalIncreasedEvasionAndEnergyShield2",
+      "mod:LocalIncreasedEvasionAndEnergyShield3",
+      "mod:LocalIncreasedEvasionAndEnergyShield4",
+      "mod:LocalIncreasedEvasionAndEnergyShield5_",
+      "mod:LocalIncreasedEvasionAndEnergyShield6",
+      "mod:LocalIncreasedEvasionAndEnergyShield7",
+      "mod:LocalIncreasedEvasionAndEnergyShield8",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery1",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery2",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery3",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery4",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery5",
+      "mod:LocalIncreasedEvasionAndEnergyShieldAndStunRecovery6",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt1",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt2",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt2Royale",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt3",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyDexInt4",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyStrDexInt1d",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueBodyStrDexInt1f",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueGlovesDexInt6",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueHelmetDexInt18",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueHelmetDexInt3",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueHelmetDexInt5",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUniqueHelmetDexInt6",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__1",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__10",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__12",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__13",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__14",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__15",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__16",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__17",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__18",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__19___",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__2",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__20",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__21_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__22",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__23",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__24",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__25",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__26",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__27",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__28",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__29",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__3",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__30_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__31",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__32_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__33",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__34",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__35",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__36",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__37",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__38",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__39",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__4",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__5",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__6_",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__7",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__8",
+      "mod:LocalIncreasedEvasionAndEnergyShieldUnique__9",
+      "mod:StrMasterEvasionAndEnergyShieldPercentCrafted1",
+      "mod:StrMasterEvasionAndEnergyShieldPercentCrafted2"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:AscendancyCustomTrickster14"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:local_display_trigger_level_20_shade_form_on_skill_use_%",
+   "chain": "unique_modifier_association>mod:LocalDisplayGrantLevelXShadeFormUnique__1 -> modifier_grants_stat>stat:local_display_trigger_level_20_shade_form_on_skill_use_%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:local_evasion_and_energy_shield_+%",
+   "chain": "unique_modifier_association>mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_ -> modifier_grants_stat>stat:local_evasion_and_energy_shield_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:maximum_life_+%_per_abyssal_jewel_affecting_you",
+   "chain": "unique_modifier_association>mod:IncreasedLifePerAbyssalJewelUnique__2 -> modifier_grants_stat>stat:maximum_life_+%_per_abyssal_jewel_affecting_you",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:maximum_mana_+%_per_abyssal_jewel_affecting_you",
+   "chain": "unique_modifier_association>mod:IncreasedManaPerAbyssalJewelUnique__2 -> modifier_grants_stat>stat:maximum_mana_+%_per_abyssal_jewel_affecting_you",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:penetrate_elemental_resistance_%_per_abyssal_jewel_affecting_you",
+   "chain": "unique_modifier_association>mod:ElementalPenetrationPerAbyssalJewelUnique__1 -> modifier_grants_stat>stat:penetrate_elemental_resistance_%_per_abyssal_jewel_affecting_you",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:local_display_trigger_level_20_shade_form_on_skill_use_%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "mod:LocalDisplayGrantLevelXShadeFormUnique__1",
+       "name": ""
+      }
+     ]
+    }
+   }
+  },
+  "stat:local_evasion_and_energy_shield_+%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 88,
+     "samples": [
+      {
+       "id": "mod:DelveArmourEvasionAndEnergyShield1",
+       "name": "of the Underground"
+      },
+      {
+       "id": "mod:EinharMasterEvasionAndEnergyShieldPercent1",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EinharMasterEvasionAndEnergyShieldPercent2",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EinharMasterEvasionAndEnergyShieldPercent3",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EvasionAndEnergyShieldPercentCrafted",
+       "name": ""
+      },
+      {
+       "id": "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife1",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife2",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:JunMaster2LocalIncreasedEvasionAndEnergyShieldAndLife3",
+       "name": "Upgraded"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

@@ -1,0 +1,411 @@
+{
+ "index": 66,
+ "node_id": "mechanic:suppression",
+ "type": "Mechanic",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "mechanic:suppression"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "mechanic:suppression"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "mechanic:suppression"
+   }
+  },
+  {
+   "neighbour": {
+    "mechanic": "mechanic:suppression"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": false,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "stat_mechanic_relation|mechanic:suppression|stat:base_spell_damage_%_suppressed|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:base_spell_suppression_chance_%|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:base_spell_suppression_chance_150%_of_value|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:cannot_be_stunned_by_suppressed_spell_damage|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:chance_to_apply_suppression_on_hit_%|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:debilitate_enemies_for_x_milliseconds_when_suppressing_their_spell|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:energy_shield_recharges_on_suppress_%|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:extra_damage_rolls_with_cold_damage_if_have_suppressed_spell_damage_recently|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:hits_against_marked_enemy_cannot_be_blocked_or_suppressed|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:local_unique_jewel_cold_resistance_also_grants_spell_suppression_chance_scaled_%|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:recover_%_maximum_life_on_suppressing_spell|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:recover_X_life_on_suppressing_spell|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_damage_%_suppressed_if_not_suppressed_spell_recently|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_damage_%_suppressed_while_on_full_energy_shield|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_if_suppressed_spell_recently|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_if_taken_spell_damage_recently|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_per_endurance_charge|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_per_fortification|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_per_power_charge|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_while_affected_by_grace|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_while_affected_by_haste|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_while_channelling|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_while_moving|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_%_while_off_hand_empty|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_modifiers_apply_to_avoid_all_elemental_ailments_at_%_value|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:spell_suppression_chance_modifiers_apply_to_chance_to_double_armour_effect_on_hit_at_%_value|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:suppressed_spell_damage_bypass_energy_shield_%|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:suppressed_spell_damage_taken_%_recouped_as_es|in",
+    "stat_mechanic_relation|mechanic:suppression|stat:your_spells_cannot_be_suppressed|in"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 1,
+     "members": [
+      "gem:DefianceBanner"
+     ]
+    },
+    {
+     "carrier_type": "Modifier",
+     "count": 178,
+     "members": [
+      "mod:AlternateFortifyUnique__1_",
+      "mod:AnimalCharmChanceForEnergyShieldRechargeOnSuppress1",
+      "mod:AnimalCharmChanceForEnergyShieldRechargeOnSuppress2",
+      "mod:AnimalCharmSpellDamageSuppressedOnFullEnergyShield1",
+      "mod:AnimalCharmSpellDamageSuppressedOnFullEnergyShield2",
+      "mod:AnimalCharmSpellSuppressionChance1",
+      "mod:AnimalCharmSpellSuppressionChance2",
+      "mod:CannotBeStunnedSuppressedDamageUnique__1",
+      "mod:ChanceToDodge1",
+      "mod:ChanceToDodge1_",
+      "mod:ChanceToDodge2",
+      "mod:ChanceToDodge2__",
+      "mod:ChanceToDodge3",
+      "mod:ChanceToDodgeAttacksInfluence1",
+      "mod:ChanceToDodgeAttacksInfluence2",
+      "mod:ChanceToDodgeAttacksInfluence3",
+      "mod:ChanceToDodgeAttacksInfluenceMaven__",
+      "mod:ChanceToDodgeAttacksWhileChannellingUnique__1",
+      "mod:ChanceToDodgeCorruption",
+      "mod:ChanceToDodgeEssence4",
+      "mod:ChanceToDodgeEssence5",
+      "mod:ChanceToDodgeEssence6",
+      "mod:ChanceToDodgeEssence7",
+      "mod:ChanceToDodgeIfBlockedRecentlyUber1",
+      "mod:ChanceToDodgeImplicitShield1",
+      "mod:ChanceToDodgeImplicitShield2",
+      "mod:ChanceToDodgeSpells1",
+      "mod:ChanceToDodgeSpells2",
+      "mod:ChanceToDodgeSpells3",
+      "mod:ChanceToDodgeSpellsEssence5",
+      "mod:ChanceToDodgeSpellsEssence6",
+      "mod:ChanceToDodgeSpellsEssence7",
+      "mod:ChanceToDodgeSpellsImplicitShield1",
+      "mod:ChanceToDodgeSpellsImplicitShield2",
+      "mod:ChanceToDodgeSpellsInfluence1",
+      "mod:ChanceToDodgeSpellsInfluence2___",
+      "mod:ChanceToDodgeSpellsInfluence3",
+      "mod:ChanceToDodgeSpellsInfluenceMaven",
+      "mod:ChanceToDodgeSpellsUber1",
+      "mod:ChanceToDodgeSpellsUber2",
+      "mod:ChanceToDodgeSpellsUber3",
+      "mod:ChanceToDodgeSpellsUberMaven_",
+      "mod:ChanceToDodgeSpellsUniqueBodyDex1",
+      "mod:ChanceToDodgeSpellsUnique__1",
+      "mod:ChanceToDodgeSpellsUnique__2",
+      "mod:ChanceToDodgeSpellsUnique__3_",
+      "mod:ChanceToDodgeSpellsWhileChannellingUnique__1",
+      "mod:ChanceToDodgeUber1",
+      "mod:ChanceToDodgeUber2",
+      "mod:ChanceToDodgeUber3",
+      "mod:ChanceToDodgeUberMaven",
+      "mod:ChanceToDodgeUniqueBodyDex1",
+      "mod:ChanceToDodgeUniqueBootsDex7",
+      "mod:ChanceToDodgeUniqueJewel46",
+      "mod:ChanceToDodgeUnique__1",
+      "mod:ChanceToDodgeWhileOffhandIsEmpty",
+      "mod:ChanceToSuppressSpells1_",
+      "mod:ChanceToSuppressSpells2",
+      "mod:ChanceToSuppressSpells3",
+      "mod:ChanceToSuppressSpells4",
+      "mod:ChanceToSuppressSpells5__",
+      "mod:ChanceToSuppressSpellsEldritchImplicit1",
+      "mod:ChanceToSuppressSpellsEldritchImplicit2",
+      "mod:ChanceToSuppressSpellsEldritchImplicit3",
+      "mod:ChanceToSuppressSpellsEldritchImplicit4",
+      "mod:ChanceToSuppressSpellsEldritchImplicit5",
+      "mod:ChanceToSuppressSpellsEldritchImplicit6",
+      "mod:ChanceToSuppressSpellsEldritchImplicitPinnaclePresence1",
+      "mod:ChanceToSuppressSpellsEldritchImplicitPinnaclePresence2",
+      "mod:ChanceToSuppressSpellsEldritchImplicitPinnaclePresence3",
+      "mod:ChanceToSuppressSpellsEldritchImplicitPinnaclePresence4",
+      "mod:ChanceToSuppressSpellsEldritchImplicitPinnaclePresence5",
+      "mod:ChanceToSuppressSpellsEldritchImplicitPinnaclePresence6",
+      "mod:ChanceToSuppressSpellsEldritchImplicitUniquePresence1",
+      "mod:ChanceToSuppressSpellsEldritchImplicitUniquePresence2",
+      "mod:ChanceToSuppressSpellsEldritchImplicitUniquePresence3",
+      "mod:ChanceToSuppressSpellsEldritchImplicitUniquePresence4",
+      "mod:ChanceToSuppressSpellsEldritchImplicitUniquePresence5",
+      "mod:ChanceToSuppressSpellsEldritchImplicitUniquePresence6",
+      "mod:ChanceToSuppressSpellsHigh1__",
+      "mod:ChanceToSuppressSpellsHigh2__",
+      "mod:ChanceToSuppressSpellsHigh3",
+      "mod:ChanceToSuppressSpellsHigh4_",
+      "mod:ChanceToSuppressSpellsHigh5___",
+      "mod:ChanceToSuppressSpellsUniqueBodyDex1",
+      "mod:ChanceToSuppressSpellsUniqueJewel46",
+      "mod:ChanceToSuppressSpellsUnique__1",
+      "mod:ChanceToSuppressSpellsUnique__1_",
+      "mod:ChanceToSuppressSpellsUnique__2",
+      "mod:ChanceToSuppressSpellsUnique__3",
+      "mod:ChanceToSuppressSpellsUnique__4",
+      "mod:ChanceToSuppressSpellsUnique__5",
+      "mod:ChanceToSuppressSpellsWhileChannellingUnique__1____",
+      "mod:ChargeBonusDodgeChancePerEnduranceCharge",
+      "mod:ChargeBonusDodgeChancePerPowerCharge",
+      "mod:ColdResistConvertedToDodgeChanceScaledJewelUnique__1",
+      "mod:DebilitateEnemiesSuppressedDamageUnique__1",
+      "mod:DelveArmourDodgeAndSpellDodge_",
+      "mod:DivergentCannotBeStunnedSuppressedDamageUnique__1",
+      "mod:DivergentChanceToSuppressSpellsUnique__1_",
+      "mod:DivergentChanceToSuppressSpellsWhileChannellingUnique__1____",
+      "mod:DivergentRecoverLifeOnSuppressUnique__1",
+      "mod:DivergentSpellDodgeUniqueBootsDex7New",
+      "mod:EinharMasterChanceToSuppressSpells1_",
+      "mod:EinharMasterChanceToSuppressSpells2",
+      "mod:EinharMasterChanceToSuppressSpellsHigh1",
+      "mod:EinharMasterChanceToSuppressSpellsHigh2",
+      "mod:EnchantmentSpellDodgeWhenHitBySpells1",
+      "mod:EnchantmentSpellDodgeWhenHitBySpells2",
+      "mod:EnchantmentSpellDodgeWhenHitBySpells3",
+      "mod:GraceChanceToDodge",
+      "mod:HasteChanceToDodgeSpells",
+      "mod:HellscapeDownsideChanceToSuppressSpells2",
+      "mod:HellscapeDownsideChanceToSuppressSpells3",
+      "mod:HellscapeUpsideChanceToSuppressSpells2",
+      "mod:HellscapeUpsideChanceToSuppressSpells3_",
+      "mod:HellscapeUpsideChanceToSuppressSpells4_",
+      "mod:JunMaster2SpellDodgePercentage1",
+      "mod:JunMasterSpellDodgePercentage1",
+      "mod:JunMasterVeiledSpellDodgePercentage__",
+      "mod:MaximumAttackDodgeChanceInfluence1_",
+      "mod:MaximumSpellDodgeChanceInfluence1",
+      "mod:ModifiersToSuppressionApplyToAilmentAvoidUnique__1",
+      "mod:MonsterArchnemesisTrickster_",
+      "mod:MonsterSuppressingFire",
+      "mod:MutatedUniqueBodyDex1SpellDamageSuppressed",
+      "mod:MutatedUniqueBodyDex8ChanceToSuppressIfYouHaveSuppressedRecently",
+      "mod:MutatedUniqueBodyDex8SuppressionPreventionIfYouHaventSuppressedRecently",
+      "mod:MutatedUniqueHelmetStrDex2ChanceToSuppressSpells",
+      "mod:MutatedUniqueJewel177ChanceToSuppressSpells",
+      "mod:MutatedUniqueJewel177ModifiersToSpellSuppressionAlsoApplytoChanceToDefendPercentArmor",
+      "mod:MutatedUniqueJewel177SpellDamageSuppressed",
+      "mod:MutatedUniqueJewel88ExtraDamageRollsWithColdIfSuppressedRecently",
+      "mod:MutatedUniqueShieldInt7DodgeChancePerPowerCharge",
+      "mod:NecropolisSuppression1",
+      "mod:NecropolisSuppression2",
+      "mod:NecropolisSuppression3",
+      "mod:NecropolisSuppression4",
+      "mod:RecoverLifeOnSuppressUnique__1",
+      "mod:SanctumSpecialChanceToSuppressSpells",
+      "mod:SpellDamageSuppressedInfluence1",
+      "mod:SpellDamageSuppressedUnique__1",
+      "mod:SpellDamageSuppressedUnique__2",
+      "mod:SpellDodgeUniqueBootsDex7New",
+      "mod:SpellDodgeUniqueBootsDex7_",
+      "mod:SuppressedDamageBypassEnergyShieldUnique_1",
+      "mod:SuppressedDamageRecoupedAsEnergyShield_1",
+      "mod:SynthesisImplicitAttackDodge1",
+      "mod:SynthesisImplicitAttackDodge2",
+      "mod:SynthesisImplicitAttackDodgeMinor1",
+      "mod:SynthesisImplicitAttackDodgeMinor2",
+      "mod:SynthesisImplicitMaximumAttackDodge1_",
+      "mod:SynthesisImplicitMaximumSpellDodge1",
+      "mod:SynthesisImplicitSpellDamageSuppressed1_",
+      "mod:SynthesisImplicitSpellDodge1",
+      "mod:SynthesisImplicitSpellDodge2",
+      "mod:TangledAltarDownsideBossSuppressSpells",
+      "mod:TangledAltarDownsideMonsterSupressSpells",
+      "mod:UltimatumMonsterSuppressionAndEvasion",
+      "mod:UniqueYourSpellsCannotBeSuppressed__1",
+      "mod:V2ChanceToDodgeCorrupted",
+      "mod:V2ChanceToSpellDodgeCorrupted_",
+      "mod:V2ChanceToSuppressSpells_",
+      "mod:V2DodgeAttackHitsWhileMovingCorrupted_",
+      "mod:V2DodgeSpellHitsWhileMovingCorrupted",
+      "mod:VillageMarkedEnemyNoBlockSuppress",
+      "mod:VillageSuppressChanceEmptyOffhand",
+      "mod:WeaponTreeLifeOnSupress1",
+      "mod:WeaponTreeLifeOnSupress2",
+      "mod:WeaponTreeLocalEvasionRatingSuppression1",
+      "mod:WeaponTreeLocalEvasionRatingSuppression2",
+      "mod:WeaponTreeLocalEvasionRatingSuppression3",
+      "mod:WeaponTreeSpellDamageSuppressedSpellSuppression1",
+      "mod:WeaponTreeSpellDamageSuppressedSpellSuppression2",
+      "mod:WeaponTreeSpellSuppressionSpellDamageSuppressed1",
+      "mod:WeaponTreeSpellSuppressionSpellDamageSuppressed2",
+      "mod:WeaponTreeSpellSuppressionSpellSuppressionIfSuppressedRecently1",
+      "mod:WeaponTreeSpellSuppressionSpellSuppressionIfSuppressedRecently2"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 32,
+     "members": [
+      "passive:AlternateAscendancyWardenTracking1",
+      "passive:AscendancyAscendant34",
+      "passive:AscendancyAscendant47",
+      "passive:AscendancyCustomRaider12",
+      "passive:AscendancyRaider5",
+      "passive:AscendancyRaider7",
+      "passive:AscendancyReliquarian27",
+      "passive:AscendancyTrickster10",
+      "passive:attack_channel_charge2393",
+      "passive:attack_channel_charge2394",
+      "passive:attack_channel_charge2395",
+      "passive:attack_channel_charge_notable2396",
+      "passive:attack_move_speed_notable1792",
+      "passive:claws_of_the_pride489",
+      "passive:dual_wield_damage2125",
+      "passive:dual_wield_damage726",
+      "passive:elusive2753",
+      "passive:elusive2754",
+      "passive:elusive_notable2755",
+      "passive:evasion1011",
+      "passive:evasion1092",
+      "passive:evasion536",
+      "passive:evasion537",
+      "passive:evasion538",
+      "passive:life_mana_es_resists_notable2294",
+      "passive:reflexes1091",
+      "passive:reflexes706",
+      "passive:royale_chaos_3",
+      "passive:sword_damage_accuracy2497",
+      "passive:sword_damage_accuracy2498",
+      "passive:sword_damage_accuracy2499",
+      "passive:sword_damage_accuracy_notable2500_"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": {
+  "mechanic": "mechanic:suppression",
+  "related_stats": 29,
+  "truncated": false,
+  "sample": [
+   {
+    "stat": "stat:base_spell_damage_%_suppressed",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:base_spell_suppression_chance_%",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:base_spell_suppression_chance_150%_of_value",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:cannot_be_stunned_by_suppressed_spell_damage",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:chance_to_apply_suppression_on_hit_%",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:debilitate_enemies_for_x_milliseconds_when_suppressing_their_spell",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:energy_shield_recharges_on_suppress_%",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:extra_damage_rolls_with_cold_damage_if_have_suppressed_spell_damage_recently",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:hits_against_marked_enemy_cannot_be_blocked_or_suppressed",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:local_unique_jewel_cold_resistance_also_grants_spell_suppression_chance_scaled_%",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:recover_%_maximum_life_on_suppressing_spell",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:recover_X_life_on_suppressing_spell",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:spell_damage_%_suppressed_if_not_suppressed_spell_recently",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:spell_damage_%_suppressed_while_on_full_energy_shield",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_if_suppressed_spell_recently",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_if_taken_spell_damage_recently",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_per_endurance_charge",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_per_fortification",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_per_power_charge",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_while_affected_by_grace",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_while_affected_by_haste",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_while_channelling",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_while_moving",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:spell_suppression_chance_%_while_off_hand_empty",
+    "role": "relation:generator"
+   }
+  ]
+ },
+ "flags": []
+}

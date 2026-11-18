@@ -1,0 +1,96 @@
+{
+ "start": "gem:SplittingSteel",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:active_skill_base_area_of_effect_radius",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:attacks_impale_on_hit_%_chance",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:base_is_projectile",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:base_skill_area_of_effect_+%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:console_skill_dont_chase",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:damage_+%",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:modifiers_to_number_of_projectiles_instead_apply_to_splitting",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:projectile_number_to_split",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:projectiles_can_split_at_end_of_range",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:projectiles_can_split_from_terrain",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:skill_projectiles_cannot_return",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "stat:steel_skill_%_chance_to_not_consume_ammo",
+     "type": "gem_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "tag:attack",
+     "type": "gem_has_tag",
+     "direction": "out"
+    },
+    {
+     "from": "gem:SplittingSteel",
+     "to": "tag:physical",
+     "type": "gem_has_tag",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

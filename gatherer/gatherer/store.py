@@ -310,6 +310,8 @@ class Store:
             name = data.get("name", "")
             if disabled and any(f" {q} " in f" {name} " for q in disabled):
                 continue
+            if not data.get("enabled", True):
+                continue
             p = price_rows.get(rid)
             if p is None:
                 states.append(FlipState(id=rid, priced=False, roi=None, updated_at=updated_at))

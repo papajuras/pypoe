@@ -1,0 +1,199 @@
+{
+ "index": 64,
+ "node_id": "mod:MonsterMinionInstability",
+ "type": "Modifier",
+ "name": "",
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "mod:MonsterMinionInstability"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "mod:MonsterMinionInstability"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "mod:MonsterMinionInstability"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:keystone_minion_instability"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "modifier_in_group|mod:MonsterMinionInstability|modgroup:Keystone|out",
+    "modifier_grants_stat|mod:MonsterMinionInstability|stat:keystone_minion_instability|out",
+    "modifier_has_tag|mod:MonsterMinionInstability|tag:damage|out",
+    "modifier_has_tag|mod:MonsterMinionInstability|tag:elemental|out",
+    "modifier_has_tag|mod:MonsterMinionInstability|tag:elemental_damage|out",
+    "modifier_has_tag|mod:MonsterMinionInstability|tag:fire|out",
+    "modifier_has_tag|mod:MonsterMinionInstability|tag:minion|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "gem_has_tag|tag:fire|<38 in: gem:AlchemistsMark, gem:Anger, gem:ArmageddonBrand\u2026>",
+    "gem_has_tag|tag:minion|<22 in: gem:Absolution, gem:AbsolutionAltX, gem:AnimateGuardian\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 6,
+     "members": [
+      "mod:HellscapeUpsideKeystoneMinionInstability",
+      "mod:KeystoneMinionInstabilityUnique__1",
+      "mod:MonsterMinionInstability",
+      "mod:RecombinatorSpecialKeystoneMinionInstability",
+      "mod:SanctumSpecialCorruptionKeystoneMinionInstability",
+      "mod:WeaponTreeKeystoneMinionInstability"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 1,
+     "members": [
+      "passive:minion_instability1133"
+     ]
+    }
+   ]
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_grants_stat|gem:Absolution|stat:absolution_blast_chance_to_summon_on_hitting_rare_or_unique_%|out",
+    "gem_grants_stat|gem:AbsolutionAltX|stat:active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value|out",
+    "gem_grants_stat|gem:BodyswapAltX|stat:active_skill_ailment_damage_+%_final|out",
+    "gem_grants_stat|gem:ConsecratedPathAltX|stat:active_skill_area_of_effect_+%_final_per_endurance_charge|out",
+    "gem_grants_stat|gem:Conflagration|stat:active_skill_area_of_effect_description_mode|out",
+    "gem_grants_stat|gem:ConsecratedPathAltX|stat:active_skill_attack_damage_+%_final_per_endurance_charge|out",
+    "gem_grants_stat|gem:ArmageddonBrand|stat:active_skill_base_area_of_effect_radius|out",
+    "gem_grants_stat|gem:Absolution|stat:active_skill_base_radius_+|out",
+    "gem_grants_stat|gem:BlastRainAltX|stat:active_skill_base_secondary_area_of_effect_radius|out",
+    "gem_grants_stat|gem:Conflagration|stat:active_skill_base_tertiary_area_of_effect_radius|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:active_skill_minion_attack_speed_+%_final|out",
+    "gem_grants_stat|gem:AnimateGuardian|stat:active_skill_minion_damage_+%_final|out",
+    "gem_grants_stat|gem:AnimateGuardianAltX|stat:active_skill_minion_from_alternate_gem_index|out",
+    "gem_grants_stat|gem:AnimateGuardian|stat:active_skill_minion_life_+%_final|out",
+    "gem_grants_stat|gem:Conflagration|stat:active_skill_secondary_area_of_effect_description_mode|out",
+    "gem_grants_stat|gem:Conflagration|stat:active_skill_tertiary_area_of_effect_description_mode|out",
+    "gem_grants_stat|gem:DarkPact|stat:added_chaos_damage_%_mana_cost_if_payable|out",
+    "gem_grants_stat|gem:BurningArrowAltX|stat:added_fire_damage_to_attacks_equal_to_%_maximum_life|out",
+    "gem_grants_stat|gem:BlastRain|stat:additional_1_projectile|out",
+    "gem_grants_stat|gem:ArmageddonBrand|stat:additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency|out",
+    "gem_grants_stat|gem:Absolution|stat:additive_minion_damage_modifiers_apply_to_you_at_150%_value|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:alchemists_mark_grant_attacker_x_flask_charges_when_hit_once_per_3s|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:alchemists_mark_igniter_creates_burning_ground_%_ignite_damage|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:alchemists_mark_poisoner_creates_caustic_ground_%_poison_damage|out",
+    "gem_grants_stat|gem:ArtilleryBallista|stat:all_damage_can_poison|out",
+    "gem_grants_stat|gem:AnimateGuardian|stat:animate_item_maximum_level_requirement|out",
+    "gem_grants_stat|gem:AnimateWeaponAltY|stat:animate_weapon_can_only_animate_range_weapons|out",
+    "gem_grants_stat|gem:Discharge|stat:area_of_effect_+%_final_per_removable_power_frenzy_or_endurance_charge|out",
+    "gem_grants_stat|gem:ArtilleryBallistaAltX|stat:artillery_ballista_cross_strafe_pattern|out",
+    "gem_grants_stat|gem:ArtilleryBallistaAltY|stat:artillery_ballista_number_of_arrows_is_equal_to_number_of_nearby_targets|out",
+    "gem_grants_stat|gem:DominatingBlow|stat:attack_damage_+%_for_non_minions|out",
+    "gem_grants_stat|gem:DivineBlast|stat:attack_is_not_melee_override|out",
+    "gem_grants_stat|gem:DivineBlast|stat:attack_maximum_action_distance_+|out",
+    "gem_grants_stat|gem:ElementalHitRoyale|stat:attack_maximum_added_cold_damage|out",
+    "gem_grants_stat|gem:ElementalHit|stat:attack_maximum_added_cold_damage_for_elemental_hit|out",
+    "gem_grants_stat|gem:Anger|stat:attack_maximum_added_fire_damage|out",
+    "gem_grants_stat|gem:ElementalHit|stat:attack_maximum_added_fire_damage_for_elemental_hit|out",
+    "gem_grants_stat|gem:ElementalHitRoyale|stat:attack_maximum_added_lightning_damage|out",
+    "gem_grants_stat|gem:ElementalHit|stat:attack_maximum_added_lightning_damage_for_elemental_hit|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:attack_maximum_added_physical_damage|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:attack_maximum_added_physical_damage_for_ethereal_blades|out",
+    "gem_grants_stat|gem:ElementalHitRoyale|stat:attack_minimum_added_cold_damage|out",
+    "gem_grants_stat|gem:ElementalHit|stat:attack_minimum_added_cold_damage_for_elemental_hit|out",
+    "gem_grants_stat|gem:Anger|stat:attack_minimum_added_fire_damage|out",
+    "gem_grants_stat|gem:ElementalHit|stat:attack_minimum_added_fire_damage_for_elemental_hit|out",
+    "gem_grants_stat|gem:ElementalHitRoyale|stat:attack_minimum_added_lightning_damage|out",
+    "gem_grants_stat|gem:ElementalHit|stat:attack_minimum_added_lightning_damage_for_elemental_hit|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:attack_minimum_added_physical_damage|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:attack_minimum_added_physical_damage_for_ethereal_blades|out",
+    "gem_grants_stat|gem:ArtilleryBallista|stat:attack_skills_additional_ballista_totems_allowed|out",
+    "gem_grants_stat|gem:ElementalHit|stat:attack_speed_+%|out",
+    "gem_grants_stat|gem:BlinkArrow|stat:attack_speed_+%_for_non_minions|out",
+    "gem_grants_stat|gem:Anger|stat:aura_effect_+%|out",
+    "gem_grants_stat|gem:Anger|stat:aura_effect_+%_while_at_maximum_endurance_charges|out",
+    "gem_grants_stat|gem:Absolution|stat:base_cast_speed_+%|out",
+    "gem_grants_stat|gem:BurningArrow|stat:base_chance_to_ignite_%|out",
+    "gem_grants_stat|gem:BlinkArrow|stat:base_cooldown_speed_+%|out",
+    "gem_grants_stat|gem:AlchemistsMark|stat:base_deal_no_damage|out",
+    "gem_grants_stat|gem:Absolution|stat:base_display_minion_actor_level|out",
+    "gem_grants_stat|gem:BlastRainAltX|stat:base_fire_damage_to_deal_per_minute|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:keystone_minion_instability",
+   "chain": "modifier_grants_stat>stat:keystone_minion_instability",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:keystone_minion_instability": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 6,
+     "samples": [
+      {
+       "id": "mod:HellscapeUpsideKeystoneMinionInstability",
+       "name": ""
+      },
+      {
+       "id": "mod:KeystoneMinionInstabilityUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:MonsterMinionInstability",
+       "name": ""
+      },
+      {
+       "id": "mod:RecombinatorSpecialKeystoneMinionInstability",
+       "name": "of the Sentinel"
+      },
+      {
+       "id": "mod:SanctumSpecialCorruptionKeystoneMinionInstability",
+       "name": ""
+      },
+      {
+       "id": "mod:WeaponTreeKeystoneMinionInstability",
+       "name": ""
+      }
+     ]
+    },
+    "passive_grants_stat": {
+     "count": 1,
+     "samples": [
+      {
+       "id": "passive:minion_instability1133",
+       "name": "Minion Instability"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start",
+  "truncated_bfs"
+ ]
+}

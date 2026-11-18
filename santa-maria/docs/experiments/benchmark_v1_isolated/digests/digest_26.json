@@ -1,0 +1,268 @@
+{
+ "index": 26,
+ "node_id": "unique:1281",
+ "type": "UniqueItem",
+ "name": "Legacy of Fury",
+ "block": "random_draw",
+ "availability": "available",
+ "calls": [
+  {
+   "resolve": {
+    "query": "unique:1281"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "unique:1281"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "unique:1281"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_armour_and_evasion_+%"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:local_display_nearby_enemies_scorched"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "unique_in_class|unique:1281|item_class:Boots|out",
+    "unique_modifier_association|unique:1281|mod:DivergentNearbyEnemiesAreScorchedUnique__1|out",
+    "unique_modifier_association|unique:1281|mod:LocalIncreasedArmourAndEvasionUnique__18|out",
+    "unique_modifier_association|unique:1281|mod:ScorchEffectUnique__1|out",
+    "unique_modifier_association|unique:1281|mod:ScorchedEnemiesDegenExplodeUnique__1_|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "modifier_in_group|mod:LocalIncreasedArmourAndEvasionUnique__18|modgroup:DefencesPercent|out",
+    "modifier_in_group|mod:DivergentNearbyEnemiesAreScorchedUnique__1|modgroup:NearbyEnemiesAreScorched|out",
+    "modifier_in_group|mod:ScorchEffectUnique__1|modgroup:ScorchEffect|out",
+    "modifier_in_group|mod:ScorchedEnemiesDegenExplodeUnique__1_|modgroup:ScorchedEnemiesDegenExplode|out",
+    "modifier_grants_stat|mod:LocalIncreasedArmourAndEvasionUnique__18|stat:local_armour_and_evasion_+%|out",
+    "modifier_grants_stat|mod:DivergentNearbyEnemiesAreScorchedUnique__1|stat:local_display_nearby_enemies_scorched|out",
+    "modifier_grants_stat|mod:ScorchEffectUnique__1|stat:scorch_effect_+%|out",
+    "modifier_grants_stat|mod:ScorchedEnemiesDegenExplodeUnique__1_|stat:scorched_enemies_explode_on_death_for_8%_life_as_fire_degen_chance|out",
+    "modifier_has_tag|mod:DivergentNearbyEnemiesAreScorchedUnique__1|tag:ailment|out",
+    "modifier_has_tag|mod:LocalIncreasedArmourAndEvasionUnique__18|tag:armour|out",
+    "modifier_has_tag|mod:LocalIncreasedArmourAndEvasionUnique__18|tag:defences|out",
+    "modifier_has_tag|mod:DivergentNearbyEnemiesAreScorchedUnique__1|tag:divergentunique|out",
+    "modifier_has_tag|mod:DivergentNearbyEnemiesAreScorchedUnique__1|tag:elemental|out",
+    "modifier_has_tag|mod:LocalIncreasedArmourAndEvasionUnique__18|tag:evasion|out",
+    "modifier_has_tag|mod:DivergentNearbyEnemiesAreScorchedUnique__1|tag:fire|out",
+    "unique_in_class|item_class:Boots|<45 in: unique:1014, unique:1028, unique:1067\u2026>"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_has_tag|tag:fire|<60 in: gem:AlchemistsMark, gem:Anger, gem:ArmageddonBrand\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Modifier",
+     "count": 91,
+     "members": [
+      "mod:ArmourAndEvasionPercentCrafted",
+      "mod:DelveArmourArmourAndEvasion1_",
+      "mod:DivergentNearbyEnemiesAreScorchedUnique__1",
+      "mod:EinharMasterArmourAndEvasionPercent1_",
+      "mod:EinharMasterArmourAndEvasionPercent2",
+      "mod:EinharMasterArmourAndEvasionPercent3",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLife1",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLife2",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLife3",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLifeHigh1",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLifeHigh2",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLifeHigh3",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLifeMed1__",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLifeMed2_",
+      "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLifeMed3",
+      "mod:JunMasterLocalIncreasedArmourAndEvasionAndLife1____",
+      "mod:JunMasterLocalIncreasedArmourAndEvasionAndLife2",
+      "mod:JunMasterLocalIncreasedArmourAndEvasionAndLife3",
+      "mod:JunMasterLocalIncreasedArmourAndEvasionAndLife4",
+      "mod:JunMasterVeiledLocalIncreasedArmourAndEvasionAndLife",
+      "mod:JunMasterVeiledLocalIncreasedArmourAndEvasionAndLifeHigh",
+      "mod:JunMasterVeiledLocalIncreasedArmourAndEvasionAndLifeMed",
+      "mod:LocalIncreasedArmourAndEvasion1",
+      "mod:LocalIncreasedArmourAndEvasion2",
+      "mod:LocalIncreasedArmourAndEvasion3",
+      "mod:LocalIncreasedArmourAndEvasion4",
+      "mod:LocalIncreasedArmourAndEvasion5",
+      "mod:LocalIncreasedArmourAndEvasion6",
+      "mod:LocalIncreasedArmourAndEvasion7",
+      "mod:LocalIncreasedArmourAndEvasion8",
+      "mod:LocalIncreasedArmourAndEvasionAndStunRecovery1",
+      "mod:LocalIncreasedArmourAndEvasionAndStunRecovery2",
+      "mod:LocalIncreasedArmourAndEvasionAndStunRecovery3",
+      "mod:LocalIncreasedArmourAndEvasionAndStunRecovery4",
+      "mod:LocalIncreasedArmourAndEvasionAndStunRecovery5",
+      "mod:LocalIncreasedArmourAndEvasionAndStunRecovery6",
+      "mod:LocalIncreasedArmourAndEvasionRatingUniqueBodyStrDex3",
+      "mod:LocalIncreasedArmourAndEvasionRatingUniqueBodyStrDex3Royale",
+      "mod:LocalIncreasedArmourAndEvasionRatingUnique__1",
+      "mod:LocalIncreasedArmourAndEvasionUniqueBodyStrDex2",
+      "mod:LocalIncreasedArmourAndEvasionUniqueBodyStrDex4",
+      "mod:LocalIncreasedArmourAndEvasionUniqueBodyStrDex5",
+      "mod:LocalIncreasedArmourAndEvasionUniqueBodyStrDexInt1b",
+      "mod:LocalIncreasedArmourAndEvasionUniqueBootsStrDex3",
+      "mod:LocalIncreasedArmourAndEvasionUniqueGlovesStrDex2",
+      "mod:LocalIncreasedArmourAndEvasionUniqueGlovesStrDex4",
+      "mod:LocalIncreasedArmourAndEvasionUniqueGlovesStrDex5",
+      "mod:LocalIncreasedArmourAndEvasionUniqueGlovesStrDex6",
+      "mod:LocalIncreasedArmourAndEvasionUniqueHelmetStrDex2",
+      "mod:LocalIncreasedArmourAndEvasionUniqueHelmetStrDex4",
+      "mod:LocalIncreasedArmourAndEvasionUniqueHelmetStrDex5",
+      "mod:LocalIncreasedArmourAndEvasionUniqueShieldStrDex1",
+      "mod:LocalIncreasedArmourAndEvasionUniqueShieldStrDex3",
+      "mod:LocalIncreasedArmourAndEvasionUniqueShieldStrDex4",
+      "mod:LocalIncreasedArmourAndEvasionUniqueShieldStrDex5",
+      "mod:LocalIncreasedArmourAndEvasionUniqueStrDexHelmet1",
+      "mod:LocalIncreasedArmourAndEvasionUnique__1",
+      "mod:LocalIncreasedArmourAndEvasionUnique__10_",
+      "mod:LocalIncreasedArmourAndEvasionUnique__11",
+      "mod:LocalIncreasedArmourAndEvasionUnique__12",
+      "mod:LocalIncreasedArmourAndEvasionUnique__13",
+      "mod:LocalIncreasedArmourAndEvasionUnique__14",
+      "mod:LocalIncreasedArmourAndEvasionUnique__15_",
+      "mod:LocalIncreasedArmourAndEvasionUnique__16__",
+      "mod:LocalIncreasedArmourAndEvasionUnique__17Royale__",
+      "mod:LocalIncreasedArmourAndEvasionUnique__17_",
+      "mod:LocalIncreasedArmourAndEvasionUnique__18",
+      "mod:LocalIncreasedArmourAndEvasionUnique__19_",
+      "mod:LocalIncreasedArmourAndEvasionUnique__2",
+      "mod:LocalIncreasedArmourAndEvasionUnique__20",
+      "mod:LocalIncreasedArmourAndEvasionUnique__21",
+      "mod:LocalIncreasedArmourAndEvasionUnique__22",
+      "mod:LocalIncreasedArmourAndEvasionUnique__23",
+      "mod:LocalIncreasedArmourAndEvasionUnique__24",
+      "mod:LocalIncreasedArmourAndEvasionUnique__25",
+      "mod:LocalIncreasedArmourAndEvasionUnique__26",
+      "mod:LocalIncreasedArmourAndEvasionUnique__27",
+      "mod:LocalIncreasedArmourAndEvasionUnique__28",
+      "mod:LocalIncreasedArmourAndEvasionUnique__29",
+      "mod:LocalIncreasedArmourAndEvasionUnique__3_",
+      "mod:LocalIncreasedArmourAndEvasionUnique__4",
+      "mod:LocalIncreasedArmourAndEvasionUnique__5_",
+      "mod:LocalIncreasedArmourAndEvasionUnique__6",
+      "mod:LocalIncreasedArmourAndEvasionUnique__7",
+      "mod:LocalIncreasedArmourAndEvasionUnique__8_",
+      "mod:LocalIncreasedArmourAndEvasionUnique__9",
+      "mod:NearbyEnemiesAreScorchedUnique__1",
+      "mod:ScorchEffectUnique__1",
+      "mod:ScorchedEnemiesDegenExplodeUnique__1_",
+      "mod:StrMasterArmourAndEvasionPercentCrafted1",
+      "mod:StrMasterArmourAndEvasionPercentCrafted2"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:local_armour_and_evasion_+%",
+   "chain": "unique_modifier_association>mod:LocalIncreasedArmourAndEvasionUnique__18 -> modifier_grants_stat>stat:local_armour_and_evasion_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:local_display_nearby_enemies_scorched",
+   "chain": "unique_modifier_association>mod:DivergentNearbyEnemiesAreScorchedUnique__1 -> modifier_grants_stat>stat:local_display_nearby_enemies_scorched",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:scorch_effect_+%",
+   "chain": "unique_modifier_association>mod:ScorchEffectUnique__1 -> modifier_grants_stat>stat:scorch_effect_+%",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:scorched_enemies_explode_on_death_for_8%_life_as_fire_degen_chance",
+   "chain": "unique_modifier_association>mod:ScorchedEnemiesDegenExplodeUnique__1_ -> modifier_grants_stat>stat:scorched_enemies_explode_on_death_for_8%_life_as_fire_degen_chance",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:local_armour_and_evasion_+%": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 87,
+     "samples": [
+      {
+       "id": "mod:ArmourAndEvasionPercentCrafted",
+       "name": ""
+      },
+      {
+       "id": "mod:DelveArmourArmourAndEvasion1_",
+       "name": "of the Underground"
+      },
+      {
+       "id": "mod:EinharMasterArmourAndEvasionPercent1_",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EinharMasterArmourAndEvasionPercent2",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:EinharMasterArmourAndEvasionPercent3",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLife1",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLife2",
+       "name": "Upgraded"
+      },
+      {
+       "id": "mod:JunMaster2LocalIncreasedArmourAndEvasionAndLife3",
+       "name": "Upgraded"
+      }
+     ]
+    }
+   }
+  },
+  "stat:local_display_nearby_enemies_scorched": {
+   "carriers": {
+    "modifier_grants_stat": {
+     "count": 2,
+     "samples": [
+      {
+       "id": "mod:DivergentNearbyEnemiesAreScorchedUnique__1",
+       "name": ""
+      },
+      {
+       "id": "mod:NearbyEnemiesAreScorchedUnique__1",
+       "name": ""
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "truncated_bfs"
+ ]
+}

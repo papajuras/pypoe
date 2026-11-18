@@ -1,0 +1,24 @@
+{
+ "start": "passive:AscendancyChieftan11",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "passive:AscendancyChieftan11",
+     "to": "stat:chieftain_body_armour_supported_by_level_x_ancestral_call",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    },
+    {
+     "from": "passive:AscendancyChieftan11",
+     "to": "stat:chieftain_body_armour_supported_by_level_x_fist_of_war",
+     "type": "passive_grants_stat",
+     "direction": "out"
+    }
+   ]
+  }
+ ]
+}

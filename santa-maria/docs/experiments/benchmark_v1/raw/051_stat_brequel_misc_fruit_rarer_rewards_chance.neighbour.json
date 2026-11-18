@@ -1,0 +1,34 @@
+{
+ "start": "stat:brequel_misc_fruit_rarer_rewards_chance_+%",
+ "depth_requested": 1,
+ "truncated": false,
+ "levels": [
+  {
+   "depth": 1,
+   "edges": [
+    {
+     "from": "stat:brequel_misc_fruit_rarer_rewards_chance_+%",
+     "to": "passive:MiscItemsNode3",
+     "type": "passive_grants_stat",
+     "direction": "in"
+    }
+   ],
+   "passive_nodes": [
+    {
+     "id": "passive:MiscItemsNode3",
+     "name": "Artificial Selection",
+     "passive_info": {
+      "ascendancy": null,
+      "kind_flags": {
+       "is_ascendancy_starting_node": false,
+       "is_jewel_socket": false,
+       "is_keystone": false,
+       "is_multiple_choice": false,
+       "is_notable": true
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

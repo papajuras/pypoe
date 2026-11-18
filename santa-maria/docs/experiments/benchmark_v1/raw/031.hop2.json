@@ -1,0 +1,23 @@
+{
+ "index": 31,
+ "node_id": "unique:1443",
+ "targets": {
+  "mod:HeraldBonusAgonyChaosResist_": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:chaos_damage_resistance_%_while_affected_by_herald_of_agony"
+   ],
+   "tags": [
+    "tag:chaos",
+    "tag:resistance"
+   ]
+  },
+  "mod:HeraldReservationEfficiencyUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:herald_skills_mana_reservation_efficiency_+%"
+   ],
+   "tags": []
+  }
+ }
+}

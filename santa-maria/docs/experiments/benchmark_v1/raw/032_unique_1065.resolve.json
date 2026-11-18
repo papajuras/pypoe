@@ -1,0 +1,20 @@
+{
+ "error": null,
+ "results": [
+  {
+   "id": "unique:1065",
+   "type": "UniqueItem",
+   "name": "Badge of the Brotherhood",
+   "availability": "available"
+  }
+ ],
+ "meta": {
+  "query": "unique:1065",
+  "type": null,
+  "total": 1,
+  "returned": 1,
+  "truncated": null,
+  "exact_name_matches": 0,
+  "ambiguous": false
+ }
+}

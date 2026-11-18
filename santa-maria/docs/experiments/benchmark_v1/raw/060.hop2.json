@@ -1,0 +1,26 @@
+{
+ "index": 60,
+ "node_id": "mod:WeaponTreeSupportIronGripHardMode",
+ "targets": {
+  "stat:local_display_socketed_gems_supported_by_level_x_iron_grip": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 8,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:HungryLoopSupportedByIronGrip",
+    "mod:LocalIncreasedPhysicalDamagePercentIronGripUber1",
+    "mod:LocalIncreasedPhysicalDamagePercentIronGripUber2_",
+    "mod:LocalIncreasedPhysicalDamagePercentIronGripUber3",
+    "mod:WeaponTreeSupportIronGrip",
+    "mod:WeaponTreeSupportIronGrip2H",
+    "mod:WeaponTreeSupportIronGrip2HHardMode",
+    "mod:WeaponTreeSupportIronGripHardMode"
+   ],
+   "total": 8
+  }
+ }
+}

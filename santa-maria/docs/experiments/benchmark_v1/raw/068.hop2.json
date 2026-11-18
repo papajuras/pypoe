@@ -1,0 +1,106 @@
+{
+ "index": 68,
+ "node_id": "mechanic:frenzy_charge",
+ "targets": {
+  "t": {
+   "kind": "tag"
+  },
+  "stat:%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 1,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SupportChargedTraps",
+    "mod:DivergentGainFrenzyChargeOnTrapTriggeredUnique__1",
+    "mod:GainFrenzyChargeOnTrapTriggeredUnique__1",
+    "passive:trap_damage_additional_traps_notable1524"
+   ],
+   "total": 4
+  },
+  "stat:accuracy_rating_+%_per_frenzy_charge": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 4,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AccuracyRatingPerFrenzyChargeUber1",
+    "mod:AccuracyRatingPerFrenzyChargeUniqueGlovesDexInt5",
+    "mod:ChargeBonusAccuracyRatingPerFrenzyCharge",
+    "mod:MutatedUniqueBootsStrDex2IncreasedAccuracyPerFrenzy",
+    "passive:royale_weird_5"
+   ],
+   "total": 5
+  },
+  "stat:accuracy_rating_+_per_frenzy_charge": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 19,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicit1",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicit2",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicit3",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicit4",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicit5",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicit6",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitPinnaclePresence1",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitPinnaclePresence2",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitPinnaclePresence3",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitPinnaclePresence4",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitPinnaclePresence5",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitPinnaclePresence6",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitUniquePresence1",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitUniquePresence2",
+    "mod:FlatAccuracyPerFrenzyChargeEldritchImplicitUniquePresence3"
+   ],
+   "total": 19
+  },
+  "stat:accuracy_rating_while_at_maximum_frenzy_charges": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AccuracyRatingWithMaxFrenzyChargesUnique__1"
+   ],
+   "total": 1
+  },
+  "stat:add_frenzy_charge_every_50_rampage_stacks": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:FrenzyChargePer50RampageStacksUnique__1",
+    "passive:AscendancyCustomAscendant40"
+   ],
+   "total": 2
+  }
+ },
+ "related_stats_sample": {
+  "total": 104,
+  "sample": [
+   "stat:%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy",
+   "stat:accuracy_rating_+%_per_frenzy_charge",
+   "stat:accuracy_rating_+_per_frenzy_charge",
+   "stat:accuracy_rating_while_at_maximum_frenzy_charges",
+   "stat:add_frenzy_charge_every_50_rampage_stacks"
+  ]
+ }
+}

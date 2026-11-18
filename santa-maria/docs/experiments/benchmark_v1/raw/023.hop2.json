@@ -1,0 +1,55 @@
+{
+ "index": 23,
+ "node_id": "unique:734",
+ "targets": {
+  "mod:ElementalPenetrationPerAbyssalJewelUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:penetrate_elemental_resistance_%_per_abyssal_jewel_affecting_you"
+   ],
+   "tags": [
+    "tag:elemental"
+   ]
+  },
+  "mod:IncreasedLifePerAbyssalJewelUnique__2": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:maximum_life_+%_per_abyssal_jewel_affecting_you"
+   ],
+   "tags": [
+    "tag:life",
+    "tag:resource"
+   ]
+  },
+  "mod:IncreasedManaPerAbyssalJewelUnique__2": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:maximum_mana_+%_per_abyssal_jewel_affecting_you"
+   ],
+   "tags": [
+    "tag:mana",
+    "tag:resource"
+   ]
+  },
+  "mod:LocalDisplayGrantLevelXShadeFormUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_display_trigger_level_20_shade_form_on_skill_use_%"
+   ],
+   "tags": [
+    "tag:skill"
+   ]
+  },
+  "mod:LocalIncreasedEvasionAndEnergyShieldUnique__11_": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:local_evasion_and_energy_shield_+%"
+   ],
+   "tags": [
+    "tag:defences",
+    "tag:energy_shield",
+    "tag:evasion"
+   ]
+  }
+ }
+}

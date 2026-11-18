@@ -1,0 +1,51 @@
+{
+ "index": 16,
+ "node_id": "passive:AscendancyOccultist8",
+ "targets": {
+  "stat:ignore_hexproof": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 4,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmIgnoreHexproofEnemies",
+    "mod:DivergentIgnoreHexproofUnique___1",
+    "mod:IgnoreHexproofUnique___1",
+    "mod:MonsterIgnoreHexproof",
+    "passive:AscendancyCustomGuardian10",
+    "passive:AscendancyOccultist8"
+   ],
+   "total": 6
+  },
+  "stat:number_of_additional_curses_allowed": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 21,
+    "passive_grants_stat": 5,
+    "gem_grants_stat": 2,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:SupportCursePillarTriggerCurses",
+    "gem:SupportCursePillarTriggerCursesLessCurseEffect",
+    "mod:AdditionalCurseCorrupted",
+    "mod:AdditionalCurseOnEnemiesDelve",
+    "mod:AdditionalCurseOnEnemiesInfluence1",
+    "mod:AdditionalCurseOnEnemiesInfluenceMavenV2___",
+    "mod:AdditionalCurseOnEnemiesInfluenceMaven_",
+    "mod:AdditionalCurseOnEnemiesMapBossGeofri_",
+    "mod:AdditionalCurseOnEnemiesUnique__1",
+    "mod:AdditionalCurseOnEnemiesUnique__2",
+    "mod:AdditionalCurseOnEnemiesUnique__3",
+    "mod:AdditionalCurseOnEnemies_",
+    "mod:DivergentAdditionalCurseOnEnemiesUnique__1",
+    "mod:DoedreAdditionalCurseOnEnemies2",
+    "mod:HellscapeDownsideAdditionalCurse1__"
+   ],
+   "total": 28
+  }
+ }
+}

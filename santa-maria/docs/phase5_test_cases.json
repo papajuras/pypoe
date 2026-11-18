@@ -1,0 +1,396 @@
+{
+  "phase": "5",
+  "step": "0",
+  "title": "Phase 5 TDD test cases - relationship-graph representability specification",
+  "contract_version": "4D.3",
+  "generated_from": {
+    "nodes_db": "cache/nodes.db (83,534 nodes)",
+    "raw_db": "cache/raw_records.db",
+    "contract": "docs/phase4d_extraction_rules.json"
+  },
+  "purpose": "Consumed by the future graph engine (get_start_seeds / get_neighbours). GREEN cases must pass once the engine exists; RED cases define the Phase 5 edge work and are expected to FAIL until that work is implemented. No semantic inference is permitted - all traversals are deterministic structural joins.",
+  "verdict": "SUFFICIENT_WITH_LIMITATIONS",
+  "accepted_limitations": [
+    "Inherent attribute -> derived-stat grant APPLICATION (Int->Mana, Str->Melee/Armour, Dex->Accuracy/Evasion) is client-side and absent from the export. The stat DEFINITIONS exist (e.g. stat:maximum_mana_+_per_2_intelligence, stat:bonus_accuracy_rating_+_from_dexterity) plus negations/overrides, but no record applies them to characters. The graph cannot prove the inherent application; do not fake it."
+  ],
+  "test_cases": [
+    {
+      "id": "T_exemplars",
+      "kind": "green",
+      "goal": "Exemplar nodes exist with the correct type",
+      "entities": {
+        "iron_will": "passive:iron_will_keystone2850",
+        "avatar_of_fire": "passive:avatar_of_fire1543",
+        "crown_of_eyes": "unique:168",
+        "ignite_stat": "stat:base_chance_to_ignite_%",
+        "ignited_stat": "stat:damage_+%_while_ignited",
+        "strength": "stat:strength",
+        "intelligence": "stat:intelligence",
+        "hopeshredder": "unique:739",
+        "whispers": "unique:1461",
+        "unholy_trinity": "gem:SupportUnholyTrinity"
+      },
+      "chain": [],
+      "assertions": [
+        {
+          "check": "node_exists",
+          "detail": "every entity id resolves to a node"
+        },
+        {
+          "check": "node_type",
+          "detail": "each resolves to the stated type (UniqueItem/Passive/Stat/Gem)"
+        },
+        {
+          "check": "distinct",
+          "detail": "stat:base_chance_to_ignite_% and stat:damage_+%_while_ignited are distinct Stat nodes"
+        }
+      ],
+      "expected_now": "pass"
+    },
+    {
+      "id": "T4_unique_rare_shared_stat",
+      "kind": "green",
+      "goal": "Unique <-> rare modifier through a shared stat (T1)",
+      "entities": {
+        "shared_stat": "stat:physical_damage_%_to_add_as_fire",
+        "unique_mod": "mod:AbberathsFuryEnrageStance",
+        "rare_mod": "mod:ConvertPhysicalToFireInfluenceMaven"
+      },
+      "chain": [
+        "unique:any",
+        "mod:AbberathsFuryEnrageStance (generation_type=unique)",
+        "stat:physical_damage_%_to_add_as_fire",
+        "mod:ConvertPhysicalToFireInfluenceMaven (prefix)",
+        "rare:any"
+      ],
+      "assertions": [
+        {
+          "check": "stat_node_exists",
+          "detail": "stat:physical_damage_%_to_add_as_fire is a Stat node"
+        },
+        {
+          "check": "unique_mod_grants_stat",
+          "detail": "mod:AbberathsFuryEnrageStance.stats[].id contains the stat"
+        },
+        {
+          "check": "rare_mod_grants_stat",
+          "detail": "mod:ConvertPhysicalToFireInfluenceMaven.stats[].id contains the stat"
+        },
+        {
+          "check": "generation_types",
+          "detail": "unique mod has generation_type=unique; rare mod has generation_type=prefix/suffix"
+        },
+        {
+          "check": "traversable",
+          "detail": "path UniqueItem -> unique-Modifier -> Stat -> rare-Modifier is recoverable via M1"
+        }
+      ],
+      "expected_now": "pass"
+    },
+    {
+      "id": "T1_firemin_firemax_shared",
+      "kind": "green",
+      "goal": "FireMin <-> FireMax stats share a rare modifier",
+      "entities": {
+        "firemin": "stat:attack_minimum_added_fire_damage_per_10_strength",
+        "firemax": "stat:attack_maximum_added_fire_damage_per_10_strength",
+        "mod": "mod:AddedFireDamagePerStrengthInfluence1"
+      },
+      "chain": [
+        "stat:attack_minimum_added_fire_damage_per_10_strength",
+        "mod:AddedFireDamagePerStrengthInfluence1",
+        "stat:attack_maximum_added_fire_damage_per_10_strength"
+      ],
+      "assertions": [
+        {
+          "check": "co_occur",
+          "detail": "mod:AddedFireDamagePerStrengthInfluence1.stats[].id contains BOTH firemin and firemax"
+        },
+        {
+          "check": "rare",
+          "detail": "the mod has generation_type=prefix/suffix (a relevant rare modifier)"
+        },
+        {
+          "check": "traversable",
+          "detail": "firemin <-> firemax connected via the shared mod using M1"
+        }
+      ],
+      "expected_now": "pass"
+    },
+    {
+      "id": "T2_per_charge_mods",
+      "kind": "green",
+      "goal": "Endurance-charge-scaled FireMin/FireMax share a rare modifier",
+      "entities": {
+        "firemin": "stat:minimum_added_fire_damage_per_endurance_charge",
+        "firemax": "stat:maximum_added_fire_damage_per_endurance_charge",
+        "mod": "mod:AddedFireDamagePerEnduranceChargeInfluence1"
+      },
+      "chain": [
+        "stat:minimum_added_fire_damage_per_endurance_charge",
+        "mod:AddedFireDamagePerEnduranceChargeInfluence1",
+        "stat:maximum_added_fire_damage_per_endurance_charge"
+      ],
+      "assertions": [
+        {
+          "check": "co_occur",
+          "detail": "mod:AddedFireDamagePerEnduranceChargeInfluence1 grants both stats"
+        },
+        {
+          "check": "rare",
+          "detail": "generation_type=prefix/suffix"
+        },
+        {
+          "check": "traversable",
+          "detail": "connected via shared mod using M1"
+        }
+      ],
+      "expected_now": "pass"
+    },
+    {
+      "id": "T_ut_types",
+      "kind": "green",
+      "goal": "Unholy Trinity exposes Lightning/Physical/Chaos",
+      "entities": {
+        "unholy_trinity": "gem:SupportUnholyTrinity",
+        "tag_lightning": "tag:lightning",
+        "tag_physical": "tag:physical",
+        "tag_chaos": "tag:chaos"
+      },
+      "chain": [
+        "gem:SupportUnholyTrinity",
+        "tag:lightning / tag:physical / tag:chaos"
+      ],
+      "assertions": [
+        {
+          "check": "tags",
+          "detail": "gem:SupportUnholyTrinity.payload.tags includes lightning, physical, chaos"
+        },
+        {
+          "check": "tag_nodes",
+          "detail": "tag:lightning, tag:physical, tag:chaos exist"
+        },
+        {
+          "check": "traversable",
+          "detail": "gem -> each tag via M3"
+        },
+        {
+          "check": "unholy_resonance_stats",
+          "detail": "gem per_level.stat_text contains unholy-resonance stat keys (lightning_and_chaos / physical_damage_reduction)"
+        }
+      ],
+      "expected_now": "pass"
+    },
+    {
+      "id": "T_int_grant_stat",
+      "kind": "green",
+      "goal": "Int->Mana grant stat is a real unique<->rare bridge (definitional, not inherent application)",
+      "entities": {
+        "grant_stat": "stat:maximum_mana_+_per_2_intelligence",
+        "unique_mod": "mod:GainManaPer2IntelligenceUnique_1",
+        "rare_mod": "mod:NecropolisCraftingManaPer2Intelligence"
+      },
+      "chain": [
+        "mod:GainManaPer2IntelligenceUnique_1 (unique)",
+        "stat:maximum_mana_+_per_2_intelligence",
+        "mod:NecropolisCraftingManaPer2Intelligence (prefix)"
+      ],
+      "assertions": [
+        {
+          "check": "stat_node",
+          "detail": "stat:maximum_mana_+_per_2_intelligence is a Stat node"
+        },
+        {
+          "check": "co_occur",
+          "detail": "granted by both the unique and the Necropolis crafting prefix"
+        },
+        {
+          "check": "traversable",
+          "detail": "unique <-> rare via shared stat using M1"
+        },
+        {
+          "check": "not_inherent",
+          "detail": "no record applies it to characters - it is a mod-granted stat, not the inherent grant (see accepted_limitations)"
+        }
+      ],
+      "expected_now": "pass"
+    },
+    {
+      "id": "T_int_lightning_mods",
+      "kind": "green",
+      "goal": "Per-10-intelligence lightning scaling mod exists as a rare/special item mod",
+      "entities": {
+        "mod": "mod:RecombinatorSpecialLightningDamageToAttacksPerIntelligence",
+        "min": "stat:minimum_added_lightning_damage_to_attacks_per_10_intelligence",
+        "max": "stat:maximum_added_lightning_damage_to_attacks_per_10_intelligence"
+      },
+      "chain": [
+        "mod:RecombinatorSpecialLightningDamageToAttacksPerIntelligence",
+        "stat:minimum/maximum_added_lightning_damage_to_attacks_per_10_intelligence"
+      ],
+      "assertions": [
+        {
+          "check": "mod_exists",
+          "detail": "mod:RecombinatorSpecialLightningDamageToAttacksPerIntelligence exists (prefix, domain=item)"
+        },
+        {
+          "check": "grants_both",
+          "detail": "it grants both min and max per-10-intelligence lightning stats"
+        },
+        {
+          "check": "stat_nodes",
+          "detail": "both stats are Stat nodes"
+        },
+        {
+          "check": "traversable",
+          "detail": "mod <-> each stat via M1"
+        }
+      ],
+      "expected_now": "pass"
+    },
+    {
+      "id": "T_mana_lightning_anchor",
+      "kind": "green",
+      "goal": "Mana -> Lightning conversion stat anchor exists",
+      "entities": {
+        "anchor_stat": "stat:attack_skills_have_added_lightning_damage_equal_to_%_of_maximum_mana",
+        "unique_mod": "mod:AttackLightningDamageMaximumManaUnique__1__"
+      },
+      "chain": [
+        "mod:AttackLightningDamageMaximumManaUnique__1__ (unique)",
+        "stat:attack_skills_have_added_lightning_damage_equal_to_%_of_maximum_mana"
+      ],
+      "assertions": [
+        {
+          "check": "stat_node",
+          "detail": "the mana->lightning anchor stat is a Stat node"
+        },
+        {
+          "check": "grater",
+          "detail": "granted by at least one unique mod"
+        },
+        {
+          "check": "traversable",
+          "detail": "mod <-> stat via M1"
+        }
+      ],
+      "expected_now": "pass"
+    },
+    {
+      "id": "R1_strength_to_fire",
+      "kind": "red",
+      "goal": "Strength -> FireMin/FireMax head must be traversable",
+      "entities": {
+        "strength": "stat:strength",
+        "firemin": "stat:attack_minimum_added_fire_damage_per_10_strength",
+        "firemax": "stat:attack_maximum_added_fire_damage_per_10_strength"
+      },
+      "chain": [
+        "stat:strength",
+        "stat:attack_minimum_added_fire_damage_per_10_strength",
+        "mod:AddedFireDamagePerStrengthInfluence1",
+        "stat:attack_maximum_added_fire_damage_per_10_strength"
+      ],
+      "phase5_requirement": "WHAT: a deterministic relationship must connect stat:strength to the per-strength fire scaling stats, derived only from the source stat-id strings. Classification: representable - the stat ids exist in the data; the head link is not yet connected.",
+      "assertions": [
+        {
+          "check": "head_traversable",
+          "detail": "stat:strength is reachable from the per-10-strength fire stats within depth 2"
+        },
+        {
+          "check": "no_semantic_inference",
+          "detail": "no semantic inference / no display-text parsing"
+        }
+      ],
+      "expected_now": "fail"
+    },
+    {
+      "id": "R2_endurance_charge_to_fire",
+      "kind": "red",
+      "goal": "Endurance Charge -> FireMin/FireMax head must be traversable",
+      "entities": {
+        "firemin": "stat:minimum_added_fire_damage_per_endurance_charge",
+        "firemax": "stat:maximum_added_fire_damage_per_endurance_charge"
+      },
+      "chain": [
+        "<endurance-charge-entity>",
+        "stat:minimum_added_fire_damage_per_endurance_charge",
+        "mod:AddedFireDamagePerEnduranceChargeInfluence1",
+        "stat:maximum_added_fire_damage_per_endurance_charge"
+      ],
+      "phase5_requirement": "WHAT: a start entity for 'Endurance Charge' and a deterministic relationship from it to the per-charge fire stats are required. Classification: data gap - no node currently represents endurance charges; the damage side is representable.",
+      "assertions": [
+        {
+          "check": "head_traversable",
+          "detail": "a start entity for 'Endurance Charge' exists and connects to the per-charge fire stats within depth 2"
+        },
+        {
+          "check": "documented_gap",
+          "detail": "must not fake a node - report the entity decision explicitly"
+        }
+      ],
+      "expected_now": "fail"
+    },
+    {
+      "id": "R3_hopeshredder_scaling",
+      "kind": "red",
+      "goal": "Hopeshredder -> verified stat-bearing modifiers",
+      "entities": {
+        "hopeshredder": "unique:739"
+      },
+      "chain": [
+        "unique:739",
+        "mod:any (method 1/3/4 verified)",
+        "stat:any"
+      ],
+      "phase5_requirement": "WHAT: a validated, deterministic unique->mod association for unique:739 must be establishable. Classification: validation gap - current associations are unvalidated method-2 text candidates and must not become relationships until validated.",
+      "assertions": [
+        {
+          "check": "verified_targets",
+          "detail": "unique:739 has >=1 resolved_target with method in {1,3,4} (verified, validated) - currently none"
+        },
+        {
+          "check": "candidates_not_edges",
+          "detail": "method-2 candidates must not be traversable as confirmed relations"
+        }
+      ],
+      "expected_now": "fail"
+    },
+    {
+      "id": "R_adv_whispers_chain",
+      "kind": "red",
+      "goal": "Whispers -> Intelligence -> Lightning-per-Int -> Lightning -> Unholy Trinity multi-hop discovery",
+      "entities": {
+        "whispers": "unique:1461",
+        "intelligence": "stat:intelligence",
+        "int_mana_grant": "stat:maximum_mana_+_per_2_intelligence",
+        "lightning_per_int": "stat:minimum_added_lightning_damage_to_attacks_per_10_intelligence",
+        "lightning_damage": "stat:attack_minimum_added_lightning_damage",
+        "unholy_trinity": "gem:SupportUnholyTrinity"
+      },
+      "chain": [
+        "unique:1461",
+        "stat:intelligence",
+        "stat:minimum_added_lightning_damage_to_attacks_per_10_intelligence",
+        "stat:attack_minimum_added_lightning_damage",
+        "gem:SupportUnholyTrinity"
+      ],
+      "phase5_requirement": "WHAT: each hop (Whispers->mana->Intelligence->Lightning-per-Int->Lightning->Unholy Trinity) must be a deterministic relationship. Classification: Whispers resolution is unvalidated (validation gap); the Intelligence<->scaling-stat hops are representable from the source stat-id strings but not yet connected; the inherent Int->mana application is an accepted data gap.",
+      "assertions": [
+        {
+          "check": "multi_hop",
+          "detail": "a depth-limited traversal from unique:1461 reaches gem:SupportUnholyTrinity via stat:intelligence and lightning-damage stats"
+        },
+        {
+          "check": "structural_not_hardcoded",
+          "detail": "each hop is a real edge (M1/M2/M3/M4), not a lookup shortcut"
+        },
+        {
+          "check": "reasoning_not_required",
+          "detail": "the quantitative variance hypothesis is NOT asserted - only that all structural info is reachable"
+        }
+      ],
+      "expected_now": "fail"
+    }
+  ]
+}

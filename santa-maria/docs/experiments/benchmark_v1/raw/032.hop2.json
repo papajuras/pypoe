@@ -1,0 +1,66 @@
+{
+ "index": 32,
+ "node_id": "unique:1065",
+ "targets": {
+  "mod:ElusiveBuffEffectPerPowerChargeUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:elusive_effect_on_self_+%_per_power_charge"
+   ],
+   "tags": []
+  },
+  "mod:HybridDexInt": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:additional_dexterity_and_intelligence"
+   ],
+   "tags": [
+    "tag:attribute"
+   ]
+  },
+  "mod:LoseFrenzyChargeOnTravelSkillUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:lose_a_frenzy_charge_on_travel_skill_use_%_chance"
+   ],
+   "tags": [
+    "tag:frenzy_charge"
+   ]
+  },
+  "mod:LosePowerChargeOnElusiveGainUnique__1_": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:lose_a_power_charge_when_you_gain_elusive_%_chance"
+   ],
+   "tags": [
+    "tag:power_charge"
+   ]
+  },
+  "mod:MaximumFrenzyChargesEqualToMaximumPowerChargesUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:maximum_frenzy_charges_is_equal_to_maximum_power_charges"
+   ],
+   "tags": [
+    "tag:frenzy_charge"
+   ]
+  },
+  "mod:MutatedUniqueAmulet57MovementVelocityPerFrenzyCharge": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:movement_velocity_+%_per_frenzy_charge"
+   ],
+   "tags": [
+    "tag:mutatedunique",
+    "tag:speed"
+   ]
+  },
+  "mod:TravelSkillCooldownRecoveryPerFrenzyChargeUnique__1": {
+   "kind": "mod",
+   "grants_stats": [
+    "stat:travel_skills_cooldown_speed_+%_per_frenzy_charge"
+   ],
+   "tags": []
+  }
+ }
+}

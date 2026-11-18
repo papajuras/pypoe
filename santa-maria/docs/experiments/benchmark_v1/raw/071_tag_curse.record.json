@@ -1,0 +1,14 @@
+{
+ "index": 71,
+ "node_id": "tag:curse",
+ "type": "Tag",
+ "resolve_error": null,
+ "carriers_error": null,
+ "carrier_counts": {
+  "modifier_grants_stat": 0,
+  "passive_grants_stat": 0,
+  "gem_grants_stat": 0,
+  "unique_modifier_association": 0
+ },
+ "neighbour_error": null
+}

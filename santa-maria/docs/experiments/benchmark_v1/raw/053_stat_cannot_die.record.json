@@ -1,0 +1,14 @@
+{
+ "index": 53,
+ "node_id": "stat:cannot_die",
+ "type": "Stat",
+ "resolve_error": null,
+ "carriers_error": null,
+ "carrier_counts": {
+  "modifier_grants_stat": 7,
+  "passive_grants_stat": 0,
+  "gem_grants_stat": 0,
+  "unique_modifier_association": 0
+ },
+ "neighbour_error": null
+}

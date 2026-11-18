@@ -1,0 +1,87 @@
+{
+ "index": 14,
+ "node_id": "passive:AscendancyJuggernaut11",
+ "targets": {
+  "stat:chance_to_gain_endurance_charge_when_hit_%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 4,
+    "passive_grants_stat": 3,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmEnchangeChargeWhenHit1",
+    "mod:AnimalCharmEnchangeChargeWhenHit2",
+    "mod:GainEnduranceChargesWhenHitUnique__1_",
+    "mod:GraftPrefixUulnetolEnduranceChargeWhenHit1",
+    "passive:AscendancyJuggernaut11",
+    "passive:armour_endurance_charge_notable2376",
+    "passive:royale_scion_1"
+   ],
+   "total": 7
+  },
+  "stat:gain_endurance_charge_per_second_if_have_been_hit_recently": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 6,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ChargeBonusEnduranceChargeIfHitRecently",
+    "mod:EnduranceChargeIfHitRecentlyInfluence1",
+    "mod:EnduranceChargeIfHitRecentlyInfluenceMaven",
+    "mod:MonsterArchnemesisJuggernaut___",
+    "mod:MonsterModEnduranceChargeGain",
+    "mod:SynthesisImplicitEnduranceChargeGeneration1",
+    "passive:AscendancyAscendant31",
+    "passive:AscendancyJuggernaut11"
+   ],
+   "total": 8
+  },
+  "stat:gain_maximum_endurance_charges_on_endurance_charge_gained_%_chance": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ChargeBonusChanceToGainMaximumEnduranceCharges",
+    "mod:MaximumEnduranceChargeInfluenceMaven__",
+    "passive:AscendancyJuggernaut11"
+   ],
+   "total": 3
+  },
+  "stat:max_endurance_charges": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 33,
+    "passive_grants_stat": 6,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ChargeBonusMaximumEnduranceCharges",
+    "mod:EssenceHorrorChargesMaxAndDuration_",
+    "mod:HellscapeDownsideMaximumEnduranceCharges1",
+    "mod:MaximumEnduranceChargeInfluence1",
+    "mod:MaximumEnduranceChargeInfluenceMaven__",
+    "mod:MaximumEnduranceChargeUber1",
+    "mod:MaximumEnduranceChargeUniqueBodyStr3",
+    "mod:MaximumEnduranceChargeUniqueBodyStrDex3",
+    "mod:MaximumEnduranceChargeUniqueRing2",
+    "mod:MaximumEnduranceChargeUnique__1_",
+    "mod:MaximumEnduranceChargeUnique__2",
+    "mod:MaximumEnduranceChargesCorruption_",
+    "mod:MutatedUniqueBodyStrInt2MaximumEnduranceCharges",
+    "mod:MutatedUniqueTwoHandAxe1MaximumEnduranceCharges",
+    "mod:NecropolisCraftingMaximumEnduranceCharges"
+   ],
+   "total": 39
+  }
+ }
+}

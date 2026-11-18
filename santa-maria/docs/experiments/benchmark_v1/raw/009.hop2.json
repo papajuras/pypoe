@@ -1,0 +1,70 @@
+{
+ "index": 9,
+ "node_id": "passive:AscendancyElementalist19",
+ "targets": {
+  "stat:all_damage_can_shock": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 12,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:BetrayalUpgradeMonsterLightningDamageAndShock_",
+    "mod:ExpeditionRelicModifierAllDamageShocksShockEffect",
+    "mod:MonsterArchnemesisMinionShocker",
+    "mod:MonsterArchnemesisPrismatic",
+    "mod:MonsterArchnemesisPrismaticMagic",
+    "mod:MonsterArchnemesisShockerMagic",
+    "mod:MonsterArchnemesisShocker_",
+    "mod:NecropolisShock1",
+    "mod:NecropolisShock2",
+    "mod:NecropolisShock3",
+    "mod:TangledAltarDownsideBossAllDamageCanShock",
+    "mod:TangledAltarDownsideBossPhysToAddAsLightning",
+    "passive:AscendancyElementalist19"
+   ],
+   "total": 13
+  },
+  "stat:always_shock": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 8,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:MonsterArchnemesisMinionShocker",
+    "mod:MonsterArchnemesisPrismatic",
+    "mod:MonsterArchnemesisPrismaticMagic",
+    "mod:MonsterArchnemesisShockerMagic",
+    "mod:MonsterArchnemesisShocker_",
+    "mod:MonsterModApplyShock",
+    "mod:TangledAltarDownsideBossAllDamageCanShock",
+    "mod:TangledAltarDownsideBossPhysToAddAsLightning",
+    "passive:AscendancyElementalist19",
+    "passive:AscendancyReliquarian22"
+   ],
+   "total": 10
+  },
+  "stat:shock_minimum_damage_taken_increase_%": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 3,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmShockMinimumDamageIncrease1",
+    "mod:AnimalCharmShockMinimumDamageIncrease2",
+    "passive:AscendancyAscendant38",
+    "passive:AscendancyElementalist19",
+    "passive:royale_totem_2"
+   ],
+   "total": 5
+  }
+ }
+}

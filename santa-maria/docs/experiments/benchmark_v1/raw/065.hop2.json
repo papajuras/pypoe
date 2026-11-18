@@ -1,0 +1,108 @@
+{
+ "index": 65,
+ "node_id": "mechanic:minion",
+ "targets": {
+  "t": {
+   "kind": "tag"
+  },
+  "stat:%_of_your_and_your_minions_damage_cannot_be_reflected": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 1,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:DamageCannotBeReflectedPercentEssence1"
+   ],
+   "total": 1
+  },
+  "stat:%_of_your_and_your_minions_elemental_damage_cannot_be_reflected": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 8,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:ElementalDamageCannotBeReflectedPercentInfluence1",
+    "mod:ElementalDamageCannotBeReflectedPercentInfluenceMaven",
+    "mod:ElementalDamageCannotBeReflectedPercentRingInfluence1",
+    "mod:ElementalDamageCannotBeReflectedPercentRingInfluence2",
+    "mod:ElementalDamageCannotBeReflectedPercentRingUber1",
+    "mod:ElementalDamageCannotBeReflectedPercentRingUber2",
+    "mod:ElementalDamageCannotBeReflectedPercentUber1",
+    "mod:ElementalDamageCannotBeReflectedPercentUberMaven"
+   ],
+   "total": 8
+  },
+  "stat:%_of_your_and_your_minions_physical_damage_cannot_be_reflected": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 8,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:PhysicalDamageCannotBeReflectedPercentInfluence1",
+    "mod:PhysicalDamageCannotBeReflectedPercentInfluenceMaven",
+    "mod:PhysicalDamageCannotBeReflectedPercentRingInfluence1",
+    "mod:PhysicalDamageCannotBeReflectedPercentRingInfluence2",
+    "mod:PhysicalDamageCannotBeReflectedPercentRingUber1",
+    "mod:PhysicalDamageCannotBeReflectedPercentRingUber2",
+    "mod:PhysicalDamageCannotBeReflectedPercentUber1",
+    "mod:PhysicalDamageCannotBeReflectedPercentUberMaven"
+   ],
+   "total": 8
+  },
+  "stat:absolution_minion_area_of_effect_+%": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 0,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:EnchantmentAbsolutionMinionAreaOfEffect1_",
+    "mod:EnchantmentAbsolutionMinionAreaOfEffect2"
+   ],
+   "total": 2
+  },
+  "stat:additive_minion_damage_modifiers_apply_to_you_at_150%_value": {
+   "kind": "mech_stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 7,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "gem:Absolution",
+    "gem:AbsolutionAltX",
+    "gem:DominatingBlow",
+    "gem:DominatingBlowAltX",
+    "gem:DominatingBlowRoyale",
+    "gem:VaalAbsolution",
+    "gem:VaalDomination",
+    "mod:MinionDamageAlsoAffectsYouUnique__1",
+    "mod:VillageMinionDamageAlsoAffectsYou",
+    "passive:AscendancyCustomRaider18"
+   ],
+   "total": 10
+  }
+ },
+ "related_stats_sample": {
+  "total": 200,
+  "sample": [
+   "stat:%_of_your_and_your_minions_damage_cannot_be_reflected",
+   "stat:%_of_your_and_your_minions_elemental_damage_cannot_be_reflected",
+   "stat:%_of_your_and_your_minions_physical_damage_cannot_be_reflected",
+   "stat:absolution_minion_area_of_effect_+%",
+   "stat:additive_minion_damage_modifiers_apply_to_you_at_150%_value"
+  ]
+ }
+}

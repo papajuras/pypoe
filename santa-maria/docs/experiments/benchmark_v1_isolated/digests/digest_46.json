@@ -1,0 +1,345 @@
+{
+ "index": 46,
+ "node_id": "gem:SummonHolyRelicAltX",
+ "type": "Gem",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "gem:SummonHolyRelicAltX"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "gem:SummonHolyRelicAltX"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "gem:SummonHolyRelicAltX"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:active_skill_minion_from_alternate_gem_index"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "stat:active_skill_minion_movement_velocity_+%_final"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "gem_grants_stat|gem:SummonHolyRelicAltX|stat:active_skill_minion_from_alternate_gem_index|out",
+    "gem_grants_stat|gem:SummonHolyRelicAltX|stat:active_skill_minion_movement_velocity_+%_final|out",
+    "gem_grants_stat|gem:SummonHolyRelicAltX|stat:base_display_minion_actor_level|out",
+    "gem_grants_stat|gem:SummonHolyRelicAltX|stat:base_number_of_relics_allowed|out",
+    "gem_grants_stat|gem:SummonHolyRelicAltX|stat:display_minion_monster_type|out",
+    "gem_grants_stat|gem:SummonHolyRelicAltX|stat:holy_relic_targets_nearest_enemy|out",
+    "gem_grants_stat|gem:SummonHolyRelicAltX|stat:infinite_minion_duration|out",
+    "gem_grants_stat|gem:SummonHolyRelicAltX|stat:minions_cannot_taunt_enemies|out",
+    "gem_has_tag|gem:SummonHolyRelicAltX|tag:minion|out"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [
+    "gem_has_tag|tag:minion|<60 in: gem:Absolution, gem:AbsolutionAltX, gem:AnimateGuardian\u2026>"
+   ],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 79,
+     "members": [
+      "gem:Absolution",
+      "gem:AbsolutionAltX",
+      "gem:AnimateGuardian",
+      "gem:AnimateGuardianAltX",
+      "gem:AnimateWeapon",
+      "gem:AnimateWeaponAltX",
+      "gem:AnimateWeaponAltY",
+      "gem:AshwakerSummonRagingSpiritOnKill",
+      "gem:BlinkArrow",
+      "gem:BlinkArrowAltX",
+      "gem:BlinkArrowAltY",
+      "gem:BlinkArrowRoyale",
+      "gem:BlinkArrowTriggered",
+      "gem:CeaselessFleshUnique",
+      "gem:EnchantmentOfReflectionWhenHit",
+      "gem:EnchantmentOfReflectionWhenHit2",
+      "gem:EnchantmentOfReflectionWhenHit3",
+      "gem:EnchantmentOfReflectionWhenHit4",
+      "gem:EnchantmentOfTheGraveOnKill",
+      "gem:EnchantmentOfTheGraveOnKill2",
+      "gem:EnchantmentOfTheGraveOnKill3",
+      "gem:EnchantmentOfTheGraveOnKill4",
+      "gem:HeraldOfAgony",
+      "gem:HeraldOfPurity",
+      "gem:ManifestDancingDervishes",
+      "gem:MirrorArrow",
+      "gem:MirrorArrowAltX",
+      "gem:MirrorArrowAltY",
+      "gem:MirrorArrowTriggered",
+      "gem:RaiseSpectre",
+      "gem:RaiseSpectreAltX",
+      "gem:RaiseSpiders",
+      "gem:RaiseZombie",
+      "gem:RaiseZombieAltX",
+      "gem:RaiseZombieAltY",
+      "gem:Replicate",
+      "gem:SpectralSpirits",
+      "gem:SummonArbalists",
+      "gem:SummonBeastialRhoa",
+      "gem:SummonBeastialSnake",
+      "gem:SummonBeastialUrsa",
+      "gem:SummonCarrionGolem",
+      "gem:SummonCarrionGolemAltX",
+      "gem:SummonCarrionGolemAltY",
+      "gem:SummonChaosGolem",
+      "gem:SummonChaosGolemAltX",
+      "gem:SummonChaosGolemAltY",
+      "gem:SummonFlameGolem",
+      "gem:SummonFlameGolemAltX",
+      "gem:SummonFlameGolemAltY",
+      "gem:SummonHolyRelic",
+      "gem:SummonHolyRelicAltX",
+      "gem:SummonIceGolem",
+      "gem:SummonIceGolemAltX",
+      "gem:SummonIceGolemAltY",
+      "gem:SummonLightningGolem",
+      "gem:SummonLightningGolemAltX",
+      "gem:SummonRagingSpirit",
+      "gem:SummonRagingSpiritAltX",
+      "gem:SummonRagingSpiritRoyale",
+      "gem:SummonReaper",
+      "gem:SummonReaperAltX",
+      "gem:SummonReaperAltY",
+      "gem:SummonSkeletons",
+      "gem:SummonSkeletonsAltX",
+      "gem:SummonSkeletonsAltY",
+      "gem:SummonSkeletonsChannelled",
+      "gem:SummonSkeletonsRoyale",
+      "gem:SummonSkitterbots",
+      "gem:SummonSpectralWolf",
+      "gem:SummonSpectralWolfTriggered",
+      "gem:SummonStoneGolem",
+      "gem:SummonStoneGolemAltX",
+      "gem:SummonStoneGolemAltY",
+      "gem:SummonTauntingContraption",
+      "gem:SummonVoidSpawn",
+      "gem:TriggeredSupportHiveborn",
+      "gem:VaalAnimateWeapon",
+      "gem:VaalSummonSkeletons"
+     ]
+    },
+    {
+     "carrier_type": "Modifier",
+     "count": 2,
+     "members": [
+      "mod:AdditionalHolyRelicUnique__1",
+      "mod:DivergentAdditionalHolyRelicUnique__1"
+     ]
+    }
+   ]
+  },
+  {
+   "depth": 3,
+   "edges": [
+    "gem_grants_stat|gem:Absolution|stat:absolution_blast_chance_to_summon_on_hitting_rare_or_unique_%|out",
+    "gem_grants_stat|gem:AbsolutionAltX|stat:active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value|out",
+    "gem_grants_stat|gem:BodyswapAltX|stat:active_skill_ailment_damage_+%_final|out",
+    "gem_grants_stat|gem:GraftSkillTulSummon|stat:active_skill_base_area_of_effect_radius|out",
+    "gem_grants_stat|gem:Absolution|stat:active_skill_base_radius_+|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:active_skill_minion_attack_speed_+%_final|out",
+    "gem_grants_stat|gem:SummonReaper|stat:active_skill_minion_bleeding_damage_+%_final|out",
+    "gem_grants_stat|gem:AnimateGuardian|stat:active_skill_minion_damage_+%_final|out",
+    "gem_grants_stat|gem:AnimateGuardian|stat:active_skill_minion_life_+%_final|out",
+    "gem_grants_stat|gem:HeraldOfPurity|stat:active_skill_minion_physical_damage_+%_final|out",
+    "gem_grants_stat|gem:SummonCarrionGolemAltX|stat:active_skill_no_golem_aura|out",
+    "gem_grants_stat|gem:SummonReaper|stat:active_skill_non_reaper_minion_damage_+%_final|out",
+    "gem_grants_stat|gem:SummonReaper|stat:active_skill_non_reaper_minion_maximum_life_+%_final|out",
+    "gem_grants_stat|gem:DarkPact|stat:added_chaos_damage_%_mana_cost_if_payable|out",
+    "gem_grants_stat|gem:Absolution|stat:additive_minion_damage_modifiers_apply_to_you_at_150%_value|out",
+    "gem_grants_stat|gem:Replicate|stat:additive_modifiers_to_bow_damage_also_apply_to_minions|out",
+    "gem_grants_stat|gem:AnimateGuardian|stat:animate_item_maximum_level_requirement|out",
+    "gem_grants_stat|gem:AnimateWeaponAltY|stat:animate_weapon_can_only_animate_range_weapons|out",
+    "gem_grants_stat|gem:DominatingBlow|stat:attack_damage_+%_for_non_minions|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:attack_maximum_added_physical_damage|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:attack_maximum_added_physical_damage_for_ethereal_blades|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:attack_minimum_added_physical_damage|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:attack_minimum_added_physical_damage_for_ethereal_blades|out",
+    "gem_grants_stat|gem:BlinkArrow|stat:attack_speed_+%_for_non_minions|out",
+    "gem_grants_stat|gem:FleshOffering|stat:attack_speed_+%_granted_from_skill|out",
+    "gem_grants_stat|gem:SummonCarrionGolem|stat:base_actor_scale_+%|out",
+    "gem_grants_stat|gem:Absolution|stat:base_cast_speed_+%|out",
+    "gem_grants_stat|gem:SummonSkeletons|stat:base_cooldown_modifier_ms|out",
+    "gem_grants_stat|gem:BlinkArrow|stat:base_cooldown_speed_+%|out",
+    "gem_grants_stat|gem:BloodOffering|stat:base_deal_no_damage|out",
+    "gem_grants_stat|gem:HolyStrike|stat:base_from_skill_shock_art_variation|out",
+    "gem_grants_stat|gem:GraftSkillTulSummon|stat:base_graft_skill_tul_summon_maximum_allowed_demons|out",
+    "gem_grants_stat|gem:HolyStrike|stat:base_holy_strike_maximum_number_of_animated_weapons|out",
+    "gem_grants_stat|gem:BlinkArrow|stat:base_is_projectile|out",
+    "gem_grants_stat|gem:HeraldOfAgony|stat:base_mana_reservation_efficiency_+%|out",
+    "gem_grants_stat|gem:Absolution|stat:base_max_number_of_absolution_sentinels|out",
+    "gem_grants_stat|gem:DominatingBlow|stat:base_max_number_of_dominated_magic_monsters|out",
+    "gem_grants_stat|gem:DominatingBlow|stat:base_max_number_of_dominated_normal_monsters|out",
+    "gem_grants_stat|gem:DominatingBlow|stat:base_max_number_of_dominated_rare_monsters|out",
+    "gem_grants_stat|gem:Absolution|stat:base_max_number_of_vaal_absolution_sentinels|out",
+    "gem_grants_stat|gem:DominatingBlow|stat:base_max_number_of_vaal_dominated_monsters|out",
+    "gem_grants_stat|gem:Absolution|stat:base_minion_duration_+%|out",
+    "gem_grants_stat|gem:FleshOffering|stat:base_movement_velocity_+%|out",
+    "gem_grants_stat|gem:AnimateWeapon|stat:base_number_of_animated_weapons_allowed|out",
+    "gem_grants_stat|gem:CallOfTheWild|stat:base_number_of_beast_minions_allowed|out",
+    "gem_grants_stat|gem:BlinkArrowAltY|stat:base_number_of_blink_mirror_arrow_elemental_hit_clones|out",
+    "gem_grants_stat|gem:BlinkArrowAltX|stat:base_number_of_blink_mirror_arrow_rain_of_arrows_clones|out",
+    "gem_grants_stat|gem:HeraldOfPurity|stat:base_number_of_champions_of_light_allowed|out",
+    "gem_grants_stat|gem:SummonCarrionGolem|stat:base_number_of_golems_allowed|out",
+    "gem_grants_stat|gem:HeraldOfAgony|stat:base_number_of_herald_scorpions_allowed|out",
+    "gem_grants_stat|gem:SummonRagingSpirit|stat:base_number_of_raging_spirits_allowed|out",
+    "gem_grants_stat|gem:SummonReaper|stat:base_number_of_reapers_allowed|out",
+    "gem_grants_stat|gem:Replicate|stat:base_number_of_replicate_minions_allowed|out",
+    "gem_grants_stat|gem:SummonSkeletons|stat:base_number_of_skeletons_allowed|out",
+    "gem_grants_stat|gem:RaiseSpectre|stat:base_number_of_spectres_allowed|out",
+    "gem_grants_stat|gem:RaiseZombie|stat:base_number_of_zombies_allowed|out",
+    "gem_grants_stat|gem:HeraldOfAgony|stat:base_reservation_+%|out",
+    "gem_grants_stat|gem:Absolution|stat:base_secondary_skill_effect_duration|out",
+    "gem_grants_stat|gem:DarkPact|stat:base_skill_area_of_effect_+%|out",
+    "gem_grants_stat|gem:Absolution|stat:base_skill_effect_duration|out"
+   ],
+   "groups": []
+  }
+ ],
+ "downstream_stats": [
+  {
+   "stat": "stat:active_skill_minion_from_alternate_gem_index",
+   "chain": "gem_grants_stat>stat:active_skill_minion_from_alternate_gem_index",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:active_skill_minion_movement_velocity_+%_final",
+   "chain": "gem_grants_stat>stat:active_skill_minion_movement_velocity_+%_final",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:base_display_minion_actor_level",
+   "chain": "gem_grants_stat>stat:base_display_minion_actor_level",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:base_number_of_relics_allowed",
+   "chain": "gem_grants_stat>stat:base_number_of_relics_allowed",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:display_minion_monster_type",
+   "chain": "gem_grants_stat>stat:display_minion_monster_type",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:holy_relic_targets_nearest_enemy",
+   "chain": "gem_grants_stat>stat:holy_relic_targets_nearest_enemy",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:infinite_minion_duration",
+   "chain": "gem_grants_stat>stat:infinite_minion_duration",
+   "mech": [],
+   "fanin_seen": 0
+  },
+  {
+   "stat": "stat:minions_cannot_taunt_enemies",
+   "chain": "gem_grants_stat>stat:minions_cannot_taunt_enemies",
+   "mech": [],
+   "fanin_seen": 0
+  }
+ ],
+ "stat_carriers": {
+  "stat:active_skill_minion_from_alternate_gem_index": {
+   "carriers": {
+    "gem_grants_stat": {
+     "count": 9,
+     "samples": [
+      {
+       "id": "gem:AnimateGuardianAltX",
+       "name": null
+      },
+      {
+       "id": "gem:RaiseZombieAltX",
+       "name": null
+      },
+      {
+       "id": "gem:RaiseZombieAltY",
+       "name": null
+      },
+      {
+       "id": "gem:SummonCarrionGolemAltY",
+       "name": null
+      },
+      {
+       "id": "gem:SummonChaosGolemAltY",
+       "name": null
+      },
+      {
+       "id": "gem:SummonFlameGolemAltY",
+       "name": null
+      },
+      {
+       "id": "gem:SummonHolyRelicAltX",
+       "name": null
+      },
+      {
+       "id": "gem:SummonReaperAltY",
+       "name": null
+      }
+     ]
+    }
+   }
+  },
+  "stat:active_skill_minion_movement_velocity_+%_final": {
+   "carriers": {
+    "gem_grants_stat": {
+     "count": 4,
+     "samples": [
+      {
+       "id": "gem:RaiseSpectre",
+       "name": null
+      },
+      {
+       "id": "gem:RaiseSpectreAltX",
+       "name": null
+      },
+      {
+       "id": "gem:SummonHolyRelic",
+       "name": null
+      },
+      {
+       "id": "gem:SummonHolyRelicAltX",
+       "name": null
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mechanic_view": null,
+ "flags": [
+  "zero_carrier_start",
+  "truncated_bfs"
+ ]
+}

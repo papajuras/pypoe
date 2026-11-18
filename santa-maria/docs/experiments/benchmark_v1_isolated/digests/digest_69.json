@@ -1,0 +1,464 @@
+{
+ "index": 69,
+ "node_id": "mechanic:chill",
+ "type": "Mechanic",
+ "name": null,
+ "block": "random_draw",
+ "availability": null,
+ "calls": [
+  {
+   "resolve": {
+    "query": "mechanic:chill"
+   }
+  },
+  {
+   "neighbour": {
+    "depth": 3,
+    "start": "mechanic:chill"
+   }
+  },
+  {
+   "carriers": {
+    "node_id": "mechanic:chill"
+   }
+  },
+  {
+   "neighbour": {
+    "mechanic": "mechanic:chill"
+   }
+  }
+ ],
+ "start_carriers": {},
+ "bfs_truncated": true,
+ "bfs_levels": [
+  {
+   "depth": 1,
+   "edges": [
+    "stat_mechanic_relation|mechanic:chill|stat:action_speed_-%_from_chill|in",
+    "stat_mechanic_relation|mechanic:chill|stat:all_damage_can_chill|in",
+    "stat_mechanic_relation|mechanic:chill|stat:all_damage_taken_can_chill|in",
+    "stat_mechanic_relation|mechanic:chill|stat:arctic_breath_chilling_area_movement_velocity_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:attack_damage_that_stuns_also_chills|in",
+    "stat_mechanic_relation|mechanic:chill|stat:attack_speed_+%_while_chilled|in",
+    "stat_mechanic_relation|mechanic:chill|stat:avoid_freeze_and_chill_%_if_you_have_used_a_fire_skill_recently|in",
+    "stat_mechanic_relation|mechanic:chill|stat:avoid_shock_%_while_chilled|in",
+    "stat_mechanic_relation|mechanic:chill|stat:base_avoid_chill_%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:base_avoid_chill_%_while_have_onslaught|in",
+    "stat_mechanic_relation|mechanic:chill|stat:base_cannot_be_chilled|in",
+    "stat_mechanic_relation|mechanic:chill|stat:base_immune_to_chill|in",
+    "stat_mechanic_relation|mechanic:chill|stat:base_life_leech_from_attack_damage_permyriad_vs_chilled_enemies|in",
+    "stat_mechanic_relation|mechanic:chill|stat:base_self_chill_duration_-%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:blight_chilling_tower_chill_effect_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:blind_chilled_enemies_on_hit_%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:cannot_be_chilled_or_frozen_while_moving|in",
+    "stat_mechanic_relation|mechanic:chill|stat:cast_speed_+%_while_chilled|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chance_to_sap_%_vs_enemies_in_chilling_areas|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chance_to_shock_chilled_enemies_%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chaos_damage_can_chill|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_and_freeze_duration_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_and_freeze_duration_based_on_%_energy_shield|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_attackers_for_4_seconds_on_block_%_chance|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_duration_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_effect_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_effect_+%_while_mana_leeching|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_effect_+%_with_tinctured_weapons|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_effect_is_reversed|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_effect_is_reversed_when_on_chilled_ground|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_effectiveness_on_self_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_enemy_when_hit_duration_ms|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_minimum_slow_%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_nearby_enemies_when_you_focus|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chill_prevention_ms_when_chilled|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chilled_ground_effect_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chilled_ground_on_freeze_%_chance_for_3_seconds|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chilled_ground_when_hit_with_attack_%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chilled_while_bleeding|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chilled_while_poisoned|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chilling_areas_also_grant_curse_effect_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chilling_areas_also_grant_lightning_damage_taken_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:chills_from_your_hits_cause_shattering|in",
+    "stat_mechanic_relation|mechanic:chill|stat:cold_damage_%_to_add_as_fire_per_1%_chill_effect_on_enemy|in",
+    "stat_mechanic_relation|mechanic:chill|stat:cold_damage_cannot_chill|in",
+    "stat_mechanic_relation|mechanic:chill|stat:cold_penetration_%_vs_chilled_enemies|in",
+    "stat_mechanic_relation|mechanic:chill|stat:creeping_frost_cold_snap_chance_to_sap_%_vs_enemies_in_chilling_areas|in",
+    "stat_mechanic_relation|mechanic:chill|stat:damage_+%_vs_chilled_enemies|in",
+    "stat_mechanic_relation|mechanic:chill|stat:elemental_penetration_%_while_chilled|in",
+    "stat_mechanic_relation|mechanic:chill|stat:enemies_chilled_by_bane_and_contagion|in",
+    "stat_mechanic_relation|mechanic:chill|stat:enemies_chilled_by_hits_deal_damage_lessened_by_chill_effect|in",
+    "stat_mechanic_relation|mechanic:chill|stat:enemies_chilled_by_hits_take_damage_increased_by_chill_effect|in",
+    "stat_mechanic_relation|mechanic:chill|stat:enemies_hitting_you_drop_chilled_ground_%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:freeze_chilled_enemies_as_though_dealt_damage_+%|in",
+    "stat_mechanic_relation|mechanic:chill|stat:gain_chilling_shocking_igniting_conflux_while_affected_by_glorious_madness|in",
+    "stat_mechanic_relation|mechanic:chill|stat:global_critical_strike_chance_+%_vs_chilled_enemies|in",
+    "stat_mechanic_relation|mechanic:chill|stat:global_maximum_added_cold_damage_vs_chilled_or_frozen_enemies|in",
+    "stat_mechanic_relation|mechanic:chill|stat:global_minimum_added_cold_damage_vs_chilled_or_frozen_enemies|in",
+    "stat_mechanic_relation|mechanic:chill|stat:hit_and_ailment_damage_+%_vs_chilled_enemies|in",
+    "stat_mechanic_relation|mechanic:chill|stat:ice_nova_chill_minimum_slow_%|in"
+   ],
+   "groups": []
+  },
+  {
+   "depth": 2,
+   "edges": [],
+   "groups": [
+    {
+     "carrier_type": "Gem",
+     "count": 20,
+     "members": [
+      "gem:AspectOfTheBrineKing",
+      "gem:ColdSnap",
+      "gem:ColdSnapAltX",
+      "gem:ColdSnapRoyale",
+      "gem:CreepingFrost",
+      "gem:CreepingFrostAltX",
+      "gem:CreepingFrostRoyale",
+      "gem:IceShot",
+      "gem:IceShotAltX",
+      "gem:IceShotRoyale",
+      "gem:SiphoningTrap",
+      "gem:SiphoningTrapAltX",
+      "gem:SiphoningTrapRoyale",
+      "gem:SummonSkitterbots",
+      "gem:SupportBonechill",
+      "gem:SupportCrustaceousGrasp",
+      "gem:VaalColdSnap",
+      "gem:VaalIceShot",
+      "gem:VaalImpurityOfIce",
+      "gem:WintertideBrand"
+     ]
+    },
+    {
+     "carrier_type": "Modifier",
+     "count": 195,
+     "members": [
+      "mod:AbyssAvoidFreezeAndChillJewel1",
+      "mod:AbyssAvoidFreezeAndChillJewel2",
+      "mod:AllDamageCanChillUnique__1",
+      "mod:AllDamageTakenCanChillUnique__1",
+      "mod:AncestralItemCannotBeChilledOrFrozen",
+      "mod:AnimalCharmChillMinimumSlow1",
+      "mod:AnimalCharmChillMinimumSlow2",
+      "mod:AttackSpeedWhileChilledUnique__1",
+      "mod:AvoidChillJewel",
+      "mod:AvoidFreezeAndChillIfFireSkillUsedRecentlyUnique__1",
+      "mod:BetrayalUpgradeMonsterAvoidAilments",
+      "mod:BetrayalUpgradeMonsterColdDamageAndChill",
+      "mod:BlightEnchantmentChillingTowerChillEffect",
+      "mod:BreachBodyChillEnemiesWhenHit1",
+      "mod:BreachBodyOnHitBlindChilledEnemies1",
+      "mod:CannotBeChilledUniqueBodyStrInt3",
+      "mod:CannotBeChilledUnique__1",
+      "mod:CannotBeChilledWhenOnslaughtUniqueOneHandAxe6",
+      "mod:CannotBeFrozenOrChilledUnique__1",
+      "mod:CannotBeFrozenOrChilledUnique__2",
+      "mod:CannotBeShockedWhileChilledUnique__1",
+      "mod:CastSpeedWhileChilledUnique__1",
+      "mod:ChanceToAvoidChillUniqueDescentOneHandAxe1",
+      "mod:ChanceToAvoidChilledUnique__1",
+      "mod:ChanceToAvoidFreezeAndChillUniqueDexHelmet5",
+      "mod:ChanceToAvoidFreezeAndChillUniqueStrHelmet2",
+      "mod:ChanceToAvoidFreezeCorruption",
+      "mod:ChanceToAvoidFreezeEssence3",
+      "mod:ChanceToAvoidFreezeEssence4",
+      "mod:ChanceToAvoidFreezeEssence5",
+      "mod:ChanceToAvoidFreezeEssence6",
+      "mod:ChanceToAvoidFreezeEssence7",
+      "mod:ChanceToChillAttackersOnBlockInfluence1",
+      "mod:ChanceToChillAttackersOnBlockInfluence2",
+      "mod:ChanceToChillAttackersOnBlockUber1",
+      "mod:ChanceToChillAttackersOnBlockUber2",
+      "mod:ChanceToChillAttackersOnBlockUnique__1",
+      "mod:ChanceToChillAttackersOnBlockUnique__2__",
+      "mod:ChanceToFreezeAddedDamageInfluence1_",
+      "mod:ChanceToFreezeAddedDamageInfluence2",
+      "mod:ChanceToFreezeAddedDamageUber1",
+      "mod:ChanceToFreezeAddedDamageUber2",
+      "mod:ChanceToSapVsEnemiesInChillingAreasUnique__1",
+      "mod:ChanceToShockChilledEnemiesUnique__1",
+      "mod:ChaosDamageCanChill",
+      "mod:ChillAndFreezeBasedOffEnergyShieldBelt5Unique",
+      "mod:ChillDurationOnSelfUnique__1",
+      "mod:ChillEffectLeechingManaUnique__1",
+      "mod:ChillEffectOnYouJewel",
+      "mod:ChillEffectivenessOnSelfUniqueRing28",
+      "mod:ChillEnemiesWhenHitUnique__1",
+      "mod:ChillHitsCauseShatteringUnique__1",
+      "mod:ChillImmunityWhenChilledUniqueGlovesStrInt1",
+      "mod:ChillNearbyEnemiesOnFocusUnique__1_",
+      "mod:ChillOnAttackStunUniqueOneHandMace5",
+      "mod:ChilledGroundEffectUnique__1",
+      "mod:ChilledWhileBleedingUnique__1_",
+      "mod:ChilledWhilePoisonedUnique__1",
+      "mod:ChillingAreasAlsoGrantLightningDamageTakenUnique__1",
+      "mod:ChillingConfluxInfluenceMaven_",
+      "mod:ColdAddedAsFireChilledEnemyUnique__1",
+      "mod:ColdPenetrationAgainstChilledEnemiesUnique__1",
+      "mod:ColdResistEnhancedLevel50ModAilments",
+      "mod:ColdResistEnhancedModAilments__",
+      "mod:DamageChilledEnemiesInfluence1",
+      "mod:DamageChilledEnemiesInfluence2",
+      "mod:DamageChilledEnemiesInfluence3",
+      "mod:DamageWithHitsAndAilmentsAgainstChilledEnemyUnique__1",
+      "mod:DelveAmuletCannotBeChilledOrFrozenWhileMoving1",
+      "mod:DivergentAvoidFreezeAndChillIfFireSkillUsedRecentlyUnique__1",
+      "mod:DivergentCannotBeFrozenOrChilledUnique__2",
+      "mod:DivergentChanceToSapVsEnemiesInChillingAreasUnique__1",
+      "mod:DivergentColdAddedAsFireChilledEnemyUnique__1",
+      "mod:DivergentElementalConfluxesGloriousMadnessUnique1",
+      "mod:DivergentFreezeDurationUniqueGlovesStrInt3",
+      "mod:EffectOfChillIsReversedUnique__1",
+      "mod:EinharMasterReducedSelfChillEffect1",
+      "mod:EinharMasterReducedSelfChillEffect2",
+      "mod:ElementalConfluxesGloriousMadnessUnique1",
+      "mod:ElementalPenetrationWhileChilledUnique__1___",
+      "mod:EnchantmentArcticBreathChillingAreaMovementVelocity1",
+      "mod:EnchantmentIceNovaMinimumChill1",
+      "mod:EnchantmentIceNovaMinimumChill2",
+      "mod:EnemiesChilledIncreasedDamageTakenUnique__1",
+      "mod:EnemiesChilledLessDamageDealtUnique__1",
+      "mod:ExileChillAndFreezeBasedOffEnergyShield",
+      "mod:ExpeditionRelicModifierImmuneStatusAilments_",
+      "mod:FreezeChillDurationUnique__1",
+      "mod:FreezeChilledEnemiesMoreDamageUnique__1_",
+      "mod:FreezeDurationJewel",
+      "mod:FreezeDurationUniqueGlovesStrInt3",
+      "mod:FreezeDurationUnique__1",
+      "mod:GlobalCriticalStrikeChanceAgainstChilledUnique__1",
+      "mod:GraftPrefixTulChillEffect1",
+      "mod:GraftPrefixTulChillEffect2",
+      "mod:HellscapeUpsideChanceToAvoidFreezeAndChill2_",
+      "mod:HellscapeUpsideChanceToAvoidFreezeAndChill3",
+      "mod:HellscapeUpsideChanceToAvoidFreezeAndChill4",
+      "mod:HellscapeUpsideChillEffectivenessOnSelf3_",
+      "mod:HellscapeUpsideChillEffectivenessOnSelf4_",
+      "mod:HellscapeUpsideChillEnemiesWhenHit3",
+      "mod:HellscapeUpsideChillEnemiesWhenHit4",
+      "mod:HellscapeUpsideChillOnBlock1",
+      "mod:HellscapeUpsideChillOnBlock2",
+      "mod:HellscapeUpsideChillOnBlock3",
+      "mod:HellscapeUpsideChillOnBlock4",
+      "mod:ImmuneToChillUnique__1",
+      "mod:ImmuneToChillUnique__2__",
+      "mod:IncreasedChillDurationUniqueBodyDex1",
+      "mod:IncreasedChillDurationUniqueBodyStrInt3",
+      "mod:IncreasedChillDurationUniqueQuiver5",
+      "mod:IncreasedChillDurationUnique__1",
+      "mod:IncreasedDamageToChilledEnemies1",
+      "mod:IntMasterChillAndFreezeDurationCrafted",
+      "mod:JewelImplicitChanceToAvoidChill",
+      "mod:JewelImplicitReducedChillEffect",
+      "mod:JunMaster2MovementVelocityAndCannotBeChilled1_",
+      "mod:JunMaster2MovementVelocityAndCannotBeChilled2",
+      "mod:JunMaster2MovementVelocityAndCannotBeChilled3",
+      "mod:JunMasterMovementVelocityAndCannotBeChilled1",
+      "mod:JunMasterMovementVelocityAndCannotBeChilled2_",
+      "mod:JunMasterMovementVelocityAndCannotBeChilled3",
+      "mod:JunMasterVeiledAvoidFreeze_",
+      "mod:JunMasterVeiledMovementVelocityAndCannotBeChilled__",
+      "mod:LifeLeechPermyriadFromAttacksAgainstChilledEnemiesUniqueBelt14",
+      "mod:MercenaryModCurseChillingAreas",
+      "mod:MercenaryModReverseChillEffectChilledGround",
+      "mod:MonsterArchnemesisFrostWalker",
+      "mod:MonsterArchnemesisFrostWalkerMagic",
+      "mod:MonsterArchnemesisPrismatic",
+      "mod:MonsterArchnemesisPrismaticMagic",
+      "mod:MonsterBloodlinesChillingAura",
+      "mod:MonsterCannotBeChilled",
+      "mod:MonsterImmuneToFreezeAndChill",
+      "mod:MonsterImmuneToIgnite",
+      "mod:MonsterImmuneToShock",
+      "mod:MonsterImmuneToStatusAilments",
+      "mod:MonsterModResistantToCold",
+      "mod:MutatedUniqueAmulet40CannotBeChilled",
+      "mod:NecropolisChill1",
+      "mod:NecropolisChill2",
+      "mod:NecropolisChill3",
+      "mod:OnHitBlindChilledEnemiesUnique__1_",
+      "mod:PvPMasterChillAvoidanceChanceCrafted",
+      "mod:ReducedChillDurationAbyssJewelCorrupted",
+      "mod:ReducedChillDurationJewelCorrupted",
+      "mod:ReducedChillDurationOnSelfUniqueRing30",
+      "mod:SpreadChilledGroundOnFreezeUnique__1",
+      "mod:SpreadChilledGroundWhenHitByAttackUnique__1",
+      "mod:SynthesisImplicitAvoidChill1",
+      "mod:SynthesisImplicitAvoidChill2_",
+      "mod:SynthesisImplicitAvoidChill3",
+      "mod:SynthesisImplicitChillDurationJewel1_",
+      "mod:SynthesisImplicitChillDurationJewel2",
+      "mod:SynthesisImplicitFreezeDuration1",
+      "mod:SynthesisImplicitFreezeDuration2",
+      "mod:TangledAltarDownsideBossAllDamageCanChill",
+      "mod:TangledAltarDownsideBossPhysToAddAsCold",
+      "mod:TangledAltarDownsidePlayerChilledGroundWhenHit",
+      "mod:TinctureChanceToFreezeImplicit1",
+      "mod:TormentTouchedMonsterFreezer",
+      "mod:V2AvoidChillAndFreezeAbyssalJewelCorrupted_",
+      "mod:V2AvoidChillAndFreezeJewelCorrupted",
+      "mod:V2ChillEffectOnYouJewelCorrupted",
+      "mod:VillageSpreadChilledGroundOnFreeze",
+      "mod:WeaponTreeAddedCold2hHighCannotChill1",
+      "mod:WeaponTreeAddedCold2hHighCannotChill2",
+      "mod:WeaponTreeAddedCold2hHighCannotChill3",
+      "mod:WeaponTreeAddedCold2hHighCannotChill4",
+      "mod:WeaponTreeAddedCold2hHighCannotChill5",
+      "mod:WeaponTreeAddedColdHighCannotChill1",
+      "mod:WeaponTreeAddedColdHighCannotChill2",
+      "mod:WeaponTreeAddedColdHighCannotChill3",
+      "mod:WeaponTreeAddedColdHighCannotChill4",
+      "mod:WeaponTreeAddedColdHighCannotChill5",
+      "mod:WeaponTreeChillEffect1",
+      "mod:WeaponTreeChillEffect2",
+      "mod:WeaponTreeChillEffect2h1",
+      "mod:WeaponTreeChillEffect2h2",
+      "mod:WeaponTreeChillOnBlock1",
+      "mod:WeaponTreeChillOnBlock2",
+      "mod:WeaponTreeSkillBaneContagion",
+      "mod:WeaponTreeSkillCreepingFrostColdSnap",
+      "mod:WeaponTreeSkillCreepingFrostColdSnap2H",
+      "mod:WeaponTreeSpellAddedCold2hHighCannotChill1",
+      "mod:WeaponTreeSpellAddedCold2hHighCannotChill2",
+      "mod:WeaponTreeSpellAddedCold2hHighCannotChill3",
+      "mod:WeaponTreeSpellAddedCold2hHighCannotChill4",
+      "mod:WeaponTreeSpellAddedCold2hHighCannotChill5",
+      "mod:WeaponTreeSpellAddedColdHighCannotChill1",
+      "mod:WeaponTreeSpellAddedColdHighCannotChill2",
+      "mod:WeaponTreeSpellAddedColdHighCannotChill3",
+      "mod:WeaponTreeSpellAddedColdHighCannotChill4",
+      "mod:WeaponTreeSpellAddedColdHighCannotChill5",
+      "mod:WeaponTreeUnaffectedByChillWhileChannelling"
+     ]
+    },
+    {
+     "carrier_type": "Passive",
+     "count": 15,
+     "members": [
+      "passive:AscendancyAscendant31",
+      "passive:AscendancyCustomGuardian4",
+      "passive:AscendancyCustomSaboteur10",
+      "passive:AscendancyCustomSaboteur8",
+      "passive:AscendancyElementalist20",
+      "passive:AscendancyOccultist16",
+      "passive:ailmentres_cold2761",
+      "passive:attack_channel_notable2392",
+      "passive:avoid_freeze562",
+      "passive:chill_generic2057",
+      "passive:chill_generic2058",
+      "passive:cold_damage_over_time_multiplier2117",
+      "passive:freeze_chance1649",
+      "passive:royale_cold_1",
+      "passive:royale_totem_1"
+     ]
+    }
+   ]
+  }
+ ],
+ "downstream_stats": [],
+ "stat_carriers": {},
+ "mechanic_view": {
+  "mechanic": "mechanic:chill",
+  "related_stats": 103,
+  "truncated": false,
+  "sample": [
+   {
+    "stat": "stat:action_speed_-%_from_chill",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:all_damage_can_chill",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:all_damage_taken_can_chill",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:arctic_breath_chilling_area_movement_velocity_+%",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:attack_damage_that_stuns_also_chills",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:attack_speed_+%_while_chilled",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:avoid_freeze_and_chill_%_if_you_have_used_a_fire_skill_recently",
+    "role": "relation:immunity"
+   },
+   {
+    "stat": "stat:avoid_shock_%_while_chilled",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:base_avoid_chill_%",
+    "role": "relation:immunity"
+   },
+   {
+    "stat": "stat:base_avoid_chill_%_while_have_onslaught",
+    "role": "relation:immunity"
+   },
+   {
+    "stat": "stat:base_cannot_be_chilled",
+    "role": "relation:immunity"
+   },
+   {
+    "stat": "stat:base_immune_to_chill",
+    "role": "relation:immunity"
+   },
+   {
+    "stat": "stat:base_life_leech_from_attack_damage_permyriad_vs_chilled_enemies",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:base_self_chill_duration_-%",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:blight_chilling_tower_chill_effect_+%",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:blind_chilled_enemies_on_hit_%",
+    "role": "relation:trigger"
+   },
+   {
+    "stat": "stat:cannot_be_chilled_or_frozen_while_moving",
+    "role": "relation:immunity"
+   },
+   {
+    "stat": "stat:cast_speed_+%_while_chilled",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:chance_to_sap_%_vs_enemies_in_chilling_areas",
+    "role": "relation:conditional"
+   },
+   {
+    "stat": "stat:chance_to_shock_chilled_enemies_%",
+    "role": "relation:consumer"
+   },
+   {
+    "stat": "stat:chaos_damage_can_chill",
+    "role": "relation:generator"
+   },
+   {
+    "stat": "stat:chill_and_freeze_duration_+%",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:chill_and_freeze_duration_based_on_%_energy_shield",
+    "role": "relation:effect"
+   },
+   {
+    "stat": "stat:chill_attackers_for_4_seconds_on_block_%_chance",
+    "role": "relation:trigger"
+   }
+  ]
+ },
+ "flags": [
+  "truncated_bfs",
+  "mech_hub:103"
+ ]
+}

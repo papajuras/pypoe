@@ -1,0 +1,54 @@
+{
+ "index": 15,
+ "node_id": "passive:AscendancyNecromancer12",
+ "targets": {
+  "stat:auras_grant_attack_and_cast_speed_+%_to_you_and_your_allies": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 0,
+    "passive_grants_stat": 2,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "passive:AscendancyAscendant39",
+    "passive:AscendancyNecromancer12"
+   ],
+   "total": 2
+  },
+  "stat:damage_+%_for_you_and_allies_affected_by_your_auras": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 6,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:SynthesisImplicitDamageAffectedByAuras1",
+    "mod:SynthesisImplicitDamageAffectedByAuras2",
+    "mod:SynthesisImplicitDamageAffectedByAuras3_",
+    "mod:SynthesisImplicitDamageAffectedByAurasTwoHand1",
+    "mod:SynthesisImplicitDamageAffectedByAurasTwoHand2_",
+    "mod:SynthesisImplicitDamageAffectedByAurasTwoHand3",
+    "passive:AscendancyNecromancer12"
+   ],
+   "total": 7
+  },
+  "stat:elemental_resistances_+%_for_you_and_allies_affected_by_your_auras": {
+   "kind": "stat",
+   "counts": {
+    "modifier_grants_stat": 2,
+    "passive_grants_stat": 1,
+    "gem_grants_stat": 0,
+    "unique_modifier_association": 0
+   },
+   "carriers": [
+    "mod:AnimalCharmElementalResistancesForAuraAffectedAllies1",
+    "mod:AnimalCharmElementalResistancesForAuraAffectedAllies2",
+    "passive:AscendancyNecromancer12"
+   ],
+   "total": 3
+  }
+ }
+}
